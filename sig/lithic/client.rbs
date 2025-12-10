@@ -79,6 +79,8 @@ module Lithic
 
     attr_reader account_activity: Lithic::Resources::AccountActivity
 
+    attr_reader webhooks: Lithic::Resources::Webhooks
+
     def api_status: (
       ?request_options: Lithic::request_opts
     ) -> Lithic::APIStatus

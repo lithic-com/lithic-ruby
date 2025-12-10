@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type management_operation_updated_webhook_event =
+      { event_type: :"management_operation.updated" }
+
+    class ManagementOperationUpdatedWebhookEvent < Lithic::Models::ManagementOperationTransaction
+      def event_type: -> :"management_operation.updated"
+
+      def event_type=: (
+        :"management_operation.updated" _
+      ) -> :"management_operation.updated"
+
+      def initialize: (?event_type: :"management_operation.updated") -> void
+
+      def to_hash: -> { event_type: :"management_operation.updated" }
+    end
+  end
+end

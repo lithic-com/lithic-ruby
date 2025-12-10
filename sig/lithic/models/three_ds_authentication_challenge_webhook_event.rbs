@@ -1,0 +1,72 @@
+module Lithic
+  module Models
+    type three_ds_authentication_challenge_webhook_event =
+      {
+        authentication_object: Lithic::ThreeDSAuthentication,
+        challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+        event_type: :"three_ds_authentication.challenge"
+      }
+
+    class ThreeDSAuthenticationChallengeWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor authentication_object: Lithic::ThreeDSAuthentication
+
+      attr_accessor challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge
+
+      attr_accessor event_type: :"three_ds_authentication.challenge"
+
+      def initialize: (
+        authentication_object: Lithic::ThreeDSAuthentication,
+        challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+        ?event_type: :"three_ds_authentication.challenge"
+      ) -> void
+
+      def to_hash: -> {
+        authentication_object: Lithic::ThreeDSAuthentication,
+        challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+        event_type: :"three_ds_authentication.challenge"
+      }
+
+      type challenge =
+        {
+          challenge_method_type: Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge::challenge_method_type,
+          expiry_time: Time,
+          start_time: Time,
+          app_requestor_url: String?
+        }
+
+      class Challenge < Lithic::Internal::Type::BaseModel
+        attr_accessor challenge_method_type: Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge::challenge_method_type
+
+        attr_accessor expiry_time: Time
+
+        attr_accessor start_time: Time
+
+        attr_accessor app_requestor_url: String?
+
+        def initialize: (
+          challenge_method_type: Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge::challenge_method_type,
+          expiry_time: Time,
+          start_time: Time,
+          ?app_requestor_url: String?
+        ) -> void
+
+        def to_hash: -> {
+          challenge_method_type: Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge::challenge_method_type,
+          expiry_time: Time,
+          start_time: Time,
+          app_requestor_url: String?
+        }
+
+        type challenge_method_type = :OUT_OF_BAND
+
+        module ChallengeMethodType
+          extend Lithic::Internal::Type::Enum
+
+          OUT_OF_BAND: :OUT_OF_BAND
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge::challenge_method_type]
+        end
+      end
+    end
+  end
+end

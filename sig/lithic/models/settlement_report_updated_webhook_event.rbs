@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type settlement_report_updated_webhook_event =
+      { event_type: :"settlement_report.updated" }
+
+    class SettlementReportUpdatedWebhookEvent < Lithic::Models::SettlementReport
+      def event_type: -> :"settlement_report.updated"
+
+      def event_type=: (
+        :"settlement_report.updated" _
+      ) -> :"settlement_report.updated"
+
+      def initialize: (?event_type: :"settlement_report.updated") -> void
+
+      def to_hash: -> { event_type: :"settlement_report.updated" }
+    end
+  end
+end

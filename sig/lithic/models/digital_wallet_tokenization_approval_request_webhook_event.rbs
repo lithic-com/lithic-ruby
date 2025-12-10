@@ -1,0 +1,223 @@
+module Lithic
+  module Models
+    type digital_wallet_tokenization_approval_request_webhook_event =
+      {
+        account_token: String,
+        card_token: String,
+        created: Time,
+        customer_tokenization_decision: Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?,
+        event_type: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::event_type,
+        issuer_decision: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::issuer_decision,
+        tokenization_channel: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_channel,
+        tokenization_token: String,
+        wallet_decisioning_info: Lithic::WalletDecisioningInfo,
+        device: Lithic::Device,
+        digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
+        rule_results: ::Array[Lithic::TokenizationRuleResult],
+        tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
+        tokenization_source: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source,
+        tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason]
+      }
+
+    class DigitalWalletTokenizationApprovalRequestWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor account_token: String
+
+      attr_accessor card_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor customer_tokenization_decision: Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?
+
+      attr_accessor event_type: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::event_type
+
+      attr_accessor issuer_decision: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::issuer_decision
+
+      attr_accessor tokenization_channel: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_channel
+
+      attr_accessor tokenization_token: String
+
+      attr_accessor wallet_decisioning_info: Lithic::WalletDecisioningInfo
+
+      attr_reader device: Lithic::Device?
+
+      def device=: (Lithic::Device) -> Lithic::Device
+
+      attr_reader digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata?
+
+      def digital_wallet_token_metadata=: (
+        Lithic::DigitalWalletTokenMetadata
+      ) -> Lithic::DigitalWalletTokenMetadata
+
+      attr_reader rule_results: ::Array[Lithic::TokenizationRuleResult]?
+
+      def rule_results=: (
+        ::Array[Lithic::TokenizationRuleResult]
+      ) -> ::Array[Lithic::TokenizationRuleResult]
+
+      attr_reader tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason]?
+
+      def tokenization_decline_reasons=: (
+        ::Array[Lithic::Models::tokenization_decline_reason]
+      ) -> ::Array[Lithic::Models::tokenization_decline_reason]
+
+      attr_reader tokenization_source: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source?
+
+      def tokenization_source=: (
+        Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source
+      ) -> Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source
+
+      attr_reader tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason]?
+
+      def tokenization_tfa_reasons=: (
+        ::Array[Lithic::Models::tokenization_tfa_reason]
+      ) -> ::Array[Lithic::Models::tokenization_tfa_reason]
+
+      def initialize: (
+        account_token: String,
+        card_token: String,
+        created: Time,
+        customer_tokenization_decision: Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?,
+        event_type: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::event_type,
+        issuer_decision: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::issuer_decision,
+        tokenization_channel: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_channel,
+        tokenization_token: String,
+        wallet_decisioning_info: Lithic::WalletDecisioningInfo,
+        ?device: Lithic::Device,
+        ?digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
+        ?rule_results: ::Array[Lithic::TokenizationRuleResult],
+        ?tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
+        ?tokenization_source: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source,
+        ?tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason]
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        card_token: String,
+        created: Time,
+        customer_tokenization_decision: Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?,
+        event_type: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::event_type,
+        issuer_decision: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::issuer_decision,
+        tokenization_channel: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_channel,
+        tokenization_token: String,
+        wallet_decisioning_info: Lithic::WalletDecisioningInfo,
+        device: Lithic::Device,
+        digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
+        rule_results: ::Array[Lithic::TokenizationRuleResult],
+        tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
+        tokenization_source: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source,
+        tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason]
+      }
+
+      type customer_tokenization_decision =
+        {
+          outcome: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::outcome,
+          responder_url: String,
+          latency: String,
+          response_code: String
+        }
+
+      class CustomerTokenizationDecision < Lithic::Internal::Type::BaseModel
+        attr_accessor outcome: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::outcome
+
+        attr_accessor responder_url: String
+
+        attr_reader latency: String?
+
+        def latency=: (String) -> String
+
+        attr_reader response_code: String?
+
+        def response_code=: (String) -> String
+
+        def initialize: (
+          outcome: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::outcome,
+          responder_url: String,
+          ?latency: String,
+          ?response_code: String
+        ) -> void
+
+        def to_hash: -> {
+          outcome: Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::outcome,
+          responder_url: String,
+          latency: String,
+          response_code: String
+        }
+
+        type outcome =
+          :APPROVED
+          | :DECLINED
+          | :ERROR
+          | :INVALID_RESPONSE
+          | :REQUIRE_ADDITIONAL_AUTHENTICATION
+          | :TIMEOUT
+
+        module Outcome
+          extend Lithic::Internal::Type::Enum
+
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+          ERROR: :ERROR
+          INVALID_RESPONSE: :INVALID_RESPONSE
+          REQUIRE_ADDITIONAL_AUTHENTICATION: :REQUIRE_ADDITIONAL_AUTHENTICATION
+          TIMEOUT: :TIMEOUT
+
+          def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::outcome]
+        end
+      end
+
+      type event_type = :"digital_wallet.tokenization_approval_request"
+
+      module EventType
+        extend Lithic::Internal::Type::Enum
+
+        DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST: :"digital_wallet.tokenization_approval_request"
+
+        def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::event_type]
+      end
+
+      type issuer_decision = :APPROVED | :DENIED | :VERIFICATION_REQUIRED
+
+      module IssuerDecision
+        extend Lithic::Internal::Type::Enum
+
+        APPROVED: :APPROVED
+        DENIED: :DENIED
+        VERIFICATION_REQUIRED: :VERIFICATION_REQUIRED
+
+        def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::issuer_decision]
+      end
+
+      type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
+
+      module TokenizationChannel
+        extend Lithic::Internal::Type::Enum
+
+        DIGITAL_WALLET: :DIGITAL_WALLET
+        MERCHANT: :MERCHANT
+
+        def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_channel]
+      end
+
+      type tokenization_source =
+        :ACCOUNT_ON_FILE
+        | :CONTACTLESS_TAP
+        | :MANUAL_PROVISION
+        | :PUSH_PROVISION
+        | :TOKEN
+        | :UNKNOWN
+
+      module TokenizationSource
+        extend Lithic::Internal::Type::Enum
+
+        ACCOUNT_ON_FILE: :ACCOUNT_ON_FILE
+        CONTACTLESS_TAP: :CONTACTLESS_TAP
+        MANUAL_PROVISION: :MANUAL_PROVISION
+        PUSH_PROVISION: :PUSH_PROVISION
+        TOKEN: :TOKEN
+        UNKNOWN: :UNKNOWN
+
+        def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::tokenization_source]
+      end
+    end
+  end
+end

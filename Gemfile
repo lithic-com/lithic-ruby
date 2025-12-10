@@ -22,6 +22,7 @@ group :development, :test do
   gem "minitest-hooks"
   gem "minitest-proveit"
   gem "minitest-rg"
+  gem "standardwebhooks", "~> 1.0", github: "standard-webhooks/standard-webhooks", glob: "libraries/ruby/*.gemspec"
   gem "webmock"
 end
 

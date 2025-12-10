@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type external_payment_created_webhook_event =
+      { event_type: :"external_payment.created" }
+
+    class ExternalPaymentCreatedWebhookEvent < Lithic::Models::ExternalPayment
+      def event_type: -> :"external_payment.created"
+
+      def event_type=: (
+        :"external_payment.created" _
+      ) -> :"external_payment.created"
+
+      def initialize: (?event_type: :"external_payment.created") -> void
+
+      def to_hash: -> { event_type: :"external_payment.created" }
+    end
+  end
+end
