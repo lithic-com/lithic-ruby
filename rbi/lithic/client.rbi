@@ -118,6 +118,9 @@ module Lithic
     sig { returns(Lithic::Resources::AccountActivity) }
     attr_reader :account_activity
 
+    sig { returns(Lithic::Resources::Webhooks) }
+    attr_reader :webhooks
+
     # Status of api
     sig do
       params(request_options: Lithic::RequestOptions::OrHash).returns(

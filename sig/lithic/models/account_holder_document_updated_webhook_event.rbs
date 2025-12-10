@@ -1,0 +1,219 @@
+module Lithic
+  module Models
+    type account_holder_document_updated_webhook_event =
+      {
+        event_type: :"account_holder_document.updated",
+        token: String,
+        account_holder_token: String,
+        created: Time,
+        document_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type,
+        entity_token: String,
+        required_document_uploads: ::Array[Lithic::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload]
+      }
+
+    class AccountHolderDocumentUpdatedWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor event_type: :"account_holder_document.updated"
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader account_holder_token: String?
+
+      def account_holder_token=: (String) -> String
+
+      attr_reader created: Time?
+
+      def created=: (Time) -> Time
+
+      attr_reader document_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type?
+
+      def document_type=: (
+        Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type
+      ) -> Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type
+
+      attr_reader entity_token: String?
+
+      def entity_token=: (String) -> String
+
+      attr_reader required_document_uploads: ::Array[Lithic::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload]?
+
+      def required_document_uploads=: (
+        ::Array[Lithic::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload]
+      ) -> ::Array[Lithic::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload]
+
+      def initialize: (
+        ?token: String,
+        ?account_holder_token: String,
+        ?created: Time,
+        ?document_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type,
+        ?entity_token: String,
+        ?required_document_uploads: ::Array[Lithic::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload],
+        ?event_type: :"account_holder_document.updated"
+      ) -> void
+
+      def to_hash: -> {
+        event_type: :"account_holder_document.updated",
+        token: String,
+        account_holder_token: String,
+        created: Time,
+        document_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type,
+        entity_token: String,
+        required_document_uploads: ::Array[Lithic::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload]
+      }
+
+      type document_type =
+        :DRIVERS_LICENSE
+        | :PASSPORT
+        | :PASSPORT_CARD
+        | :EIN_LETTER
+        | :TAX_RETURN
+        | :OPERATING_AGREEMENT
+        | :CERTIFICATE_OF_FORMATION
+        | :CERTIFICATE_OF_GOOD_STANDING
+        | :ARTICLES_OF_INCORPORATION
+        | :ARTICLES_OF_ORGANIZATION
+        | :BYLAWS
+        | :GOVERNMENT_BUSINESS_LICENSE
+        | :PARTNERSHIP_AGREEMENT
+        | :SS4_FORM
+        | :BANK_STATEMENT
+        | :UTILITY_BILL_STATEMENT
+        | :SSN_CARD
+        | :ITIN_LETTER
+        | :FINCEN_BOI_REPORT
+
+      module DocumentType
+        extend Lithic::Internal::Type::Enum
+
+        DRIVERS_LICENSE: :DRIVERS_LICENSE
+        PASSPORT: :PASSPORT
+        PASSPORT_CARD: :PASSPORT_CARD
+        EIN_LETTER: :EIN_LETTER
+        TAX_RETURN: :TAX_RETURN
+        OPERATING_AGREEMENT: :OPERATING_AGREEMENT
+        CERTIFICATE_OF_FORMATION: :CERTIFICATE_OF_FORMATION
+        CERTIFICATE_OF_GOOD_STANDING: :CERTIFICATE_OF_GOOD_STANDING
+        ARTICLES_OF_INCORPORATION: :ARTICLES_OF_INCORPORATION
+        ARTICLES_OF_ORGANIZATION: :ARTICLES_OF_ORGANIZATION
+        BYLAWS: :BYLAWS
+        GOVERNMENT_BUSINESS_LICENSE: :GOVERNMENT_BUSINESS_LICENSE
+        PARTNERSHIP_AGREEMENT: :PARTNERSHIP_AGREEMENT
+        SS4_FORM: :SS4_FORM
+        BANK_STATEMENT: :BANK_STATEMENT
+        UTILITY_BILL_STATEMENT: :UTILITY_BILL_STATEMENT
+        SSN_CARD: :SSN_CARD
+        ITIN_LETTER: :ITIN_LETTER
+        FINCEN_BOI_REPORT: :FINCEN_BOI_REPORT
+
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::document_type]
+      end
+
+      type required_document_upload =
+        {
+          token: String,
+          accepted_entity_status_reasons: ::Array[String],
+          created: Time,
+          image_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type,
+          rejected_entity_status_reasons: ::Array[String],
+          status: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status,
+          status_reasons: ::Array[String],
+          updated: Time
+        }
+
+      class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        attr_reader accepted_entity_status_reasons: ::Array[String]?
+
+        def accepted_entity_status_reasons=: (
+          ::Array[String]
+        ) -> ::Array[String]
+
+        attr_reader created: Time?
+
+        def created=: (Time) -> Time
+
+        attr_reader image_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type?
+
+        def image_type=: (
+          Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type
+        ) -> Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type
+
+        attr_reader rejected_entity_status_reasons: ::Array[String]?
+
+        def rejected_entity_status_reasons=: (
+          ::Array[String]
+        ) -> ::Array[String]
+
+        attr_reader status: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status?
+
+        def status=: (
+          Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status
+        ) -> Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status
+
+        attr_reader status_reasons: ::Array[String]?
+
+        def status_reasons=: (::Array[String]) -> ::Array[String]
+
+        attr_reader updated: Time?
+
+        def updated=: (Time) -> Time
+
+        def initialize: (
+          ?token: String,
+          ?accepted_entity_status_reasons: ::Array[String],
+          ?created: Time,
+          ?image_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type,
+          ?rejected_entity_status_reasons: ::Array[String],
+          ?status: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status,
+          ?status_reasons: ::Array[String],
+          ?updated: Time
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          accepted_entity_status_reasons: ::Array[String],
+          created: Time,
+          image_type: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type,
+          rejected_entity_status_reasons: ::Array[String],
+          status: Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status,
+          status_reasons: ::Array[String],
+          updated: Time
+        }
+
+        type image_type = :FRONT | :BACK
+
+        module ImageType
+          extend Lithic::Internal::Type::Enum
+
+          FRONT: :FRONT
+          BACK: :BACK
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::image_type]
+        end
+
+        type status =
+          :ACCEPTED
+          | :REJECTED
+          | :PENDING_UPLOAD
+          | :UPLOADED
+          | :PARTIAL_APPROVAL
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          ACCEPTED: :ACCEPTED
+          REJECTED: :REJECTED
+          PENDING_UPLOAD: :PENDING_UPLOAD
+          UPLOADED: :UPLOADED
+          PARTIAL_APPROVAL: :PARTIAL_APPROVAL
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent::RequiredDocumentUpload::status]
+        end
+      end
+    end
+  end
+end

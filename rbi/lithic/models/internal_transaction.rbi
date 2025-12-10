@@ -11,7 +11,7 @@ module Lithic
       sig { returns(String) }
       attr_accessor :token
 
-      sig { returns(Lithic::InternalTransactionAPI::Category::OrSymbol) }
+      sig { returns(Lithic::InternalTransactionAPI::Category::TaggedSymbol) }
       attr_accessor :category
 
       sig { returns(Time) }
@@ -29,13 +29,13 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
-      sig { returns(Lithic::InternalTransactionAPI::Result::OrSymbol) }
+      sig { returns(Lithic::InternalTransactionAPI::Result::TaggedSymbol) }
       attr_accessor :result
 
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
-      sig { returns(Lithic::InternalTransactionAPI::Status::OrSymbol) }
+      sig { returns(Lithic::InternalTransactionAPI::Status::TaggedSymbol) }
       attr_accessor :status
 
       sig { returns(Time) }
@@ -75,15 +75,15 @@ module Lithic
         override.returns(
           {
             token: String,
-            category: Lithic::InternalTransactionAPI::Category::OrSymbol,
+            category: Lithic::InternalTransactionAPI::Category::TaggedSymbol,
             created: Time,
             currency: String,
             descriptor: String,
             events: T::Array[Lithic::InternalTransactionAPI::Event],
             pending_amount: Integer,
-            result: Lithic::InternalTransactionAPI::Result::OrSymbol,
+            result: Lithic::InternalTransactionAPI::Result::TaggedSymbol,
             settled_amount: Integer,
-            status: Lithic::InternalTransactionAPI::Status::OrSymbol,
+            status: Lithic::InternalTransactionAPI::Status::TaggedSymbol,
             updated: Time
           }
         )
@@ -133,10 +133,14 @@ module Lithic
         sig { returns(Time) }
         attr_accessor :created
 
-        sig { returns(Lithic::InternalTransactionAPI::Event::Result::OrSymbol) }
+        sig do
+          returns(Lithic::InternalTransactionAPI::Event::Result::TaggedSymbol)
+        end
         attr_accessor :result
 
-        sig { returns(Lithic::InternalTransactionAPI::Event::Type::OrSymbol) }
+        sig do
+          returns(Lithic::InternalTransactionAPI::Event::Type::TaggedSymbol)
+        end
         attr_accessor :type
 
         sig do
@@ -157,8 +161,9 @@ module Lithic
               token: String,
               amount: Integer,
               created: Time,
-              result: Lithic::InternalTransactionAPI::Event::Result::OrSymbol,
-              type: Lithic::InternalTransactionAPI::Event::Type::OrSymbol
+              result:
+                Lithic::InternalTransactionAPI::Event::Result::TaggedSymbol,
+              type: Lithic::InternalTransactionAPI::Event::Type::TaggedSymbol
             }
           )
         end

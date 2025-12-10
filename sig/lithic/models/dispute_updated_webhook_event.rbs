@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type dispute_updated_webhook_event = { event_type: :"dispute.updated" }
+
+    class DisputeUpdatedWebhookEvent < Lithic::Models::Dispute
+      def event_type: -> :"dispute.updated"
+
+      def event_type=: (:"dispute.updated" _) -> :"dispute.updated"
+
+      def initialize: (?event_type: :"dispute.updated") -> void
+
+      def to_hash: -> { event_type: :"dispute.updated" }
+    end
+  end
+end

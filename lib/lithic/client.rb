@@ -119,6 +119,9 @@ module Lithic
     # @return [Lithic::Resources::AccountActivity]
     attr_reader :account_activity
 
+    # @return [Lithic::Resources::Webhooks]
+    attr_reader :webhooks
+
     # Status of api
     #
     # @overload api_status(request_options: {})
@@ -225,6 +228,7 @@ module Lithic
       @fraud = Lithic::Resources::Fraud.new(client: self)
       @network_programs = Lithic::Resources::NetworkPrograms.new(client: self)
       @account_activity = Lithic::Resources::AccountActivity.new(client: self)
+      @webhooks = Lithic::Resources::Webhooks.new(client: self)
     end
   end
 end

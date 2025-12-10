@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type card_transaction_updated_webhook_event =
+      { event_type: :"card_transaction.updated" }
+
+    class CardTransactionUpdatedWebhookEvent < Lithic::Models::Transaction
+      def event_type: -> :"card_transaction.updated"
+
+      def event_type=: (
+        :"card_transaction.updated" _
+      ) -> :"card_transaction.updated"
+
+      def initialize: (?event_type: :"card_transaction.updated") -> void
+
+      def to_hash: -> { event_type: :"card_transaction.updated" }
+    end
+  end
+end

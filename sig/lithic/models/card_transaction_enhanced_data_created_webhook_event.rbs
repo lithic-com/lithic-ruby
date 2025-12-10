@@ -1,0 +1,20 @@
+module Lithic
+  module Models
+    type card_transaction_enhanced_data_created_webhook_event =
+      { event_type: :"card_transaction.enhanced_data.created" }
+
+    class CardTransactionEnhancedDataCreatedWebhookEvent < Lithic::Models::Transactions::Events::EnhancedData
+      def event_type: -> :"card_transaction.enhanced_data.created"
+
+      def event_type=: (
+        :"card_transaction.enhanced_data.created" _
+      ) -> :"card_transaction.enhanced_data.created"
+
+      def initialize: (
+        ?event_type: :"card_transaction.enhanced_data.created"
+      ) -> void
+
+      def to_hash: -> { event_type: :"card_transaction.enhanced_data.created" }
+    end
+  end
+end

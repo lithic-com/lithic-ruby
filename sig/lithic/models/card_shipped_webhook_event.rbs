@@ -1,0 +1,71 @@
+module Lithic
+  module Models
+    type card_shipped_webhook_event =
+      {
+        bulk_order_token: String?,
+        card_token: String,
+        event_type: :"card.shipped",
+        shipping_method: Lithic::Models::CardShippedWebhookEvent::shipping_method,
+        tracking_number: String?
+      }
+
+    class CardShippedWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor bulk_order_token: String?
+
+      attr_accessor card_token: String
+
+      attr_accessor event_type: :"card.shipped"
+
+      attr_accessor shipping_method: Lithic::Models::CardShippedWebhookEvent::shipping_method
+
+      attr_accessor tracking_number: String?
+
+      def initialize: (
+        bulk_order_token: String?,
+        card_token: String,
+        shipping_method: Lithic::Models::CardShippedWebhookEvent::shipping_method,
+        tracking_number: String?,
+        ?event_type: :"card.shipped"
+      ) -> void
+
+      def to_hash: -> {
+        bulk_order_token: String?,
+        card_token: String,
+        event_type: :"card.shipped",
+        shipping_method: Lithic::Models::CardShippedWebhookEvent::shipping_method,
+        tracking_number: String?
+      }
+
+      type shipping_method =
+        :"Ex-US expedited with tracking"
+        | :"Ex-US standard with tracking"
+        | :"Ex-US standard without tracking"
+        | :"FedEx 2 days"
+        | :"FedEx express"
+        | :"FedEx overnight"
+        | :"USPS priority"
+        | :"USPS with tracking"
+        | :"USPS without tracking envelope"
+        | :"USPS without tracking envelope non-machine"
+        | :"USPS without tracking flat"
+
+      module ShippingMethod
+        extend Lithic::Internal::Type::Enum
+
+        EX_US_EXPEDITED_WITH_TRACKING: :"Ex-US expedited with tracking"
+        EX_US_STANDARD_WITH_TRACKING: :"Ex-US standard with tracking"
+        EX_US_STANDARD_WITHOUT_TRACKING: :"Ex-US standard without tracking"
+        FED_EX_2_DAYS: :"FedEx 2 days"
+        FED_EX_EXPRESS: :"FedEx express"
+        FED_EX_OVERNIGHT: :"FedEx overnight"
+        USPS_PRIORITY: :"USPS priority"
+        USPS_WITH_TRACKING: :"USPS with tracking"
+        USPS_WITHOUT_TRACKING_ENVELOPE: :"USPS without tracking envelope"
+        USPS_WITHOUT_TRACKING_ENVELOPE_NON_MACHINE: :"USPS without tracking envelope non-machine"
+        USPS_WITHOUT_TRACKING_FLAT: :"USPS without tracking flat"
+
+        def self?.values: -> ::Array[Lithic::Models::CardShippedWebhookEvent::shipping_method]
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type dispute_evidence_upload_failed_webhook_event =
+      { event_type: :"dispute_evidence.upload_failed" }
+
+    class DisputeEvidenceUploadFailedWebhookEvent < Lithic::Models::DisputeEvidence
+      def event_type: -> :"dispute_evidence.upload_failed"
+
+      def event_type=: (
+        :"dispute_evidence.upload_failed" _
+      ) -> :"dispute_evidence.upload_failed"
+
+      def initialize: (?event_type: :"dispute_evidence.upload_failed") -> void
+
+      def to_hash: -> { event_type: :"dispute_evidence.upload_failed" }
+    end
+  end
+end

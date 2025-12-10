@@ -1,0 +1,69 @@
+module Lithic
+  module Models
+    type account_holder_verification_webhook_event =
+      {
+        event_type: :"account_holder.verification",
+        token: String,
+        account_token: String,
+        created: Time,
+        status: Lithic::Models::AccountHolderVerificationWebhookEvent::status,
+        status_reasons: ::Array[String]
+      }
+
+    class AccountHolderVerificationWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor event_type: :"account_holder.verification"
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader created: Time?
+
+      def created=: (Time) -> Time
+
+      attr_reader status: Lithic::Models::AccountHolderVerificationWebhookEvent::status?
+
+      def status=: (
+        Lithic::Models::AccountHolderVerificationWebhookEvent::status
+      ) -> Lithic::Models::AccountHolderVerificationWebhookEvent::status
+
+      attr_reader status_reasons: ::Array[String]?
+
+      def status_reasons=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?token: String,
+        ?account_token: String,
+        ?created: Time,
+        ?status: Lithic::Models::AccountHolderVerificationWebhookEvent::status,
+        ?status_reasons: ::Array[String],
+        ?event_type: :"account_holder.verification"
+      ) -> void
+
+      def to_hash: -> {
+        event_type: :"account_holder.verification",
+        token: String,
+        account_token: String,
+        created: Time,
+        status: Lithic::Models::AccountHolderVerificationWebhookEvent::status,
+        status_reasons: ::Array[String]
+      }
+
+      type status = :ACCEPTED | :PENDING_REVIEW | :REJECTED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        ACCEPTED: :ACCEPTED
+        PENDING_REVIEW: :PENDING_REVIEW
+        REJECTED: :REJECTED
+
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderVerificationWebhookEvent::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type three_ds_authentication_created_webhook_event =
+      { event_type: :"three_ds_authentication.created" }
+
+    class ThreeDSAuthenticationCreatedWebhookEvent < Lithic::Models::ThreeDSAuthentication
+      def event_type: -> :"three_ds_authentication.created"
+
+      def event_type=: (
+        :"three_ds_authentication.created" _
+      ) -> :"three_ds_authentication.created"
+
+      def initialize: (?event_type: :"three_ds_authentication.created") -> void
+
+      def to_hash: -> { event_type: :"three_ds_authentication.created" }
+    end
+  end
+end
