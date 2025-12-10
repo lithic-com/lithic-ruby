@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    type network_total_updated_webhook_event =
+      { event_type: :"network_total.updated" }
+
+    class NetworkTotalUpdatedWebhookEvent < Lithic::Models::NetworkTotal
+      def event_type: -> :"network_total.updated"
+
+      def event_type=: (:"network_total.updated" _) -> :"network_total.updated"
+
+      def initialize: (?event_type: :"network_total.updated") -> void
+
+      def to_hash: -> { event_type: :"network_total.updated" }
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type financial_account_created_webhook_event =
+      { event_type: :"financial_account.created" }
+
+    class FinancialAccountCreatedWebhookEvent < Lithic::Models::FinancialAccount
+      def event_type: -> :"financial_account.created"
+
+      def event_type=: (
+        :"financial_account.created" _
+      ) -> :"financial_account.created"
+
+      def initialize: (?event_type: :"financial_account.created") -> void
+
+      def to_hash: -> { event_type: :"financial_account.created" }
+    end
+  end
+end

@@ -1,0 +1,881 @@
+module Lithic
+  module Models
+    type asa_request_webhook_event =
+      {
+        token: String,
+        acquirer_fee: Integer,
+        amount: Integer,
+        authorization_amount: Integer,
+        avs: Lithic::AsaRequestWebhookEvent::Avs,
+        card: Lithic::AsaRequestWebhookEvent::Card,
+        cardholder_currency: String,
+        cash_amount: Integer,
+        created: Time,
+        merchant: Lithic::Merchant,
+        merchant_amount: Integer,
+        merchant_currency: String,
+        settled_amount: Integer,
+        status: Lithic::Models::AsaRequestWebhookEvent::status,
+        transaction_initiator: Lithic::Models::AsaRequestWebhookEvent::transaction_initiator,
+        account_type: Lithic::Models::AsaRequestWebhookEvent::account_type,
+        cardholder_authentication: Lithic::CardholderAuthentication,
+        cashback: Integer,
+        conversion_rate: Float,
+        event_token: String,
+        fleet_info: Lithic::AsaRequestWebhookEvent::FleetInfo?,
+        latest_challenge: Lithic::AsaRequestWebhookEvent::LatestChallenge,
+        network: Lithic::Models::AsaRequestWebhookEvent::network,
+        network_risk_score: Integer?,
+        network_specific_data: Lithic::AsaRequestWebhookEvent::NetworkSpecificData?,
+        pos: Lithic::AsaRequestWebhookEvent::Pos,
+        token_info: Lithic::TokenInfo?,
+        ttl: Time
+      }
+
+    class AsaRequestWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor acquirer_fee: Integer
+
+      attr_accessor amount: Integer
+
+      attr_accessor authorization_amount: Integer
+
+      attr_accessor avs: Lithic::AsaRequestWebhookEvent::Avs
+
+      attr_accessor card: Lithic::AsaRequestWebhookEvent::Card
+
+      attr_accessor cardholder_currency: String
+
+      attr_accessor cash_amount: Integer
+
+      attr_accessor created: Time
+
+      attr_accessor merchant: Lithic::Merchant
+
+      attr_accessor merchant_amount: Integer
+
+      attr_accessor merchant_currency: String
+
+      attr_accessor settled_amount: Integer
+
+      attr_accessor status: Lithic::Models::AsaRequestWebhookEvent::status
+
+      attr_accessor transaction_initiator: Lithic::Models::AsaRequestWebhookEvent::transaction_initiator
+
+      attr_reader account_type: Lithic::Models::AsaRequestWebhookEvent::account_type?
+
+      def account_type=: (
+        Lithic::Models::AsaRequestWebhookEvent::account_type
+      ) -> Lithic::Models::AsaRequestWebhookEvent::account_type
+
+      attr_reader cardholder_authentication: Lithic::CardholderAuthentication?
+
+      def cardholder_authentication=: (
+        Lithic::CardholderAuthentication
+      ) -> Lithic::CardholderAuthentication
+
+      attr_reader cashback: Integer?
+
+      def cashback=: (Integer) -> Integer
+
+      attr_reader conversion_rate: Float?
+
+      def conversion_rate=: (Float) -> Float
+
+      attr_reader event_token: String?
+
+      def event_token=: (String) -> String
+
+      attr_accessor fleet_info: Lithic::AsaRequestWebhookEvent::FleetInfo?
+
+      attr_reader latest_challenge: Lithic::AsaRequestWebhookEvent::LatestChallenge?
+
+      def latest_challenge=: (
+        Lithic::AsaRequestWebhookEvent::LatestChallenge
+      ) -> Lithic::AsaRequestWebhookEvent::LatestChallenge
+
+      attr_reader network: Lithic::Models::AsaRequestWebhookEvent::network?
+
+      def network=: (
+        Lithic::Models::AsaRequestWebhookEvent::network
+      ) -> Lithic::Models::AsaRequestWebhookEvent::network
+
+      attr_accessor network_risk_score: Integer?
+
+      attr_accessor network_specific_data: Lithic::AsaRequestWebhookEvent::NetworkSpecificData?
+
+      attr_reader pos: Lithic::AsaRequestWebhookEvent::Pos?
+
+      def pos=: (
+        Lithic::AsaRequestWebhookEvent::Pos
+      ) -> Lithic::AsaRequestWebhookEvent::Pos
+
+      attr_accessor token_info: Lithic::TokenInfo?
+
+      attr_reader ttl: Time?
+
+      def ttl=: (Time) -> Time
+
+      def initialize: (
+        token: String,
+        acquirer_fee: Integer,
+        amount: Integer,
+        authorization_amount: Integer,
+        avs: Lithic::AsaRequestWebhookEvent::Avs,
+        card: Lithic::AsaRequestWebhookEvent::Card,
+        cardholder_currency: String,
+        cash_amount: Integer,
+        created: Time,
+        merchant: Lithic::Merchant,
+        merchant_amount: Integer,
+        merchant_currency: String,
+        settled_amount: Integer,
+        status: Lithic::Models::AsaRequestWebhookEvent::status,
+        transaction_initiator: Lithic::Models::AsaRequestWebhookEvent::transaction_initiator,
+        ?account_type: Lithic::Models::AsaRequestWebhookEvent::account_type,
+        ?cardholder_authentication: Lithic::CardholderAuthentication,
+        ?cashback: Integer,
+        ?conversion_rate: Float,
+        ?event_token: String,
+        ?fleet_info: Lithic::AsaRequestWebhookEvent::FleetInfo?,
+        ?latest_challenge: Lithic::AsaRequestWebhookEvent::LatestChallenge,
+        ?network: Lithic::Models::AsaRequestWebhookEvent::network,
+        ?network_risk_score: Integer?,
+        ?network_specific_data: Lithic::AsaRequestWebhookEvent::NetworkSpecificData?,
+        ?pos: Lithic::AsaRequestWebhookEvent::Pos,
+        ?token_info: Lithic::TokenInfo?,
+        ?ttl: Time
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        acquirer_fee: Integer,
+        amount: Integer,
+        authorization_amount: Integer,
+        avs: Lithic::AsaRequestWebhookEvent::Avs,
+        card: Lithic::AsaRequestWebhookEvent::Card,
+        cardholder_currency: String,
+        cash_amount: Integer,
+        created: Time,
+        merchant: Lithic::Merchant,
+        merchant_amount: Integer,
+        merchant_currency: String,
+        settled_amount: Integer,
+        status: Lithic::Models::AsaRequestWebhookEvent::status,
+        transaction_initiator: Lithic::Models::AsaRequestWebhookEvent::transaction_initiator,
+        account_type: Lithic::Models::AsaRequestWebhookEvent::account_type,
+        cardholder_authentication: Lithic::CardholderAuthentication,
+        cashback: Integer,
+        conversion_rate: Float,
+        event_token: String,
+        fleet_info: Lithic::AsaRequestWebhookEvent::FleetInfo?,
+        latest_challenge: Lithic::AsaRequestWebhookEvent::LatestChallenge,
+        network: Lithic::Models::AsaRequestWebhookEvent::network,
+        network_risk_score: Integer?,
+        network_specific_data: Lithic::AsaRequestWebhookEvent::NetworkSpecificData?,
+        pos: Lithic::AsaRequestWebhookEvent::Pos,
+        token_info: Lithic::TokenInfo?,
+        ttl: Time
+      }
+
+      type avs =
+        {
+          address: String,
+          address_on_file_match: Lithic::Models::AsaRequestWebhookEvent::Avs::address_on_file_match,
+          zipcode: String
+        }
+
+      class Avs < Lithic::Internal::Type::BaseModel
+        attr_accessor address: String
+
+        attr_accessor address_on_file_match: Lithic::Models::AsaRequestWebhookEvent::Avs::address_on_file_match
+
+        attr_accessor zipcode: String
+
+        def initialize: (
+          address: String,
+          address_on_file_match: Lithic::Models::AsaRequestWebhookEvent::Avs::address_on_file_match,
+          zipcode: String
+        ) -> void
+
+        def to_hash: -> {
+          address: String,
+          address_on_file_match: Lithic::Models::AsaRequestWebhookEvent::Avs::address_on_file_match,
+          zipcode: String
+        }
+
+        type address_on_file_match =
+          :MATCH
+          | :MATCH_ADDRESS_ONLY
+          | :MATCH_ZIP_ONLY
+          | :MISMATCH
+          | :NOT_PRESENT
+
+        module AddressOnFileMatch
+          extend Lithic::Internal::Type::Enum
+
+          MATCH: :MATCH
+          MATCH_ADDRESS_ONLY: :MATCH_ADDRESS_ONLY
+          MATCH_ZIP_ONLY: :MATCH_ZIP_ONLY
+          MISMATCH: :MISMATCH
+          NOT_PRESENT: :NOT_PRESENT
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Avs::address_on_file_match]
+        end
+      end
+
+      type card =
+        {
+          token: String,
+          hostname: String,
+          last_four: String,
+          memo: String,
+          spend_limit: Integer,
+          spend_limit_duration: Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration,
+          state: Lithic::Models::AsaRequestWebhookEvent::Card::state,
+          type: Lithic::Models::AsaRequestWebhookEvent::Card::type_
+        }
+
+      class Card < Lithic::Internal::Type::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        attr_reader hostname: String?
+
+        def hostname=: (String) -> String
+
+        attr_reader last_four: String?
+
+        def last_four=: (String) -> String
+
+        attr_reader memo: String?
+
+        def memo=: (String) -> String
+
+        attr_reader spend_limit: Integer?
+
+        def spend_limit=: (Integer) -> Integer
+
+        attr_reader spend_limit_duration: Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration?
+
+        def spend_limit_duration=: (
+          Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration
+        ) -> Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration
+
+        attr_reader state: Lithic::Models::AsaRequestWebhookEvent::Card::state?
+
+        def state=: (
+          Lithic::Models::AsaRequestWebhookEvent::Card::state
+        ) -> Lithic::Models::AsaRequestWebhookEvent::Card::state
+
+        attr_reader type: Lithic::Models::AsaRequestWebhookEvent::Card::type_?
+
+        def type=: (
+          Lithic::Models::AsaRequestWebhookEvent::Card::type_
+        ) -> Lithic::Models::AsaRequestWebhookEvent::Card::type_
+
+        def initialize: (
+          ?token: String,
+          ?hostname: String,
+          ?last_four: String,
+          ?memo: String,
+          ?spend_limit: Integer,
+          ?spend_limit_duration: Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration,
+          ?state: Lithic::Models::AsaRequestWebhookEvent::Card::state,
+          ?type: Lithic::Models::AsaRequestWebhookEvent::Card::type_
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          hostname: String,
+          last_four: String,
+          memo: String,
+          spend_limit: Integer,
+          spend_limit_duration: Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration,
+          state: Lithic::Models::AsaRequestWebhookEvent::Card::state,
+          type: Lithic::Models::AsaRequestWebhookEvent::Card::type_
+        }
+
+        type spend_limit_duration =
+          :ANNUALLY | :FOREVER | :MONTHLY | :TRANSACTION
+
+        module SpendLimitDuration
+          extend Lithic::Internal::Type::Enum
+
+          ANNUALLY: :ANNUALLY
+          FOREVER: :FOREVER
+          MONTHLY: :MONTHLY
+          TRANSACTION: :TRANSACTION
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Card::spend_limit_duration]
+        end
+
+        type state =
+          :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
+
+        module State
+          extend Lithic::Internal::Type::Enum
+
+          CLOSED: :CLOSED
+          OPEN: :OPEN
+          PAUSED: :PAUSED
+          PENDING_ACTIVATION: :PENDING_ACTIVATION
+          PENDING_FULFILLMENT: :PENDING_FULFILLMENT
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Card::state]
+        end
+
+        type type_ =
+          :SINGLE_USE
+          | :MERCHANT_LOCKED
+          | :UNLOCKED
+          | :PHYSICAL
+          | :DIGITAL_WALLET
+          | :VIRTUAL
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          SINGLE_USE: :SINGLE_USE
+          MERCHANT_LOCKED: :MERCHANT_LOCKED
+          UNLOCKED: :UNLOCKED
+          PHYSICAL: :PHYSICAL
+          DIGITAL_WALLET: :DIGITAL_WALLET
+          VIRTUAL: :VIRTUAL
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Card::type_]
+        end
+      end
+
+      type status =
+        :AUTHORIZATION
+        | :CREDIT_AUTHORIZATION
+        | :FINANCIAL_AUTHORIZATION
+        | :FINANCIAL_CREDIT_AUTHORIZATION
+        | :BALANCE_INQUIRY
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        AUTHORIZATION: :AUTHORIZATION
+        CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION
+        FINANCIAL_AUTHORIZATION: :FINANCIAL_AUTHORIZATION
+        FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
+        BALANCE_INQUIRY: :BALANCE_INQUIRY
+
+        def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::status]
+      end
+
+      type transaction_initiator = :CARDHOLDER | :MERCHANT | :UNKNOWN
+
+      module TransactionInitiator
+        extend Lithic::Internal::Type::Enum
+
+        CARDHOLDER: :CARDHOLDER
+        MERCHANT: :MERCHANT
+        UNKNOWN: :UNKNOWN
+
+        def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::transaction_initiator]
+      end
+
+      type account_type = :CHECKING | :SAVINGS
+
+      module AccountType
+        extend Lithic::Internal::Type::Enum
+
+        CHECKING: :CHECKING
+        SAVINGS: :SAVINGS
+
+        def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::account_type]
+      end
+
+      type fleet_info =
+        {
+          fleet_prompt_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_prompt_code,
+          fleet_restriction_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_restriction_code,
+          driver_number: String?,
+          vehicle_number: String?
+        }
+
+      class FleetInfo < Lithic::Internal::Type::BaseModel
+        attr_accessor fleet_prompt_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_prompt_code
+
+        attr_accessor fleet_restriction_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_restriction_code
+
+        attr_accessor driver_number: String?
+
+        attr_accessor vehicle_number: String?
+
+        def initialize: (
+          fleet_prompt_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_prompt_code,
+          fleet_restriction_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_restriction_code,
+          ?driver_number: String?,
+          ?vehicle_number: String?
+        ) -> void
+
+        def to_hash: -> {
+          fleet_prompt_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_prompt_code,
+          fleet_restriction_code: Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_restriction_code,
+          driver_number: String?,
+          vehicle_number: String?
+        }
+
+        type fleet_prompt_code = :NO_PROMPT | :VEHICLE_NUMBER | :DRIVER_NUMBER
+
+        module FleetPromptCode
+          extend Lithic::Internal::Type::Enum
+
+          NO_PROMPT: :NO_PROMPT
+          VEHICLE_NUMBER: :VEHICLE_NUMBER
+          DRIVER_NUMBER: :DRIVER_NUMBER
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_prompt_code]
+        end
+
+        type fleet_restriction_code = :NO_RESTRICTIONS | :FUEL_ONLY
+
+        module FleetRestrictionCode
+          extend Lithic::Internal::Type::Enum
+
+          NO_RESTRICTIONS: :NO_RESTRICTIONS
+          FUEL_ONLY: :FUEL_ONLY
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::FleetInfo::fleet_restriction_code]
+        end
+      end
+
+      type latest_challenge =
+        {
+          phone_number: String,
+          status: Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::status,
+          completed_at: Time
+        }
+
+      class LatestChallenge < Lithic::Internal::Type::BaseModel
+        attr_accessor phone_number: String
+
+        attr_accessor status: Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::status
+
+        attr_reader completed_at: Time?
+
+        def completed_at=: (Time) -> Time
+
+        def initialize: (
+          phone_number: String,
+          status: Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::status,
+          ?completed_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          status: Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::status,
+          completed_at: Time
+        }
+
+        type status = :COMPLETED | :PENDING | :EXPIRED | :ERROR
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          COMPLETED: :COMPLETED
+          PENDING: :PENDING
+          EXPIRED: :EXPIRED
+          ERROR: :ERROR
+
+          def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::status]
+        end
+      end
+
+      type network =
+        :AMEX | :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+
+      module Network
+        extend Lithic::Internal::Type::Enum
+
+        AMEX: :AMEX
+        INTERLINK: :INTERLINK
+        MAESTRO: :MAESTRO
+        MASTERCARD: :MASTERCARD
+        UNKNOWN: :UNKNOWN
+        VISA: :VISA
+
+        def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::network]
+      end
+
+      type network_specific_data =
+        {
+          mastercard: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard?,
+          visa: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa?
+        }
+
+      class NetworkSpecificData < Lithic::Internal::Type::BaseModel
+        attr_accessor mastercard: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard?
+
+        attr_accessor visa: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa?
+
+        def initialize: (
+          ?mastercard: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard?,
+          ?visa: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa?
+        ) -> void
+
+        def to_hash: -> {
+          mastercard: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard?,
+          visa: Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa?
+        }
+
+        type mastercard =
+          {
+            ecommerce_security_level_indicator: String?,
+            on_behalf_service_result: ::Array[Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?,
+            transaction_type_identifier: String?
+          }
+
+        class Mastercard < Lithic::Internal::Type::BaseModel
+          attr_accessor ecommerce_security_level_indicator: String?
+
+          attr_accessor on_behalf_service_result: ::Array[Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?
+
+          attr_accessor transaction_type_identifier: String?
+
+          def initialize: (
+            ?ecommerce_security_level_indicator: String?,
+            ?on_behalf_service_result: ::Array[Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?,
+            ?transaction_type_identifier: String?
+          ) -> void
+
+          def to_hash: -> {
+            ecommerce_security_level_indicator: String?,
+            on_behalf_service_result: ::Array[Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?,
+            transaction_type_identifier: String?
+          }
+
+          type on_behalf_service_result =
+            { :result_1 => String, :result_2 => String, service: String }
+
+          class OnBehalfServiceResult < Lithic::Internal::Type::BaseModel
+            attr_accessor result_1: String
+
+            attr_accessor result_2: String
+
+            attr_accessor service: String
+
+            def initialize: (
+              result_1: String,
+              result_2: String,
+              service: String
+            ) -> void
+
+            def to_hash: -> {
+              :result_1 => String,
+              :result_2 => String,
+              service: String
+            }
+          end
+        end
+
+        type visa = { business_application_identifier: String? }
+
+        class Visa < Lithic::Internal::Type::BaseModel
+          attr_accessor business_application_identifier: String?
+
+          def initialize: (?business_application_identifier: String?) -> void
+
+          def to_hash: -> { business_application_identifier: String? }
+        end
+      end
+
+      type pos =
+        {
+          entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode,
+          terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal
+        }
+
+      class Pos < Lithic::Internal::Type::BaseModel
+        attr_reader entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode?
+
+        def entry_mode=: (
+          Lithic::AsaRequestWebhookEvent::Pos::EntryMode
+        ) -> Lithic::AsaRequestWebhookEvent::Pos::EntryMode
+
+        attr_reader terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal?
+
+        def terminal=: (
+          Lithic::AsaRequestWebhookEvent::Pos::Terminal
+        ) -> Lithic::AsaRequestWebhookEvent::Pos::Terminal
+
+        def initialize: (
+          ?entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode,
+          ?terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal
+        ) -> void
+
+        def to_hash: -> {
+          entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode,
+          terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal
+        }
+
+        type entry_mode =
+          {
+            card: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card,
+            cardholder: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder,
+            pan: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan,
+            pin_entered: bool
+          }
+
+        class EntryMode < Lithic::Internal::Type::BaseModel
+          attr_reader card: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card?
+
+          def card=: (
+            Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card
+          ) -> Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card
+
+          attr_reader cardholder: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder?
+
+          def cardholder=: (
+            Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder
+          ) -> Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder
+
+          attr_reader pan: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan?
+
+          def pan=: (
+            Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan
+          ) -> Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan
+
+          attr_reader pin_entered: bool?
+
+          def pin_entered=: (bool) -> bool
+
+          def initialize: (
+            ?card: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card,
+            ?cardholder: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder,
+            ?pan: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan,
+            ?pin_entered: bool
+          ) -> void
+
+          def to_hash: -> {
+            card: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card,
+            cardholder: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder,
+            pan: Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan,
+            pin_entered: bool
+          }
+
+          type card = :PRESENT | :NOT_PRESENT | :UNKNOWN
+
+          module Card
+            extend Lithic::Internal::Type::Enum
+
+            PRESENT: :PRESENT
+            NOT_PRESENT: :NOT_PRESENT
+            UNKNOWN: :UNKNOWN
+
+            def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::card]
+          end
+
+          type cardholder =
+            :DEFERRED_BILLING
+            | :ELECTRONIC_ORDER
+            | :INSTALLMENT
+            | :MAIL_ORDER
+            | :NOT_PRESENT
+            | :PRESENT
+            | :REOCCURRING
+            | :TELEPHONE_ORDER
+            | :UNKNOWN
+
+          module Cardholder
+            extend Lithic::Internal::Type::Enum
+
+            DEFERRED_BILLING: :DEFERRED_BILLING
+            ELECTRONIC_ORDER: :ELECTRONIC_ORDER
+            INSTALLMENT: :INSTALLMENT
+            MAIL_ORDER: :MAIL_ORDER
+            NOT_PRESENT: :NOT_PRESENT
+            PRESENT: :PRESENT
+            REOCCURRING: :REOCCURRING
+            TELEPHONE_ORDER: :TELEPHONE_ORDER
+            UNKNOWN: :UNKNOWN
+
+            def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::cardholder]
+          end
+
+          type pan =
+            :AUTO_ENTRY
+            | :BAR_CODE
+            | :CONTACTLESS
+            | :ECOMMERCE
+            | :ERROR_KEYED
+            | :ERROR_MAGNETIC_STRIPE
+            | :ICC
+            | :KEY_ENTERED
+            | :MAGNETIC_STRIPE
+            | :MANUAL
+            | :OCR
+            | :SECURE_CARDLESS
+            | :UNSPECIFIED
+            | :UNKNOWN
+            | :CREDENTIAL_ON_FILE
+
+          module Pan
+            extend Lithic::Internal::Type::Enum
+
+            AUTO_ENTRY: :AUTO_ENTRY
+            BAR_CODE: :BAR_CODE
+            CONTACTLESS: :CONTACTLESS
+            ECOMMERCE: :ECOMMERCE
+            ERROR_KEYED: :ERROR_KEYED
+            ERROR_MAGNETIC_STRIPE: :ERROR_MAGNETIC_STRIPE
+            ICC: :ICC
+            KEY_ENTERED: :KEY_ENTERED
+            MAGNETIC_STRIPE: :MAGNETIC_STRIPE
+            MANUAL: :MANUAL
+            OCR: :OCR
+            SECURE_CARDLESS: :SECURE_CARDLESS
+            UNSPECIFIED: :UNSPECIFIED
+            UNKNOWN: :UNKNOWN
+            CREDENTIAL_ON_FILE: :CREDENTIAL_ON_FILE
+
+            def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::pan]
+          end
+        end
+
+        type terminal =
+          {
+            attended: bool,
+            card_retention_capable: bool,
+            on_premise: bool,
+            operator: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::operator,
+            partial_approval_capable: bool,
+            pin_capability: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::pin_capability,
+            type: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::type_,
+            acceptor_terminal_id: String?
+          }
+
+        class Terminal < Lithic::Internal::Type::BaseModel
+          attr_accessor attended: bool
+
+          attr_accessor card_retention_capable: bool
+
+          attr_accessor on_premise: bool
+
+          attr_accessor operator: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::operator
+
+          attr_accessor partial_approval_capable: bool
+
+          attr_accessor pin_capability: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::pin_capability
+
+          attr_accessor type: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::type_
+
+          attr_accessor acceptor_terminal_id: String?
+
+          def initialize: (
+            attended: bool,
+            card_retention_capable: bool,
+            on_premise: bool,
+            operator: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::operator,
+            partial_approval_capable: bool,
+            pin_capability: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::pin_capability,
+            type: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::type_,
+            ?acceptor_terminal_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            attended: bool,
+            card_retention_capable: bool,
+            on_premise: bool,
+            operator: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::operator,
+            partial_approval_capable: bool,
+            pin_capability: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::pin_capability,
+            type: Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::type_,
+            acceptor_terminal_id: String?
+          }
+
+          type operator =
+            :ADMINISTRATIVE | :CARDHOLDER | :CARD_ACCEPTOR | :UNKNOWN
+
+          module Operator
+            extend Lithic::Internal::Type::Enum
+
+            ADMINISTRATIVE: :ADMINISTRATIVE
+            CARDHOLDER: :CARDHOLDER
+            CARD_ACCEPTOR: :CARD_ACCEPTOR
+            UNKNOWN: :UNKNOWN
+
+            def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::operator]
+          end
+
+          type pin_capability =
+            :CAPABLE | :INOPERATIVE | :NOT_CAPABLE | :UNSPECIFIED
+
+          module PinCapability
+            extend Lithic::Internal::Type::Enum
+
+            CAPABLE: :CAPABLE
+            INOPERATIVE: :INOPERATIVE
+            NOT_CAPABLE: :NOT_CAPABLE
+            UNSPECIFIED: :UNSPECIFIED
+
+            def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::pin_capability]
+          end
+
+          type type_ =
+            :ADMINISTRATIVE
+            | :ATM
+            | :AUTHORIZATION
+            | :COUPON_MACHINE
+            | :DIAL_TERMINAL
+            | :ECOMMERCE
+            | :ECR
+            | :FUEL_MACHINE
+            | :HOME_TERMINAL
+            | :MICR
+            | :OFF_PREMISE
+            | :PAYMENT
+            | :PDA
+            | :PHONE
+            | :POINT
+            | :POS_TERMINAL
+            | :PUBLIC_UTILITY
+            | :SELF_SERVICE
+            | :TELEVISION
+            | :TELLER
+            | :TRAVELERS_CHECK_MACHINE
+            | :VENDING
+            | :VOICE
+            | :UNKNOWN
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            ADMINISTRATIVE: :ADMINISTRATIVE
+            ATM: :ATM
+            AUTHORIZATION: :AUTHORIZATION
+            COUPON_MACHINE: :COUPON_MACHINE
+            DIAL_TERMINAL: :DIAL_TERMINAL
+            ECOMMERCE: :ECOMMERCE
+            ECR: :ECR
+            FUEL_MACHINE: :FUEL_MACHINE
+            HOME_TERMINAL: :HOME_TERMINAL
+            MICR: :MICR
+            OFF_PREMISE: :OFF_PREMISE
+            PAYMENT: :PAYMENT
+            PDA: :PDA
+            PHONE: :PHONE
+            POINT: :POINT
+            POS_TERMINAL: :POS_TERMINAL
+            PUBLIC_UTILITY: :PUBLIC_UTILITY
+            SELF_SERVICE: :SELF_SERVICE
+            TELEVISION: :TELEVISION
+            TELLER: :TELLER
+            TRAVELERS_CHECK_MACHINE: :TRAVELERS_CHECK_MACHINE
+            VENDING: :VENDING
+            VOICE: :VOICE
+            UNKNOWN: :UNKNOWN
+
+            def self?.values: -> ::Array[Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::type_]
+          end
+        end
+      end
+    end
+  end
+end

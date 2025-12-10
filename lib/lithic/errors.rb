@@ -224,5 +224,20 @@ module Lithic
     class InternalServerError < Lithic::Errors::APIStatusError
       HTTP_STATUS = (500..)
     end
+
+    class MissingDependencyError < Lithic::Errors::Error
+      # @api private
+      #
+      # @param gem_name [String]
+      # @param feature [String]
+      def initialize(gem_name:, feature:)
+        message = [
+          "The '#{gem_name}' gem is required to use #{feature}.",
+          "Install it with: gem install #{gem_name}",
+          "Or add it to your Gemfile: gem '#{gem_name}'"
+        ].join("\n")
+        super(message)
+      end
+    end
   end
 end

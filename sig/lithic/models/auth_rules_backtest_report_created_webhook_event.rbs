@@ -1,0 +1,20 @@
+module Lithic
+  module Models
+    type auth_rules_backtest_report_created_webhook_event =
+      { event_type: :"auth_rules.backtest_report.created" }
+
+    class AuthRulesBacktestReportCreatedWebhookEvent < Lithic::Models::AuthRules::V2::BacktestResults
+      def event_type: -> :"auth_rules.backtest_report.created"
+
+      def event_type=: (
+        :"auth_rules.backtest_report.created" _
+      ) -> :"auth_rules.backtest_report.created"
+
+      def initialize: (
+        ?event_type: :"auth_rules.backtest_report.created"
+      ) -> void
+
+      def to_hash: -> { event_type: :"auth_rules.backtest_report.created" }
+    end
+  end
+end

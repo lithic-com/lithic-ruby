@@ -64,6 +64,41 @@ if page.next_page?
 end
 ```
 
+### Webhooks
+
+Lithic uses webhooks to notify your application when events happen. The library provides signature verification via the optional `standardwebhooks` gem.
+
+#### Parsing and verifying webhooks
+
+```ruby
+# Verifies signature and returns typed event
+event = lithic.webhooks.parse(
+  request.body.read,
+  headers: request.headers,
+  secret: ENV["LITHIC_WEBHOOK_SECRET"] # optional, reads from env by default
+)
+
+case event
+when Lithic::Models::CardCreatedWebhookEvent
+  puts("Card created: #{event.data.token}")
+end
+```
+
+#### Parsing without verification
+
+```ruby
+# Parse only - skips signature verification (not recommended for production)
+event = lithic.webhooks.parse_unsafe(request.body.read)
+```
+
+#### Installing standardwebhooks (optional)
+
+To use signature verification, install from GitHub:
+
+```ruby
+gem "standardwebhooks", "~> 1.0", github: "standard-webhooks/standard-webhooks", glob: "libraries/ruby/*.gemspec"
+```
+
 ### Handling errors
 
 When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Lithic::Errors::APIError` will be thrown:

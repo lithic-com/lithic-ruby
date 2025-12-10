@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type internal_transaction_created_webhook_event =
+      { event_type: :"internal_transaction.created" }
+
+    class InternalTransactionCreatedWebhookEvent < Lithic::Models::InternalTransactionAPI
+      def event_type: -> :"internal_transaction.created"
+
+      def event_type=: (
+        :"internal_transaction.created" _
+      ) -> :"internal_transaction.created"
+
+      def initialize: (?event_type: :"internal_transaction.created") -> void
+
+      def to_hash: -> { event_type: :"internal_transaction.created" }
+    end
+  end
+end

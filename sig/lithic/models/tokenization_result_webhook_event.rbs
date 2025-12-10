@@ -1,0 +1,133 @@
+module Lithic
+  module Models
+    type tokenization_result_webhook_event =
+      {
+        account_token: String,
+        card_token: String,
+        created: Time,
+        event_type: :"tokenization.result",
+        tokenization_result_details: Lithic::TokenizationResultWebhookEvent::TokenizationResultDetails,
+        tokenization_token: String
+      }
+
+    class TokenizationResultWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor account_token: String
+
+      attr_accessor card_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor event_type: :"tokenization.result"
+
+      attr_accessor tokenization_result_details: Lithic::TokenizationResultWebhookEvent::TokenizationResultDetails
+
+      attr_accessor tokenization_token: String
+
+      def initialize: (
+        account_token: String,
+        card_token: String,
+        created: Time,
+        tokenization_result_details: Lithic::TokenizationResultWebhookEvent::TokenizationResultDetails,
+        tokenization_token: String,
+        ?event_type: :"tokenization.result"
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        card_token: String,
+        created: Time,
+        event_type: :"tokenization.result",
+        tokenization_result_details: Lithic::TokenizationResultWebhookEvent::TokenizationResultDetails,
+        tokenization_token: String
+      }
+
+      type tokenization_result_details =
+        {
+          issuer_decision: String,
+          tokenization_decline_reasons: ::Array[Lithic::Models::TokenizationResultWebhookEvent::TokenizationResultDetails::tokenization_decline_reason],
+          customer_decision: String?,
+          rule_results: ::Array[Lithic::TokenizationRuleResult],
+          token_activated_date_time: Time?,
+          tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason],
+          wallet_decision: String?
+        }
+
+      class TokenizationResultDetails < Lithic::Internal::Type::BaseModel
+        attr_accessor issuer_decision: String
+
+        attr_accessor tokenization_decline_reasons: ::Array[Lithic::Models::TokenizationResultWebhookEvent::TokenizationResultDetails::tokenization_decline_reason]
+
+        attr_accessor customer_decision: String?
+
+        attr_reader rule_results: ::Array[Lithic::TokenizationRuleResult]?
+
+        def rule_results=: (
+          ::Array[Lithic::TokenizationRuleResult]
+        ) -> ::Array[Lithic::TokenizationRuleResult]
+
+        attr_accessor token_activated_date_time: Time?
+
+        attr_reader tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason]?
+
+        def tokenization_tfa_reasons=: (
+          ::Array[Lithic::Models::tokenization_tfa_reason]
+        ) -> ::Array[Lithic::Models::tokenization_tfa_reason]
+
+        attr_accessor wallet_decision: String?
+
+        def initialize: (
+          issuer_decision: String,
+          tokenization_decline_reasons: ::Array[Lithic::Models::TokenizationResultWebhookEvent::TokenizationResultDetails::tokenization_decline_reason],
+          ?customer_decision: String?,
+          ?rule_results: ::Array[Lithic::TokenizationRuleResult],
+          ?token_activated_date_time: Time?,
+          ?tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason],
+          ?wallet_decision: String?
+        ) -> void
+
+        def to_hash: -> {
+          issuer_decision: String,
+          tokenization_decline_reasons: ::Array[Lithic::Models::TokenizationResultWebhookEvent::TokenizationResultDetails::tokenization_decline_reason],
+          customer_decision: String?,
+          rule_results: ::Array[Lithic::TokenizationRuleResult],
+          token_activated_date_time: Time?,
+          tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason],
+          wallet_decision: String?
+        }
+
+        type tokenization_decline_reason =
+          :ACCOUNT_SCORE_1
+          | :ALL_WALLET_DECLINE_REASONS_PRESENT
+          | :CARD_EXPIRY_MONTH_MISMATCH
+          | :CARD_EXPIRY_YEAR_MISMATCH
+          | :CARD_INVALID_STATE
+          | :CUSTOMER_RED_PATH
+          | :CVC_MISMATCH
+          | :DEVICE_SCORE_1
+          | :GENERIC_DECLINE
+          | :INVALID_CUSTOMER_RESPONSE
+          | :NETWORK_FAILURE
+          | :WALLET_RECOMMENDED_DECISION_RED
+
+        module TokenizationDeclineReason
+          extend Lithic::Internal::Type::Enum
+
+          ACCOUNT_SCORE_1: :ACCOUNT_SCORE_1
+          ALL_WALLET_DECLINE_REASONS_PRESENT: :ALL_WALLET_DECLINE_REASONS_PRESENT
+          CARD_EXPIRY_MONTH_MISMATCH: :CARD_EXPIRY_MONTH_MISMATCH
+          CARD_EXPIRY_YEAR_MISMATCH: :CARD_EXPIRY_YEAR_MISMATCH
+          CARD_INVALID_STATE: :CARD_INVALID_STATE
+          CUSTOMER_RED_PATH: :CUSTOMER_RED_PATH
+          CVC_MISMATCH: :CVC_MISMATCH
+          DEVICE_SCORE_1: :DEVICE_SCORE_1
+          GENERIC_DECLINE: :GENERIC_DECLINE
+          INVALID_CUSTOMER_RESPONSE: :INVALID_CUSTOMER_RESPONSE
+          NETWORK_FAILURE: :NETWORK_FAILURE
+          WALLET_RECOMMENDED_DECISION_RED: :WALLET_RECOMMENDED_DECISION_RED
+
+          def self?.values: -> ::Array[Lithic::Models::TokenizationResultWebhookEvent::TokenizationResultDetails::tokenization_decline_reason]
+        end
+      end
+    end
+  end
+end

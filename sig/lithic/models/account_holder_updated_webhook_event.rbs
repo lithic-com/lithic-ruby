@@ -1,0 +1,587 @@
+module Lithic
+  module Models
+    type account_holder_updated_webhook_event =
+      Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload
+      | Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload
+      | Lithic::AccountHolderUpdatedWebhookEvent::LegacyPayload
+
+    module AccountHolderUpdatedWebhookEvent
+      extend Lithic::Internal::Type::Union
+
+      type kyb_payload =
+        {
+          token: String,
+          update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest,
+          event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type,
+          external_id: String,
+          nature_of_business: String,
+          website_url: String
+        }
+
+      class KYBPayload < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest
+
+        attr_reader event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type?
+
+        def event_type=: (
+          Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type
+        ) -> Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        attr_reader nature_of_business: String?
+
+        def nature_of_business=: (String) -> String
+
+        attr_reader website_url: String?
+
+        def website_url=: (String) -> String
+
+        def initialize: (
+          token: String,
+          update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest,
+          ?event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type,
+          ?external_id: String,
+          ?nature_of_business: String,
+          ?website_url: String
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest,
+          event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type,
+          external_id: String,
+          nature_of_business: String,
+          website_url: String
+        }
+
+        type update_request =
+          {
+            beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
+            beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual],
+            business_entity: Lithic::KYBBusinessEntity,
+            control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
+          }
+
+        class UpdateRequest < Lithic::Internal::Type::BaseModel
+          attr_reader beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity]?
+
+          def beneficial_owner_entities=: (
+            ::Array[Lithic::KYBBusinessEntity]
+          ) -> ::Array[Lithic::KYBBusinessEntity]
+
+          attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual]?
+
+          def beneficial_owner_individuals=: (
+            ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual]
+          ) -> ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual]
+
+          attr_reader business_entity: Lithic::KYBBusinessEntity?
+
+          def business_entity=: (
+            Lithic::KYBBusinessEntity
+          ) -> Lithic::KYBBusinessEntity
+
+          attr_reader control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson?
+
+          def control_person=: (
+            Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
+          ) -> Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
+
+          def initialize: (
+            ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
+            ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual],
+            ?business_entity: Lithic::KYBBusinessEntity,
+            ?control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
+          ) -> void
+
+          def to_hash: -> {
+            beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
+            beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual],
+            business_entity: Lithic::KYBBusinessEntity,
+            control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
+          }
+
+          type beneficial_owner_individual =
+            {
+              address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+
+          class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
+            attr_reader address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::Address?
+
+            def address=: (
+              Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::Address
+            ) -> Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::Address
+
+            attr_reader dob: String?
+
+            def dob=: (String) -> String
+
+            attr_reader email: String?
+
+            def email=: (String) -> String
+
+            attr_reader first_name: String?
+
+            def first_name=: (String) -> String
+
+            attr_reader last_name: String?
+
+            def last_name=: (String) -> String
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            def initialize: (
+              ?address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::Address,
+              ?dob: String,
+              ?email: String,
+              ?first_name: String,
+              ?last_name: String,
+              ?phone_number: String
+            ) -> void
+
+            def to_hash: -> {
+              address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+
+            type address =
+              {
+                :address1 => String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                :address2 => String
+              }
+
+            class Address < Lithic::Internal::Type::BaseModel
+              attr_accessor address1: String
+
+              attr_accessor city: String
+
+              attr_accessor country: String
+
+              attr_accessor postal_code: String
+
+              attr_accessor state: String
+
+              attr_reader address2: String?
+
+              def address2=: (String) -> String
+
+              def initialize: (
+                address1: String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                ?address2: String
+              ) -> void
+
+              def to_hash: -> {
+                :address1 => String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                :address2 => String
+              }
+            end
+          end
+
+          type control_person =
+            {
+              address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+
+          class ControlPerson < Lithic::Internal::Type::BaseModel
+            attr_reader address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson::Address?
+
+            def address=: (
+              Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson::Address
+            ) -> Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson::Address
+
+            attr_reader dob: String?
+
+            def dob=: (String) -> String
+
+            attr_reader email: String?
+
+            def email=: (String) -> String
+
+            attr_reader first_name: String?
+
+            def first_name=: (String) -> String
+
+            attr_reader last_name: String?
+
+            def last_name=: (String) -> String
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            def initialize: (
+              ?address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson::Address,
+              ?dob: String,
+              ?email: String,
+              ?first_name: String,
+              ?last_name: String,
+              ?phone_number: String
+            ) -> void
+
+            def to_hash: -> {
+              address: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+
+            type address =
+              {
+                :address1 => String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                :address2 => String
+              }
+
+            class Address < Lithic::Internal::Type::BaseModel
+              attr_accessor address1: String
+
+              attr_accessor city: String
+
+              attr_accessor country: String
+
+              attr_accessor postal_code: String
+
+              attr_accessor state: String
+
+              attr_reader address2: String?
+
+              def address2=: (String) -> String
+
+              def initialize: (
+                address1: String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                ?address2: String
+              ) -> void
+
+              def to_hash: -> {
+                :address1 => String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                :address2 => String
+              }
+            end
+          end
+        end
+
+        type event_type = :"account_holder.updated"
+
+        module EventType
+          extend Lithic::Internal::Type::Enum
+
+          ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type]
+        end
+      end
+
+      type kyc_payload =
+        {
+          token: String,
+          update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest,
+          event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type,
+          external_id: String
+        }
+
+      class KYCPayload < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest
+
+        attr_reader event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type?
+
+        def event_type=: (
+          Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type
+        ) -> Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        def initialize: (
+          token: String,
+          update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest,
+          ?event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type,
+          ?external_id: String
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest,
+          event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type,
+          external_id: String
+        }
+
+        type update_request =
+          {
+            individual: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual
+          }
+
+        class UpdateRequest < Lithic::Internal::Type::BaseModel
+          attr_reader individual: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual?
+
+          def individual=: (
+            Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual
+          ) -> Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual
+
+          def initialize: (
+            ?individual: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual
+          ) -> void
+
+          def to_hash: -> {
+            individual: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual
+          }
+
+          type individual =
+            {
+              address: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+
+          class Individual < Lithic::Internal::Type::BaseModel
+            attr_reader address: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual::Address?
+
+            def address=: (
+              Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual::Address
+            ) -> Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual::Address
+
+            attr_reader dob: String?
+
+            def dob=: (String) -> String
+
+            attr_reader email: String?
+
+            def email=: (String) -> String
+
+            attr_reader first_name: String?
+
+            def first_name=: (String) -> String
+
+            attr_reader last_name: String?
+
+            def last_name=: (String) -> String
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            def initialize: (
+              ?address: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual::Address,
+              ?dob: String,
+              ?email: String,
+              ?first_name: String,
+              ?last_name: String,
+              ?phone_number: String
+            ) -> void
+
+            def to_hash: -> {
+              address: Lithic::AccountHolderUpdatedWebhookEvent::KYCPayload::UpdateRequest::Individual::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+
+            type address =
+              {
+                :address1 => String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                :address2 => String
+              }
+
+            class Address < Lithic::Internal::Type::BaseModel
+              attr_accessor address1: String
+
+              attr_accessor city: String
+
+              attr_accessor country: String
+
+              attr_accessor postal_code: String
+
+              attr_accessor state: String
+
+              attr_reader address2: String?
+
+              def address2=: (String) -> String
+
+              def initialize: (
+                address1: String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                ?address2: String
+              ) -> void
+
+              def to_hash: -> {
+                :address1 => String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                :address2 => String
+              }
+            end
+          end
+        end
+
+        type event_type = :"account_holder.updated"
+
+        module EventType
+          extend Lithic::Internal::Type::Enum
+
+          ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdatedWebhookEvent::KYCPayload::event_type]
+        end
+      end
+
+      type legacy_payload =
+        {
+          token: String,
+          business_account_token: String?,
+          created: Time,
+          email: String,
+          event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type,
+          external_id: String?,
+          first_name: String,
+          last_name: String,
+          legal_business_name: String,
+          phone_number: String
+        }
+
+      class LegacyPayload < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor business_account_token: String?
+
+        attr_reader created: Time?
+
+        def created=: (Time) -> Time
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type?
+
+        def event_type=: (
+          Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type
+        ) -> Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type
+
+        attr_accessor external_id: String?
+
+        attr_reader first_name: String?
+
+        def first_name=: (String) -> String
+
+        attr_reader last_name: String?
+
+        def last_name=: (String) -> String
+
+        attr_reader legal_business_name: String?
+
+        def legal_business_name=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (
+          token: String,
+          ?business_account_token: String?,
+          ?created: Time,
+          ?email: String,
+          ?event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type,
+          ?external_id: String?,
+          ?first_name: String,
+          ?last_name: String,
+          ?legal_business_name: String,
+          ?phone_number: String
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          business_account_token: String?,
+          created: Time,
+          email: String,
+          event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type,
+          external_id: String?,
+          first_name: String,
+          last_name: String,
+          legal_business_name: String,
+          phone_number: String
+        }
+
+        type event_type = :"account_holder.updated"
+
+        module EventType
+          extend Lithic::Internal::Type::Enum
+
+          ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdatedWebhookEvent::LegacyPayload::event_type]
+        end
+      end
+
+      def self?.variants: -> ::Array[Lithic::Models::account_holder_updated_webhook_event]
+    end
+  end
+end

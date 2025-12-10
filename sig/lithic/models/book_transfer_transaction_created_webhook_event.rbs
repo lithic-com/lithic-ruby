@@ -1,0 +1,20 @@
+module Lithic
+  module Models
+    type book_transfer_transaction_created_webhook_event =
+      { event_type: :"book_transfer_transaction.created" }
+
+    class BookTransferTransactionCreatedWebhookEvent < Lithic::Models::BookTransferResponse
+      def event_type: -> :"book_transfer_transaction.created"
+
+      def event_type=: (
+        :"book_transfer_transaction.created" _
+      ) -> :"book_transfer_transaction.created"
+
+      def initialize: (
+        ?event_type: :"book_transfer_transaction.created"
+      ) -> void
+
+      def to_hash: -> { event_type: :"book_transfer_transaction.created" }
+    end
+  end
+end

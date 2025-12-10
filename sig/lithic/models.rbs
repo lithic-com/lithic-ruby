@@ -9,7 +9,11 @@ module Lithic
 
   class AccountHolder = Lithic::Models::AccountHolder
 
+  class AccountHolderCreatedWebhookEvent = Lithic::Models::AccountHolderCreatedWebhookEvent
+
   class AccountHolderCreateParams = Lithic::Models::AccountHolderCreateParams
+
+  class AccountHolderDocumentUpdatedWebhookEvent = Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent
 
   class AccountHolderListDocumentsParams = Lithic::Models::AccountHolderListDocumentsParams
 
@@ -23,9 +27,13 @@ module Lithic
 
   class AccountHolderSimulateEnrollmentReviewParams = Lithic::Models::AccountHolderSimulateEnrollmentReviewParams
 
+  module AccountHolderUpdatedWebhookEvent = Lithic::Models::AccountHolderUpdatedWebhookEvent
+
   class AccountHolderUpdateParams = Lithic::Models::AccountHolderUpdateParams
 
   class AccountHolderUploadDocumentParams = Lithic::Models::AccountHolderUploadDocumentParams
+
+  class AccountHolderVerificationWebhookEvent = Lithic::Models::AccountHolderVerificationWebhookEvent
 
   class AccountListParams = Lithic::Models::AccountListParams
 
@@ -47,7 +55,11 @@ module Lithic
 
   class APIStatus = Lithic::Models::APIStatus
 
+  class AsaRequestWebhookEvent = Lithic::Models::AsaRequestWebhookEvent
+
   module AuthRules = Lithic::Models::AuthRules
+
+  class AuthRulesBacktestReportCreatedWebhookEvent = Lithic::Models::AuthRulesBacktestReportCreatedWebhookEvent
 
   class AuthStreamEnrollmentRetrieveSecretParams = Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
 
@@ -59,6 +71,8 @@ module Lithic
 
   class BalanceListParams = Lithic::Models::BalanceListParams
 
+  class BalanceUpdatedWebhookEvent = Lithic::Models::BalanceUpdatedWebhookEvent
+
   class BookTransferCreateParams = Lithic::Models::BookTransferCreateParams
 
   class BookTransferListParams = Lithic::Models::BookTransferListParams
@@ -68,6 +82,10 @@ module Lithic
   class BookTransferRetrieveParams = Lithic::Models::BookTransferRetrieveParams
 
   class BookTransferReverseParams = Lithic::Models::BookTransferReverseParams
+
+  class BookTransferTransactionCreatedWebhookEvent = Lithic::Models::BookTransferTransactionCreatedWebhookEvent
+
+  class BookTransferTransactionUpdatedWebhookEvent = Lithic::Models::BookTransferTransactionUpdatedWebhookEvent
 
   class Card = Lithic::Models::Card
 
@@ -81,7 +99,11 @@ module Lithic
 
   class CardBulkOrderUpdateParams = Lithic::Models::CardBulkOrderUpdateParams
 
+  class CardConvertedWebhookEvent = Lithic::Models::CardConvertedWebhookEvent
+
   class CardConvertPhysicalParams = Lithic::Models::CardConvertPhysicalParams
+
+  class CardCreatedWebhookEvent = Lithic::Models::CardCreatedWebhookEvent
 
   class CardCreateParams = Lithic::Models::CardCreateParams
 
@@ -99,7 +121,11 @@ module Lithic
 
   class CardProvisionParams = Lithic::Models::CardProvisionParams
 
+  class CardReissuedWebhookEvent = Lithic::Models::CardReissuedWebhookEvent
+
   class CardReissueParams = Lithic::Models::CardReissueParams
+
+  class CardRenewedWebhookEvent = Lithic::Models::CardRenewedWebhookEvent
 
   class CardRenewParams = Lithic::Models::CardRenewParams
 
@@ -111,7 +137,15 @@ module Lithic
 
   class CardSearchByPanParams = Lithic::Models::CardSearchByPanParams
 
+  class CardShippedWebhookEvent = Lithic::Models::CardShippedWebhookEvent
+
   class CardSpendLimits = Lithic::Models::CardSpendLimits
+
+  class CardTransactionEnhancedDataCreatedWebhookEvent = Lithic::Models::CardTransactionEnhancedDataCreatedWebhookEvent
+
+  class CardTransactionEnhancedDataUpdatedWebhookEvent = Lithic::Models::CardTransactionEnhancedDataUpdatedWebhookEvent
+
+  class CardTransactionUpdatedWebhookEvent = Lithic::Models::CardTransactionUpdatedWebhookEvent
 
   class CardUpdateParams = Lithic::Models::CardUpdateParams
 
@@ -135,6 +169,16 @@ module Lithic
 
   class DigitalCardArtRetrieveParams = Lithic::Models::DigitalCardArtRetrieveParams
 
+  class DigitalWalletTokenizationApprovalRequestWebhookEvent = Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent
+
+  class DigitalWalletTokenizationResultWebhookEvent = Lithic::Models::DigitalWalletTokenizationResultWebhookEvent
+
+  class DigitalWalletTokenizationTwoFactorAuthenticationCodeSentWebhookEvent = Lithic::Models::DigitalWalletTokenizationTwoFactorAuthenticationCodeSentWebhookEvent
+
+  class DigitalWalletTokenizationTwoFactorAuthenticationCodeWebhookEvent = Lithic::Models::DigitalWalletTokenizationTwoFactorAuthenticationCodeWebhookEvent
+
+  class DigitalWalletTokenizationUpdatedWebhookEvent = Lithic::Models::DigitalWalletTokenizationUpdatedWebhookEvent
+
   class DigitalWalletTokenMetadata = Lithic::Models::DigitalWalletTokenMetadata
 
   class Dispute = Lithic::Models::Dispute
@@ -146,6 +190,8 @@ module Lithic
   class DisputeDeleteParams = Lithic::Models::DisputeDeleteParams
 
   class DisputeEvidence = Lithic::Models::DisputeEvidence
+
+  class DisputeEvidenceUploadFailedWebhookEvent = Lithic::Models::DisputeEvidenceUploadFailedWebhookEvent
 
   class DisputeInitiateEvidenceUploadParams = Lithic::Models::DisputeInitiateEvidenceUploadParams
 
@@ -160,6 +206,12 @@ module Lithic
   class DisputesV2ListParams = Lithic::Models::DisputesV2ListParams
 
   class DisputesV2RetrieveParams = Lithic::Models::DisputesV2RetrieveParams
+
+  class DisputeTransactionCreatedWebhookEvent = Lithic::Models::DisputeTransactionCreatedWebhookEvent
+
+  class DisputeTransactionUpdatedWebhookEvent = Lithic::Models::DisputeTransactionUpdatedWebhookEvent
+
+  class DisputeUpdatedWebhookEvent = Lithic::Models::DisputeUpdatedWebhookEvent
 
   class DisputeUpdateParams = Lithic::Models::DisputeUpdateParams
 
@@ -183,6 +235,8 @@ module Lithic
 
   class ExternalBankAccountAddress = Lithic::Models::ExternalBankAccountAddress
 
+  class ExternalBankAccountCreatedWebhookEvent = Lithic::Models::ExternalBankAccountCreatedWebhookEvent
+
   class ExternalBankAccountCreateParams = Lithic::Models::ExternalBankAccountCreateParams
 
   class ExternalBankAccountListParams = Lithic::Models::ExternalBankAccountListParams
@@ -197,11 +251,15 @@ module Lithic
 
   class ExternalBankAccountUnpauseParams = Lithic::Models::ExternalBankAccountUnpauseParams
 
+  class ExternalBankAccountUpdatedWebhookEvent = Lithic::Models::ExternalBankAccountUpdatedWebhookEvent
+
   class ExternalBankAccountUpdateParams = Lithic::Models::ExternalBankAccountUpdateParams
 
   class ExternalPayment = Lithic::Models::ExternalPayment
 
   class ExternalPaymentCancelParams = Lithic::Models::ExternalPaymentCancelParams
+
+  class ExternalPaymentCreatedWebhookEvent = Lithic::Models::ExternalPaymentCreatedWebhookEvent
 
   class ExternalPaymentCreateParams = Lithic::Models::ExternalPaymentCreateParams
 
@@ -215,6 +273,8 @@ module Lithic
 
   class ExternalPaymentSettleParams = Lithic::Models::ExternalPaymentSettleParams
 
+  class ExternalPaymentUpdatedWebhookEvent = Lithic::Models::ExternalPaymentUpdatedWebhookEvent
+
   class ExternalResource = Lithic::Models::ExternalResource
 
   module ExternalResourceType = Lithic::Models::ExternalResourceType
@@ -222,6 +282,8 @@ module Lithic
   class FinancialAccount = Lithic::Models::FinancialAccount
 
   class FinancialAccountBalance = Lithic::Models::FinancialAccountBalance
+
+  class FinancialAccountCreatedWebhookEvent = Lithic::Models::FinancialAccountCreatedWebhookEvent
 
   class FinancialAccountCreateParams = Lithic::Models::FinancialAccountCreateParams
 
@@ -232,6 +294,8 @@ module Lithic
   class FinancialAccountRetrieveParams = Lithic::Models::FinancialAccountRetrieveParams
 
   module FinancialAccounts = Lithic::Models::FinancialAccounts
+
+  class FinancialAccountUpdatedWebhookEvent = Lithic::Models::FinancialAccountUpdatedWebhookEvent
 
   class FinancialAccountUpdateParams = Lithic::Models::FinancialAccountUpdateParams
 
@@ -245,6 +309,8 @@ module Lithic
 
   class FundingEvent = Lithic::Models::FundingEvent
 
+  class FundingEventCreatedWebhookEvent = Lithic::Models::FundingEventCreatedWebhookEvent
+
   class FundingEventListParams = Lithic::Models::FundingEventListParams
 
   class FundingEventRetrieveDetailsParams = Lithic::Models::FundingEventRetrieveDetailsParams
@@ -255,6 +321,10 @@ module Lithic
 
   class InternalTransactionAPI = Lithic::Models::InternalTransactionAPI
 
+  class InternalTransactionCreatedWebhookEvent = Lithic::Models::InternalTransactionCreatedWebhookEvent
+
+  class InternalTransactionUpdatedWebhookEvent = Lithic::Models::InternalTransactionUpdatedWebhookEvent
+
   class KYB = Lithic::Models::KYB
 
   class KYBBusinessEntity = Lithic::Models::KYBBusinessEntity
@@ -262,6 +332,12 @@ module Lithic
   class KYC = Lithic::Models::KYC
 
   class KYCExempt = Lithic::Models::KYCExempt
+
+  class LoanTapeCreatedWebhookEvent = Lithic::Models::LoanTapeCreatedWebhookEvent
+
+  class LoanTapeUpdatedWebhookEvent = Lithic::Models::LoanTapeUpdatedWebhookEvent
+
+  class ManagementOperationCreatedWebhookEvent = Lithic::Models::ManagementOperationCreatedWebhookEvent
 
   class ManagementOperationCreateParams = Lithic::Models::ManagementOperationCreateParams
 
@@ -272,6 +348,8 @@ module Lithic
   class ManagementOperationReverseParams = Lithic::Models::ManagementOperationReverseParams
 
   class ManagementOperationTransaction = Lithic::Models::ManagementOperationTransaction
+
+  class ManagementOperationUpdatedWebhookEvent = Lithic::Models::ManagementOperationUpdatedWebhookEvent
 
   class Merchant = Lithic::Models::Merchant
 
@@ -285,9 +363,15 @@ module Lithic
 
   class NetworkTotal = Lithic::Models::NetworkTotal
 
+  class NetworkTotalCreatedWebhookEvent = Lithic::Models::NetworkTotalCreatedWebhookEvent
+
+  class NetworkTotalUpdatedWebhookEvent = Lithic::Models::NetworkTotalUpdatedWebhookEvent
+
   class NonPCICard = Lithic::Models::NonPCICard
 
   module OwnerType = Lithic::Models::OwnerType
+
+  module ParsedWebhookEvent = Lithic::Models::ParsedWebhookEvent
 
   class Payment = Lithic::Models::Payment
 
@@ -309,6 +393,10 @@ module Lithic
 
   class PaymentSimulateReturnParams = Lithic::Models::PaymentSimulateReturnParams
 
+  class PaymentTransactionCreatedWebhookEvent = Lithic::Models::PaymentTransactionCreatedWebhookEvent
+
+  class PaymentTransactionUpdatedWebhookEvent = Lithic::Models::PaymentTransactionUpdatedWebhookEvent
+
   class ProvisionResponse = Lithic::Models::ProvisionResponse
 
   module Reports = Lithic::Models::Reports
@@ -327,11 +415,15 @@ module Lithic
 
   class SettlementReport = Lithic::Models::SettlementReport
 
+  class SettlementReportUpdatedWebhookEvent = Lithic::Models::SettlementReportUpdatedWebhookEvent
+
   class SettlementSummaryDetails = Lithic::Models::SettlementSummaryDetails
 
   class ShippingAddress = Lithic::Models::ShippingAddress
 
   module SpendLimitDuration = Lithic::Models::SpendLimitDuration
+
+  class StatementsCreatedWebhookEvent = Lithic::Models::StatementsCreatedWebhookEvent
 
   class StatementTotals = Lithic::Models::StatementTotals
 
@@ -339,13 +431,23 @@ module Lithic
 
   class ThreeDSAuthentication = Lithic::Models::ThreeDSAuthentication
 
+  class ThreeDSAuthenticationChallengeWebhookEvent = Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent
+
+  class ThreeDSAuthenticationCreatedWebhookEvent = Lithic::Models::ThreeDSAuthenticationCreatedWebhookEvent
+
+  class ThreeDSAuthenticationUpdatedWebhookEvent = Lithic::Models::ThreeDSAuthenticationUpdatedWebhookEvent
+
   class TokenInfo = Lithic::Models::TokenInfo
 
   class Tokenization = Lithic::Models::Tokenization
 
   class TokenizationActivateParams = Lithic::Models::TokenizationActivateParams
 
+  class TokenizationApprovalRequestWebhookEvent = Lithic::Models::TokenizationApprovalRequestWebhookEvent
+
   class TokenizationDeactivateParams = Lithic::Models::TokenizationDeactivateParams
+
+  class TokenizationDecisioningRequestWebhookEvent = Lithic::Models::TokenizationDecisioningRequestWebhookEvent
 
   class TokenizationDecisioningRetrieveSecretParams = Lithic::Models::TokenizationDecisioningRetrieveSecretParams
 
@@ -359,6 +461,8 @@ module Lithic
 
   class TokenizationResendActivationCodeParams = Lithic::Models::TokenizationResendActivationCodeParams
 
+  class TokenizationResultWebhookEvent = Lithic::Models::TokenizationResultWebhookEvent
+
   class TokenizationRetrieveParams = Lithic::Models::TokenizationRetrieveParams
 
   class TokenizationRuleResult = Lithic::Models::TokenizationRuleResult
@@ -369,9 +473,15 @@ module Lithic
 
   module TokenizationTfaReason = Lithic::Models::TokenizationTfaReason
 
+  class TokenizationTwoFactorAuthenticationCodeSentWebhookEvent = Lithic::Models::TokenizationTwoFactorAuthenticationCodeSentWebhookEvent
+
+  class TokenizationTwoFactorAuthenticationCodeWebhookEvent = Lithic::Models::TokenizationTwoFactorAuthenticationCodeWebhookEvent
+
   class TokenizationUnpauseParams = Lithic::Models::TokenizationUnpauseParams
 
   class TokenizationUpdateDigitalCardArtParams = Lithic::Models::TokenizationUpdateDigitalCardArtParams
+
+  class TokenizationUpdatedWebhookEvent = Lithic::Models::TokenizationUpdatedWebhookEvent
 
   class Transaction = Lithic::Models::Transaction
 
@@ -404,6 +514,8 @@ module Lithic
   module VerificationMethod = Lithic::Models::VerificationMethod
 
   class WalletDecisioningInfo = Lithic::Models::WalletDecisioningInfo
+
+  class WebhookParsedParams = Lithic::Models::WebhookParsedParams
 
   class WirePartyDetails = Lithic::Models::WirePartyDetails
 end

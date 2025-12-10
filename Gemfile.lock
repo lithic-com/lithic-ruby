@@ -8,6 +8,13 @@ GIT
       rbs
       syntax_tree (>= 2.0.1)
 
+GIT
+  remote: https://github.com/standard-webhooks/standard-webhooks.git
+  revision: a173a6c0125ca2b9245bf5ea3f1c61384ccc10a2
+  glob: libraries/ruby/*.gemspec
+  specs:
+    standardwebhooks (1.0.0)
+
 PATH
   remote: .
   specs:
@@ -214,6 +221,7 @@ DEPENDENCIES
   redcarpet
   rubocop
   sorbet
+  standardwebhooks (~> 1.0)!
   steep
   syntax_tree
   syntax_tree-rbs!

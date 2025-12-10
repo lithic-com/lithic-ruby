@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type external_bank_account_updated_webhook_event =
+      { event_type: :"external_bank_account.updated" }
+
+    class ExternalBankAccountUpdatedWebhookEvent < Lithic::Models::ExternalBankAccount
+      def event_type: -> :"external_bank_account.updated"
+
+      def event_type=: (
+        :"external_bank_account.updated" _
+      ) -> :"external_bank_account.updated"
+
+      def initialize: (?event_type: :"external_bank_account.updated") -> void
+
+      def to_hash: -> { event_type: :"external_bank_account.updated" }
+    end
+  end
+end

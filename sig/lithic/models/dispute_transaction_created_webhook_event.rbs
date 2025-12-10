@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type dispute_transaction_created_webhook_event =
+      { event_type: :"dispute_transaction.created" }
+
+    class DisputeTransactionCreatedWebhookEvent < Lithic::Models::DisputeV2
+      def event_type: -> :"dispute_transaction.created"
+
+      def event_type=: (
+        :"dispute_transaction.created" _
+      ) -> :"dispute_transaction.created"
+
+      def initialize: (?event_type: :"dispute_transaction.created") -> void
+
+      def to_hash: -> { event_type: :"dispute_transaction.created" }
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    type funding_event_created_webhook_event =
+      { event_type: :"funding_event.created" }
+
+    class FundingEventCreatedWebhookEvent < Lithic::Models::FundingEvent
+      def event_type: -> :"funding_event.created"
+
+      def event_type=: (:"funding_event.created" _) -> :"funding_event.created"
+
+      def initialize: (?event_type: :"funding_event.created") -> void
+
+      def to_hash: -> { event_type: :"funding_event.created" }
+    end
+  end
+end

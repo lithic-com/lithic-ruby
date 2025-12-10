@@ -1,0 +1,40 @@
+module Lithic
+  module Models
+    type digital_wallet_tokenization_updated_webhook_event =
+      {
+        account_token: String,
+        card_token: String,
+        created: Time,
+        event_type: :"digital_wallet.tokenization_updated",
+        tokenization: Lithic::Tokenization
+      }
+
+    class DigitalWalletTokenizationUpdatedWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor account_token: String
+
+      attr_accessor card_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor event_type: :"digital_wallet.tokenization_updated"
+
+      attr_accessor tokenization: Lithic::Tokenization
+
+      def initialize: (
+        account_token: String,
+        card_token: String,
+        created: Time,
+        tokenization: Lithic::Tokenization,
+        ?event_type: :"digital_wallet.tokenization_updated"
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        card_token: String,
+        created: Time,
+        event_type: :"digital_wallet.tokenization_updated",
+        tokenization: Lithic::Tokenization
+      }
+    end
+  end
+end

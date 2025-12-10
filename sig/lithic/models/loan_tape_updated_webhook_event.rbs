@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type loan_tape_updated_webhook_event = { event_type: :"loan_tape.updated" }
+
+    class LoanTapeUpdatedWebhookEvent < Lithic::Models::FinancialAccounts::LoanTape
+      def event_type: -> :"loan_tape.updated"
+
+      def event_type=: (:"loan_tape.updated" _) -> :"loan_tape.updated"
+
+      def initialize: (?event_type: :"loan_tape.updated") -> void
+
+      def to_hash: -> { event_type: :"loan_tape.updated" }
+    end
+  end
+end

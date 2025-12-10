@@ -40,7 +40,7 @@ module Lithic
       sig do
         returns(
           T.nilable(
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::OrSymbol
+            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
           )
         )
       end
@@ -90,7 +90,7 @@ module Lithic
             payment_app_instance_id: T.nilable(String),
             token_requestor_id: String,
             token_requestor_name:
-              Lithic::DigitalWalletTokenMetadata::TokenRequestorName::OrSymbol
+              Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
           }
         )
       end

@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type internal_transaction_updated_webhook_event =
+      { event_type: :"internal_transaction.updated" }
+
+    class InternalTransactionUpdatedWebhookEvent < Lithic::Models::InternalTransactionAPI
+      def event_type: -> :"internal_transaction.updated"
+
+      def event_type=: (
+        :"internal_transaction.updated" _
+      ) -> :"internal_transaction.updated"
+
+      def initialize: (?event_type: :"internal_transaction.updated") -> void
+
+      def to_hash: -> { event_type: :"internal_transaction.updated" }
+    end
+  end
+end
