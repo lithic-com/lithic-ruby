@@ -3,9 +3,6 @@
 module Lithic
   module Resources
     class Cards
-      # @return [Lithic::Resources::Cards::AggregateBalances]
-      attr_reader :aggregate_balances
-
       # @return [Lithic::Resources::Cards::Balances]
       attr_reader :balances
 
@@ -486,7 +483,6 @@ module Lithic
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client
-        @aggregate_balances = Lithic::Resources::Cards::AggregateBalances.new(client: client)
         @balances = Lithic::Resources::Cards::Balances.new(client: client)
         @financial_transactions = Lithic::Resources::Cards::FinancialTransactions.new(client: client)
       end
