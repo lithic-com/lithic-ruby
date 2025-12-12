@@ -1,8 +1,6 @@
 module Lithic
   module Resources
     class Cards
-      attr_reader aggregate_balances: Lithic::Resources::Cards::AggregateBalances
-
       attr_reader balances: Lithic::Resources::Cards::Balances
 
       attr_reader financial_transactions: Lithic::Resources::Cards::FinancialTransactions

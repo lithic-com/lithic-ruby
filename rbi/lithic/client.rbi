@@ -49,9 +49,6 @@ module Lithic
     sig { returns(Lithic::Resources::Balances) }
     attr_reader :balances
 
-    sig { returns(Lithic::Resources::AggregateBalances) }
-    attr_reader :aggregate_balances
-
     sig { returns(Lithic::Resources::Disputes) }
     attr_reader :disputes
 
