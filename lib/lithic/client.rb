@@ -50,9 +50,6 @@ module Lithic
     # @return [Lithic::Resources::Balances]
     attr_reader :balances
 
-    # @return [Lithic::Resources::AggregateBalances]
-    attr_reader :aggregate_balances
-
     # @return [Lithic::Resources::Disputes]
     attr_reader :disputes
 
@@ -205,7 +202,6 @@ module Lithic
       @cards = Lithic::Resources::Cards.new(client: self)
       @card_bulk_orders = Lithic::Resources::CardBulkOrders.new(client: self)
       @balances = Lithic::Resources::Balances.new(client: self)
-      @aggregate_balances = Lithic::Resources::AggregateBalances.new(client: self)
       @disputes = Lithic::Resources::Disputes.new(client: self)
       @disputes_v2 = Lithic::Resources::DisputesV2.new(client: self)
       @events = Lithic::Resources::Events.new(client: self)

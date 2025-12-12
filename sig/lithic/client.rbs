@@ -33,8 +33,6 @@ module Lithic
 
     attr_reader balances: Lithic::Resources::Balances
 
-    attr_reader aggregate_balances: Lithic::Resources::AggregateBalances
-
     attr_reader disputes: Lithic::Resources::Disputes
 
     attr_reader disputes_v2: Lithic::Resources::DisputesV2
