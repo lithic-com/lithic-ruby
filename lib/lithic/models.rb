@@ -90,10 +90,6 @@ module Lithic
 
   AddressUpdate = Lithic::Models::AddressUpdate
 
-  AggregateBalance = Lithic::Models::AggregateBalance
-
-  AggregateBalanceListParams = Lithic::Models::AggregateBalanceListParams
-
   APIStatus = Lithic::Models::APIStatus
 
   AsaRequestWebhookEvent = Lithic::Models::AsaRequestWebhookEvent
