@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2025-12-12)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/lithic-com/lithic-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** remove v1/aggregate_balances and related models ([c66d75e](https://github.com/lithic-com/lithic-ruby/commit/c66d75ed7b10521d5f73efeafb9dbcd6ff7a7f0c))
+
 ## 0.2.0 (2025-12-10)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0...v0.2.0)
