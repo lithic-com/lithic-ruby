@@ -1,0 +1,232 @@
+module Lithic
+  module Models
+    type transfer_limits_response =
+      { data: ::Array[Lithic::TransferLimitsResponse::Data], has_more: bool }
+
+    class TransferLimitsResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Lithic::TransferLimitsResponse::Data]
+
+      attr_accessor has_more: bool
+
+      def initialize: (
+        data: ::Array[Lithic::TransferLimitsResponse::Data],
+        has_more: bool
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Lithic::TransferLimitsResponse::Data],
+        has_more: bool
+      }
+
+      type data =
+        {
+          company_id: String,
+          daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
+          date: Date,
+          is_fbo: bool,
+          monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
+          program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction
+        }
+
+      class Data < Lithic::Internal::Type::BaseModel
+        attr_accessor company_id: String
+
+        attr_accessor daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit
+
+        attr_accessor date: Date
+
+        attr_accessor is_fbo: bool
+
+        attr_accessor monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit
+
+        attr_accessor program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction
+
+        def initialize: (
+          company_id: String,
+          daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
+          date: Date,
+          is_fbo: bool,
+          monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
+          program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction
+        ) -> void
+
+        def to_hash: -> {
+          company_id: String,
+          daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
+          date: Date,
+          is_fbo: bool,
+          monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
+          program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction
+        }
+
+        type daily_limit =
+          {
+            credit: Lithic::TransferLimitsResponse::Data::DailyLimit::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::DailyLimit::Debit
+          }
+
+        class DailyLimit < Lithic::Internal::Type::BaseModel
+          attr_accessor credit: Lithic::TransferLimitsResponse::Data::DailyLimit::Credit
+
+          attr_accessor debit: Lithic::TransferLimitsResponse::Data::DailyLimit::Debit
+
+          def initialize: (
+            credit: Lithic::TransferLimitsResponse::Data::DailyLimit::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::DailyLimit::Debit
+          ) -> void
+
+          def to_hash: -> {
+            credit: Lithic::TransferLimitsResponse::Data::DailyLimit::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::DailyLimit::Debit
+          }
+
+          type credit = { limit: Integer, amount_originated: Integer }
+
+          class Credit < Lithic::Internal::Type::BaseModel
+            attr_accessor limit: Integer
+
+            attr_reader amount_originated: Integer?
+
+            def amount_originated=: (Integer) -> Integer
+
+            def initialize: (
+              limit: Integer,
+              ?amount_originated: Integer
+            ) -> void
+
+            def to_hash: -> { limit: Integer, amount_originated: Integer }
+          end
+
+          type debit = { limit: Integer, amount_originated: Integer }
+
+          class Debit < Lithic::Internal::Type::BaseModel
+            attr_accessor limit: Integer
+
+            attr_reader amount_originated: Integer?
+
+            def amount_originated=: (Integer) -> Integer
+
+            def initialize: (
+              limit: Integer,
+              ?amount_originated: Integer
+            ) -> void
+
+            def to_hash: -> { limit: Integer, amount_originated: Integer }
+          end
+        end
+
+        type monthly_limit =
+          {
+            credit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Debit
+          }
+
+        class MonthlyLimit < Lithic::Internal::Type::BaseModel
+          attr_accessor credit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Credit
+
+          attr_accessor debit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Debit
+
+          def initialize: (
+            credit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Debit
+          ) -> void
+
+          def to_hash: -> {
+            credit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Debit
+          }
+
+          type credit = { limit: Integer, amount_originated: Integer }
+
+          class Credit < Lithic::Internal::Type::BaseModel
+            attr_accessor limit: Integer
+
+            attr_reader amount_originated: Integer?
+
+            def amount_originated=: (Integer) -> Integer
+
+            def initialize: (
+              limit: Integer,
+              ?amount_originated: Integer
+            ) -> void
+
+            def to_hash: -> { limit: Integer, amount_originated: Integer }
+          end
+
+          type debit = { limit: Integer, amount_originated: Integer }
+
+          class Debit < Lithic::Internal::Type::BaseModel
+            attr_accessor limit: Integer
+
+            attr_reader amount_originated: Integer?
+
+            def amount_originated=: (Integer) -> Integer
+
+            def initialize: (
+              limit: Integer,
+              ?amount_originated: Integer
+            ) -> void
+
+            def to_hash: -> { limit: Integer, amount_originated: Integer }
+          end
+        end
+
+        type program_limit_per_transaction =
+          {
+            credit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Debit
+          }
+
+        class ProgramLimitPerTransaction < Lithic::Internal::Type::BaseModel
+          attr_accessor credit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Credit
+
+          attr_accessor debit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Debit
+
+          def initialize: (
+            credit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Debit
+          ) -> void
+
+          def to_hash: -> {
+            credit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Credit,
+            debit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Debit
+          }
+
+          type credit = { limit: Integer, amount_originated: Integer }
+
+          class Credit < Lithic::Internal::Type::BaseModel
+            attr_accessor limit: Integer
+
+            attr_reader amount_originated: Integer?
+
+            def amount_originated=: (Integer) -> Integer
+
+            def initialize: (
+              limit: Integer,
+              ?amount_originated: Integer
+            ) -> void
+
+            def to_hash: -> { limit: Integer, amount_originated: Integer }
+          end
+
+          type debit = { limit: Integer, amount_originated: Integer }
+
+          class Debit < Lithic::Internal::Type::BaseModel
+            attr_accessor limit: Integer
+
+            attr_reader amount_originated: Integer?
+
+            def amount_originated=: (Integer) -> Integer
+
+            def initialize: (
+              limit: Integer,
+              ?amount_originated: Integer
+            ) -> void
+
+            def to_hash: -> { limit: Integer, amount_originated: Integer }
+          end
+        end
+      end
+    end
+  end
+end

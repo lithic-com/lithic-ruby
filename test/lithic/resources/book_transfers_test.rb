@@ -105,6 +105,39 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
     end
   end
 
+  def test_retry__required_params
+    response =
+      @lithic.book_transfers.retry_(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        retry_token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+      )
+
+    assert_pattern do
+      response => Lithic::BookTransferResponse
+    end
+
+    assert_pattern do
+      response => {
+        token: String,
+        category: Lithic::BookTransferResponse::Category,
+        created: Time,
+        currency: String,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
+        family: Symbol,
+        from_financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::BookTransferResponse::Result,
+        settled_amount: Integer,
+        status: Lithic::BookTransferResponse::Status,
+        to_financial_account_token: String,
+        updated: Time,
+        external_id: String | nil,
+        external_resource: Lithic::ExternalResource | nil,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries | nil
+      }
+    end
+  end
+
   def test_reverse
     response = @lithic.book_transfers.reverse("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

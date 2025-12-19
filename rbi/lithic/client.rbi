@@ -115,6 +115,9 @@ module Lithic
     sig { returns(Lithic::Resources::AccountActivity) }
     attr_reader :account_activity
 
+    sig { returns(Lithic::Resources::TransferLimits) }
+    attr_reader :transfer_limits
+
     sig { returns(Lithic::Resources::Webhooks) }
     attr_reader :webhooks
 
