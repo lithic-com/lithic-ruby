@@ -357,6 +357,10 @@ module Lithic
         end
         attr_writer :detailed_results
 
+        # Payment event external ID, for example, ACH trace number.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_id
+
         # Payment Event
         sig do
           params(
@@ -366,7 +370,8 @@ module Lithic
             result: Lithic::Payment::Event::Result::OrSymbol,
             type: Lithic::Payment::Event::Type::OrSymbol,
             detailed_results:
-              T::Array[Lithic::Payment::Event::DetailedResult::OrSymbol]
+              T::Array[Lithic::Payment::Event::DetailedResult::OrSymbol],
+            external_id: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -406,7 +411,9 @@ module Lithic
           #   Financial Institution.
           type:,
           # More detailed reasons for the event
-          detailed_results: nil
+          detailed_results: nil,
+          # Payment event external ID, for example, ACH trace number.
+          external_id: nil
         )
         end
 
@@ -419,7 +426,8 @@ module Lithic
               result: Lithic::Payment::Event::Result::TaggedSymbol,
               type: Lithic::Payment::Event::Type::TaggedSymbol,
               detailed_results:
-                T::Array[Lithic::Payment::Event::DetailedResult::TaggedSymbol]
+                T::Array[Lithic::Payment::Event::DetailedResult::TaggedSymbol],
+              external_id: T.nilable(String)
             }
           )
         end

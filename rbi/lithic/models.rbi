@@ -93,6 +93,8 @@ module Lithic
 
   BookTransferRetrieveParams = Lithic::Models::BookTransferRetrieveParams
 
+  BookTransferRetryParams = Lithic::Models::BookTransferRetryParams
+
   BookTransferReverseParams = Lithic::Models::BookTransferReverseParams
 
   BookTransferTransactionCreatedWebhookEvent =
@@ -587,6 +589,10 @@ module Lithic
   Transfer = Lithic::Models::Transfer
 
   TransferCreateParams = Lithic::Models::TransferCreateParams
+
+  TransferLimitListParams = Lithic::Models::TransferLimitListParams
+
+  TransferLimitsResponse = Lithic::Models::TransferLimitsResponse
 
   VerificationMethod = Lithic::Models::VerificationMethod
 

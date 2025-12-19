@@ -110,6 +110,23 @@ module Lithic
       )
       end
 
+      # Retry a book transfer that has been declined
+      sig do
+        params(
+          book_transfer_token: String,
+          retry_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::BookTransferResponse)
+      end
+      def retry_(
+        # Token of the book transfer to retry
+        book_transfer_token,
+        # Globally unique identifier for the retry.
+        retry_token:,
+        request_options: {}
+      )
+      end
+
       # Reverse a book transfer
       sig do
         params(

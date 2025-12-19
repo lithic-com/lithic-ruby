@@ -113,6 +113,30 @@ module Lithic
         )
       end
 
+      # Retry a book transfer that has been declined
+      #
+      # @overload retry_(book_transfer_token, retry_token:, request_options: {})
+      #
+      # @param book_transfer_token [String] Token of the book transfer to retry
+      #
+      # @param retry_token [String] Globally unique identifier for the retry.
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::BookTransferResponse]
+      #
+      # @see Lithic::Models::BookTransferRetryParams
+      def retry_(book_transfer_token, params)
+        parsed, options = Lithic::BookTransferRetryParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/book_transfers/%1$s/retry", book_transfer_token],
+          body: parsed,
+          model: Lithic::BookTransferResponse,
+          options: options
+        )
+      end
+
       # Reverse a book transfer
       #
       # @overload reverse(book_transfer_token, memo: nil, request_options: {})

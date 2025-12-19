@@ -77,6 +77,8 @@ module Lithic
 
     attr_reader account_activity: Lithic::Resources::AccountActivity
 
+    attr_reader transfer_limits: Lithic::Resources::TransferLimits
+
     attr_reader webhooks: Lithic::Resources::Webhooks
 
     def api_status: (

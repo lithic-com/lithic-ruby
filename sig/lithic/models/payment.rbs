@@ -194,7 +194,8 @@ module Lithic
           created: Time,
           result: Lithic::Models::Payment::Event::result,
           type: Lithic::Models::Payment::Event::type_,
-          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result],
+          external_id: String?
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -214,13 +215,16 @@ module Lithic
           ::Array[Lithic::Models::Payment::Event::detailed_result]
         ) -> ::Array[Lithic::Models::Payment::Event::detailed_result]
 
+        attr_accessor external_id: String?
+
         def initialize: (
           token: String,
           amount: Integer,
           created: Time,
           result: Lithic::Models::Payment::Event::result,
           type: Lithic::Models::Payment::Event::type_,
-          ?detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+          ?detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result],
+          ?external_id: String?
         ) -> void
 
         def to_hash: -> {
@@ -229,7 +233,8 @@ module Lithic
           created: Time,
           result: Lithic::Models::Payment::Event::result,
           type: Lithic::Models::Payment::Event::type_,
-          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result],
+          external_id: String?
         }
 
         type result = :APPROVED | :DECLINED
