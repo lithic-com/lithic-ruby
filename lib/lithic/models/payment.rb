@@ -289,7 +289,13 @@ module Lithic
         optional :detailed_results,
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Payment::Event::DetailedResult] }
 
-        # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil)
+        # @!attribute external_id
+        #   Payment event external ID, for example, ACH trace number.
+        #
+        #   @return [String, nil]
+        optional :external_id, String, nil?: true
+
+        # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil, external_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Payment::Event} for more details.
         #
@@ -306,6 +312,8 @@ module Lithic
         #   @param type [Symbol, Lithic::Models::Payment::Event::Type] Event types:
         #
         #   @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>] More detailed reasons for the event
+        #
+        #   @param external_id [String, nil] Payment event external ID, for example, ACH trace number.
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
