@@ -30,6 +30,8 @@ module Lithic
         effective_date:,
         event_type:,
         financial_account_token:,
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         token: nil,
         memo: nil,
         # What to do if the financial account is closed when posting an operation

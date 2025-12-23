@@ -113,13 +113,16 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::BookTransferRetryParams} for more details.
+      #
       # Retry a book transfer that has been declined
       #
       # @overload retry_(book_transfer_token, retry_token:, request_options: {})
       #
       # @param book_transfer_token [String] Token of the book transfer to retry
       #
-      # @param retry_token [String] Globally unique identifier for the retry.
+      # @param retry_token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
