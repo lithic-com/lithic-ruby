@@ -11,7 +11,8 @@ module Lithic
           T.any(Lithic::BookTransferRetryParams, Lithic::Internal::AnyHash)
         end
 
-      # Globally unique identifier for the retry.
+      # Customer-provided token that will serve as an idempotency token. This token will
+      # become the transaction token.
       sig { returns(String) }
       attr_accessor :retry_token
 
@@ -22,7 +23,8 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
-        # Globally unique identifier for the retry.
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         retry_token:,
         request_options: {}
       )

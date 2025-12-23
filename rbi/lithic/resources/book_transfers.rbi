@@ -121,7 +121,8 @@ module Lithic
       def retry_(
         # Token of the book transfer to retry
         book_transfer_token,
-        # Globally unique identifier for the retry.
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         retry_token:,
         request_options: {}
       )

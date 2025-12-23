@@ -8,13 +8,17 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute retry_token
-      #   Globally unique identifier for the retry.
+      #   Customer-provided token that will serve as an idempotency token. This token will
+      #   become the transaction token.
       #
       #   @return [String]
       required :retry_token, String
 
       # @!method initialize(retry_token:, request_options: {})
-      #   @param retry_token [String] Globally unique identifier for the retry.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::BookTransferRetryParams} for more details.
+      #
+      #   @param retry_token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end

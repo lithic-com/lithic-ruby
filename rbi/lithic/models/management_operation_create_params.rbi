@@ -38,6 +38,8 @@ module Lithic
       sig { returns(String) }
       attr_accessor :financial_account_token
 
+      # Customer-provided token that will serve as an idempotency token. This token will
+      # become the transaction token.
       sig { returns(T.nilable(String)) }
       attr_reader :token
 
@@ -106,6 +108,8 @@ module Lithic
         effective_date:,
         event_type:,
         financial_account_token:,
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         token: nil,
         memo: nil,
         # What to do if the financial account is closed when posting an operation

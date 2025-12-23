@@ -181,10 +181,6 @@ module Lithic
         raise ArgumentError.new("api_key is required, and can be set via environ: \"LITHIC_API_KEY\"")
       end
 
-      headers = {
-        "x-lithic-pagination" => "cursor"
-      }
-
       @api_key = api_key.to_s
 
       super(
@@ -192,8 +188,7 @@ module Lithic
         timeout: timeout,
         max_retries: max_retries,
         initial_retry_delay: initial_retry_delay,
-        max_retry_delay: max_retry_delay,
-        headers: headers
+        max_retry_delay: max_retry_delay
       )
 
       @accounts = Lithic::Resources::Accounts.new(client: self)
