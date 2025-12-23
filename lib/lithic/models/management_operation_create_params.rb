@@ -38,6 +38,8 @@ module Lithic
       required :financial_account_token, String
 
       # @!attribute token
+      #   Customer-provided token that will serve as an idempotency token. This token will
+      #   become the transaction token.
       #
       #   @return [String, nil]
       optional :token, String
@@ -64,6 +66,9 @@ module Lithic
       optional :user_defined_id, String
 
       # @!method initialize(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, on_closed_account: nil, subtype: nil, user_defined_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ManagementOperationCreateParams} for more details.
+      #
       #   @param amount [Integer]
       #
       #   @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
@@ -76,7 +81,7 @@ module Lithic
       #
       #   @param financial_account_token [String]
       #
-      #   @param token [String]
+      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
       #   @param memo [String]
       #

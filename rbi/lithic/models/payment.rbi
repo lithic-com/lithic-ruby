@@ -1061,6 +1061,8 @@ module Lithic
           T.let(:WIRE_OUTBOUND_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
         WIRE_OUTBOUND_ADMIN =
           T.let(:WIRE_OUTBOUND_ADMIN, Lithic::Payment::Type::TaggedSymbol)
+        WIRE_DRAWDOWN_REQUEST =
+          T.let(:WIRE_DRAWDOWN_REQUEST, Lithic::Payment::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Payment::Type::TaggedSymbol]) }
         def self.values
