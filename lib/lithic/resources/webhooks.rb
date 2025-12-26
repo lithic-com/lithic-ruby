@@ -60,7 +60,8 @@ module Lithic
       def verify_signature(payload:, headers:, secret: nil)
         secret ||= ENV["LITHIC_WEBHOOK_SECRET"]
         if secret.nil? || secret.empty?
-          raise ArgumentError, "Webhook secret must be provided or set in LITHIC_WEBHOOK_SECRET environment variable"
+          raise ArgumentError,
+                "Webhook secret must be provided or set in LITHIC_WEBHOOK_SECRET environment variable"
         end
 
         begin
