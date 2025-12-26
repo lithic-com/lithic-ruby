@@ -3,6 +3,9 @@
 module Lithic
   module Resources
     class ManagementOperations
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::ManagementOperationCreateParams} for more details.
+      #
       # Create management operation
       #
       # @overload create(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, on_closed_account: nil, subtype: nil, user_defined_id: nil, request_options: {})
@@ -19,7 +22,7 @@ module Lithic
       #
       # @param financial_account_token [String]
       #
-      # @param token [String]
+      # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
       # @param memo [String]
       #

@@ -50,9 +50,6 @@ module Lithic
     # @return [Lithic::Resources::Balances]
     attr_reader :balances
 
-    # @return [Lithic::Resources::AggregateBalances]
-    attr_reader :aggregate_balances
-
     # @return [Lithic::Resources::Disputes]
     attr_reader :disputes
 
@@ -119,6 +116,9 @@ module Lithic
     # @return [Lithic::Resources::AccountActivity]
     attr_reader :account_activity
 
+    # @return [Lithic::Resources::TransferLimits]
+    attr_reader :transfer_limits
+
     # @return [Lithic::Resources::Webhooks]
     attr_reader :webhooks
 
@@ -181,10 +181,6 @@ module Lithic
         raise ArgumentError.new("api_key is required, and can be set via environ: \"LITHIC_API_KEY\"")
       end
 
-      headers = {
-        "x-lithic-pagination" => "cursor"
-      }
-
       @api_key = api_key.to_s
 
       super(
@@ -192,8 +188,7 @@ module Lithic
         timeout: timeout,
         max_retries: max_retries,
         initial_retry_delay: initial_retry_delay,
-        max_retry_delay: max_retry_delay,
-        headers: headers
+        max_retry_delay: max_retry_delay
       )
 
       @accounts = Lithic::Resources::Accounts.new(client: self)
@@ -205,7 +200,6 @@ module Lithic
       @cards = Lithic::Resources::Cards.new(client: self)
       @card_bulk_orders = Lithic::Resources::CardBulkOrders.new(client: self)
       @balances = Lithic::Resources::Balances.new(client: self)
-      @aggregate_balances = Lithic::Resources::AggregateBalances.new(client: self)
       @disputes = Lithic::Resources::Disputes.new(client: self)
       @disputes_v2 = Lithic::Resources::DisputesV2.new(client: self)
       @events = Lithic::Resources::Events.new(client: self)
@@ -228,6 +222,7 @@ module Lithic
       @fraud = Lithic::Resources::Fraud.new(client: self)
       @network_programs = Lithic::Resources::NetworkPrograms.new(client: self)
       @account_activity = Lithic::Resources::AccountActivity.new(client: self)
+      @transfer_limits = Lithic::Resources::TransferLimits.new(client: self)
       @webhooks = Lithic::Resources::Webhooks.new(client: self)
     end
   end

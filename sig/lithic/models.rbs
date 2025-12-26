@@ -49,10 +49,6 @@ module Lithic
 
   class AddressUpdate = Lithic::Models::AddressUpdate
 
-  class AggregateBalance = Lithic::Models::AggregateBalance
-
-  class AggregateBalanceListParams = Lithic::Models::AggregateBalanceListParams
-
   class APIStatus = Lithic::Models::APIStatus
 
   class AsaRequestWebhookEvent = Lithic::Models::AsaRequestWebhookEvent
@@ -80,6 +76,8 @@ module Lithic
   class BookTransferResponse = Lithic::Models::BookTransferResponse
 
   class BookTransferRetrieveParams = Lithic::Models::BookTransferRetrieveParams
+
+  class BookTransferRetryParams = Lithic::Models::BookTransferRetryParams
 
   class BookTransferReverseParams = Lithic::Models::BookTransferReverseParams
 
@@ -510,6 +508,10 @@ module Lithic
   class Transfer = Lithic::Models::Transfer
 
   class TransferCreateParams = Lithic::Models::TransferCreateParams
+
+  class TransferLimitListParams = Lithic::Models::TransferLimitListParams
+
+  class TransferLimitsResponse = Lithic::Models::TransferLimitsResponse
 
   module VerificationMethod = Lithic::Models::VerificationMethod
 

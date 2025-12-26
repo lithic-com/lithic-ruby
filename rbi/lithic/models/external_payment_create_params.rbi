@@ -28,6 +28,8 @@ module Lithic
       end
       attr_accessor :payment_type
 
+      # Customer-provided token that will serve as an idempotency token. This token will
+      # become the transaction token.
       sig { returns(T.nilable(String)) }
       attr_reader :token
 
@@ -82,6 +84,8 @@ module Lithic
         effective_date:,
         financial_account_token:,
         payment_type:,
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         token: nil,
         memo: nil,
         progress_to: nil,

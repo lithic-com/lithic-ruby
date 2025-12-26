@@ -35,6 +35,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::CursorPage[Lithic::BookTransferResponse]
 
+      def retry_: (
+        String book_transfer_token,
+        retry_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::BookTransferResponse
+
       def reverse: (
         String book_transfer_token,
         ?memo: String,

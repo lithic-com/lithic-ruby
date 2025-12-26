@@ -1,0 +1,23 @@
+module Lithic
+  module Models
+    type book_transfer_retry_params =
+      { retry_token: String } & Lithic::Internal::Type::request_parameters
+
+    class BookTransferRetryParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor retry_token: String
+
+      def initialize: (
+        retry_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        retry_token: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

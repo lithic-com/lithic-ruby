@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    type transfer_limit_list_params =
+      { date: Date } & Lithic::Internal::Type::request_parameters
+
+    class TransferLimitListParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_reader date: Date?
+
+      def date=: (Date) -> Date
+
+      def initialize: (
+        ?date: Date,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> { date: Date, request_options: Lithic::RequestOptions }
+    end
+  end
+end

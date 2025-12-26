@@ -194,7 +194,8 @@ module Lithic
           created: Time,
           result: Lithic::Models::Payment::Event::result,
           type: Lithic::Models::Payment::Event::type_,
-          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result],
+          external_id: String?
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -214,13 +215,16 @@ module Lithic
           ::Array[Lithic::Models::Payment::Event::detailed_result]
         ) -> ::Array[Lithic::Models::Payment::Event::detailed_result]
 
+        attr_accessor external_id: String?
+
         def initialize: (
           token: String,
           amount: Integer,
           created: Time,
           result: Lithic::Models::Payment::Event::result,
           type: Lithic::Models::Payment::Event::type_,
-          ?detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+          ?detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result],
+          ?external_id: String?
         ) -> void
 
         def to_hash: -> {
@@ -229,7 +233,8 @@ module Lithic
           created: Time,
           result: Lithic::Models::Payment::Event::result,
           type: Lithic::Models::Payment::Event::type_,
-          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result],
+          external_id: String?
         }
 
         type result = :APPROVED | :DECLINED
@@ -519,6 +524,7 @@ module Lithic
         | :WIRE_INBOUND_ADMIN
         | :WIRE_OUTBOUND_PAYMENT
         | :WIRE_OUTBOUND_ADMIN
+        | :WIRE_DRAWDOWN_REQUEST
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -531,6 +537,7 @@ module Lithic
         WIRE_INBOUND_ADMIN: :WIRE_INBOUND_ADMIN
         WIRE_OUTBOUND_PAYMENT: :WIRE_OUTBOUND_PAYMENT
         WIRE_OUTBOUND_ADMIN: :WIRE_OUTBOUND_ADMIN
+        WIRE_DRAWDOWN_REQUEST: :WIRE_DRAWDOWN_REQUEST
 
         def self?.values: -> ::Array[Lithic::Models::Payment::type_]
       end

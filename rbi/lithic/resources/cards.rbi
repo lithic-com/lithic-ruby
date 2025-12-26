@@ -3,9 +3,6 @@
 module Lithic
   module Resources
     class Cards
-      sig { returns(Lithic::Resources::Cards::AggregateBalances) }
-      attr_reader :aggregate_balances
-
       sig { returns(Lithic::Resources::Cards::Balances) }
       attr_reader :balances
 

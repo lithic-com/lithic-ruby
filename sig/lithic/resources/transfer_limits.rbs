@@ -1,0 +1,12 @@
+module Lithic
+  module Resources
+    class TransferLimits
+      def list: (
+        ?date: Date,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::SinglePage[Lithic::TransferLimitsResponse::Data]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

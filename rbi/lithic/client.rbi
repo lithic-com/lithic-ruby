@@ -49,9 +49,6 @@ module Lithic
     sig { returns(Lithic::Resources::Balances) }
     attr_reader :balances
 
-    sig { returns(Lithic::Resources::AggregateBalances) }
-    attr_reader :aggregate_balances
-
     sig { returns(Lithic::Resources::Disputes) }
     attr_reader :disputes
 
@@ -117,6 +114,9 @@ module Lithic
 
     sig { returns(Lithic::Resources::AccountActivity) }
     attr_reader :account_activity
+
+    sig { returns(Lithic::Resources::TransferLimits) }
+    attr_reader :transfer_limits
 
     sig { returns(Lithic::Resources::Webhooks) }
     attr_reader :webhooks

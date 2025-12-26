@@ -33,6 +33,8 @@ module Lithic
       required :payment_type, enum: -> { Lithic::ExternalPaymentCreateParams::PaymentType }
 
       # @!attribute token
+      #   Customer-provided token that will serve as an idempotency token. This token will
+      #   become the transaction token.
       #
       #   @return [String, nil]
       optional :token, String
@@ -53,15 +55,27 @@ module Lithic
       optional :user_defined_id, String
 
       # @!method initialize(amount:, category:, effective_date:, financial_account_token:, payment_type:, token: nil, memo: nil, progress_to: nil, user_defined_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ExternalPaymentCreateParams} for more details.
+      #
       #   @param amount [Integer]
+      #
       #   @param category [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
+      #
       #   @param effective_date [Date]
+      #
       #   @param financial_account_token [String]
+      #
       #   @param payment_type [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
-      #   @param token [String]
+      #
+      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #
       #   @param memo [String]
+      #
       #   @param progress_to [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
+      #
       #   @param user_defined_id [String]
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Category

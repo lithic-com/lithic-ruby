@@ -3,19 +3,31 @@
 module Lithic
   module Resources
     class ExternalPayments
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::ExternalPaymentCreateParams} for more details.
+      #
       # Create external payment
       #
       # @overload create(amount:, category:, effective_date:, financial_account_token:, payment_type:, token: nil, memo: nil, progress_to: nil, user_defined_id: nil, request_options: {})
       #
       # @param amount [Integer]
+      #
       # @param category [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
+      #
       # @param effective_date [Date]
+      #
       # @param financial_account_token [String]
+      #
       # @param payment_type [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
-      # @param token [String]
+      #
+      # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #
       # @param memo [String]
+      #
       # @param progress_to [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
+      #
       # @param user_defined_id [String]
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalPayment]
