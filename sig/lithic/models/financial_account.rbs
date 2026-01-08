@@ -9,11 +9,12 @@ module Lithic
         is_for_benefit_of: bool,
         nickname: String?,
         status: Lithic::Models::FinancialAccount::status,
+        substatus: Lithic::Models::FinancialAccount::substatus?,
         type: Lithic::Models::FinancialAccount::type_,
         updated: Time,
+        user_defined_status: String?,
         account_number: String?,
-        routing_number: String?,
-        substatus: Lithic::Models::FinancialAccount::substatus?
+        routing_number: String?
       }
 
     class FinancialAccount < Lithic::Internal::Type::BaseModel
@@ -31,15 +32,17 @@ module Lithic
 
       attr_accessor status: Lithic::Models::FinancialAccount::status
 
+      attr_accessor substatus: Lithic::Models::FinancialAccount::substatus?
+
       attr_accessor type: Lithic::Models::FinancialAccount::type_
 
       attr_accessor updated: Time
 
+      attr_accessor user_defined_status: String?
+
       attr_accessor account_number: String?
 
       attr_accessor routing_number: String?
-
-      attr_accessor substatus: Lithic::Models::FinancialAccount::substatus?
 
       def initialize: (
         token: String,
@@ -49,11 +52,12 @@ module Lithic
         is_for_benefit_of: bool,
         nickname: String?,
         status: Lithic::Models::FinancialAccount::status,
+        substatus: Lithic::Models::FinancialAccount::substatus?,
         type: Lithic::Models::FinancialAccount::type_,
         updated: Time,
+        user_defined_status: String?,
         ?account_number: String?,
-        ?routing_number: String?,
-        ?substatus: Lithic::Models::FinancialAccount::substatus?
+        ?routing_number: String?
       ) -> void
 
       def to_hash: -> {
@@ -64,11 +68,12 @@ module Lithic
         is_for_benefit_of: bool,
         nickname: String?,
         status: Lithic::Models::FinancialAccount::status,
+        substatus: Lithic::Models::FinancialAccount::substatus?,
         type: Lithic::Models::FinancialAccount::type_,
         updated: Time,
+        user_defined_status: String?,
         account_number: String?,
-        routing_number: String?,
-        substatus: Lithic::Models::FinancialAccount::substatus?
+        routing_number: String?
       }
 
       type credit_configuration =
@@ -131,6 +136,25 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::status]
       end
 
+      type substatus =
+        :CHARGED_OFF_DELINQUENT
+        | :CHARGED_OFF_FRAUD
+        | :END_USER_REQUEST
+        | :BANK_REQUEST
+        | :DELINQUENT
+
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
+        CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
+        END_USER_REQUEST: :END_USER_REQUEST
+        BANK_REQUEST: :BANK_REQUEST
+        DELINQUENT: :DELINQUENT
+
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::substatus]
+      end
+
       type type_ =
         :ISSUING
         | :RESERVE
@@ -158,25 +182,6 @@ module Lithic
         PROGRAM_BANK_ACCOUNTS_PAYABLE: :PROGRAM_BANK_ACCOUNTS_PAYABLE
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
-      end
-
-      type substatus =
-        :CHARGED_OFF_DELINQUENT
-        | :CHARGED_OFF_FRAUD
-        | :END_USER_REQUEST
-        | :BANK_REQUEST
-        | :DELINQUENT
-
-      module Substatus
-        extend Lithic::Internal::Type::Enum
-
-        CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
-        CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
-        END_USER_REQUEST: :END_USER_REQUEST
-        BANK_REQUEST: :BANK_REQUEST
-        DELINQUENT: :DELINQUENT
-
-        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::substatus]
       end
     end
   end

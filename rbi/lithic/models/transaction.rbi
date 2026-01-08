@@ -1762,6 +1762,11 @@ module Lithic
               :AUTH_RULE_BLOCKED_MCC,
               Lithic::Transaction::Event::DetailedResult::TaggedSymbol
             )
+          AUTH_RULE =
+            T.let(
+              :AUTH_RULE,
+              Lithic::Transaction::Event::DetailedResult::TaggedSymbol
+            )
           CARD_CLOSED =
             T.let(
               :CARD_CLOSED,
@@ -2658,6 +2663,11 @@ module Lithic
             AUTH_RULE_BLOCKED_MCC =
               T.let(
                 :AUTH_RULE_BLOCKED_MCC,
+                Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            AUTH_RULE =
+              T.let(
+                :AUTH_RULE,
                 Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
               )
             CARD_CLOSED =

@@ -42,6 +42,12 @@ module Lithic
       #   @return [Symbol, Lithic::Models::FinancialAccount::Status]
       required :status, enum: -> { Lithic::FinancialAccount::Status }
 
+      # @!attribute substatus
+      #   Substatus for the financial account
+      #
+      #   @return [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
+      required :substatus, enum: -> { Lithic::FinancialAccount::Substatus }, nil?: true
+
       # @!attribute type
       #
       #   @return [Symbol, Lithic::Models::FinancialAccount::Type]
@@ -51,6 +57,12 @@ module Lithic
       #
       #   @return [Time]
       required :updated, Time
+
+      # @!attribute user_defined_status
+      #   User-defined status for the financial account
+      #
+      #   @return [String, nil]
+      required :user_defined_status, String, nil?: true
 
       # @!attribute account_number
       #
@@ -62,13 +74,7 @@ module Lithic
       #   @return [String, nil]
       optional :routing_number, String, nil?: true
 
-      # @!attribute substatus
-      #   Substatus for the financial account
-      #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
-      optional :substatus, enum: -> { Lithic::FinancialAccount::Substatus }, nil?: true
-
-      # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, type:, updated:, account_number: nil, routing_number: nil, substatus: nil)
+      # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, substatus:, type:, updated:, user_defined_status:, account_number: nil, routing_number: nil)
       #   @param token [String] Globally unique identifier for the account
       #
       #   @param account_token [String, nil]
@@ -83,15 +89,17 @@ module Lithic
       #
       #   @param status [Symbol, Lithic::Models::FinancialAccount::Status] Status of the financial account
       #
+      #   @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil] Substatus for the financial account
+      #
       #   @param type [Symbol, Lithic::Models::FinancialAccount::Type]
       #
       #   @param updated [Time]
       #
+      #   @param user_defined_status [String, nil] User-defined status for the financial account
+      #
       #   @param account_number [String, nil]
       #
       #   @param routing_number [String, nil]
-      #
-      #   @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil] Substatus for the financial account
 
       # @see Lithic::Models::FinancialAccount#credit_configuration
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
@@ -163,6 +171,22 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
+      # Substatus for the financial account
+      #
+      # @see Lithic::Models::FinancialAccount#substatus
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
+        CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
+        END_USER_REQUEST = :END_USER_REQUEST
+        BANK_REQUEST = :BANK_REQUEST
+        DELINQUENT = :DELINQUENT
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
       # @see Lithic::Models::FinancialAccount#type
       module Type
         extend Lithic::Internal::Type::Enum
@@ -177,22 +201,6 @@ module Lithic
         PROGRAM_RECEIVABLES = :PROGRAM_RECEIVABLES
         COLLECTION = :COLLECTION
         PROGRAM_BANK_ACCOUNTS_PAYABLE = :PROGRAM_BANK_ACCOUNTS_PAYABLE
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # Substatus for the financial account
-      #
-      # @see Lithic::Models::FinancialAccount#substatus
-      module Substatus
-        extend Lithic::Internal::Type::Enum
-
-        CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
-        CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
-        END_USER_REQUEST = :END_USER_REQUEST
-        BANK_REQUEST = :BANK_REQUEST
-        DELINQUENT = :DELINQUENT
 
         # @!method self.values
         #   @return [Array<Symbol>]

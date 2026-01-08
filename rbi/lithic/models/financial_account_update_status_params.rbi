@@ -30,6 +30,13 @@ module Lithic
       end
       attr_accessor :substatus
 
+      # User-defined status for the financial account
+      sig { returns(T.nilable(String)) }
+      attr_reader :user_defined_status
+
+      sig { params(user_defined_status: String).void }
+      attr_writer :user_defined_status
+
       sig do
         params(
           status: Lithic::FinancialAccountUpdateStatusParams::Status::OrSymbol,
@@ -37,6 +44,7 @@ module Lithic
             T.nilable(
               Lithic::FinancialAccountUpdateStatusParams::Substatus::OrSymbol
             ),
+          user_defined_status: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -45,6 +53,8 @@ module Lithic
         status:,
         # Substatus for the financial account
         substatus:,
+        # User-defined status for the financial account
+        user_defined_status: nil,
         request_options: {}
       )
       end
@@ -58,6 +68,7 @@ module Lithic
               T.nilable(
                 Lithic::FinancialAccountUpdateStatusParams::Substatus::OrSymbol
               ),
+            user_defined_status: String,
             request_options: Lithic::RequestOptions
           }
         )

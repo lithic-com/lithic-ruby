@@ -90,8 +90,8 @@ module Lithic
 
         # @!attribute payment_allocation
         #
-        #   @return [Lithic::Models::FinancialAccounts::CategoryBalances]
-        required :payment_allocation, -> { Lithic::FinancialAccounts::CategoryBalances }
+        #   @return [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
+        required :payment_allocation, -> { Lithic::FinancialAccounts::LoanTape::PaymentAllocation }
 
         # @!attribute period_totals
         #
@@ -164,7 +164,7 @@ module Lithic
         #
         #   @param minimum_payment_balance [Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance]
         #
-        #   @param payment_allocation [Lithic::Models::FinancialAccounts::CategoryBalances]
+        #   @param payment_allocation [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
         #
         #   @param period_totals [Lithic::Models::StatementTotals]
         #
@@ -434,6 +434,55 @@ module Lithic
           # @!method initialize(amount:, remaining:)
           #   @param amount [Integer]
           #   @param remaining [Integer]
+        end
+
+        # @see Lithic::Models::FinancialAccounts::LoanTape#payment_allocation
+        class PaymentAllocation < Lithic::Internal::Type::BaseModel
+          # @!attribute fee_details
+          #
+          #   @return [Lithic::Models::CategoryDetails, nil]
+          required :fee_details, -> { Lithic::CategoryDetails }, nil?: true
+
+          # @!attribute fees
+          #   Amount allocated to fees in cents
+          #
+          #   @return [Integer]
+          required :fees, Integer
+
+          # @!attribute interest
+          #   Amount allocated to interest in cents
+          #
+          #   @return [Integer]
+          required :interest, Integer
+
+          # @!attribute interest_details
+          #
+          #   @return [Lithic::Models::CategoryDetails, nil]
+          required :interest_details, -> { Lithic::CategoryDetails }, nil?: true
+
+          # @!attribute principal
+          #   Amount allocated to principal in cents
+          #
+          #   @return [Integer]
+          required :principal, Integer
+
+          # @!attribute principal_details
+          #
+          #   @return [Lithic::Models::CategoryDetails, nil]
+          required :principal_details, -> { Lithic::CategoryDetails }, nil?: true
+
+          # @!method initialize(fee_details:, fees:, interest:, interest_details:, principal:, principal_details:)
+          #   @param fee_details [Lithic::Models::CategoryDetails, nil]
+          #
+          #   @param fees [Integer] Amount allocated to fees in cents
+          #
+          #   @param interest [Integer] Amount allocated to interest in cents
+          #
+          #   @param interest_details [Lithic::Models::CategoryDetails, nil]
+          #
+          #   @param principal [Integer] Amount allocated to principal in cents
+          #
+          #   @param principal_details [Lithic::Models::CategoryDetails, nil]
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#previous_statement_balance

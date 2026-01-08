@@ -514,6 +514,8 @@ module Lithic
           #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
           # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
           # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
+          # - `CARD_STATE`: The state of the card being tokenized. Valid values are
+          #   `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
           sig do
             returns(
               Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition::Attribute::OrSymbol
@@ -570,6 +572,8 @@ module Lithic
             #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
             # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
             # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
+            # - `CARD_STATE`: The state of the card being tokenized. Valid values are
+            #   `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
             attribute:,
             # The operation to apply to the attribute
             operation:,
@@ -623,6 +627,8 @@ module Lithic
           #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
           # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
           # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
+          # - `CARD_STATE`: The state of the card being tokenized. Valid values are
+          #   `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
           module Attribute
             extend Lithic::Internal::Type::Enum
 
@@ -683,6 +689,11 @@ module Lithic
             WALLET_TOKEN_STATUS =
               T.let(
                 :WALLET_TOKEN_STATUS,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            CARD_STATE =
+              T.let(
+                :CARD_STATE,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition::Attribute::TaggedSymbol
               )
 
