@@ -185,6 +185,8 @@ module Lithic
           #     `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
           #   - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
           #   - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
+          #   - `CARD_STATE`: The state of the card being tokenized. Valid values are
+          #     `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::Attribute]
           required :attribute,
@@ -245,6 +247,8 @@ module Lithic
           #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
           # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
           # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
+          # - `CARD_STATE`: The state of the card being tokenized. Valid values are
+          #   `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
           #
           # @see Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition#attribute
           module Attribute
@@ -260,6 +264,7 @@ module Lithic
             WALLET_RECOMMENDATION_REASONS = :WALLET_RECOMMENDATION_REASONS
             TOKEN_REQUESTOR_ID = :TOKEN_REQUESTOR_ID
             WALLET_TOKEN_STATUS = :WALLET_TOKEN_STATUS
+            CARD_STATE = :CARD_STATE
 
             # @!method self.values
             #   @return [Array<Symbol>]

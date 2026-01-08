@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    type three_ds_authentication_approval_request_webhook_event =
+      { event_type: :"three_ds_authentication.approval_request" }
+
+    class ThreeDSAuthenticationApprovalRequestWebhookEvent < Lithic::Models::ThreeDSAuthentication
+      def event_type: -> :"three_ds_authentication.approval_request"
+
+      def event_type=: (
+        :"three_ds_authentication.approval_request" _
+      ) -> :"three_ds_authentication.approval_request"
+
+      def initialize: (
+        ?event_type: :"three_ds_authentication.approval_request"
+      ) -> void
+
+      def to_hash: -> {
+        event_type: :"three_ds_authentication.approval_request"
+      }
+    end
+  end
+end

@@ -608,7 +608,7 @@ module Lithic
       end
 
       # Allow your cardholders to directly add payment cards to the device's digital
-      # wallet from a browser on the web. Currently only suported for Apple Pay.
+      # wallet from a browser on the web.
       #
       # This requires some additional setup and configuration. Please
       # [Contact Us](https://lithic.com/contact) or your Customer Success representative

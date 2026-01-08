@@ -9,7 +9,7 @@ module Lithic
       | Lithic::ParsedWebhookEvent::LegacyPayload
       | Lithic::AccountHolderVerificationWebhookEvent
       | Lithic::AccountHolderDocumentUpdatedWebhookEvent
-      | Lithic::AsaRequestWebhookEvent
+      | Lithic::CardAuthorizationApprovalRequestWebhookEvent
       | Lithic::TokenizationDecisioningRequestWebhookEvent
       | Lithic::AuthRulesBacktestReportCreatedWebhookEvent
       | Lithic::BalanceUpdatedWebhookEvent
@@ -57,7 +57,7 @@ module Lithic
       | Lithic::TokenizationTwoFactorAuthenticationCodeWebhookEvent
       | Lithic::TokenizationTwoFactorAuthenticationCodeSentWebhookEvent
       | Lithic::TokenizationUpdatedWebhookEvent
-      | Lithic::ThreeDSAuthentication
+      | Lithic::ThreeDSAuthenticationApprovalRequestWebhookEvent
       | Lithic::DisputeTransactionCreatedWebhookEvent
       | Lithic::DisputeTransactionUpdatedWebhookEvent)
 

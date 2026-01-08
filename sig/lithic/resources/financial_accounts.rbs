@@ -48,6 +48,7 @@ module Lithic
         String financial_account_token,
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
         substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
+        ?user_defined_status: String,
         ?request_options: Lithic::request_opts
       ) -> Lithic::FinancialAccount
 

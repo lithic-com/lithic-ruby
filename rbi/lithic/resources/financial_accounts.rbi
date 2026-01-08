@@ -113,6 +113,7 @@ module Lithic
             T.nilable(
               Lithic::FinancialAccountUpdateStatusParams::Substatus::OrSymbol
             ),
+          user_defined_status: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::FinancialAccount)
       end
@@ -123,6 +124,8 @@ module Lithic
         status:,
         # Substatus for the financial account
         substatus:,
+        # User-defined status for the financial account
+        user_defined_status: nil,
         request_options: {}
       )
       end

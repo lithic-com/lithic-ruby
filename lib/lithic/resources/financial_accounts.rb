@@ -145,13 +145,15 @@ module Lithic
 
       # Update financial account status
       #
-      # @overload update_status(financial_account_token, status:, substatus:, request_options: {})
+      # @overload update_status(financial_account_token, status:, substatus:, user_defined_status: nil, request_options: {})
       #
       # @param financial_account_token [String] Globally unique identifier for financial account.
       #
       # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
       #
       # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
+      #
+      # @param user_defined_status [String] User-defined status for the financial account
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
