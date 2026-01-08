@@ -3,7 +3,8 @@ module Lithic
     type financial_account_update_status_params =
       {
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
-        substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?
+        substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
+        user_defined_status: String
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -15,15 +16,21 @@ module Lithic
 
       attr_accessor substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?
 
+      attr_reader user_defined_status: String?
+
+      def user_defined_status=: (String) -> String
+
       def initialize: (
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
         substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
+        ?user_defined_status: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
         substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
+        user_defined_status: String,
         request_options: Lithic::RequestOptions
       }
 

@@ -2,10 +2,13 @@
 
 module Lithic
   module Models
-    class AsaRequestWebhookEvent < Lithic::Internal::Type::BaseModel
+    class CardAuthorizationApprovalRequestWebhookEvent < Lithic::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(Lithic::AsaRequestWebhookEvent, Lithic::Internal::AnyHash)
+          T.any(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent,
+            Lithic::Internal::AnyHash
+          )
         end
 
       # The provisional transaction group uuid associated with the authorization
@@ -29,17 +32,28 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :authorization_amount
 
-      sig { returns(Lithic::AsaRequestWebhookEvent::Avs) }
+      sig { returns(Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs) }
       attr_reader :avs
 
-      sig { params(avs: Lithic::AsaRequestWebhookEvent::Avs::OrHash).void }
+      sig do
+        params(
+          avs: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::OrHash
+        ).void
+      end
       attr_writer :avs
 
       # Card object in ASA
-      sig { returns(Lithic::AsaRequestWebhookEvent::Card) }
+      sig do
+        returns(Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card)
+      end
       attr_reader :card
 
-      sig { params(card: Lithic::AsaRequestWebhookEvent::Card::OrHash).void }
+      sig do
+        params(
+          card:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::OrHash
+        ).void
+      end
       attr_writer :card
 
       # 3-character alphabetic ISO 4217 code for cardholder's billing currency.
@@ -58,6 +72,9 @@ module Lithic
       # Date and time when the transaction first occurred in UTC.
       sig { returns(Time) }
       attr_accessor :created
+
+      sig { returns(Symbol) }
+      attr_accessor :event_type
 
       sig { returns(Lithic::Merchant) }
       attr_reader :merchant
@@ -85,27 +102,34 @@ module Lithic
       # The type of authorization request that this request is for. Note that
       # `CREDIT_AUTHORIZATION` and `FINANCIAL_CREDIT_AUTHORIZATION` is only available to
       # users with credit decisioning via ASA enabled.
-      sig { returns(Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol) }
+      sig do
+        returns(
+          Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
+        )
+      end
       attr_accessor :status
 
       # The entity that initiated the transaction.
       sig do
         returns(
-          Lithic::AsaRequestWebhookEvent::TransactionInitiator::TaggedSymbol
+          Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::TaggedSymbol
         )
       end
       attr_accessor :transaction_initiator
 
       sig do
         returns(
-          T.nilable(Lithic::AsaRequestWebhookEvent::AccountType::TaggedSymbol)
+          T.nilable(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::TaggedSymbol
+          )
         )
       end
       attr_reader :account_type
 
       sig do
         params(
-          account_type: Lithic::AsaRequestWebhookEvent::AccountType::OrSymbol
+          account_type:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::OrSymbol
         ).void
       end
       attr_writer :account_type
@@ -148,13 +172,21 @@ module Lithic
 
       # Optional Object containing information if the Card is a part of a Fleet managed
       # program
-      sig { returns(T.nilable(Lithic::AsaRequestWebhookEvent::FleetInfo)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo
+          )
+        )
+      end
       attr_reader :fleet_info
 
       sig do
         params(
           fleet_info:
-            T.nilable(Lithic::AsaRequestWebhookEvent::FleetInfo::OrHash)
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::OrHash
+            )
         ).void
       end
       attr_writer :fleet_info
@@ -162,14 +194,18 @@ module Lithic
       # The latest Authorization Challenge that was issued to the cardholder for this
       # merchant.
       sig do
-        returns(T.nilable(Lithic::AsaRequestWebhookEvent::LatestChallenge))
+        returns(
+          T.nilable(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge
+          )
+        )
       end
       attr_reader :latest_challenge
 
       sig do
         params(
           latest_challenge:
-            Lithic::AsaRequestWebhookEvent::LatestChallenge::OrHash
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::OrHash
         ).void
       end
       attr_writer :latest_challenge
@@ -177,13 +213,18 @@ module Lithic
       # Card network of the authorization.
       sig do
         returns(
-          T.nilable(Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol)
+          T.nilable(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
+          )
         )
       end
       attr_reader :network
 
       sig do
-        params(network: Lithic::AsaRequestWebhookEvent::Network::OrSymbol).void
+        params(
+          network:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::OrSymbol
+        ).void
       end
       attr_writer :network
 
@@ -202,7 +243,11 @@ module Lithic
       # values and how to use them. This object is only available to certain programs-
       # contact your Customer Success Manager to discuss enabling access.
       sig do
-        returns(T.nilable(Lithic::AsaRequestWebhookEvent::NetworkSpecificData))
+        returns(
+          T.nilable(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData
+          )
+        )
       end
       attr_reader :network_specific_data
 
@@ -210,16 +255,24 @@ module Lithic
         params(
           network_specific_data:
             T.nilable(
-              Lithic::AsaRequestWebhookEvent::NetworkSpecificData::OrHash
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::OrHash
             )
         ).void
       end
       attr_writer :network_specific_data
 
-      sig { returns(T.nilable(Lithic::AsaRequestWebhookEvent::Pos)) }
+      sig do
+        returns(
+          T.nilable(Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos)
+        )
+      end
       attr_reader :pos
 
-      sig { params(pos: Lithic::AsaRequestWebhookEvent::Pos::OrHash).void }
+      sig do
+        params(
+          pos: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::OrHash
+        ).void
+      end
       attr_writer :pos
 
       sig { returns(T.nilable(Lithic::TokenInfo)) }
@@ -235,15 +288,16 @@ module Lithic
       sig { params(ttl: Time).void }
       attr_writer :ttl
 
-      # The Auth Stream Access request payload that was sent to the ASA responder.
       sig do
         params(
           token: String,
           acquirer_fee: Integer,
           amount: Integer,
           authorization_amount: Integer,
-          avs: Lithic::AsaRequestWebhookEvent::Avs::OrHash,
-          card: Lithic::AsaRequestWebhookEvent::Card::OrHash,
+          avs:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::OrHash,
+          card:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::OrHash,
           cardholder_currency: String,
           cash_amount: Integer,
           created: Time,
@@ -251,27 +305,34 @@ module Lithic
           merchant_amount: Integer,
           merchant_currency: String,
           settled_amount: Integer,
-          status: Lithic::AsaRequestWebhookEvent::Status::OrSymbol,
+          status:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::OrSymbol,
           transaction_initiator:
-            Lithic::AsaRequestWebhookEvent::TransactionInitiator::OrSymbol,
-          account_type: Lithic::AsaRequestWebhookEvent::AccountType::OrSymbol,
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::OrSymbol,
+          account_type:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::OrSymbol,
           cardholder_authentication: Lithic::CardholderAuthentication::OrHash,
           cashback: Integer,
           conversion_rate: Float,
           event_token: String,
           fleet_info:
-            T.nilable(Lithic::AsaRequestWebhookEvent::FleetInfo::OrHash),
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::OrHash
+            ),
           latest_challenge:
-            Lithic::AsaRequestWebhookEvent::LatestChallenge::OrHash,
-          network: Lithic::AsaRequestWebhookEvent::Network::OrSymbol,
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::OrHash,
+          network:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::OrSymbol,
           network_risk_score: T.nilable(Integer),
           network_specific_data:
             T.nilable(
-              Lithic::AsaRequestWebhookEvent::NetworkSpecificData::OrHash
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::OrHash
             ),
-          pos: Lithic::AsaRequestWebhookEvent::Pos::OrHash,
+          pos:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::OrHash,
           token_info: T.nilable(Lithic::TokenInfo::OrHash),
-          ttl: Time
+          ttl: Time,
+          event_type: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -357,7 +418,8 @@ module Lithic
         pos: nil,
         token_info: nil,
         # Deprecated: approximate time-to-live for the authorization.
-        ttl: nil
+        ttl: nil,
+        event_type: :"card_authorization.approval_request"
       )
       end
 
@@ -368,31 +430,40 @@ module Lithic
             acquirer_fee: Integer,
             amount: Integer,
             authorization_amount: Integer,
-            avs: Lithic::AsaRequestWebhookEvent::Avs,
-            card: Lithic::AsaRequestWebhookEvent::Card,
+            avs: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs,
+            card: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card,
             cardholder_currency: String,
             cash_amount: Integer,
             created: Time,
+            event_type: Symbol,
             merchant: Lithic::Merchant,
             merchant_amount: Integer,
             merchant_currency: String,
             settled_amount: Integer,
-            status: Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol,
+            status:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol,
             transaction_initiator:
-              Lithic::AsaRequestWebhookEvent::TransactionInitiator::TaggedSymbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::TaggedSymbol,
             account_type:
-              Lithic::AsaRequestWebhookEvent::AccountType::TaggedSymbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::TaggedSymbol,
             cardholder_authentication: Lithic::CardholderAuthentication,
             cashback: Integer,
             conversion_rate: Float,
             event_token: String,
-            fleet_info: T.nilable(Lithic::AsaRequestWebhookEvent::FleetInfo),
-            latest_challenge: Lithic::AsaRequestWebhookEvent::LatestChallenge,
-            network: Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol,
+            fleet_info:
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo
+              ),
+            latest_challenge:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge,
+            network:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol,
             network_risk_score: T.nilable(Integer),
             network_specific_data:
-              T.nilable(Lithic::AsaRequestWebhookEvent::NetworkSpecificData),
-            pos: Lithic::AsaRequestWebhookEvent::Pos,
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData
+              ),
+            pos: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos,
             token_info: T.nilable(Lithic::TokenInfo),
             ttl: Time
           }
@@ -405,7 +476,7 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::AsaRequestWebhookEvent::Avs,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs,
               Lithic::Internal::AnyHash
             )
           end
@@ -420,7 +491,7 @@ module Lithic
         # NOT_PRESENT will be returned
         sig do
           returns(
-            Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
           )
         end
         attr_accessor :address_on_file_match
@@ -433,7 +504,7 @@ module Lithic
           params(
             address: String,
             address_on_file_match:
-              Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::OrSymbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::OrSymbol,
             zipcode: String
           ).returns(T.attached_class)
         end
@@ -455,7 +526,7 @@ module Lithic
             {
               address: String,
               address_on_file_match:
-                Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol,
               zipcode: String
             }
           )
@@ -474,7 +545,7 @@ module Lithic
             T.type_alias do
               T.all(
                 Symbol,
-                Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -482,33 +553,33 @@ module Lithic
           MATCH =
             T.let(
               :MATCH,
-              Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
             )
           MATCH_ADDRESS_ONLY =
             T.let(
               :MATCH_ADDRESS_ONLY,
-              Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
             )
           MATCH_ZIP_ONLY =
             T.let(
               :MATCH_ZIP_ONLY,
-              Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
             )
           MISMATCH =
             T.let(
               :MISMATCH,
-              Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
             )
           NOT_PRESENT =
             T.let(
               :NOT_PRESENT,
-              Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch::TaggedSymbol
               ]
             )
           end
@@ -521,7 +592,7 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::AsaRequestWebhookEvent::Card,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card,
               Lithic::Internal::AnyHash
             )
           end
@@ -575,7 +646,7 @@ module Lithic
         sig do
           returns(
             T.nilable(
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
             )
           )
         end
@@ -584,35 +655,41 @@ module Lithic
         sig do
           params(
             spend_limit_duration:
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::OrSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::OrSymbol
           ).void
         end
         attr_writer :spend_limit_duration
 
         sig do
           returns(
-            T.nilable(Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol)
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
+            )
           )
         end
         attr_reader :state
 
         sig do
           params(
-            state: Lithic::AsaRequestWebhookEvent::Card::State::OrSymbol
+            state:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::OrSymbol
           ).void
         end
         attr_writer :state
 
         sig do
           returns(
-            T.nilable(Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol)
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
+            )
           )
         end
         attr_reader :type
 
         sig do
           params(
-            type: Lithic::AsaRequestWebhookEvent::Card::Type::OrSymbol
+            type:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::OrSymbol
           ).void
         end
         attr_writer :type
@@ -626,9 +703,11 @@ module Lithic
             memo: String,
             spend_limit: Integer,
             spend_limit_duration:
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::OrSymbol,
-            state: Lithic::AsaRequestWebhookEvent::Card::State::OrSymbol,
-            type: Lithic::AsaRequestWebhookEvent::Card::Type::OrSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::OrSymbol,
+            state:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::OrSymbol,
+            type:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -668,9 +747,11 @@ module Lithic
               memo: String,
               spend_limit: Integer,
               spend_limit_duration:
-                Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol,
-              state: Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol,
-              type: Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol,
+              state:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol,
+              type:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             }
           )
         end
@@ -687,7 +768,7 @@ module Lithic
             T.type_alias do
               T.all(
                 Symbol,
-                Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -695,28 +776,28 @@ module Lithic
           ANNUALLY =
             T.let(
               :ANNUALLY,
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
             )
           FOREVER =
             T.let(
               :FOREVER,
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
             )
           MONTHLY =
             T.let(
               :MONTHLY,
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
             )
           TRANSACTION =
             T.let(
               :TRANSACTION,
-              Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
               ]
             )
           end
@@ -729,40 +810,43 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Lithic::AsaRequestWebhookEvent::Card::State)
+              T.all(
+                Symbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CLOSED =
             T.let(
               :CLOSED,
-              Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
             )
           OPEN =
             T.let(
               :OPEN,
-              Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
             )
           PAUSED =
             T.let(
               :PAUSED,
-              Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
             )
           PENDING_ACTIVATION =
             T.let(
               :PENDING_ACTIVATION,
-              Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
             )
           PENDING_FULFILLMENT =
             T.let(
               :PENDING_FULFILLMENT,
-              Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::AsaRequestWebhookEvent::Card::State::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
               ]
             )
           end
@@ -775,44 +859,49 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Lithic::AsaRequestWebhookEvent::Card::Type)
+              T.all(
+                Symbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           SINGLE_USE =
             T.let(
               :SINGLE_USE,
-              Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             )
           MERCHANT_LOCKED =
             T.let(
               :MERCHANT_LOCKED,
-              Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             )
           UNLOCKED =
             T.let(
               :UNLOCKED,
-              Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             )
           PHYSICAL =
             T.let(
               :PHYSICAL,
-              Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             )
           DIGITAL_WALLET =
             T.let(
               :DIGITAL_WALLET,
-              Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             )
           VIRTUAL =
             T.let(
               :VIRTUAL,
-              Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
             )
 
           sig do
             override.returns(
-              T::Array[Lithic::AsaRequestWebhookEvent::Card::Type::TaggedSymbol]
+              T::Array[
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
+              ]
             )
           end
           def self.values
@@ -827,38 +916,45 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::AsaRequestWebhookEvent::Status) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZATION =
           T.let(
             :AUTHORIZATION,
-            Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
           )
         CREDIT_AUTHORIZATION =
           T.let(
             :CREDIT_AUTHORIZATION,
-            Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
           )
         FINANCIAL_AUTHORIZATION =
           T.let(
             :FINANCIAL_AUTHORIZATION,
-            Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
           )
         FINANCIAL_CREDIT_AUTHORIZATION =
           T.let(
             :FINANCIAL_CREDIT_AUTHORIZATION,
-            Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
           )
         BALANCE_INQUIRY =
           T.let(
             :BALANCE_INQUIRY,
-            Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Lithic::AsaRequestWebhookEvent::Status::TaggedSymbol]
+            T::Array[
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -871,30 +967,33 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Lithic::AsaRequestWebhookEvent::TransactionInitiator)
+            T.all(
+              Symbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CARDHOLDER =
           T.let(
             :CARDHOLDER,
-            Lithic::AsaRequestWebhookEvent::TransactionInitiator::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::TaggedSymbol
           )
         MERCHANT =
           T.let(
             :MERCHANT,
-            Lithic::AsaRequestWebhookEvent::TransactionInitiator::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::TaggedSymbol
           )
         UNKNOWN =
           T.let(
             :UNKNOWN,
-            Lithic::AsaRequestWebhookEvent::TransactionInitiator::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Lithic::AsaRequestWebhookEvent::TransactionInitiator::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator::TaggedSymbol
             ]
           )
         end
@@ -907,24 +1006,29 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Lithic::AsaRequestWebhookEvent::AccountType)
+            T.all(
+              Symbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CHECKING =
           T.let(
             :CHECKING,
-            Lithic::AsaRequestWebhookEvent::AccountType::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::TaggedSymbol
           )
         SAVINGS =
           T.let(
             :SAVINGS,
-            Lithic::AsaRequestWebhookEvent::AccountType::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Lithic::AsaRequestWebhookEvent::AccountType::TaggedSymbol]
+            T::Array[
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -935,7 +1039,7 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::AsaRequestWebhookEvent::FleetInfo,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo,
               Lithic::Internal::AnyHash
             )
           end
@@ -945,7 +1049,7 @@ module Lithic
         # change on a request to request basis
         sig do
           returns(
-            Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
           )
         end
         attr_accessor :fleet_prompt_code
@@ -955,7 +1059,7 @@ module Lithic
         # on a request to request basis
         sig do
           returns(
-            Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
           )
         end
         attr_accessor :fleet_restriction_code
@@ -973,9 +1077,9 @@ module Lithic
         sig do
           params(
             fleet_prompt_code:
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::OrSymbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::OrSymbol,
             fleet_restriction_code:
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode::OrSymbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode::OrSymbol,
             driver_number: T.nilable(String),
             vehicle_number: T.nilable(String)
           ).returns(T.attached_class)
@@ -1000,9 +1104,9 @@ module Lithic
           override.returns(
             {
               fleet_prompt_code:
-                Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol,
               fleet_restriction_code:
-                Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol,
               driver_number: T.nilable(String),
               vehicle_number: T.nilable(String)
             }
@@ -1021,7 +1125,7 @@ module Lithic
             T.type_alias do
               T.all(
                 Symbol,
-                Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1029,23 +1133,23 @@ module Lithic
           NO_PROMPT =
             T.let(
               :NO_PROMPT,
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
             )
           VEHICLE_NUMBER =
             T.let(
               :VEHICLE_NUMBER,
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
             )
           DRIVER_NUMBER =
             T.let(
               :DRIVER_NUMBER,
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode::TaggedSymbol
               ]
             )
           end
@@ -1063,7 +1167,7 @@ module Lithic
             T.type_alias do
               T.all(
                 Symbol,
-                Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1071,18 +1175,18 @@ module Lithic
           NO_RESTRICTIONS =
             T.let(
               :NO_RESTRICTIONS,
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
             )
           FUEL_ONLY =
             T.let(
               :FUEL_ONLY,
-              Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode::TaggedSymbol
               ]
             )
           end
@@ -1095,7 +1199,7 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::AsaRequestWebhookEvent::LatestChallenge,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge,
               Lithic::Internal::AnyHash
             )
           end
@@ -1112,7 +1216,7 @@ module Lithic
         # - `ERROR` - There was an error processing the challenge
         sig do
           returns(
-            Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
           )
         end
         attr_accessor :status
@@ -1131,7 +1235,7 @@ module Lithic
           params(
             phone_number: String,
             status:
-              Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::OrSymbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::OrSymbol,
             completed_at: Time
           ).returns(T.attached_class)
         end
@@ -1156,7 +1260,7 @@ module Lithic
             {
               phone_number: String,
               status:
-                Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol,
               completed_at: Time
             }
           )
@@ -1177,7 +1281,7 @@ module Lithic
             T.type_alias do
               T.all(
                 Symbol,
-                Lithic::AsaRequestWebhookEvent::LatestChallenge::Status
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1185,28 +1289,28 @@ module Lithic
           COMPLETED =
             T.let(
               :COMPLETED,
-              Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
             )
           PENDING =
             T.let(
               :PENDING,
-              Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
             )
           EXPIRED =
             T.let(
               :EXPIRED,
-              Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
             )
           ERROR =
             T.let(
               :ERROR,
-              Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::AsaRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status::TaggedSymbol
               ]
             )
           end
@@ -1221,32 +1325,49 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Lithic::AsaRequestWebhookEvent::Network)
+            T.all(
+              Symbol,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AMEX =
-          T.let(:AMEX, Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol)
+          T.let(
+            :AMEX,
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
+          )
         INTERLINK =
           T.let(
             :INTERLINK,
-            Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
           )
         MAESTRO =
-          T.let(:MAESTRO, Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol)
+          T.let(
+            :MAESTRO,
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
+          )
         MASTERCARD =
           T.let(
             :MASTERCARD,
-            Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
           )
         UNKNOWN =
-          T.let(:UNKNOWN, Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol)
+          T.let(
+            :UNKNOWN,
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
+          )
         VISA =
-          T.let(:VISA, Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol)
+          T.let(
+            :VISA,
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
+          )
 
         sig do
           override.returns(
-            T::Array[Lithic::AsaRequestWebhookEvent::Network::TaggedSymbol]
+            T::Array[
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -1257,7 +1378,7 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::AsaRequestWebhookEvent::NetworkSpecificData,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData,
               Lithic::Internal::AnyHash
             )
           end
@@ -1265,7 +1386,7 @@ module Lithic
         sig do
           returns(
             T.nilable(
-              Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard
             )
           )
         end
@@ -1275,7 +1396,7 @@ module Lithic
           params(
             mastercard:
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OrHash
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OrHash
               )
           ).void
         end
@@ -1283,7 +1404,9 @@ module Lithic
 
         sig do
           returns(
-            T.nilable(Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa)
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa
+            )
           )
         end
         attr_reader :visa
@@ -1292,7 +1415,7 @@ module Lithic
           params(
             visa:
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa::OrHash
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa::OrHash
               )
           ).void
         end
@@ -1308,11 +1431,11 @@ module Lithic
           params(
             mastercard:
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OrHash
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OrHash
               ),
             visa:
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa::OrHash
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa::OrHash
               )
           ).returns(T.attached_class)
         end
@@ -1324,11 +1447,11 @@ module Lithic
             {
               mastercard:
                 T.nilable(
-                  Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard
                 ),
               visa:
                 T.nilable(
-                  Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa
                 )
             }
           )
@@ -1340,7 +1463,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard,
                 Lithic::Internal::AnyHash
               )
             end
@@ -1356,7 +1479,7 @@ module Lithic
             returns(
               T.nilable(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult
                 ]
               )
             )
@@ -1373,7 +1496,7 @@ module Lithic
               on_behalf_service_result:
                 T.nilable(
                   T::Array[
-                    Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult::OrHash
+                    Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult::OrHash
                   ]
                 ),
               transaction_type_identifier: T.nilable(String)
@@ -1398,7 +1521,7 @@ module Lithic
                 on_behalf_service_result:
                   T.nilable(
                     T::Array[
-                      Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult
+                      Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult
                     ]
                   ),
                 transaction_type_identifier: T.nilable(String)
@@ -1412,7 +1535,7 @@ module Lithic
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult,
                   Lithic::Internal::AnyHash
                 )
               end
@@ -1460,7 +1583,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa,
                 Lithic::Internal::AnyHash
               )
             end
@@ -1496,40 +1619,52 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::AsaRequestWebhookEvent::Pos,
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos,
               Lithic::Internal::AnyHash
             )
           end
 
         # POS > Entry Mode object in ASA
         sig do
-          returns(T.nilable(Lithic::AsaRequestWebhookEvent::Pos::EntryMode))
+          returns(
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode
+            )
+          )
         end
         attr_reader :entry_mode
 
         sig do
           params(
-            entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode::OrHash
+            entry_mode:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::OrHash
           ).void
         end
         attr_writer :entry_mode
 
         sig do
-          returns(T.nilable(Lithic::AsaRequestWebhookEvent::Pos::Terminal))
+          returns(
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal
+            )
+          )
         end
         attr_reader :terminal
 
         sig do
           params(
-            terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal::OrHash
+            terminal:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::OrHash
           ).void
         end
         attr_writer :terminal
 
         sig do
           params(
-            entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode::OrHash,
-            terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal::OrHash
+            entry_mode:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::OrHash,
+            terminal:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1542,8 +1677,10 @@ module Lithic
         sig do
           override.returns(
             {
-              entry_mode: Lithic::AsaRequestWebhookEvent::Pos::EntryMode,
-              terminal: Lithic::AsaRequestWebhookEvent::Pos::Terminal
+              entry_mode:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode,
+              terminal:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal
             }
           )
         end
@@ -1554,7 +1691,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode,
                 Lithic::Internal::AnyHash
               )
             end
@@ -1563,7 +1700,7 @@ module Lithic
           sig do
             returns(
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
               )
             )
           end
@@ -1572,7 +1709,7 @@ module Lithic
           sig do
             params(
               card:
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::OrSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::OrSymbol
             ).void
           end
           attr_writer :card
@@ -1581,7 +1718,7 @@ module Lithic
           sig do
             returns(
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             )
           end
@@ -1590,7 +1727,7 @@ module Lithic
           sig do
             params(
               cardholder:
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::OrSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::OrSymbol
             ).void
           end
           attr_writer :cardholder
@@ -1599,7 +1736,7 @@ module Lithic
           sig do
             returns(
               T.nilable(
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             )
           end
@@ -1607,7 +1744,8 @@ module Lithic
 
           sig do
             params(
-              pan: Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::OrSymbol
+              pan:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::OrSymbol
             ).void
           end
           attr_writer :pan
@@ -1623,11 +1761,11 @@ module Lithic
           sig do
             params(
               card:
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::OrSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::OrSymbol,
               cardholder:
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::OrSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::OrSymbol,
               pan:
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::OrSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::OrSymbol,
               pin_entered: T::Boolean
             ).returns(T.attached_class)
           end
@@ -1647,11 +1785,11 @@ module Lithic
             override.returns(
               {
                 card:
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol,
                 cardholder:
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol,
                 pan:
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol,
                 pin_entered: T::Boolean
               }
             )
@@ -1667,7 +1805,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1675,23 +1813,23 @@ module Lithic
             PRESENT =
               T.let(
                 :PRESENT,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
               )
             NOT_PRESENT =
               T.let(
                 :NOT_PRESENT,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
               )
             UNKNOWN =
               T.let(
                 :UNKNOWN,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card::TaggedSymbol
                 ]
               )
             end
@@ -1707,7 +1845,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1715,53 +1853,53 @@ module Lithic
             DEFERRED_BILLING =
               T.let(
                 :DEFERRED_BILLING,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             ELECTRONIC_ORDER =
               T.let(
                 :ELECTRONIC_ORDER,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             INSTALLMENT =
               T.let(
                 :INSTALLMENT,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             MAIL_ORDER =
               T.let(
                 :MAIL_ORDER,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             NOT_PRESENT =
               T.let(
                 :NOT_PRESENT,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             PRESENT =
               T.let(
                 :PRESENT,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             REOCCURRING =
               T.let(
                 :REOCCURRING,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             TELEPHONE_ORDER =
               T.let(
                 :TELEPHONE_ORDER,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
             UNKNOWN =
               T.let(
                 :UNKNOWN,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder::TaggedSymbol
                 ]
               )
             end
@@ -1777,7 +1915,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1785,83 +1923,83 @@ module Lithic
             AUTO_ENTRY =
               T.let(
                 :AUTO_ENTRY,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             BAR_CODE =
               T.let(
                 :BAR_CODE,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             CONTACTLESS =
               T.let(
                 :CONTACTLESS,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             ECOMMERCE =
               T.let(
                 :ECOMMERCE,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             ERROR_KEYED =
               T.let(
                 :ERROR_KEYED,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             ERROR_MAGNETIC_STRIPE =
               T.let(
                 :ERROR_MAGNETIC_STRIPE,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             ICC =
               T.let(
                 :ICC,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             KEY_ENTERED =
               T.let(
                 :KEY_ENTERED,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             MAGNETIC_STRIPE =
               T.let(
                 :MAGNETIC_STRIPE,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             MANUAL =
               T.let(
                 :MANUAL,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             OCR =
               T.let(
                 :OCR,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             SECURE_CARDLESS =
               T.let(
                 :SECURE_CARDLESS,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             UNSPECIFIED =
               T.let(
                 :UNSPECIFIED,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             UNKNOWN =
               T.let(
                 :UNKNOWN,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
             CREDENTIAL_ON_FILE =
               T.let(
                 :CREDENTIAL_ON_FILE,
-                Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan::TaggedSymbol
                 ]
               )
             end
@@ -1874,7 +2012,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal,
                 Lithic::Internal::AnyHash
               )
             end
@@ -1894,7 +2032,7 @@ module Lithic
           # The person that is designated to swipe the card
           sig do
             returns(
-              Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
             )
           end
           attr_accessor :operator
@@ -1910,7 +2048,7 @@ module Lithic
           # Status of whether the POS is able to accept PINs
           sig do
             returns(
-              Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
             )
           end
           attr_accessor :pin_capability
@@ -1918,7 +2056,7 @@ module Lithic
           # POS Type
           sig do
             returns(
-              Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -1934,12 +2072,12 @@ module Lithic
               card_retention_capable: T::Boolean,
               on_premise: T::Boolean,
               operator:
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::OrSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::OrSymbol,
               partial_approval_capable: T::Boolean,
               pin_capability:
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::OrSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::OrSymbol,
               type:
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::OrSymbol,
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::OrSymbol,
               acceptor_terminal_id: T.nilable(String)
             ).returns(T.attached_class)
           end
@@ -1975,12 +2113,12 @@ module Lithic
                 card_retention_capable: T::Boolean,
                 on_premise: T::Boolean,
                 operator:
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol,
                 partial_approval_capable: T::Boolean,
                 pin_capability:
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol,
                 type:
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol,
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol,
                 acceptor_terminal_id: T.nilable(String)
               }
             )
@@ -1996,7 +2134,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2004,28 +2142,28 @@ module Lithic
             ADMINISTRATIVE =
               T.let(
                 :ADMINISTRATIVE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
               )
             CARDHOLDER =
               T.let(
                 :CARDHOLDER,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
               )
             CARD_ACCEPTOR =
               T.let(
                 :CARD_ACCEPTOR,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
               )
             UNKNOWN =
               T.let(
                 :UNKNOWN,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator::TaggedSymbol
                 ]
               )
             end
@@ -2041,7 +2179,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2049,28 +2187,28 @@ module Lithic
             CAPABLE =
               T.let(
                 :CAPABLE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
               )
             INOPERATIVE =
               T.let(
                 :INOPERATIVE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
               )
             NOT_CAPABLE =
               T.let(
                 :NOT_CAPABLE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
               )
             UNSPECIFIED =
               T.let(
                 :UNSPECIFIED,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability::TaggedSymbol
                 ]
               )
             end
@@ -2086,7 +2224,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2094,128 +2232,128 @@ module Lithic
             ADMINISTRATIVE =
               T.let(
                 :ADMINISTRATIVE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             ATM =
               T.let(
                 :ATM,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             AUTHORIZATION =
               T.let(
                 :AUTHORIZATION,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             COUPON_MACHINE =
               T.let(
                 :COUPON_MACHINE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             DIAL_TERMINAL =
               T.let(
                 :DIAL_TERMINAL,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             ECOMMERCE =
               T.let(
                 :ECOMMERCE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             ECR =
               T.let(
                 :ECR,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             FUEL_MACHINE =
               T.let(
                 :FUEL_MACHINE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             HOME_TERMINAL =
               T.let(
                 :HOME_TERMINAL,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             MICR =
               T.let(
                 :MICR,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             OFF_PREMISE =
               T.let(
                 :OFF_PREMISE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             PAYMENT =
               T.let(
                 :PAYMENT,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             PDA =
               T.let(
                 :PDA,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             PHONE =
               T.let(
                 :PHONE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             POINT =
               T.let(
                 :POINT,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             POS_TERMINAL =
               T.let(
                 :POS_TERMINAL,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             PUBLIC_UTILITY =
               T.let(
                 :PUBLIC_UTILITY,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             SELF_SERVICE =
               T.let(
                 :SELF_SERVICE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             TELEVISION =
               T.let(
                 :TELEVISION,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             TELLER =
               T.let(
                 :TELLER,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             TRAVELERS_CHECK_MACHINE =
               T.let(
                 :TRAVELERS_CHECK_MACHINE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             VENDING =
               T.let(
                 :VENDING,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             VOICE =
               T.let(
                 :VOICE,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
             UNKNOWN =
               T.let(
                 :UNKNOWN,
-                Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type::TaggedSymbol
                 ]
               )
             end

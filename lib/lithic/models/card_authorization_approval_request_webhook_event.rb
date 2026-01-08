@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AsaRequestWebhookEvent < Lithic::Internal::Type::BaseModel
+    class CardAuthorizationApprovalRequestWebhookEvent < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   The provisional transaction group uuid associated with the authorization
       #
@@ -34,14 +34,14 @@ module Lithic
 
       # @!attribute avs
       #
-      #   @return [Lithic::Models::AsaRequestWebhookEvent::Avs]
-      required :avs, -> { Lithic::AsaRequestWebhookEvent::Avs }
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs]
+      required :avs, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs }
 
       # @!attribute card
       #   Card object in ASA
       #
-      #   @return [Lithic::Models::AsaRequestWebhookEvent::Card]
-      required :card, -> { Lithic::AsaRequestWebhookEvent::Card }
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card]
+      required :card, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card }
 
       # @!attribute cardholder_currency
       #   3-character alphabetic ISO 4217 code for cardholder's billing currency.
@@ -65,6 +65,11 @@ module Lithic
       #
       #   @return [Time]
       required :created, Time
+
+      # @!attribute event_type
+      #
+      #   @return [Symbol, :"card_authorization.approval_request"]
+      required :event_type, const: :"card_authorization.approval_request"
 
       # @!attribute merchant
       #
@@ -99,19 +104,20 @@ module Lithic
       #   `CREDIT_AUTHORIZATION` and `FINANCIAL_CREDIT_AUTHORIZATION` is only available to
       #   users with credit decisioning via ASA enabled.
       #
-      #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Status]
-      required :status, enum: -> { Lithic::AsaRequestWebhookEvent::Status }
+      #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Status]
+      required :status, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status }
 
       # @!attribute transaction_initiator
       #   The entity that initiated the transaction.
       #
-      #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::TransactionInitiator]
-      required :transaction_initiator, enum: -> { Lithic::AsaRequestWebhookEvent::TransactionInitiator }
+      #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator]
+      required :transaction_initiator,
+               enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator }
 
       # @!attribute account_type
       #
-      #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::AccountType, nil]
-      optional :account_type, enum: -> { Lithic::AsaRequestWebhookEvent::AccountType }
+      #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::AccountType, nil]
+      optional :account_type, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::AccountType }
 
       # @!attribute cardholder_authentication
       #
@@ -145,21 +151,21 @@ module Lithic
       #   Optional Object containing information if the Card is a part of a Fleet managed
       #   program
       #
-      #   @return [Lithic::Models::AsaRequestWebhookEvent::FleetInfo, nil]
-      optional :fleet_info, -> { Lithic::AsaRequestWebhookEvent::FleetInfo }, nil?: true
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo, nil]
+      optional :fleet_info, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo }, nil?: true
 
       # @!attribute latest_challenge
       #   The latest Authorization Challenge that was issued to the cardholder for this
       #   merchant.
       #
-      #   @return [Lithic::Models::AsaRequestWebhookEvent::LatestChallenge, nil]
-      optional :latest_challenge, -> { Lithic::AsaRequestWebhookEvent::LatestChallenge }
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge, nil]
+      optional :latest_challenge, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge }
 
       # @!attribute network
       #   Card network of the authorization.
       #
-      #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Network, nil]
-      optional :network, enum: -> { Lithic::AsaRequestWebhookEvent::Network }
+      #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Network, nil]
+      optional :network, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Network }
 
       # @!attribute network_risk_score
       #   Network-provided score assessing risk level associated with a given
@@ -179,13 +185,15 @@ module Lithic
       #   values and how to use them. This object is only available to certain programs-
       #   contact your Customer Success Manager to discuss enabling access.
       #
-      #   @return [Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData, nil]
-      optional :network_specific_data, -> { Lithic::AsaRequestWebhookEvent::NetworkSpecificData }, nil?: true
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData, nil]
+      optional :network_specific_data,
+               -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData },
+               nil?: true
 
       # @!attribute pos
       #
-      #   @return [Lithic::Models::AsaRequestWebhookEvent::Pos, nil]
-      optional :pos, -> { Lithic::AsaRequestWebhookEvent::Pos }
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos, nil]
+      optional :pos, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos }
 
       # @!attribute token_info
       #
@@ -198,11 +206,9 @@ module Lithic
       #   @return [Time, nil]
       optional :ttl, Time
 
-      # @!method initialize(token:, acquirer_fee:, amount:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil)
+      # @!method initialize(token:, acquirer_fee:, amount:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil, event_type: :"card_authorization.approval_request")
       #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::AsaRequestWebhookEvent} for more details.
-      #
-      #   The Auth Stream Access request payload that was sent to the ASA responder.
+      #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent} for more details.
       #
       #   @param token [String] The provisional transaction group uuid associated with the authorization
       #
@@ -212,9 +218,9 @@ module Lithic
       #
       #   @param authorization_amount [Integer] The base transaction amount (in cents) plus the acquirer fee field. This is the
       #
-      #   @param avs [Lithic::Models::AsaRequestWebhookEvent::Avs]
+      #   @param avs [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs]
       #
-      #   @param card [Lithic::Models::AsaRequestWebhookEvent::Card] Card object in ASA
+      #   @param card [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card] Card object in ASA
       #
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for cardholder's billing currency.
       #
@@ -230,11 +236,11 @@ module Lithic
       #
       #   @param settled_amount [Integer] Amount (in cents) of the transaction that has been settled, including any acquir
       #
-      #   @param status [Symbol, Lithic::Models::AsaRequestWebhookEvent::Status] The type of authorization request that this request is for. Note that `CREDIT_AU
+      #   @param status [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Status] The type of authorization request that this request is for. Note that `CREDIT_AU
       #
-      #   @param transaction_initiator [Symbol, Lithic::Models::AsaRequestWebhookEvent::TransactionInitiator] The entity that initiated the transaction.
+      #   @param transaction_initiator [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::TransactionInitiator] The entity that initiated the transaction.
       #
-      #   @param account_type [Symbol, Lithic::Models::AsaRequestWebhookEvent::AccountType]
+      #   @param account_type [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::AccountType]
       #
       #   @param cardholder_authentication [Lithic::Models::CardholderAuthentication]
       #
@@ -244,23 +250,25 @@ module Lithic
       #
       #   @param event_token [String] The event token associated with the authorization. This field is only set for pr
       #
-      #   @param fleet_info [Lithic::Models::AsaRequestWebhookEvent::FleetInfo, nil] Optional Object containing information if the Card is a part of a Fleet managed
+      #   @param fleet_info [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo, nil] Optional Object containing information if the Card is a part of a Fleet managed
       #
-      #   @param latest_challenge [Lithic::Models::AsaRequestWebhookEvent::LatestChallenge] The latest Authorization Challenge that was issued to the cardholder for this me
+      #   @param latest_challenge [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge] The latest Authorization Challenge that was issued to the cardholder for this me
       #
-      #   @param network [Symbol, Lithic::Models::AsaRequestWebhookEvent::Network] Card network of the authorization.
+      #   @param network [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Network] Card network of the authorization.
       #
       #   @param network_risk_score [Integer, nil] Network-provided score assessing risk level associated with a given authorizatio
       #
-      #   @param network_specific_data [Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData, nil] Contains raw data provided by the card network, including attributes that provid
+      #   @param network_specific_data [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData, nil] Contains raw data provided by the card network, including attributes that provid
       #
-      #   @param pos [Lithic::Models::AsaRequestWebhookEvent::Pos]
+      #   @param pos [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos]
       #
       #   @param token_info [Lithic::Models::TokenInfo, nil]
       #
       #   @param ttl [Time] Deprecated: approximate time-to-live for the authorization.
+      #
+      #   @param event_type [Symbol, :"card_authorization.approval_request"]
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#avs
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#avs
       class Avs < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Cardholder address
@@ -274,8 +282,9 @@ module Lithic
         #   Cardholder KYC data, or the transaction does not contain any address data,
         #   NOT_PRESENT will be returned
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Avs::AddressOnFileMatch]
-        required :address_on_file_match, enum: -> { Lithic::AsaRequestWebhookEvent::Avs::AddressOnFileMatch }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch]
+        required :address_on_file_match,
+                 enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch }
 
         # @!attribute zipcode
         #   Cardholder ZIP code
@@ -285,11 +294,12 @@ module Lithic
 
         # @!method initialize(address:, address_on_file_match:, zipcode:)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AsaRequestWebhookEvent::Avs} for more details.
+        #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs} for more
+        #   details.
         #
         #   @param address [String] Cardholder address
         #
-        #   @param address_on_file_match [Symbol, Lithic::Models::AsaRequestWebhookEvent::Avs::AddressOnFileMatch] Lithic's evaluation result comparing the transaction's address data with the car
+        #   @param address_on_file_match [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs::AddressOnFileMatch] Lithic's evaluation result comparing the transaction's address data with the car
         #
         #   @param zipcode [String] Cardholder ZIP code
 
@@ -298,7 +308,7 @@ module Lithic
         # Cardholder KYC data, or the transaction does not contain any address data,
         # NOT_PRESENT will be returned
         #
-        # @see Lithic::Models::AsaRequestWebhookEvent::Avs#address_on_file_match
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs#address_on_file_match
         module AddressOnFileMatch
           extend Lithic::Internal::Type::Enum
 
@@ -313,7 +323,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#card
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#card
       class Card < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for the card.
@@ -358,22 +368,24 @@ module Lithic
         #   day every month, the time window we consider for MONTHLY velocity starts 6 days
         #   after the current calendar date one month prior.
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Card::SpendLimitDuration, nil]
-        optional :spend_limit_duration, enum: -> { Lithic::AsaRequestWebhookEvent::Card::SpendLimitDuration }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration, nil]
+        optional :spend_limit_duration,
+                 enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration }
 
         # @!attribute state
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Card::State, nil]
-        optional :state, enum: -> { Lithic::AsaRequestWebhookEvent::Card::State }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::State, nil]
+        optional :state, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State }
 
         # @!attribute type
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Card::Type, nil]
-        optional :type, enum: -> { Lithic::AsaRequestWebhookEvent::Card::Type }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::Type, nil]
+        optional :type, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type }
 
         # @!method initialize(token: nil, hostname: nil, last_four: nil, memo: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, type: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AsaRequestWebhookEvent::Card} for more details.
+        #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card} for more
+        #   details.
         #
         #   Card object in ASA
         #
@@ -387,17 +399,17 @@ module Lithic
         #
         #   @param spend_limit [Integer] Amount (in cents) to limit approved authorizations. Purchase requests above the
         #
-        #   @param spend_limit_duration [Symbol, Lithic::Models::AsaRequestWebhookEvent::Card::SpendLimitDuration] Note that to support recurring monthly payments, which can occur on different da
+        #   @param spend_limit_duration [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration] Note that to support recurring monthly payments, which can occur on different da
         #
-        #   @param state [Symbol, Lithic::Models::AsaRequestWebhookEvent::Card::State]
+        #   @param state [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::State]
         #
-        #   @param type [Symbol, Lithic::Models::AsaRequestWebhookEvent::Card::Type]
+        #   @param type [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::Type]
 
         # Note that to support recurring monthly payments, which can occur on different
         # day every month, the time window we consider for MONTHLY velocity starts 6 days
         # after the current calendar date one month prior.
         #
-        # @see Lithic::Models::AsaRequestWebhookEvent::Card#spend_limit_duration
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card#spend_limit_duration
         module SpendLimitDuration
           extend Lithic::Internal::Type::Enum
 
@@ -410,7 +422,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::AsaRequestWebhookEvent::Card#state
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card#state
         module State
           extend Lithic::Internal::Type::Enum
 
@@ -424,7 +436,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::AsaRequestWebhookEvent::Card#type
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -444,7 +456,7 @@ module Lithic
       # `CREDIT_AUTHORIZATION` and `FINANCIAL_CREDIT_AUTHORIZATION` is only available to
       # users with credit decisioning via ASA enabled.
       #
-      # @see Lithic::Models::AsaRequestWebhookEvent#status
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#status
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -460,7 +472,7 @@ module Lithic
 
       # The entity that initiated the transaction.
       #
-      # @see Lithic::Models::AsaRequestWebhookEvent#transaction_initiator
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#transaction_initiator
       module TransactionInitiator
         extend Lithic::Internal::Type::Enum
 
@@ -472,7 +484,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#account_type
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#account_type
       module AccountType
         extend Lithic::Internal::Type::Enum
 
@@ -483,24 +495,25 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#fleet_info
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#fleet_info
       class FleetInfo < Lithic::Internal::Type::BaseModel
         # @!attribute fleet_prompt_code
         #   Code indicating what the driver was prompted to enter at time of purchase. This
         #   is configured at a program level and is a static configuration, and does not
         #   change on a request to request basis
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode]
-        required :fleet_prompt_code, enum: -> { Lithic::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode]
+        required :fleet_prompt_code,
+                 enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode }
 
         # @!attribute fleet_restriction_code
         #   Code indicating which restrictions, if any, there are on purchase. This is
         #   configured at a program level and is a static configuration, and does not change
         #   on a request to request basis
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode]
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode]
         required :fleet_restriction_code,
-                 enum: -> { Lithic::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode }
+                 enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode }
 
         # @!attribute driver_number
         #   Number representing the driver
@@ -516,14 +529,15 @@ module Lithic
 
         # @!method initialize(fleet_prompt_code:, fleet_restriction_code:, driver_number: nil, vehicle_number: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AsaRequestWebhookEvent::FleetInfo} for more details.
+        #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo} for
+        #   more details.
         #
         #   Optional Object containing information if the Card is a part of a Fleet managed
         #   program
         #
-        #   @param fleet_prompt_code [Symbol, Lithic::Models::AsaRequestWebhookEvent::FleetInfo::FleetPromptCode] Code indicating what the driver was prompted to enter at time of purchase. This
+        #   @param fleet_prompt_code [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetPromptCode] Code indicating what the driver was prompted to enter at time of purchase. This
         #
-        #   @param fleet_restriction_code [Symbol, Lithic::Models::AsaRequestWebhookEvent::FleetInfo::FleetRestrictionCode] Code indicating which restrictions, if any, there are on purchase. This is confi
+        #   @param fleet_restriction_code [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo::FleetRestrictionCode] Code indicating which restrictions, if any, there are on purchase. This is confi
         #
         #   @param driver_number [String, nil] Number representing the driver
         #
@@ -533,7 +547,7 @@ module Lithic
         # is configured at a program level and is a static configuration, and does not
         # change on a request to request basis
         #
-        # @see Lithic::Models::AsaRequestWebhookEvent::FleetInfo#fleet_prompt_code
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo#fleet_prompt_code
         module FleetPromptCode
           extend Lithic::Internal::Type::Enum
 
@@ -549,7 +563,7 @@ module Lithic
         # configured at a program level and is a static configuration, and does not change
         # on a request to request basis
         #
-        # @see Lithic::Models::AsaRequestWebhookEvent::FleetInfo#fleet_restriction_code
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::FleetInfo#fleet_restriction_code
         module FleetRestrictionCode
           extend Lithic::Internal::Type::Enum
 
@@ -561,7 +575,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#latest_challenge
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#latest_challenge
       class LatestChallenge < Lithic::Internal::Type::BaseModel
         # @!attribute phone_number
         #   The phone number used for sending Authorization Challenge SMS.
@@ -577,8 +591,9 @@ module Lithic
         #   - `EXPIRED` - Challenge has expired without being completed
         #   - `ERROR` - There was an error processing the challenge
         #
-        #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::Status]
-        required :status, enum: -> { Lithic::AsaRequestWebhookEvent::LatestChallenge::Status }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status]
+        required :status,
+                 enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status }
 
         # @!attribute completed_at
         #   The date and time when the Authorization Challenge was completed in UTC. Present
@@ -589,14 +604,15 @@ module Lithic
 
         # @!method initialize(phone_number:, status:, completed_at: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AsaRequestWebhookEvent::LatestChallenge} for more details.
+        #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge}
+        #   for more details.
         #
         #   The latest Authorization Challenge that was issued to the cardholder for this
         #   merchant.
         #
         #   @param phone_number [String] The phone number used for sending Authorization Challenge SMS.
         #
-        #   @param status [Symbol, Lithic::Models::AsaRequestWebhookEvent::LatestChallenge::Status] The status of the Authorization Challenge
+        #   @param status [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge::Status] The status of the Authorization Challenge
         #
         #   @param completed_at [Time] The date and time when the Authorization Challenge was completed in UTC. Present
 
@@ -607,7 +623,7 @@ module Lithic
         # - `EXPIRED` - Challenge has expired without being completed
         # - `ERROR` - There was an error processing the challenge
         #
-        # @see Lithic::Models::AsaRequestWebhookEvent::LatestChallenge#status
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::LatestChallenge#status
         module Status
           extend Lithic::Internal::Type::Enum
 
@@ -623,7 +639,7 @@ module Lithic
 
       # Card network of the authorization.
       #
-      # @see Lithic::Models::AsaRequestWebhookEvent#network
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#network
       module Network
         extend Lithic::Internal::Type::Enum
 
@@ -638,21 +654,21 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#network_specific_data
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#network_specific_data
       class NetworkSpecificData < Lithic::Internal::Type::BaseModel
         # @!attribute mastercard
         #
-        #   @return [Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard, nil]
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard, nil]
         optional :mastercard,
-                 -> {
-                   Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard
-                 },
+                 -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard },
                  nil?: true
 
         # @!attribute visa
         #
-        #   @return [Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Visa, nil]
-        optional :visa, -> { Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Visa }, nil?: true
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa, nil]
+        optional :visa,
+                 -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa },
+                 nil?: true
 
         # @!method initialize(mastercard: nil, visa: nil)
         #   Contains raw data provided by the card network, including attributes that
@@ -662,10 +678,10 @@ module Lithic
         #   values and how to use them. This object is only available to certain programs-
         #   contact your Customer Success Manager to discuss enabling access.
         #
-        #   @param mastercard [Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard, nil]
-        #   @param visa [Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Visa, nil]
+        #   @param mastercard [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard, nil]
+        #   @param visa [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa, nil]
 
-        # @see Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData#mastercard
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData#mastercard
         class Mastercard < Lithic::Internal::Type::BaseModel
           # @!attribute ecommerce_security_level_indicator
           #   Indicates the electronic commerce security level and UCAF collection.
@@ -678,11 +694,13 @@ module Lithic
           #   applicable, on-behalf service results that were performed on a given
           #   transaction.
           #
-          #   @return [Array<Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil]
+          #   @return [Array<Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil]
           optional :on_behalf_service_result,
-                   -> {
-                     Lithic::Internal::Type::ArrayOf[Lithic::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult]
-                   },
+                   -> do
+                     Lithic::Internal::Type::ArrayOf[
+                       Lithic::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult
+                     ]
+                   end,
                    nil?: true
 
           # @!attribute transaction_type_identifier
@@ -693,12 +711,12 @@ module Lithic
 
           # @!method initialize(ecommerce_security_level_indicator: nil, on_behalf_service_result: nil, transaction_type_identifier: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard} for
-          #   more details.
+          #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard}
+          #   for more details.
           #
           #   @param ecommerce_security_level_indicator [String, nil] Indicates the electronic commerce security level and UCAF collection.
           #
-          #   @param on_behalf_service_result [Array<Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil] The On-behalf Service performed on the transaction and the results. Contains all
+          #   @param on_behalf_service_result [Array<Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil] The On-behalf Service performed on the transaction and the results. Contains all
           #
           #   @param transaction_type_identifier [String, nil] Indicates the type of additional transaction purpose.
 
@@ -730,7 +748,7 @@ module Lithic
           end
         end
 
-        # @see Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData#visa
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData#visa
         class Visa < Lithic::Internal::Type::BaseModel
           # @!attribute business_application_identifier
           #   Identifies the purpose or category of a transaction, used to classify and
@@ -741,50 +759,51 @@ module Lithic
 
           # @!method initialize(business_application_identifier: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AsaRequestWebhookEvent::NetworkSpecificData::Visa} for more
-          #   details.
+          #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::NetworkSpecificData::Visa}
+          #   for more details.
           #
           #   @param business_application_identifier [String, nil] Identifies the purpose or category of a transaction, used to classify and proces
         end
       end
 
-      # @see Lithic::Models::AsaRequestWebhookEvent#pos
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#pos
       class Pos < Lithic::Internal::Type::BaseModel
         # @!attribute entry_mode
         #   POS > Entry Mode object in ASA
         #
-        #   @return [Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode, nil]
-        optional :entry_mode, -> { Lithic::AsaRequestWebhookEvent::Pos::EntryMode }
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode, nil]
+        optional :entry_mode, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode }
 
         # @!attribute terminal
         #
-        #   @return [Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal, nil]
-        optional :terminal, -> { Lithic::AsaRequestWebhookEvent::Pos::Terminal }
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal, nil]
+        optional :terminal, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal }
 
         # @!method initialize(entry_mode: nil, terminal: nil)
-        #   @param entry_mode [Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode] POS > Entry Mode object in ASA
+        #   @param entry_mode [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode] POS > Entry Mode object in ASA
         #
-        #   @param terminal [Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal]
+        #   @param terminal [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal]
 
-        # @see Lithic::Models::AsaRequestWebhookEvent::Pos#entry_mode
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos#entry_mode
         class EntryMode < Lithic::Internal::Type::BaseModel
           # @!attribute card
           #   Card Presence Indicator
           #
-          #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::Card, nil]
-          optional :card, enum: -> { Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Card }
+          #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card, nil]
+          optional :card, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card }
 
           # @!attribute cardholder
           #   Cardholder Presence Indicator
           #
-          #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder, nil]
-          optional :cardholder, enum: -> { Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder }
+          #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder, nil]
+          optional :cardholder,
+                   enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder }
 
           # @!attribute pan
           #   Method of entry for the PAN
           #
-          #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::Pan, nil]
-          optional :pan, enum: -> { Lithic::AsaRequestWebhookEvent::Pos::EntryMode::Pan }
+          #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan, nil]
+          optional :pan, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan }
 
           # @!attribute pin_entered
           #   Indicates whether the cardholder entered the PIN. True if the PIN was entered.
@@ -795,17 +814,17 @@ module Lithic
           # @!method initialize(card: nil, cardholder: nil, pan: nil, pin_entered: nil)
           #   POS > Entry Mode object in ASA
           #
-          #   @param card [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::Card] Card Presence Indicator
+          #   @param card [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Card] Card Presence Indicator
           #
-          #   @param cardholder [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::Cardholder] Cardholder Presence Indicator
+          #   @param cardholder [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Cardholder] Cardholder Presence Indicator
           #
-          #   @param pan [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode::Pan] Method of entry for the PAN
+          #   @param pan [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode::Pan] Method of entry for the PAN
           #
           #   @param pin_entered [Boolean] Indicates whether the cardholder entered the PIN. True if the PIN was entered.
 
           # Card Presence Indicator
           #
-          # @see Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode#card
+          # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode#card
           module Card
             extend Lithic::Internal::Type::Enum
 
@@ -819,7 +838,7 @@ module Lithic
 
           # Cardholder Presence Indicator
           #
-          # @see Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode#cardholder
+          # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode#cardholder
           module Cardholder
             extend Lithic::Internal::Type::Enum
 
@@ -839,7 +858,7 @@ module Lithic
 
           # Method of entry for the PAN
           #
-          # @see Lithic::Models::AsaRequestWebhookEvent::Pos::EntryMode#pan
+          # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::EntryMode#pan
           module Pan
             extend Lithic::Internal::Type::Enum
 
@@ -864,7 +883,7 @@ module Lithic
           end
         end
 
-        # @see Lithic::Models::AsaRequestWebhookEvent::Pos#terminal
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos#terminal
         class Terminal < Lithic::Internal::Type::BaseModel
           # @!attribute attended
           #   True if a clerk is present at the sale.
@@ -887,8 +906,9 @@ module Lithic
           # @!attribute operator
           #   The person that is designated to swipe the card
           #
-          #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::Operator]
-          required :operator, enum: -> { Lithic::AsaRequestWebhookEvent::Pos::Terminal::Operator }
+          #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator]
+          required :operator,
+                   enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator }
 
           # @!attribute partial_approval_capable
           #   True if the terminal is capable of partial approval. Partial approval is when
@@ -903,14 +923,15 @@ module Lithic
           # @!attribute pin_capability
           #   Status of whether the POS is able to accept PINs
           #
-          #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::PinCapability]
-          required :pin_capability, enum: -> { Lithic::AsaRequestWebhookEvent::Pos::Terminal::PinCapability }
+          #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability]
+          required :pin_capability,
+                   enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability }
 
           # @!attribute type
           #   POS Type
           #
-          #   @return [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::Type]
-          required :type, enum: -> { Lithic::AsaRequestWebhookEvent::Pos::Terminal::Type }
+          #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type]
+          required :type, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type }
 
           # @!attribute acceptor_terminal_id
           #   Uniquely identifies a terminal at the card acceptor location of acquiring
@@ -921,7 +942,8 @@ module Lithic
 
           # @!method initialize(attended:, card_retention_capable:, on_premise:, operator:, partial_approval_capable:, pin_capability:, type:, acceptor_terminal_id: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal} for more details.
+          #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal}
+          #   for more details.
           #
           #   @param attended [Boolean] True if a clerk is present at the sale.
           #
@@ -929,19 +951,19 @@ module Lithic
           #
           #   @param on_premise [Boolean] True if the sale was made at the place of business (vs. mobile).
           #
-          #   @param operator [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::Operator] The person that is designated to swipe the card
+          #   @param operator [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Operator] The person that is designated to swipe the card
           #
           #   @param partial_approval_capable [Boolean] True if the terminal is capable of partial approval. Partial approval is when pa
           #
-          #   @param pin_capability [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::PinCapability] Status of whether the POS is able to accept PINs
+          #   @param pin_capability [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::PinCapability] Status of whether the POS is able to accept PINs
           #
-          #   @param type [Symbol, Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal::Type] POS Type
+          #   @param type [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal::Type] POS Type
           #
           #   @param acceptor_terminal_id [String, nil] Uniquely identifies a terminal at the card acceptor location of acquiring instit
 
           # The person that is designated to swipe the card
           #
-          # @see Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal#operator
+          # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal#operator
           module Operator
             extend Lithic::Internal::Type::Enum
 
@@ -956,7 +978,7 @@ module Lithic
 
           # Status of whether the POS is able to accept PINs
           #
-          # @see Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal#pin_capability
+          # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal#pin_capability
           module PinCapability
             extend Lithic::Internal::Type::Enum
 
@@ -971,7 +993,7 @@ module Lithic
 
           # POS Type
           #
-          # @see Lithic::Models::AsaRequestWebhookEvent::Pos::Terminal#type
+          # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Pos::Terminal#type
           module Type
             extend Lithic::Internal::Type::Enum
 

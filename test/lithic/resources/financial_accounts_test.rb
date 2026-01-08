@@ -19,11 +19,12 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
         status: Lithic::FinancialAccount::Status,
+        substatus: Lithic::FinancialAccount::Substatus | nil,
         type: Lithic::FinancialAccount::Type,
         updated: Time,
+        user_defined_status: String | nil,
         account_number: String | nil,
-        routing_number: String | nil,
-        substatus: Lithic::FinancialAccount::Substatus | nil
+        routing_number: String | nil
       }
     end
   end
@@ -44,11 +45,12 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
         status: Lithic::FinancialAccount::Status,
+        substatus: Lithic::FinancialAccount::Substatus | nil,
         type: Lithic::FinancialAccount::Type,
         updated: Time,
+        user_defined_status: String | nil,
         account_number: String | nil,
-        routing_number: String | nil,
-        substatus: Lithic::FinancialAccount::Substatus | nil
+        routing_number: String | nil
       }
     end
   end
@@ -69,11 +71,12 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
         status: Lithic::FinancialAccount::Status,
+        substatus: Lithic::FinancialAccount::Substatus | nil,
         type: Lithic::FinancialAccount::Type,
         updated: Time,
+        user_defined_status: String | nil,
         account_number: String | nil,
-        routing_number: String | nil,
-        substatus: Lithic::FinancialAccount::Substatus | nil
+        routing_number: String | nil
       }
     end
   end
@@ -101,11 +104,12 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
         status: Lithic::FinancialAccount::Status,
+        substatus: Lithic::FinancialAccount::Substatus | nil,
         type: Lithic::FinancialAccount::Type,
         updated: Time,
+        user_defined_status: String | nil,
         account_number: String | nil,
-        routing_number: String | nil,
-        substatus: Lithic::FinancialAccount::Substatus | nil
+        routing_number: String | nil
       }
     end
   end
@@ -143,11 +147,12 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
         status: Lithic::FinancialAccount::Status,
+        substatus: Lithic::FinancialAccount::Substatus | nil,
         type: Lithic::FinancialAccount::Type,
         updated: Time,
+        user_defined_status: String | nil,
         account_number: String | nil,
-        routing_number: String | nil,
-        substatus: Lithic::FinancialAccount::Substatus | nil
+        routing_number: String | nil
       }
     end
   end

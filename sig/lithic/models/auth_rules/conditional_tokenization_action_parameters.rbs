@@ -215,6 +215,7 @@ module Lithic
             | :WALLET_RECOMMENDATION_REASONS
             | :TOKEN_REQUESTOR_ID
             | :WALLET_TOKEN_STATUS
+            | :CARD_STATE
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -229,6 +230,7 @@ module Lithic
             WALLET_RECOMMENDATION_REASONS: :WALLET_RECOMMENDATION_REASONS
             TOKEN_REQUESTOR_ID: :TOKEN_REQUESTOR_ID
             WALLET_TOKEN_STATUS: :WALLET_TOKEN_STATUS
+            CARD_STATE: :CARD_STATE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::attribute]
           end

@@ -109,13 +109,13 @@ module Lithic
         end
         attr_writer :minimum_payment_balance
 
-        sig { returns(Lithic::FinancialAccounts::CategoryBalances) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::PaymentAllocation) }
         attr_reader :payment_allocation
 
         sig do
           params(
             payment_allocation:
-              Lithic::FinancialAccounts::CategoryBalances::OrHash
+              Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash
           ).void
         end
         attr_writer :payment_allocation
@@ -183,7 +183,7 @@ module Lithic
             minimum_payment_balance:
               Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance::OrHash,
             payment_allocation:
-              Lithic::FinancialAccounts::CategoryBalances::OrHash,
+              Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash,
             period_totals: Lithic::StatementTotals::OrHash,
             previous_statement_balance:
               Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance::OrHash,
@@ -257,7 +257,8 @@ module Lithic
                 T.nilable(Lithic::FinancialAccounts::LoanTape::InterestDetails),
               minimum_payment_balance:
                 Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
-              payment_allocation: Lithic::FinancialAccounts::CategoryBalances,
+              payment_allocation:
+                Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
               period_totals: Lithic::StatementTotals,
               previous_statement_balance:
                 Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
@@ -820,6 +821,94 @@ module Lithic
           end
 
           sig { override.returns({ amount: Integer, remaining: Integer }) }
+          def to_hash
+          end
+        end
+
+        class PaymentAllocation < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T.nilable(Lithic::CategoryDetails)) }
+          attr_reader :fee_details
+
+          sig do
+            params(fee_details: T.nilable(Lithic::CategoryDetails::OrHash)).void
+          end
+          attr_writer :fee_details
+
+          # Amount allocated to fees in cents
+          sig { returns(Integer) }
+          attr_accessor :fees
+
+          # Amount allocated to interest in cents
+          sig { returns(Integer) }
+          attr_accessor :interest
+
+          sig { returns(T.nilable(Lithic::CategoryDetails)) }
+          attr_reader :interest_details
+
+          sig do
+            params(
+              interest_details: T.nilable(Lithic::CategoryDetails::OrHash)
+            ).void
+          end
+          attr_writer :interest_details
+
+          # Amount allocated to principal in cents
+          sig { returns(Integer) }
+          attr_accessor :principal
+
+          sig { returns(T.nilable(Lithic::CategoryDetails)) }
+          attr_reader :principal_details
+
+          sig do
+            params(
+              principal_details: T.nilable(Lithic::CategoryDetails::OrHash)
+            ).void
+          end
+          attr_writer :principal_details
+
+          sig do
+            params(
+              fee_details: T.nilable(Lithic::CategoryDetails::OrHash),
+              fees: Integer,
+              interest: Integer,
+              interest_details: T.nilable(Lithic::CategoryDetails::OrHash),
+              principal: Integer,
+              principal_details: T.nilable(Lithic::CategoryDetails::OrHash)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            fee_details:,
+            # Amount allocated to fees in cents
+            fees:,
+            # Amount allocated to interest in cents
+            interest:,
+            interest_details:,
+            # Amount allocated to principal in cents
+            principal:,
+            principal_details:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                fee_details: T.nilable(Lithic::CategoryDetails),
+                fees: Integer,
+                interest: Integer,
+                interest_details: T.nilable(Lithic::CategoryDetails),
+                principal: Integer,
+                principal_details: T.nilable(Lithic::CategoryDetails)
+              }
+            )
+          end
           def to_hash
           end
         end

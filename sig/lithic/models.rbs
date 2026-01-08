@@ -51,8 +51,6 @@ module Lithic
 
   class APIStatus = Lithic::Models::APIStatus
 
-  class AsaRequestWebhookEvent = Lithic::Models::AsaRequestWebhookEvent
-
   module AuthRules = Lithic::Models::AuthRules
 
   class AuthRulesBacktestReportCreatedWebhookEvent = Lithic::Models::AuthRulesBacktestReportCreatedWebhookEvent
@@ -86,6 +84,8 @@ module Lithic
   class BookTransferTransactionUpdatedWebhookEvent = Lithic::Models::BookTransferTransactionUpdatedWebhookEvent
 
   class Card = Lithic::Models::Card
+
+  class CardAuthorizationApprovalRequestWebhookEvent = Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent
 
   class CardBulkOrder = Lithic::Models::CardBulkOrder
 
@@ -428,6 +428,8 @@ module Lithic
   module ThreeDS = Lithic::Models::ThreeDS
 
   class ThreeDSAuthentication = Lithic::Models::ThreeDSAuthentication
+
+  class ThreeDSAuthenticationApprovalRequestWebhookEvent = Lithic::Models::ThreeDSAuthenticationApprovalRequestWebhookEvent
 
   class ThreeDSAuthenticationChallengeWebhookEvent = Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent
 
