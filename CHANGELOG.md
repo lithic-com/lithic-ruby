@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.3.0 (2026-01-08)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/lithic-com/lithic-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** Add card state attribute to tokenization rules ([24f042b](https://github.com/lithic-com/lithic-ruby/commit/24f042b70a1b3b6f30639fe6d04dbc7d566ea187))
+* **api:** Add event_type to ASA request and 3DS decisioning request ([24f042b](https://github.com/lithic-com/lithic-ruby/commit/24f042b70a1b3b6f30639fe6d04dbc7d566ea187))
+* **api:** add external_id to payment_event ([0bad1d9](https://github.com/lithic-com/lithic-ruby/commit/0bad1d9ef7b439a1be19b68af67abb6e66e5c53f))
+* **api:** add get /v1/transfer_limits endpoint ([0bad1d9](https://github.com/lithic-com/lithic-ruby/commit/0bad1d9ef7b439a1be19b68af67abb6e66e5c53f))
+* **api:** add post /v1/book_transfers/{book_transfer_token}/retry endpoint ([0bad1d9](https://github.com/lithic-com/lithic-ruby/commit/0bad1d9ef7b439a1be19b68af67abb6e66e5c53f))
+* **api:** Add user defined status to ledger accounts ([24f042b](https://github.com/lithic-com/lithic-ruby/commit/24f042b70a1b3b6f30639fe6d04dbc7d566ea187))
+* **api:** add WIRE_DRAWDOWN_REQUEST transfer type ([832895f](https://github.com/lithic-com/lithic-ruby/commit/832895fdf5d4e72f9fc1ce62e9acfb6bcbdfdc14))
+* **api:** Expose Payment Allocation Details ([24f042b](https://github.com/lithic-com/lithic-ruby/commit/24f042b70a1b3b6f30639fe6d04dbc7d566ea187))
+* **api:** remove unnecessary X-Lithic-Pagination header ([832895f](https://github.com/lithic-com/lithic-ruby/commit/832895fdf5d4e72f9fc1ce62e9acfb6bcbdfdc14))
+* **api:** remove v1/aggregate_balances and related models ([c66d75e](https://github.com/lithic-com/lithic-ruby/commit/c66d75ed7b10521d5f73efeafb9dbcd6ff7a7f0c))
+
+
+### Bug Fixes
+
+* calling `break` out of streams should be instantaneous ([86db080](https://github.com/lithic-com/lithic-ruby/commit/86db080240382ba1cd73af9a01c89379cfb8e330))
+* issue where json.parse errors when receiving HTTP 204 with nobody ([9c9d63b](https://github.com/lithic-com/lithic-ruby/commit/9c9d63b07badd9fdd107314ac0bd5c8c23ddd0c3))
+
+
+### Chores
+
+* formatting ([e736094](https://github.com/lithic-com/lithic-ruby/commit/e736094a8bcf11007a6ea2666cfc6a646aca6972))
+* **internal:** codegen related update ([6bacc68](https://github.com/lithic-com/lithic-ruby/commit/6bacc684b578951ece05155697ec0b68c2d8d4e0))
+* Simplify custom code ([67dc77a](https://github.com/lithic-com/lithic-ruby/commit/67dc77a78348d9d910cca58ffba483992b738f30))
+* Simplify custom code - same for rbs file ([3438ceb](https://github.com/lithic-com/lithic-ruby/commit/3438cebfd4899c87d06a2bc42d4a76af709ea21f))
+* update code formatting ([24f042b](https://github.com/lithic-com/lithic-ruby/commit/24f042b70a1b3b6f30639fe6d04dbc7d566ea187))
+
+
+### Documentation
+
+* **api:** clarify description of token /  retry_token when it serves as idempotency key ([832895f](https://github.com/lithic-com/lithic-ruby/commit/832895fdf5d4e72f9fc1ce62e9acfb6bcbdfdc14))
+* Update language for Google Web Push Provisioning docs ([24f042b](https://github.com/lithic-com/lithic-ruby/commit/24f042b70a1b3b6f30639fe6d04dbc7d566ea187))
+
 ## 0.2.0 (2025-12-10)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0...v0.2.0)
