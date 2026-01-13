@@ -98,7 +98,7 @@ module Lithic
         #   Number of days to hold the ACH payment
         #
         #   @return [Integer, nil]
-        optional :ach_hold_period, Integer, api_name: :ach_hold__period
+        optional :ach_hold_period, Integer
 
         # @!attribute addenda
         #
