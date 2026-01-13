@@ -22,15 +22,15 @@ module Lithic
       #
       # @overload create(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
       #
-      # @param nickname [String] Body param:
+      # @param nickname [String] Body param
       #
-      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type] Body param:
+      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type] Body param
       #
-      # @param account_token [String] Body param:
+      # @param account_token [String] Body param
       #
-      # @param is_for_benefit_of [Boolean] Body param:
+      # @param is_for_benefit_of [Boolean] Body param
       #
-      # @param idempotency_key [String] Header param:
+      # @param idempotency_key [String] Header param
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
