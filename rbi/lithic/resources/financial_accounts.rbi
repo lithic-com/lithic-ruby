@@ -32,15 +32,15 @@ module Lithic
         ).returns(Lithic::FinancialAccount)
       end
       def create(
-        # Body param:
+        # Body param
         nickname:,
-        # Body param:
+        # Body param
         type:,
-        # Body param:
+        # Body param
         account_token: nil,
-        # Body param:
+        # Body param
         is_for_benefit_of: nil,
-        # Header param:
+        # Header param
         idempotency_key: nil,
         request_options: {}
       )
