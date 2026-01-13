@@ -4,11 +4,6 @@ module Lithic
   module Models
     module AuthRules
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
-        # @!attribute filters
-        #
-        #   @return [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
-        required :filters, -> { Lithic::AuthRules::VelocityLimitParams::Filters }
-
         # @!attribute period
         #   Velocity over the current day since 00:00 / 12 AM in Eastern Time
         #
@@ -20,6 +15,11 @@ module Lithic
         #
         #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
         required :scope, enum: -> { Lithic::AuthRules::VelocityLimitParams::Scope }
+
+        # @!attribute filters
+        #
+        #   @return [Lithic::Models::AuthRules::VelocityLimitParams::Filters, nil]
+        optional :filters, -> { Lithic::AuthRules::VelocityLimitParams::Filters }
 
         # @!attribute limit_amount
         #   The maximum amount of spend velocity allowed in the period in minor units (the
@@ -39,19 +39,32 @@ module Lithic
         #   @return [Integer, nil]
         optional :limit_count, Integer, nil?: true
 
-        # @!method initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil)
+        # @!method initialize(period:, scope:, filters: nil, limit_amount: nil, limit_count: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::VelocityLimitParams} for more details.
-        #
-        #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
         #
         #   @param period [Lithic::Models::AuthRules::VelocityLimitPeriod::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowYear] Velocity over the current day since 00:00 / 12 AM in Eastern Time
         #
         #   @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope] The scope the velocity is calculated for
         #
+        #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
+        #
         #   @param limit_amount [Integer, nil] The maximum amount of spend velocity allowed in the period in minor units (the s
         #
         #   @param limit_count [Integer, nil] The number of spend velocity impacting transactions may not exceed this limit in
+
+        # The scope the velocity is calculated for
+        #
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
+        module Scope
+          extend Lithic::Internal::Type::Enum
+
+          CARD = :CARD
+          ACCOUNT = :ACCOUNT
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
         class Filters < Lithic::Internal::Type::BaseModel
@@ -132,19 +145,6 @@ module Lithic
             # @!method self.values
             #   @return [Array<Symbol>]
           end
-        end
-
-        # The scope the velocity is calculated for
-        #
-        # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
-        module Scope
-          extend Lithic::Internal::Type::Enum
-
-          CARD = :CARD
-          ACCOUNT = :ACCOUNT
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
         end
       end
     end
