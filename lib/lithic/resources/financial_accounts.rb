@@ -30,7 +30,7 @@ module Lithic
       #
       # @param is_for_benefit_of [Boolean] Body param
       #
-      # @param idempotency_key [String] Header param
+      # @param idempotency_key [String] Header param: Idempotency key for the request
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

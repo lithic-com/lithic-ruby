@@ -21,7 +21,8 @@ module Lithic
         shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
-        state: Lithic::Models::CardCreateParams::state
+        state: Lithic::Models::CardCreateParams::state,
+        idempotency_key: String
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -117,6 +118,10 @@ module Lithic
         Lithic::Models::CardCreateParams::state
       ) -> Lithic::Models::CardCreateParams::state
 
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> String
+
       def initialize: (
         type: Lithic::Models::CardCreateParams::type_,
         ?account_token: String,
@@ -138,6 +143,7 @@ module Lithic
         ?spend_limit: Integer,
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardCreateParams::state,
+        ?idempotency_key: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
@@ -162,6 +168,7 @@ module Lithic
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::CardCreateParams::state,
+        idempotency_key: String,
         request_options: Lithic::RequestOptions
       }
 

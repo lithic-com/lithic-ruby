@@ -40,7 +40,7 @@ module Lithic
         account_token: nil,
         # Body param
         is_for_benefit_of: nil,
-        # Header param
+        # Header param: Idempotency key for the request
         idempotency_key: nil,
         request_options: {}
       )
