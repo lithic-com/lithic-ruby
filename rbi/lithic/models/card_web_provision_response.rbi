@@ -25,9 +25,7 @@ module Lithic
         # JWS object required for handoff to Apple's script.
         sig do
           returns(
-            T.nilable(
-              Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
-            )
+            Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
           )
         end
         attr_reader :jws
@@ -41,11 +39,8 @@ module Lithic
         attr_writer :jws
 
         # A unique identifier for the JWS object.
-        sig { returns(T.nilable(String)) }
-        attr_reader :state
-
-        sig { params(state: String).void }
-        attr_writer :state
+        sig { returns(String) }
+        attr_accessor :state
 
         sig do
           params(
@@ -56,9 +51,9 @@ module Lithic
         end
         def self.new(
           # JWS object required for handoff to Apple's script.
-          jws: nil,
+          jws:,
           # A unique identifier for the JWS object.
-          state: nil
+          state:
         )
         end
 
