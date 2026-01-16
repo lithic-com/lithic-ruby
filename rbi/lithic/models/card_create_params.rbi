@@ -264,6 +264,12 @@ module Lithic
       sig { params(state: Lithic::CardCreateParams::State::OrSymbol).void }
       attr_writer :state
 
+      sig { returns(T.nilable(String)) }
+      attr_reader :idempotency_key
+
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
+
       sig do
         params(
           type: Lithic::CardCreateParams::Type::OrSymbol,
@@ -287,6 +293,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::CardCreateParams::State::OrSymbol,
+          idempotency_key: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -430,6 +437,7 @@ module Lithic
         # - `PAUSED` - Card will decline authorizations, but can be resumed at a later
         #   time.
         state: nil,
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -458,6 +466,7 @@ module Lithic
             spend_limit: Integer,
             spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
             state: Lithic::CardCreateParams::State::OrSymbol,
+            idempotency_key: String,
             request_options: Lithic::RequestOptions
           }
         )

@@ -3,39 +3,54 @@ module Lithic
     module AuthRules
       type velocity_limit_params =
         {
-          filters: Lithic::AuthRules::VelocityLimitParams::Filters,
           period: Lithic::Models::AuthRules::velocity_limit_period,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
+          filters: Lithic::AuthRules::VelocityLimitParams::Filters,
           limit_amount: Integer?,
           limit_count: Integer?
         }
 
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
-        attr_accessor filters: Lithic::AuthRules::VelocityLimitParams::Filters
-
         attr_accessor period: Lithic::Models::AuthRules::velocity_limit_period
 
         attr_accessor scope: Lithic::Models::AuthRules::VelocityLimitParams::scope
+
+        attr_reader filters: Lithic::AuthRules::VelocityLimitParams::Filters?
+
+        def filters=: (
+          Lithic::AuthRules::VelocityLimitParams::Filters
+        ) -> Lithic::AuthRules::VelocityLimitParams::Filters
 
         attr_accessor limit_amount: Integer?
 
         attr_accessor limit_count: Integer?
 
         def initialize: (
-          filters: Lithic::AuthRules::VelocityLimitParams::Filters,
           period: Lithic::Models::AuthRules::velocity_limit_period,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
+          ?filters: Lithic::AuthRules::VelocityLimitParams::Filters,
           ?limit_amount: Integer?,
           ?limit_count: Integer?
         ) -> void
 
         def to_hash: -> {
-          filters: Lithic::AuthRules::VelocityLimitParams::Filters,
           period: Lithic::Models::AuthRules::velocity_limit_period,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
+          filters: Lithic::AuthRules::VelocityLimitParams::Filters,
           limit_amount: Integer?,
           limit_count: Integer?
         }
+
+        type scope = :CARD | :ACCOUNT
+
+        module Scope
+          extend Lithic::Internal::Type::Enum
+
+          CARD: :CARD
+          ACCOUNT: :ACCOUNT
+
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::scope]
+        end
 
         type filters =
           {
@@ -111,17 +126,6 @@ module Lithic
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::Filters::include_pan_entry_mode]
           end
-        end
-
-        type scope = :CARD | :ACCOUNT
-
-        module Scope
-          extend Lithic::Internal::Type::Enum
-
-          CARD: :CARD
-          ACCOUNT: :ACCOUNT
-
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::scope]
         end
       end
     end

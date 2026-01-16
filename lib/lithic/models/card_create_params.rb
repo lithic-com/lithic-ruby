@@ -226,7 +226,12 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardCreateParams::State, nil]
       optional :state, enum: -> { Lithic::CardCreateParams::State }
 
-      # @!method initialize(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @!attribute idempotency_key
+      #
+      #   @return [String, nil]
+      optional :idempotency_key, String
+
+      # @!method initialize(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, idempotency_key: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardCreateParams} for more details.
       #
@@ -269,6 +274,8 @@ module Lithic
       #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values:
       #
       #   @param state [Symbol, Lithic::Models::CardCreateParams::State] Card state values:
+      #
+      #   @param idempotency_key [String]
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

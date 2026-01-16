@@ -14,16 +14,16 @@ module Lithic
         # @!attribute jws
         #   JWS object required for handoff to Apple's script.
         #
-        #   @return [Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws, nil]
-        optional :jws, -> { Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws }
+        #   @return [Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws]
+        required :jws, -> { Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws }
 
         # @!attribute state
         #   A unique identifier for the JWS object.
         #
-        #   @return [String, nil]
-        optional :state, String
+        #   @return [String]
+        required :state, String
 
-        # @!method initialize(jws: nil, state: nil)
+        # @!method initialize(jws:, state:)
         #   @param jws [Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws] JWS object required for handoff to Apple's script.
         #
         #   @param state [String] A unique identifier for the JWS object.

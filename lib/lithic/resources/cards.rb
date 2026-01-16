@@ -15,47 +15,49 @@ module Lithic
       # Create a new virtual or physical card. Parameters `shipping_address` and
       # `product_id` only apply to physical cards.
       #
-      # @overload create(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @overload create(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, idempotency_key: nil, request_options: {})
       #
-      # @param type [Symbol, Lithic::Models::CardCreateParams::Type] Card types:
+      # @param type [Symbol, Lithic::Models::CardCreateParams::Type] Body param: Card types:
       #
-      # @param account_token [String] Globally unique identifier for the account that the card will be associated with
+      # @param account_token [String] Body param: Globally unique identifier for the account that the card will be ass
       #
-      # @param bulk_order_token [String] Globally unique identifier for an existing bulk order to associate this card wit
+      # @param bulk_order_token [String] Body param: Globally unique identifier for an existing bulk order to associate t
       #
-      # @param card_program_token [String] For card programs with more than one BIN range. This must be configured with Lit
+      # @param card_program_token [String] Body param: For card programs with more than one BIN range. This must be configu
       #
-      # @param carrier [Lithic::Models::Carrier]
+      # @param carrier [Lithic::Models::Carrier] Body param
       #
-      # @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet afte
+      # @param digital_card_art_token [String] Body param: Specifies the digital card art to be displayed in the user’s digital
       #
-      # @param exp_month [String] Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
+      # @param exp_month [String] Body param: Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` i
       #
-      # @param exp_year [String] Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is provided
+      # @param exp_year [String] Body param: Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year`
       #
-      # @param memo [String] Friendly name to identify the card.
+      # @param memo [String] Body param: Friendly name to identify the card.
       #
-      # @param pin [String] Encrypted PIN block (in base64). Applies to cards of type `PHYSICAL` and `VIRTUA
+      # @param pin [String] Body param: Encrypted PIN block (in base64). Applies to cards of type `PHYSICAL`
       #
-      # @param product_id [String] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
+      # @param product_id [String] Body param: Only applicable to cards of type `PHYSICAL`. This must be configured
       #
-      # @param replacement_account_token [String] Restricted field limited to select use cases. Lithic will reach out directly if
+      # @param replacement_account_token [String] Body param: Restricted field limited to select use cases. Lithic will reach out
       #
-      # @param replacement_comment [String] Additional context or information related to the card that this card will replac
+      # @param replacement_comment [String] Body param: Additional context or information related to the card that this card
       #
-      # @param replacement_for [String] Globally unique identifier for the card that this card will replace. If the card
+      # @param replacement_for [String] Body param: Globally unique identifier for the card that this card will replace.
       #
-      # @param replacement_substatus [Symbol, Lithic::Models::CardCreateParams::ReplacementSubstatus] Card state substatus values for the card that this card will replace:
+      # @param replacement_substatus [Symbol, Lithic::Models::CardCreateParams::ReplacementSubstatus] Body param: Card state substatus values for the card that this card will replace
       #
-      # @param shipping_address [Lithic::Models::ShippingAddress]
+      # @param shipping_address [Lithic::Models::ShippingAddress] Body param
       #
-      # @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
+      # @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod] Body param: Shipping method for the card. Only applies to cards of type PHYSICAL
       #
-      # @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
+      # @param spend_limit [Integer] Body param: Amount (in cents) to limit approved authorizations (e.g. 100000 woul
       #
-      # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values:
+      # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Body param: Spend limit duration values:
       #
-      # @param state [Symbol, Lithic::Models::CardCreateParams::State] Card state values:
+      # @param state [Symbol, Lithic::Models::CardCreateParams::State] Body param: Card state values:
+      #
+      # @param idempotency_key [String] Header param: Idempotency key for the request
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -64,7 +66,15 @@ module Lithic
       # @see Lithic::Models::CardCreateParams
       def create(params)
         parsed, options = Lithic::CardCreateParams.dump_request(params)
-        @client.request(method: :post, path: "v1/cards", body: parsed, model: Lithic::Card, options: options)
+        header_params = {idempotency_key: "idempotency-key"}
+        @client.request(
+          method: :post,
+          path: "v1/cards",
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
+          model: Lithic::Card,
+          options: options
+        )
       end
 
       # Get card configuration such as spend limit and state.

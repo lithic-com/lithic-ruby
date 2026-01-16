@@ -26,6 +26,7 @@ module Lithic
         ?spend_limit: Integer,
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardCreateParams::state,
+        ?idempotency_key: String,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Card
 

@@ -12,16 +12,6 @@ module Lithic
             )
           end
 
-        sig { returns(Lithic::AuthRules::VelocityLimitParams::Filters) }
-        attr_reader :filters
-
-        sig do
-          params(
-            filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash
-          ).void
-        end
-        attr_writer :filters
-
         # Velocity over the current day since 00:00 / 12 AM in Eastern Time
         sig do
           returns(
@@ -40,6 +30,18 @@ module Lithic
         sig { returns(Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol) }
         attr_accessor :scope
 
+        sig do
+          returns(T.nilable(Lithic::AuthRules::VelocityLimitParams::Filters))
+        end
+        attr_reader :filters
+
+        sig do
+          params(
+            filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash
+          ).void
+        end
+        attr_writer :filters
+
         # The maximum amount of spend velocity allowed in the period in minor units (the
         # smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
         # limit will be declined.
@@ -56,7 +58,6 @@ module Lithic
 
         sig do
           params(
-            filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash,
             period:
               T.any(
                 Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject::OrHash,
@@ -66,16 +67,17 @@ module Lithic
                 Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear::OrHash
               ),
             scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
+            filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash,
             limit_amount: T.nilable(Integer),
             limit_count: T.nilable(Integer)
           ).returns(T.attached_class)
         end
         def self.new(
-          filters:,
           # Velocity over the current day since 00:00 / 12 AM in Eastern Time
           period:,
           # The scope the velocity is calculated for
           scope:,
+          filters: nil,
           # The maximum amount of spend velocity allowed in the period in minor units (the
           # smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
           # limit will be declined.
@@ -92,7 +94,6 @@ module Lithic
         sig do
           override.returns(
             {
-              filters: Lithic::AuthRules::VelocityLimitParams::Filters,
               period:
                 T.any(
                   Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject,
@@ -102,12 +103,45 @@ module Lithic
                   Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear
                 ),
               scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
+              filters: Lithic::AuthRules::VelocityLimitParams::Filters,
               limit_amount: T.nilable(Integer),
               limit_count: T.nilable(Integer)
             }
           )
         end
         def to_hash
+        end
+
+        # The scope the velocity is calculated for
+        module Scope
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::AuthRules::VelocityLimitParams::Scope)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          CARD =
+            T.let(
+              :CARD,
+              Lithic::AuthRules::VelocityLimitParams::Scope::TaggedSymbol
+            )
+          ACCOUNT =
+            T.let(
+              :ACCOUNT,
+              Lithic::AuthRules::VelocityLimitParams::Scope::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::AuthRules::VelocityLimitParams::Scope::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Filters < Lithic::Internal::Type::BaseModel
@@ -305,38 +339,6 @@ module Lithic
             end
             def self.values
             end
-          end
-        end
-
-        # The scope the velocity is calculated for
-        module Scope
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AuthRules::VelocityLimitParams::Scope)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CARD =
-            T.let(
-              :CARD,
-              Lithic::AuthRules::VelocityLimitParams::Scope::TaggedSymbol
-            )
-          ACCOUNT =
-            T.let(
-              :ACCOUNT,
-              Lithic::AuthRules::VelocityLimitParams::Scope::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::AuthRules::VelocityLimitParams::Scope::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
           end
         end
       end
