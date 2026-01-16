@@ -14,19 +14,13 @@ module Lithic
         }
 
       class AppleWebPushProvisioningResponse < Lithic::Internal::Type::BaseModel
-        attr_reader jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws?
+        attr_accessor jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
 
-        def jws=: (
-          Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
-        ) -> Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
-
-        attr_reader state: String?
-
-        def state=: (String) -> String
+        attr_accessor state: String
 
         def initialize: (
-          ?jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws,
-          ?state: String
+          jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws,
+          state: String
         ) -> void
 
         def to_hash: -> {
