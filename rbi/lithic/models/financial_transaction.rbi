@@ -41,8 +41,10 @@ module Lithic
       attr_accessor :events
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      # including any acquirer fees. The value of this field will go to zero over time
-      # once the financial transaction is settled.
+      # including any acquirer fees.
+      #
+      # The value of this field will go to zero over time once the financial transaction
+      # is settled.
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
@@ -109,8 +111,10 @@ module Lithic
         # A list of all financial events that have modified this financial transaction.
         events:,
         # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-        # including any acquirer fees. The value of this field will go to zero over time
-        # once the financial transaction is settled.
+        # including any acquirer fees.
+        #
+        # The value of this field will go to zero over time once the financial transaction
+        # is settled.
         pending_amount:,
         # APPROVED transactions were successful while DECLINED transactions were declined
         # by user, Lithic, or the network.
