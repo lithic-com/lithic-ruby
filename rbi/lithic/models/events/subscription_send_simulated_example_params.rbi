@@ -152,6 +152,11 @@ module Lithic
               :"card.shipped",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          CARD_UPDATED =
+            T.let(
+              :"card.updated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST =
             T.let(
               :"digital_wallet.tokenization_approval_request",

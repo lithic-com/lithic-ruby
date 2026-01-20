@@ -189,6 +189,8 @@ module Lithic
 
   CardTransactionUpdatedWebhookEvent = Lithic::Models::CardTransactionUpdatedWebhookEvent
 
+  CardUpdatedWebhookEvent = Lithic::Models::CardUpdatedWebhookEvent
+
   CardUpdateParams = Lithic::Models::CardUpdateParams
 
   CardWebProvisionParams = Lithic::Models::CardWebProvisionParams
