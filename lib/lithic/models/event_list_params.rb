@@ -98,6 +98,7 @@ module Lithic
       # - card.reissued: Occurs when a card is reissued.
       # - card.renewed: Occurs when a card is renewed.
       # - card.shipped: Occurs when a card is shipped.
+      # - card.updated: Occurs when a card is updated.
       # - digital_wallet.tokenization_approval_request: Occurs when a tokenization
       #   approval request is made. This event will be deprecated in the future. We
       #   recommend using `tokenization.approval_request` instead.
@@ -192,6 +193,7 @@ module Lithic
         CARD_REISSUED = :"card.reissued"
         CARD_RENEWED = :"card.renewed"
         CARD_SHIPPED = :"card.shipped"
+        CARD_UPDATED = :"card.updated"
         DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST = :"digital_wallet.tokenization_approval_request"
         DIGITAL_WALLET_TOKENIZATION_RESULT = :"digital_wallet.tokenization_result"
         DIGITAL_WALLET_TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE =

@@ -23,6 +23,7 @@ module Lithic
             Lithic::CardRenewedWebhookEvent,
             Lithic::CardReissuedWebhookEvent,
             Lithic::CardShippedWebhookEvent,
+            Lithic::CardUpdatedWebhookEvent,
             Lithic::CardTransactionUpdatedWebhookEvent,
             Lithic::CardTransactionEnhancedDataCreatedWebhookEvent,
             Lithic::CardTransactionEnhancedDataUpdatedWebhookEvent,
