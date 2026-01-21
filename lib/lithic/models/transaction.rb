@@ -162,6 +162,13 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Transaction::Status]
       required :status, enum: -> { Lithic::Transaction::Status }
 
+      # @!attribute tags
+      #   Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+      #   metadata with a resource for your own purposes.
+      #
+      #   @return [Hash{Symbol=>String}]
+      required :tags, Lithic::Internal::Type::HashOf[String]
+
       # @!attribute token_info
       #
       #   @return [Lithic::Models::TokenInfo, nil]
@@ -178,7 +185,7 @@ module Lithic
       #   @return [Array<Lithic::Models::Transaction::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event] }
 
-      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, financial_account_token:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, token_info:, updated:, events: nil)
+      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, financial_account_token:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, tags:, token_info:, updated:, events: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::Transaction} for more details.
       #
@@ -227,6 +234,8 @@ module Lithic
       #   @param settled_amount [Integer] The settled amount of the transaction in the settlement currency.
       #
       #   @param status [Symbol, Lithic::Models::Transaction::Status] Status of the transaction.
+      #
+      #   @param tags [Hash{Symbol=>String}] Key-value pairs for tagging resources. Tags allow you to associate arbitrary met
       #
       #   @param token_info [Lithic::Models::TokenInfo, nil]
       #
