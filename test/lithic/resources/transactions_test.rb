@@ -35,6 +35,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         result: Lithic::Transaction::Result,
         settled_amount: Integer,
         status: Lithic::Transaction::Status,
+        tags: ^(Lithic::Internal::Type::HashOf[String]),
         token_info: Lithic::TokenInfo | nil,
         updated: Time,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event]) | nil
@@ -81,6 +82,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         result: Lithic::Transaction::Result,
         settled_amount: Integer,
         status: Lithic::Transaction::Status,
+        tags: ^(Lithic::Internal::Type::HashOf[String]),
         token_info: Lithic::TokenInfo | nil,
         updated: Time,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event]) | nil

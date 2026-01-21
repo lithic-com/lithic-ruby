@@ -124,6 +124,11 @@ module Lithic
       sig { returns(Lithic::Transaction::Status::TaggedSymbol) }
       attr_accessor :status
 
+      # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+      # metadata with a resource for your own purposes.
+      sig { returns(T::Hash[Symbol, String]) }
+      attr_accessor :tags
+
       sig { returns(T.nilable(Lithic::TokenInfo)) }
       attr_reader :token_info
 
@@ -166,6 +171,7 @@ module Lithic
           result: Lithic::Transaction::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::Transaction::Status::OrSymbol,
+          tags: T::Hash[Symbol, String],
           token_info: T.nilable(Lithic::TokenInfo::OrHash),
           updated: Time,
           events: T::Array[Lithic::Transaction::Event::OrHash]
@@ -224,6 +230,9 @@ module Lithic
         settled_amount:,
         # Status of the transaction.
         status:,
+        # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+        # metadata with a resource for your own purposes.
+        tags:,
         token_info:,
         # Date and time when the transaction last updated. UTC time zone.
         updated:,
@@ -258,6 +267,7 @@ module Lithic
             result: Lithic::Transaction::Result::TaggedSymbol,
             settled_amount: Integer,
             status: Lithic::Transaction::Status::TaggedSymbol,
+            tags: T::Hash[Symbol, String],
             token_info: T.nilable(Lithic::TokenInfo),
             updated: Time,
             events: T::Array[Lithic::Transaction::Event]
