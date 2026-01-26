@@ -10,7 +10,7 @@ module Lithic
 
       # The token of the card that was updated.
       sig { returns(String) }
-      attr_accessor :token
+      attr_accessor :card_token
 
       # The type of event that occurred.
       sig { returns(Symbol) }
@@ -26,7 +26,7 @@ module Lithic
 
       sig do
         params(
-          token: String,
+          card_token: String,
           previous_fields: T.anything,
           state: String,
           event_type: Symbol
@@ -34,7 +34,7 @@ module Lithic
       end
       def self.new(
         # The token of the card that was updated.
-        token:,
+        card_token:,
         # The previous values of the fields that were updated.
         previous_fields:,
         # The current state of the card.
@@ -47,7 +47,7 @@ module Lithic
       sig do
         override.returns(
           {
-            token: String,
+            card_token: String,
             event_type: Symbol,
             previous_fields: T.anything,
             state: String
