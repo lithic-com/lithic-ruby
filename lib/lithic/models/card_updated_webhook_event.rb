@@ -3,11 +3,11 @@
 module Lithic
   module Models
     class CardUpdatedWebhookEvent < Lithic::Internal::Type::BaseModel
-      # @!attribute token
+      # @!attribute card_token
       #   The token of the card that was updated.
       #
       #   @return [String]
-      required :token, String
+      required :card_token, String
 
       # @!attribute event_type
       #   The type of event that occurred.
@@ -27,8 +27,8 @@ module Lithic
       #   @return [String]
       required :state, String
 
-      # @!method initialize(token:, previous_fields:, state:, event_type: :"card.updated")
-      #   @param token [String] The token of the card that was updated.
+      # @!method initialize(card_token:, previous_fields:, state:, event_type: :"card.updated")
+      #   @param card_token [String] The token of the card that was updated.
       #
       #   @param previous_fields [Object] The previous values of the fields that were updated.
       #
