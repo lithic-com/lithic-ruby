@@ -96,7 +96,10 @@ module Lithic
           descriptor: String,
           pan: String,
           mcc: String,
+          merchant_acceptor_city: String,
+          merchant_acceptor_country: String,
           merchant_acceptor_id: String,
+          merchant_acceptor_state: String,
           merchant_amount: Integer,
           merchant_currency: String,
           partial_approval_capable: T::Boolean,
@@ -121,8 +124,14 @@ module Lithic
         # listed in ISO 18245. Supported merchant category codes can be found
         # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
         mcc: nil,
+        # Merchant acceptor city
+        merchant_acceptor_city: nil,
+        # Merchant acceptor country code (ISO 3166-1 alpha-3)
+        merchant_acceptor_country: nil,
         # Unique identifier to identify the payment card acceptor.
         merchant_acceptor_id: nil,
+        # Merchant acceptor state/province (ISO 3166-2 subdivision code)
+        merchant_acceptor_state: nil,
         # Amount of the transaction to be simulated in currency specified in
         # merchant_currency, including any acquirer fees.
         merchant_amount: nil,
@@ -216,7 +225,10 @@ module Lithic
           descriptor: String,
           pan: String,
           mcc: String,
+          merchant_acceptor_city: String,
+          merchant_acceptor_country: String,
           merchant_acceptor_id: String,
+          merchant_acceptor_state: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(
           Lithic::Models::TransactionSimulateCreditAuthorizationAdviceResponse
@@ -235,8 +247,14 @@ module Lithic
         # listed in ISO 18245. Supported merchant category codes can be found
         # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
         mcc: nil,
+        # Merchant acceptor city
+        merchant_acceptor_city: nil,
+        # Merchant acceptor country code (ISO 3166-1 alpha-3)
+        merchant_acceptor_country: nil,
         # Unique identifier to identify the payment card acceptor.
         merchant_acceptor_id: nil,
+        # Merchant acceptor state/province (ISO 3166-2 subdivision code)
+        merchant_acceptor_state: nil,
         request_options: {}
       )
       end

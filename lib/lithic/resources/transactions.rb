@@ -105,7 +105,7 @@ module Lithic
       # [update account](https://docs.lithic.com/reference/patchaccountbytoken)
       # endpoint.
       #
-      # @overload simulate_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
+      # @overload simulate_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_city: nil, merchant_acceptor_country: nil, merchant_acceptor_id: nil, merchant_acceptor_state: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
       #
       # @param amount [Integer] Amount (in cents) to authorize. For credit authorizations and financial credit a
       #
@@ -115,7 +115,13 @@ module Lithic
       #
       # @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
       #
+      # @param merchant_acceptor_city [String] Merchant acceptor city
+      #
+      # @param merchant_acceptor_country [String] Merchant acceptor country code (ISO 3166-1 alpha-3)
+      #
       # @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
+      # @param merchant_acceptor_state [String] Merchant acceptor state/province (ISO 3166-2 subdivision code)
       #
       # @param merchant_amount [Integer] Amount of the transaction to be simulated in currency specified in merchant_curr
       #
@@ -211,7 +217,7 @@ module Lithic
       # Simulates a credit authorization advice from the card network. This message
       # indicates that the network approved a credit authorization on your behalf.
       #
-      # @overload simulate_credit_authorization_advice(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
+      # @overload simulate_credit_authorization_advice(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_city: nil, merchant_acceptor_country: nil, merchant_acceptor_id: nil, merchant_acceptor_state: nil, request_options: {})
       #
       # @param amount [Integer] Amount (in cents). Any value entered will be converted into a negative amount in
       #
@@ -221,7 +227,13 @@ module Lithic
       #
       # @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
       #
+      # @param merchant_acceptor_city [String] Merchant acceptor city
+      #
+      # @param merchant_acceptor_country [String] Merchant acceptor country code (ISO 3166-1 alpha-3)
+      #
       # @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
+      # @param merchant_acceptor_state [String] Merchant acceptor state/province (ISO 3166-2 subdivision code)
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

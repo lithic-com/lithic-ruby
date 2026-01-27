@@ -35,13 +35,31 @@ module Lithic
       #   @return [String, nil]
       optional :mcc, String
 
+      # @!attribute merchant_acceptor_city
+      #   Merchant acceptor city
+      #
+      #   @return [String, nil]
+      optional :merchant_acceptor_city, String
+
+      # @!attribute merchant_acceptor_country
+      #   Merchant acceptor country code (ISO 3166-1 alpha-3)
+      #
+      #   @return [String, nil]
+      optional :merchant_acceptor_country, String
+
       # @!attribute merchant_acceptor_id
       #   Unique identifier to identify the payment card acceptor.
       #
       #   @return [String, nil]
       optional :merchant_acceptor_id, String
 
-      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
+      # @!attribute merchant_acceptor_state
+      #   Merchant acceptor state/province (ISO 3166-2 subdivision code)
+      #
+      #   @return [String, nil]
+      optional :merchant_acceptor_state, String
+
+      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_city: nil, merchant_acceptor_country: nil, merchant_acceptor_id: nil, merchant_acceptor_state: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TransactionSimulateCreditAuthorizationAdviceParams} for more
       #   details.
@@ -54,7 +72,13 @@ module Lithic
       #
       #   @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
       #
+      #   @param merchant_acceptor_city [String] Merchant acceptor city
+      #
+      #   @param merchant_acceptor_country [String] Merchant acceptor country code (ISO 3166-1 alpha-3)
+      #
       #   @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
+      #   @param merchant_acceptor_state [String] Merchant acceptor state/province (ISO 3166-2 subdivision code)
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
