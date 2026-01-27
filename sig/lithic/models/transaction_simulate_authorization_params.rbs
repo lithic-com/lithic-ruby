@@ -6,7 +6,10 @@ module Lithic
         descriptor: String,
         pan: String,
         mcc: String,
+        merchant_acceptor_city: String,
+        merchant_acceptor_country: String,
         merchant_acceptor_id: String,
+        merchant_acceptor_state: String,
         merchant_amount: Integer,
         merchant_currency: String,
         partial_approval_capable: bool,
@@ -29,9 +32,21 @@ module Lithic
 
       def mcc=: (String) -> String
 
+      attr_reader merchant_acceptor_city: String?
+
+      def merchant_acceptor_city=: (String) -> String
+
+      attr_reader merchant_acceptor_country: String?
+
+      def merchant_acceptor_country=: (String) -> String
+
       attr_reader merchant_acceptor_id: String?
 
       def merchant_acceptor_id=: (String) -> String
+
+      attr_reader merchant_acceptor_state: String?
+
+      def merchant_acceptor_state=: (String) -> String
 
       attr_reader merchant_amount: Integer?
 
@@ -60,7 +75,10 @@ module Lithic
         descriptor: String,
         pan: String,
         ?mcc: String,
+        ?merchant_acceptor_city: String,
+        ?merchant_acceptor_country: String,
         ?merchant_acceptor_id: String,
+        ?merchant_acceptor_state: String,
         ?merchant_amount: Integer,
         ?merchant_currency: String,
         ?partial_approval_capable: bool,
@@ -74,7 +92,10 @@ module Lithic
         descriptor: String,
         pan: String,
         mcc: String,
+        merchant_acceptor_city: String,
+        merchant_acceptor_country: String,
         merchant_acceptor_id: String,
+        merchant_acceptor_state: String,
         merchant_amount: Integer,
         merchant_currency: String,
         partial_approval_capable: bool,

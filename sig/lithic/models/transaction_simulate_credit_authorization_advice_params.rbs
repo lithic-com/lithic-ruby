@@ -6,7 +6,10 @@ module Lithic
         descriptor: String,
         pan: String,
         mcc: String,
-        merchant_acceptor_id: String
+        merchant_acceptor_city: String,
+        merchant_acceptor_country: String,
+        merchant_acceptor_id: String,
+        merchant_acceptor_state: String
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -24,16 +27,31 @@ module Lithic
 
       def mcc=: (String) -> String
 
+      attr_reader merchant_acceptor_city: String?
+
+      def merchant_acceptor_city=: (String) -> String
+
+      attr_reader merchant_acceptor_country: String?
+
+      def merchant_acceptor_country=: (String) -> String
+
       attr_reader merchant_acceptor_id: String?
 
       def merchant_acceptor_id=: (String) -> String
+
+      attr_reader merchant_acceptor_state: String?
+
+      def merchant_acceptor_state=: (String) -> String
 
       def initialize: (
         amount: Integer,
         descriptor: String,
         pan: String,
         ?mcc: String,
+        ?merchant_acceptor_city: String,
+        ?merchant_acceptor_country: String,
         ?merchant_acceptor_id: String,
+        ?merchant_acceptor_state: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
@@ -42,7 +60,10 @@ module Lithic
         descriptor: String,
         pan: String,
         mcc: String,
+        merchant_acceptor_city: String,
+        merchant_acceptor_country: String,
         merchant_acceptor_id: String,
+        merchant_acceptor_state: String,
         request_options: Lithic::RequestOptions
       }
     end

@@ -37,11 +37,29 @@ module Lithic
       #   @return [String, nil]
       optional :mcc, String
 
+      # @!attribute merchant_acceptor_city
+      #   Merchant acceptor city
+      #
+      #   @return [String, nil]
+      optional :merchant_acceptor_city, String
+
+      # @!attribute merchant_acceptor_country
+      #   Merchant acceptor country code (ISO 3166-1 alpha-3)
+      #
+      #   @return [String, nil]
+      optional :merchant_acceptor_country, String
+
       # @!attribute merchant_acceptor_id
       #   Unique identifier to identify the payment card acceptor.
       #
       #   @return [String, nil]
       optional :merchant_acceptor_id, String
+
+      # @!attribute merchant_acceptor_state
+      #   Merchant acceptor state/province (ISO 3166-2 subdivision code)
+      #
+      #   @return [String, nil]
+      optional :merchant_acceptor_state, String
 
       # @!attribute merchant_amount
       #   Amount of the transaction to be simulated in currency specified in
@@ -92,7 +110,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status, nil]
       optional :status, enum: -> { Lithic::TransactionSimulateAuthorizationParams::Status }
 
-      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
+      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_city: nil, merchant_acceptor_country: nil, merchant_acceptor_id: nil, merchant_acceptor_state: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TransactionSimulateAuthorizationParams} for more details.
       #
@@ -104,7 +122,13 @@ module Lithic
       #
       #   @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
       #
+      #   @param merchant_acceptor_city [String] Merchant acceptor city
+      #
+      #   @param merchant_acceptor_country [String] Merchant acceptor country code (ISO 3166-1 alpha-3)
+      #
       #   @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
+      #   @param merchant_acceptor_state [String] Merchant acceptor state/province (ISO 3166-2 subdivision code)
       #
       #   @param merchant_amount [Integer] Amount of the transaction to be simulated in currency specified in merchant_curr
       #

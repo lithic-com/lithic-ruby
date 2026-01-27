@@ -37,6 +37,20 @@ module Lithic
       sig { params(mcc: String).void }
       attr_writer :mcc
 
+      # Merchant acceptor city
+      sig { returns(T.nilable(String)) }
+      attr_reader :merchant_acceptor_city
+
+      sig { params(merchant_acceptor_city: String).void }
+      attr_writer :merchant_acceptor_city
+
+      # Merchant acceptor country code (ISO 3166-1 alpha-3)
+      sig { returns(T.nilable(String)) }
+      attr_reader :merchant_acceptor_country
+
+      sig { params(merchant_acceptor_country: String).void }
+      attr_writer :merchant_acceptor_country
+
       # Unique identifier to identify the payment card acceptor.
       sig { returns(T.nilable(String)) }
       attr_reader :merchant_acceptor_id
@@ -44,13 +58,23 @@ module Lithic
       sig { params(merchant_acceptor_id: String).void }
       attr_writer :merchant_acceptor_id
 
+      # Merchant acceptor state/province (ISO 3166-2 subdivision code)
+      sig { returns(T.nilable(String)) }
+      attr_reader :merchant_acceptor_state
+
+      sig { params(merchant_acceptor_state: String).void }
+      attr_writer :merchant_acceptor_state
+
       sig do
         params(
           amount: Integer,
           descriptor: String,
           pan: String,
           mcc: String,
+          merchant_acceptor_city: String,
+          merchant_acceptor_country: String,
           merchant_acceptor_id: String,
+          merchant_acceptor_state: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -67,8 +91,14 @@ module Lithic
         # listed in ISO 18245. Supported merchant category codes can be found
         # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
         mcc: nil,
+        # Merchant acceptor city
+        merchant_acceptor_city: nil,
+        # Merchant acceptor country code (ISO 3166-1 alpha-3)
+        merchant_acceptor_country: nil,
         # Unique identifier to identify the payment card acceptor.
         merchant_acceptor_id: nil,
+        # Merchant acceptor state/province (ISO 3166-2 subdivision code)
+        merchant_acceptor_state: nil,
         request_options: {}
       )
       end
@@ -80,7 +110,10 @@ module Lithic
             descriptor: String,
             pan: String,
             mcc: String,
+            merchant_acceptor_city: String,
+            merchant_acceptor_country: String,
             merchant_acceptor_id: String,
+            merchant_acceptor_state: String,
             request_options: Lithic::RequestOptions
           }
         )
