@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.4.0 (2026-01-27)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/lithic-com/lithic-ruby/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** Add card state attribute to tokenization rules ([0fe9646](https://github.com/lithic-com/lithic-ruby/commit/0fe9646694e932fddba74b91dcc7cdb1bb565d10))
+* **api:** Add card.updated event ([80369fe](https://github.com/lithic-com/lithic-ruby/commit/80369fe89f4bfb7255bfa05a2035c77238debe3a))
+* **api:** Add event_type to ASA request and 3DS decisioning request ([0fe9646](https://github.com/lithic-com/lithic-ruby/commit/0fe9646694e932fddba74b91dcc7cdb1bb565d10))
+* **api:** Add idempotency key to cards POST and PATCH endpoints ([51321d8](https://github.com/lithic-com/lithic-ruby/commit/51321d8d84f5e1fcb4e9161dd607f01dc9d5cf5d))
+* **api:** Add merchant location fields to simulator endpoints ([d983a60](https://github.com/lithic-com/lithic-ruby/commit/d983a608526955b2699b151e71d14adab72a1a7d))
+* **api:** Add tags field to card transactions ([edf8fbc](https://github.com/lithic-com/lithic-ruby/commit/edf8fbccb53de602bc52be916d6c80498ae4e390))
+* **api:** Add user defined status to ledger accounts ([0fe9646](https://github.com/lithic-com/lithic-ruby/commit/0fe9646694e932fddba74b91dcc7cdb1bb565d10))
+* **api:** Expose Payment Allocation Details ([0fe9646](https://github.com/lithic-com/lithic-ruby/commit/0fe9646694e932fddba74b91dcc7cdb1bb565d10))
+* **api:** make filter optional for Spend Velocity Auth Rules ([3e09d4a](https://github.com/lithic-com/lithic-ruby/commit/3e09d4a5488c83ad8122c973baf5eb4e18de29b0))
+
+
+### Bug Fixes
+
+* **api:** Correct field name from ach_hold__period to ach_hold_period ([16b6555](https://github.com/lithic-com/lithic-ruby/commit/16b65553840cfad0d39eb52d9770ca394a893c44))
+* **api:** mark AppleWebPushProvisioningResponse fields required ([4105b29](https://github.com/lithic-com/lithic-ruby/commit/4105b29d27ce48c60180c5b7166e664fdd1c0e46))
+* **api:** rename WIRE_DRAWDOWN_REQUEST to WIRE_INBOUND_DRAWDOWN_REQUEST ([3e09d4a](https://github.com/lithic-com/lithic-ruby/commit/3e09d4a5488c83ad8122c973baf5eb4e18de29b0))
+
+
+### Chores
+
+* Add spec linter for YAML and folded style multiline strings ([35a67d3](https://github.com/lithic-com/lithic-ruby/commit/35a67d3154e8f54d374c53d8b3b53b9485272878))
+* configure new SDK language ([ba770b2](https://github.com/lithic-com/lithic-ruby/commit/ba770b2cd5f50ba1871c539f89036ff4538b1df2))
+* **internal:** codegen related update ([ef965b2](https://github.com/lithic-com/lithic-ruby/commit/ef965b2fc0cfebc92a3d2317b7201318bcd500aa))
+* **internal:** codegen related update ([143a5ea](https://github.com/lithic-com/lithic-ruby/commit/143a5ea456ee1e6db32fd923ddb68f749ceed53b))
+* **internal:** update `actions/checkout` version ([830ae4a](https://github.com/lithic-com/lithic-ruby/commit/830ae4ad28662e5be21860d14ea86d2f1fa25ec0))
+* Rework event type generation to support spec splitting ([fdb9960](https://github.com/lithic-com/lithic-ruby/commit/fdb9960d08f95f161da8abf310509d594a0d2957))
+* update code formatting ([0fe9646](https://github.com/lithic-com/lithic-ruby/commit/0fe9646694e932fddba74b91dcc7cdb1bb565d10))
+
+
+### Documentation
+
+* Remove deprecated tag from MERCHANT_LOCKED card type ([b3104df](https://github.com/lithic-com/lithic-ruby/commit/b3104df92ab8f161c92c1136b86a1a734576f574))
+* Update language for Google Web Push Provisioning docs ([0fe9646](https://github.com/lithic-com/lithic-ruby/commit/0fe9646694e932fddba74b91dcc7cdb1bb565d10))
+
 ## 0.3.0 (2026-01-08)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/lithic-com/lithic-ruby/compare/v0.2.0...v0.3.0)
