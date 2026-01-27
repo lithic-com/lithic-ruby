@@ -33,7 +33,10 @@ module Lithic
         descriptor: String,
         pan: String,
         ?mcc: String,
+        ?merchant_acceptor_city: String,
+        ?merchant_acceptor_country: String,
         ?merchant_acceptor_id: String,
+        ?merchant_acceptor_state: String,
         ?merchant_amount: Integer,
         ?merchant_currency: String,
         ?partial_approval_capable: bool,
@@ -59,7 +62,10 @@ module Lithic
         descriptor: String,
         pan: String,
         ?mcc: String,
+        ?merchant_acceptor_city: String,
+        ?merchant_acceptor_country: String,
         ?merchant_acceptor_id: String,
+        ?merchant_acceptor_state: String,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::TransactionSimulateCreditAuthorizationAdviceResponse
 
