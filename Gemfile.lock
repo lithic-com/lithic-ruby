@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    lithic (0.3.0)
+    lithic (0.4.0)
       cgi
       connection_pool
 
