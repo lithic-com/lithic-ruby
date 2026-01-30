@@ -11,6 +11,7 @@ module Lithic
         beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity],
         external_id: String,
         kyb_passed_timestamp: String,
+        naics_code: String,
         website_url: String
       }
 
@@ -41,6 +42,10 @@ module Lithic
 
       def kyb_passed_timestamp=: (String) -> String
 
+      attr_reader naics_code: String?
+
+      def naics_code=: (String) -> String
+
       attr_reader website_url: String?
 
       def website_url=: (String) -> String
@@ -55,6 +60,7 @@ module Lithic
         ?beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity],
         ?external_id: String,
         ?kyb_passed_timestamp: String,
+        ?naics_code: String,
         ?website_url: String
       ) -> void
 
@@ -68,6 +74,7 @@ module Lithic
         beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity],
         external_id: String,
         kyb_passed_timestamp: String,
+        naics_code: String,
         website_url: String
       }
 

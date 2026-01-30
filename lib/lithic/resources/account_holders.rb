@@ -15,7 +15,7 @@ module Lithic
       # process. This endpoint can only be used on accounts that are part of the program
       # that the calling API key manages.
       #
-      # @overload create(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
+      # @overload create(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, naics_code: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #
       # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened.
       #
@@ -48,6 +48,8 @@ module Lithic
       # @param external_id [String] A user provided id that can be used to link an account holder with an external s
       #
       # @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYB was completed on the busin
+      #
+      # @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
       #
       # @param website_url [String] Company website URL.
       #
@@ -106,7 +108,7 @@ module Lithic
       # process. This endpoint can only be used on existing accounts that are part of
       # the program that the calling API key manages.
       #
-      # @overload update(account_holder_token, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
+      # @overload update(account_holder_token, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, naics_code: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
       #
       # @param account_holder_token [String] Globally unique identifier for the account holder.
       #
@@ -119,6 +121,8 @@ module Lithic
       # @param control_person [Lithic::Models::AccountHolderUpdateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
       #
       # @param external_id [String] A user provided id that can be used to link an account holder with an external s
+      #
+      # @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
       #
       # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
       #
