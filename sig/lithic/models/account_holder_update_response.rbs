@@ -21,6 +21,7 @@ module Lithic
           exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type,
           external_id: String,
           individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+          naics_code: String,
           nature_of_business: String,
           phone_number: String,
           required_documents: ::Array[Lithic::RequiredDocument],
@@ -90,6 +91,10 @@ module Lithic
           Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual
         ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual
 
+        attr_reader naics_code: String?
+
+        def naics_code=: (String) -> String
+
         attr_reader nature_of_business: String?
 
         def nature_of_business=: (String) -> String
@@ -145,6 +150,7 @@ module Lithic
           ?exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type,
           ?external_id: String,
           ?individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+          ?naics_code: String,
           ?nature_of_business: String,
           ?phone_number: String,
           ?required_documents: ::Array[Lithic::RequiredDocument],
@@ -168,6 +174,7 @@ module Lithic
           exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type,
           external_id: String,
           individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+          naics_code: String,
           nature_of_business: String,
           phone_number: String,
           required_documents: ::Array[Lithic::RequiredDocument],

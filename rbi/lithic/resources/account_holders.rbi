@@ -38,6 +38,7 @@ module Lithic
             ],
           external_id: String,
           kyb_passed_timestamp: String,
+          naics_code: String,
           website_url: String,
           kyc_passed_timestamp: String,
           business_account_token: String,
@@ -98,6 +99,9 @@ module Lithic
         #
         # This field is required only if workflow type is `KYB_BYO`.
         kyb_passed_timestamp: nil,
+        # 6-digit North American Industry Classification System (NAICS) code for the
+        # business.
+        naics_code: nil,
         # Company website URL.
         website_url: nil,
         # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
@@ -154,6 +158,7 @@ module Lithic
           control_person:
             Lithic::AccountHolderUpdateParams::ControlPerson::OrHash,
           external_id: String,
+          naics_code: String,
           nature_of_business: String,
           website_url: String,
           individual: Lithic::AccountHolderUpdateParams::Individual::OrHash,
@@ -194,6 +199,9 @@ module Lithic
         # A user provided id that can be used to link an account holder with an external
         # system
         external_id: nil,
+        # 6-digit North American Industry Classification System (NAICS) code for the
+        # business.
+        naics_code: nil,
         # Short description of the company's line of business (i.e., what does the company
         # do?).
         nature_of_business: nil,

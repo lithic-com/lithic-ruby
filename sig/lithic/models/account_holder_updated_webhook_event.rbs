@@ -14,6 +14,7 @@ module Lithic
           update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest,
           event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type,
           external_id: String,
+          naics_code: String,
           nature_of_business: String,
           website_url: String
         }
@@ -33,6 +34,10 @@ module Lithic
 
         def external_id=: (String) -> String
 
+        attr_reader naics_code: String?
+
+        def naics_code=: (String) -> String
+
         attr_reader nature_of_business: String?
 
         def nature_of_business=: (String) -> String
@@ -46,6 +51,7 @@ module Lithic
           update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest,
           ?event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type,
           ?external_id: String,
+          ?naics_code: String,
           ?nature_of_business: String,
           ?website_url: String
         ) -> void
@@ -55,6 +61,7 @@ module Lithic
           update_request: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest,
           event_type: Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::event_type,
           external_id: String,
+          naics_code: String,
           nature_of_business: String,
           website_url: String
         }

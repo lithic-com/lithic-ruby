@@ -97,6 +97,13 @@ module Lithic
       #   @return [Lithic::Models::AccountHolder::Individual, nil]
       optional :individual, -> { Lithic::AccountHolder::Individual }
 
+      # @!attribute naics_code
+      #   Only present when user_type == "BUSINESS". 6-digit North American Industry
+      #   Classification System (NAICS) code for the business.
+      #
+      #   @return [String, nil]
+      optional :naics_code, String
+
       # @!attribute nature_of_business
       #   Only present when user_type == "BUSINESS". User-submitted description of the
       #   business.
@@ -143,8 +150,8 @@ module Lithic
       # @!attribute user_type
       #   The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
-      #   "control_person", "beneficial_owner_individuals", "nature_of_business", and
-      #   "website_url" attributes will be present.
+      #   "control_person", "beneficial_owner_individuals", "naics_code",
+      #   "nature_of_business", and "website_url" attributes will be present.
       #
       #   @return [Symbol, Lithic::Models::AccountHolder::UserType, nil]
       optional :user_type, enum: -> { Lithic::AccountHolder::UserType }
@@ -161,7 +168,7 @@ module Lithic
       #   @return [String, nil]
       optional :website_url, String
 
-      # @!method initialize(token:, created:, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
+      # @!method initialize(token:, created:, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, naics_code: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolder} for more details.
       #
@@ -188,6 +195,8 @@ module Lithic
       #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
       #
       #   @param individual [Lithic::Models::AccountHolder::Individual] Only present when user_type == "INDIVIDUAL". Information about the individual fo
+      #
+      #   @param naics_code [String] Only present when user_type == "BUSINESS". 6-digit North American Industry Class
       #
       #   @param nature_of_business [String] Only present when user_type == "BUSINESS". User-submitted description of the bus
       #
@@ -592,8 +601,8 @@ module Lithic
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       # attribute will be present. If the type is "BUSINESS" then the "business_entity",
-      # "control_person", "beneficial_owner_individuals", "nature_of_business", and
-      # "website_url" attributes will be present.
+      # "control_person", "beneficial_owner_individuals", "naics_code",
+      # "nature_of_business", and "website_url" attributes will be present.
       #
       # @see Lithic::Models::AccountHolder#user_type
       module UserType

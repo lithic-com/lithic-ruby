@@ -121,6 +121,14 @@ module Lithic
         sig { params(external_id: String).void }
         attr_writer :external_id
 
+        # 6-digit North American Industry Classification System (NAICS) code for the
+        # business. Only present if naics_code was included in the update request.
+        sig { returns(T.nilable(String)) }
+        attr_reader :naics_code
+
+        sig { params(naics_code: String).void }
+        attr_writer :naics_code
+
         # Short description of the company's line of business (i.e., what does the company
         # do?).
         sig { returns(T.nilable(String)) }
@@ -145,6 +153,7 @@ module Lithic
             event_type:
               Lithic::ParsedWebhookEvent::KYBPayload::EventType::OrSymbol,
             external_id: String,
+            naics_code: String,
             nature_of_business: String,
             website_url: String
           ).returns(T.attached_class)
@@ -159,6 +168,9 @@ module Lithic
           # A user provided id that can be used to link an account holder with an external
           # system
           external_id: nil,
+          # 6-digit North American Industry Classification System (NAICS) code for the
+          # business. Only present if naics_code was included in the update request.
+          naics_code: nil,
           # Short description of the company's line of business (i.e., what does the company
           # do?).
           nature_of_business: nil,
@@ -176,6 +188,7 @@ module Lithic
               event_type:
                 Lithic::ParsedWebhookEvent::KYBPayload::EventType::TaggedSymbol,
               external_id: String,
+              naics_code: String,
               nature_of_business: String,
               website_url: String
             }

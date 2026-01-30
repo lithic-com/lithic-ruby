@@ -7,6 +7,7 @@ module Lithic
         business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
         external_id: String,
+        naics_code: String,
         nature_of_business: String,
         website_url: String,
         individual: Lithic::AccountHolderUpdateParams::Individual,
@@ -51,6 +52,10 @@ module Lithic
       attr_reader external_id: String?
 
       def external_id=: (String) -> String
+
+      attr_reader naics_code: String?
+
+      def naics_code=: (String) -> String
 
       attr_reader nature_of_business: String?
 
@@ -100,6 +105,7 @@ module Lithic
         ?business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         ?control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
         ?external_id: String,
+        ?naics_code: String,
         ?nature_of_business: String,
         ?website_url: String,
         ?individual: Lithic::AccountHolderUpdateParams::Individual,
@@ -119,6 +125,7 @@ module Lithic
         business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
         external_id: String,
+        naics_code: String,
         nature_of_business: String,
         website_url: String,
         individual: Lithic::AccountHolderUpdateParams::Individual,

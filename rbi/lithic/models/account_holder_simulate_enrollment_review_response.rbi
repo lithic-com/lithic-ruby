@@ -167,6 +167,14 @@ module Lithic
       end
       attr_writer :individual
 
+      # Only present when user_type == "BUSINESS". 6-digit North American Industry
+      # Classification System (NAICS) code for the business.
+      sig { returns(T.nilable(String)) }
+      attr_reader :naics_code
+
+      sig { params(naics_code: String).void }
+      attr_writer :naics_code
+
       # Only present when user_type == "BUSINESS". User-submitted description of the
       # business.
       sig { returns(T.nilable(String)) }
@@ -245,8 +253,8 @@ module Lithic
       # attribute will be present.
       #
       # If the type is "BUSINESS" then the "business_entity", "control_person",
-      # "beneficial_owner_individuals", "nature_of_business", and "website_url"
-      # attributes will be present.
+      # "beneficial_owner_individuals", "naics_code", "nature_of_business", and
+      # "website_url" attributes will be present.
       sig do
         returns(
           T.nilable(
@@ -310,6 +318,7 @@ module Lithic
           external_id: String,
           individual:
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::OrHash,
+          naics_code: String,
           nature_of_business: String,
           phone_number: String,
           required_documents: T::Array[Lithic::RequiredDocument::OrHash],
@@ -374,6 +383,9 @@ module Lithic
         # Only present when user_type == "INDIVIDUAL". Information about the individual
         # for which the account is being opened and KYC is being run.
         individual: nil,
+        # Only present when user_type == "BUSINESS". 6-digit North American Industry
+        # Classification System (NAICS) code for the business.
+        naics_code: nil,
         # Only present when user_type == "BUSINESS". User-submitted description of the
         # business.
         nature_of_business: nil,
@@ -397,8 +409,8 @@ module Lithic
         # attribute will be present.
         #
         # If the type is "BUSINESS" then the "business_entity", "control_person",
-        # "beneficial_owner_individuals", "nature_of_business", and "website_url"
-        # attributes will be present.
+        # "beneficial_owner_individuals", "naics_code", "nature_of_business", and
+        # "website_url" attributes will be present.
         user_type: nil,
         # Information about the most recent identity verification attempt
         verification_application: nil,
@@ -428,6 +440,7 @@ module Lithic
             external_id: String,
             individual:
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+            naics_code: String,
             nature_of_business: String,
             phone_number: String,
             required_documents: T::Array[Lithic::RequiredDocument],
@@ -1286,8 +1299,8 @@ module Lithic
       # attribute will be present.
       #
       # If the type is "BUSINESS" then the "business_entity", "control_person",
-      # "beneficial_owner_individuals", "nature_of_business", and "website_url"
-      # attributes will be present.
+      # "beneficial_owner_individuals", "naics_code", "nature_of_business", and
+      # "website_url" attributes will be present.
       module UserType
         extend Lithic::Internal::Type::Enum
 

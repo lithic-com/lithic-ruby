@@ -84,6 +84,13 @@ module Lithic
       #   @return [String, nil]
       optional :kyb_passed_timestamp, String
 
+      # @!attribute naics_code
+      #   6-digit North American Industry Classification System (NAICS) code for the
+      #   business.
+      #
+      #   @return [String, nil]
+      optional :naics_code, String
+
       # @!attribute website_url
       #   Company website URL.
       #
@@ -151,7 +158,7 @@ module Lithic
       #   @return [String, nil]
       optional :business_account_token, String
 
-      # @!method initialize(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
+      # @!method initialize(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, naics_code: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolderCreateParams} for more details.
       #
@@ -186,6 +193,8 @@ module Lithic
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
       #
       #   @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYB was completed on the busin
+      #
+      #   @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
       #
       #   @param website_url [String] Company website URL.
       #

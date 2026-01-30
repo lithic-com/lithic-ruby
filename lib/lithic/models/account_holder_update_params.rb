@@ -55,6 +55,13 @@ module Lithic
       #   @return [String, nil]
       optional :external_id, String
 
+      # @!attribute naics_code
+      #   6-digit North American Industry Classification System (NAICS) code for the
+      #   business.
+      #
+      #   @return [String, nil]
+      optional :naics_code, String
+
       # @!attribute nature_of_business
       #   Short description of the company's line of business (i.e., what does the company
       #   do?).
@@ -122,7 +129,7 @@ module Lithic
       #   @return [String, nil]
       optional :phone_number, String
 
-      # @!method initialize(beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
+      # @!method initialize(beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, naics_code: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolderUpdateParams} for more details.
       #
@@ -135,6 +142,8 @@ module Lithic
       #   @param control_person [Lithic::Models::AccountHolderUpdateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
+      #
+      #   @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
       #
       #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
       #

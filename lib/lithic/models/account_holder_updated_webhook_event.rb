@@ -41,6 +41,13 @@ module Lithic
         #   @return [String, nil]
         optional :external_id, String
 
+        # @!attribute naics_code
+        #   6-digit North American Industry Classification System (NAICS) code for the
+        #   business. Only present if naics_code was included in the update request.
+        #
+        #   @return [String, nil]
+        optional :naics_code, String
+
         # @!attribute nature_of_business
         #   Short description of the company's line of business (i.e., what does the company
         #   do?).
@@ -54,7 +61,7 @@ module Lithic
         #   @return [String, nil]
         optional :website_url, String
 
-        # @!method initialize(token:, update_request:, event_type: nil, external_id: nil, nature_of_business: nil, website_url: nil)
+        # @!method initialize(token:, update_request:, event_type: nil, external_id: nil, naics_code: nil, nature_of_business: nil, website_url: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload} for more details.
         #
@@ -67,6 +74,8 @@ module Lithic
         #   @param event_type [Symbol, Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::EventType] The type of event that occurred.
         #
         #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
+        #
+        #   @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
         #
         #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
         #
