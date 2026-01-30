@@ -81,6 +81,14 @@ module Lithic
       sig { params(kyb_passed_timestamp: String).void }
       attr_writer :kyb_passed_timestamp
 
+      # 6-digit North American Industry Classification System (NAICS) code for the
+      # business.
+      sig { returns(T.nilable(String)) }
+      attr_reader :naics_code
+
+      sig { params(naics_code: String).void }
+      attr_writer :naics_code
+
       # Company website URL.
       sig { returns(T.nilable(String)) }
       attr_reader :website_url
@@ -101,6 +109,7 @@ module Lithic
             T::Array[Lithic::KYB::BeneficialOwnerEntity::OrHash],
           external_id: String,
           kyb_passed_timestamp: String,
+          naics_code: String,
           website_url: String
         ).returns(T.attached_class)
       end
@@ -143,6 +152,9 @@ module Lithic
         #
         # This field is required only if workflow type is `KYB_BYO`.
         kyb_passed_timestamp: nil,
+        # 6-digit North American Industry Classification System (NAICS) code for the
+        # business.
+        naics_code: nil,
         # Company website URL.
         website_url: nil
       )
@@ -162,6 +174,7 @@ module Lithic
               T::Array[Lithic::KYB::BeneficialOwnerEntity],
             external_id: String,
             kyb_passed_timestamp: String,
+            naics_code: String,
             website_url: String
           }
         )
