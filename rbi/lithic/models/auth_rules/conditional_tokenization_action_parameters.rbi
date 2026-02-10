@@ -12,7 +12,7 @@ module Lithic
             )
           end
 
-        # The action to take if the conditions are met
+        # The action to take if the conditions are met.
         sig do
           returns(
             T.any(
@@ -46,7 +46,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
-          # The action to take if the conditions are met
+          # The action to take if the conditions are met.
           action:,
           conditions:
         )
@@ -70,7 +70,7 @@ module Lithic
         def to_hash
         end
 
-        # The action to take if the conditions are met
+        # The action to take if the conditions are met.
         module Action
           extend Lithic::Internal::Type::Union
 

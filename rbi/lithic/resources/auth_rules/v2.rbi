@@ -198,6 +198,48 @@ module Lithic
         )
         end
 
+        # Lists Auth Rule evaluation results.
+        #
+        # **Limitations:**
+        #
+        # - Results are available for the past 3 months only
+        # - At least one filter (`event_uuid` or `auth_rule_token`) must be provided
+        # - When filtering by `event_uuid`, pagination is not supported
+        sig do
+          params(
+            auth_rule_token: String,
+            ending_before: String,
+            event_uuid: String,
+            has_actions: T::Boolean,
+            page_size: Integer,
+            starting_after: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(
+            Lithic::Internal::CursorPage[
+              Lithic::Models::AuthRules::V2ListResultsResponse
+            ]
+          )
+        end
+        def list_results(
+          # Filter by Auth Rule token
+          auth_rule_token: nil,
+          # A cursor representing an item's token before which a page of results should end.
+          # Used to retrieve the previous page of results before this item.
+          ending_before: nil,
+          # Filter by event UUID
+          event_uuid: nil,
+          # Filter by whether the rule evaluation produced any actions. When not provided,
+          # all results are returned.
+          has_actions: nil,
+          # Page size (for pagination).
+          page_size: nil,
+          # A cursor representing an item's token after which a page of results should
+          # begin. Used to retrieve the next page of results after this item.
+          starting_after: nil,
+          request_options: {}
+        )
+        end
+
         # Promotes the draft version of an Auth rule to the currently active version such
         # that it is enforced in the respective stream.
         sig do

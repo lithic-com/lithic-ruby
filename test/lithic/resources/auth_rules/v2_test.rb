@@ -153,6 +153,34 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
   end
 
+  def test_list_results
+    response = @lithic.auth_rules.v2.list_results
+
+    assert_pattern do
+      response => Lithic::Internal::CursorPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Lithic::Models::AuthRules::V2ListResultsResponse
+    end
+
+    assert_pattern do
+      row => {
+        token: String,
+        actions: ^(Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::Action]),
+        auth_rule_token: String,
+        evaluation_time: Time,
+        event_stream: Lithic::AuthRules::EventStream,
+        event_token: String,
+        mode: Lithic::Models::AuthRules::V2ListResultsResponse::Mode,
+        rule_version: Integer
+      }
+    end
+  end
+
   def test_promote
     response = @lithic.auth_rules.v2.promote("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
