@@ -30,12 +30,12 @@ module Lithic
         sig { params(ending_before: String).void }
         attr_writer :ending_before
 
-        # Filter by event UUID
+        # Filter by event token
         sig { returns(T.nilable(String)) }
-        attr_reader :event_uuid
+        attr_reader :event_token
 
-        sig { params(event_uuid: String).void }
-        attr_writer :event_uuid
+        sig { params(event_token: String).void }
+        attr_writer :event_token
 
         # Filter by whether the rule evaluation produced any actions. When not provided,
         # all results are returned.
@@ -64,7 +64,7 @@ module Lithic
           params(
             auth_rule_token: String,
             ending_before: String,
-            event_uuid: String,
+            event_token: String,
             has_actions: T::Boolean,
             page_size: Integer,
             starting_after: String,
@@ -77,8 +77,8 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
-          # Filter by event UUID
-          event_uuid: nil,
+          # Filter by event token
+          event_token: nil,
           # Filter by whether the rule evaluation produced any actions. When not provided,
           # all results are returned.
           has_actions: nil,
@@ -96,7 +96,7 @@ module Lithic
             {
               auth_rule_token: String,
               ending_before: String,
-              event_uuid: String,
+              event_token: String,
               has_actions: T::Boolean,
               page_size: Integer,
               starting_after: String,

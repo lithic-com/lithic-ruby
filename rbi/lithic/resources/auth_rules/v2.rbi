@@ -203,13 +203,13 @@ module Lithic
         # **Limitations:**
         #
         # - Results are available for the past 3 months only
-        # - At least one filter (`event_uuid` or `auth_rule_token`) must be provided
-        # - When filtering by `event_uuid`, pagination is not supported
+        # - At least one filter (`event_token` or `auth_rule_token`) must be provided
+        # - When filtering by `event_token`, pagination is not supported
         sig do
           params(
             auth_rule_token: String,
             ending_before: String,
-            event_uuid: String,
+            event_token: String,
             has_actions: T::Boolean,
             page_size: Integer,
             starting_after: String,
@@ -226,8 +226,8 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
-          # Filter by event UUID
-          event_uuid: nil,
+          # Filter by event token
+          event_token: nil,
           # Filter by whether the rule evaluation produced any actions. When not provided,
           # all results are returned.
           has_actions: nil,

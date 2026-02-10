@@ -21,11 +21,11 @@ module Lithic
         #   @return [String, nil]
         optional :ending_before, String
 
-        # @!attribute event_uuid
-        #   Filter by event UUID
+        # @!attribute event_token
+        #   Filter by event token
         #
         #   @return [String, nil]
-        optional :event_uuid, String
+        optional :event_token, String
 
         # @!attribute has_actions
         #   Filter by whether the rule evaluation produced any actions. When not provided,
@@ -47,7 +47,7 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(auth_rule_token: nil, ending_before: nil, event_uuid: nil, has_actions: nil, page_size: nil, starting_after: nil, request_options: {})
+        # @!method initialize(auth_rule_token: nil, ending_before: nil, event_token: nil, has_actions: nil, page_size: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2ListResultsParams} for more details.
         #
@@ -55,7 +55,7 @@ module Lithic
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        #   @param event_uuid [String] Filter by event UUID
+        #   @param event_token [String] Filter by event token
         #
         #   @param has_actions [Boolean] Filter by whether the rule evaluation produced any actions. When not provided, a
         #

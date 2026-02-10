@@ -62,7 +62,7 @@ module Lithic
               T::Array[
                 T.any(
                   Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction::OrHash,
-                  Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction::OrHash,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction::OrHash,
                   Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::OrHash,
                   Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::OrHash,
                   Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction::OrHash,
@@ -126,7 +126,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction,
-                Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction,
+                Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction,
                 Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction,
                 Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction,
                 Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction,
@@ -162,11 +162,11 @@ module Lithic
             end
           end
 
-          class ThreeDSAction < Lithic::Internal::Type::BaseModel
+          class Authentication3DSAction < Lithic::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction,
                   Lithic::Internal::AnyHash
                 )
               end

@@ -14,7 +14,7 @@ module Lithic
         # @!attribute actions
         #   Actions returned by the rule evaluation
         #
-        #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction>]
+        #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction>]
         required :actions,
                  -> { Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::Action] }
 
@@ -59,7 +59,7 @@ module Lithic
         #
         #   @param token [String] Globally unique identifier for the evaluation
         #
-        #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction>] Actions returned by the rule evaluation
+        #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction>] Actions returned by the rule evaluation
         #
         #   @param auth_rule_token [String] The Auth Rule token
         #
@@ -78,7 +78,7 @@ module Lithic
 
           variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction }
 
-          variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction }
+          variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction }
 
           variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction }
 
@@ -99,7 +99,7 @@ module Lithic
             #   @param explanation [String] Optional explanation for why this action was taken
           end
 
-          class ThreeDSAction < Lithic::Internal::Type::BaseModel
+          class Authentication3DSAction < Lithic::Internal::Type::BaseModel
             # @!attribute explanation
             #   Optional explanation for why this action was taken
             #
@@ -369,7 +369,7 @@ module Lithic
           end
 
           # @!method self.variants
-          #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction)]
+          #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction)]
         end
 
         # The state of the Auth Rule
