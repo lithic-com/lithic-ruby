@@ -206,16 +206,16 @@ module Lithic
         # **Limitations:**
         #
         # - Results are available for the past 3 months only
-        # - At least one filter (`event_uuid` or `auth_rule_token`) must be provided
-        # - When filtering by `event_uuid`, pagination is not supported
+        # - At least one filter (`event_token` or `auth_rule_token`) must be provided
+        # - When filtering by `event_token`, pagination is not supported
         #
-        # @overload list_results(auth_rule_token: nil, ending_before: nil, event_uuid: nil, has_actions: nil, page_size: nil, starting_after: nil, request_options: {})
+        # @overload list_results(auth_rule_token: nil, ending_before: nil, event_token: nil, has_actions: nil, page_size: nil, starting_after: nil, request_options: {})
         #
         # @param auth_rule_token [String] Filter by Auth Rule token
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        # @param event_uuid [String] Filter by event UUID
+        # @param event_token [String] Filter by event token
         #
         # @param has_actions [Boolean] Filter by whether the rule evaluation produced any actions. When not provided, a
         #

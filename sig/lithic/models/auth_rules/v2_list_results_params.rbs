@@ -5,7 +5,7 @@ module Lithic
         {
           auth_rule_token: String,
           ending_before: String,
-          event_uuid: String,
+          event_token: String,
           has_actions: bool,
           page_size: Integer,
           starting_after: String
@@ -24,9 +24,9 @@ module Lithic
 
         def ending_before=: (String) -> String
 
-        attr_reader event_uuid: String?
+        attr_reader event_token: String?
 
-        def event_uuid=: (String) -> String
+        def event_token=: (String) -> String
 
         attr_reader has_actions: bool?
 
@@ -43,7 +43,7 @@ module Lithic
         def initialize: (
           ?auth_rule_token: String,
           ?ending_before: String,
-          ?event_uuid: String,
+          ?event_token: String,
           ?has_actions: bool,
           ?page_size: Integer,
           ?starting_after: String,
@@ -53,7 +53,7 @@ module Lithic
         def to_hash: -> {
           auth_rule_token: String,
           ending_before: String,
-          event_uuid: String,
+          event_token: String,
           has_actions: bool,
           page_size: Integer,
           starting_after: String,
