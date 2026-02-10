@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       class ConditionalTokenizationActionParameters < Lithic::Internal::Type::BaseModel
         # @!attribute action
-        #   The action to take if the conditions are met
+        #   The action to take if the conditions are met.
         #
         #   @return [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction]
         required :action, union: -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action }
@@ -17,11 +17,11 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition] }
 
         # @!method initialize(action:, conditions:)
-        #   @param action [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction] The action to take if the conditions are met
+        #   @param action [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction] The action to take if the conditions are met.
         #
         #   @param conditions [Array<Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition>]
 
-        # The action to take if the conditions are met
+        # The action to take if the conditions are met.
         #
         # @see Lithic::Models::AuthRules::ConditionalTokenizationActionParameters#action
         module Action
