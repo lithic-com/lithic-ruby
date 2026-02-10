@@ -61,7 +61,7 @@ module Lithic
         def list_results: (
           ?auth_rule_token: String,
           ?ending_before: String,
-          ?event_uuid: String,
+          ?event_token: String,
           ?has_actions: bool,
           ?page_size: Integer,
           ?starting_after: String,

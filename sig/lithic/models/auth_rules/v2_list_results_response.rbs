@@ -54,7 +54,7 @@ module Lithic
 
         type action =
           Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction
-          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::ThreeDSAction
+          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction
           | Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction
           | Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction
           | Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction
@@ -75,9 +75,9 @@ module Lithic
             def to_hash: -> { explanation: String }
           end
 
-          type three_ds_action = { explanation: String }
+          type authentication3_ds_action = { explanation: String }
 
-          class ThreeDSAction < Lithic::Internal::Type::BaseModel
+          class Authentication3DSAction < Lithic::Internal::Type::BaseModel
             attr_reader explanation: String?
 
             def explanation=: (String) -> String
