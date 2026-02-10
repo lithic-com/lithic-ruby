@@ -58,6 +58,16 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::AuthRules::AuthRule
 
+        def list_results: (
+          ?auth_rule_token: String,
+          ?ending_before: String,
+          ?event_uuid: String,
+          ?has_actions: bool,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Internal::CursorPage[Lithic::Models::AuthRules::V2ListResultsResponse]
+
         def promote: (
           String auth_rule_token,
           ?request_options: Lithic::request_opts

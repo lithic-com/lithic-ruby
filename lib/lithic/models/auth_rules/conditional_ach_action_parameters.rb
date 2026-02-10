@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       class ConditionalACHActionParameters < Lithic::Internal::Type::BaseModel
         # @!attribute action
-        #   The action to take if the conditions are met
+        #   The action to take if the conditions are met.
         #
         #   @return [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction]
         required :action, union: -> { Lithic::AuthRules::ConditionalACHActionParameters::Action }
@@ -17,11 +17,11 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ConditionalACHActionParameters::Condition] }
 
         # @!method initialize(action:, conditions:)
-        #   @param action [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction] The action to take if the conditions are met
+        #   @param action [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction] The action to take if the conditions are met.
         #
         #   @param conditions [Array<Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition>]
 
-        # The action to take if the conditions are met
+        # The action to take if the conditions are met.
         #
         # @see Lithic::Models::AuthRules::ConditionalACHActionParameters#action
         module Action

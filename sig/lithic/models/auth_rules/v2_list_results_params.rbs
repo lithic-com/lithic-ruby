@@ -1,0 +1,65 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_list_results_params =
+        {
+          auth_rule_token: String,
+          ending_before: String,
+          event_uuid: String,
+          has_actions: bool,
+          page_size: Integer,
+          starting_after: String
+        }
+        & Lithic::Internal::Type::request_parameters
+
+      class V2ListResultsParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_reader auth_rule_token: String?
+
+        def auth_rule_token=: (String) -> String
+
+        attr_reader ending_before: String?
+
+        def ending_before=: (String) -> String
+
+        attr_reader event_uuid: String?
+
+        def event_uuid=: (String) -> String
+
+        attr_reader has_actions: bool?
+
+        def has_actions=: (bool) -> bool
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader starting_after: String?
+
+        def starting_after=: (String) -> String
+
+        def initialize: (
+          ?auth_rule_token: String,
+          ?ending_before: String,
+          ?event_uuid: String,
+          ?has_actions: bool,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          auth_rule_token: String,
+          ending_before: String,
+          event_uuid: String,
+          has_actions: bool,
+          page_size: Integer,
+          starting_after: String,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end
