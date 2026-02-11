@@ -168,16 +168,12 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
 
     assert_pattern do
-      row => {
-        token: String,
-        actions: ^(Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::Action]),
-        auth_rule_token: String,
-        evaluation_time: Time,
-        event_stream: Lithic::AuthRules::EventStream,
-        event_token: String,
-        mode: Lithic::Models::AuthRules::V2ListResultsResponse::Mode,
-        rule_version: Integer
-      }
+      case row
+      in Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult
+      in Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult
+      in Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult
+      in Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult
+      end
     end
   end
 

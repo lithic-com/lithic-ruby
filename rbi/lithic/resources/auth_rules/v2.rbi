@@ -216,7 +216,7 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(
             Lithic::Internal::CursorPage[
-              Lithic::Models::AuthRules::V2ListResultsResponse
+              Lithic::Models::AuthRules::V2ListResultsResponse::Variants
             ]
           )
         end
