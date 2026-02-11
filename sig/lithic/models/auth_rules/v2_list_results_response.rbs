@@ -2,458 +2,750 @@ module Lithic
   module Models
     module AuthRules
       type v2_list_results_response =
-        {
-          token: String,
-          actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::action],
-          auth_rule_token: String,
-          evaluation_time: Time,
-          event_stream: Lithic::Models::AuthRules::event_stream,
-          event_token: String,
-          mode: Lithic::Models::AuthRules::V2ListResultsResponse::mode,
-          rule_version: Integer
-        }
+        Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult
+        | Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult
+        | Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult
+        | Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult
 
-      class V2ListResultsResponse < Lithic::Internal::Type::BaseModel
-        attr_accessor token: String
+      module V2ListResultsResponse
+        extend Lithic::Internal::Type::Union
 
-        attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::action]
+        type authorization_result =
+          {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :AUTHORIZATION,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode,
+            rule_version: Integer
+          }
 
-        attr_accessor auth_rule_token: String
+        class AuthorizationResult < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
 
-        attr_accessor evaluation_time: Time
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action]
 
-        attr_accessor event_stream: Lithic::Models::AuthRules::event_stream
+          attr_accessor auth_rule_token: String
 
-        attr_accessor event_token: String
+          attr_accessor evaluation_time: Time
 
-        attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::mode
+          attr_accessor event_stream: :AUTHORIZATION
 
-        attr_accessor rule_version: Integer
+          attr_accessor event_token: String
 
-        def initialize: (
-          token: String,
-          actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::action],
-          auth_rule_token: String,
-          evaluation_time: Time,
-          event_stream: Lithic::Models::AuthRules::event_stream,
-          event_token: String,
-          mode: Lithic::Models::AuthRules::V2ListResultsResponse::mode,
-          rule_version: Integer
-        ) -> void
+          attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode
 
-        def to_hash: -> {
-          token: String,
-          actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::action],
-          auth_rule_token: String,
-          evaluation_time: Time,
-          event_stream: Lithic::Models::AuthRules::event_stream,
-          event_token: String,
-          mode: Lithic::Models::AuthRules::V2ListResultsResponse::mode,
-          rule_version: Integer
-        }
+          attr_accessor rule_version: Integer
 
-        type action =
-          Lithic::Models::AuthRules::V2ListResultsResponse::Action::AuthorizationAction
-          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::Authentication3DSAction
-          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction
-          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction
-          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction
-          | Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction
+          def initialize: (
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode,
+            rule_version: Integer,
+            ?event_stream: :AUTHORIZATION
+          ) -> void
 
-        module Action
-          extend Lithic::Internal::Type::Union
+          def to_hash: -> {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :AUTHORIZATION,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode,
+            rule_version: Integer
+          }
 
-          type authorization_action = { explanation: String }
-
-          class AuthorizationAction < Lithic::Internal::Type::BaseModel
-            attr_reader explanation: String?
-
-            def explanation=: (String) -> String
-
-            def initialize: (?explanation: String) -> void
-
-            def to_hash: -> { explanation: String }
-          end
-
-          type authentication3_ds_action = { explanation: String }
-
-          class Authentication3DSAction < Lithic::Internal::Type::BaseModel
-            attr_reader explanation: String?
-
-            def explanation=: (String) -> String
-
-            def initialize: (?explanation: String) -> void
-
-            def to_hash: -> { explanation: String }
-          end
-
-          type decline_action =
+          type action =
             {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::type_,
-              reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason
+              type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_,
+              explanation: String
             }
 
-          class DeclineAction < Lithic::Internal::Type::BaseModel
-            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::type_
+          class Action < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_
 
-            attr_reader reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason?
+            attr_reader explanation: String?
 
-            def reason=: (
-              Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason
-            ) -> Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason
+            def explanation=: (String) -> String
 
             def initialize: (
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::type_,
-              ?reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason
+              type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_,
+              ?explanation: String
             ) -> void
 
             def to_hash: -> {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::type_,
-              reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason
+              type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_,
+              explanation: String
             }
 
-            type type_ = :DECLINE
+            type type_ = :DECLINE | :CHALLENGE
 
             module Type
               extend Lithic::Internal::Type::Enum
 
               DECLINE: :DECLINE
+              CHALLENGE: :CHALLENGE
 
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::type_]
-            end
-
-            type reason =
-              :ACCOUNT_SCORE_1
-              | :DEVICE_SCORE_1
-              | :ALL_WALLET_DECLINE_REASONS_PRESENT
-              | :WALLET_RECOMMENDED_DECISION_RED
-              | :CVC_MISMATCH
-              | :CARD_EXPIRY_MONTH_MISMATCH
-              | :CARD_EXPIRY_YEAR_MISMATCH
-              | :CARD_INVALID_STATE
-              | :CUSTOMER_RED_PATH
-              | :INVALID_CUSTOMER_RESPONSE
-              | :NETWORK_FAILURE
-              | :GENERIC_DECLINE
-              | :DIGITAL_CARD_ART_REQUIRED
-
-            module Reason
-              extend Lithic::Internal::Type::Enum
-
-              ACCOUNT_SCORE_1: :ACCOUNT_SCORE_1
-              DEVICE_SCORE_1: :DEVICE_SCORE_1
-              ALL_WALLET_DECLINE_REASONS_PRESENT: :ALL_WALLET_DECLINE_REASONS_PRESENT
-              WALLET_RECOMMENDED_DECISION_RED: :WALLET_RECOMMENDED_DECISION_RED
-              CVC_MISMATCH: :CVC_MISMATCH
-              CARD_EXPIRY_MONTH_MISMATCH: :CARD_EXPIRY_MONTH_MISMATCH
-              CARD_EXPIRY_YEAR_MISMATCH: :CARD_EXPIRY_YEAR_MISMATCH
-              CARD_INVALID_STATE: :CARD_INVALID_STATE
-              CUSTOMER_RED_PATH: :CUSTOMER_RED_PATH
-              INVALID_CUSTOMER_RESPONSE: :INVALID_CUSTOMER_RESPONSE
-              NETWORK_FAILURE: :NETWORK_FAILURE
-              GENERIC_DECLINE: :GENERIC_DECLINE
-              DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
-
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::DeclineAction::reason]
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_]
             end
           end
 
-          type require_tfa_action =
-            {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::type_,
-              reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason
-            }
+          type mode = :ACTIVE | :INACTIVE
 
-          class RequireTfaAction < Lithic::Internal::Type::BaseModel
-            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::type_
+          module Mode
+            extend Lithic::Internal::Type::Enum
 
-            attr_reader reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason?
+            ACTIVE: :ACTIVE
+            INACTIVE: :INACTIVE
 
-            def reason=: (
-              Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason
-            ) -> Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason
-
-            def initialize: (
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::type_,
-              ?reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason
-            ) -> void
-
-            def to_hash: -> {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::type_,
-              reason: Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason
-            }
-
-            type type_ = :REQUIRE_TFA
-
-            module Type
-              extend Lithic::Internal::Type::Enum
-
-              REQUIRE_TFA: :REQUIRE_TFA
-
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::type_]
-            end
-
-            type reason =
-              :WALLET_RECOMMENDED_TFA
-              | :SUSPICIOUS_ACTIVITY
-              | :DEVICE_RECENTLY_LOST
-              | :TOO_MANY_RECENT_ATTEMPTS
-              | :TOO_MANY_RECENT_TOKENS
-              | :TOO_MANY_DIFFERENT_CARDHOLDERS
-              | :OUTSIDE_HOME_TERRITORY
-              | :HAS_SUSPENDED_TOKENS
-              | :HIGH_RISK
-              | :ACCOUNT_SCORE_LOW
-              | :DEVICE_SCORE_LOW
-              | :CARD_STATE_TFA
-              | :HARDCODED_TFA
-              | :CUSTOMER_RULE_TFA
-              | :DEVICE_HOST_CARD_EMULATION
-
-            module Reason
-              extend Lithic::Internal::Type::Enum
-
-              WALLET_RECOMMENDED_TFA: :WALLET_RECOMMENDED_TFA
-              SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
-              DEVICE_RECENTLY_LOST: :DEVICE_RECENTLY_LOST
-              TOO_MANY_RECENT_ATTEMPTS: :TOO_MANY_RECENT_ATTEMPTS
-              TOO_MANY_RECENT_TOKENS: :TOO_MANY_RECENT_TOKENS
-              TOO_MANY_DIFFERENT_CARDHOLDERS: :TOO_MANY_DIFFERENT_CARDHOLDERS
-              OUTSIDE_HOME_TERRITORY: :OUTSIDE_HOME_TERRITORY
-              HAS_SUSPENDED_TOKENS: :HAS_SUSPENDED_TOKENS
-              HIGH_RISK: :HIGH_RISK
-              ACCOUNT_SCORE_LOW: :ACCOUNT_SCORE_LOW
-              DEVICE_SCORE_LOW: :DEVICE_SCORE_LOW
-              CARD_STATE_TFA: :CARD_STATE_TFA
-              HARDCODED_TFA: :HARDCODED_TFA
-              CUSTOMER_RULE_TFA: :CUSTOMER_RULE_TFA
-              DEVICE_HOST_CARD_EMULATION: :DEVICE_HOST_CARD_EMULATION
-
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::RequireTfaAction::reason]
-            end
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode]
           end
-
-          type approve_action =
-            {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction::type_
-            }
-
-          class ApproveAction < Lithic::Internal::Type::BaseModel
-            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction::type_
-
-            def initialize: (
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction::type_
-            ) -> void
-
-            def to_hash: -> {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction::type_
-            }
-
-            type type_ = :APPROVE
-
-            module Type
-              extend Lithic::Internal::Type::Enum
-
-              APPROVE: :APPROVE
-
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::ApproveAction::type_]
-            end
-          end
-
-          type return_action =
-            {
-              code: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::code,
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::type_
-            }
-
-          class ReturnAction < Lithic::Internal::Type::BaseModel
-            attr_accessor code: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::code
-
-            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::type_
-
-            def initialize: (
-              code: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::code,
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::type_
-            ) -> void
-
-            def to_hash: -> {
-              code: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::code,
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::type_
-            }
-
-            type code =
-              :R01
-              | :R02
-              | :R03
-              | :R04
-              | :R05
-              | :R06
-              | :R07
-              | :R08
-              | :R09
-              | :R10
-              | :R11
-              | :R12
-              | :R13
-              | :R14
-              | :R15
-              | :R16
-              | :R17
-              | :R18
-              | :R19
-              | :R20
-              | :R21
-              | :R22
-              | :R23
-              | :R24
-              | :R25
-              | :R26
-              | :R27
-              | :R28
-              | :R29
-              | :R30
-              | :R31
-              | :R32
-              | :R33
-              | :R34
-              | :R35
-              | :R36
-              | :R37
-              | :R38
-              | :R39
-              | :R40
-              | :R41
-              | :R42
-              | :R43
-              | :R44
-              | :R45
-              | :R46
-              | :R47
-              | :R50
-              | :R51
-              | :R52
-              | :R53
-              | :R61
-              | :R62
-              | :R67
-              | :R68
-              | :R69
-              | :R70
-              | :R71
-              | :R72
-              | :R73
-              | :R74
-              | :R75
-              | :R76
-              | :R77
-              | :R80
-              | :R81
-              | :R82
-              | :R83
-              | :R84
-              | :R85
-
-            module Code
-              extend Lithic::Internal::Type::Enum
-
-              R01: :R01
-              R02: :R02
-              R03: :R03
-              R04: :R04
-              R05: :R05
-              R06: :R06
-              R07: :R07
-              R08: :R08
-              R09: :R09
-              R10: :R10
-              R11: :R11
-              R12: :R12
-              R13: :R13
-              R14: :R14
-              R15: :R15
-              R16: :R16
-              R17: :R17
-              R18: :R18
-              R19: :R19
-              R20: :R20
-              R21: :R21
-              R22: :R22
-              R23: :R23
-              R24: :R24
-              R25: :R25
-              R26: :R26
-              R27: :R27
-              R28: :R28
-              R29: :R29
-              R30: :R30
-              R31: :R31
-              R32: :R32
-              R33: :R33
-              R34: :R34
-              R35: :R35
-              R36: :R36
-              R37: :R37
-              R38: :R38
-              R39: :R39
-              R40: :R40
-              R41: :R41
-              R42: :R42
-              R43: :R43
-              R44: :R44
-              R45: :R45
-              R46: :R46
-              R47: :R47
-              R50: :R50
-              R51: :R51
-              R52: :R52
-              R53: :R53
-              R61: :R61
-              R62: :R62
-              R67: :R67
-              R68: :R68
-              R69: :R69
-              R70: :R70
-              R71: :R71
-              R72: :R72
-              R73: :R73
-              R74: :R74
-              R75: :R75
-              R76: :R76
-              R77: :R77
-              R80: :R80
-              R81: :R81
-              R82: :R82
-              R83: :R83
-              R84: :R84
-              R85: :R85
-
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::code]
-            end
-
-            type type_ = :RETURN
-
-            module Type
-              extend Lithic::Internal::Type::Enum
-
-              RETURN: :RETURN
-
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Action::ReturnAction::type_]
-            end
-          end
-
-          def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::action]
         end
 
-        type mode = :ACTIVE | :INACTIVE
+        type authentication3_ds_result =
+          {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :THREE_DS_AUTHENTICATION,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode,
+            rule_version: Integer
+          }
 
-        module Mode
-          extend Lithic::Internal::Type::Enum
+        class Authentication3DSResult < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
 
-          ACTIVE: :ACTIVE
-          INACTIVE: :INACTIVE
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action]
 
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::mode]
+          attr_accessor auth_rule_token: String
+
+          attr_accessor evaluation_time: Time
+
+          attr_accessor event_stream: :THREE_DS_AUTHENTICATION
+
+          attr_accessor event_token: String
+
+          attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode
+
+          attr_accessor rule_version: Integer
+
+          def initialize: (
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode,
+            rule_version: Integer,
+            ?event_stream: :THREE_DS_AUTHENTICATION
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :THREE_DS_AUTHENTICATION,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode,
+            rule_version: Integer
+          }
+
+          type action =
+            {
+              type: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action::type_,
+              explanation: String
+            }
+
+          class Action < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action::type_
+
+            attr_reader explanation: String?
+
+            def explanation=: (String) -> String
+
+            def initialize: (
+              type: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action::type_,
+              ?explanation: String
+            ) -> void
+
+            def to_hash: -> {
+              type: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action::type_,
+              explanation: String
+            }
+
+            type type_ = :DECLINE | :CHALLENGE
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              DECLINE: :DECLINE
+              CHALLENGE: :CHALLENGE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action::type_]
+            end
+          end
+
+          type mode = :ACTIVE | :INACTIVE
+
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE: :ACTIVE
+            INACTIVE: :INACTIVE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode]
+          end
         end
+
+        type tokenization_result =
+          {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :TOKENIZATION,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode,
+            rule_version: Integer
+          }
+
+        class TokenizationResult < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::action]
+
+          attr_accessor auth_rule_token: String
+
+          attr_accessor evaluation_time: Time
+
+          attr_accessor event_stream: :TOKENIZATION
+
+          attr_accessor event_token: String
+
+          attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode
+
+          attr_accessor rule_version: Integer
+
+          def initialize: (
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode,
+            rule_version: Integer,
+            ?event_stream: :TOKENIZATION
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :TOKENIZATION,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode,
+            rule_version: Integer
+          }
+
+          type action =
+            Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction
+            | Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            type decline_action =
+              {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_,
+                explanation: String,
+                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+              }
+
+            class DeclineAction < Lithic::Internal::Type::BaseModel
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              attr_reader reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason?
+
+              def reason=: (
+                Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+              ) -> Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+
+              def initialize: (
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_,
+                ?explanation: String,
+                ?reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+              ) -> void
+
+              def to_hash: -> {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_,
+                explanation: String,
+                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+              }
+
+              type type_ = :DECLINE
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                DECLINE: :DECLINE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_]
+              end
+
+              type reason =
+                :ACCOUNT_SCORE_1
+                | :DEVICE_SCORE_1
+                | :ALL_WALLET_DECLINE_REASONS_PRESENT
+                | :WALLET_RECOMMENDED_DECISION_RED
+                | :CVC_MISMATCH
+                | :CARD_EXPIRY_MONTH_MISMATCH
+                | :CARD_EXPIRY_YEAR_MISMATCH
+                | :CARD_INVALID_STATE
+                | :CUSTOMER_RED_PATH
+                | :INVALID_CUSTOMER_RESPONSE
+                | :NETWORK_FAILURE
+                | :GENERIC_DECLINE
+                | :DIGITAL_CARD_ART_REQUIRED
+
+              module Reason
+                extend Lithic::Internal::Type::Enum
+
+                ACCOUNT_SCORE_1: :ACCOUNT_SCORE_1
+                DEVICE_SCORE_1: :DEVICE_SCORE_1
+                ALL_WALLET_DECLINE_REASONS_PRESENT: :ALL_WALLET_DECLINE_REASONS_PRESENT
+                WALLET_RECOMMENDED_DECISION_RED: :WALLET_RECOMMENDED_DECISION_RED
+                CVC_MISMATCH: :CVC_MISMATCH
+                CARD_EXPIRY_MONTH_MISMATCH: :CARD_EXPIRY_MONTH_MISMATCH
+                CARD_EXPIRY_YEAR_MISMATCH: :CARD_EXPIRY_YEAR_MISMATCH
+                CARD_INVALID_STATE: :CARD_INVALID_STATE
+                CUSTOMER_RED_PATH: :CUSTOMER_RED_PATH
+                INVALID_CUSTOMER_RESPONSE: :INVALID_CUSTOMER_RESPONSE
+                NETWORK_FAILURE: :NETWORK_FAILURE
+                GENERIC_DECLINE: :GENERIC_DECLINE
+                DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason]
+              end
+            end
+
+            type require_tfa_action =
+              {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::type_,
+                explanation: String,
+                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason
+              }
+
+            class RequireTfaAction < Lithic::Internal::Type::BaseModel
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              attr_reader reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason?
+
+              def reason=: (
+                Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason
+              ) -> Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason
+
+              def initialize: (
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::type_,
+                ?explanation: String,
+                ?reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason
+              ) -> void
+
+              def to_hash: -> {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::type_,
+                explanation: String,
+                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason
+              }
+
+              type type_ = :REQUIRE_TFA
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                REQUIRE_TFA: :REQUIRE_TFA
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::type_]
+              end
+
+              type reason =
+                :WALLET_RECOMMENDED_TFA
+                | :SUSPICIOUS_ACTIVITY
+                | :DEVICE_RECENTLY_LOST
+                | :TOO_MANY_RECENT_ATTEMPTS
+                | :TOO_MANY_RECENT_TOKENS
+                | :TOO_MANY_DIFFERENT_CARDHOLDERS
+                | :OUTSIDE_HOME_TERRITORY
+                | :HAS_SUSPENDED_TOKENS
+                | :HIGH_RISK
+                | :ACCOUNT_SCORE_LOW
+                | :DEVICE_SCORE_LOW
+                | :CARD_STATE_TFA
+                | :HARDCODED_TFA
+                | :CUSTOMER_RULE_TFA
+                | :DEVICE_HOST_CARD_EMULATION
+
+              module Reason
+                extend Lithic::Internal::Type::Enum
+
+                WALLET_RECOMMENDED_TFA: :WALLET_RECOMMENDED_TFA
+                SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+                DEVICE_RECENTLY_LOST: :DEVICE_RECENTLY_LOST
+                TOO_MANY_RECENT_ATTEMPTS: :TOO_MANY_RECENT_ATTEMPTS
+                TOO_MANY_RECENT_TOKENS: :TOO_MANY_RECENT_TOKENS
+                TOO_MANY_DIFFERENT_CARDHOLDERS: :TOO_MANY_DIFFERENT_CARDHOLDERS
+                OUTSIDE_HOME_TERRITORY: :OUTSIDE_HOME_TERRITORY
+                HAS_SUSPENDED_TOKENS: :HAS_SUSPENDED_TOKENS
+                HIGH_RISK: :HIGH_RISK
+                ACCOUNT_SCORE_LOW: :ACCOUNT_SCORE_LOW
+                DEVICE_SCORE_LOW: :DEVICE_SCORE_LOW
+                CARD_STATE_TFA: :CARD_STATE_TFA
+                HARDCODED_TFA: :HARDCODED_TFA
+                CUSTOMER_RULE_TFA: :CUSTOMER_RULE_TFA
+                DEVICE_HOST_CARD_EMULATION: :DEVICE_HOST_CARD_EMULATION
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::reason]
+              end
+            end
+
+            def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::action]
+          end
+
+          type mode = :ACTIVE | :INACTIVE
+
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE: :ACTIVE
+            INACTIVE: :INACTIVE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode]
+          end
+        end
+
+        type ach_result =
+          {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode,
+            rule_version: Integer
+          }
+
+        class ACHResult < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::action]
+
+          attr_accessor auth_rule_token: String
+
+          attr_accessor evaluation_time: Time
+
+          attr_accessor event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream
+
+          attr_accessor event_token: String
+
+          attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode
+
+          attr_accessor rule_version: Integer
+
+          def initialize: (
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode,
+            rule_version: Integer
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode,
+            rule_version: Integer
+          }
+
+          type action =
+            Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction
+            | Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            type approve_action =
+              {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_,
+                explanation: String
+              }
+
+            class ApproveAction < Lithic::Internal::Type::BaseModel
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_,
+                explanation: String
+              }
+
+              type type_ = :APPROVE
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                APPROVE: :APPROVE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_]
+              end
+            end
+
+            type return_action =
+              {
+                code: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::code,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::type_,
+                explanation: String
+              }
+
+            class ReturnAction < Lithic::Internal::Type::BaseModel
+              attr_accessor code: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::code
+
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                code: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::code,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::type_,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                code: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::code,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::type_,
+                explanation: String
+              }
+
+              type code =
+                :R01
+                | :R02
+                | :R03
+                | :R04
+                | :R05
+                | :R06
+                | :R07
+                | :R08
+                | :R09
+                | :R10
+                | :R11
+                | :R12
+                | :R13
+                | :R14
+                | :R15
+                | :R16
+                | :R17
+                | :R18
+                | :R19
+                | :R20
+                | :R21
+                | :R22
+                | :R23
+                | :R24
+                | :R25
+                | :R26
+                | :R27
+                | :R28
+                | :R29
+                | :R30
+                | :R31
+                | :R32
+                | :R33
+                | :R34
+                | :R35
+                | :R36
+                | :R37
+                | :R38
+                | :R39
+                | :R40
+                | :R41
+                | :R42
+                | :R43
+                | :R44
+                | :R45
+                | :R46
+                | :R47
+                | :R50
+                | :R51
+                | :R52
+                | :R53
+                | :R61
+                | :R62
+                | :R67
+                | :R68
+                | :R69
+                | :R70
+                | :R71
+                | :R72
+                | :R73
+                | :R74
+                | :R75
+                | :R76
+                | :R77
+                | :R80
+                | :R81
+                | :R82
+                | :R83
+                | :R84
+                | :R85
+
+              module Code
+                extend Lithic::Internal::Type::Enum
+
+                R01: :R01
+                R02: :R02
+                R03: :R03
+                R04: :R04
+                R05: :R05
+                R06: :R06
+                R07: :R07
+                R08: :R08
+                R09: :R09
+                R10: :R10
+                R11: :R11
+                R12: :R12
+                R13: :R13
+                R14: :R14
+                R15: :R15
+                R16: :R16
+                R17: :R17
+                R18: :R18
+                R19: :R19
+                R20: :R20
+                R21: :R21
+                R22: :R22
+                R23: :R23
+                R24: :R24
+                R25: :R25
+                R26: :R26
+                R27: :R27
+                R28: :R28
+                R29: :R29
+                R30: :R30
+                R31: :R31
+                R32: :R32
+                R33: :R33
+                R34: :R34
+                R35: :R35
+                R36: :R36
+                R37: :R37
+                R38: :R38
+                R39: :R39
+                R40: :R40
+                R41: :R41
+                R42: :R42
+                R43: :R43
+                R44: :R44
+                R45: :R45
+                R46: :R46
+                R47: :R47
+                R50: :R50
+                R51: :R51
+                R52: :R52
+                R53: :R53
+                R61: :R61
+                R62: :R62
+                R67: :R67
+                R68: :R68
+                R69: :R69
+                R70: :R70
+                R71: :R71
+                R72: :R72
+                R73: :R73
+                R74: :R74
+                R75: :R75
+                R76: :R76
+                R77: :R77
+                R80: :R80
+                R81: :R81
+                R82: :R82
+                R83: :R83
+                R84: :R84
+                R85: :R85
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::code]
+              end
+
+              type type_ = :RETURN
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                RETURN: :RETURN
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::action]
+          end
+
+          type event_stream = :ACH_CREDIT_RECEIPT | :ACH_DEBIT_RECEIPT
+
+          module EventStream
+            extend Lithic::Internal::Type::Enum
+
+            ACH_CREDIT_RECEIPT: :ACH_CREDIT_RECEIPT
+            ACH_DEBIT_RECEIPT: :ACH_DEBIT_RECEIPT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream]
+          end
+
+          type mode = :ACTIVE | :INACTIVE
+
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE: :ACTIVE
+            INACTIVE: :INACTIVE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::v2_list_results_response]
       end
     end
   end

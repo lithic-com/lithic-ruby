@@ -225,7 +225,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::V2ListResultsResponse>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult>]
         #
         # @see Lithic::Models::AuthRules::V2ListResultsParams
         def list_results(params = {})
