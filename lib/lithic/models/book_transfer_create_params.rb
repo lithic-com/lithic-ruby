@@ -58,6 +58,12 @@ module Lithic
       #   @return [String, nil]
       optional :external_id, String
 
+      # @!attribute hold_token
+      #   Token of an existing hold to settle when this transfer is initiated
+      #
+      #   @return [String, nil]
+      optional :hold_token, String
+
       # @!attribute memo
       #   Optional descriptor for the transfer.
       #
@@ -70,7 +76,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::BookTransferCreateParams::OnClosedAccount, nil]
       optional :on_closed_account, enum: -> { Lithic::BookTransferCreateParams::OnClosedAccount }
 
-      # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, external_id: nil, memo: nil, on_closed_account: nil, request_options: {})
+      # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, external_id: nil, hold_token: nil, memo: nil, on_closed_account: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::BookTransferCreateParams} for more details.
       #
@@ -89,6 +95,8 @@ module Lithic
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
       #   @param external_id [String] External ID defined by the customer
+      #
+      #   @param hold_token [String] Token of an existing hold to settle when this transfer is initiated
       #
       #   @param memo [String] Optional descriptor for the transfer.
       #

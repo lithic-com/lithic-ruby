@@ -15,6 +15,7 @@ module Lithic
           type: Lithic::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           external_id: String,
+          hold_token: String,
           memo: String,
           on_closed_account:
             Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol,
@@ -41,6 +42,8 @@ module Lithic
         token: nil,
         # External ID defined by the customer
         external_id: nil,
+        # Token of an existing hold to settle when this transfer is initiated
+        hold_token: nil,
         # Optional descriptor for the transfer.
         memo: nil,
         # What to do if the financial account is closed when posting an operation
