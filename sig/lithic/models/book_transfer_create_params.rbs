@@ -10,6 +10,7 @@ module Lithic
         type: Lithic::Models::BookTransferCreateParams::type_,
         token: String,
         external_id: String,
+        hold_token: String,
         memo: String,
         on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account
       }
@@ -39,6 +40,10 @@ module Lithic
 
       def external_id=: (String) -> String
 
+      attr_reader hold_token: String?
+
+      def hold_token=: (String) -> String
+
       attr_reader memo: String?
 
       def memo=: (String) -> String
@@ -58,6 +63,7 @@ module Lithic
         type: Lithic::Models::BookTransferCreateParams::type_,
         ?token: String,
         ?external_id: String,
+        ?hold_token: String,
         ?memo: String,
         ?on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account,
         ?request_options: Lithic::request_opts
@@ -72,6 +78,7 @@ module Lithic
         type: Lithic::Models::BookTransferCreateParams::type_,
         token: String,
         external_id: String,
+        hold_token: String,
         memo: String,
         on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account,
         request_options: Lithic::RequestOptions

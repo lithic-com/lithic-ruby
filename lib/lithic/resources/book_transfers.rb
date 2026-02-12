@@ -9,7 +9,7 @@ module Lithic
       # Book transfer funds between two financial accounts or between a financial
       # account and card
       #
-      # @overload create(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, external_id: nil, memo: nil, on_closed_account: nil, request_options: {})
+      # @overload create(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, external_id: nil, hold_token: nil, memo: nil, on_closed_account: nil, request_options: {})
       #
       # @param amount [Integer] Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       #
@@ -26,6 +26,8 @@ module Lithic
       # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
       # @param external_id [String] External ID defined by the customer
+      #
+      # @param hold_token [String] Token of an existing hold to settle when this transfer is initiated
       #
       # @param memo [String] Optional descriptor for the transfer.
       #

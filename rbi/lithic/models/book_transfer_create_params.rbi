@@ -52,6 +52,13 @@ module Lithic
       sig { params(external_id: String).void }
       attr_writer :external_id
 
+      # Token of an existing hold to settle when this transfer is initiated
+      sig { returns(T.nilable(String)) }
+      attr_reader :hold_token
+
+      sig { params(hold_token: String).void }
+      attr_writer :hold_token
+
       # Optional descriptor for the transfer.
       sig { returns(T.nilable(String)) }
       attr_reader :memo
@@ -85,6 +92,7 @@ module Lithic
           type: Lithic::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           external_id: String,
+          hold_token: String,
           memo: String,
           on_closed_account:
             Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol,
@@ -111,6 +119,8 @@ module Lithic
         token: nil,
         # External ID defined by the customer
         external_id: nil,
+        # Token of an existing hold to settle when this transfer is initiated
+        hold_token: nil,
         # Optional descriptor for the transfer.
         memo: nil,
         # What to do if the financial account is closed when posting an operation
@@ -130,6 +140,7 @@ module Lithic
             type: Lithic::BookTransferCreateParams::Type::OrSymbol,
             token: String,
             external_id: String,
+            hold_token: String,
             memo: String,
             on_closed_account:
               Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol,
