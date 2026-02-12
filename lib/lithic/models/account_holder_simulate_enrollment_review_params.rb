@@ -45,6 +45,7 @@ module Lithic
 
         ACCEPTED = :ACCEPTED
         REJECTED = :REJECTED
+        PENDING_REVIEW = :PENDING_REVIEW
 
         # @!method self.values
         #   @return [Array<Symbol>]

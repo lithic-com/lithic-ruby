@@ -126,6 +126,11 @@ module Lithic
             :REJECTED,
             Lithic::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol
           )
+        PENDING_REVIEW =
+          T.let(
+            :PENDING_REVIEW,
+            Lithic::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(

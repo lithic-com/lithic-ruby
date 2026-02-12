@@ -42,13 +42,14 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type status = :ACCEPTED | :REJECTED
+      type status = :ACCEPTED | :REJECTED | :PENDING_REVIEW
 
       module Status
         extend Lithic::Internal::Type::Enum
 
         ACCEPTED: :ACCEPTED
         REJECTED: :REJECTED
+        PENDING_REVIEW: :PENDING_REVIEW
 
         def self?.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status]
       end
