@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.5.0 (2026-02-13)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/lithic-com/lithic-ruby/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** Add /v2/auth_rules/results endpoint for listing rule evaluation data ([638e66d](https://github.com/lithic-com/lithic-ruby/commit/638e66d63951f2710eff7865b66b8424ee9df347))
+* **api:** Add amounts object to ASA request ([22955ed](https://github.com/lithic-com/lithic-ruby/commit/22955ed42c914a5f505254ca94561c192363bca6))
+* **api:** Add hold token field to book transfers ([d23cb0b](https://github.com/lithic-com/lithic-ruby/commit/d23cb0bc4df0226c18bb47da55aa397f1bbc3354))
+* **api:** Add naics_code to account holder requests/responses ([76b507b](https://github.com/lithic-com/lithic-ruby/commit/76b507bf26f50ac5be4cd8210e781435a5d8bd0f))
+* **api:** Add network specific wallet recommendation reasons ([6ddef73](https://github.com/lithic-com/lithic-ruby/commit/6ddef73bfef32916381d94e54565e0e47d81c169))
+* **api:** Add PENDING_REVIEW status to KYB enrollment simulation ([1a6d821](https://github.com/lithic-com/lithic-ruby/commit/1a6d821b937e9a263e0e5f765a80e44d52471867))
+* **api:** Add result schemas for Authorization and Authentication (3DS) actions ([f669caf](https://github.com/lithic-com/lithic-ruby/commit/f669cafbb5f8d2f84295b576de01c4e41e1b1789))
+
+
+### Bug Fixes
+
+* **api:** Update /v2/auth_rules/results endpoint parameter naming and action types ([25e39e6](https://github.com/lithic-com/lithic-ruby/commit/25e39e68e249381a826c6a17811ff69eb882f82d))
+* **client:** always add content-length to post body, even when empty ([dc99413](https://github.com/lithic-com/lithic-ruby/commit/dc994133ff0d96a903dab13326254b2b378c06ae))
+* **client:** loosen json header parsing ([a9a41d9](https://github.com/lithic-com/lithic-ruby/commit/a9a41d9cff9dd7f7a1772c76f9c9aae130b1b90a))
+
+
+### Chores
+
+* configure new SDK language ([8192e34](https://github.com/lithic-com/lithic-ruby/commit/8192e34c05ef27263d1e3490092035c9e316c986))
+* **docs:** remove www prefix ([cecdec2](https://github.com/lithic-com/lithic-ruby/commit/cecdec231888818a2ec01dca178d45a741d5326b))
+* Enable stainless MCP in config ([03570d6](https://github.com/lithic-com/lithic-ruby/commit/03570d6a7cde12dc24f4a4237ea4d0042d215817))
+
+
+### Documentation
+
+* Fix documentation of tokenization channel and tokenization source for tokenization rules ([5de9576](https://github.com/lithic-com/lithic-ruby/commit/5de957671f0c262e663dd787617921e6ade623e0))
+
 ## 0.4.0 (2026-01-27)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/lithic-com/lithic-ruby/compare/v0.3.0...v0.4.0)
