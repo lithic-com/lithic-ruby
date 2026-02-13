@@ -5,6 +5,7 @@ module Lithic
         token: String,
         acquirer_fee: Integer,
         amount: Integer,
+        amounts: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts,
         authorization_amount: Integer,
         avs: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs,
         card: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card,
@@ -39,6 +40,8 @@ module Lithic
       attr_accessor acquirer_fee: Integer
 
       attr_accessor amount: Integer
+
+      attr_accessor amounts: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts
 
       attr_accessor authorization_amount: Integer
 
@@ -124,6 +127,7 @@ module Lithic
         token: String,
         acquirer_fee: Integer,
         amount: Integer,
+        amounts: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts,
         authorization_amount: Integer,
         avs: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs,
         card: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card,
@@ -156,6 +160,7 @@ module Lithic
         token: String,
         acquirer_fee: Integer,
         amount: Integer,
+        amounts: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts,
         authorization_amount: Integer,
         avs: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs,
         card: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card,
@@ -183,6 +188,97 @@ module Lithic
         token_info: Lithic::TokenInfo?,
         ttl: Time
       }
+
+      type amounts =
+        {
+          cardholder: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder,
+          hold: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold?,
+          merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant,
+          settlement: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement?
+        }
+
+      class Amounts < Lithic::Internal::Type::BaseModel
+        attr_accessor cardholder: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder
+
+        attr_accessor hold: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold?
+
+        attr_accessor merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant
+
+        attr_accessor settlement: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement?
+
+        def initialize: (
+          cardholder: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder,
+          hold: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold?,
+          merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant,
+          settlement: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement?
+        ) -> void
+
+        def to_hash: -> {
+          cardholder: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder,
+          hold: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold?,
+          merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant,
+          settlement: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement?
+        }
+
+        type cardholder =
+          { amount: Integer, conversion_rate: String, currency: String }
+
+        class Cardholder < Lithic::Internal::Type::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor conversion_rate: String
+
+          attr_accessor currency: String
+
+          def initialize: (
+            amount: Integer,
+            conversion_rate: String,
+            currency: String
+          ) -> void
+
+          def to_hash: -> {
+            amount: Integer,
+            conversion_rate: String,
+            currency: String
+          }
+        end
+
+        type hold = { amount: Integer, currency: String }
+
+        class Hold < Lithic::Internal::Type::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor currency: String
+
+          def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> { amount: Integer, currency: String }
+        end
+
+        type merchant = { amount: Integer, currency: String }
+
+        class Merchant < Lithic::Internal::Type::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor currency: String
+
+          def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> { amount: Integer, currency: String }
+        end
+
+        type settlement = { amount: Integer, currency: String }
+
+        class Settlement < Lithic::Internal::Type::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor currency: String
+
+          def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> { amount: Integer, currency: String }
+        end
+      end
 
       type avs =
         {

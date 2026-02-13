@@ -21,14 +21,33 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :acquirer_fee
 
-      # Authorization amount of the transaction (in cents), including any acquirer fees.
-      # The contents of this field are identical to `authorization_amount`.
+      # Deprecated, use `amounts`. Authorization amount of the transaction (in cents),
+      # including any acquirer fees. The contents of this field are identical to
+      # `authorization_amount`.
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The base transaction amount (in cents) plus the acquirer fee field. This is the
-      # amount the issuer should authorize against unless the issuer is paying the
-      # acquirer fee on behalf of the cardholder.
+      # Structured amounts for this authorization. The `cardholder` and `merchant`
+      # amounts reflect the original network authorization values. For programs with
+      # hold adjustments enabled (e.g., automated fuel dispensers or tipping MCCs), the
+      # `hold` amount may exceed the `cardholder` and `merchant` amounts to account for
+      # anticipated final transaction amounts such as tips or fuel fill-ups
+      sig do
+        returns(Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts)
+      end
+      attr_reader :amounts
+
+      sig do
+        params(
+          amounts:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::OrHash
+        ).void
+      end
+      attr_writer :amounts
+
+      # Deprecated, use `amounts`. The base transaction amount (in cents) plus the
+      # acquirer fee field. This is the amount the issuer should authorize against
+      # unless the issuer is paying the acquirer fee on behalf of the cardholder.
       sig { returns(Integer) }
       attr_accessor :authorization_amount
 
@@ -56,7 +75,8 @@ module Lithic
       end
       attr_writer :card
 
-      # 3-character alphabetic ISO 4217 code for cardholder's billing currency.
+      # Deprecated, use `amounts`. 3-character alphabetic ISO 4217 code for cardholder's
+      # billing currency.
       sig { returns(String) }
       attr_accessor :cardholder_currency
 
@@ -82,11 +102,11 @@ module Lithic
       sig { params(merchant: Lithic::Merchant::OrHash).void }
       attr_writer :merchant
 
-      # The amount that the merchant will receive, denominated in `merchant_currency`
-      # and in the smallest currency unit. Note the amount includes `acquirer_fee`,
-      # similar to `authorization_amount`. It will be different from
-      # `authorization_amount` if the merchant is taking payment in a different
-      # currency.
+      # Deprecated, use `amounts`. The amount that the merchant will receive,
+      # denominated in `merchant_currency` and in the smallest currency unit. Note the
+      # amount includes `acquirer_fee`, similar to `authorization_amount`. It will be
+      # different from `authorization_amount` if the merchant is taking payment in a
+      # different currency.
       sig { returns(Integer) }
       attr_accessor :merchant_amount
 
@@ -94,8 +114,8 @@ module Lithic
       sig { returns(String) }
       attr_accessor :merchant_currency
 
-      # Amount (in cents) of the transaction that has been settled, including any
-      # acquirer fees
+      # Deprecated, use `amounts`. Amount (in cents) of the transaction that has been
+      # settled, including any acquirer fees.
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
@@ -151,11 +171,11 @@ module Lithic
       sig { params(cashback: Integer).void }
       attr_writer :cashback
 
-      # If the transaction was requested in a currency other than the settlement
-      # currency, this field will be populated to indicate the rate used to translate
-      # the merchant_amount to the amount (i.e., `merchant_amount` x `conversion_rate` =
-      # `amount`). Note that the `merchant_amount` is in the local currency and the
-      # amount is in the settlement currency.
+      # Deprecated, use `amounts`. If the transaction was requested in a currency other
+      # than the settlement currency, this field will be populated to indicate the rate
+      # used to translate the merchant_amount to the amount (i.e., `merchant_amount` x
+      # `conversion_rate` = `amount`). Note that the `merchant_amount` is in the local
+      # currency and the amount is in the settlement currency.
       sig { returns(T.nilable(Float)) }
       attr_reader :conversion_rate
 
@@ -293,6 +313,8 @@ module Lithic
           token: String,
           acquirer_fee: Integer,
           amount: Integer,
+          amounts:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::OrHash,
           authorization_amount: Integer,
           avs:
             Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs::OrHash,
@@ -342,17 +364,25 @@ module Lithic
         # zero if no fee is assessed. Rebates may be transmitted as a negative value to
         # indicate credited fees.
         acquirer_fee:,
-        # Authorization amount of the transaction (in cents), including any acquirer fees.
-        # The contents of this field are identical to `authorization_amount`.
+        # Deprecated, use `amounts`. Authorization amount of the transaction (in cents),
+        # including any acquirer fees. The contents of this field are identical to
+        # `authorization_amount`.
         amount:,
-        # The base transaction amount (in cents) plus the acquirer fee field. This is the
-        # amount the issuer should authorize against unless the issuer is paying the
-        # acquirer fee on behalf of the cardholder.
+        # Structured amounts for this authorization. The `cardholder` and `merchant`
+        # amounts reflect the original network authorization values. For programs with
+        # hold adjustments enabled (e.g., automated fuel dispensers or tipping MCCs), the
+        # `hold` amount may exceed the `cardholder` and `merchant` amounts to account for
+        # anticipated final transaction amounts such as tips or fuel fill-ups
+        amounts:,
+        # Deprecated, use `amounts`. The base transaction amount (in cents) plus the
+        # acquirer fee field. This is the amount the issuer should authorize against
+        # unless the issuer is paying the acquirer fee on behalf of the cardholder.
         authorization_amount:,
         avs:,
         # Card object in ASA
         card:,
-        # 3-character alphabetic ISO 4217 code for cardholder's billing currency.
+        # Deprecated, use `amounts`. 3-character alphabetic ISO 4217 code for cardholder's
+        # billing currency.
         cardholder_currency:,
         # The portion of the transaction requested as cash back by the cardholder, and
         # does not include any acquirer fees. The amount field includes the purchase
@@ -364,16 +394,16 @@ module Lithic
         # Date and time when the transaction first occurred in UTC.
         created:,
         merchant:,
-        # The amount that the merchant will receive, denominated in `merchant_currency`
-        # and in the smallest currency unit. Note the amount includes `acquirer_fee`,
-        # similar to `authorization_amount`. It will be different from
-        # `authorization_amount` if the merchant is taking payment in a different
-        # currency.
+        # Deprecated, use `amounts`. The amount that the merchant will receive,
+        # denominated in `merchant_currency` and in the smallest currency unit. Note the
+        # amount includes `acquirer_fee`, similar to `authorization_amount`. It will be
+        # different from `authorization_amount` if the merchant is taking payment in a
+        # different currency.
         merchant_amount:,
         # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
         merchant_currency:,
-        # Amount (in cents) of the transaction that has been settled, including any
-        # acquirer fees
+        # Deprecated, use `amounts`. Amount (in cents) of the transaction that has been
+        # settled, including any acquirer fees.
         settled_amount:,
         # The type of authorization request that this request is for. Note that
         # `CREDIT_AUTHORIZATION` and `FINANCIAL_CREDIT_AUTHORIZATION` is only available to
@@ -385,11 +415,11 @@ module Lithic
         cardholder_authentication: nil,
         # Deprecated, use `cash_amount`.
         cashback: nil,
-        # If the transaction was requested in a currency other than the settlement
-        # currency, this field will be populated to indicate the rate used to translate
-        # the merchant_amount to the amount (i.e., `merchant_amount` x `conversion_rate` =
-        # `amount`). Note that the `merchant_amount` is in the local currency and the
-        # amount is in the settlement currency.
+        # Deprecated, use `amounts`. If the transaction was requested in a currency other
+        # than the settlement currency, this field will be populated to indicate the rate
+        # used to translate the merchant_amount to the amount (i.e., `merchant_amount` x
+        # `conversion_rate` = `amount`). Note that the `merchant_amount` is in the local
+        # currency and the amount is in the settlement currency.
         conversion_rate: nil,
         # The event token associated with the authorization. This field is only set for
         # programs enrolled into the beta.
@@ -429,6 +459,8 @@ module Lithic
             token: String,
             acquirer_fee: Integer,
             amount: Integer,
+            amounts:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts,
             authorization_amount: Integer,
             avs: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Avs,
             card: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card,
@@ -470,6 +502,275 @@ module Lithic
         )
       end
       def to_hash
+      end
+
+      class Amounts < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder
+          )
+        end
+        attr_reader :cardholder
+
+        sig do
+          params(
+            cardholder:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder::OrHash
+          ).void
+        end
+        attr_writer :cardholder
+
+        sig do
+          returns(
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold
+            )
+          )
+        end
+        attr_reader :hold
+
+        sig do
+          params(
+            hold:
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold::OrHash
+              )
+          ).void
+        end
+        attr_writer :hold
+
+        sig do
+          returns(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant
+          )
+        end
+        attr_reader :merchant
+
+        sig do
+          params(
+            merchant:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant::OrHash
+          ).void
+        end
+        attr_writer :merchant
+
+        sig do
+          returns(
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement
+            )
+          )
+        end
+        attr_reader :settlement
+
+        sig do
+          params(
+            settlement:
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement::OrHash
+              )
+          ).void
+        end
+        attr_writer :settlement
+
+        # Structured amounts for this authorization. The `cardholder` and `merchant`
+        # amounts reflect the original network authorization values. For programs with
+        # hold adjustments enabled (e.g., automated fuel dispensers or tipping MCCs), the
+        # `hold` amount may exceed the `cardholder` and `merchant` amounts to account for
+        # anticipated final transaction amounts such as tips or fuel fill-ups
+        sig do
+          params(
+            cardholder:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder::OrHash,
+            hold:
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold::OrHash
+              ),
+            merchant:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant::OrHash,
+            settlement:
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement::OrHash
+              )
+          ).returns(T.attached_class)
+        end
+        def self.new(cardholder:, hold:, merchant:, settlement:)
+        end
+
+        sig do
+          override.returns(
+            {
+              cardholder:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder,
+              hold:
+                T.nilable(
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold
+                ),
+              merchant:
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant,
+              settlement:
+                T.nilable(
+                  Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement
+                )
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Cardholder < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Amount in the smallest unit of the applicable currency (e.g., cents)
+          sig { returns(Integer) }
+          attr_accessor :amount
+
+          # Exchange rate used for currency conversion
+          sig { returns(String) }
+          attr_accessor :conversion_rate
+
+          # 3-character alphabetic ISO 4217 currency
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig do
+            params(
+              amount: Integer,
+              conversion_rate: String,
+              currency: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Amount in the smallest unit of the applicable currency (e.g., cents)
+            amount:,
+            # Exchange rate used for currency conversion
+            conversion_rate:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          )
+          end
+
+          sig do
+            override.returns(
+              { amount: Integer, conversion_rate: String, currency: String }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class Hold < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Amount in the smallest unit of the applicable currency (e.g., cents)
+          sig { returns(Integer) }
+          attr_accessor :amount
+
+          # 3-character alphabetic ISO 4217 currency
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig do
+            params(amount: Integer, currency: String).returns(T.attached_class)
+          end
+          def self.new(
+            # Amount in the smallest unit of the applicable currency (e.g., cents)
+            amount:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          )
+          end
+
+          sig { override.returns({ amount: Integer, currency: String }) }
+          def to_hash
+          end
+        end
+
+        class Merchant < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Amount in the smallest unit of the applicable currency (e.g., cents)
+          sig { returns(Integer) }
+          attr_accessor :amount
+
+          # 3-character alphabetic ISO 4217 currency
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig do
+            params(amount: Integer, currency: String).returns(T.attached_class)
+          end
+          def self.new(
+            # Amount in the smallest unit of the applicable currency (e.g., cents)
+            amount:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          )
+          end
+
+          sig { override.returns({ amount: Integer, currency: String }) }
+          def to_hash
+          end
+        end
+
+        class Settlement < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Amount in the smallest unit of the applicable currency (e.g., cents)
+          sig { returns(Integer) }
+          attr_accessor :amount
+
+          # 3-character alphabetic ISO 4217 currency
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig do
+            params(amount: Integer, currency: String).returns(T.attached_class)
+          end
+          def self.new(
+            # Amount in the smallest unit of the applicable currency (e.g., cents)
+            amount:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          )
+          end
+
+          sig { override.returns({ amount: Integer, currency: String }) }
+          def to_hash
+          end
+        end
       end
 
       class Avs < Lithic::Internal::Type::BaseModel
