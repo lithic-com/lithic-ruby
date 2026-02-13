@@ -18,16 +18,31 @@ module Lithic
       required :acquirer_fee, Integer
 
       # @!attribute amount
-      #   Authorization amount of the transaction (in cents), including any acquirer fees.
-      #   The contents of this field are identical to `authorization_amount`.
+      #   @deprecated
+      #
+      #   Deprecated, use `amounts`. Authorization amount of the transaction (in cents),
+      #   including any acquirer fees. The contents of this field are identical to
+      #   `authorization_amount`.
       #
       #   @return [Integer]
       required :amount, Integer
 
+      # @!attribute amounts
+      #   Structured amounts for this authorization. The `cardholder` and `merchant`
+      #   amounts reflect the original network authorization values. For programs with
+      #   hold adjustments enabled (e.g., automated fuel dispensers or tipping MCCs), the
+      #   `hold` amount may exceed the `cardholder` and `merchant` amounts to account for
+      #   anticipated final transaction amounts such as tips or fuel fill-ups
+      #
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts]
+      required :amounts, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts }
+
       # @!attribute authorization_amount
-      #   The base transaction amount (in cents) plus the acquirer fee field. This is the
-      #   amount the issuer should authorize against unless the issuer is paying the
-      #   acquirer fee on behalf of the cardholder.
+      #   @deprecated
+      #
+      #   Deprecated, use `amounts`. The base transaction amount (in cents) plus the
+      #   acquirer fee field. This is the amount the issuer should authorize against
+      #   unless the issuer is paying the acquirer fee on behalf of the cardholder.
       #
       #   @return [Integer]
       required :authorization_amount, Integer
@@ -44,7 +59,10 @@ module Lithic
       required :card, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card }
 
       # @!attribute cardholder_currency
-      #   3-character alphabetic ISO 4217 code for cardholder's billing currency.
+      #   @deprecated
+      #
+      #   Deprecated, use `amounts`. 3-character alphabetic ISO 4217 code for cardholder's
+      #   billing currency.
       #
       #   @return [String]
       required :cardholder_currency, String
@@ -77,24 +95,30 @@ module Lithic
       required :merchant, -> { Lithic::Merchant }
 
       # @!attribute merchant_amount
-      #   The amount that the merchant will receive, denominated in `merchant_currency`
-      #   and in the smallest currency unit. Note the amount includes `acquirer_fee`,
-      #   similar to `authorization_amount`. It will be different from
-      #   `authorization_amount` if the merchant is taking payment in a different
-      #   currency.
+      #   @deprecated
+      #
+      #   Deprecated, use `amounts`. The amount that the merchant will receive,
+      #   denominated in `merchant_currency` and in the smallest currency unit. Note the
+      #   amount includes `acquirer_fee`, similar to `authorization_amount`. It will be
+      #   different from `authorization_amount` if the merchant is taking payment in a
+      #   different currency.
       #
       #   @return [Integer]
       required :merchant_amount, Integer
 
       # @!attribute merchant_currency
+      #   @deprecated
+      #
       #   3-character alphabetic ISO 4217 code for the local currency of the transaction.
       #
       #   @return [String]
       required :merchant_currency, String
 
       # @!attribute settled_amount
-      #   Amount (in cents) of the transaction that has been settled, including any
-      #   acquirer fees
+      #   @deprecated
+      #
+      #   Deprecated, use `amounts`. Amount (in cents) of the transaction that has been
+      #   settled, including any acquirer fees.
       #
       #   @return [Integer]
       required :settled_amount, Integer
@@ -131,11 +155,13 @@ module Lithic
       optional :cashback, Integer
 
       # @!attribute conversion_rate
-      #   If the transaction was requested in a currency other than the settlement
-      #   currency, this field will be populated to indicate the rate used to translate
-      #   the merchant_amount to the amount (i.e., `merchant_amount` x `conversion_rate` =
-      #   `amount`). Note that the `merchant_amount` is in the local currency and the
-      #   amount is in the settlement currency.
+      #   @deprecated
+      #
+      #   Deprecated, use `amounts`. If the transaction was requested in a currency other
+      #   than the settlement currency, this field will be populated to indicate the rate
+      #   used to translate the merchant_amount to the amount (i.e., `merchant_amount` x
+      #   `conversion_rate` = `amount`). Note that the `merchant_amount` is in the local
+      #   currency and the amount is in the settlement currency.
       #
       #   @return [Float, nil]
       optional :conversion_rate, Float
@@ -206,7 +232,7 @@ module Lithic
       #   @return [Time, nil]
       optional :ttl, Time
 
-      # @!method initialize(token:, acquirer_fee:, amount:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil, event_type: :"card_authorization.approval_request")
+      # @!method initialize(token:, acquirer_fee:, amount:, amounts:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil, event_type: :"card_authorization.approval_request")
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent} for more details.
       #
@@ -214,15 +240,17 @@ module Lithic
       #
       #   @param acquirer_fee [Integer] Fee (in cents) assessed by the merchant and paid for by the cardholder. Will be
       #
-      #   @param amount [Integer] Authorization amount of the transaction (in cents), including any acquirer fees.
+      #   @param amount [Integer] Deprecated, use `amounts`. Authorization amount of the transaction (in cents), i
       #
-      #   @param authorization_amount [Integer] The base transaction amount (in cents) plus the acquirer fee field. This is the
+      #   @param amounts [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts] Structured amounts for this authorization. The `cardholder` and `merchant` amoun
+      #
+      #   @param authorization_amount [Integer] Deprecated, use `amounts`. The base transaction amount (in cents) plus the acqui
       #
       #   @param avs [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Avs]
       #
       #   @param card [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card] Card object in ASA
       #
-      #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for cardholder's billing currency.
+      #   @param cardholder_currency [String] Deprecated, use `amounts`. 3-character alphabetic ISO 4217 code for cardholder's
       #
       #   @param cash_amount [Integer] The portion of the transaction requested as cash back by the cardholder, and doe
       #
@@ -230,11 +258,11 @@ module Lithic
       #
       #   @param merchant [Lithic::Models::Merchant]
       #
-      #   @param merchant_amount [Integer] The amount that the merchant will receive, denominated in `merchant_currency` an
+      #   @param merchant_amount [Integer] Deprecated, use `amounts`. The amount that the merchant will receive, denominate
       #
       #   @param merchant_currency [String] 3-character alphabetic ISO 4217 code for the local currency of the transaction.
       #
-      #   @param settled_amount [Integer] Amount (in cents) of the transaction that has been settled, including any acquir
+      #   @param settled_amount [Integer] Deprecated, use `amounts`. Amount (in cents) of the transaction that has been se
       #
       #   @param status [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Status] The type of authorization request that this request is for. Note that `CREDIT_AU
       #
@@ -246,7 +274,7 @@ module Lithic
       #
       #   @param cashback [Integer] Deprecated, use `cash_amount`.
       #
-      #   @param conversion_rate [Float] If the transaction was requested in a currency other than the settlement currenc
+      #   @param conversion_rate [Float] Deprecated, use `amounts`. If the transaction was requested in a currency other
       #
       #   @param event_token [String] The event token associated with the authorization. This field is only set for pr
       #
@@ -267,6 +295,131 @@ module Lithic
       #   @param ttl [Time] Deprecated: approximate time-to-live for the authorization.
       #
       #   @param event_type [Symbol, :"card_authorization.approval_request"]
+
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#amounts
+      class Amounts < Lithic::Internal::Type::BaseModel
+        # @!attribute cardholder
+        #
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder]
+        required :cardholder, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder }
+
+        # @!attribute hold
+        #
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold, nil]
+        required :hold, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold }, nil?: true
+
+        # @!attribute merchant
+        #
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant]
+        required :merchant, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant }
+
+        # @!attribute settlement
+        #
+        #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement, nil]
+        required :settlement,
+                 -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement },
+                 nil?: true
+
+        # @!method initialize(cardholder:, hold:, merchant:, settlement:)
+        #   Structured amounts for this authorization. The `cardholder` and `merchant`
+        #   amounts reflect the original network authorization values. For programs with
+        #   hold adjustments enabled (e.g., automated fuel dispensers or tipping MCCs), the
+        #   `hold` amount may exceed the `cardholder` and `merchant` amounts to account for
+        #   anticipated final transaction amounts such as tips or fuel fill-ups
+        #
+        #   @param cardholder [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Cardholder]
+        #   @param hold [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Hold, nil]
+        #   @param merchant [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Merchant]
+        #   @param settlement [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts::Settlement, nil]
+
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts#cardholder
+        class Cardholder < Lithic::Internal::Type::BaseModel
+          # @!attribute amount
+          #   Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute conversion_rate
+          #   Exchange rate used for currency conversion
+          #
+          #   @return [String]
+          required :conversion_rate, String
+
+          # @!attribute currency
+          #   3-character alphabetic ISO 4217 currency
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!method initialize(amount:, conversion_rate:, currency:)
+          #   @param amount [Integer] Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @param conversion_rate [String] Exchange rate used for currency conversion
+          #
+          #   @param currency [String] 3-character alphabetic ISO 4217 currency
+        end
+
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts#hold
+        class Hold < Lithic::Internal::Type::BaseModel
+          # @!attribute amount
+          #   Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute currency
+          #   3-character alphabetic ISO 4217 currency
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer] Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @param currency [String] 3-character alphabetic ISO 4217 currency
+        end
+
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts#merchant
+        class Merchant < Lithic::Internal::Type::BaseModel
+          # @!attribute amount
+          #   Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute currency
+          #   3-character alphabetic ISO 4217 currency
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer] Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @param currency [String] 3-character alphabetic ISO 4217 currency
+        end
+
+        # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Amounts#settlement
+        class Settlement < Lithic::Internal::Type::BaseModel
+          # @!attribute amount
+          #   Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute currency
+          #   3-character alphabetic ISO 4217 currency
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer] Amount in the smallest unit of the applicable currency (e.g., cents)
+          #
+          #   @param currency [String] 3-character alphabetic ISO 4217 currency
+        end
+      end
 
       # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#avs
       class Avs < Lithic::Internal::Type::BaseModel
