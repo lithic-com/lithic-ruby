@@ -52,6 +52,7 @@ module Lithic
         | :END_USER_REQUEST
         | :BANK_REQUEST
         | :CHARGED_OFF_DELINQUENT
+        | :INTEREST_AND_FEES_PAUSED
 
       module Substatus
         extend Lithic::Internal::Type::Enum
@@ -60,6 +61,7 @@ module Lithic
         END_USER_REQUEST: :END_USER_REQUEST
         BANK_REQUEST: :BANK_REQUEST
         CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
+        INTEREST_AND_FEES_PAUSED: :INTEREST_AND_FEES_PAUSED
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::substatus]
       end
