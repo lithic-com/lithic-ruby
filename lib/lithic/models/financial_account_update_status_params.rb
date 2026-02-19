@@ -55,6 +55,7 @@ module Lithic
         END_USER_REQUEST = :END_USER_REQUEST
         BANK_REQUEST = :BANK_REQUEST
         CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
+        INTEREST_AND_FEES_PAUSED = :INTEREST_AND_FEES_PAUSED
 
         # @!method self.values
         #   @return [Array<Symbol>]

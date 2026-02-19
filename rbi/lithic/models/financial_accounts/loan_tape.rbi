@@ -525,6 +525,11 @@ module Lithic
                   :DELINQUENT,
                   Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
+              INTEREST_AND_FEES_PAUSED =
+                T.let(
+                  :INTEREST_AND_FEES_PAUSED,
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                )
 
               sig do
                 override.returns(
