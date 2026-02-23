@@ -1,0 +1,26 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type interest_tier_schedule_retrieve_params =
+        { financial_account_token: String }
+        & Lithic::Internal::Type::request_parameters
+
+      class InterestTierScheduleRetrieveParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor financial_account_token: String
+
+        def initialize: (
+          financial_account_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          financial_account_token: String,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

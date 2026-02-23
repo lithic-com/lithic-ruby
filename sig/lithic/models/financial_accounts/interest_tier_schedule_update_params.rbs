@@ -1,0 +1,38 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type interest_tier_schedule_update_params =
+        { financial_account_token: String, tier_name: String, tier_rates: top }
+        & Lithic::Internal::Type::request_parameters
+
+      class InterestTierScheduleUpdateParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor financial_account_token: String
+
+        attr_reader tier_name: String?
+
+        def tier_name=: (String) -> String
+
+        attr_reader tier_rates: top?
+
+        def tier_rates=: (top) -> top
+
+        def initialize: (
+          financial_account_token: String,
+          ?tier_name: String,
+          ?tier_rates: top,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          financial_account_token: String,
+          tier_name: String,
+          tier_rates: top,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

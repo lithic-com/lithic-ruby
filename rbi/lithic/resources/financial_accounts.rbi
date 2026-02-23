@@ -20,6 +20,16 @@ module Lithic
       sig { returns(Lithic::Resources::FinancialAccounts::LoanTapes) }
       attr_reader :loan_tapes
 
+      sig do
+        returns(Lithic::Resources::FinancialAccounts::LoanTapeConfiguration)
+      end
+      attr_reader :loan_tape_configuration
+
+      sig do
+        returns(Lithic::Resources::FinancialAccounts::InterestTierSchedule)
+      end
+      attr_reader :interest_tier_schedule
+
       # Create a new financial account
       sig do
         params(
