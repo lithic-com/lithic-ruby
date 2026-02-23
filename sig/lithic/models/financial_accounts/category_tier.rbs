@@ -1,0 +1,21 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type category_tier = { cap_rate: String, rate: String }
+
+      class CategoryTier < Lithic::Internal::Type::BaseModel
+        attr_reader cap_rate: String?
+
+        def cap_rate=: (String) -> String
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        def initialize: (?cap_rate: String, ?rate: String) -> void
+
+        def to_hash: -> { cap_rate: String, rate: String }
+      end
+    end
+  end
+end

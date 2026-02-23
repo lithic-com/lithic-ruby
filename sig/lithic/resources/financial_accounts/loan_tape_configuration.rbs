@@ -1,0 +1,14 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      class LoanTapeConfiguration
+        def retrieve: (
+          String financial_account_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::FinancialAccounts::FinancialAccountsLoanTapeConfiguration
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

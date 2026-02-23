@@ -1,0 +1,60 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type financial_accounts_loan_tape_configuration =
+        {
+          created_at: Time,
+          financial_account_token: String,
+          instance_token: String,
+          updated_at: Time,
+          credit_product_token: String,
+          loan_tape_rebuild_configuration: Lithic::FinancialAccounts::LoanTapeRebuildConfiguration,
+          tier_schedule_changed_at: Time
+        }
+
+      class FinancialAccountsLoanTapeConfiguration < Lithic::Internal::Type::BaseModel
+        attr_accessor created_at: Time
+
+        attr_accessor financial_account_token: String
+
+        attr_accessor instance_token: String
+
+        attr_accessor updated_at: Time
+
+        attr_reader credit_product_token: String?
+
+        def credit_product_token=: (String) -> String
+
+        attr_reader loan_tape_rebuild_configuration: Lithic::FinancialAccounts::LoanTapeRebuildConfiguration?
+
+        def loan_tape_rebuild_configuration=: (
+          Lithic::FinancialAccounts::LoanTapeRebuildConfiguration
+        ) -> Lithic::FinancialAccounts::LoanTapeRebuildConfiguration
+
+        attr_reader tier_schedule_changed_at: Time?
+
+        def tier_schedule_changed_at=: (Time) -> Time
+
+        def initialize: (
+          created_at: Time,
+          financial_account_token: String,
+          instance_token: String,
+          updated_at: Time,
+          ?credit_product_token: String,
+          ?loan_tape_rebuild_configuration: Lithic::FinancialAccounts::LoanTapeRebuildConfiguration,
+          ?tier_schedule_changed_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Time,
+          financial_account_token: String,
+          instance_token: String,
+          updated_at: Time,
+          credit_product_token: String,
+          loan_tape_rebuild_configuration: Lithic::FinancialAccounts::LoanTapeRebuildConfiguration,
+          tier_schedule_changed_at: Time
+        }
+      end
+    end
+  end
+end

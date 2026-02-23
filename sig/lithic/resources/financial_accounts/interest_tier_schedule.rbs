@@ -1,0 +1,46 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      class InterestTierSchedule
+        def create: (
+          String financial_account_token,
+          credit_product_token: String,
+          effective_date: Date,
+          ?tier_name: String,
+          ?tier_rates: top,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule
+
+        def retrieve: (
+          Date effective_date,
+          financial_account_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule
+
+        def update: (
+          Date effective_date,
+          financial_account_token: String,
+          ?tier_name: String,
+          ?tier_rates: top,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule
+
+        def list: (
+          String financial_account_token,
+          ?after_date: Date,
+          ?before_date: Date,
+          ?for_date: Date,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Internal::SinglePage[Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule]
+
+        def delete: (
+          Date effective_date,
+          financial_account_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

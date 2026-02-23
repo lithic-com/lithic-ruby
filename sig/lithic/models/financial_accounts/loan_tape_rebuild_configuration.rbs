@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type loan_tape_rebuild_configuration =
+        { rebuild_needed: bool, last_rebuild: Date, rebuild_from: Date }
+
+      class LoanTapeRebuildConfiguration < Lithic::Internal::Type::BaseModel
+        attr_accessor rebuild_needed: bool
+
+        attr_reader last_rebuild: Date?
+
+        def last_rebuild=: (Date) -> Date
+
+        attr_reader rebuild_from: Date?
+
+        def rebuild_from=: (Date) -> Date
+
+        def initialize: (
+          rebuild_needed: bool,
+          ?last_rebuild: Date,
+          ?rebuild_from: Date
+        ) -> void
+
+        def to_hash: -> {
+          rebuild_needed: bool,
+          last_rebuild: Date,
+          rebuild_from: Date
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type interest_tier_schedule_list_params =
+        { after_date: Date, before_date: Date, for_date: Date }
+        & Lithic::Internal::Type::request_parameters
+
+      class InterestTierScheduleListParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_reader after_date: Date?
+
+        def after_date=: (Date) -> Date
+
+        attr_reader before_date: Date?
+
+        def before_date=: (Date) -> Date
+
+        attr_reader for_date: Date?
+
+        def for_date=: (Date) -> Date
+
+        def initialize: (
+          ?after_date: Date,
+          ?before_date: Date,
+          ?for_date: Date,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          after_date: Date,
+          before_date: Date,
+          for_date: Date,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end
