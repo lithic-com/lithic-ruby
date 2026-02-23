@@ -11,6 +11,10 @@ module Lithic
 
       attr_reader loan_tapes: Lithic::Resources::FinancialAccounts::LoanTapes
 
+      attr_reader loan_tape_configuration: Lithic::Resources::FinancialAccounts::LoanTapeConfiguration
+
+      attr_reader interest_tier_schedule: Lithic::Resources::FinancialAccounts::InterestTierSchedule
+
       def create: (
         nickname: String,
         type: Lithic::Models::FinancialAccountCreateParams::type_,
