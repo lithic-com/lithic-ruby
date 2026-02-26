@@ -3,6 +3,9 @@
 module Lithic
   module Resources
     class AccountHolders
+      # @return [Lithic::Resources::AccountHolders::Entities]
+      attr_reader :entities
+
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::AccountHolderCreateParams} for more details.
       #
@@ -391,6 +394,7 @@ module Lithic
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client
+        @entities = Lithic::Resources::AccountHolders::Entities.new(client: client)
       end
     end
   end

@@ -1,0 +1,28 @@
+module Lithic
+  module Resources
+    class AccountHolders
+      class Entities
+        def create: (
+          String account_holder_token,
+          address: Lithic::AccountHolders::EntityCreateParams::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String,
+          type: Lithic::Models::AccountHolders::EntityCreateParams::type_,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::AccountHolders::EntityCreateResponse
+
+        def delete: (
+          String entity_token,
+          account_holder_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::AccountHolders::AccountHolderEntity
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

@@ -23,6 +23,8 @@ module Lithic
 
   class AccountHolderRetrieveParams = Lithic::Models::AccountHolderRetrieveParams
 
+  module AccountHolders = Lithic::Models::AccountHolders
+
   class AccountHolderSimulateEnrollmentDocumentReviewParams = Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams
 
   class AccountHolderSimulateEnrollmentReviewParams = Lithic::Models::AccountHolderSimulateEnrollmentReviewParams
