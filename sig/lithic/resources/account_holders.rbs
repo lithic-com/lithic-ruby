@@ -1,6 +1,8 @@
 module Lithic
   module Resources
     class AccountHolders
+      attr_reader entities: Lithic::Resources::AccountHolders::Entities
+
       def create: (
         business_entity: Lithic::AccountHolderCreateParams::BusinessEntity,
         tos_timestamp: String,

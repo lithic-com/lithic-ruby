@@ -1,0 +1,26 @@
+module Lithic
+  module Models
+    module AccountHolders
+      type entity_delete_params =
+        { account_holder_token: String }
+        & Lithic::Internal::Type::request_parameters
+
+      class EntityDeleteParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor account_holder_token: String
+
+        def initialize: (
+          account_holder_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_holder_token: String,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end
