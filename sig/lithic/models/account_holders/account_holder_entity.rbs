@@ -1,0 +1,137 @@
+module Lithic
+  module Models
+    class AccountHolderEntity = AccountHolders::AccountHolderEntity
+
+    module AccountHolders
+      type account_holder_entity =
+        {
+          token: String,
+          account_holder_token: String,
+          address: Lithic::AccountHolders::AccountHolderEntity::Address,
+          dob: String?,
+          email: String?,
+          first_name: String?,
+          last_name: String?,
+          phone_number: String?,
+          status: Lithic::Models::AccountHolders::AccountHolderEntity::status,
+          type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+        }
+
+      class AccountHolderEntity < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor account_holder_token: String
+
+        attr_accessor address: Lithic::AccountHolders::AccountHolderEntity::Address
+
+        attr_accessor dob: String?
+
+        attr_accessor email: String?
+
+        attr_accessor first_name: String?
+
+        attr_accessor last_name: String?
+
+        attr_accessor phone_number: String?
+
+        attr_accessor status: Lithic::Models::AccountHolders::AccountHolderEntity::status
+
+        attr_accessor type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+
+        def initialize: (
+          token: String,
+          account_holder_token: String,
+          address: Lithic::AccountHolders::AccountHolderEntity::Address,
+          dob: String?,
+          email: String?,
+          first_name: String?,
+          last_name: String?,
+          phone_number: String?,
+          status: Lithic::Models::AccountHolders::AccountHolderEntity::status,
+          type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          account_holder_token: String,
+          address: Lithic::AccountHolders::AccountHolderEntity::Address,
+          dob: String?,
+          email: String?,
+          first_name: String?,
+          last_name: String?,
+          phone_number: String?,
+          status: Lithic::Models::AccountHolders::AccountHolderEntity::status,
+          type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+        }
+
+        type address =
+          {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
+
+        class Address < Lithic::Internal::Type::BaseModel
+          attr_accessor address1: String
+
+          attr_accessor city: String
+
+          attr_accessor country: String
+
+          attr_accessor postal_code: String
+
+          attr_accessor state: String
+
+          attr_reader address2: String?
+
+          def address2=: (String) -> String
+
+          def initialize: (
+            address1: String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            ?address2: String
+          ) -> void
+
+          def to_hash: -> {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
+        end
+
+        type status = :ACCEPTED | :INACTIVE | :PENDING_REVIEW | :REJECTED
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          ACCEPTED: :ACCEPTED
+          INACTIVE: :INACTIVE
+          PENDING_REVIEW: :PENDING_REVIEW
+          REJECTED: :REJECTED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolders::AccountHolderEntity::status]
+        end
+
+        type type_ = :BENEFICIAL_OWNER_INDIVIDUAL | :CONTROL_PERSON
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          BENEFICIAL_OWNER_INDIVIDUAL: :BENEFICIAL_OWNER_INDIVIDUAL
+          CONTROL_PERSON: :CONTROL_PERSON
+
+          def self?.values: -> ::Array[Lithic::Models::AccountHolders::AccountHolderEntity::type_]
+        end
+      end
+    end
+  end
+end

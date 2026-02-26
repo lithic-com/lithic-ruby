@@ -3,6 +3,9 @@
 module Lithic
   module Test
     module Resources
+      module AccountHolders
+      end
+
       module AuthRules
         module V2
         end

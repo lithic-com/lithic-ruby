@@ -3,6 +3,9 @@
 module Lithic
   module Resources
     class AccountHolders
+      sig { returns(Lithic::Resources::AccountHolders::Entities) }
+      attr_reader :entities
+
       # Create an account holder and initiate the appropriate onboarding workflow.
       # Account holders and accounts have a 1:1 relationship. When an account holder is
       # successfully created an associated account is also created. All calls to this
