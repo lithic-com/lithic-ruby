@@ -8,11 +8,11 @@ module Lithic
         customer_tokenization_decision: Lithic::TokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?,
         event_type: Lithic::Models::TokenizationApprovalRequestWebhookEvent::event_type,
         issuer_decision: Lithic::Models::TokenizationApprovalRequestWebhookEvent::issuer_decision,
+        token_metadata: Lithic::TokenMetadata,
         tokenization_channel: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_channel,
         tokenization_token: String,
         wallet_decisioning_info: Lithic::WalletDecisioningInfo,
         device: Lithic::Device,
-        digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
         rule_results: ::Array[Lithic::TokenizationRuleResult],
         tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
         tokenization_source: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_source,
@@ -32,6 +32,8 @@ module Lithic
 
       attr_accessor issuer_decision: Lithic::Models::TokenizationApprovalRequestWebhookEvent::issuer_decision
 
+      attr_accessor token_metadata: Lithic::TokenMetadata
+
       attr_accessor tokenization_channel: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_channel
 
       attr_accessor tokenization_token: String
@@ -41,12 +43,6 @@ module Lithic
       attr_reader device: Lithic::Device?
 
       def device=: (Lithic::Device) -> Lithic::Device
-
-      attr_reader digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata?
-
-      def digital_wallet_token_metadata=: (
-        Lithic::DigitalWalletTokenMetadata
-      ) -> Lithic::DigitalWalletTokenMetadata
 
       attr_reader rule_results: ::Array[Lithic::TokenizationRuleResult]?
 
@@ -79,11 +75,11 @@ module Lithic
         customer_tokenization_decision: Lithic::TokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?,
         event_type: Lithic::Models::TokenizationApprovalRequestWebhookEvent::event_type,
         issuer_decision: Lithic::Models::TokenizationApprovalRequestWebhookEvent::issuer_decision,
+        token_metadata: Lithic::TokenMetadata,
         tokenization_channel: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_channel,
         tokenization_token: String,
         wallet_decisioning_info: Lithic::WalletDecisioningInfo,
         ?device: Lithic::Device,
-        ?digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
         ?rule_results: ::Array[Lithic::TokenizationRuleResult],
         ?tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
         ?tokenization_source: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_source,
@@ -97,11 +93,11 @@ module Lithic
         customer_tokenization_decision: Lithic::TokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision?,
         event_type: Lithic::Models::TokenizationApprovalRequestWebhookEvent::event_type,
         issuer_decision: Lithic::Models::TokenizationApprovalRequestWebhookEvent::issuer_decision,
+        token_metadata: Lithic::TokenMetadata,
         tokenization_channel: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_channel,
         tokenization_token: String,
         wallet_decisioning_info: Lithic::WalletDecisioningInfo,
         device: Lithic::Device,
-        digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
         rule_results: ::Array[Lithic::TokenizationRuleResult],
         tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
         tokenization_source: Lithic::Models::TokenizationApprovalRequestWebhookEvent::tokenization_source,

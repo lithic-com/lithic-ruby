@@ -2,12 +2,12 @@
 
 module Lithic
   module Models
-    class DigitalWalletTokenMetadata < Lithic::Internal::Type::BaseModel
+    class TokenMetadata < Lithic::Internal::Type::BaseModel
       # @!attribute payment_account_info
       #   Contains the information of the account responsible for the payment.
       #
-      #   @return [Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo]
-      required :payment_account_info, -> { Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo }
+      #   @return [Lithic::Models::TokenMetadata::PaymentAccountInfo]
+      required :payment_account_info, -> { Lithic::TokenMetadata::PaymentAccountInfo }
 
       # @!attribute status
       #   The current status of the digital wallet token. Pending or declined.
@@ -31,16 +31,16 @@ module Lithic
       # @!attribute token_requestor_name
       #   Human-readable name of the wallet that the token_requestor_id maps to.
       #
-      #   @return [Symbol, Lithic::Models::DigitalWalletTokenMetadata::TokenRequestorName, nil]
-      optional :token_requestor_name, enum: -> { Lithic::DigitalWalletTokenMetadata::TokenRequestorName }
+      #   @return [Symbol, Lithic::Models::TokenMetadata::TokenRequestorName, nil]
+      optional :token_requestor_name, enum: -> { Lithic::TokenMetadata::TokenRequestorName }
 
       # @!method initialize(payment_account_info:, status:, payment_app_instance_id: nil, token_requestor_id: nil, token_requestor_name: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::DigitalWalletTokenMetadata} for more details.
+      #   {Lithic::Models::TokenMetadata} for more details.
       #
       #   Contains the metadata for the digital wallet being tokenized.
       #
-      #   @param payment_account_info [Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo] Contains the information of the account responsible for the payment.
+      #   @param payment_account_info [Lithic::Models::TokenMetadata::PaymentAccountInfo] Contains the information of the account responsible for the payment.
       #
       #   @param status [String] The current status of the digital wallet token. Pending or declined.
       #
@@ -48,17 +48,16 @@ module Lithic
       #
       #   @param token_requestor_id [String] The party that requested the digitization
       #
-      #   @param token_requestor_name [Symbol, Lithic::Models::DigitalWalletTokenMetadata::TokenRequestorName] Human-readable name of the wallet that the token_requestor_id maps to.
+      #   @param token_requestor_name [Symbol, Lithic::Models::TokenMetadata::TokenRequestorName] Human-readable name of the wallet that the token_requestor_id maps to.
 
-      # @see Lithic::Models::DigitalWalletTokenMetadata#payment_account_info
+      # @see Lithic::Models::TokenMetadata#payment_account_info
       class PaymentAccountInfo < Lithic::Internal::Type::BaseModel
         # @!attribute account_holder_data
         #   Additional information that can be used to identify the account holder, such as
         #   name, address, etc
         #
-        #   @return [Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData]
-        required :account_holder_data,
-                 -> { Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData }
+        #   @return [Lithic::Models::TokenMetadata::PaymentAccountInfo::AccountHolderData]
+        required :account_holder_data, -> { Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData }
 
         # @!attribute pan_unique_reference
         #   Reference to the PAN that is unique per Wallet Provider
@@ -81,12 +80,11 @@ module Lithic
 
         # @!method initialize(account_holder_data:, pan_unique_reference: nil, payment_account_reference: nil, token_unique_reference: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo} for more
-        #   details.
+        #   {Lithic::Models::TokenMetadata::PaymentAccountInfo} for more details.
         #
         #   Contains the information of the account responsible for the payment.
         #
-        #   @param account_holder_data [Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData] Additional information that can be used to identify the account holder, such as
+        #   @param account_holder_data [Lithic::Models::TokenMetadata::PaymentAccountInfo::AccountHolderData] Additional information that can be used to identify the account holder, such as
         #
         #   @param pan_unique_reference [String, nil] Reference to the PAN that is unique per Wallet Provider
         #
@@ -94,7 +92,7 @@ module Lithic
         #
         #   @param token_unique_reference [String, nil] A unique reference assigned following the allocation of a token used to identify
 
-        # @see Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo#account_holder_data
+        # @see Lithic::Models::TokenMetadata::PaymentAccountInfo#account_holder_data
         class AccountHolderData < Lithic::Internal::Type::BaseModel
           # @!attribute phone_number
           #   The phone number, may contain country code along with phone number when
@@ -105,8 +103,8 @@ module Lithic
 
           # @!method initialize(phone_number: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData}
-          #   for more details.
+          #   {Lithic::Models::TokenMetadata::PaymentAccountInfo::AccountHolderData} for more
+          #   details.
           #
           #   Additional information that can be used to identify the account holder, such as
           #   name, address, etc
@@ -117,7 +115,7 @@ module Lithic
 
       # Human-readable name of the wallet that the token_requestor_id maps to.
       #
-      # @see Lithic::Models::DigitalWalletTokenMetadata#token_requestor_name
+      # @see Lithic::Models::TokenMetadata#token_requestor_name
       module TokenRequestorName
         extend Lithic::Internal::Type::Enum
 
@@ -127,6 +125,7 @@ module Lithic
         FACEBOOK = :FACEBOOK
         FITBIT_PAY = :FITBIT_PAY
         GARMIN_PAY = :GARMIN_PAY
+        GOOGLE_PAY = :GOOGLE_PAY
         MICROSOFT_PAY = :MICROSOFT_PAY
         NETFLIX = :NETFLIX
         SAMSUNG_PAY = :SAMSUNG_PAY

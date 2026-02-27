@@ -2,20 +2,18 @@
 
 module Lithic
   module Models
-    class DigitalWalletTokenMetadata < Lithic::Internal::Type::BaseModel
+    class TokenMetadata < Lithic::Internal::Type::BaseModel
       OrHash =
-        T.type_alias do
-          T.any(Lithic::DigitalWalletTokenMetadata, Lithic::Internal::AnyHash)
-        end
+        T.type_alias { T.any(Lithic::TokenMetadata, Lithic::Internal::AnyHash) }
 
       # Contains the information of the account responsible for the payment.
-      sig { returns(Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo) }
+      sig { returns(Lithic::TokenMetadata::PaymentAccountInfo) }
       attr_reader :payment_account_info
 
       sig do
         params(
           payment_account_info:
-            Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::OrHash
+            Lithic::TokenMetadata::PaymentAccountInfo::OrHash
         ).void
       end
       attr_writer :payment_account_info
@@ -39,9 +37,7 @@ module Lithic
       # Human-readable name of the wallet that the token_requestor_id maps to.
       sig do
         returns(
-          T.nilable(
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
-          )
+          T.nilable(Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol)
         )
       end
       attr_reader :token_requestor_name
@@ -49,7 +45,7 @@ module Lithic
       sig do
         params(
           token_requestor_name:
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::OrSymbol
+            Lithic::TokenMetadata::TokenRequestorName::OrSymbol
         ).void
       end
       attr_writer :token_requestor_name
@@ -58,12 +54,12 @@ module Lithic
       sig do
         params(
           payment_account_info:
-            Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::OrHash,
+            Lithic::TokenMetadata::PaymentAccountInfo::OrHash,
           status: String,
           payment_app_instance_id: T.nilable(String),
           token_requestor_id: String,
           token_requestor_name:
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::OrSymbol
+            Lithic::TokenMetadata::TokenRequestorName::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -84,13 +80,12 @@ module Lithic
       sig do
         override.returns(
           {
-            payment_account_info:
-              Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+            payment_account_info: Lithic::TokenMetadata::PaymentAccountInfo,
             status: String,
             payment_app_instance_id: T.nilable(String),
             token_requestor_id: String,
             token_requestor_name:
-              Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+              Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           }
         )
       end
@@ -101,7 +96,7 @@ module Lithic
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+              Lithic::TokenMetadata::PaymentAccountInfo,
               Lithic::Internal::AnyHash
             )
           end
@@ -109,16 +104,14 @@ module Lithic
         # Additional information that can be used to identify the account holder, such as
         # name, address, etc
         sig do
-          returns(
-            Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData
-          )
+          returns(Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData)
         end
         attr_reader :account_holder_data
 
         sig do
           params(
             account_holder_data:
-              Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData::OrHash
+              Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData::OrHash
           ).void
         end
         attr_writer :account_holder_data
@@ -140,7 +133,7 @@ module Lithic
         sig do
           params(
             account_holder_data:
-              Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData::OrHash,
+              Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData::OrHash,
             pan_unique_reference: T.nilable(String),
             payment_account_reference: T.nilable(String),
             token_unique_reference: T.nilable(String)
@@ -164,7 +157,7 @@ module Lithic
           override.returns(
             {
               account_holder_data:
-                Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+                Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData,
               pan_unique_reference: T.nilable(String),
               payment_account_reference: T.nilable(String),
               token_unique_reference: T.nilable(String)
@@ -178,7 +171,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+                Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData,
                 Lithic::Internal::AnyHash
               )
             end
@@ -212,74 +205,74 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Lithic::DigitalWalletTokenMetadata::TokenRequestorName
-            )
+            T.all(Symbol, Lithic::TokenMetadata::TokenRequestorName)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AMAZON_ONE =
           T.let(
             :AMAZON_ONE,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         ANDROID_PAY =
           T.let(
             :ANDROID_PAY,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         APPLE_PAY =
           T.let(
             :APPLE_PAY,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         FACEBOOK =
           T.let(
             :FACEBOOK,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         FITBIT_PAY =
           T.let(
             :FITBIT_PAY,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         GARMIN_PAY =
           T.let(
             :GARMIN_PAY,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
+          )
+        GOOGLE_PAY =
+          T.let(
+            :GOOGLE_PAY,
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         MICROSOFT_PAY =
           T.let(
             :MICROSOFT_PAY,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         NETFLIX =
           T.let(
             :NETFLIX,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         SAMSUNG_PAY =
           T.let(
             :SAMSUNG_PAY,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         UNKNOWN =
           T.let(
             :UNKNOWN,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
         VISA_CHECKOUT =
           T.let(
             :VISA_CHECKOUT,
-            Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
+            Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[
-              Lithic::DigitalWalletTokenMetadata::TokenRequestorName::TaggedSymbol
-            ]
+            T::Array[Lithic::TokenMetadata::TokenRequestorName::TaggedSymbol]
           )
         end
         def self.values

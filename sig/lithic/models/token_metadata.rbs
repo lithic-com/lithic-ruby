@@ -1,16 +1,16 @@
 module Lithic
   module Models
-    type digital_wallet_token_metadata =
+    type token_metadata =
       {
-        payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+        payment_account_info: Lithic::TokenMetadata::PaymentAccountInfo,
         status: String,
         payment_app_instance_id: String?,
         token_requestor_id: String,
-        token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+        token_requestor_name: Lithic::Models::TokenMetadata::token_requestor_name
       }
 
-    class DigitalWalletTokenMetadata < Lithic::Internal::Type::BaseModel
-      attr_accessor payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo
+    class TokenMetadata < Lithic::Internal::Type::BaseModel
+      attr_accessor payment_account_info: Lithic::TokenMetadata::PaymentAccountInfo
 
       attr_accessor status: String
 
@@ -20,38 +20,38 @@ module Lithic
 
       def token_requestor_id=: (String) -> String
 
-      attr_reader token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name?
+      attr_reader token_requestor_name: Lithic::Models::TokenMetadata::token_requestor_name?
 
       def token_requestor_name=: (
-        Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
-      ) -> Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+        Lithic::Models::TokenMetadata::token_requestor_name
+      ) -> Lithic::Models::TokenMetadata::token_requestor_name
 
       def initialize: (
-        payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+        payment_account_info: Lithic::TokenMetadata::PaymentAccountInfo,
         status: String,
         ?payment_app_instance_id: String?,
         ?token_requestor_id: String,
-        ?token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+        ?token_requestor_name: Lithic::Models::TokenMetadata::token_requestor_name
       ) -> void
 
       def to_hash: -> {
-        payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+        payment_account_info: Lithic::TokenMetadata::PaymentAccountInfo,
         status: String,
         payment_app_instance_id: String?,
         token_requestor_id: String,
-        token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+        token_requestor_name: Lithic::Models::TokenMetadata::token_requestor_name
       }
 
       type payment_account_info =
         {
-          account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+          account_holder_data: Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData,
           pan_unique_reference: String?,
           payment_account_reference: String?,
           token_unique_reference: String?
         }
 
       class PaymentAccountInfo < Lithic::Internal::Type::BaseModel
-        attr_accessor account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData
+        attr_accessor account_holder_data: Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData
 
         attr_accessor pan_unique_reference: String?
 
@@ -60,14 +60,14 @@ module Lithic
         attr_accessor token_unique_reference: String?
 
         def initialize: (
-          account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+          account_holder_data: Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData,
           ?pan_unique_reference: String?,
           ?payment_account_reference: String?,
           ?token_unique_reference: String?
         ) -> void
 
         def to_hash: -> {
-          account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+          account_holder_data: Lithic::TokenMetadata::PaymentAccountInfo::AccountHolderData,
           pan_unique_reference: String?,
           payment_account_reference: String?,
           token_unique_reference: String?
@@ -91,6 +91,7 @@ module Lithic
         | :FACEBOOK
         | :FITBIT_PAY
         | :GARMIN_PAY
+        | :GOOGLE_PAY
         | :MICROSOFT_PAY
         | :NETFLIX
         | :SAMSUNG_PAY
@@ -106,13 +107,14 @@ module Lithic
         FACEBOOK: :FACEBOOK
         FITBIT_PAY: :FITBIT_PAY
         GARMIN_PAY: :GARMIN_PAY
+        GOOGLE_PAY: :GOOGLE_PAY
         MICROSOFT_PAY: :MICROSOFT_PAY
         NETFLIX: :NETFLIX
         SAMSUNG_PAY: :SAMSUNG_PAY
         UNKNOWN: :UNKNOWN
         VISA_CHECKOUT: :VISA_CHECKOUT
 
-        def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name]
+        def self?.values: -> ::Array[Lithic::Models::TokenMetadata::token_requestor_name]
       end
     end
   end

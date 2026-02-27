@@ -23,6 +23,17 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
+      # Contains the metadata for the digital wallet being tokenized.
+      sig { returns(Lithic::TokenMetadata) }
+      attr_reader :digital_wallet_token_metadata
+
+      sig do
+        params(
+          digital_wallet_token_metadata: Lithic::TokenMetadata::OrHash
+        ).void
+      end
+      attr_writer :digital_wallet_token_metadata
+
       # The name of this event
       sig do
         returns(
@@ -68,18 +79,6 @@ module Lithic
       sig { params(device: Lithic::Device::OrHash).void }
       attr_writer :device
 
-      # Contains the metadata for the digital wallet being tokenized.
-      sig { returns(T.nilable(Lithic::DigitalWalletTokenMetadata)) }
-      attr_reader :digital_wallet_token_metadata
-
-      sig do
-        params(
-          digital_wallet_token_metadata:
-            Lithic::DigitalWalletTokenMetadata::OrHash
-        ).void
-      end
-      attr_writer :digital_wallet_token_metadata
-
       # The source of the tokenization.
       sig do
         returns(
@@ -104,6 +103,7 @@ module Lithic
           account_token: String,
           card_token: String,
           created: Time,
+          digital_wallet_token_metadata: Lithic::TokenMetadata::OrHash,
           event_type:
             Lithic::TokenizationDecisioningRequestWebhookEvent::EventType::OrSymbol,
           issuer_decision:
@@ -113,8 +113,6 @@ module Lithic
           tokenization_token: String,
           wallet_decisioning_info: Lithic::WalletDecisioningInfo::OrHash,
           device: Lithic::Device::OrHash,
-          digital_wallet_token_metadata:
-            Lithic::DigitalWalletTokenMetadata::OrHash,
           tokenization_source:
             Lithic::TokenizationDecisioningRequestWebhookEvent::TokenizationSource::OrSymbol
         ).returns(T.attached_class)
@@ -126,6 +124,8 @@ module Lithic
         card_token:,
         # Indicate when the request was received from Mastercard or Visa
         created:,
+        # Contains the metadata for the digital wallet being tokenized.
+        digital_wallet_token_metadata:,
         # The name of this event
         event_type:,
         # Whether Lithic decisioned on the token, and if so, what the decision was.
@@ -137,8 +137,6 @@ module Lithic
         tokenization_token:,
         wallet_decisioning_info:,
         device: nil,
-        # Contains the metadata for the digital wallet being tokenized.
-        digital_wallet_token_metadata: nil,
         # The source of the tokenization.
         tokenization_source: nil
       )
@@ -150,6 +148,7 @@ module Lithic
             account_token: String,
             card_token: String,
             created: Time,
+            digital_wallet_token_metadata: Lithic::TokenMetadata,
             event_type:
               Lithic::TokenizationDecisioningRequestWebhookEvent::EventType::TaggedSymbol,
             issuer_decision:
@@ -159,7 +158,6 @@ module Lithic
             tokenization_token: String,
             wallet_decisioning_info: Lithic::WalletDecisioningInfo,
             device: Lithic::Device,
-            digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
             tokenization_source:
               Lithic::TokenizationDecisioningRequestWebhookEvent::TokenizationSource::TaggedSymbol
           }
