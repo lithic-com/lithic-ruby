@@ -31,6 +31,12 @@ module Lithic
                },
                nil?: true
 
+      # @!attribute digital_wallet_token_metadata
+      #   Contains the metadata for the digital wallet being tokenized.
+      #
+      #   @return [Lithic::Models::TokenMetadata]
+      required :digital_wallet_token_metadata, -> { Lithic::TokenMetadata }
+
       # @!attribute event_type
       #   The name of this event
       #
@@ -68,12 +74,6 @@ module Lithic
       #   @return [Lithic::Models::Device, nil]
       optional :device, -> { Lithic::Device }
 
-      # @!attribute digital_wallet_token_metadata
-      #   Contains the metadata for the digital wallet being tokenized.
-      #
-      #   @return [Lithic::Models::DigitalWalletTokenMetadata, nil]
-      optional :digital_wallet_token_metadata, -> { Lithic::DigitalWalletTokenMetadata }
-
       # @!attribute rule_results
       #   Results from rules that were evaluated for this tokenization
       #
@@ -101,7 +101,7 @@ module Lithic
       optional :tokenization_tfa_reasons,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::TokenizationTfaReason] }
 
-      # @!method initialize(account_token:, card_token:, created:, customer_tokenization_decision:, event_type:, issuer_decision:, tokenization_channel:, tokenization_token:, wallet_decisioning_info:, device: nil, digital_wallet_token_metadata: nil, rule_results: nil, tokenization_decline_reasons: nil, tokenization_source: nil, tokenization_tfa_reasons: nil)
+      # @!method initialize(account_token:, card_token:, created:, customer_tokenization_decision:, digital_wallet_token_metadata:, event_type:, issuer_decision:, tokenization_channel:, tokenization_token:, wallet_decisioning_info:, device: nil, rule_results: nil, tokenization_decline_reasons: nil, tokenization_source: nil, tokenization_tfa_reasons: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent} for more
       #   details.
@@ -114,6 +114,8 @@ module Lithic
       #
       #   @param customer_tokenization_decision [Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision, nil] Contains the metadata for the customer tokenization decision.
       #
+      #   @param digital_wallet_token_metadata [Lithic::Models::TokenMetadata] Contains the metadata for the digital wallet being tokenized.
+      #
       #   @param event_type [Symbol, Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType] The name of this event
       #
       #   @param issuer_decision [Symbol, Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision] Whether Lithic decisioned on the token, and if so, what the decision was. APPROV
@@ -125,8 +127,6 @@ module Lithic
       #   @param wallet_decisioning_info [Lithic::Models::WalletDecisioningInfo]
       #
       #   @param device [Lithic::Models::Device]
-      #
-      #   @param digital_wallet_token_metadata [Lithic::Models::DigitalWalletTokenMetadata] Contains the metadata for the digital wallet being tokenized.
       #
       #   @param rule_results [Array<Lithic::Models::TokenizationRuleResult>] Results from rules that were evaluated for this tokenization
       #

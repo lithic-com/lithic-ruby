@@ -5,13 +5,13 @@ module Lithic
         account_token: String,
         card_token: String,
         created: Time,
+        digital_wallet_token_metadata: Lithic::TokenMetadata,
         event_type: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::event_type,
         issuer_decision: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::issuer_decision,
         tokenization_channel: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_channel,
         tokenization_token: String,
         wallet_decisioning_info: Lithic::WalletDecisioningInfo,
         device: Lithic::Device,
-        digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
         tokenization_source: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_source
       }
 
@@ -21,6 +21,8 @@ module Lithic
       attr_accessor card_token: String
 
       attr_accessor created: Time
+
+      attr_accessor digital_wallet_token_metadata: Lithic::TokenMetadata
 
       attr_accessor event_type: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::event_type
 
@@ -36,12 +38,6 @@ module Lithic
 
       def device=: (Lithic::Device) -> Lithic::Device
 
-      attr_reader digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata?
-
-      def digital_wallet_token_metadata=: (
-        Lithic::DigitalWalletTokenMetadata
-      ) -> Lithic::DigitalWalletTokenMetadata
-
       attr_reader tokenization_source: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_source?
 
       def tokenization_source=: (
@@ -52,13 +48,13 @@ module Lithic
         account_token: String,
         card_token: String,
         created: Time,
+        digital_wallet_token_metadata: Lithic::TokenMetadata,
         event_type: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::event_type,
         issuer_decision: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::issuer_decision,
         tokenization_channel: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_channel,
         tokenization_token: String,
         wallet_decisioning_info: Lithic::WalletDecisioningInfo,
         ?device: Lithic::Device,
-        ?digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
         ?tokenization_source: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_source
       ) -> void
 
@@ -66,13 +62,13 @@ module Lithic
         account_token: String,
         card_token: String,
         created: Time,
+        digital_wallet_token_metadata: Lithic::TokenMetadata,
         event_type: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::event_type,
         issuer_decision: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::issuer_decision,
         tokenization_channel: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_channel,
         tokenization_token: String,
         wallet_decisioning_info: Lithic::WalletDecisioningInfo,
         device: Lithic::Device,
-        digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
         tokenization_source: Lithic::Models::TokenizationDecisioningRequestWebhookEvent::tokenization_source
       }
 

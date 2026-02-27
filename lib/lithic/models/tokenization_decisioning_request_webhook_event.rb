@@ -21,6 +21,12 @@ module Lithic
       #   @return [Time]
       required :created, Time
 
+      # @!attribute digital_wallet_token_metadata
+      #   Contains the metadata for the digital wallet being tokenized.
+      #
+      #   @return [Lithic::Models::TokenMetadata]
+      required :digital_wallet_token_metadata, -> { Lithic::TokenMetadata }
+
       # @!attribute event_type
       #   The name of this event
       #
@@ -57,12 +63,6 @@ module Lithic
       #   @return [Lithic::Models::Device, nil]
       optional :device, -> { Lithic::Device }
 
-      # @!attribute digital_wallet_token_metadata
-      #   Contains the metadata for the digital wallet being tokenized.
-      #
-      #   @return [Lithic::Models::DigitalWalletTokenMetadata, nil]
-      optional :digital_wallet_token_metadata, -> { Lithic::DigitalWalletTokenMetadata }
-
       # @!attribute tokenization_source
       #   The source of the tokenization.
       #
@@ -70,7 +70,7 @@ module Lithic
       optional :tokenization_source,
                enum: -> { Lithic::TokenizationDecisioningRequestWebhookEvent::TokenizationSource }
 
-      # @!method initialize(account_token:, card_token:, created:, event_type:, issuer_decision:, tokenization_channel:, tokenization_token:, wallet_decisioning_info:, device: nil, digital_wallet_token_metadata: nil, tokenization_source: nil)
+      # @!method initialize(account_token:, card_token:, created:, digital_wallet_token_metadata:, event_type:, issuer_decision:, tokenization_channel:, tokenization_token:, wallet_decisioning_info:, device: nil, tokenization_source: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TokenizationDecisioningRequestWebhookEvent} for more details.
       #
@@ -81,6 +81,8 @@ module Lithic
       #   @param card_token [String] Unique identifier for the card being tokenized
       #
       #   @param created [Time] Indicate when the request was received from Mastercard or Visa
+      #
+      #   @param digital_wallet_token_metadata [Lithic::Models::TokenMetadata] Contains the metadata for the digital wallet being tokenized.
       #
       #   @param event_type [Symbol, Lithic::Models::TokenizationDecisioningRequestWebhookEvent::EventType] The name of this event
       #
@@ -93,8 +95,6 @@ module Lithic
       #   @param wallet_decisioning_info [Lithic::Models::WalletDecisioningInfo]
       #
       #   @param device [Lithic::Models::Device]
-      #
-      #   @param digital_wallet_token_metadata [Lithic::Models::DigitalWalletTokenMetadata] Contains the metadata for the digital wallet being tokenized.
       #
       #   @param tokenization_source [Symbol, Lithic::Models::TokenizationDecisioningRequestWebhookEvent::TokenizationSource] The source of the tokenization.
 

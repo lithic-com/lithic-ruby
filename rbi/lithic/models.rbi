@@ -208,8 +208,6 @@ module Lithic
   DigitalWalletTokenizationUpdatedWebhookEvent =
     Lithic::Models::DigitalWalletTokenizationUpdatedWebhookEvent
 
-  DigitalWalletTokenMetadata = Lithic::Models::DigitalWalletTokenMetadata
-
   Dispute = Lithic::Models::Dispute
 
   DisputeCreateParams = Lithic::Models::DisputeCreateParams
@@ -562,6 +560,8 @@ module Lithic
 
   TokenizationUpdatedWebhookEvent =
     Lithic::Models::TokenizationUpdatedWebhookEvent
+
+  TokenMetadata = Lithic::Models::TokenMetadata
 
   Transaction = Lithic::Models::Transaction
 
