@@ -60,6 +60,13 @@ module Lithic
       end
       attr_accessor :issuer_decision
 
+      # Contains the metadata for the digital wallet being tokenized.
+      sig { returns(Lithic::TokenMetadata) }
+      attr_reader :token_metadata
+
+      sig { params(token_metadata: Lithic::TokenMetadata::OrHash).void }
+      attr_writer :token_metadata
+
       # The channel through which the tokenization was made.
       sig do
         returns(
@@ -87,18 +94,6 @@ module Lithic
 
       sig { params(device: Lithic::Device::OrHash).void }
       attr_writer :device
-
-      # Contains the metadata for the digital wallet being tokenized.
-      sig { returns(T.nilable(Lithic::DigitalWalletTokenMetadata)) }
-      attr_reader :digital_wallet_token_metadata
-
-      sig do
-        params(
-          digital_wallet_token_metadata:
-            Lithic::DigitalWalletTokenMetadata::OrHash
-        ).void
-      end
-      attr_writer :digital_wallet_token_metadata
 
       # Results from rules that were evaluated for this tokenization
       sig { returns(T.nilable(T::Array[Lithic::TokenizationRuleResult])) }
@@ -174,13 +169,12 @@ module Lithic
             Lithic::TokenizationApprovalRequestWebhookEvent::EventType::OrSymbol,
           issuer_decision:
             Lithic::TokenizationApprovalRequestWebhookEvent::IssuerDecision::OrSymbol,
+          token_metadata: Lithic::TokenMetadata::OrHash,
           tokenization_channel:
             Lithic::TokenizationApprovalRequestWebhookEvent::TokenizationChannel::OrSymbol,
           tokenization_token: String,
           wallet_decisioning_info: Lithic::WalletDecisioningInfo::OrHash,
           device: Lithic::Device::OrHash,
-          digital_wallet_token_metadata:
-            Lithic::DigitalWalletTokenMetadata::OrHash,
           rule_results: T::Array[Lithic::TokenizationRuleResult::OrHash],
           tokenization_decline_reasons:
             T::Array[Lithic::TokenizationDeclineReason::OrSymbol],
@@ -204,14 +198,14 @@ module Lithic
         # Whether Lithic decisioned on the token, and if so, what the decision was.
         # APPROVED/VERIFICATION_REQUIRED/DENIED.
         issuer_decision:,
+        # Contains the metadata for the digital wallet being tokenized.
+        token_metadata:,
         # The channel through which the tokenization was made.
         tokenization_channel:,
         # Unique identifier for the digital wallet token attempt
         tokenization_token:,
         wallet_decisioning_info:,
         device: nil,
-        # Contains the metadata for the digital wallet being tokenized.
-        digital_wallet_token_metadata: nil,
         # Results from rules that were evaluated for this tokenization
         rule_results: nil,
         # List of reasons why the tokenization was declined
@@ -237,12 +231,12 @@ module Lithic
               Lithic::TokenizationApprovalRequestWebhookEvent::EventType::TaggedSymbol,
             issuer_decision:
               Lithic::TokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol,
+            token_metadata: Lithic::TokenMetadata,
             tokenization_channel:
               Lithic::TokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol,
             tokenization_token: String,
             wallet_decisioning_info: Lithic::WalletDecisioningInfo,
             device: Lithic::Device,
-            digital_wallet_token_metadata: Lithic::DigitalWalletTokenMetadata,
             rule_results: T::Array[Lithic::TokenizationRuleResult],
             tokenization_decline_reasons:
               T::Array[Lithic::TokenizationDeclineReason::TaggedSymbol],
