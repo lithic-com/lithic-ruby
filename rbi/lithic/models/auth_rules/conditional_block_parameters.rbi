@@ -15,6 +15,7 @@ module Lithic
         sig { returns(T::Array[Lithic::AuthRules::AuthRuleCondition]) }
         attr_accessor :conditions
 
+        # Deprecated: Use CONDITIONAL_ACTION instead.
         sig do
           params(
             conditions: T::Array[Lithic::AuthRules::AuthRuleCondition::OrHash]

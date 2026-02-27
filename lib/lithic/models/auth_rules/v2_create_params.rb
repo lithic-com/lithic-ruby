@@ -20,7 +20,8 @@ module Lithic
         #   several event streams, the effective one is defined by the separate
         #   `event_stream` field.
         #
-        #   - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+        #   - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
+        #     AUTHORIZATION event stream.
         #   - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
         #   - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         #   - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -99,6 +100,7 @@ module Lithic
         module Parameters
           extend Lithic::Internal::Type::Union
 
+          # Deprecated: Use CONDITIONAL_ACTION instead.
           variant -> { Lithic::AuthRules::ConditionalBlockParameters }
 
           variant -> { Lithic::AuthRules::VelocityLimitParams }
@@ -122,7 +124,8 @@ module Lithic
         # several event streams, the effective one is defined by the separate
         # `event_stream` field.
         #
-        # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+        # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
+        #   AUTHORIZATION event stream.
         # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
