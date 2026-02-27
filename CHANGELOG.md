@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.6.0 (2026-02-27)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/lithic-com/lithic-ruby/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** Add account holder entity endpoints ([508b031](https://github.com/lithic-com/lithic-ruby/commit/508b0315e2ec79e74014759a97e82d209259e2cf))
+* **api:** Add INTEREST_AND_FEES_PAUSED substatus to financial account ([23c7be9](https://github.com/lithic-com/lithic-ruby/commit/23c7be999b5a04a770dd18d2d34ff3967c68a85a))
+* **api:** Expose MIL interest schedules and loan tape configuration endpoints ([a07d19f](https://github.com/lithic-com/lithic-ruby/commit/a07d19f3933cc1e282073f015bec87421a9a76d6))
+
+
+### Bug Fixes
+
+* **api:** Correct token_metadata field name in tokenization.approval_request schema ([a4d5ae7](https://github.com/lithic-com/lithic-ruby/commit/a4d5ae7a5754d8901469be17c57b020c6c246839))
+* properly mock time in ruby ci tests ([ac193de](https://github.com/lithic-com/lithic-ruby/commit/ac193de27a9ce3b9f5bf3162a57a95da2ea88352))
+
+
+### Chores
+
+* update mock server docs ([8abd2ee](https://github.com/lithic-com/lithic-ruby/commit/8abd2eee9b45f88f1a5e821200cb657b07c48084))
+
+
+### Documentation
+
+* Remove CONDITIONAL_BLOCK from docs ([993ab5c](https://github.com/lithic-com/lithic-ruby/commit/993ab5cda8b310bab4083f59713043549cc154f1))
+
 ## 0.5.0 (2026-02-13)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/lithic-com/lithic-ruby/compare/v0.4.0...v0.5.0)
