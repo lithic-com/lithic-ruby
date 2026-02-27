@@ -23,6 +23,7 @@ module Lithic
         module Parameters
           extend Lithic::Internal::Type::Union
 
+          # Deprecated: Use CONDITIONAL_ACTION instead.
           variant -> { Lithic::AuthRules::ConditionalBlockParameters }
 
           variant -> { Lithic::AuthRules::VelocityLimitParams }
