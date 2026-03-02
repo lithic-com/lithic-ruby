@@ -45,6 +45,13 @@ module Lithic
       sig { params(token: String).void }
       attr_writer :token
 
+      # Optional hold to settle when this payment is initiated.
+      sig { returns(T.nilable(Lithic::PaymentCreateParams::Hold)) }
+      attr_reader :hold
+
+      sig { params(hold: Lithic::PaymentCreateParams::Hold::OrHash).void }
+      attr_writer :hold
+
       sig { returns(T.nilable(String)) }
       attr_reader :memo
 
@@ -67,6 +74,7 @@ module Lithic
             Lithic::PaymentCreateParams::MethodAttributes::OrHash,
           type: Lithic::PaymentCreateParams::Type::OrSymbol,
           token: String,
+          hold: Lithic::PaymentCreateParams::Hold::OrHash,
           memo: String,
           user_defined_id: String,
           request_options: Lithic::RequestOptions::OrHash
@@ -82,6 +90,8 @@ module Lithic
         # Customer-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token: nil,
+        # Optional hold to settle when this payment is initiated.
+        hold: nil,
         memo: nil,
         user_defined_id: nil,
         request_options: {}
@@ -98,6 +108,7 @@ module Lithic
             method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
             type: Lithic::PaymentCreateParams::Type::OrSymbol,
             token: String,
+            hold: Lithic::PaymentCreateParams::Hold,
             memo: String,
             user_defined_id: String,
             request_options: Lithic::RequestOptions
@@ -247,6 +258,29 @@ module Lithic
           )
         end
         def self.values
+        end
+      end
+
+      class Hold < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::PaymentCreateParams::Hold, Lithic::Internal::AnyHash)
+          end
+
+        # Token of the hold to settle when this payment is initiated.
+        sig { returns(String) }
+        attr_accessor :token
+
+        # Optional hold to settle when this payment is initiated.
+        sig { params(token: String).returns(T.attached_class) }
+        def self.new(
+          # Token of the hold to settle when this payment is initiated.
+          token:
+        )
+        end
+
+        sig { override.returns({ token: String }) }
+        def to_hash
         end
       end
     end
