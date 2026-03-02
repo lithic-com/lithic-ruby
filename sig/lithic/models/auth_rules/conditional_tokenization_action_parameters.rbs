@@ -23,35 +23,35 @@ module Lithic
         }
 
         type action =
-          Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction
+          Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization
           | Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction
 
         module Action
           extend Lithic::Internal::Type::Union
 
-          type decline_action =
+          type decline_action_tokenization =
             {
-              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_,
-              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::type_,
+              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason
             }
 
-          class DeclineAction < Lithic::Internal::Type::BaseModel
-            attr_accessor type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_
+          class DeclineActionTokenization < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::type_
 
-            attr_reader reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason?
+            attr_reader reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason?
 
             def reason=: (
-              Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
-            ) -> Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+              Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason
+            ) -> Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason
 
             def initialize: (
-              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_,
-              ?reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::type_,
+              ?reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason
             ) -> void
 
             def to_hash: -> {
-              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_,
-              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::type_,
+              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason
             }
 
             type type_ = :DECLINE
@@ -61,7 +61,7 @@ module Lithic
 
               DECLINE: :DECLINE
 
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_]
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::type_]
             end
 
             type reason =
@@ -96,7 +96,7 @@ module Lithic
               GENERIC_DECLINE: :GENERIC_DECLINE
               DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
 
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason]
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::reason]
             end
           end
 

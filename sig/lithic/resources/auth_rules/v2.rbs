@@ -60,6 +60,8 @@ module Lithic
 
         def list_results: (
           ?auth_rule_token: String,
+          ?begin_: Time,
+          ?end_: Time,
           ?ending_before: String,
           ?event_token: String,
           ?has_actions: bool,

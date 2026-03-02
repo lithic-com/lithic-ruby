@@ -33,17 +33,17 @@ module Lithic
           class Results < Lithic::Internal::Type::BaseModel
             # @!attribute current_version
             #
-            #   @return [Lithic::Models::AuthRules::RuleStats, nil]
-            optional :current_version, -> { Lithic::AuthRules::RuleStats }, nil?: true
+            #   @return [Lithic::Models::AuthRules::BacktestStats, nil]
+            optional :current_version, -> { Lithic::AuthRules::BacktestStats }, nil?: true
 
             # @!attribute draft_version
             #
-            #   @return [Lithic::Models::AuthRules::RuleStats, nil]
-            optional :draft_version, -> { Lithic::AuthRules::RuleStats }, nil?: true
+            #   @return [Lithic::Models::AuthRules::BacktestStats, nil]
+            optional :draft_version, -> { Lithic::AuthRules::BacktestStats }, nil?: true
 
             # @!method initialize(current_version: nil, draft_version: nil)
-            #   @param current_version [Lithic::Models::AuthRules::RuleStats, nil]
-            #   @param draft_version [Lithic::Models::AuthRules::RuleStats, nil]
+            #   @param current_version [Lithic::Models::AuthRules::BacktestStats, nil]
+            #   @param draft_version [Lithic::Models::AuthRules::BacktestStats, nil]
           end
 
           # @see Lithic::Models::AuthRules::V2::BacktestResults#simulation_parameters

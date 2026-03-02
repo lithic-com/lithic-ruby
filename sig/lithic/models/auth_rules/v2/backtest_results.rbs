@@ -30,23 +30,23 @@ module Lithic
 
           type results =
             {
-              current_version: Lithic::AuthRules::RuleStats?,
-              draft_version: Lithic::AuthRules::RuleStats?
+              current_version: Lithic::AuthRules::BacktestStats?,
+              draft_version: Lithic::AuthRules::BacktestStats?
             }
 
           class Results < Lithic::Internal::Type::BaseModel
-            attr_accessor current_version: Lithic::AuthRules::RuleStats?
+            attr_accessor current_version: Lithic::AuthRules::BacktestStats?
 
-            attr_accessor draft_version: Lithic::AuthRules::RuleStats?
+            attr_accessor draft_version: Lithic::AuthRules::BacktestStats?
 
             def initialize: (
-              ?current_version: Lithic::AuthRules::RuleStats?,
-              ?draft_version: Lithic::AuthRules::RuleStats?
+              ?current_version: Lithic::AuthRules::BacktestStats?,
+              ?draft_version: Lithic::AuthRules::BacktestStats?
             ) -> void
 
             def to_hash: -> {
-              current_version: Lithic::AuthRules::RuleStats?,
-              draft_version: Lithic::AuthRules::RuleStats?
+              current_version: Lithic::AuthRules::BacktestStats?,
+              draft_version: Lithic::AuthRules::BacktestStats?
             }
           end
 

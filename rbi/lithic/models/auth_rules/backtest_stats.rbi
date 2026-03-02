@@ -3,14 +3,14 @@
 module Lithic
   module Models
     module AuthRules
-      class RuleStats < Lithic::Internal::Type::BaseModel
+      class BacktestStats < Lithic::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
-            T.any(Lithic::AuthRules::RuleStats, Lithic::Internal::AnyHash)
+            T.any(Lithic::AuthRules::BacktestStats, Lithic::Internal::AnyHash)
           end
 
         # The total number of historical transactions approved by this rule during the
-        # relevant period, or the number of transactions that would have been approved if
+        # backtest period, or the number of transactions that would have been approved if
         # the rule was evaluated in shadow mode.
         sig { returns(T.nilable(Integer)) }
         attr_reader :approved
@@ -19,7 +19,7 @@ module Lithic
         attr_writer :approved
 
         # The total number of historical transactions challenged by this rule during the
-        # relevant period, or the number of transactions that would have been challenged
+        # backtest period, or the number of transactions that would have been challenged
         # if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
         # Rules.
         sig { returns(T.nilable(Integer)) }
@@ -29,7 +29,7 @@ module Lithic
         attr_writer :challenged
 
         # The total number of historical transactions declined by this rule during the
-        # relevant period, or the number of transactions that would have been declined if
+        # backtest period, or the number of transactions that would have been declined if
         # the rule was evaluated in shadow mode.
         sig { returns(T.nilable(Integer)) }
         attr_reader :declined
@@ -39,13 +39,16 @@ module Lithic
 
         # Example events and their outcomes.
         sig do
-          returns(T.nilable(T::Array[Lithic::AuthRules::RuleStats::Example]))
+          returns(
+            T.nilable(T::Array[Lithic::AuthRules::BacktestStats::Example])
+          )
         end
         attr_reader :examples
 
         sig do
           params(
-            examples: T::Array[Lithic::AuthRules::RuleStats::Example::OrHash]
+            examples:
+              T::Array[Lithic::AuthRules::BacktestStats::Example::OrHash]
           ).void
         end
         attr_writer :examples
@@ -63,22 +66,23 @@ module Lithic
             approved: Integer,
             challenged: Integer,
             declined: Integer,
-            examples: T::Array[Lithic::AuthRules::RuleStats::Example::OrHash],
+            examples:
+              T::Array[Lithic::AuthRules::BacktestStats::Example::OrHash],
             version: Integer
           ).returns(T.attached_class)
         end
         def self.new(
           # The total number of historical transactions approved by this rule during the
-          # relevant period, or the number of transactions that would have been approved if
+          # backtest period, or the number of transactions that would have been approved if
           # the rule was evaluated in shadow mode.
           approved: nil,
           # The total number of historical transactions challenged by this rule during the
-          # relevant period, or the number of transactions that would have been challenged
+          # backtest period, or the number of transactions that would have been challenged
           # if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
           # Rules.
           challenged: nil,
           # The total number of historical transactions declined by this rule during the
-          # relevant period, or the number of transactions that would have been declined if
+          # backtest period, or the number of transactions that would have been declined if
           # the rule was evaluated in shadow mode.
           declined: nil,
           # Example events and their outcomes.
@@ -95,7 +99,7 @@ module Lithic
               approved: Integer,
               challenged: Integer,
               declined: Integer,
-              examples: T::Array[Lithic::AuthRules::RuleStats::Example],
+              examples: T::Array[Lithic::AuthRules::BacktestStats::Example],
               version: Integer
             }
           )
@@ -107,23 +111,16 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::RuleStats::Example,
+                Lithic::AuthRules::BacktestStats::Example,
                 Lithic::Internal::AnyHash
               )
             end
-
-          # Whether the rule would have approved the request.
-          sig { returns(T.nilable(T::Boolean)) }
-          attr_reader :approved
-
-          sig { params(approved: T::Boolean).void }
-          attr_writer :approved
 
           # The decision made by the rule for this event.
           sig do
             returns(
               T.nilable(
-                Lithic::AuthRules::RuleStats::Example::Decision::TaggedSymbol
+                Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol
               )
             )
           end
@@ -132,7 +129,7 @@ module Lithic
           sig do
             params(
               decision:
-                Lithic::AuthRules::RuleStats::Example::Decision::OrSymbol
+                Lithic::AuthRules::BacktestStats::Example::Decision::OrSymbol
             ).void
           end
           attr_writer :decision
@@ -153,16 +150,13 @@ module Lithic
 
           sig do
             params(
-              approved: T::Boolean,
               decision:
-                Lithic::AuthRules::RuleStats::Example::Decision::OrSymbol,
+                Lithic::AuthRules::BacktestStats::Example::Decision::OrSymbol,
               event_token: String,
               timestamp: Time
             ).returns(T.attached_class)
           end
           def self.new(
-            # Whether the rule would have approved the request.
-            approved: nil,
             # The decision made by the rule for this event.
             decision: nil,
             # The event token.
@@ -175,9 +169,8 @@ module Lithic
           sig do
             override.returns(
               {
-                approved: T::Boolean,
                 decision:
-                  Lithic::AuthRules::RuleStats::Example::Decision::TaggedSymbol,
+                  Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol,
                 event_token: String,
                 timestamp: Time
               }
@@ -192,30 +185,33 @@ module Lithic
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, Lithic::AuthRules::RuleStats::Example::Decision)
+                T.all(
+                  Symbol,
+                  Lithic::AuthRules::BacktestStats::Example::Decision
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             APPROVED =
               T.let(
                 :APPROVED,
-                Lithic::AuthRules::RuleStats::Example::Decision::TaggedSymbol
+                Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol
               )
             DECLINED =
               T.let(
                 :DECLINED,
-                Lithic::AuthRules::RuleStats::Example::Decision::TaggedSymbol
+                Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol
               )
             CHALLENGED =
               T.let(
                 :CHALLENGED,
-                Lithic::AuthRules::RuleStats::Example::Decision::TaggedSymbol
+                Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AuthRules::RuleStats::Example::Decision::TaggedSymbol
+                  Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol
                 ]
               )
             end

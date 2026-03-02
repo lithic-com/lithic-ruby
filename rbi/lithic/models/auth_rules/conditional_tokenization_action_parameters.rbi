@@ -16,7 +16,7 @@ module Lithic
         sig do
           returns(
             T.any(
-              Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction,
+              Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization,
               Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction
             )
           )
@@ -36,7 +36,7 @@ module Lithic
           params(
             action:
               T.any(
-                Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::OrHash,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::OrHash,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::OrHash
               ),
             conditions:
@@ -57,7 +57,7 @@ module Lithic
             {
               action:
                 T.any(
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction
                 ),
               conditions:
@@ -77,16 +77,16 @@ module Lithic
           Variants =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction
               )
             end
 
-          class DeclineAction < Lithic::Internal::Type::BaseModel
+          class DeclineActionTokenization < Lithic::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization,
                   Lithic::Internal::AnyHash
                 )
               end
@@ -94,7 +94,7 @@ module Lithic
             # Decline the tokenization request
             sig do
               returns(
-                Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type::OrSymbol
+                Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type::OrSymbol
               )
             end
             attr_accessor :type
@@ -103,7 +103,7 @@ module Lithic
             sig do
               returns(
                 T.nilable(
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::OrSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::OrSymbol
                 )
               )
             end
@@ -112,7 +112,7 @@ module Lithic
             sig do
               params(
                 reason:
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::OrSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::OrSymbol
               ).void
             end
             attr_writer :reason
@@ -120,9 +120,9 @@ module Lithic
             sig do
               params(
                 type:
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type::OrSymbol,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type::OrSymbol,
                 reason:
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::OrSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -137,9 +137,9 @@ module Lithic
               override.returns(
                 {
                   type:
-                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type::OrSymbol,
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type::OrSymbol,
                   reason:
-                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::OrSymbol
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::OrSymbol
                 }
               )
             end
@@ -154,7 +154,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -162,13 +162,13 @@ module Lithic
               DECLINE =
                 T.let(
                   :DECLINE,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type::TaggedSymbol
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type::TaggedSymbol
                   ]
                 )
               end
@@ -184,7 +184,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -192,73 +192,73 @@ module Lithic
               ACCOUNT_SCORE_1 =
                 T.let(
                   :ACCOUNT_SCORE_1,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               DEVICE_SCORE_1 =
                 T.let(
                   :DEVICE_SCORE_1,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               ALL_WALLET_DECLINE_REASONS_PRESENT =
                 T.let(
                   :ALL_WALLET_DECLINE_REASONS_PRESENT,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               WALLET_RECOMMENDED_DECISION_RED =
                 T.let(
                   :WALLET_RECOMMENDED_DECISION_RED,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               CVC_MISMATCH =
                 T.let(
                   :CVC_MISMATCH,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               CARD_EXPIRY_MONTH_MISMATCH =
                 T.let(
                   :CARD_EXPIRY_MONTH_MISMATCH,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               CARD_EXPIRY_YEAR_MISMATCH =
                 T.let(
                   :CARD_EXPIRY_YEAR_MISMATCH,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               CARD_INVALID_STATE =
                 T.let(
                   :CARD_INVALID_STATE,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               CUSTOMER_RED_PATH =
                 T.let(
                   :CUSTOMER_RED_PATH,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               INVALID_CUSTOMER_RESPONSE =
                 T.let(
                   :INVALID_CUSTOMER_RESPONSE,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               NETWORK_FAILURE =
                 T.let(
                   :NETWORK_FAILURE,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               GENERIC_DECLINE =
                 T.let(
                   :GENERIC_DECLINE,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
               DIGITAL_CARD_ART_REQUIRED =
                 T.let(
                   :DIGITAL_CARD_ART_REQUIRED,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   ]
                 )
               end

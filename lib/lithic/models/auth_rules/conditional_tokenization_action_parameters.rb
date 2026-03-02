@@ -7,7 +7,7 @@ module Lithic
         # @!attribute action
         #   The action to take if the conditions are met.
         #
-        #   @return [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction]
+        #   @return [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction]
         required :action, union: -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action }
 
         # @!attribute conditions
@@ -17,7 +17,7 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition] }
 
         # @!method initialize(action:, conditions:)
-        #   @param action [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction] The action to take if the conditions are met.
+        #   @param action [Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction] The action to take if the conditions are met.
         #
         #   @param conditions [Array<Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition>]
 
@@ -27,33 +27,33 @@ module Lithic
         module Action
           extend Lithic::Internal::Type::Union
 
-          variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction }
+          variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization }
 
           variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction }
 
-          class DeclineAction < Lithic::Internal::Type::BaseModel
+          class DeclineActionTokenization < Lithic::Internal::Type::BaseModel
             # @!attribute type
             #   Decline the tokenization request
             #
-            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type]
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type]
             required :type,
-                     enum: -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type }
+                     enum: -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type }
 
             # @!attribute reason
             #   Reason code for declining the tokenization request
             #
-            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason, nil]
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason, nil]
             optional :reason,
-                     enum: -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason }
+                     enum: -> { Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason }
 
             # @!method initialize(type:, reason: nil)
-            #   @param type [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Type] Decline the tokenization request
+            #   @param type [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Type] Decline the tokenization request
             #
-            #   @param reason [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::Reason] Reason code for declining the tokenization request
+            #   @param reason [Symbol, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization::Reason] Reason code for declining the tokenization request
 
             # Decline the tokenization request
             #
-            # @see Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction#type
+            # @see Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization#type
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -65,7 +65,7 @@ module Lithic
 
             # Reason code for declining the tokenization request
             #
-            # @see Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction#reason
+            # @see Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization#reason
             module Reason
               extend Lithic::Internal::Type::Enum
 
@@ -148,7 +148,7 @@ module Lithic
           end
 
           # @!method self.variants
-          #   @return [Array(Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction)]
+          #   @return [Array(Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction)]
         end
 
         class Condition < Lithic::Internal::Type::BaseModel

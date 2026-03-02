@@ -27,9 +27,9 @@ module Lithic
           # @!attribute actions
           #   Actions returned by the rule evaluation
           #
-          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action>]
+          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization>]
           required :actions,
-                   -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action] }
+                   -> { Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action] }
 
           # @!attribute auth_rule_token
           #   The Auth Rule token
@@ -70,7 +70,7 @@ module Lithic
           # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, event_stream: :AUTHORIZATION)
           #   @param token [String] Globally unique identifier for the evaluation
           #
-          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action>] Actions returned by the rule evaluation
+          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization>] Actions returned by the rule evaluation
           #
           #   @param auth_rule_token [String] The Auth Rule token
           #
@@ -84,34 +84,150 @@ module Lithic
           #
           #   @param event_stream [Symbol, :AUTHORIZATION] The event stream during which the rule was evaluated
 
-          class Action < Lithic::Internal::Type::BaseModel
-            # @!attribute type
-            #
-            #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type]
-            required :type,
-                     enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type }
+          module Action
+            extend Lithic::Internal::Type::Union
 
-            # @!attribute explanation
-            #   Optional explanation for why this action was taken
-            #
-            #   @return [String, nil]
-            optional :explanation, String
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization }
 
-            # @!method initialize(type:, explanation: nil)
-            #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type]
-            #
-            #   @param explanation [String] Optional explanation for why this action was taken
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization }
 
-            # @see Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action#type
-            module Type
-              extend Lithic::Internal::Type::Enum
+            class DeclineActionAuthorization < Lithic::Internal::Type::BaseModel
+              # @!attribute code
+              #   The detailed result code explaining the specific reason for the decline
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code]
+              required :code,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code }
 
-              DECLINE = :DECLINE
-              CHALLENGE = :CHALLENGE
+              # @!attribute type
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type]
+              required :type,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type }
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              # @!attribute explanation
+              #   Optional explanation for why this action was taken
+              #
+              #   @return [String, nil]
+              optional :explanation, String
+
+              # @!method initialize(code:, type:, explanation: nil)
+              #   @param code [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code] The detailed result code explaining the specific reason for the decline
+              #
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type]
+              #
+              #   @param explanation [String] Optional explanation for why this action was taken
+
+              # The detailed result code explaining the specific reason for the decline
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization#code
+              module Code
+                extend Lithic::Internal::Type::Enum
+
+                ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+                ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
+                ACCOUNT_INACTIVE = :ACCOUNT_INACTIVE
+                ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED = :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+                ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+                ACCOUNT_PAUSED = :ACCOUNT_PAUSED
+                ACCOUNT_UNDER_REVIEW = :ACCOUNT_UNDER_REVIEW
+                ADDRESS_INCORRECT = :ADDRESS_INCORRECT
+                APPROVED = :APPROVED
+                AUTH_RULE_ALLOWED_COUNTRY = :AUTH_RULE_ALLOWED_COUNTRY
+                AUTH_RULE_ALLOWED_MCC = :AUTH_RULE_ALLOWED_MCC
+                AUTH_RULE_BLOCKED_COUNTRY = :AUTH_RULE_BLOCKED_COUNTRY
+                AUTH_RULE_BLOCKED_MCC = :AUTH_RULE_BLOCKED_MCC
+                AUTH_RULE = :AUTH_RULE
+                CARD_CLOSED = :CARD_CLOSED
+                CARD_CRYPTOGRAM_VALIDATION_FAILURE = :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+                CARD_EXPIRED = :CARD_EXPIRED
+                CARD_EXPIRY_DATE_INCORRECT = :CARD_EXPIRY_DATE_INCORRECT
+                CARD_INVALID = :CARD_INVALID
+                CARD_NOT_ACTIVATED = :CARD_NOT_ACTIVATED
+                CARD_PAUSED = :CARD_PAUSED
+                CARD_PIN_INCORRECT = :CARD_PIN_INCORRECT
+                CARD_RESTRICTED = :CARD_RESTRICTED
+                CARD_SECURITY_CODE_INCORRECT = :CARD_SECURITY_CODE_INCORRECT
+                CARD_SPEND_LIMIT_EXCEEDED = :CARD_SPEND_LIMIT_EXCEEDED
+                CONTACT_CARD_ISSUER = :CONTACT_CARD_ISSUER
+                CUSTOMER_ASA_TIMEOUT = :CUSTOMER_ASA_TIMEOUT
+                CUSTOM_ASA_RESULT = :CUSTOM_ASA_RESULT
+                DECLINED = :DECLINED
+                DO_NOT_HONOR = :DO_NOT_HONOR
+                DRIVER_NUMBER_INVALID = :DRIVER_NUMBER_INVALID
+                FORMAT_ERROR = :FORMAT_ERROR
+                INSUFFICIENT_FUNDING_SOURCE_BALANCE = :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+                INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
+                LITHIC_SYSTEM_ERROR = :LITHIC_SYSTEM_ERROR
+                LITHIC_SYSTEM_RATE_LIMIT = :LITHIC_SYSTEM_RATE_LIMIT
+                MALFORMED_ASA_RESPONSE = :MALFORMED_ASA_RESPONSE
+                MERCHANT_INVALID = :MERCHANT_INVALID
+                MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE = :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+                MERCHANT_NOT_PERMITTED = :MERCHANT_NOT_PERMITTED
+                OVER_REVERSAL_ATTEMPTED = :OVER_REVERSAL_ATTEMPTED
+                PIN_BLOCKED = :PIN_BLOCKED
+                PROGRAM_CARD_SPEND_LIMIT_EXCEEDED = :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+                PROGRAM_SUSPENDED = :PROGRAM_SUSPENDED
+                PROGRAM_USAGE_RESTRICTION = :PROGRAM_USAGE_RESTRICTION
+                REVERSAL_UNMATCHED = :REVERSAL_UNMATCHED
+                SECURITY_VIOLATION = :SECURITY_VIOLATION
+                SINGLE_USE_CARD_REATTEMPTED = :SINGLE_USE_CARD_REATTEMPTED
+                SUSPECTED_FRAUD = :SUSPECTED_FRAUD
+                TRANSACTION_INVALID = :TRANSACTION_INVALID
+                TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL = :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+                TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER = :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+                TRANSACTION_PREVIOUSLY_COMPLETED = :TRANSACTION_PREVIOUSLY_COMPLETED
+                UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
+                VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
+                CARDHOLDER_CHALLENGED = :CARDHOLDER_CHALLENGED
+                CARDHOLDER_CHALLENGE_FAILED = :CARDHOLDER_CHALLENGE_FAILED
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization#type
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                DECLINE = :DECLINE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
+
+            class ChallengeActionAuthorization < Lithic::Internal::Type::BaseModel
+              # @!attribute type
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type]
+              required :type,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type }
+
+              # @!attribute explanation
+              #   Optional explanation for why this action was taken
+              #
+              #   @return [String, nil]
+              optional :explanation, String
+
+              # @!method initialize(type:, explanation: nil)
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type]
+              #
+              #   @param explanation [String] Optional explanation for why this action was taken
+
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization#type
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                CHALLENGE = :CHALLENGE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization)]
           end
 
           # The state of the Auth Rule
@@ -250,7 +366,7 @@ module Lithic
           # @!attribute actions
           #   Actions returned by the rule evaluation
           #
-          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction>]
+          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction>]
           required :actions,
                    -> { Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action] }
 
@@ -293,7 +409,7 @@ module Lithic
           # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, event_stream: :TOKENIZATION)
           #   @param token [String] Globally unique identifier for the evaluation
           #
-          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction>] Actions returned by the rule evaluation
+          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction>] Actions returned by the rule evaluation
           #
           #   @param auth_rule_token [String] The Auth Rule token
           #
@@ -310,17 +426,17 @@ module Lithic
           module Action
             extend Lithic::Internal::Type::Union
 
-            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction }
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization }
 
             variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction }
 
-            class DeclineAction < Lithic::Internal::Type::BaseModel
+            class DeclineActionTokenization < Lithic::Internal::Type::BaseModel
               # @!attribute type
               #   Decline the tokenization request
               #
-              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type]
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type]
               required :type,
-                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type }
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type }
 
               # @!attribute explanation
               #   Optional explanation for why this action was taken
@@ -331,20 +447,20 @@ module Lithic
               # @!attribute reason
               #   Reason code for declining the tokenization request
               #
-              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason, nil]
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason, nil]
               optional :reason,
-                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason }
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason }
 
               # @!method initialize(type:, explanation: nil, reason: nil)
-              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type] Decline the tokenization request
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type] Decline the tokenization request
               #
               #   @param explanation [String] Optional explanation for why this action was taken
               #
-              #   @param reason [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason] Reason code for declining the tokenization request
+              #   @param reason [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason] Reason code for declining the tokenization request
 
               # Decline the tokenization request
               #
-              # @see Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction#type
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization#type
               module Type
                 extend Lithic::Internal::Type::Enum
 
@@ -356,7 +472,7 @@ module Lithic
 
               # Reason code for declining the tokenization request
               #
-              # @see Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction#reason
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization#reason
               module Reason
                 extend Lithic::Internal::Type::Enum
 
@@ -447,7 +563,7 @@ module Lithic
             end
 
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction)]
+            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction)]
           end
 
           # The state of the Auth Rule
@@ -474,7 +590,7 @@ module Lithic
           # @!attribute actions
           #   Actions returned by the rule evaluation
           #
-          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction>]
+          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction>]
           required :actions,
                    -> { Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action] }
 
@@ -518,7 +634,7 @@ module Lithic
           # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_stream:, event_token:, mode:, rule_version:)
           #   @param token [String] Globally unique identifier for the evaluation
           #
-          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction>] Actions returned by the rule evaluation
+          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction>] Actions returned by the rule evaluation
           #
           #   @param auth_rule_token [String] The Auth Rule token
           #
@@ -535,17 +651,17 @@ module Lithic
           module Action
             extend Lithic::Internal::Type::Union
 
-            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction }
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH }
 
             variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction }
 
-            class ApproveAction < Lithic::Internal::Type::BaseModel
+            class ApproveActionACH < Lithic::Internal::Type::BaseModel
               # @!attribute type
               #   Approve the ACH transaction
               #
-              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type]
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type]
               required :type,
-                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type }
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type }
 
               # @!attribute explanation
               #   Optional explanation for why this action was taken
@@ -554,13 +670,13 @@ module Lithic
               optional :explanation, String
 
               # @!method initialize(type:, explanation: nil)
-              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type] Approve the ACH transaction
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type] Approve the ACH transaction
               #
               #   @param explanation [String] Optional explanation for why this action was taken
 
               # Approve the ACH transaction
               #
-              # @see Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction#type
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH#type
               module Type
                 extend Lithic::Internal::Type::Enum
 
@@ -702,7 +818,7 @@ module Lithic
             end
 
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction)]
+            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction)]
           end
 
           # The event stream during which the rule was evaluated
