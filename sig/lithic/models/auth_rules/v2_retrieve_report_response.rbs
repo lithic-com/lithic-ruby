@@ -34,28 +34,28 @@ module Lithic
 
         type daily_statistic =
           {
-            current_version_statistics: Lithic::AuthRules::RuleStats?,
+            current_version_statistics: Lithic::AuthRules::ReportStats?,
             date: Date,
-            draft_version_statistics: Lithic::AuthRules::RuleStats?
+            draft_version_statistics: Lithic::AuthRules::ReportStats?
           }
 
         class DailyStatistic < Lithic::Internal::Type::BaseModel
-          attr_accessor current_version_statistics: Lithic::AuthRules::RuleStats?
+          attr_accessor current_version_statistics: Lithic::AuthRules::ReportStats?
 
           attr_accessor date: Date
 
-          attr_accessor draft_version_statistics: Lithic::AuthRules::RuleStats?
+          attr_accessor draft_version_statistics: Lithic::AuthRules::ReportStats?
 
           def initialize: (
-            current_version_statistics: Lithic::AuthRules::RuleStats?,
+            current_version_statistics: Lithic::AuthRules::ReportStats?,
             date: Date,
-            draft_version_statistics: Lithic::AuthRules::RuleStats?
+            draft_version_statistics: Lithic::AuthRules::ReportStats?
           ) -> void
 
           def to_hash: -> {
-            current_version_statistics: Lithic::AuthRules::RuleStats?,
+            current_version_statistics: Lithic::AuthRules::ReportStats?,
             date: Date,
-            draft_version_statistics: Lithic::AuthRules::RuleStats?
+            draft_version_statistics: Lithic::AuthRules::ReportStats?
           }
         end
       end

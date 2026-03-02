@@ -22,6 +22,22 @@ module Lithic
         sig { params(auth_rule_token: String).void }
         attr_writer :auth_rule_token
 
+        # Date string in RFC 3339 format. Only events evaluated after the specified time
+        # will be included. UTC time zone.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :begin_
+
+        sig { params(begin_: Time).void }
+        attr_writer :begin_
+
+        # Date string in RFC 3339 format. Only events evaluated before the specified time
+        # will be included. UTC time zone.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :end_
+
+        sig { params(end_: Time).void }
+        attr_writer :end_
+
         # A cursor representing an item's token before which a page of results should end.
         # Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
@@ -63,6 +79,8 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
+            begin_: Time,
+            end_: Time,
             ending_before: String,
             event_token: String,
             has_actions: T::Boolean,
@@ -74,6 +92,12 @@ module Lithic
         def self.new(
           # Filter by Auth Rule token
           auth_rule_token: nil,
+          # Date string in RFC 3339 format. Only events evaluated after the specified time
+          # will be included. UTC time zone.
+          begin_: nil,
+          # Date string in RFC 3339 format. Only events evaluated before the specified time
+          # will be included. UTC time zone.
+          end_: nil,
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
@@ -95,6 +119,8 @@ module Lithic
           override.returns(
             {
               auth_rule_token: String,
+              begin_: Time,
+              end_: Time,
               ending_before: String,
               event_token: String,
               has_actions: T::Boolean,

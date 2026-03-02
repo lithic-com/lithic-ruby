@@ -1,16 +1,16 @@
 module Lithic
   module Models
     module AuthRules
-      type rule_stats =
+      type backtest_stats =
         {
           approved: Integer,
           challenged: Integer,
           declined: Integer,
-          examples: ::Array[Lithic::AuthRules::RuleStats::Example],
+          examples: ::Array[Lithic::AuthRules::BacktestStats::Example],
           version: Integer
         }
 
-      class RuleStats < Lithic::Internal::Type::BaseModel
+      class BacktestStats < Lithic::Internal::Type::BaseModel
         attr_reader approved: Integer?
 
         def approved=: (Integer) -> Integer
@@ -23,11 +23,11 @@ module Lithic
 
         def declined=: (Integer) -> Integer
 
-        attr_reader examples: ::Array[Lithic::AuthRules::RuleStats::Example]?
+        attr_reader examples: ::Array[Lithic::AuthRules::BacktestStats::Example]?
 
         def examples=: (
-          ::Array[Lithic::AuthRules::RuleStats::Example]
-        ) -> ::Array[Lithic::AuthRules::RuleStats::Example]
+          ::Array[Lithic::AuthRules::BacktestStats::Example]
+        ) -> ::Array[Lithic::AuthRules::BacktestStats::Example]
 
         attr_reader version: Integer?
 
@@ -37,7 +37,7 @@ module Lithic
           ?approved: Integer,
           ?challenged: Integer,
           ?declined: Integer,
-          ?examples: ::Array[Lithic::AuthRules::RuleStats::Example],
+          ?examples: ::Array[Lithic::AuthRules::BacktestStats::Example],
           ?version: Integer
         ) -> void
 
@@ -45,28 +45,23 @@ module Lithic
           approved: Integer,
           challenged: Integer,
           declined: Integer,
-          examples: ::Array[Lithic::AuthRules::RuleStats::Example],
+          examples: ::Array[Lithic::AuthRules::BacktestStats::Example],
           version: Integer
         }
 
         type example =
           {
-            approved: bool,
-            decision: Lithic::Models::AuthRules::RuleStats::Example::decision,
+            decision: Lithic::Models::AuthRules::BacktestStats::Example::decision,
             event_token: String,
             timestamp: Time
           }
 
         class Example < Lithic::Internal::Type::BaseModel
-          attr_reader approved: bool?
-
-          def approved=: (bool) -> bool
-
-          attr_reader decision: Lithic::Models::AuthRules::RuleStats::Example::decision?
+          attr_reader decision: Lithic::Models::AuthRules::BacktestStats::Example::decision?
 
           def decision=: (
-            Lithic::Models::AuthRules::RuleStats::Example::decision
-          ) -> Lithic::Models::AuthRules::RuleStats::Example::decision
+            Lithic::Models::AuthRules::BacktestStats::Example::decision
+          ) -> Lithic::Models::AuthRules::BacktestStats::Example::decision
 
           attr_reader event_token: String?
 
@@ -77,15 +72,13 @@ module Lithic
           def timestamp=: (Time) -> Time
 
           def initialize: (
-            ?approved: bool,
-            ?decision: Lithic::Models::AuthRules::RuleStats::Example::decision,
+            ?decision: Lithic::Models::AuthRules::BacktestStats::Example::decision,
             ?event_token: String,
             ?timestamp: Time
           ) -> void
 
           def to_hash: -> {
-            approved: bool,
-            decision: Lithic::Models::AuthRules::RuleStats::Example::decision,
+            decision: Lithic::Models::AuthRules::BacktestStats::Example::decision,
             event_token: String,
             timestamp: Time
           }
@@ -99,7 +92,7 @@ module Lithic
             DECLINED: :DECLINED
             CHALLENGED: :CHALLENGED
 
-            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleStats::Example::decision]
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::BacktestStats::Example::decision]
           end
         end
       end

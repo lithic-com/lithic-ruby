@@ -7,7 +7,7 @@ module Lithic
         # @!attribute action
         #   The action to take if the conditions are met.
         #
-        #   @return [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction]
+        #   @return [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction]
         required :action, union: -> { Lithic::AuthRules::ConditionalACHActionParameters::Action }
 
         # @!attribute conditions
@@ -17,7 +17,7 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ConditionalACHActionParameters::Condition] }
 
         # @!method initialize(action:, conditions:)
-        #   @param action [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction] The action to take if the conditions are met.
+        #   @param action [Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction] The action to take if the conditions are met.
         #
         #   @param conditions [Array<Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition>]
 
@@ -27,24 +27,24 @@ module Lithic
         module Action
           extend Lithic::Internal::Type::Union
 
-          variant -> { Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction }
+          variant -> { Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH }
 
           variant -> { Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction }
 
-          class ApproveAction < Lithic::Internal::Type::BaseModel
+          class ApproveActionACH < Lithic::Internal::Type::BaseModel
             # @!attribute type
             #   Approve the ACH transaction
             #
-            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type]
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type]
             required :type,
-                     enum: -> { Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type }
+                     enum: -> { Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type }
 
             # @!method initialize(type:)
-            #   @param type [Symbol, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type] Approve the ACH transaction
+            #   @param type [Symbol, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type] Approve the ACH transaction
 
             # Approve the ACH transaction
             #
-            # @see Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction#type
+            # @see Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH#type
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -176,7 +176,7 @@ module Lithic
           end
 
           # @!method self.variants
-          #   @return [Array(Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction)]
+          #   @return [Array(Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH, Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction)]
         end
 
         class Condition < Lithic::Internal::Type::BaseModel

@@ -4,6 +4,8 @@ module Lithic
       type v2_list_results_params =
         {
           auth_rule_token: String,
+          begin_: Time,
+          end_: Time,
           ending_before: String,
           event_token: String,
           has_actions: bool,
@@ -19,6 +21,14 @@ module Lithic
         attr_reader auth_rule_token: String?
 
         def auth_rule_token=: (String) -> String
+
+        attr_reader begin_: Time?
+
+        def begin_=: (Time) -> Time
+
+        attr_reader end_: Time?
+
+        def end_=: (Time) -> Time
 
         attr_reader ending_before: String?
 
@@ -42,6 +52,8 @@ module Lithic
 
         def initialize: (
           ?auth_rule_token: String,
+          ?begin_: Time,
+          ?end_: Time,
           ?ending_before: String,
           ?event_token: String,
           ?has_actions: bool,
@@ -52,6 +64,8 @@ module Lithic
 
         def to_hash: -> {
           auth_rule_token: String,
+          begin_: Time,
+          end_: Time,
           ending_before: String,
           event_token: String,
           has_actions: bool,

@@ -14,6 +14,20 @@ module Lithic
         #   @return [String, nil]
         optional :auth_rule_token, String
 
+        # @!attribute begin_
+        #   Date string in RFC 3339 format. Only events evaluated after the specified time
+        #   will be included. UTC time zone.
+        #
+        #   @return [Time, nil]
+        optional :begin_, Time
+
+        # @!attribute end_
+        #   Date string in RFC 3339 format. Only events evaluated before the specified time
+        #   will be included. UTC time zone.
+        #
+        #   @return [Time, nil]
+        optional :end_, Time
+
         # @!attribute ending_before
         #   A cursor representing an item's token before which a page of results should end.
         #   Used to retrieve the previous page of results before this item.
@@ -47,11 +61,15 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(auth_rule_token: nil, ending_before: nil, event_token: nil, has_actions: nil, page_size: nil, starting_after: nil, request_options: {})
+        # @!method initialize(auth_rule_token: nil, begin_: nil, end_: nil, ending_before: nil, event_token: nil, has_actions: nil, page_size: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2ListResultsParams} for more details.
         #
         #   @param auth_rule_token [String] Filter by Auth Rule token
+        #
+        #   @param begin_ [Time] Date string in RFC 3339 format. Only events evaluated after the specified time w
+        #
+        #   @param end_ [Time] Date string in RFC 3339 format. Only events evaluated before the specified time
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #

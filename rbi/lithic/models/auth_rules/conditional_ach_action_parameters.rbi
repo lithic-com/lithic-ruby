@@ -16,7 +16,7 @@ module Lithic
         sig do
           returns(
             T.any(
-              Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction,
+              Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH,
               Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction
             )
           )
@@ -36,7 +36,7 @@ module Lithic
           params(
             action:
               T.any(
-                Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::OrHash,
+                Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::OrHash,
                 Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::OrHash
               ),
             conditions:
@@ -57,7 +57,7 @@ module Lithic
             {
               action:
                 T.any(
-                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction,
+                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH,
                   Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction
                 ),
               conditions:
@@ -77,16 +77,16 @@ module Lithic
           Variants =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction,
+                Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH,
                 Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction
               )
             end
 
-          class ApproveAction < Lithic::Internal::Type::BaseModel
+          class ApproveActionACH < Lithic::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction,
+                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH,
                   Lithic::Internal::AnyHash
                 )
               end
@@ -94,7 +94,7 @@ module Lithic
             # Approve the ACH transaction
             sig do
               returns(
-                Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type::OrSymbol
+                Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type::OrSymbol
               )
             end
             attr_accessor :type
@@ -102,7 +102,7 @@ module Lithic
             sig do
               params(
                 type:
-                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type::OrSymbol
+                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -115,7 +115,7 @@ module Lithic
               override.returns(
                 {
                   type:
-                    Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type::OrSymbol
+                    Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type::OrSymbol
                 }
               )
             end
@@ -130,7 +130,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type
+                    Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -138,13 +138,13 @@ module Lithic
               APPROVE =
                 T.let(
                   :APPROVE,
-                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type::TaggedSymbol
+                  Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::Type::TaggedSymbol
+                    Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::Type::TaggedSymbol
                   ]
                 )
               end

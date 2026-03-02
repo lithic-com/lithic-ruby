@@ -34,7 +34,7 @@ module Lithic
           sig do
             returns(
               T::Array[
-                Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action
+                Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Variants
               ]
             )
           end
@@ -73,7 +73,10 @@ module Lithic
               token: String,
               actions:
                 T::Array[
-                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::OrHash
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::OrHash,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::OrHash
+                  )
                 ],
               auth_rule_token: String,
               evaluation_time: Time,
@@ -110,7 +113,7 @@ module Lithic
                 token: String,
                 actions:
                   T::Array[
-                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Variants
                   ],
                 auth_rule_token: String,
                 evaluation_time: Time,
@@ -125,87 +128,507 @@ module Lithic
           def to_hash
           end
 
-          class Action < Lithic::Internal::Type::BaseModel
-            OrHash =
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            Variants =
               T.type_alias do
                 T.any(
-                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action,
-                  Lithic::Internal::AnyHash
+                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization
                 )
               end
 
-            sig do
-              returns(
-                Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type::TaggedSymbol
-              )
-            end
-            attr_accessor :type
+            class DeclineActionAuthorization < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
-            # Optional explanation for why this action was taken
-            sig { returns(T.nilable(String)) }
-            attr_reader :explanation
+              # The detailed result code explaining the specific reason for the decline
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                )
+              end
+              attr_accessor :code
 
-            sig { params(explanation: String).void }
-            attr_writer :explanation
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type::TaggedSymbol
+                )
+              end
+              attr_accessor :type
 
-            sig do
-              params(
-                type:
-                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type::OrSymbol,
-                explanation: String
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              type:,
               # Optional explanation for why this action was taken
-              explanation: nil
-            )
+              sig { returns(T.nilable(String)) }
+              attr_reader :explanation
+
+              sig { params(explanation: String).void }
+              attr_writer :explanation
+
+              sig do
+                params(
+                  code:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::OrSymbol,
+                  type:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type::OrSymbol,
+                  explanation: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The detailed result code explaining the specific reason for the decline
+                code:,
+                type:,
+                # Optional explanation for why this action was taken
+                explanation: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    code:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol,
+                    type:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type::TaggedSymbol,
+                    explanation: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The detailed result code explaining the specific reason for the decline
+              module Code
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED =
+                  T.let(
+                    :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ACCOUNT_DELINQUENT =
+                  T.let(
+                    :ACCOUNT_DELINQUENT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ACCOUNT_INACTIVE =
+                  T.let(
+                    :ACCOUNT_INACTIVE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED =
+                  T.let(
+                    :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED =
+                  T.let(
+                    :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ACCOUNT_PAUSED =
+                  T.let(
+                    :ACCOUNT_PAUSED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ACCOUNT_UNDER_REVIEW =
+                  T.let(
+                    :ACCOUNT_UNDER_REVIEW,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                ADDRESS_INCORRECT =
+                  T.let(
+                    :ADDRESS_INCORRECT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                APPROVED =
+                  T.let(
+                    :APPROVED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                AUTH_RULE_ALLOWED_COUNTRY =
+                  T.let(
+                    :AUTH_RULE_ALLOWED_COUNTRY,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                AUTH_RULE_ALLOWED_MCC =
+                  T.let(
+                    :AUTH_RULE_ALLOWED_MCC,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                AUTH_RULE_BLOCKED_COUNTRY =
+                  T.let(
+                    :AUTH_RULE_BLOCKED_COUNTRY,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                AUTH_RULE_BLOCKED_MCC =
+                  T.let(
+                    :AUTH_RULE_BLOCKED_MCC,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                AUTH_RULE =
+                  T.let(
+                    :AUTH_RULE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_CLOSED =
+                  T.let(
+                    :CARD_CLOSED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_CRYPTOGRAM_VALIDATION_FAILURE =
+                  T.let(
+                    :CARD_CRYPTOGRAM_VALIDATION_FAILURE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_EXPIRED =
+                  T.let(
+                    :CARD_EXPIRED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_EXPIRY_DATE_INCORRECT =
+                  T.let(
+                    :CARD_EXPIRY_DATE_INCORRECT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_INVALID =
+                  T.let(
+                    :CARD_INVALID,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_NOT_ACTIVATED =
+                  T.let(
+                    :CARD_NOT_ACTIVATED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_PAUSED =
+                  T.let(
+                    :CARD_PAUSED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_PIN_INCORRECT =
+                  T.let(
+                    :CARD_PIN_INCORRECT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_RESTRICTED =
+                  T.let(
+                    :CARD_RESTRICTED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_SECURITY_CODE_INCORRECT =
+                  T.let(
+                    :CARD_SECURITY_CODE_INCORRECT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARD_SPEND_LIMIT_EXCEEDED =
+                  T.let(
+                    :CARD_SPEND_LIMIT_EXCEEDED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CONTACT_CARD_ISSUER =
+                  T.let(
+                    :CONTACT_CARD_ISSUER,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CUSTOMER_ASA_TIMEOUT =
+                  T.let(
+                    :CUSTOMER_ASA_TIMEOUT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CUSTOM_ASA_RESULT =
+                  T.let(
+                    :CUSTOM_ASA_RESULT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                DECLINED =
+                  T.let(
+                    :DECLINED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                DO_NOT_HONOR =
+                  T.let(
+                    :DO_NOT_HONOR,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                DRIVER_NUMBER_INVALID =
+                  T.let(
+                    :DRIVER_NUMBER_INVALID,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                FORMAT_ERROR =
+                  T.let(
+                    :FORMAT_ERROR,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                INSUFFICIENT_FUNDING_SOURCE_BALANCE =
+                  T.let(
+                    :INSUFFICIENT_FUNDING_SOURCE_BALANCE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                INSUFFICIENT_FUNDS =
+                  T.let(
+                    :INSUFFICIENT_FUNDS,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                LITHIC_SYSTEM_ERROR =
+                  T.let(
+                    :LITHIC_SYSTEM_ERROR,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                LITHIC_SYSTEM_RATE_LIMIT =
+                  T.let(
+                    :LITHIC_SYSTEM_RATE_LIMIT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                MALFORMED_ASA_RESPONSE =
+                  T.let(
+                    :MALFORMED_ASA_RESPONSE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                MERCHANT_INVALID =
+                  T.let(
+                    :MERCHANT_INVALID,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE =
+                  T.let(
+                    :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                MERCHANT_NOT_PERMITTED =
+                  T.let(
+                    :MERCHANT_NOT_PERMITTED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                OVER_REVERSAL_ATTEMPTED =
+                  T.let(
+                    :OVER_REVERSAL_ATTEMPTED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                PIN_BLOCKED =
+                  T.let(
+                    :PIN_BLOCKED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                PROGRAM_CARD_SPEND_LIMIT_EXCEEDED =
+                  T.let(
+                    :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                PROGRAM_SUSPENDED =
+                  T.let(
+                    :PROGRAM_SUSPENDED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                PROGRAM_USAGE_RESTRICTION =
+                  T.let(
+                    :PROGRAM_USAGE_RESTRICTION,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                REVERSAL_UNMATCHED =
+                  T.let(
+                    :REVERSAL_UNMATCHED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                SECURITY_VIOLATION =
+                  T.let(
+                    :SECURITY_VIOLATION,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                SINGLE_USE_CARD_REATTEMPTED =
+                  T.let(
+                    :SINGLE_USE_CARD_REATTEMPTED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                SUSPECTED_FRAUD =
+                  T.let(
+                    :SUSPECTED_FRAUD,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                TRANSACTION_INVALID =
+                  T.let(
+                    :TRANSACTION_INVALID,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL =
+                  T.let(
+                    :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER =
+                  T.let(
+                    :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                TRANSACTION_PREVIOUSLY_COMPLETED =
+                  T.let(
+                    :TRANSACTION_PREVIOUSLY_COMPLETED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                UNAUTHORIZED_MERCHANT =
+                  T.let(
+                    :UNAUTHORIZED_MERCHANT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                VEHICLE_NUMBER_INVALID =
+                  T.let(
+                    :VEHICLE_NUMBER_INVALID,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARDHOLDER_CHALLENGED =
+                  T.let(
+                    :CARDHOLDER_CHALLENGED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+                CARDHOLDER_CHALLENGE_FAILED =
+                  T.let(
+                    :CARDHOLDER_CHALLENGE_FAILED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DECLINE =
+                  T.let(
+                    :DECLINE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class ChallengeActionAuthorization < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization,
+                    Lithic::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type::TaggedSymbol
+                )
+              end
+              attr_accessor :type
+
+              # Optional explanation for why this action was taken
+              sig { returns(T.nilable(String)) }
+              attr_reader :explanation
+
+              sig { params(explanation: String).void }
+              attr_writer :explanation
+
+              sig do
+                params(
+                  type:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type::OrSymbol,
+                  explanation: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                type:,
+                # Optional explanation for why this action was taken
+                explanation: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    type:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type::TaggedSymbol,
+                    explanation: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                CHALLENGE =
+                  T.let(
+                    :CHALLENGE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
 
             sig do
               override.returns(
-                {
-                  type:
-                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type::TaggedSymbol,
-                  explanation: String
-                }
+                T::Array[
+                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Variants
+                ]
               )
             end
-            def to_hash
-            end
-
-            module Type
-              extend Lithic::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              DECLINE =
-                T.let(
-                  :DECLINE,
-                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type::TaggedSymbol
-                )
-              CHALLENGE =
-                T.let(
-                  :CHALLENGE,
-                  Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
+            def self.variants
             end
           end
 
@@ -530,7 +953,7 @@ module Lithic
               actions:
                 T::Array[
                   T.any(
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::OrHash,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::OrHash,
                     Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction::OrHash
                   )
                 ],
@@ -590,16 +1013,16 @@ module Lithic
             Variants =
               T.type_alias do
                 T.any(
-                  Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization,
                   Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction
                 )
               end
 
-            class DeclineAction < Lithic::Internal::Type::BaseModel
+            class DeclineActionTokenization < Lithic::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization,
                     Lithic::Internal::AnyHash
                   )
                 end
@@ -607,7 +1030,7 @@ module Lithic
               # Decline the tokenization request
               sig do
                 returns(
-                  Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type::TaggedSymbol
+                  Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type::TaggedSymbol
                 )
               end
               attr_accessor :type
@@ -623,7 +1046,7 @@ module Lithic
               sig do
                 returns(
                   T.nilable(
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 )
               end
@@ -632,7 +1055,7 @@ module Lithic
               sig do
                 params(
                   reason:
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::OrSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::OrSymbol
                 ).void
               end
               attr_writer :reason
@@ -640,10 +1063,10 @@ module Lithic
               sig do
                 params(
                   type:
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type::OrSymbol,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type::OrSymbol,
                   explanation: String,
                   reason:
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::OrSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -660,10 +1083,10 @@ module Lithic
                 override.returns(
                   {
                     type:
-                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type::TaggedSymbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type::TaggedSymbol,
                     explanation: String,
                     reason:
-                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   }
                 )
               end
@@ -678,7 +1101,7 @@ module Lithic
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type
+                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -686,13 +1109,13 @@ module Lithic
                 DECLINE =
                   T.let(
                     :DECLINE,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Type::TaggedSymbol
+                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Type::TaggedSymbol
                     ]
                   )
                 end
@@ -708,7 +1131,7 @@ module Lithic
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason
+                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -716,73 +1139,73 @@ module Lithic
                 ACCOUNT_SCORE_1 =
                   T.let(
                     :ACCOUNT_SCORE_1,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 DEVICE_SCORE_1 =
                   T.let(
                     :DEVICE_SCORE_1,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 ALL_WALLET_DECLINE_REASONS_PRESENT =
                   T.let(
                     :ALL_WALLET_DECLINE_REASONS_PRESENT,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 WALLET_RECOMMENDED_DECISION_RED =
                   T.let(
                     :WALLET_RECOMMENDED_DECISION_RED,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 CVC_MISMATCH =
                   T.let(
                     :CVC_MISMATCH,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 CARD_EXPIRY_MONTH_MISMATCH =
                   T.let(
                     :CARD_EXPIRY_MONTH_MISMATCH,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 CARD_EXPIRY_YEAR_MISMATCH =
                   T.let(
                     :CARD_EXPIRY_YEAR_MISMATCH,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 CARD_INVALID_STATE =
                   T.let(
                     :CARD_INVALID_STATE,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 CUSTOMER_RED_PATH =
                   T.let(
                     :CUSTOMER_RED_PATH,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 INVALID_CUSTOMER_RESPONSE =
                   T.let(
                     :INVALID_CUSTOMER_RESPONSE,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 NETWORK_FAILURE =
                   T.let(
                     :NETWORK_FAILURE,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 GENERIC_DECLINE =
                   T.let(
                     :GENERIC_DECLINE,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
                 DIGITAL_CARD_ART_REQUIRED =
                   T.let(
                     :DIGITAL_CARD_ART_REQUIRED,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::Reason::TaggedSymbol
+                      Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::Reason::TaggedSymbol
                     ]
                   )
                 end
@@ -1105,7 +1528,7 @@ module Lithic
               actions:
                 T::Array[
                   T.any(
-                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::OrHash,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::OrHash,
                     Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction::OrHash
                   )
                 ],
@@ -1167,16 +1590,16 @@ module Lithic
             Variants =
               T.type_alias do
                 T.any(
-                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH,
                   Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction
                 )
               end
 
-            class ApproveAction < Lithic::Internal::Type::BaseModel
+            class ApproveActionACH < Lithic::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH,
                     Lithic::Internal::AnyHash
                   )
                 end
@@ -1184,7 +1607,7 @@ module Lithic
               # Approve the ACH transaction
               sig do
                 returns(
-                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type::TaggedSymbol
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type::TaggedSymbol
                 )
               end
               attr_accessor :type
@@ -1199,7 +1622,7 @@ module Lithic
               sig do
                 params(
                   type:
-                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type::OrSymbol,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type::OrSymbol,
                   explanation: String
                 ).returns(T.attached_class)
               end
@@ -1215,7 +1638,7 @@ module Lithic
                 override.returns(
                   {
                     type:
-                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type::TaggedSymbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type::TaggedSymbol,
                     explanation: String
                   }
                 )
@@ -1231,7 +1654,7 @@ module Lithic
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1239,13 +1662,13 @@ module Lithic
                 APPROVE =
                   T.let(
                     :APPROVE,
-                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type::TaggedSymbol
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::Type::TaggedSymbol
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::Type::TaggedSymbol
                     ]
                   )
                 end

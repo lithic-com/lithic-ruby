@@ -13,7 +13,7 @@ module Lithic
         type authorization_result =
           {
             token: String,
-            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action],
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::action],
             auth_rule_token: String,
             evaluation_time: Time,
             event_stream: :AUTHORIZATION,
@@ -25,7 +25,7 @@ module Lithic
         class AuthorizationResult < Lithic::Internal::Type::BaseModel
           attr_accessor token: String
 
-          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action]
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::action]
 
           attr_accessor auth_rule_token: String
 
@@ -41,7 +41,7 @@ module Lithic
 
           def initialize: (
             token: String,
-            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action],
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::action],
             auth_rule_token: String,
             evaluation_time: Time,
             event_token: String,
@@ -52,7 +52,7 @@ module Lithic
 
           def to_hash: -> {
             token: String,
-            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action],
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::action],
             auth_rule_token: String,
             evaluation_time: Time,
             event_stream: :AUTHORIZATION,
@@ -62,38 +62,209 @@ module Lithic
           }
 
           type action =
-            {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_,
-              explanation: String
-            }
+            Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization
+            | Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization
 
-          class Action < Lithic::Internal::Type::BaseModel
-            attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_
+          module Action
+            extend Lithic::Internal::Type::Union
 
-            attr_reader explanation: String?
+            type decline_action_authorization =
+              {
+                code: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::code,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::type_,
+                explanation: String
+              }
 
-            def explanation=: (String) -> String
+            class DeclineActionAuthorization < Lithic::Internal::Type::BaseModel
+              attr_accessor code: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::code
 
-            def initialize: (
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_,
-              ?explanation: String
-            ) -> void
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::type_
 
-            def to_hash: -> {
-              type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_,
-              explanation: String
-            }
+              attr_reader explanation: String?
 
-            type type_ = :DECLINE | :CHALLENGE
+              def explanation=: (String) -> String
 
-            module Type
-              extend Lithic::Internal::Type::Enum
+              def initialize: (
+                code: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::code,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::type_,
+                ?explanation: String
+              ) -> void
 
-              DECLINE: :DECLINE
-              CHALLENGE: :CHALLENGE
+              def to_hash: -> {
+                code: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::code,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::type_,
+                explanation: String
+              }
 
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::type_]
+              type code =
+                :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+                | :ACCOUNT_DELINQUENT
+                | :ACCOUNT_INACTIVE
+                | :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+                | :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+                | :ACCOUNT_PAUSED
+                | :ACCOUNT_UNDER_REVIEW
+                | :ADDRESS_INCORRECT
+                | :APPROVED
+                | :AUTH_RULE_ALLOWED_COUNTRY
+                | :AUTH_RULE_ALLOWED_MCC
+                | :AUTH_RULE_BLOCKED_COUNTRY
+                | :AUTH_RULE_BLOCKED_MCC
+                | :AUTH_RULE
+                | :CARD_CLOSED
+                | :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+                | :CARD_EXPIRED
+                | :CARD_EXPIRY_DATE_INCORRECT
+                | :CARD_INVALID
+                | :CARD_NOT_ACTIVATED
+                | :CARD_PAUSED
+                | :CARD_PIN_INCORRECT
+                | :CARD_RESTRICTED
+                | :CARD_SECURITY_CODE_INCORRECT
+                | :CARD_SPEND_LIMIT_EXCEEDED
+                | :CONTACT_CARD_ISSUER
+                | :CUSTOMER_ASA_TIMEOUT
+                | :CUSTOM_ASA_RESULT
+                | :DECLINED
+                | :DO_NOT_HONOR
+                | :DRIVER_NUMBER_INVALID
+                | :FORMAT_ERROR
+                | :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+                | :INSUFFICIENT_FUNDS
+                | :LITHIC_SYSTEM_ERROR
+                | :LITHIC_SYSTEM_RATE_LIMIT
+                | :MALFORMED_ASA_RESPONSE
+                | :MERCHANT_INVALID
+                | :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+                | :MERCHANT_NOT_PERMITTED
+                | :OVER_REVERSAL_ATTEMPTED
+                | :PIN_BLOCKED
+                | :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+                | :PROGRAM_SUSPENDED
+                | :PROGRAM_USAGE_RESTRICTION
+                | :REVERSAL_UNMATCHED
+                | :SECURITY_VIOLATION
+                | :SINGLE_USE_CARD_REATTEMPTED
+                | :SUSPECTED_FRAUD
+                | :TRANSACTION_INVALID
+                | :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+                | :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+                | :TRANSACTION_PREVIOUSLY_COMPLETED
+                | :UNAUTHORIZED_MERCHANT
+                | :VEHICLE_NUMBER_INVALID
+                | :CARDHOLDER_CHALLENGED
+                | :CARDHOLDER_CHALLENGE_FAILED
+
+              module Code
+                extend Lithic::Internal::Type::Enum
+
+                ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+                ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
+                ACCOUNT_INACTIVE: :ACCOUNT_INACTIVE
+                ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED: :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+                ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+                ACCOUNT_PAUSED: :ACCOUNT_PAUSED
+                ACCOUNT_UNDER_REVIEW: :ACCOUNT_UNDER_REVIEW
+                ADDRESS_INCORRECT: :ADDRESS_INCORRECT
+                APPROVED: :APPROVED
+                AUTH_RULE_ALLOWED_COUNTRY: :AUTH_RULE_ALLOWED_COUNTRY
+                AUTH_RULE_ALLOWED_MCC: :AUTH_RULE_ALLOWED_MCC
+                AUTH_RULE_BLOCKED_COUNTRY: :AUTH_RULE_BLOCKED_COUNTRY
+                AUTH_RULE_BLOCKED_MCC: :AUTH_RULE_BLOCKED_MCC
+                AUTH_RULE: :AUTH_RULE
+                CARD_CLOSED: :CARD_CLOSED
+                CARD_CRYPTOGRAM_VALIDATION_FAILURE: :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+                CARD_EXPIRED: :CARD_EXPIRED
+                CARD_EXPIRY_DATE_INCORRECT: :CARD_EXPIRY_DATE_INCORRECT
+                CARD_INVALID: :CARD_INVALID
+                CARD_NOT_ACTIVATED: :CARD_NOT_ACTIVATED
+                CARD_PAUSED: :CARD_PAUSED
+                CARD_PIN_INCORRECT: :CARD_PIN_INCORRECT
+                CARD_RESTRICTED: :CARD_RESTRICTED
+                CARD_SECURITY_CODE_INCORRECT: :CARD_SECURITY_CODE_INCORRECT
+                CARD_SPEND_LIMIT_EXCEEDED: :CARD_SPEND_LIMIT_EXCEEDED
+                CONTACT_CARD_ISSUER: :CONTACT_CARD_ISSUER
+                CUSTOMER_ASA_TIMEOUT: :CUSTOMER_ASA_TIMEOUT
+                CUSTOM_ASA_RESULT: :CUSTOM_ASA_RESULT
+                DECLINED: :DECLINED
+                DO_NOT_HONOR: :DO_NOT_HONOR
+                DRIVER_NUMBER_INVALID: :DRIVER_NUMBER_INVALID
+                FORMAT_ERROR: :FORMAT_ERROR
+                INSUFFICIENT_FUNDING_SOURCE_BALANCE: :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+                INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+                LITHIC_SYSTEM_ERROR: :LITHIC_SYSTEM_ERROR
+                LITHIC_SYSTEM_RATE_LIMIT: :LITHIC_SYSTEM_RATE_LIMIT
+                MALFORMED_ASA_RESPONSE: :MALFORMED_ASA_RESPONSE
+                MERCHANT_INVALID: :MERCHANT_INVALID
+                MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE: :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+                MERCHANT_NOT_PERMITTED: :MERCHANT_NOT_PERMITTED
+                OVER_REVERSAL_ATTEMPTED: :OVER_REVERSAL_ATTEMPTED
+                PIN_BLOCKED: :PIN_BLOCKED
+                PROGRAM_CARD_SPEND_LIMIT_EXCEEDED: :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+                PROGRAM_SUSPENDED: :PROGRAM_SUSPENDED
+                PROGRAM_USAGE_RESTRICTION: :PROGRAM_USAGE_RESTRICTION
+                REVERSAL_UNMATCHED: :REVERSAL_UNMATCHED
+                SECURITY_VIOLATION: :SECURITY_VIOLATION
+                SINGLE_USE_CARD_REATTEMPTED: :SINGLE_USE_CARD_REATTEMPTED
+                SUSPECTED_FRAUD: :SUSPECTED_FRAUD
+                TRANSACTION_INVALID: :TRANSACTION_INVALID
+                TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL: :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+                TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER: :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+                TRANSACTION_PREVIOUSLY_COMPLETED: :TRANSACTION_PREVIOUSLY_COMPLETED
+                UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
+                VEHICLE_NUMBER_INVALID: :VEHICLE_NUMBER_INVALID
+                CARDHOLDER_CHALLENGED: :CARDHOLDER_CHALLENGED
+                CARDHOLDER_CHALLENGE_FAILED: :CARDHOLDER_CHALLENGE_FAILED
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::code]
+              end
+
+              type type_ = :DECLINE
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                DECLINE: :DECLINE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::type_]
+              end
             end
+
+            type challenge_action_authorization =
+              {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::type_,
+                explanation: String
+              }
+
+            class ChallengeActionAuthorization < Lithic::Internal::Type::BaseModel
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::type_,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::type_,
+                explanation: String
+              }
+
+              type type_ = :CHALLENGE
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                CHALLENGE: :CHALLENGE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::action]
           end
 
           type mode = :ACTIVE | :INACTIVE
@@ -258,42 +429,42 @@ module Lithic
           }
 
           type action =
-            Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction
+            Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization
             | Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction
 
           module Action
             extend Lithic::Internal::Type::Union
 
-            type decline_action =
+            type decline_action_tokenization =
               {
-                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::type_,
                 explanation: String,
-                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason
               }
 
-            class DeclineAction < Lithic::Internal::Type::BaseModel
-              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_
+            class DeclineActionTokenization < Lithic::Internal::Type::BaseModel
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::type_
 
               attr_reader explanation: String?
 
               def explanation=: (String) -> String
 
-              attr_reader reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason?
+              attr_reader reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason?
 
               def reason=: (
-                Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
-              ) -> Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+                Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason
+              ) -> Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason
 
               def initialize: (
-                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::type_,
                 ?explanation: String,
-                ?reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+                ?reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason
               ) -> void
 
               def to_hash: -> {
-                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::type_,
                 explanation: String,
-                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason
+                reason: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason
               }
 
               type type_ = :DECLINE
@@ -303,7 +474,7 @@ module Lithic
 
                 DECLINE: :DECLINE
 
-                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::type_]
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::type_]
               end
 
               type reason =
@@ -338,7 +509,7 @@ module Lithic
                 GENERIC_DECLINE: :GENERIC_DECLINE
                 DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
 
-                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineAction::reason]
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization::reason]
               end
             end
 
@@ -491,32 +662,32 @@ module Lithic
           }
 
           type action =
-            Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction
+            Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH
             | Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction
 
           module Action
             extend Lithic::Internal::Type::Union
 
-            type approve_action =
+            type approve_action_ach =
               {
-                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::type_,
                 explanation: String
               }
 
-            class ApproveAction < Lithic::Internal::Type::BaseModel
-              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_
+            class ApproveActionACH < Lithic::Internal::Type::BaseModel
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::type_
 
               attr_reader explanation: String?
 
               def explanation=: (String) -> String
 
               def initialize: (
-                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::type_,
                 ?explanation: String
               ) -> void
 
               def to_hash: -> {
-                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::type_,
                 explanation: String
               }
 
@@ -527,7 +698,7 @@ module Lithic
 
                 APPROVE: :APPROVE
 
-                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveAction::type_]
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH::type_]
               end
             end
 

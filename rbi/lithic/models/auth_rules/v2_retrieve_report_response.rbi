@@ -83,13 +83,13 @@ module Lithic
             end
 
           # Detailed statistics for the current version of the rule.
-          sig { returns(T.nilable(Lithic::AuthRules::RuleStats)) }
+          sig { returns(T.nilable(Lithic::AuthRules::ReportStats)) }
           attr_reader :current_version_statistics
 
           sig do
             params(
               current_version_statistics:
-                T.nilable(Lithic::AuthRules::RuleStats::OrHash)
+                T.nilable(Lithic::AuthRules::ReportStats::OrHash)
             ).void
           end
           attr_writer :current_version_statistics
@@ -99,13 +99,13 @@ module Lithic
           attr_accessor :date
 
           # Detailed statistics for the draft version of the rule.
-          sig { returns(T.nilable(Lithic::AuthRules::RuleStats)) }
+          sig { returns(T.nilable(Lithic::AuthRules::ReportStats)) }
           attr_reader :draft_version_statistics
 
           sig do
             params(
               draft_version_statistics:
-                T.nilable(Lithic::AuthRules::RuleStats::OrHash)
+                T.nilable(Lithic::AuthRules::ReportStats::OrHash)
             ).void
           end
           attr_writer :draft_version_statistics
@@ -113,10 +113,10 @@ module Lithic
           sig do
             params(
               current_version_statistics:
-                T.nilable(Lithic::AuthRules::RuleStats::OrHash),
+                T.nilable(Lithic::AuthRules::ReportStats::OrHash),
               date: Date,
               draft_version_statistics:
-                T.nilable(Lithic::AuthRules::RuleStats::OrHash)
+                T.nilable(Lithic::AuthRules::ReportStats::OrHash)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -133,10 +133,10 @@ module Lithic
             override.returns(
               {
                 current_version_statistics:
-                  T.nilable(Lithic::AuthRules::RuleStats),
+                  T.nilable(Lithic::AuthRules::ReportStats),
                 date: Date,
                 draft_version_statistics:
-                  T.nilable(Lithic::AuthRules::RuleStats)
+                  T.nilable(Lithic::AuthRules::ReportStats)
               }
             )
           end

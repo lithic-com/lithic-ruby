@@ -43,8 +43,8 @@ module Lithic
           # @!attribute current_version_statistics
           #   Detailed statistics for the current version of the rule.
           #
-          #   @return [Lithic::Models::AuthRules::RuleStats, nil]
-          required :current_version_statistics, -> { Lithic::AuthRules::RuleStats }, nil?: true
+          #   @return [Lithic::Models::AuthRules::ReportStats, nil]
+          required :current_version_statistics, -> { Lithic::AuthRules::ReportStats }, nil?: true
 
           # @!attribute date
           #   The date (UTC) for which the statistics are reported.
@@ -55,15 +55,15 @@ module Lithic
           # @!attribute draft_version_statistics
           #   Detailed statistics for the draft version of the rule.
           #
-          #   @return [Lithic::Models::AuthRules::RuleStats, nil]
-          required :draft_version_statistics, -> { Lithic::AuthRules::RuleStats }, nil?: true
+          #   @return [Lithic::Models::AuthRules::ReportStats, nil]
+          required :draft_version_statistics, -> { Lithic::AuthRules::ReportStats }, nil?: true
 
           # @!method initialize(current_version_statistics:, date:, draft_version_statistics:)
-          #   @param current_version_statistics [Lithic::Models::AuthRules::RuleStats, nil] Detailed statistics for the current version of the rule.
+          #   @param current_version_statistics [Lithic::Models::AuthRules::ReportStats, nil] Detailed statistics for the current version of the rule.
           #
           #   @param date [Date] The date (UTC) for which the statistics are reported.
           #
-          #   @param draft_version_statistics [Lithic::Models::AuthRules::RuleStats, nil] Detailed statistics for the draft version of the rule.
+          #   @param draft_version_statistics [Lithic::Models::AuthRules::ReportStats, nil] Detailed statistics for the draft version of the rule.
         end
       end
     end
