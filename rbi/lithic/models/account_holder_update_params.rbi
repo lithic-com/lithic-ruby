@@ -11,26 +11,6 @@ module Lithic
           T.any(Lithic::AccountHolderUpdateParams, Lithic::Internal::AnyHash)
         end
 
-      # Deprecated.
-      sig do
-        returns(
-          T.nilable(
-            T::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
-          )
-        )
-      end
-      attr_reader :beneficial_owner_entities
-
-      sig do
-        params(
-          beneficial_owner_entities:
-            T::Array[
-              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity::OrHash
-            ]
-        ).void
-      end
-      attr_writer :beneficial_owner_entities
-
       # You must submit a list of all direct and indirect individuals with 25% or more
       # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
       # no individual owns 25% of the company you do not need to send beneficial owner
@@ -193,10 +173,6 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities:
-            T::Array[
-              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity::OrHash
-            ],
           beneficial_owner_individuals:
             T::Array[
               Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual::OrHash
@@ -221,8 +197,6 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
-        # Deprecated.
-        beneficial_owner_entities: nil,
         # You must submit a list of all direct and indirect individuals with 25% or more
         # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
         # no individual owns 25% of the company you do not need to send beneficial owner
@@ -282,10 +256,6 @@ module Lithic
       sig do
         override.returns(
           {
-            beneficial_owner_entities:
-              T::Array[
-                Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity
-              ],
             beneficial_owner_individuals:
               T::Array[
                 Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual
@@ -309,117 +279,6 @@ module Lithic
         )
       end
       def to_hash
-      end
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity,
-              Lithic::Internal::AnyHash
-            )
-          end
-
-        # Globally unique identifier for an entity.
-        sig { returns(String) }
-        attr_accessor :entity_token
-
-        # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable.
-        sig { returns(T.nilable(Lithic::AddressUpdate)) }
-        attr_reader :address
-
-        sig { params(address: Lithic::AddressUpdate::OrHash).void }
-        attr_writer :address
-
-        # Any name that the business operates under that is not its legal business name
-        # (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :dba_business_name
-
-        sig { params(dba_business_name: String).void }
-        attr_writer :dba_business_name
-
-        # Government-issued identification number. US Federal Employer Identification
-        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        # without hyphens.
-        sig { returns(T.nilable(String)) }
-        attr_reader :government_id
-
-        sig { params(government_id: String).void }
-        attr_writer :government_id
-
-        # Legal (formal) business name.
-        sig { returns(T.nilable(String)) }
-        attr_reader :legal_business_name
-
-        sig { params(legal_business_name: String).void }
-        attr_writer :legal_business_name
-
-        # Parent company name (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :parent_company
-
-        sig { params(parent_company: String).void }
-        attr_writer :parent_company
-
-        # One or more of the business's phone number(s), entered as a list in E.164
-        # format.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :phone_numbers
-
-        sig { params(phone_numbers: T::Array[String]).void }
-        attr_writer :phone_numbers
-
-        sig do
-          params(
-            entity_token: String,
-            address: Lithic::AddressUpdate::OrHash,
-            dba_business_name: String,
-            government_id: String,
-            legal_business_name: String,
-            parent_company: String,
-            phone_numbers: T::Array[String]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Globally unique identifier for an entity.
-          entity_token:,
-          # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable.
-          address: nil,
-          # Any name that the business operates under that is not its legal business name
-          # (if applicable).
-          dba_business_name: nil,
-          # Government-issued identification number. US Federal Employer Identification
-          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-          # without hyphens.
-          government_id: nil,
-          # Legal (formal) business name.
-          legal_business_name: nil,
-          # Parent company name (if applicable).
-          parent_company: nil,
-          # One or more of the business's phone number(s), entered as a list in E.164
-          # format.
-          phone_numbers: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              entity_token: String,
-              address: Lithic::AddressUpdate,
-              dba_business_name: String,
-              government_id: String,
-              legal_business_name: String,
-              parent_company: String,
-              phone_numbers: T::Array[String]
-            }
-          )
-        end
-        def to_hash
-        end
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel

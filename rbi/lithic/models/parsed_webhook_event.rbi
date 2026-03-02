@@ -206,18 +206,6 @@ module Lithic
               )
             end
 
-          # Deprecated.
-          sig { returns(T.nilable(T::Array[Lithic::KYBBusinessEntity])) }
-          attr_reader :beneficial_owner_entities
-
-          sig do
-            params(
-              beneficial_owner_entities:
-                T::Array[Lithic::KYBBusinessEntity::OrHash]
-            ).void
-          end
-          attr_writer :beneficial_owner_entities
-
           # You must submit a list of all direct and indirect individuals with 25% or more
           # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
           # no individual owns 25% of the company you do not need to send beneficial owner
@@ -283,8 +271,6 @@ module Lithic
           # Original request to update the account holder.
           sig do
             params(
-              beneficial_owner_entities:
-                T::Array[Lithic::KYBBusinessEntity::OrHash],
               beneficial_owner_individuals:
                 T::Array[
                   Lithic::ParsedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual::OrHash
@@ -295,8 +281,6 @@ module Lithic
             ).returns(T.attached_class)
           end
           def self.new(
-            # Deprecated.
-            beneficial_owner_entities: nil,
             # You must submit a list of all direct and indirect individuals with 25% or more
             # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
             # no individual owns 25% of the company you do not need to send beneficial owner
@@ -322,7 +306,6 @@ module Lithic
           sig do
             override.returns(
               {
-                beneficial_owner_entities: T::Array[Lithic::KYBBusinessEntity],
                 beneficial_owner_individuals:
                   T::Array[
                     Lithic::ParsedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual

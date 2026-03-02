@@ -7,15 +7,6 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute beneficial_owner_entities
-      #   @deprecated
-      #
-      #   Deprecated.
-      #
-      #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>, nil]
-      optional :beneficial_owner_entities,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity] }
-
       # @!attribute beneficial_owner_individuals
       #   You must submit a list of all direct and indirect individuals with 25% or more
       #   ownership in the company. A maximum of 4 beneficial owners can be submitted. If
@@ -129,11 +120,9 @@ module Lithic
       #   @return [String, nil]
       optional :phone_number, String
 
-      # @!method initialize(beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, naics_code: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
+      # @!method initialize(beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, naics_code: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolderUpdateParams} for more details.
-      #
-      #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>] Deprecated.
       #
       #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
       #
@@ -166,74 +155,6 @@ module Lithic
       #   @param phone_number [String] Allowed for all Account Holders. Account holder's phone number, entered in E.164
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        # @!attribute entity_token
-        #   Globally unique identifier for an entity.
-        #
-        #   @return [String]
-        required :entity_token, String
-
-        # @!attribute address
-        #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
-        #
-        #   @return [Lithic::Models::AddressUpdate, nil]
-        optional :address, -> { Lithic::AddressUpdate }
-
-        # @!attribute dba_business_name
-        #   Any name that the business operates under that is not its legal business name
-        #   (if applicable).
-        #
-        #   @return [String, nil]
-        optional :dba_business_name, String
-
-        # @!attribute government_id
-        #   Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
-        #
-        #   @return [String, nil]
-        optional :government_id, String
-
-        # @!attribute legal_business_name
-        #   Legal (formal) business name.
-        #
-        #   @return [String, nil]
-        optional :legal_business_name, String
-
-        # @!attribute parent_company
-        #   Parent company name (if applicable).
-        #
-        #   @return [String, nil]
-        optional :parent_company, String
-
-        # @!attribute phone_numbers
-        #   One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
-        #
-        #   @return [Array<String>, nil]
-        optional :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!method initialize(entity_token:, address: nil, dba_business_name: nil, government_id: nil, legal_business_name: nil, parent_company: nil, phone_numbers: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity} for more
-        #   details.
-        #
-        #   @param entity_token [String] Globally unique identifier for an entity.
-        #
-        #   @param address [Lithic::Models::AddressUpdate] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
-        #
-        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
-        #
-        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
-        #
-        #   @param legal_business_name [String] Legal (formal) business name.
-        #
-        #   @param parent_company [String] Parent company name (if applicable).
-        #
-        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
-      end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute entity_token

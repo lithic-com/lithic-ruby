@@ -50,7 +50,6 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerEntity]) | nil,
         beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
         business_entity: Lithic::AccountHolder::BusinessEntity | nil,
@@ -106,7 +105,6 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerEntity]) | nil,
         beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
         business_entity: Lithic::AccountHolder::BusinessEntity | nil,
@@ -197,7 +195,6 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       response => {
         token: String | nil,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::KYBBusinessEntity]) | nil,
         beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
         business_entity: Lithic::KYBBusinessEntity | nil,

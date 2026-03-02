@@ -21,22 +21,6 @@ module Lithic
       sig { params(account_token: String).void }
       attr_writer :account_token
 
-      # Deprecated.
-      sig do
-        returns(
-          T.nilable(T::Array[Lithic::AccountHolder::BeneficialOwnerEntity])
-        )
-      end
-      attr_reader :beneficial_owner_entities
-
-      sig do
-        params(
-          beneficial_owner_entities:
-            T::Array[Lithic::AccountHolder::BeneficialOwnerEntity::OrHash]
-        ).void
-      end
-      attr_writer :beneficial_owner_entities
-
       # Only present when user_type == "BUSINESS". You must submit a list of all direct
       # and indirect individuals with 25% or more ownership in the company. A maximum of
       # 4 beneficial owners can be submitted. If no individual owns 25% of the company
@@ -235,8 +219,6 @@ module Lithic
           token: String,
           created: Time,
           account_token: String,
-          beneficial_owner_entities:
-            T::Array[Lithic::AccountHolder::BeneficialOwnerEntity::OrHash],
           beneficial_owner_individuals:
             T::Array[Lithic::AccountHolder::BeneficialOwnerIndividual::OrHash],
           business_account_token: String,
@@ -266,8 +248,6 @@ module Lithic
         created:,
         # Globally unique identifier for the account.
         account_token: nil,
-        # Deprecated.
-        beneficial_owner_entities: nil,
         # Only present when user_type == "BUSINESS". You must submit a list of all direct
         # and indirect individuals with 25% or more ownership in the company. A maximum of
         # 4 beneficial owners can be submitted. If no individual owns 25% of the company
@@ -344,8 +324,6 @@ module Lithic
             token: String,
             created: Time,
             account_token: String,
-            beneficial_owner_entities:
-              T::Array[Lithic::AccountHolder::BeneficialOwnerEntity],
             beneficial_owner_individuals:
               T::Array[Lithic::AccountHolder::BeneficialOwnerIndividual],
             business_account_token: String,
@@ -370,105 +348,6 @@ module Lithic
         )
       end
       def to_hash
-      end
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Lithic::AccountHolder::BeneficialOwnerEntity,
-              Lithic::Internal::AnyHash
-            )
-          end
-
-        # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable.
-        sig { returns(Lithic::Address) }
-        attr_reader :address
-
-        sig { params(address: Lithic::Address::OrHash).void }
-        attr_writer :address
-
-        # Any name that the business operates under that is not its legal business name
-        # (if applicable).
-        sig { returns(String) }
-        attr_accessor :dba_business_name
-
-        # Globally unique identifier for the entity.
-        sig { returns(String) }
-        attr_accessor :entity_token
-
-        # Government-issued identification number. US Federal Employer Identification
-        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        # without hyphens.
-        sig { returns(String) }
-        attr_accessor :government_id
-
-        # Legal (formal) business name.
-        sig { returns(String) }
-        attr_accessor :legal_business_name
-
-        # One or more of the business's phone number(s), entered as a list in E.164
-        # format.
-        sig { returns(T::Array[String]) }
-        attr_accessor :phone_numbers
-
-        # Parent company name (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :parent_company
-
-        sig { params(parent_company: String).void }
-        attr_writer :parent_company
-
-        sig do
-          params(
-            address: Lithic::Address::OrHash,
-            dba_business_name: String,
-            entity_token: String,
-            government_id: String,
-            legal_business_name: String,
-            phone_numbers: T::Array[String],
-            parent_company: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable.
-          address:,
-          # Any name that the business operates under that is not its legal business name
-          # (if applicable).
-          dba_business_name:,
-          # Globally unique identifier for the entity.
-          entity_token:,
-          # Government-issued identification number. US Federal Employer Identification
-          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-          # without hyphens.
-          government_id:,
-          # Legal (formal) business name.
-          legal_business_name:,
-          # One or more of the business's phone number(s), entered as a list in E.164
-          # format.
-          phone_numbers:,
-          # Parent company name (if applicable).
-          parent_company: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              address: Lithic::Address,
-              dba_business_name: String,
-              entity_token: String,
-              government_id: String,
-              legal_business_name: String,
-              phone_numbers: T::Array[String],
-              parent_company: String
-            }
-          )
-        end
-        def to_hash
-        end
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel

@@ -56,15 +56,6 @@ module Lithic
       #   @return [Symbol, Lithic::Models::KYB::Workflow]
       required :workflow, enum: -> { Lithic::KYB::Workflow }
 
-      # @!attribute beneficial_owner_entities
-      #   @deprecated
-      #
-      #   Deprecated.
-      #
-      #   @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>, nil]
-      optional :beneficial_owner_entities,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::KYB::BeneficialOwnerEntity] }
-
       # @!attribute external_id
       #   A user provided id that can be used to link an account holder with an external
       #   system
@@ -94,7 +85,7 @@ module Lithic
       #   @return [String, nil]
       optional :website_url, String
 
-      # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, naics_code: nil, website_url: nil)
+      # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, external_id: nil, kyb_passed_timestamp: nil, naics_code: nil, website_url: nil)
       #   Some parameter documentations has been truncated, see {Lithic::Models::KYB} for
       #   more details.
       #
@@ -109,8 +100,6 @@ module Lithic
       #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
       #
       #   @param workflow [Symbol, Lithic::Models::KYB::Workflow] Specifies the type of KYB workflow to run.
-      #
-      #   @param beneficial_owner_entities [Array<Lithic::Models::KYB::BeneficialOwnerEntity>] Deprecated.
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
       #
@@ -340,65 +329,6 @@ module Lithic
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        # @!attribute address
-        #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
-        #
-        #   @return [Lithic::Models::Address]
-        required :address, -> { Lithic::Address }
-
-        # @!attribute government_id
-        #   Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
-        #
-        #   @return [String]
-        required :government_id, String
-
-        # @!attribute legal_business_name
-        #   Legal (formal) business name.
-        #
-        #   @return [String]
-        required :legal_business_name, String
-
-        # @!attribute phone_numbers
-        #   One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
-        #
-        #   @return [Array<String>]
-        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute dba_business_name
-        #   Any name that the business operates under that is not its legal business name
-        #   (if applicable).
-        #
-        #   @return [String, nil]
-        optional :dba_business_name, String
-
-        # @!attribute parent_company
-        #   Parent company name (if applicable).
-        #
-        #   @return [String, nil]
-        optional :parent_company, String
-
-        # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::KYB::BeneficialOwnerEntity} for more details.
-        #
-        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
-        #
-        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
-        #
-        #   @param legal_business_name [String] Legal (formal) business name.
-        #
-        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
-        #
-        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
-        #
-        #   @param parent_company [String] Parent company name (if applicable).
       end
     end
   end
