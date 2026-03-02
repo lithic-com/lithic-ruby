@@ -80,22 +80,24 @@ module Lithic
                 )
               end
 
-            sig { returns(T.nilable(Lithic::AuthRules::RuleStats)) }
+            sig { returns(T.nilable(Lithic::AuthRules::BacktestStats)) }
             attr_reader :current_version
 
             sig do
               params(
-                current_version: T.nilable(Lithic::AuthRules::RuleStats::OrHash)
+                current_version:
+                  T.nilable(Lithic::AuthRules::BacktestStats::OrHash)
               ).void
             end
             attr_writer :current_version
 
-            sig { returns(T.nilable(Lithic::AuthRules::RuleStats)) }
+            sig { returns(T.nilable(Lithic::AuthRules::BacktestStats)) }
             attr_reader :draft_version
 
             sig do
               params(
-                draft_version: T.nilable(Lithic::AuthRules::RuleStats::OrHash)
+                draft_version:
+                  T.nilable(Lithic::AuthRules::BacktestStats::OrHash)
               ).void
             end
             attr_writer :draft_version
@@ -103,8 +105,9 @@ module Lithic
             sig do
               params(
                 current_version:
-                  T.nilable(Lithic::AuthRules::RuleStats::OrHash),
-                draft_version: T.nilable(Lithic::AuthRules::RuleStats::OrHash)
+                  T.nilable(Lithic::AuthRules::BacktestStats::OrHash),
+                draft_version:
+                  T.nilable(Lithic::AuthRules::BacktestStats::OrHash)
               ).returns(T.attached_class)
             end
             def self.new(current_version: nil, draft_version: nil)
@@ -113,8 +116,8 @@ module Lithic
             sig do
               override.returns(
                 {
-                  current_version: T.nilable(Lithic::AuthRules::RuleStats),
-                  draft_version: T.nilable(Lithic::AuthRules::RuleStats)
+                  current_version: T.nilable(Lithic::AuthRules::BacktestStats),
+                  draft_version: T.nilable(Lithic::AuthRules::BacktestStats)
                 }
               )
             end

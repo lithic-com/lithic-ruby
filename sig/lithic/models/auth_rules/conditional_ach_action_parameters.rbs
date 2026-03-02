@@ -23,26 +23,26 @@ module Lithic
         }
 
         type action =
-          Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction
+          Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH
           | Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction
 
         module Action
           extend Lithic::Internal::Type::Union
 
-          type approve_action =
+          type approve_action_ach =
             {
-              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::type_
             }
 
-          class ApproveAction < Lithic::Internal::Type::BaseModel
-            attr_accessor type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+          class ApproveActionACH < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::type_
 
             def initialize: (
-              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::type_
             ) -> void
 
             def to_hash: -> {
-              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::type_
             }
 
             type type_ = :APPROVE
@@ -52,7 +52,7 @@ module Lithic
 
               APPROVE: :APPROVE
 
-              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_]
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveActionACH::type_]
             end
           end
 
