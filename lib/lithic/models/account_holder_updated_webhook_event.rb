@@ -83,14 +83,6 @@ module Lithic
 
         # @see Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload#update_request
         class UpdateRequest < Lithic::Internal::Type::BaseModel
-          # @!attribute beneficial_owner_entities
-          #   @deprecated
-          #
-          #   Deprecated.
-          #
-          #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
-          optional :beneficial_owner_entities, -> { Lithic::Internal::Type::ArrayOf[Lithic::KYBBusinessEntity] }
-
           # @!attribute beneficial_owner_individuals
           #   You must submit a list of all direct and indirect individuals with 25% or more
           #   ownership in the company. A maximum of 4 beneficial owners can be submitted. If
@@ -124,14 +116,12 @@ module Lithic
           optional :control_person,
                    -> { Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson }
 
-          # @!method initialize(beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil)
+          # @!method initialize(beneficial_owner_individuals: nil, business_entity: nil, control_person: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest}
           #   for more details.
           #
           #   Original request to update the account holder.
-          #
-          #   @param beneficial_owner_entities [Array<Lithic::Models::KYBBusinessEntity>] Deprecated.
           #
           #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
           #

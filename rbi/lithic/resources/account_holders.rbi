@@ -35,10 +35,6 @@ module Lithic
           control_person:
             Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
           nature_of_business: String,
-          beneficial_owner_entities:
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerEntity::OrHash
-            ],
           external_id: String,
           kyb_passed_timestamp: String,
           naics_code: String,
@@ -92,8 +88,6 @@ module Lithic
         # Short description of the company's line of business (i.e., what does the company
         # do?).
         nature_of_business: nil,
-        # Deprecated.
-        beneficial_owner_entities: nil,
         # A user provided id that can be used to link an account holder with an external
         # system
         external_id: nil,
@@ -148,10 +142,6 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          beneficial_owner_entities:
-            T::Array[
-              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity::OrHash
-            ],
           beneficial_owner_individuals:
             T::Array[
               Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual::OrHash
@@ -178,8 +168,6 @@ module Lithic
       def update(
         # Globally unique identifier for the account holder.
         account_holder_token,
-        # Deprecated.
-        beneficial_owner_entities: nil,
         # You must submit a list of all direct and indirect individuals with 25% or more
         # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
         # no individual owns 25% of the company you do not need to send beneficial owner

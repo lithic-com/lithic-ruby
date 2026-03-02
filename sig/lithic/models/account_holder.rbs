@@ -5,7 +5,6 @@ module Lithic
         token: String,
         created: Time,
         account_token: String,
-        beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity],
         beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual],
         business_account_token: String,
         business_entity: Lithic::AccountHolder::BusinessEntity,
@@ -33,12 +32,6 @@ module Lithic
       attr_reader account_token: String?
 
       def account_token=: (String) -> String
-
-      attr_reader beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity]?
-
-      def beneficial_owner_entities=: (
-        ::Array[Lithic::AccountHolder::BeneficialOwnerEntity]
-      ) -> ::Array[Lithic::AccountHolder::BeneficialOwnerEntity]
 
       attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual]?
 
@@ -132,7 +125,6 @@ module Lithic
         token: String,
         created: Time,
         ?account_token: String,
-        ?beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity],
         ?beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual],
         ?business_account_token: String,
         ?business_entity: Lithic::AccountHolder::BusinessEntity,
@@ -156,7 +148,6 @@ module Lithic
         token: String,
         created: Time,
         account_token: String,
-        beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity],
         beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual],
         business_account_token: String,
         business_entity: Lithic::AccountHolder::BusinessEntity,
@@ -175,55 +166,6 @@ module Lithic
         verification_application: Lithic::AccountHolder::VerificationApplication,
         website_url: String
       }
-
-      type beneficial_owner_entity =
-        {
-          address: Lithic::Address,
-          dba_business_name: String,
-          entity_token: String,
-          government_id: String,
-          legal_business_name: String,
-          phone_numbers: ::Array[String],
-          parent_company: String
-        }
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Address
-
-        attr_accessor dba_business_name: String
-
-        attr_accessor entity_token: String
-
-        attr_accessor government_id: String
-
-        attr_accessor legal_business_name: String
-
-        attr_accessor phone_numbers: ::Array[String]
-
-        attr_reader parent_company: String?
-
-        def parent_company=: (String) -> String
-
-        def initialize: (
-          address: Lithic::Address,
-          dba_business_name: String,
-          entity_token: String,
-          government_id: String,
-          legal_business_name: String,
-          phone_numbers: ::Array[String],
-          ?parent_company: String
-        ) -> void
-
-        def to_hash: -> {
-          address: Lithic::Address,
-          dba_business_name: String,
-          entity_token: String,
-          government_id: String,
-          legal_business_name: String,
-          phone_numbers: ::Array[String],
-          parent_company: String
-        }
-      end
 
       type beneficial_owner_individual =
         {

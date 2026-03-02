@@ -11,7 +11,6 @@ module Lithic
         {
           token: String,
           account_token: String,
-          beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
           business_account_token: String?,
           business_entity: Lithic::KYBBusinessEntity,
@@ -40,12 +39,6 @@ module Lithic
         attr_reader account_token: String?
 
         def account_token=: (String) -> String
-
-        attr_reader beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity]?
-
-        def beneficial_owner_entities=: (
-          ::Array[Lithic::KYBBusinessEntity]
-        ) -> ::Array[Lithic::KYBBusinessEntity]
 
         attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]?
 
@@ -140,7 +133,6 @@ module Lithic
         def initialize: (
           ?token: String,
           ?account_token: String,
-          ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
           ?business_account_token: String?,
           ?business_entity: Lithic::KYBBusinessEntity,
@@ -164,7 +156,6 @@ module Lithic
         def to_hash: -> {
           token: String,
           account_token: String,
-          beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
           business_account_token: String?,
           business_entity: Lithic::KYBBusinessEntity,

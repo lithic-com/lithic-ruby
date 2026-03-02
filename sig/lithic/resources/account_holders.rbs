@@ -17,7 +17,6 @@ module Lithic
         ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual],
         ?control_person: Lithic::AccountHolderCreateParams::ControlPerson,
         ?nature_of_business: String,
-        ?beneficial_owner_entities: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerEntity],
         ?external_id: String,
         ?kyb_passed_timestamp: String,
         ?naics_code: String,
@@ -34,7 +33,6 @@ module Lithic
 
       def update: (
         String account_holder_token,
-        ?beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
         ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
         ?business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         ?control_person: Lithic::AccountHolderUpdateParams::ControlPerson,

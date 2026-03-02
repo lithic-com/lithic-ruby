@@ -51,18 +51,6 @@ module Lithic
       sig { returns(Lithic::KYB::Workflow::OrSymbol) }
       attr_accessor :workflow
 
-      # Deprecated.
-      sig { returns(T.nilable(T::Array[Lithic::KYB::BeneficialOwnerEntity])) }
-      attr_reader :beneficial_owner_entities
-
-      sig do
-        params(
-          beneficial_owner_entities:
-            T::Array[Lithic::KYB::BeneficialOwnerEntity::OrHash]
-        ).void
-      end
-      attr_writer :beneficial_owner_entities
-
       # A user provided id that can be used to link an account holder with an external
       # system
       sig { returns(T.nilable(String)) }
@@ -105,8 +93,6 @@ module Lithic
           nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::KYB::Workflow::OrSymbol,
-          beneficial_owner_entities:
-            T::Array[Lithic::KYB::BeneficialOwnerEntity::OrHash],
           external_id: String,
           kyb_passed_timestamp: String,
           naics_code: String,
@@ -142,8 +128,6 @@ module Lithic
         tos_timestamp:,
         # Specifies the type of KYB workflow to run.
         workflow:,
-        # Deprecated.
-        beneficial_owner_entities: nil,
         # A user provided id that can be used to link an account holder with an external
         # system
         external_id: nil,
@@ -170,8 +154,6 @@ module Lithic
             nature_of_business: String,
             tos_timestamp: String,
             workflow: Lithic::KYB::Workflow::OrSymbol,
-            beneficial_owner_entities:
-              T::Array[Lithic::KYB::BeneficialOwnerEntity],
             external_id: String,
             kyb_passed_timestamp: String,
             naics_code: String,
@@ -491,97 +473,6 @@ module Lithic
 
         sig { override.returns(T::Array[Lithic::KYB::Workflow::TaggedSymbol]) }
         def self.values
-        end
-      end
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Lithic::KYB::BeneficialOwnerEntity, Lithic::Internal::AnyHash)
-          end
-
-        # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable.
-        sig { returns(Lithic::Address) }
-        attr_reader :address
-
-        sig { params(address: Lithic::Address::OrHash).void }
-        attr_writer :address
-
-        # Government-issued identification number. US Federal Employer Identification
-        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        # without hyphens.
-        sig { returns(String) }
-        attr_accessor :government_id
-
-        # Legal (formal) business name.
-        sig { returns(String) }
-        attr_accessor :legal_business_name
-
-        # One or more of the business's phone number(s), entered as a list in E.164
-        # format.
-        sig { returns(T::Array[String]) }
-        attr_accessor :phone_numbers
-
-        # Any name that the business operates under that is not its legal business name
-        # (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :dba_business_name
-
-        sig { params(dba_business_name: String).void }
-        attr_writer :dba_business_name
-
-        # Parent company name (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :parent_company
-
-        sig { params(parent_company: String).void }
-        attr_writer :parent_company
-
-        sig do
-          params(
-            address: Lithic::Address::OrHash,
-            government_id: String,
-            legal_business_name: String,
-            phone_numbers: T::Array[String],
-            dba_business_name: String,
-            parent_company: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable.
-          address:,
-          # Government-issued identification number. US Federal Employer Identification
-          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-          # without hyphens.
-          government_id:,
-          # Legal (formal) business name.
-          legal_business_name:,
-          # One or more of the business's phone number(s), entered as a list in E.164
-          # format.
-          phone_numbers:,
-          # Any name that the business operates under that is not its legal business name
-          # (if applicable).
-          dba_business_name: nil,
-          # Parent company name (if applicable).
-          parent_company: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              address: Lithic::Address,
-              government_id: String,
-              legal_business_name: String,
-              phone_numbers: T::Array[String],
-              dba_business_name: String,
-              parent_company: String
-            }
-          )
-        end
-        def to_hash
         end
       end
     end
