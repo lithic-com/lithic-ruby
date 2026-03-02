@@ -14,6 +14,7 @@ module Lithic
             Lithic::PaymentCreateParams::MethodAttributes::OrHash,
           type: Lithic::PaymentCreateParams::Type::OrSymbol,
           token: String,
+          hold: Lithic::PaymentCreateParams::Hold::OrHash,
           memo: String,
           user_defined_id: String,
           request_options: Lithic::RequestOptions::OrHash
@@ -29,6 +30,8 @@ module Lithic
         # Customer-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token: nil,
+        # Optional hold to settle when this payment is initiated.
+        hold: nil,
         memo: nil,
         user_defined_id: nil,
         request_options: {}

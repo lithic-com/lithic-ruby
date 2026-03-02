@@ -8,7 +8,7 @@ module Lithic
       #
       # Initiates a payment between a financial account and an external bank account.
       #
-      # @overload create(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, memo: nil, user_defined_id: nil, request_options: {})
+      # @overload create(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, hold: nil, memo: nil, user_defined_id: nil, request_options: {})
       #
       # @param amount [Integer]
       #
@@ -23,6 +23,8 @@ module Lithic
       # @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
       #
       # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #
+      # @param hold [Lithic::Models::PaymentCreateParams::Hold] Optional hold to settle when this payment is initiated.
       #
       # @param memo [String]
       #
