@@ -2,7 +2,6 @@ module Lithic
   module Models
     type account_holder_update_params =
       {
-        beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
         beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
         business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
@@ -24,12 +23,6 @@ module Lithic
     class AccountHolderUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
-
-      attr_reader beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]?
-
-      def beneficial_owner_entities=: (
-        ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
-      ) -> ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
 
       attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual]?
 
@@ -100,7 +93,6 @@ module Lithic
       def phone_number=: (String) -> String
 
       def initialize: (
-        ?beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
         ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
         ?business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         ?control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
@@ -120,7 +112,6 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
-        beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
         beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
         business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
         control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
@@ -138,65 +129,6 @@ module Lithic
         phone_number: String,
         request_options: Lithic::RequestOptions
       }
-
-      type beneficial_owner_entity =
-        {
-          entity_token: String,
-          address: Lithic::AddressUpdate,
-          dba_business_name: String,
-          government_id: String,
-          legal_business_name: String,
-          parent_company: String,
-          phone_numbers: ::Array[String]
-        }
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        attr_accessor entity_token: String
-
-        attr_reader address: Lithic::AddressUpdate?
-
-        def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
-
-        attr_reader dba_business_name: String?
-
-        def dba_business_name=: (String) -> String
-
-        attr_reader government_id: String?
-
-        def government_id=: (String) -> String
-
-        attr_reader legal_business_name: String?
-
-        def legal_business_name=: (String) -> String
-
-        attr_reader parent_company: String?
-
-        def parent_company=: (String) -> String
-
-        attr_reader phone_numbers: ::Array[String]?
-
-        def phone_numbers=: (::Array[String]) -> ::Array[String]
-
-        def initialize: (
-          entity_token: String,
-          ?address: Lithic::AddressUpdate,
-          ?dba_business_name: String,
-          ?government_id: String,
-          ?legal_business_name: String,
-          ?parent_company: String,
-          ?phone_numbers: ::Array[String]
-        ) -> void
-
-        def to_hash: -> {
-          entity_token: String,
-          address: Lithic::AddressUpdate,
-          dba_business_name: String,
-          government_id: String,
-          legal_business_name: String,
-          parent_company: String,
-          phone_numbers: ::Array[String]
-        }
-      end
 
       type beneficial_owner_individual =
         {

@@ -4,8 +4,8 @@ module Lithic
   module Resources
     class AccountHolders
       class Entities
-        # Create a new beneficial owner or replace the control person entity on an
-        # existing KYB account holder. This endpoint is only applicable for account
+        # Create a new beneficial owner individual or replace the control person entity on
+        # an existing KYB account holder. This endpoint is only applicable for account
         # holders enrolled through a KYB workflow with the Persona KYB provider. A new
         # control person can only replace the existing one. A maximum of 4 beneficial
         # owners can be associated with an account holder.
@@ -52,8 +52,8 @@ module Lithic
         )
         end
 
-        # Deactivate a beneficial owner entity on an existing KYB account holder. Only
-        # beneficial owner entities can be deactivated.
+        # Deactivate a beneficial owner individual on an existing KYB account holder. Only
+        # beneficial owner individuals can be deactivated.
         sig do
           params(
             entity_token: String,

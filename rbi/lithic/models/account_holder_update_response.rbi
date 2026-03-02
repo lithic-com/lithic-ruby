@@ -36,18 +36,6 @@ module Lithic
         sig { params(account_token: String).void }
         attr_writer :account_token
 
-        # Deprecated.
-        sig { returns(T.nilable(T::Array[Lithic::KYBBusinessEntity])) }
-        attr_reader :beneficial_owner_entities
-
-        sig do
-          params(
-            beneficial_owner_entities:
-              T::Array[Lithic::KYBBusinessEntity::OrHash]
-          ).void
-        end
-        attr_writer :beneficial_owner_entities
-
         # Only present when user_type == "BUSINESS". You must submit a list of all direct
         # and indirect individuals with 25% or more ownership in the company. A maximum of
         # 4 beneficial owners can be submitted. If no individual owns 25% of the company
@@ -313,8 +301,6 @@ module Lithic
           params(
             token: String,
             account_token: String,
-            beneficial_owner_entities:
-              T::Array[Lithic::KYBBusinessEntity::OrHash],
             beneficial_owner_individuals:
               T::Array[
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::OrHash
@@ -352,8 +338,6 @@ module Lithic
           token: nil,
           # Globally unique identifier for the account.
           account_token: nil,
-          # Deprecated.
-          beneficial_owner_entities: nil,
           # Only present when user_type == "BUSINESS". You must submit a list of all direct
           # and indirect individuals with 25% or more ownership in the company. A maximum of
           # 4 beneficial owners can be submitted. If no individual owns 25% of the company
@@ -436,7 +420,6 @@ module Lithic
             {
               token: String,
               account_token: String,
-              beneficial_owner_entities: T::Array[Lithic::KYBBusinessEntity],
               beneficial_owner_individuals:
                 T::Array[
                   Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual

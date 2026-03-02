@@ -16,12 +16,6 @@ module Lithic
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!attribute beneficial_owner_entities
-      #   Deprecated.
-      #
-      #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
-      optional :beneficial_owner_entities, -> { Lithic::Internal::Type::ArrayOf[Lithic::KYBBusinessEntity] }
-
       # @!attribute beneficial_owner_individuals
       #   Only present when user_type == "BUSINESS". You must submit a list of all direct
       #   and indirect individuals with 25% or more ownership in the company. A maximum of
@@ -173,7 +167,7 @@ module Lithic
       #   @return [String, nil]
       optional :website_url, String
 
-      # @!method initialize(token: nil, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, created: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, naics_code: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
+      # @!method initialize(token: nil, account_token: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, created: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, naics_code: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse} for more
       #   details.
@@ -181,8 +175,6 @@ module Lithic
       #   @param token [String] Globally unique identifier for the account holder.
       #
       #   @param account_token [String] Globally unique identifier for the account.
-      #
-      #   @param beneficial_owner_entities [Array<Lithic::Models::KYBBusinessEntity>] Deprecated.
       #
       #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>] Only present when user_type == "BUSINESS". You must submit a list of all direct
       #

@@ -68,19 +68,12 @@ module Lithic
 
         type update_request =
           {
-            beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
             beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual],
             business_entity: Lithic::KYBBusinessEntity,
             control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
           }
 
         class UpdateRequest < Lithic::Internal::Type::BaseModel
-          attr_reader beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity]?
-
-          def beneficial_owner_entities=: (
-            ::Array[Lithic::KYBBusinessEntity]
-          ) -> ::Array[Lithic::KYBBusinessEntity]
-
           attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual]?
 
           def beneficial_owner_individuals=: (
@@ -100,14 +93,12 @@ module Lithic
           ) -> Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
 
           def initialize: (
-            ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
             ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual],
             ?business_entity: Lithic::KYBBusinessEntity,
             ?control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
           ) -> void
 
           def to_hash: -> {
-            beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
             beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::BeneficialOwnerIndividual],
             business_entity: Lithic::KYBBusinessEntity,
             control_person: Lithic::AccountHolderUpdatedWebhookEvent::KYBPayload::UpdateRequest::ControlPerson
