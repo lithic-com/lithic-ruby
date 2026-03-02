@@ -44,6 +44,12 @@ module Lithic
       #   @return [String, nil]
       optional :token, String
 
+      # @!attribute hold
+      #   Optional hold to settle when this payment is initiated.
+      #
+      #   @return [Lithic::Models::PaymentCreateParams::Hold, nil]
+      optional :hold, -> { Lithic::PaymentCreateParams::Hold }
+
       # @!attribute memo
       #
       #   @return [String, nil]
@@ -54,7 +60,7 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, memo: nil, user_defined_id: nil, request_options: {})
+      # @!method initialize(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, hold: nil, memo: nil, user_defined_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::PaymentCreateParams} for more details.
       #
@@ -71,6 +77,8 @@ module Lithic
       #   @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #
+      #   @param hold [Lithic::Models::PaymentCreateParams::Hold] Optional hold to settle when this payment is initiated.
       #
       #   @param memo [String]
       #
@@ -133,6 +141,19 @@ module Lithic
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class Hold < Lithic::Internal::Type::BaseModel
+        # @!attribute token
+        #   Token of the hold to settle when this payment is initiated.
+        #
+        #   @return [String]
+        required :token, String
+
+        # @!method initialize(token:)
+        #   Optional hold to settle when this payment is initiated.
+        #
+        #   @param token [String] Token of the hold to settle when this payment is initiated.
       end
     end
   end

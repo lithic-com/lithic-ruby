@@ -9,6 +9,7 @@ module Lithic
         method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         token: String,
+        hold: Lithic::PaymentCreateParams::Hold,
         memo: String,
         user_defined_id: String
       }
@@ -34,6 +35,12 @@ module Lithic
 
       def token=: (String) -> String
 
+      attr_reader hold: Lithic::PaymentCreateParams::Hold?
+
+      def hold=: (
+        Lithic::PaymentCreateParams::Hold
+      ) -> Lithic::PaymentCreateParams::Hold
+
       attr_reader memo: String?
 
       def memo=: (String) -> String
@@ -50,6 +57,7 @@ module Lithic
         method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         ?token: String,
+        ?hold: Lithic::PaymentCreateParams::Hold,
         ?memo: String,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
@@ -63,6 +71,7 @@ module Lithic
         method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         token: String,
+        hold: Lithic::PaymentCreateParams::Hold,
         memo: String,
         user_defined_id: String,
         request_options: Lithic::RequestOptions
@@ -129,6 +138,16 @@ module Lithic
         PAYMENT: :PAYMENT
 
         def self?.values: -> ::Array[Lithic::Models::PaymentCreateParams::type_]
+      end
+
+      type hold = { token: String }
+
+      class Hold < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        def initialize: (token: String) -> void
+
+        def to_hash: -> { token: String }
       end
     end
   end

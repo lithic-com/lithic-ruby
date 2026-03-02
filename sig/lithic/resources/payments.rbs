@@ -9,6 +9,7 @@ module Lithic
         method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         ?token: String,
+        ?hold: Lithic::PaymentCreateParams::Hold,
         ?memo: String,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
