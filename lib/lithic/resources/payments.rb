@@ -101,10 +101,11 @@ module Lithic
       # @see Lithic::Models::PaymentListParams
       def list(params = {})
         parsed, options = Lithic::PaymentListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/payments",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Payment,
           options: options

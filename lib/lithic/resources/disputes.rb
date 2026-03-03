@@ -110,10 +110,11 @@ module Lithic
       # @see Lithic::Models::DisputeListParams
       def list(params = {})
         parsed, options = Lithic::DisputeListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/disputes",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Dispute,
           options: options
@@ -219,10 +220,11 @@ module Lithic
       # @see Lithic::Models::DisputeListEvidencesParams
       def list_evidences(dispute_token, params = {})
         parsed, options = Lithic::DisputeListEvidencesParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["v1/disputes/%1$s/evidences", dispute_token],
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::DisputeEvidence,
           options: options

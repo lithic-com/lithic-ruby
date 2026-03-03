@@ -142,10 +142,11 @@ module Lithic
         # @see Lithic::Models::AuthRules::V2ListParams
         def list(params = {})
           parsed, options = Lithic::AuthRules::V2ListParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v2/auth_rules",
-            query: parsed,
+            query: query,
             page: Lithic::Internal::CursorPage,
             model: Lithic::AuthRules::AuthRule,
             options: options
@@ -234,10 +235,11 @@ module Lithic
         # @see Lithic::Models::AuthRules::V2ListResultsParams
         def list_results(params = {})
           parsed, options = Lithic::AuthRules::V2ListResultsParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v2/auth_rules/results",
-            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            query: query.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::CursorPage,
             model: Lithic::Models::AuthRules::V2ListResultsResponse,
             options: options
@@ -286,10 +288,11 @@ module Lithic
         # @see Lithic::Models::AuthRules::V2RetrieveFeaturesParams
         def retrieve_features(auth_rule_token, params = {})
           parsed, options = Lithic::AuthRules::V2RetrieveFeaturesParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v2/auth_rules/%1$s/features", auth_rule_token],
-            query: parsed,
+            query: query,
             model: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse,
             options: options
           )
@@ -324,10 +327,11 @@ module Lithic
         # @see Lithic::Models::AuthRules::V2RetrieveReportParams
         def retrieve_report(auth_rule_token, params)
           parsed, options = Lithic::AuthRules::V2RetrieveReportParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v2/auth_rules/%1$s/report", auth_rule_token],
-            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            query: query.transform_keys(begin_: "begin", end_: "end"),
             model: Lithic::Models::AuthRules::V2RetrieveReportResponse,
             options: options
           )

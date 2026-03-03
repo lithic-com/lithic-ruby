@@ -47,10 +47,11 @@ module Lithic
         # @see Lithic::Models::CreditProducts::PrimeRateRetrieveParams
         def retrieve(credit_product_token, params = {})
           parsed, options = Lithic::CreditProducts::PrimeRateRetrieveParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v1/credit_products/%1$s/prime_rates", credit_product_token],
-            query: parsed,
+            query: query,
             model: Lithic::Models::CreditProducts::PrimeRateRetrieveResponse,
             options: options
           )

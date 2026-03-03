@@ -46,10 +46,11 @@ module Lithic
       # @see Lithic::Models::DigitalCardArtListParams
       def list(params = {})
         parsed, options = Lithic::DigitalCardArtListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/digital_card_art",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::CursorPage,
           model: Lithic::DigitalCardArtAPI,
           options: options

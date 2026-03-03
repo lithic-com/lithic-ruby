@@ -43,10 +43,11 @@ module Lithic
       # @see Lithic::Models::NetworkProgramListParams
       def list(params = {})
         parsed, options = Lithic::NetworkProgramListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/network_programs",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::SinglePage,
           model: Lithic::NetworkProgram,
           options: options

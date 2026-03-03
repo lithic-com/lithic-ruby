@@ -40,10 +40,11 @@ module Lithic
       # @see Lithic::Models::ResponderEndpointDeleteParams
       def delete(params)
         parsed, options = Lithic::ResponderEndpointDeleteParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :delete,
           path: "v1/responder_endpoints",
-          query: parsed,
+          query: query,
           model: NilClass,
           options: options
         )
@@ -62,10 +63,11 @@ module Lithic
       # @see Lithic::Models::ResponderEndpointCheckStatusParams
       def check_status(params)
         parsed, options = Lithic::ResponderEndpointCheckStatusParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/responder_endpoints",
-          query: parsed,
+          query: query,
           model: Lithic::ResponderEndpointStatus,
           options: options
         )

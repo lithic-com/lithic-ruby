@@ -157,10 +157,11 @@ module Lithic
       # @see Lithic::Models::ExternalBankAccountListParams
       def list(params = {})
         parsed, options = Lithic::ExternalBankAccountListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/external_bank_accounts",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::ExternalBankAccountListResponse,
           options: options
