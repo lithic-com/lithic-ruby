@@ -43,10 +43,11 @@ module Lithic
       # @see Lithic::Models::FundingEventListParams
       def list(params = {})
         parsed, options = Lithic::FundingEventListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/funding_events",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::CursorPage,
           model: Lithic::FundingEvent,
           options: options

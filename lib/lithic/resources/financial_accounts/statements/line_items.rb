@@ -30,6 +30,7 @@ module Lithic
           # @see Lithic::Models::FinancialAccounts::Statements::LineItemListParams
           def list(statement_token, params)
             parsed, options = Lithic::FinancialAccounts::Statements::LineItemListParams.dump_request(params)
+            query = Lithic::Internal::Util.encode_query_params(parsed)
             financial_account_token =
               parsed.delete(:financial_account_token) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -41,7 +42,7 @@ module Lithic
                 financial_account_token,
                 statement_token
               ],
-              query: parsed,
+              query: query,
               page: Lithic::Internal::CursorPage,
               model: Lithic::FinancialAccounts::Statements::StatementLineItems::Data,
               options: options

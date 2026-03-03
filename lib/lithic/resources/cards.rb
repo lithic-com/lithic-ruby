@@ -175,10 +175,11 @@ module Lithic
       # @see Lithic::Models::CardListParams
       def list(params = {})
         parsed, options = Lithic::CardListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/cards",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::NonPCICard,
           options: options
@@ -268,10 +269,11 @@ module Lithic
       # @see Lithic::Models::CardEmbedParams
       def embed(params)
         parsed, options = Lithic::CardEmbedParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/embed/card",
-          query: parsed,
+          query: query,
           headers: {"accept" => "text/html"},
           model: String,
           options: options

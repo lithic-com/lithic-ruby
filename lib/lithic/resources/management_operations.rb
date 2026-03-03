@@ -100,10 +100,11 @@ module Lithic
       # @see Lithic::Models::ManagementOperationListParams
       def list(params = {})
         parsed, options = Lithic::ManagementOperationListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/management_operations",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::ManagementOperationTransaction,
           options: options

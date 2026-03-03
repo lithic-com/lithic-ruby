@@ -53,10 +53,11 @@ module Lithic
       # @see Lithic::Models::DisputesV2ListParams
       def list(params = {})
         parsed, options = Lithic::DisputesV2ListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v2/disputes",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::DisputeV2,
           options: options

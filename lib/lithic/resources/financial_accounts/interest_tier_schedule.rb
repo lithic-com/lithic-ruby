@@ -137,10 +137,11 @@ module Lithic
         # @see Lithic::Models::FinancialAccounts::InterestTierScheduleListParams
         def list(financial_account_token, params = {})
           parsed, options = Lithic::FinancialAccounts::InterestTierScheduleListParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v1/financial_accounts/%1$s/interest_tier_schedule", financial_account_token],
-            query: parsed,
+            query: query,
             page: Lithic::Internal::SinglePage,
             model: Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule,
             options: options

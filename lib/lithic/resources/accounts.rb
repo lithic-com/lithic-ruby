@@ -88,10 +88,11 @@ module Lithic
       # @see Lithic::Models::AccountListParams
       def list(params = {})
         parsed, options = Lithic::AccountListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/accounts",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Account,
           options: options

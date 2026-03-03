@@ -56,10 +56,11 @@ module Lithic
       # @see Lithic::Models::EventListParams
       def list(params = {})
         parsed, options = Lithic::EventListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/events",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Event,
           options: options
@@ -94,10 +95,11 @@ module Lithic
       # @see Lithic::Models::EventListAttemptsParams
       def list_attempts(event_token, params = {})
         parsed, options = Lithic::EventListAttemptsParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["v1/events/%1$s/attempts", event_token],
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::MessageAttempt,
           options: options

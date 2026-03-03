@@ -115,10 +115,11 @@ module Lithic
       # @see Lithic::Models::FinancialAccountListParams
       def list(params = {})
         parsed, options = Lithic::FinancialAccountListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/financial_accounts",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::SinglePage,
           model: Lithic::FinancialAccount,
           options: options

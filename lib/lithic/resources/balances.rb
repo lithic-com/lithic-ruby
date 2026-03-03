@@ -25,10 +25,11 @@ module Lithic
       # @see Lithic::Models::BalanceListParams
       def list(params = {})
         parsed, options = Lithic::BalanceListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/balances",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::SinglePage,
           model: Lithic::Balance,
           options: options

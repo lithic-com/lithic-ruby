@@ -24,10 +24,11 @@ module Lithic
         # @see Lithic::Models::Cards::BalanceListParams
         def list(card_token, params = {})
           parsed, options = Lithic::Cards::BalanceListParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v1/cards/%1$s/balances", card_token],
-            query: parsed,
+            query: query,
             page: Lithic::Internal::SinglePage,
             model: Lithic::FinancialAccountBalance,
             options: options
