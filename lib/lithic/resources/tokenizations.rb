@@ -53,10 +53,11 @@ module Lithic
       # @see Lithic::Models::TokenizationListParams
       def list(params = {})
         parsed, options = Lithic::TokenizationListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/tokenizations",
-          query: parsed.transform_keys(begin_: "begin", end_: "end"),
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Tokenization,
           options: options

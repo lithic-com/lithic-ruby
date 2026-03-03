@@ -43,10 +43,11 @@ module Lithic
       # @see Lithic::Models::CardProgramListParams
       def list(params = {})
         parsed, options = Lithic::CardProgramListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/card_programs",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::CursorPage,
           model: Lithic::CardProgram,
           options: options

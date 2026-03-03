@@ -29,10 +29,11 @@ module Lithic
         # @see Lithic::Models::Reports::SettlementListDetailsParams
         def list_details(report_date, params = {})
           parsed, options = Lithic::Reports::SettlementListDetailsParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v1/reports/settlement/details/%1$s", report_date],
-            query: parsed,
+            query: query,
             page: Lithic::Internal::CursorPage,
             model: Lithic::SettlementDetail,
             options: options

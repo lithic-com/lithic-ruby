@@ -16,10 +16,11 @@ module Lithic
       # @see Lithic::Models::TransferLimitListParams
       def list(params = {})
         parsed, options = Lithic::TransferLimitListParams.dump_request(params)
+        query = Lithic::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/transfer_limits",
-          query: parsed,
+          query: query,
           page: Lithic::Internal::SinglePage,
           model: Lithic::TransferLimitsResponse::Data,
           options: options

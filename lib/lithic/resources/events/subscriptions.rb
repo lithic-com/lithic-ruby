@@ -107,10 +107,11 @@ module Lithic
         # @see Lithic::Models::Events::SubscriptionListParams
         def list(params = {})
           parsed, options = Lithic::Events::SubscriptionListParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/event_subscriptions",
-            query: parsed,
+            query: query,
             page: Lithic::Internal::CursorPage,
             model: Lithic::EventSubscription,
             options: options
@@ -164,10 +165,11 @@ module Lithic
         # @see Lithic::Models::Events::SubscriptionListAttemptsParams
         def list_attempts(event_subscription_token, params = {})
           parsed, options = Lithic::Events::SubscriptionListAttemptsParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v1/event_subscriptions/%1$s/attempts", event_subscription_token],
-            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            query: query.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::CursorPage,
             model: Lithic::MessageAttempt,
             options: options
@@ -194,10 +196,11 @@ module Lithic
         # @see Lithic::Models::Events::SubscriptionRecoverParams
         def recover(event_subscription_token, params = {})
           parsed, options = Lithic::Events::SubscriptionRecoverParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :post,
             path: ["v1/event_subscriptions/%1$s/recover", event_subscription_token],
-            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            query: query.transform_keys(begin_: "begin", end_: "end"),
             model: NilClass,
             options: options
           )
@@ -227,10 +230,11 @@ module Lithic
         # @see Lithic::Models::Events::SubscriptionReplayMissingParams
         def replay_missing(event_subscription_token, params = {})
           parsed, options = Lithic::Events::SubscriptionReplayMissingParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :post,
             path: ["v1/event_subscriptions/%1$s/replay_missing", event_subscription_token],
-            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            query: query.transform_keys(begin_: "begin", end_: "end"),
             model: NilClass,
             options: options
           )

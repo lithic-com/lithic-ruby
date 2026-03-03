@@ -61,10 +61,11 @@ module Lithic
         # @see Lithic::Models::Cards::FinancialTransactionListParams
         def list(card_token, params = {})
           parsed, options = Lithic::Cards::FinancialTransactionListParams.dump_request(params)
+          query = Lithic::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["v1/cards/%1$s/financial_transactions", card_token],
-            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            query: query.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::SinglePage,
             model: Lithic::FinancialTransaction,
             options: options
