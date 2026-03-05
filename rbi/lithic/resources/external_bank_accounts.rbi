@@ -9,67 +9,16 @@ module Lithic
       # Creates an external bank account within a program or Lithic account.
       sig do
         params(
-          account_number: String,
-          country: String,
-          currency: String,
-          financial_account_token: String,
-          owner: String,
-          owner_type: Lithic::OwnerType::OrSymbol,
-          routing_number: String,
-          type: Lithic::ExternalBankAccountCreateParams::Type::OrSymbol,
-          verification_method:
-            Lithic::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
-          account_token: String,
-          address: Lithic::ExternalBankAccountAddress::OrHash,
-          company_id: String,
-          dob: Date,
-          doing_business_as: String,
-          name: String,
-          user_defined_id: String,
-          verification_enforcement: T::Boolean,
+          body:
+            T.any(
+              Lithic::ExternalBankAccountCreateParams::Body::ExternallyVerified::OrHash,
+              Lithic::ExternalBankAccountCreateParams::Body::Unverified::OrHash,
+              Lithic::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest::OrHash
+            ),
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Models::ExternalBankAccountCreateResponse)
       end
-      def create(
-        # Account Number
-        account_number:,
-        # The country that the bank account is located in using ISO 3166-1. We will only
-        # accept USA bank accounts e.g., USA
-        country:,
-        # currency of the external account 3-character alphabetic ISO 4217 code
-        currency:,
-        # The financial account token of the operating account to fund the micro deposits
-        financial_account_token:,
-        # Legal Name of the business or individual who owns the external account. This
-        # will appear in statements
-        owner:,
-        # Owner Type
-        owner_type:,
-        # Routing Number
-        routing_number:,
-        # Account Type
-        type:,
-        # Verification Method
-        verification_method:,
-        # Indicates which Lithic account the external account is associated with. For
-        # external accounts that are associated with the program, account_token field
-        # returned will be null
-        account_token: nil,
-        # Address
-        address: nil,
-        # Optional field that helps identify bank accounts in receipts
-        company_id: nil,
-        # Date of Birth of the Individual that owns the external bank account
-        dob: nil,
-        # Doing Business As
-        doing_business_as: nil,
-        # The nickname for this External Bank Account
-        name: nil,
-        # User Defined ID
-        user_defined_id: nil,
-        verification_enforcement: nil,
-        request_options: {}
-      )
+      def create(body:, request_options: {})
       end
 
       # Get the external bank account by token.

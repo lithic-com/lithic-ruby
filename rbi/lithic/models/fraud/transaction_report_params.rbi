@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :transaction_token
+
         # The fraud status of the transaction, string (enum) supporting the following
         # values:
         #
@@ -79,6 +82,7 @@ module Lithic
 
         sig do
           params(
+            transaction_token: String,
             fraud_status:
               Lithic::Fraud::TransactionReportParams::FraudStatus::OrSymbol,
             comment: String,
@@ -88,6 +92,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          transaction_token:,
           # The fraud status of the transaction, string (enum) supporting the following
           # values:
           #
@@ -132,6 +137,7 @@ module Lithic
         sig do
           override.returns(
             {
+              transaction_token: String,
               fraud_status:
                 Lithic::Fraud::TransactionReportParams::FraudStatus::OrSymbol,
               comment: String,

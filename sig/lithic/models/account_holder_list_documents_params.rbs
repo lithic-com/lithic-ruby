@@ -1,15 +1,24 @@
 module Lithic
   module Models
     type account_holder_list_documents_params =
-      {  } & Lithic::Internal::Type::request_parameters
+      { account_holder_token: String }
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderListDocumentsParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Lithic::request_opts) -> void
+      attr_accessor account_holder_token: String
 
-      def to_hash: -> { request_options: Lithic::RequestOptions }
+      def initialize: (
+        account_holder_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        account_holder_token: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

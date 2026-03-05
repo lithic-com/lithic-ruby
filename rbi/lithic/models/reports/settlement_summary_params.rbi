@@ -15,15 +15,23 @@ module Lithic
             )
           end
 
+        sig { returns(Date) }
+        attr_accessor :report_date
+
         sig do
-          params(request_options: Lithic::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            report_date: Date,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(report_date:, request_options: {})
         end
 
-        sig { override.returns({ request_options: Lithic::RequestOptions }) }
+        sig do
+          override.returns(
+            { report_date: Date, request_options: Lithic::RequestOptions }
+          )
+        end
         def to_hash
         end
       end

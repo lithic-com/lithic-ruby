@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute financial_account_token
+        #
+        #   @return [String]
+        required :financial_account_token, String
+
         # @!attribute auto_collection_configuration
         #
         #   @return [Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration, nil]
@@ -36,7 +41,9 @@ module Lithic
         #   @return [String, nil]
         optional :tier, String
 
-        # @!method initialize(auto_collection_configuration: nil, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
+        # @!method initialize(financial_account_token:, auto_collection_configuration: nil, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
+        #   @param financial_account_token [String]
+        #
         #   @param auto_collection_configuration [Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration]
         #
         #   @param credit_limit [Integer]

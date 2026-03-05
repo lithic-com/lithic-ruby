@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute card_token
+      #
+      #   @return [String]
+      required :card_token, String
+
       # @!attribute comment
       #   Additional context or information related to the card.
       #
@@ -122,9 +127,11 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardUpdateParams::Substatus, nil]
       optional :substatus, enum: -> { Lithic::CardUpdateParams::Substatus }
 
-      # @!method initialize(comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, request_options: {})
+      # @!method initialize(card_token:, comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardUpdateParams} for more details.
+      #
+      #   @param card_token [String]
       #
       #   @param comment [String] Additional context or information related to the card.
       #

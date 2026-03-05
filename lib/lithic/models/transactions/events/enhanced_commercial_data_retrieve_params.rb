@@ -9,7 +9,13 @@ module Lithic
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
-          # @!method initialize(request_options: {})
+          # @!attribute event_token
+          #
+          #   @return [String]
+          required :event_token, String
+
+          # @!method initialize(event_token:, request_options: {})
+          #   @param event_token [String]
           #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end
       end

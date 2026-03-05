@@ -2,6 +2,7 @@ module Lithic
   module Models
     type card_reissue_params =
       {
+        card_token: String,
         carrier: Lithic::Carrier,
         product_id: String,
         shipping_address: Lithic::ShippingAddress,
@@ -12,6 +13,8 @@ module Lithic
     class CardReissueParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
 
       attr_reader carrier: Lithic::Carrier?
 
@@ -34,6 +37,7 @@ module Lithic
       ) -> Lithic::Models::CardReissueParams::shipping_method
 
       def initialize: (
+        card_token: String,
         ?carrier: Lithic::Carrier,
         ?product_id: String,
         ?shipping_address: Lithic::ShippingAddress,
@@ -42,6 +46,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        card_token: String,
         carrier: Lithic::Carrier,
         product_id: String,
         shipping_address: Lithic::ShippingAddress,

@@ -15,6 +15,10 @@ module Lithic
             )
           end
 
+        # Globally unique identifier for credit products.
+        sig { returns(String) }
+        attr_accessor :credit_product_token
+
         # Date the rate goes into effect
         sig { returns(Date) }
         attr_accessor :effective_date
@@ -25,12 +29,15 @@ module Lithic
 
         sig do
           params(
+            credit_product_token: String,
             effective_date: Date,
             rate: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier for credit products.
+          credit_product_token:,
           # Date the rate goes into effect
           effective_date:,
           # The rate in decimal format
@@ -42,6 +49,7 @@ module Lithic
         sig do
           override.returns(
             {
+              credit_product_token: String,
               effective_date: Date,
               rate: String,
               request_options: Lithic::RequestOptions

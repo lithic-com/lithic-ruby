@@ -2,6 +2,7 @@ module Lithic
   module Models
     type dispute_update_params =
       {
+        dispute_token: String,
         amount: Integer,
         customer_filed_date: Time,
         customer_note: String,
@@ -12,6 +13,8 @@ module Lithic
     class DisputeUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor dispute_token: String
 
       attr_reader amount: Integer?
 
@@ -32,6 +35,7 @@ module Lithic
       ) -> Lithic::Models::DisputeUpdateParams::reason
 
       def initialize: (
+        dispute_token: String,
         ?amount: Integer,
         ?customer_filed_date: Time,
         ?customer_note: String,
@@ -40,6 +44,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        dispute_token: String,
         amount: Integer,
         customer_filed_date: Time,
         customer_note: String,

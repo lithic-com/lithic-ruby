@@ -4,25 +4,7 @@ module Lithic
       attr_reader entities: Lithic::Resources::AccountHolders::Entities
 
       def create: (
-        business_entity: Lithic::AccountHolderCreateParams::BusinessEntity,
-        tos_timestamp: String,
-        workflow: Lithic::Models::AccountHolderCreateParams::workflow,
-        individual: Lithic::AccountHolderCreateParams::Individual,
-        address: Lithic::Address,
-        email: String,
-        first_name: String,
-        kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::kyc_exemption_type,
-        last_name: String,
-        phone_number: String,
-        ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual],
-        ?control_person: Lithic::AccountHolderCreateParams::ControlPerson,
-        ?nature_of_business: String,
-        ?external_id: String,
-        ?kyb_passed_timestamp: String,
-        ?naics_code: String,
-        ?website_url: String,
-        ?kyc_passed_timestamp: String,
-        ?business_account_token: String,
+        body: Lithic::Models::AccountHolderCreateParams::body,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::AccountHolderCreateResponse
 
@@ -33,21 +15,7 @@ module Lithic
 
       def update: (
         String account_holder_token,
-        ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
-        ?business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
-        ?control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
-        ?external_id: String,
-        ?naics_code: String,
-        ?nature_of_business: String,
-        ?website_url: String,
-        ?individual: Lithic::AccountHolderUpdateParams::Individual,
-        ?address: Lithic::AddressUpdate,
-        ?business_account_token: String,
-        ?email: String,
-        ?first_name: String,
-        ?last_name: String,
-        ?legal_business_name: String,
-        ?phone_number: String,
+        body: Lithic::Models::AccountHolderUpdateParams::body,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::account_holder_update_response
 

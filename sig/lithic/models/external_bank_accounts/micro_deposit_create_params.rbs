@@ -2,21 +2,28 @@ module Lithic
   module Models
     module ExternalBankAccounts
       type micro_deposit_create_params =
-        { micro_deposits: ::Array[Integer] }
+        {
+          external_bank_account_token: String,
+          micro_deposits: ::Array[Integer]
+        }
         & Lithic::Internal::Type::request_parameters
 
       class MicroDepositCreateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        attr_accessor external_bank_account_token: String
+
         attr_accessor micro_deposits: ::Array[Integer]
 
         def initialize: (
+          external_bank_account_token: String,
           micro_deposits: ::Array[Integer],
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
+          external_bank_account_token: String,
           micro_deposits: ::Array[Integer],
           request_options: Lithic::RequestOptions
         }

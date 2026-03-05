@@ -1,7 +1,8 @@
 module Lithic
   module Models
     type dispute_delete_evidence_params =
-      { dispute_token: String } & Lithic::Internal::Type::request_parameters
+      { dispute_token: String, evidence_token: String }
+      & Lithic::Internal::Type::request_parameters
 
     class DisputeDeleteEvidenceParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
@@ -9,13 +10,17 @@ module Lithic
 
       attr_accessor dispute_token: String
 
+      attr_accessor evidence_token: String
+
       def initialize: (
         dispute_token: String,
+        evidence_token: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
         dispute_token: String,
+        evidence_token: String,
         request_options: Lithic::RequestOptions
       }
     end

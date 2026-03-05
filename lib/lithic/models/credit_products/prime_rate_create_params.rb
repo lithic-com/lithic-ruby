@@ -8,6 +8,12 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute credit_product_token
+        #   Globally unique identifier for credit products.
+        #
+        #   @return [String]
+        required :credit_product_token, String
+
         # @!attribute effective_date
         #   Date the rate goes into effect
         #
@@ -20,7 +26,9 @@ module Lithic
         #   @return [String]
         required :rate, String
 
-        # @!method initialize(effective_date:, rate:, request_options: {})
+        # @!method initialize(credit_product_token:, effective_date:, rate:, request_options: {})
+        #   @param credit_product_token [String] Globally unique identifier for credit products.
+        #
         #   @param effective_date [Date] Date the rate goes into effect
         #
         #   @param rate [String] The rate in decimal format

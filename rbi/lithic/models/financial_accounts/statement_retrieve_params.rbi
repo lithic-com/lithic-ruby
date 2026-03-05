@@ -19,15 +19,22 @@ module Lithic
         sig { returns(String) }
         attr_accessor :financial_account_token
 
+        # Globally unique identifier for statements.
+        sig { returns(String) }
+        attr_accessor :statement_token
+
         sig do
           params(
             financial_account_token: String,
+            statement_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for financial account.
           financial_account_token:,
+          # Globally unique identifier for statements.
+          statement_token:,
           request_options: {}
         )
         end
@@ -36,6 +43,7 @@ module Lithic
           override.returns(
             {
               financial_account_token: String,
+              statement_token: String,
               request_options: Lithic::RequestOptions
             }
           )

@@ -8,13 +8,20 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute event_subscription_token
+        #
+        #   @return [String]
+        required :event_subscription_token, String
+
         # @!attribute event_type
         #   Event type to send example message for.
         #
         #   @return [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType, nil]
         optional :event_type, enum: -> { Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType }
 
-        # @!method initialize(event_type: nil, request_options: {})
+        # @!method initialize(event_subscription_token:, event_type: nil, request_options: {})
+        #   @param event_subscription_token [String]
+        #
         #   @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType] Event type to send example message for.
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]

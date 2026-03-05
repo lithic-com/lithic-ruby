@@ -7,7 +7,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute bulk_order_token
+      #
+      #   @return [String]
+      required :bulk_order_token, String
+
+      # @!method initialize(bulk_order_token:, request_options: {})
+      #   @param bulk_order_token [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

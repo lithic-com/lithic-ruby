@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::ExternalPaymentSettleParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :external_payment_token
+
       sig { returns(Date) }
       attr_accessor :effective_date
 
@@ -36,6 +39,7 @@ module Lithic
 
       sig do
         params(
+          external_payment_token: String,
           effective_date: Date,
           memo: String,
           progress_to:
@@ -44,6 +48,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        external_payment_token:,
         effective_date:,
         memo: nil,
         progress_to: nil,
@@ -54,6 +59,7 @@ module Lithic
       sig do
         override.returns(
           {
+            external_payment_token: String,
             effective_date: Date,
             memo: String,
             progress_to:

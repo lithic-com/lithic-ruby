@@ -11,15 +11,26 @@ module Lithic
           T.any(Lithic::DigitalCardArtRetrieveParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :digital_card_art_token
+
       sig do
-        params(request_options: Lithic::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          digital_card_art_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(digital_card_art_token:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Lithic::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            digital_card_art_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
     end

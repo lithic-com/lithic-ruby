@@ -11,17 +11,22 @@ module Lithic
           T.any(Lithic::CardBulkOrderUpdateParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :bulk_order_token
+
       # Status to update the bulk order to. Use LOCKED to finalize the order
       sig { returns(Lithic::CardBulkOrderUpdateParams::Status::OrSymbol) }
       attr_accessor :status
 
       sig do
         params(
+          bulk_order_token: String,
           status: Lithic::CardBulkOrderUpdateParams::Status::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        bulk_order_token:,
         # Status to update the bulk order to. Use LOCKED to finalize the order
         status:,
         request_options: {}
@@ -31,6 +36,7 @@ module Lithic
       sig do
         override.returns(
           {
+            bulk_order_token: String,
             status: Lithic::CardBulkOrderUpdateParams::Status::OrSymbol,
             request_options: Lithic::RequestOptions
           }

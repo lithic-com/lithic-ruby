@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::DisputeListEvidencesParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :dispute_token
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -52,6 +55,7 @@ module Lithic
 
       sig do
         params(
+          dispute_token: String,
           begin_: Time,
           end_: Time,
           ending_before: String,
@@ -61,6 +65,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        dispute_token:,
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         begin_: nil,
@@ -82,6 +87,7 @@ module Lithic
       sig do
         override.returns(
           {
+            dispute_token: String,
             begin_: Time,
             end_: Time,
             ending_before: String,

@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute card_token
+      #
+      #   @return [String]
+      required :card_token, String
+
       # @!attribute client_device_id
       #   Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push
       #   Provisioning device identifier required for the tokenization flow
@@ -34,9 +39,11 @@ module Lithic
       #   @return [String, nil]
       optional :server_session_id, String
 
-      # @!method initialize(client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, server_session_id: nil, request_options: {})
+      # @!method initialize(card_token:, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, server_session_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardWebProvisionParams} for more details.
+      #
+      #   @param card_token [String]
       #
       #   @param client_device_id [String] Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push Provision
       #

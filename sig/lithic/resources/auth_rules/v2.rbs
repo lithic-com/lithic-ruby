@@ -5,15 +5,7 @@ module Lithic
         attr_reader backtests: Lithic::Resources::AuthRules::V2::Backtests
 
         def create: (
-          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
-          type: Lithic::Models::AuthRules::V2CreateParams::type_,
-          card_tokens: ::Array[String],
-          program_level: bool,
-          ?account_tokens: ::Array[String],
-          ?business_account_tokens: ::Array[String],
-          ?event_stream: Lithic::Models::AuthRules::event_stream,
-          ?name: String?,
-          ?excluded_card_tokens: ::Array[String],
+          body: Lithic::Models::AuthRules::V2CreateParams::body,
           ?request_options: Lithic::request_opts
         ) -> Lithic::AuthRules::AuthRule
 
@@ -24,13 +16,7 @@ module Lithic
 
         def update: (
           String auth_rule_token,
-          ?account_tokens: ::Array[String],
-          ?business_account_tokens: ::Array[String],
-          ?name: String?,
-          ?state: Lithic::Models::AuthRules::V2UpdateParams::state,
-          ?card_tokens: ::Array[String],
-          ?excluded_card_tokens: ::Array[String],
-          ?program_level: bool,
+          body: Lithic::Models::AuthRules::V2UpdateParams::body,
           ?request_options: Lithic::request_opts
         ) -> Lithic::AuthRules::AuthRule
 

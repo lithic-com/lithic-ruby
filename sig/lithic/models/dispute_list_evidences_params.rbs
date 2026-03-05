@@ -2,6 +2,7 @@ module Lithic
   module Models
     type dispute_list_evidences_params =
       {
+        dispute_token: String,
         begin_: Time,
         end_: Time,
         ending_before: String,
@@ -13,6 +14,8 @@ module Lithic
     class DisputeListEvidencesParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor dispute_token: String
 
       attr_reader begin_: Time?
 
@@ -35,6 +38,7 @@ module Lithic
       def starting_after=: (String) -> String
 
       def initialize: (
+        dispute_token: String,
         ?begin_: Time,
         ?end_: Time,
         ?ending_before: String,
@@ -44,6 +48,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        dispute_token: String,
         begin_: Time,
         end_: Time,
         ending_before: String,

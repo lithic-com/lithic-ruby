@@ -9,6 +9,11 @@ module Lithic
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
+          # @!attribute auth_rule_token
+          #
+          #   @return [String]
+          required :auth_rule_token, String
+
           # @!attribute end_
           #   The end time of the backtest.
           #
@@ -21,7 +26,9 @@ module Lithic
           #   @return [Time, nil]
           optional :start, Time
 
-          # @!method initialize(end_: nil, start: nil, request_options: {})
+          # @!method initialize(auth_rule_token:, end_: nil, start: nil, request_options: {})
+          #   @param auth_rule_token [String]
+          #
           #   @param end_ [Time] The end time of the backtest.
           #
           #   @param start [Time] The start time of the backtest.

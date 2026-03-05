@@ -8,7 +8,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute credit_product_token
+        #
+        #   @return [String]
+        required :credit_product_token, String
+
+        # @!method initialize(credit_product_token:, request_options: {})
+        #   @param credit_product_token [String]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

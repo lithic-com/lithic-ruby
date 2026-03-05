@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :event_subscription_token
+
         # Event type to send example message for.
         sig do
           returns(
@@ -35,12 +38,14 @@ module Lithic
 
         sig do
           params(
+            event_subscription_token: String,
             event_type:
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          event_subscription_token:,
           # Event type to send example message for.
           event_type: nil,
           request_options: {}
@@ -50,6 +55,7 @@ module Lithic
         sig do
           override.returns(
             {
+              event_subscription_token: String,
               event_type:
                 Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
               request_options: Lithic::RequestOptions

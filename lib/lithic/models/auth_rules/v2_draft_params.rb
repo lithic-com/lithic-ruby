@@ -8,13 +8,20 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute auth_rule_token
+        #
+        #   @return [String]
+        required :auth_rule_token, String
+
         # @!attribute parameters
         #   Parameters for the Auth Rule
         #
         #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, nil]
         optional :parameters, union: -> { Lithic::AuthRules::V2DraftParams::Parameters }, nil?: true
 
-        # @!method initialize(parameters: nil, request_options: {})
+        # @!method initialize(auth_rule_token:, parameters: nil, request_options: {})
+        #   @param auth_rule_token [String]
+        #
         #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, nil] Parameters for the Auth Rule
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]

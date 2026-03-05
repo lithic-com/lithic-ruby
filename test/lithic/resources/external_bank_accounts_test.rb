@@ -6,15 +6,17 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
   def test_create_required_params
     response =
       @lithic.external_bank_accounts.create(
-        account_number: "12345678901234567",
-        country: "USD",
-        currency: "USD",
-        financial_account_token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        owner: "owner",
-        owner_type: :INDIVIDUAL,
-        routing_number: "123456789",
-        type: :CHECKING,
-        verification_method: :MANUAL
+        body: {
+          account_number: "13719713158835300",
+          country: "USA",
+          currency: "USD",
+          financial_account_token: "dabadb3b-700c-41e3-8801-d5dfc84ebea0",
+          owner: "John Doe",
+          owner_type: :BUSINESS,
+          routing_number: "011103093",
+          type: :CHECKING,
+          verification_method: :MICRO_DEPOSIT
+        }
       )
 
     assert_pattern do

@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute auth_rule_token
+        #
+        #   @return [String]
+        required :auth_rule_token, String
+
         # @!attribute begin_
         #   Start date for the report
         #
@@ -20,7 +25,9 @@ module Lithic
         #   @return [Date]
         required :end_, Date
 
-        # @!method initialize(begin_:, end_:, request_options: {})
+        # @!method initialize(auth_rule_token:, begin_:, end_:, request_options: {})
+        #   @param auth_rule_token [String]
+        #
         #   @param begin_ [Date] Start date for the report
         #
         #   @param end_ [Date] End date for the report

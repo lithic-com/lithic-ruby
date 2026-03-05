@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::CardUpdateParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :card_token
+
       # Additional context or information related to the card.
       sig { returns(T.nilable(String)) }
       attr_reader :comment
@@ -144,6 +147,7 @@ module Lithic
 
       sig do
         params(
+          card_token: String,
           comment: String,
           digital_card_art_token: String,
           memo: String,
@@ -158,6 +162,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        card_token:,
         # Additional context or information related to the card.
         comment: nil,
         # Specifies the digital card art to be displayed in the user’s digital wallet
@@ -240,6 +245,7 @@ module Lithic
       sig do
         override.returns(
           {
+            card_token: String,
             comment: String,
             digital_card_art_token: String,
             memo: String,

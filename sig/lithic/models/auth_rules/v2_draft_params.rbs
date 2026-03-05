@@ -2,21 +2,28 @@ module Lithic
   module Models
     module AuthRules
       type v2_draft_params =
-        { parameters: Lithic::Models::AuthRules::V2DraftParams::parameters? }
+        {
+          auth_rule_token: String,
+          parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?
+        }
         & Lithic::Internal::Type::request_parameters
 
       class V2DraftParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        attr_accessor auth_rule_token: String
+
         attr_accessor parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?
 
         def initialize: (
+          auth_rule_token: String,
           ?parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
+          auth_rule_token: String,
           parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?,
           request_options: Lithic::RequestOptions
         }

@@ -11,304 +11,43 @@ module Lithic
           T.any(Lithic::AccountHolderCreateParams, Lithic::Internal::AnyHash)
         end
 
-      # You can submit a list of all direct and indirect individuals with 25% or more
-      # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-      # no individual owns 25% of the company you do not need to send beneficial owner
-      # information. See
-      # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      # (Section I) for more background on individuals that should be included.
       sig do
         returns(
-          T.nilable(
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual
-            ]
+          T.any(
+            Lithic::KYB,
+            Lithic::AccountHolderCreateParams::Body::KYBDelegated,
+            Lithic::KYC,
+            Lithic::KYCExempt
           )
         )
       end
-      attr_reader :beneficial_owner_individuals
+      attr_accessor :body
 
       sig do
         params(
-          beneficial_owner_individuals:
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
-            ]
-        ).void
-      end
-      attr_writer :beneficial_owner_individuals
-
-      # Information for business for which the account is being opened.
-      sig { returns(Lithic::AccountHolderCreateParams::BusinessEntity) }
-      attr_reader :business_entity
-
-      sig do
-        params(
-          business_entity:
-            Lithic::AccountHolderCreateParams::BusinessEntity::OrHash
-        ).void
-      end
-      attr_writer :business_entity
-
-      # An individual with significant responsibility for managing the legal entity
-      # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-      # Officer, Managing Member, General Partner, President, Vice President, or
-      # Treasurer). This can be an executive, or someone who will have program-wide
-      # access to the cards that Lithic will provide. In some cases, this individual
-      # could also be a beneficial owner listed above. See
-      # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      # (Section II) for more background.
-      sig do
-        returns(T.nilable(Lithic::AccountHolderCreateParams::ControlPerson))
-      end
-      attr_reader :control_person
-
-      sig do
-        params(
-          control_person:
-            Lithic::AccountHolderCreateParams::ControlPerson::OrHash
-        ).void
-      end
-      attr_writer :control_person
-
-      # Short description of the company's line of business (i.e., what does the company
-      # do?).
-      sig { returns(T.nilable(String)) }
-      attr_reader :nature_of_business
-
-      sig { params(nature_of_business: String).void }
-      attr_writer :nature_of_business
-
-      # An RFC 3339 timestamp indicating when the account holder accepted the applicable
-      # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
-      # implementation with Lithic.
-      sig { returns(String) }
-      attr_accessor :tos_timestamp
-
-      # Specifies the workflow type. This must be 'KYC_EXEMPT'
-      sig { returns(Lithic::AccountHolderCreateParams::Workflow::OrSymbol) }
-      attr_accessor :workflow
-
-      # A user provided id that can be used to link an account holder with an external
-      # system
-      sig { returns(T.nilable(String)) }
-      attr_reader :external_id
-
-      sig { params(external_id: String).void }
-      attr_writer :external_id
-
-      # An RFC 3339 timestamp indicating when precomputed KYB was completed on the
-      # business with a pass result.
-      #
-      # This field is required only if workflow type is `KYB_BYO`.
-      sig { returns(T.nilable(String)) }
-      attr_reader :kyb_passed_timestamp
-
-      sig { params(kyb_passed_timestamp: String).void }
-      attr_writer :kyb_passed_timestamp
-
-      # 6-digit North American Industry Classification System (NAICS) code for the
-      # business.
-      sig { returns(T.nilable(String)) }
-      attr_reader :naics_code
-
-      sig { params(naics_code: String).void }
-      attr_writer :naics_code
-
-      # Company website URL.
-      sig { returns(T.nilable(String)) }
-      attr_reader :website_url
-
-      sig { params(website_url: String).void }
-      attr_writer :website_url
-
-      # Information on individual for whom the account is being opened and KYC is being
-      # run.
-      sig { returns(Lithic::AccountHolderCreateParams::Individual) }
-      attr_reader :individual
-
-      sig do
-        params(
-          individual: Lithic::AccountHolderCreateParams::Individual::OrHash
-        ).void
-      end
-      attr_writer :individual
-
-      # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
-      # individual with a pass result.
-      #
-      # This field is required only if workflow type is `KYC_BYO`.
-      sig { returns(T.nilable(String)) }
-      attr_reader :kyc_passed_timestamp
-
-      sig { params(kyc_passed_timestamp: String).void }
-      attr_writer :kyc_passed_timestamp
-
-      # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-      # acceptable; APO/FPO are acceptable.
-      sig { returns(Lithic::Address) }
-      attr_reader :address
-
-      sig { params(address: Lithic::Address::OrHash).void }
-      attr_writer :address
-
-      # The KYC Exempt user's email
-      sig { returns(String) }
-      attr_accessor :email
-
-      # The KYC Exempt user's first name
-      sig { returns(String) }
-      attr_accessor :first_name
-
-      # Specifies the type of KYC Exempt user
-      sig do
-        returns(Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol)
-      end
-      attr_accessor :kyc_exemption_type
-
-      # The KYC Exempt user's last name
-      sig { returns(String) }
-      attr_accessor :last_name
-
-      # The KYC Exempt user's phone number, entered in E.164 format.
-      sig { returns(String) }
-      attr_accessor :phone_number
-
-      # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      # users of businesses. Pass the account_token of the enrolled business associated
-      # with the AUTHORIZED_USER in this field.
-      sig { returns(T.nilable(String)) }
-      attr_reader :business_account_token
-
-      sig { params(business_account_token: String).void }
-      attr_writer :business_account_token
-
-      sig do
-        params(
-          business_entity:
-            Lithic::AccountHolderCreateParams::BusinessEntity::OrHash,
-          tos_timestamp: String,
-          workflow: Lithic::AccountHolderCreateParams::Workflow::OrSymbol,
-          individual: Lithic::AccountHolderCreateParams::Individual::OrHash,
-          address: Lithic::Address::OrHash,
-          email: String,
-          first_name: String,
-          kyc_exemption_type:
-            Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
-          last_name: String,
-          phone_number: String,
-          beneficial_owner_individuals:
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
-            ],
-          control_person:
-            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
-          nature_of_business: String,
-          external_id: String,
-          kyb_passed_timestamp: String,
-          naics_code: String,
-          website_url: String,
-          kyc_passed_timestamp: String,
-          business_account_token: String,
+          body:
+            T.any(
+              Lithic::KYB::OrHash,
+              Lithic::AccountHolderCreateParams::Body::KYBDelegated::OrHash,
+              Lithic::KYC::OrHash,
+              Lithic::KYCExempt::OrHash
+            ),
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(
-        # Information for business for which the account is being opened.
-        business_entity:,
-        # An RFC 3339 timestamp indicating when the account holder accepted the applicable
-        # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
-        # implementation with Lithic.
-        tos_timestamp:,
-        # Specifies the workflow type. This must be 'KYC_EXEMPT'
-        workflow:,
-        # Information on individual for whom the account is being opened and KYC is being
-        # run.
-        individual:,
-        # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable.
-        address:,
-        # The KYC Exempt user's email
-        email:,
-        # The KYC Exempt user's first name
-        first_name:,
-        # Specifies the type of KYC Exempt user
-        kyc_exemption_type:,
-        # The KYC Exempt user's last name
-        last_name:,
-        # The KYC Exempt user's phone number, entered in E.164 format.
-        phone_number:,
-        # You can submit a list of all direct and indirect individuals with 25% or more
-        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-        # no individual owns 25% of the company you do not need to send beneficial owner
-        # information. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section I) for more background on individuals that should be included.
-        beneficial_owner_individuals: nil,
-        # An individual with significant responsibility for managing the legal entity
-        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        # Officer, Managing Member, General Partner, President, Vice President, or
-        # Treasurer). This can be an executive, or someone who will have program-wide
-        # access to the cards that Lithic will provide. In some cases, this individual
-        # could also be a beneficial owner listed above. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section II) for more background.
-        control_person: nil,
-        # Short description of the company's line of business (i.e., what does the company
-        # do?).
-        nature_of_business: nil,
-        # A user provided id that can be used to link an account holder with an external
-        # system
-        external_id: nil,
-        # An RFC 3339 timestamp indicating when precomputed KYB was completed on the
-        # business with a pass result.
-        #
-        # This field is required only if workflow type is `KYB_BYO`.
-        kyb_passed_timestamp: nil,
-        # 6-digit North American Industry Classification System (NAICS) code for the
-        # business.
-        naics_code: nil,
-        # Company website URL.
-        website_url: nil,
-        # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
-        # individual with a pass result.
-        #
-        # This field is required only if workflow type is `KYC_BYO`.
-        kyc_passed_timestamp: nil,
-        # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-        # users of businesses. Pass the account_token of the enrolled business associated
-        # with the AUTHORIZED_USER in this field.
-        business_account_token: nil,
-        request_options: {}
-      )
+      def self.new(body:, request_options: {})
       end
 
       sig do
         override.returns(
           {
-            beneficial_owner_individuals:
-              T::Array[
-                Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual
-              ],
-            business_entity: Lithic::AccountHolderCreateParams::BusinessEntity,
-            control_person: Lithic::AccountHolderCreateParams::ControlPerson,
-            nature_of_business: String,
-            tos_timestamp: String,
-            workflow: Lithic::AccountHolderCreateParams::Workflow::OrSymbol,
-            external_id: String,
-            kyb_passed_timestamp: String,
-            naics_code: String,
-            website_url: String,
-            individual: Lithic::AccountHolderCreateParams::Individual,
-            kyc_passed_timestamp: String,
-            address: Lithic::Address,
-            email: String,
-            first_name: String,
-            kyc_exemption_type:
-              Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
-            last_name: String,
-            phone_number: String,
-            business_account_token: String,
+            body:
+              T.any(
+                Lithic::KYB,
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated,
+                Lithic::KYC,
+                Lithic::KYCExempt
+              ),
             request_options: Lithic::RequestOptions
           }
         )
@@ -316,466 +55,581 @@ module Lithic
       def to_hash
       end
 
-      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        OrHash =
+      module Body
+        extend Lithic::Internal::Type::Union
+
+        Variants =
           T.type_alias do
             T.any(
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual,
-              Lithic::Internal::AnyHash
+              Lithic::KYB,
+              Lithic::AccountHolderCreateParams::Body::KYBDelegated,
+              Lithic::KYC,
+              Lithic::KYCExempt
             )
           end
 
-        # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(Lithic::Address) }
-        attr_reader :address
+        class KYBDelegated < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated,
+                Lithic::Internal::AnyHash
+              )
+            end
 
-        sig { params(address: Lithic::Address::OrHash).void }
-        attr_writer :address
-
-        # Individual's date of birth, as an RFC 3339 date.
-        sig { returns(String) }
-        attr_accessor :dob
-
-        # Individual's email address. If utilizing Lithic for chargeback processing, this
-        # customer email address may be used to communicate dispute status and resolution.
-        sig { returns(String) }
-        attr_accessor :email
-
-        # Individual's first name, as it appears on government-issued identity documents.
-        sig { returns(String) }
-        attr_accessor :first_name
-
-        # Government-issued identification number (required for identity verification and
-        # compliance with banking regulations). Social Security Numbers (SSN) and
-        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        # entered as full nine-digits, with or without hyphens
-        sig { returns(String) }
-        attr_accessor :government_id
-
-        # Individual's last name, as it appears on government-issued identity documents.
-        sig { returns(String) }
-        attr_accessor :last_name
-
-        # Individual's phone number, entered in E.164 format.
-        sig { returns(T.nilable(String)) }
-        attr_reader :phone_number
-
-        sig { params(phone_number: String).void }
-        attr_writer :phone_number
-
-        # Individuals associated with a KYB application. Phone number is optional.
-        sig do
-          params(
-            address: Lithic::Address::OrHash,
-            dob: String,
-            email: String,
-            first_name: String,
-            government_id: String,
-            last_name: String,
-            phone_number: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-          address:,
-          # Individual's date of birth, as an RFC 3339 date.
-          dob:,
-          # Individual's email address. If utilizing Lithic for chargeback processing, this
-          # customer email address may be used to communicate dispute status and resolution.
-          email:,
-          # Individual's first name, as it appears on government-issued identity documents.
-          first_name:,
-          # Government-issued identification number (required for identity verification and
-          # compliance with banking regulations). Social Security Numbers (SSN) and
-          # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-          # entered as full nine-digits, with or without hyphens
-          government_id:,
-          # Individual's last name, as it appears on government-issued identity documents.
-          last_name:,
-          # Individual's phone number, entered in E.164 format.
-          phone_number: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              address: Lithic::Address,
-              dob: String,
-              email: String,
-              first_name: String,
-              government_id: String,
-              last_name: String,
-              phone_number: String
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class BusinessEntity < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Lithic::AccountHolderCreateParams::BusinessEntity,
-              Lithic::Internal::AnyHash
+          # Information for business for which the account is being opened.
+          sig do
+            returns(
+              Lithic::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity
             )
           end
+          attr_reader :business_entity
 
-        # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable.
-        sig { returns(Lithic::Address) }
-        attr_reader :address
+          sig do
+            params(
+              business_entity:
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity::OrHash
+            ).void
+          end
+          attr_writer :business_entity
 
-        sig { params(address: Lithic::Address::OrHash).void }
-        attr_writer :address
-
-        # Legal (formal) business name.
-        sig { returns(String) }
-        attr_accessor :legal_business_name
-
-        # Any name that the business operates under that is not its legal business name
-        # (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :dba_business_name
-
-        sig { params(dba_business_name: String).void }
-        attr_writer :dba_business_name
-
-        # Government-issued identification number. US Federal Employer Identification
-        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        # without hyphens.
-        sig { returns(T.nilable(String)) }
-        attr_reader :government_id
-
-        sig { params(government_id: String).void }
-        attr_writer :government_id
-
-        # Parent company name (if applicable).
-        sig { returns(T.nilable(String)) }
-        attr_reader :parent_company
-
-        sig { params(parent_company: String).void }
-        attr_writer :parent_company
-
-        # One or more of the business's phone number(s), entered as a list in E.164
-        # format.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :phone_numbers
-
-        sig { params(phone_numbers: T::Array[String]).void }
-        attr_writer :phone_numbers
-
-        # Information for business for which the account is being opened.
-        sig do
-          params(
-            address: Lithic::Address::OrHash,
-            legal_business_name: String,
-            dba_business_name: String,
-            government_id: String,
-            parent_company: String,
-            phone_numbers: T::Array[String]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable.
-          address:,
-          # Legal (formal) business name.
-          legal_business_name:,
-          # Any name that the business operates under that is not its legal business name
-          # (if applicable).
-          dba_business_name: nil,
-          # Government-issued identification number. US Federal Employer Identification
-          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-          # without hyphens.
-          government_id: nil,
-          # Parent company name (if applicable).
-          parent_company: nil,
-          # One or more of the business's phone number(s), entered as a list in E.164
-          # format.
-          phone_numbers: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              address: Lithic::Address,
-              legal_business_name: String,
-              dba_business_name: String,
-              government_id: String,
-              parent_company: String,
-              phone_numbers: T::Array[String]
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class ControlPerson < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Lithic::AccountHolderCreateParams::ControlPerson,
-              Lithic::Internal::AnyHash
+          # You can submit a list of all direct and indirect individuals with 25% or more
+          # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
+          # no individual owns 25% of the company you do not need to send beneficial owner
+          # information. See
+          # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+          # (Section I) for more background on individuals that should be included.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual
+                ]
+              )
             )
           end
+          attr_reader :beneficial_owner_individuals
 
-        # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(Lithic::Address) }
-        attr_reader :address
-
-        sig { params(address: Lithic::Address::OrHash).void }
-        attr_writer :address
-
-        # Individual's date of birth, as an RFC 3339 date.
-        sig { returns(String) }
-        attr_accessor :dob
-
-        # Individual's email address. If utilizing Lithic for chargeback processing, this
-        # customer email address may be used to communicate dispute status and resolution.
-        sig { returns(String) }
-        attr_accessor :email
-
-        # Individual's first name, as it appears on government-issued identity documents.
-        sig { returns(String) }
-        attr_accessor :first_name
-
-        # Government-issued identification number (required for identity verification and
-        # compliance with banking regulations). Social Security Numbers (SSN) and
-        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        # entered as full nine-digits, with or without hyphens
-        sig { returns(String) }
-        attr_accessor :government_id
-
-        # Individual's last name, as it appears on government-issued identity documents.
-        sig { returns(String) }
-        attr_accessor :last_name
-
-        # Individual's phone number, entered in E.164 format.
-        sig { returns(T.nilable(String)) }
-        attr_reader :phone_number
-
-        sig { params(phone_number: String).void }
-        attr_writer :phone_number
-
-        # An individual with significant responsibility for managing the legal entity
-        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        # Officer, Managing Member, General Partner, President, Vice President, or
-        # Treasurer). This can be an executive, or someone who will have program-wide
-        # access to the cards that Lithic will provide. In some cases, this individual
-        # could also be a beneficial owner listed above. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section II) for more background.
-        sig do
-          params(
-            address: Lithic::Address::OrHash,
-            dob: String,
-            email: String,
-            first_name: String,
-            government_id: String,
-            last_name: String,
-            phone_number: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-          address:,
-          # Individual's date of birth, as an RFC 3339 date.
-          dob:,
-          # Individual's email address. If utilizing Lithic for chargeback processing, this
-          # customer email address may be used to communicate dispute status and resolution.
-          email:,
-          # Individual's first name, as it appears on government-issued identity documents.
-          first_name:,
-          # Government-issued identification number (required for identity verification and
-          # compliance with banking regulations). Social Security Numbers (SSN) and
-          # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-          # entered as full nine-digits, with or without hyphens
-          government_id:,
-          # Individual's last name, as it appears on government-issued identity documents.
-          last_name:,
-          # Individual's phone number, entered in E.164 format.
-          phone_number: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              address: Lithic::Address,
-              dob: String,
-              email: String,
-              first_name: String,
-              government_id: String,
-              last_name: String,
-              phone_number: String
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      # Specifies the workflow type. This must be 'KYC_EXEMPT'
-      module Workflow
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Lithic::AccountHolderCreateParams::Workflow)
+          sig do
+            params(
+              beneficial_owner_individuals:
+                T::Array[
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual::OrHash
+                ]
+            ).void
           end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+          attr_writer :beneficial_owner_individuals
 
-        KYC_EXEMPT =
-          T.let(
-            :KYC_EXEMPT,
-            Lithic::AccountHolderCreateParams::Workflow::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Lithic::AccountHolderCreateParams::Workflow::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      class Individual < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Lithic::AccountHolderCreateParams::Individual,
-              Lithic::Internal::AnyHash
+          # An individual with significant responsibility for managing the legal entity
+          # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+          # Officer, Managing Member, General Partner, President, Vice President, or
+          # Treasurer). This can be an executive, or someone who will have program-wide
+          # access to the cards that Lithic will provide. In some cases, this individual
+          # could also be a beneficial owner listed above. See
+          # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+          # (Section II) for more background.
+          sig do
+            returns(
+              T.nilable(
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson
+              )
             )
           end
+          attr_reader :control_person
 
-        # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(Lithic::Address) }
-        attr_reader :address
-
-        sig { params(address: Lithic::Address::OrHash).void }
-        attr_writer :address
-
-        # Individual's date of birth, as an RFC 3339 date.
-        sig { returns(String) }
-        attr_accessor :dob
-
-        # Individual's email address. If utilizing Lithic for chargeback processing, this
-        # customer email address may be used to communicate dispute status and resolution.
-        sig { returns(String) }
-        attr_accessor :email
-
-        # Individual's first name, as it appears on government-issued identity documents.
-        sig { returns(String) }
-        attr_accessor :first_name
-
-        # Government-issued identification number (required for identity verification and
-        # compliance with banking regulations). Social Security Numbers (SSN) and
-        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        # entered as full nine-digits, with or without hyphens
-        sig { returns(String) }
-        attr_accessor :government_id
-
-        # Individual's last name, as it appears on government-issued identity documents.
-        sig { returns(String) }
-        attr_accessor :last_name
-
-        # Individual's phone number, entered in E.164 format.
-        sig { returns(String) }
-        attr_accessor :phone_number
-
-        # Information on individual for whom the account is being opened and KYC is being
-        # run.
-        sig do
-          params(
-            address: Lithic::Address::OrHash,
-            dob: String,
-            email: String,
-            first_name: String,
-            government_id: String,
-            last_name: String,
-            phone_number: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-          address:,
-          # Individual's date of birth, as an RFC 3339 date.
-          dob:,
-          # Individual's email address. If utilizing Lithic for chargeback processing, this
-          # customer email address may be used to communicate dispute status and resolution.
-          email:,
-          # Individual's first name, as it appears on government-issued identity documents.
-          first_name:,
-          # Government-issued identification number (required for identity verification and
-          # compliance with banking regulations). Social Security Numbers (SSN) and
-          # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-          # entered as full nine-digits, with or without hyphens
-          government_id:,
-          # Individual's last name, as it appears on government-issued identity documents.
-          last_name:,
-          # Individual's phone number, entered in E.164 format.
-          phone_number:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              address: Lithic::Address,
-              dob: String,
-              email: String,
-              first_name: String,
-              government_id: String,
-              last_name: String,
-              phone_number: String
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      # Specifies the type of KYC Exempt user
-      module KYCExemptionType
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Lithic::AccountHolderCreateParams::KYCExemptionType)
+          sig do
+            params(
+              control_person:
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson::OrHash
+            ).void
           end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+          attr_writer :control_person
 
-        AUTHORIZED_USER =
-          T.let(
-            :AUTHORIZED_USER,
-            Lithic::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol
+          # A user provided id that can be used to link an account holder with an external
+          # system
+          sig { returns(T.nilable(String)) }
+          attr_reader :external_id
+
+          sig { params(external_id: String).void }
+          attr_writer :external_id
+
+          # 6-digit North American Industry Classification System (NAICS) code for the
+          # business.
+          sig { returns(T.nilable(String)) }
+          attr_reader :naics_code
+
+          sig { params(naics_code: String).void }
+          attr_writer :naics_code
+
+          # Short description of the company's line of business (i.e., what does the company
+          # do?).
+          sig { returns(T.nilable(String)) }
+          attr_reader :nature_of_business
+
+          sig { params(nature_of_business: String).void }
+          attr_writer :nature_of_business
+
+          # An RFC 3339 timestamp indicating when the account holder accepted the applicable
+          # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
+          # implementation with Lithic.
+          sig { returns(T.nilable(String)) }
+          attr_reader :tos_timestamp
+
+          sig { params(tos_timestamp: String).void }
+          attr_writer :tos_timestamp
+
+          # Company website URL.
+          sig { returns(T.nilable(String)) }
+          attr_reader :website_url
+
+          sig { params(website_url: String).void }
+          attr_writer :website_url
+
+          # Specifies the type of KYB workflow to run.
+          sig do
+            returns(
+              T.nilable(
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow::OrSymbol
+              )
+            )
+          end
+          attr_reader :workflow
+
+          sig do
+            params(
+              workflow:
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow::OrSymbol
+            ).void
+          end
+          attr_writer :workflow
+
+          sig do
+            params(
+              business_entity:
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity::OrHash,
+              beneficial_owner_individuals:
+                T::Array[
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual::OrHash
+                ],
+              control_person:
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson::OrHash,
+              external_id: String,
+              naics_code: String,
+              nature_of_business: String,
+              tos_timestamp: String,
+              website_url: String,
+              workflow:
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Information for business for which the account is being opened.
+            business_entity:,
+            # You can submit a list of all direct and indirect individuals with 25% or more
+            # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
+            # no individual owns 25% of the company you do not need to send beneficial owner
+            # information. See
+            # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+            # (Section I) for more background on individuals that should be included.
+            beneficial_owner_individuals: nil,
+            # An individual with significant responsibility for managing the legal entity
+            # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+            # Officer, Managing Member, General Partner, President, Vice President, or
+            # Treasurer). This can be an executive, or someone who will have program-wide
+            # access to the cards that Lithic will provide. In some cases, this individual
+            # could also be a beneficial owner listed above. See
+            # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+            # (Section II) for more background.
+            control_person: nil,
+            # A user provided id that can be used to link an account holder with an external
+            # system
+            external_id: nil,
+            # 6-digit North American Industry Classification System (NAICS) code for the
+            # business.
+            naics_code: nil,
+            # Short description of the company's line of business (i.e., what does the company
+            # do?).
+            nature_of_business: nil,
+            # An RFC 3339 timestamp indicating when the account holder accepted the applicable
+            # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
+            # implementation with Lithic.
+            tos_timestamp: nil,
+            # Company website URL.
+            website_url: nil,
+            # Specifies the type of KYB workflow to run.
+            workflow: nil
           )
-        PREPAID_CARD_USER =
-          T.let(
-            :PREPAID_CARD_USER,
-            Lithic::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol
-          )
+          end
+
+          sig do
+            override.returns(
+              {
+                business_entity:
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity,
+                beneficial_owner_individuals:
+                  T::Array[
+                    Lithic::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual
+                  ],
+                control_person:
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson,
+                external_id: String,
+                naics_code: String,
+                nature_of_business: String,
+                tos_timestamp: String,
+                website_url: String,
+                workflow:
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class BusinessEntity < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity,
+                  Lithic::Internal::AnyHash
+                )
+              end
+
+            # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+            # acceptable; APO/FPO are acceptable.
+            sig { returns(Lithic::Address) }
+            attr_reader :address
+
+            sig { params(address: Lithic::Address::OrHash).void }
+            attr_writer :address
+
+            # Legal (formal) business name.
+            sig { returns(String) }
+            attr_accessor :legal_business_name
+
+            # Any name that the business operates under that is not its legal business name
+            # (if applicable).
+            sig { returns(T.nilable(String)) }
+            attr_reader :dba_business_name
+
+            sig { params(dba_business_name: String).void }
+            attr_writer :dba_business_name
+
+            # Government-issued identification number. US Federal Employer Identification
+            # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+            # without hyphens.
+            sig { returns(T.nilable(String)) }
+            attr_reader :government_id
+
+            sig { params(government_id: String).void }
+            attr_writer :government_id
+
+            # Parent company name (if applicable).
+            sig { returns(T.nilable(String)) }
+            attr_reader :parent_company
+
+            sig { params(parent_company: String).void }
+            attr_writer :parent_company
+
+            # One or more of the business's phone number(s), entered as a list in E.164
+            # format.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :phone_numbers
+
+            sig { params(phone_numbers: T::Array[String]).void }
+            attr_writer :phone_numbers
+
+            # Information for business for which the account is being opened.
+            sig do
+              params(
+                address: Lithic::Address::OrHash,
+                legal_business_name: String,
+                dba_business_name: String,
+                government_id: String,
+                parent_company: String,
+                phone_numbers: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+              # acceptable; APO/FPO are acceptable.
+              address:,
+              # Legal (formal) business name.
+              legal_business_name:,
+              # Any name that the business operates under that is not its legal business name
+              # (if applicable).
+              dba_business_name: nil,
+              # Government-issued identification number. US Federal Employer Identification
+              # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+              # without hyphens.
+              government_id: nil,
+              # Parent company name (if applicable).
+              parent_company: nil,
+              # One or more of the business's phone number(s), entered as a list in E.164
+              # format.
+              phone_numbers: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  address: Lithic::Address,
+                  legal_business_name: String,
+                  dba_business_name: String,
+                  government_id: String,
+                  parent_company: String,
+                  phone_numbers: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual,
+                  Lithic::Internal::AnyHash
+                )
+              end
+
+            # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            sig { returns(Lithic::Address) }
+            attr_reader :address
+
+            sig { params(address: Lithic::Address::OrHash).void }
+            attr_writer :address
+
+            # Individual's date of birth, as an RFC 3339 date.
+            sig { returns(String) }
+            attr_accessor :dob
+
+            # Individual's email address. If utilizing Lithic for chargeback processing, this
+            # customer email address may be used to communicate dispute status and resolution.
+            sig { returns(String) }
+            attr_accessor :email
+
+            # Individual's first name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :first_name
+
+            # Government-issued identification number (required for identity verification and
+            # compliance with banking regulations). Social Security Numbers (SSN) and
+            # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+            # entered as full nine-digits, with or without hyphens
+            sig { returns(String) }
+            attr_accessor :government_id
+
+            # Individual's last name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :last_name
+
+            # Individual's phone number, entered in E.164 format.
+            sig { returns(T.nilable(String)) }
+            attr_reader :phone_number
+
+            sig { params(phone_number: String).void }
+            attr_writer :phone_number
+
+            # Individuals associated with a KYB application. Phone number is optional.
+            sig do
+              params(
+                address: Lithic::Address::OrHash,
+                dob: String,
+                email: String,
+                first_name: String,
+                government_id: String,
+                last_name: String,
+                phone_number: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              address:,
+              # Individual's date of birth, as an RFC 3339 date.
+              dob:,
+              # Individual's email address. If utilizing Lithic for chargeback processing, this
+              # customer email address may be used to communicate dispute status and resolution.
+              email:,
+              # Individual's first name, as it appears on government-issued identity documents.
+              first_name:,
+              # Government-issued identification number (required for identity verification and
+              # compliance with banking regulations). Social Security Numbers (SSN) and
+              # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+              # entered as full nine-digits, with or without hyphens
+              government_id:,
+              # Individual's last name, as it appears on government-issued identity documents.
+              last_name:,
+              # Individual's phone number, entered in E.164 format.
+              phone_number: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  address: Lithic::Address,
+                  dob: String,
+                  email: String,
+                  first_name: String,
+                  government_id: String,
+                  last_name: String,
+                  phone_number: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class ControlPerson < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson,
+                  Lithic::Internal::AnyHash
+                )
+              end
+
+            # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            sig { returns(Lithic::Address) }
+            attr_reader :address
+
+            sig { params(address: Lithic::Address::OrHash).void }
+            attr_writer :address
+
+            # Individual's date of birth, as an RFC 3339 date.
+            sig { returns(String) }
+            attr_accessor :dob
+
+            # Individual's email address. If utilizing Lithic for chargeback processing, this
+            # customer email address may be used to communicate dispute status and resolution.
+            sig { returns(String) }
+            attr_accessor :email
+
+            # Individual's first name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :first_name
+
+            # Government-issued identification number (required for identity verification and
+            # compliance with banking regulations). Social Security Numbers (SSN) and
+            # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+            # entered as full nine-digits, with or without hyphens
+            sig { returns(String) }
+            attr_accessor :government_id
+
+            # Individual's last name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :last_name
+
+            # Individual's phone number, entered in E.164 format.
+            sig { returns(T.nilable(String)) }
+            attr_reader :phone_number
+
+            sig { params(phone_number: String).void }
+            attr_writer :phone_number
+
+            # An individual with significant responsibility for managing the legal entity
+            # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+            # Officer, Managing Member, General Partner, President, Vice President, or
+            # Treasurer). This can be an executive, or someone who will have program-wide
+            # access to the cards that Lithic will provide. In some cases, this individual
+            # could also be a beneficial owner listed above. See
+            # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+            # (Section II) for more background.
+            sig do
+              params(
+                address: Lithic::Address::OrHash,
+                dob: String,
+                email: String,
+                first_name: String,
+                government_id: String,
+                last_name: String,
+                phone_number: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              address:,
+              # Individual's date of birth, as an RFC 3339 date.
+              dob:,
+              # Individual's email address. If utilizing Lithic for chargeback processing, this
+              # customer email address may be used to communicate dispute status and resolution.
+              email:,
+              # Individual's first name, as it appears on government-issued identity documents.
+              first_name:,
+              # Government-issued identification number (required for identity verification and
+              # compliance with banking regulations). Social Security Numbers (SSN) and
+              # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+              # entered as full nine-digits, with or without hyphens
+              government_id:,
+              # Individual's last name, as it appears on government-issued identity documents.
+              last_name:,
+              # Individual's phone number, entered in E.164 format.
+              phone_number: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  address: Lithic::Address,
+                  dob: String,
+                  email: String,
+                  first_name: String,
+                  government_id: String,
+                  last_name: String,
+                  phone_number: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          # Specifies the type of KYB workflow to run.
+          module Workflow
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            KYB_DELEGATED =
+              T.let(
+                :KYB_DELEGATED,
+                Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
 
         sig do
           override.returns(
-            T::Array[
-              Lithic::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol
-            ]
+            T::Array[Lithic::AccountHolderCreateParams::Body::Variants]
           )
         end
-        def self.values
+        def self.variants
         end
       end
     end

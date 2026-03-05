@@ -7,488 +7,348 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute beneficial_owner_individuals
-      #   You can submit a list of all direct and indirect individuals with 25% or more
-      #   ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-      #   no individual owns 25% of the company you do not need to send beneficial owner
-      #   information. See
-      #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      #   (Section I) for more background on individuals that should be included.
+      # @!attribute body
       #
-      #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>, nil]
-      optional :beneficial_owner_individuals,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual] }
+      #   @return [Lithic::Models::KYB, Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated, Lithic::Models::KYC, Lithic::Models::KYCExempt]
+      required :body, union: -> { Lithic::AccountHolderCreateParams::Body }
 
-      # @!attribute business_entity
-      #   Information for business for which the account is being opened.
-      #
-      #   @return [Lithic::Models::AccountHolderCreateParams::BusinessEntity]
-      required :business_entity, -> { Lithic::AccountHolderCreateParams::BusinessEntity }
-
-      # @!attribute control_person
-      #   An individual with significant responsibility for managing the legal entity
-      #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-      #   Officer, Managing Member, General Partner, President, Vice President, or
-      #   Treasurer). This can be an executive, or someone who will have program-wide
-      #   access to the cards that Lithic will provide. In some cases, this individual
-      #   could also be a beneficial owner listed above. See
-      #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      #   (Section II) for more background.
-      #
-      #   @return [Lithic::Models::AccountHolderCreateParams::ControlPerson, nil]
-      optional :control_person, -> { Lithic::AccountHolderCreateParams::ControlPerson }
-
-      # @!attribute nature_of_business
-      #   Short description of the company's line of business (i.e., what does the company
-      #   do?).
-      #
-      #   @return [String, nil]
-      optional :nature_of_business, String
-
-      # @!attribute tos_timestamp
-      #   An RFC 3339 timestamp indicating when the account holder accepted the applicable
-      #   legal agreements (e.g., cardholder terms) as agreed upon during API customer's
-      #   implementation with Lithic.
-      #
-      #   @return [String]
-      required :tos_timestamp, String
-
-      # @!attribute workflow
-      #   Specifies the workflow type. This must be 'KYC_EXEMPT'
-      #
-      #   @return [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow]
-      required :workflow, enum: -> { Lithic::AccountHolderCreateParams::Workflow }
-
-      # @!attribute external_id
-      #   A user provided id that can be used to link an account holder with an external
-      #   system
-      #
-      #   @return [String, nil]
-      optional :external_id, String
-
-      # @!attribute kyb_passed_timestamp
-      #   An RFC 3339 timestamp indicating when precomputed KYB was completed on the
-      #   business with a pass result.
-      #
-      #   This field is required only if workflow type is `KYB_BYO`.
-      #
-      #   @return [String, nil]
-      optional :kyb_passed_timestamp, String
-
-      # @!attribute naics_code
-      #   6-digit North American Industry Classification System (NAICS) code for the
-      #   business.
-      #
-      #   @return [String, nil]
-      optional :naics_code, String
-
-      # @!attribute website_url
-      #   Company website URL.
-      #
-      #   @return [String, nil]
-      optional :website_url, String
-
-      # @!attribute individual
-      #   Information on individual for whom the account is being opened and KYC is being
-      #   run.
-      #
-      #   @return [Lithic::Models::AccountHolderCreateParams::Individual]
-      required :individual, -> { Lithic::AccountHolderCreateParams::Individual }
-
-      # @!attribute kyc_passed_timestamp
-      #   An RFC 3339 timestamp indicating when precomputed KYC was completed on the
-      #   individual with a pass result.
-      #
-      #   This field is required only if workflow type is `KYC_BYO`.
-      #
-      #   @return [String, nil]
-      optional :kyc_passed_timestamp, String
-
-      # @!attribute address
-      #   KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-      #   acceptable; APO/FPO are acceptable.
-      #
-      #   @return [Lithic::Models::Address]
-      required :address, -> { Lithic::Address }
-
-      # @!attribute email
-      #   The KYC Exempt user's email
-      #
-      #   @return [String]
-      required :email, String
-
-      # @!attribute first_name
-      #   The KYC Exempt user's first name
-      #
-      #   @return [String]
-      required :first_name, String
-
-      # @!attribute kyc_exemption_type
-      #   Specifies the type of KYC Exempt user
-      #
-      #   @return [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType]
-      required :kyc_exemption_type, enum: -> { Lithic::AccountHolderCreateParams::KYCExemptionType }
-
-      # @!attribute last_name
-      #   The KYC Exempt user's last name
-      #
-      #   @return [String]
-      required :last_name, String
-
-      # @!attribute phone_number
-      #   The KYC Exempt user's phone number, entered in E.164 format.
-      #
-      #   @return [String]
-      required :phone_number, String
-
-      # @!attribute business_account_token
-      #   Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #   users of businesses. Pass the account_token of the enrolled business associated
-      #   with the AUTHORIZED_USER in this field.
-      #
-      #   @return [String, nil]
-      optional :business_account_token, String
-
-      # @!method initialize(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, external_id: nil, kyb_passed_timestamp: nil, naics_code: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::AccountHolderCreateParams} for more details.
-      #
-      #   @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened.
-      #
-      #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
-      #
-      #   @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow] Specifies the workflow type. This must be 'KYC_EXEMPT'
-      #
-      #   @param individual [Lithic::Models::AccountHolderCreateParams::Individual] Information on individual for whom the account is being opened and KYC is being
-      #
-      #   @param address [Lithic::Models::Address] KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-      #
-      #   @param email [String] The KYC Exempt user's email
-      #
-      #   @param first_name [String] The KYC Exempt user's first name
-      #
-      #   @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType] Specifies the type of KYC Exempt user
-      #
-      #   @param last_name [String] The KYC Exempt user's last name
-      #
-      #   @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
-      #
-      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You can submit a list of all direct and indirect individuals with 25% or more ow
-      #
-      #   @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
-      #
-      #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
-      #
-      #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
-      #
-      #   @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYB was completed on the busin
-      #
-      #   @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
-      #
-      #   @param website_url [String] Company website URL.
-      #
-      #   @param kyc_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the indiv
-      #
-      #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #
+      # @!method initialize(body:, request_options: {})
+      #   @param body [Lithic::Models::KYB, Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated, Lithic::Models::KYC, Lithic::Models::KYCExempt]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        # @!attribute address
-        #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        #
-        #   @return [Lithic::Models::Address]
-        required :address, -> { Lithic::Address }
+      module Body
+        extend Lithic::Internal::Type::Union
 
-        # @!attribute dob
-        #   Individual's date of birth, as an RFC 3339 date.
-        #
-        #   @return [String]
-        required :dob, String
+        variant -> { Lithic::KYB }
 
-        # @!attribute email
-        #   Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
-        #
-        #   @return [String]
-        required :email, String
+        variant -> { Lithic::AccountHolderCreateParams::Body::KYBDelegated }
 
-        # @!attribute first_name
-        #   Individual's first name, as it appears on government-issued identity documents.
-        #
-        #   @return [String]
-        required :first_name, String
+        variant -> { Lithic::KYC }
 
-        # @!attribute government_id
-        #   Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
-        #
-        #   @return [String]
-        required :government_id, String
+        variant -> { Lithic::KYCExempt }
 
-        # @!attribute last_name
-        #   Individual's last name, as it appears on government-issued identity documents.
-        #
-        #   @return [String]
-        required :last_name, String
+        class KYBDelegated < Lithic::Internal::Type::BaseModel
+          # @!attribute business_entity
+          #   Information for business for which the account is being opened.
+          #
+          #   @return [Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity]
+          required :business_entity, -> { Lithic::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity }
 
-        # @!attribute phone_number
-        #   Individual's phone number, entered in E.164 format.
-        #
-        #   @return [String, nil]
-        optional :phone_number, String
+          # @!attribute beneficial_owner_individuals
+          #   You can submit a list of all direct and indirect individuals with 25% or more
+          #   ownership in the company. A maximum of 4 beneficial owners can be submitted. If
+          #   no individual owns 25% of the company you do not need to send beneficial owner
+          #   information. See
+          #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+          #   (Section I) for more background on individuals that should be included.
+          #
+          #   @return [Array<Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual>, nil]
+          optional :beneficial_owner_individuals,
+                   -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual] }
 
-        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual} for more
-        #   details.
-        #
-        #   Individuals associated with a KYB application. Phone number is optional.
-        #
-        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-        #
-        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
-        #
-        #   @param email [String] Individual's email address.
-        #
-        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
-        #
-        #   @param government_id [String] Government-issued identification number (required for identity verification and
-        #
-        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
-        #
-        #   @param phone_number [String] Individual's phone number, entered in E.164 format.
-      end
+          # @!attribute control_person
+          #   An individual with significant responsibility for managing the legal entity
+          #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+          #   Officer, Managing Member, General Partner, President, Vice President, or
+          #   Treasurer). This can be an executive, or someone who will have program-wide
+          #   access to the cards that Lithic will provide. In some cases, this individual
+          #   could also be a beneficial owner listed above. See
+          #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+          #   (Section II) for more background.
+          #
+          #   @return [Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson, nil]
+          optional :control_person, -> { Lithic::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson }
 
-      class BusinessEntity < Lithic::Internal::Type::BaseModel
-        # @!attribute address
-        #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
-        #
-        #   @return [Lithic::Models::Address]
-        required :address, -> { Lithic::Address }
+          # @!attribute external_id
+          #   A user provided id that can be used to link an account holder with an external
+          #   system
+          #
+          #   @return [String, nil]
+          optional :external_id, String
 
-        # @!attribute legal_business_name
-        #   Legal (formal) business name.
-        #
-        #   @return [String]
-        required :legal_business_name, String
+          # @!attribute naics_code
+          #   6-digit North American Industry Classification System (NAICS) code for the
+          #   business.
+          #
+          #   @return [String, nil]
+          optional :naics_code, String
 
-        # @!attribute dba_business_name
-        #   Any name that the business operates under that is not its legal business name
-        #   (if applicable).
-        #
-        #   @return [String, nil]
-        optional :dba_business_name, String
+          # @!attribute nature_of_business
+          #   Short description of the company's line of business (i.e., what does the company
+          #   do?).
+          #
+          #   @return [String, nil]
+          optional :nature_of_business, String
 
-        # @!attribute government_id
-        #   Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
-        #
-        #   @return [String, nil]
-        optional :government_id, String
+          # @!attribute tos_timestamp
+          #   An RFC 3339 timestamp indicating when the account holder accepted the applicable
+          #   legal agreements (e.g., cardholder terms) as agreed upon during API customer's
+          #   implementation with Lithic.
+          #
+          #   @return [String, nil]
+          optional :tos_timestamp, String
 
-        # @!attribute parent_company
-        #   Parent company name (if applicable).
-        #
-        #   @return [String, nil]
-        optional :parent_company, String
+          # @!attribute website_url
+          #   Company website URL.
+          #
+          #   @return [String, nil]
+          optional :website_url, String
 
-        # @!attribute phone_numbers
-        #   One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
-        #
-        #   @return [Array<String>, nil]
-        optional :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
+          # @!attribute workflow
+          #   Specifies the type of KYB workflow to run.
+          #
+          #   @return [Symbol, Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::Workflow, nil]
+          optional :workflow, enum: -> { Lithic::AccountHolderCreateParams::Body::KYBDelegated::Workflow }
 
-        # @!method initialize(address:, legal_business_name:, dba_business_name: nil, government_id: nil, parent_company: nil, phone_numbers: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderCreateParams::BusinessEntity} for more details.
-        #
-        #   Information for business for which the account is being opened.
-        #
-        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
-        #
-        #   @param legal_business_name [String] Legal (formal) business name.
-        #
-        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
-        #
-        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
-        #
-        #   @param parent_company [String] Parent company name (if applicable).
-        #
-        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
-      end
+          # @!method initialize(business_entity:, beneficial_owner_individuals: nil, control_person: nil, external_id: nil, naics_code: nil, nature_of_business: nil, tos_timestamp: nil, website_url: nil, workflow: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated} for more
+          #   details.
+          #
+          #   @param business_entity [Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity] Information for business for which the account is being opened.
+          #
+          #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual>] You can submit a list of all direct and indirect individuals with 25% or more ow
+          #
+          #   @param control_person [Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+          #
+          #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
+          #
+          #   @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
+          #
+          #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
+          #
+          #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
+          #
+          #   @param website_url [String] Company website URL.
+          #
+          #   @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::Workflow] Specifies the type of KYB workflow to run.
 
-      class ControlPerson < Lithic::Internal::Type::BaseModel
-        # @!attribute address
-        #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        #
-        #   @return [Lithic::Models::Address]
-        required :address, -> { Lithic::Address }
+          # @see Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated#business_entity
+          class BusinessEntity < Lithic::Internal::Type::BaseModel
+            # @!attribute address
+            #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+            #   acceptable; APO/FPO are acceptable.
+            #
+            #   @return [Lithic::Models::Address]
+            required :address, -> { Lithic::Address }
 
-        # @!attribute dob
-        #   Individual's date of birth, as an RFC 3339 date.
-        #
-        #   @return [String]
-        required :dob, String
+            # @!attribute legal_business_name
+            #   Legal (formal) business name.
+            #
+            #   @return [String]
+            required :legal_business_name, String
 
-        # @!attribute email
-        #   Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
-        #
-        #   @return [String]
-        required :email, String
+            # @!attribute dba_business_name
+            #   Any name that the business operates under that is not its legal business name
+            #   (if applicable).
+            #
+            #   @return [String, nil]
+            optional :dba_business_name, String
 
-        # @!attribute first_name
-        #   Individual's first name, as it appears on government-issued identity documents.
-        #
-        #   @return [String]
-        required :first_name, String
+            # @!attribute government_id
+            #   Government-issued identification number. US Federal Employer Identification
+            #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
+            #   without hyphens.
+            #
+            #   @return [String, nil]
+            optional :government_id, String
 
-        # @!attribute government_id
-        #   Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
-        #
-        #   @return [String]
-        required :government_id, String
+            # @!attribute parent_company
+            #   Parent company name (if applicable).
+            #
+            #   @return [String, nil]
+            optional :parent_company, String
 
-        # @!attribute last_name
-        #   Individual's last name, as it appears on government-issued identity documents.
-        #
-        #   @return [String]
-        required :last_name, String
+            # @!attribute phone_numbers
+            #   One or more of the business's phone number(s), entered as a list in E.164
+            #   format.
+            #
+            #   @return [Array<String>, nil]
+            optional :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!attribute phone_number
-        #   Individual's phone number, entered in E.164 format.
-        #
-        #   @return [String, nil]
-        optional :phone_number, String
+            # @!method initialize(address:, legal_business_name:, dba_business_name: nil, government_id: nil, parent_company: nil, phone_numbers: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BusinessEntity}
+            #   for more details.
+            #
+            #   Information for business for which the account is being opened.
+            #
+            #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+            #
+            #   @param legal_business_name [String] Legal (formal) business name.
+            #
+            #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
+            #
+            #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+            #
+            #   @param parent_company [String] Parent company name (if applicable).
+            #
+            #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
+          end
 
-        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderCreateParams::ControlPerson} for more details.
-        #
-        #   An individual with significant responsibility for managing the legal entity
-        #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        #   Officer, Managing Member, General Partner, President, Vice President, or
-        #   Treasurer). This can be an executive, or someone who will have program-wide
-        #   access to the cards that Lithic will provide. In some cases, this individual
-        #   could also be a beneficial owner listed above. See
-        #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        #   (Section II) for more background.
-        #
-        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-        #
-        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
-        #
-        #   @param email [String] Individual's email address.
-        #
-        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
-        #
-        #   @param government_id [String] Government-issued identification number (required for identity verification and
-        #
-        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
-        #
-        #   @param phone_number [String] Individual's phone number, entered in E.164 format.
-      end
+          class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
+            # @!attribute address
+            #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            #
+            #   @return [Lithic::Models::Address]
+            required :address, -> { Lithic::Address }
 
-      # Specifies the workflow type. This must be 'KYC_EXEMPT'
-      module Workflow
-        extend Lithic::Internal::Type::Enum
+            # @!attribute dob
+            #   Individual's date of birth, as an RFC 3339 date.
+            #
+            #   @return [String]
+            required :dob, String
 
-        KYC_EXEMPT = :KYC_EXEMPT
+            # @!attribute email
+            #   Individual's email address. If utilizing Lithic for chargeback processing, this
+            #   customer email address may be used to communicate dispute status and resolution.
+            #
+            #   @return [String]
+            required :email, String
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+            # @!attribute first_name
+            #   Individual's first name, as it appears on government-issued identity documents.
+            #
+            #   @return [String]
+            required :first_name, String
 
-      class Individual < Lithic::Internal::Type::BaseModel
-        # @!attribute address
-        #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        #
-        #   @return [Lithic::Models::Address]
-        required :address, -> { Lithic::Address }
+            # @!attribute government_id
+            #   Government-issued identification number (required for identity verification and
+            #   compliance with banking regulations). Social Security Numbers (SSN) and
+            #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+            #   entered as full nine-digits, with or without hyphens
+            #
+            #   @return [String]
+            required :government_id, String
 
-        # @!attribute dob
-        #   Individual's date of birth, as an RFC 3339 date.
-        #
-        #   @return [String]
-        required :dob, String
+            # @!attribute last_name
+            #   Individual's last name, as it appears on government-issued identity documents.
+            #
+            #   @return [String]
+            required :last_name, String
 
-        # @!attribute email
-        #   Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
-        #
-        #   @return [String]
-        required :email, String
+            # @!attribute phone_number
+            #   Individual's phone number, entered in E.164 format.
+            #
+            #   @return [String, nil]
+            optional :phone_number, String
 
-        # @!attribute first_name
-        #   Individual's first name, as it appears on government-issued identity documents.
-        #
-        #   @return [String]
-        required :first_name, String
+            # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual}
+            #   for more details.
+            #
+            #   Individuals associated with a KYB application. Phone number is optional.
+            #
+            #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+            #
+            #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+            #
+            #   @param email [String] Individual's email address.
+            #
+            #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+            #
+            #   @param government_id [String] Government-issued identification number (required for identity verification and
+            #
+            #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+            #
+            #   @param phone_number [String] Individual's phone number, entered in E.164 format.
+          end
 
-        # @!attribute government_id
-        #   Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
-        #
-        #   @return [String]
-        required :government_id, String
+          # @see Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated#control_person
+          class ControlPerson < Lithic::Internal::Type::BaseModel
+            # @!attribute address
+            #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            #
+            #   @return [Lithic::Models::Address]
+            required :address, -> { Lithic::Address }
 
-        # @!attribute last_name
-        #   Individual's last name, as it appears on government-issued identity documents.
-        #
-        #   @return [String]
-        required :last_name, String
+            # @!attribute dob
+            #   Individual's date of birth, as an RFC 3339 date.
+            #
+            #   @return [String]
+            required :dob, String
 
-        # @!attribute phone_number
-        #   Individual's phone number, entered in E.164 format.
-        #
-        #   @return [String]
-        required :phone_number, String
+            # @!attribute email
+            #   Individual's email address. If utilizing Lithic for chargeback processing, this
+            #   customer email address may be used to communicate dispute status and resolution.
+            #
+            #   @return [String]
+            required :email, String
 
-        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderCreateParams::Individual} for more details.
-        #
-        #   Information on individual for whom the account is being opened and KYC is being
-        #   run.
-        #
-        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-        #
-        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
-        #
-        #   @param email [String] Individual's email address.
-        #
-        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
-        #
-        #   @param government_id [String] Government-issued identification number (required for identity verification and
-        #
-        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
-        #
-        #   @param phone_number [String] Individual's phone number, entered in E.164 format.
-      end
+            # @!attribute first_name
+            #   Individual's first name, as it appears on government-issued identity documents.
+            #
+            #   @return [String]
+            required :first_name, String
 
-      # Specifies the type of KYC Exempt user
-      module KYCExemptionType
-        extend Lithic::Internal::Type::Enum
+            # @!attribute government_id
+            #   Government-issued identification number (required for identity verification and
+            #   compliance with banking regulations). Social Security Numbers (SSN) and
+            #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+            #   entered as full nine-digits, with or without hyphens
+            #
+            #   @return [String]
+            required :government_id, String
 
-        AUTHORIZED_USER = :AUTHORIZED_USER
-        PREPAID_CARD_USER = :PREPAID_CARD_USER
+            # @!attribute last_name
+            #   Individual's last name, as it appears on government-issued identity documents.
+            #
+            #   @return [String]
+            required :last_name, String
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+            # @!attribute phone_number
+            #   Individual's phone number, entered in E.164 format.
+            #
+            #   @return [String, nil]
+            optional :phone_number, String
+
+            # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson}
+            #   for more details.
+            #
+            #   An individual with significant responsibility for managing the legal entity
+            #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+            #   Officer, Managing Member, General Partner, President, Vice President, or
+            #   Treasurer). This can be an executive, or someone who will have program-wide
+            #   access to the cards that Lithic will provide. In some cases, this individual
+            #   could also be a beneficial owner listed above. See
+            #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+            #   (Section II) for more background.
+            #
+            #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+            #
+            #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+            #
+            #   @param email [String] Individual's email address.
+            #
+            #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+            #
+            #   @param government_id [String] Government-issued identification number (required for identity verification and
+            #
+            #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+            #
+            #   @param phone_number [String] Individual's phone number, entered in E.164 format.
+          end
+
+          # Specifies the type of KYB workflow to run.
+          #
+          # @see Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated#workflow
+          module Workflow
+            extend Lithic::Internal::Type::Enum
+
+            KYB_DELEGATED = :KYB_DELEGATED
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # @!method self.variants
+        #   @return [Array(Lithic::Models::KYB, Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated, Lithic::Models::KYC, Lithic::Models::KYCExempt)]
       end
     end
   end

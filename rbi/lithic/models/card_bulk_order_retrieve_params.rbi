@@ -11,15 +11,23 @@ module Lithic
           T.any(Lithic::CardBulkOrderRetrieveParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :bulk_order_token
+
       sig do
-        params(request_options: Lithic::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          bulk_order_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(bulk_order_token:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Lithic::RequestOptions }) }
+      sig do
+        override.returns(
+          { bulk_order_token: String, request_options: Lithic::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

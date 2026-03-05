@@ -2,7 +2,8 @@ module Lithic
   module Models
     module Cards
       type financial_transaction_retrieve_params =
-        { card_token: String } & Lithic::Internal::Type::request_parameters
+        { card_token: String, financial_transaction_token: String }
+        & Lithic::Internal::Type::request_parameters
 
       class FinancialTransactionRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
@@ -10,13 +11,17 @@ module Lithic
 
         attr_accessor card_token: String
 
+        attr_accessor financial_transaction_token: String
+
         def initialize: (
           card_token: String,
+          financial_transaction_token: String,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
           card_token: String,
+          financial_transaction_token: String,
           request_options: Lithic::RequestOptions
         }
       end

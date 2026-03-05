@@ -2,7 +2,7 @@ module Lithic
   module Models
     module FinancialAccounts
       type loan_tape_retrieve_params =
-        { financial_account_token: String }
+        { financial_account_token: String, loan_tape_token: String }
         & Lithic::Internal::Type::request_parameters
 
       class LoanTapeRetrieveParams < Lithic::Internal::Type::BaseModel
@@ -11,13 +11,17 @@ module Lithic
 
         attr_accessor financial_account_token: String
 
+        attr_accessor loan_tape_token: String
+
         def initialize: (
           financial_account_token: String,
+          loan_tape_token: String,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
           financial_account_token: String,
+          loan_tape_token: String,
           request_options: Lithic::RequestOptions
         }
       end

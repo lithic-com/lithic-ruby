@@ -20,6 +20,10 @@ module Lithic
           sig { returns(String) }
           attr_accessor :financial_account_token
 
+          # Globally unique identifier for statements.
+          sig { returns(String) }
+          attr_accessor :statement_token
+
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           sig { returns(T.nilable(String)) }
@@ -46,6 +50,7 @@ module Lithic
           sig do
             params(
               financial_account_token: String,
+              statement_token: String,
               ending_before: String,
               page_size: Integer,
               starting_after: String,
@@ -55,6 +60,8 @@ module Lithic
           def self.new(
             # Globally unique identifier for financial account.
             financial_account_token:,
+            # Globally unique identifier for statements.
+            statement_token:,
             # A cursor representing an item's token before which a page of results should end.
             # Used to retrieve the previous page of results before this item.
             ending_before: nil,
@@ -71,6 +78,7 @@ module Lithic
             override.returns(
               {
                 financial_account_token: String,
+                statement_token: String,
                 ending_before: String,
                 page_size: Integer,
                 starting_after: String,

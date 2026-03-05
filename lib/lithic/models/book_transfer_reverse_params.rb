@@ -7,13 +7,20 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute book_transfer_token
+      #
+      #   @return [String]
+      required :book_transfer_token, String
+
       # @!attribute memo
       #   Optional descriptor for the reversal.
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!method initialize(memo: nil, request_options: {})
+      # @!method initialize(book_transfer_token:, memo: nil, request_options: {})
+      #   @param book_transfer_token [String]
+      #
       #   @param memo [String] Optional descriptor for the reversal.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]

@@ -15,15 +15,26 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :three_ds_authentication_token
+
         sig do
-          params(request_options: Lithic::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            three_ds_authentication_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(three_ds_authentication_token:, request_options: {})
         end
 
-        sig { override.returns({ request_options: Lithic::RequestOptions }) }
+        sig do
+          override.returns(
+            {
+              three_ds_authentication_token: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
         def to_hash
         end
       end

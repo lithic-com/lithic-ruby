@@ -7,7 +7,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute network_program_token
+      #
+      #   @return [String]
+      required :network_program_token, String
+
+      # @!method initialize(network_program_token:, request_options: {})
+      #   @param network_program_token [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -8,6 +8,12 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute financial_account_token
+        #   Globally unique identifier for financial account.
+        #
+        #   @return [String]
+        required :financial_account_token, String
+
         # @!attribute begin_
         #   Date string in RFC 3339 format. Only entries created after the specified date
         #   will be included.
@@ -42,9 +48,11 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+        # @!method initialize(financial_account_token:, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::LoanTapeListParams} for more details.
+        #
+        #   @param financial_account_token [String] Globally unique identifier for financial account.
         #
         #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created after the specified date wi
         #

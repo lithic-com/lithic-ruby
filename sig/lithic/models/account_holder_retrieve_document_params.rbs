@@ -1,7 +1,7 @@
 module Lithic
   module Models
     type account_holder_retrieve_document_params =
-      { account_holder_token: String }
+      { account_holder_token: String, document_token: String }
       & Lithic::Internal::Type::request_parameters
 
     class AccountHolderRetrieveDocumentParams < Lithic::Internal::Type::BaseModel
@@ -10,13 +10,17 @@ module Lithic
 
       attr_accessor account_holder_token: String
 
+      attr_accessor document_token: String
+
       def initialize: (
         account_holder_token: String,
+        document_token: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
         account_holder_token: String,
+        document_token: String,
         request_options: Lithic::RequestOptions
       }
     end

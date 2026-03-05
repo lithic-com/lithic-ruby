@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute payment_token
+      #
+      #   @return [String]
+      required :payment_token, String
+
       # @!attribute financial_account_token
       #   Globally unique identifier for the financial account
       #
@@ -42,9 +47,11 @@ module Lithic
       #   @return [String, nil]
       optional :memo, String, nil?: true
 
-      # @!method initialize(financial_account_token:, return_reason_code:, addenda: nil, date_of_death: nil, memo: nil, request_options: {})
+      # @!method initialize(payment_token:, financial_account_token:, return_reason_code:, addenda: nil, date_of_death: nil, memo: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::PaymentReturnParams} for more details.
+      #
+      #   @param payment_token [String]
       #
       #   @param financial_account_token [String] Globally unique identifier for the financial account
       #

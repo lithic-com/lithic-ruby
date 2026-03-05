@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::CardReissueParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :card_token
+
       # If omitted, the previous carrier will be used.
       sig { returns(T.nilable(Lithic::Carrier)) }
       attr_reader :carrier
@@ -63,6 +66,7 @@ module Lithic
 
       sig do
         params(
+          card_token: String,
           carrier: Lithic::Carrier::OrHash,
           product_id: String,
           shipping_address: Lithic::ShippingAddress::OrHash,
@@ -71,6 +75,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        card_token:,
         # If omitted, the previous carrier will be used.
         carrier: nil,
         # Specifies the configuration (e.g. physical card art) that the card should be
@@ -102,6 +107,7 @@ module Lithic
       sig do
         override.returns(
           {
+            card_token: String,
             carrier: Lithic::Carrier,
             product_id: String,
             shipping_address: Lithic::ShippingAddress,

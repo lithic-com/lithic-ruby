@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute account_holder_token
+      #
+      #   @return [String]
+      required :account_holder_token, String
+
       # @!attribute document_type
       #   The type of document to upload
       #
@@ -19,7 +24,9 @@ module Lithic
       #   @return [String]
       required :entity_token, String
 
-      # @!method initialize(document_type:, entity_token:, request_options: {})
+      # @!method initialize(account_holder_token:, document_type:, entity_token:, request_options: {})
+      #   @param account_holder_token [String]
+      #
       #   @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType] The type of document to upload
       #
       #   @param entity_token [String] Globally unique identifier for the entity.

@@ -3,6 +3,7 @@ module Lithic
     module FinancialAccounts
       type loan_tape_list_params =
         {
+          financial_account_token: String,
           begin_: Date,
           end_: Date,
           ending_before: String,
@@ -14,6 +15,8 @@ module Lithic
       class LoanTapeListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor financial_account_token: String
 
         attr_reader begin_: Date?
 
@@ -36,6 +39,7 @@ module Lithic
         def starting_after=: (String) -> String
 
         def initialize: (
+          financial_account_token: String,
           ?begin_: Date,
           ?end_: Date,
           ?ending_before: String,
@@ -45,6 +49,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          financial_account_token: String,
           begin_: Date,
           end_: Date,
           ending_before: String,

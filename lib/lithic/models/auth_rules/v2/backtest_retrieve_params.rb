@@ -14,8 +14,14 @@ module Lithic
           #   @return [String]
           required :auth_rule_token, String
 
-          # @!method initialize(auth_rule_token:, request_options: {})
+          # @!attribute auth_rule_backtest_token
+          #
+          #   @return [String]
+          required :auth_rule_backtest_token, String
+
+          # @!method initialize(auth_rule_token:, auth_rule_backtest_token:, request_options: {})
           #   @param auth_rule_token [String]
+          #   @param auth_rule_backtest_token [String]
           #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end
       end

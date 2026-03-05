@@ -13,8 +13,14 @@ module Lithic
         #   @return [String]
         required :financial_account_token, String
 
-        # @!method initialize(financial_account_token:, request_options: {})
+        # @!attribute effective_date
+        #
+        #   @return [Date]
+        required :effective_date, Date
+
+        # @!method initialize(financial_account_token:, effective_date:, request_options: {})
         #   @param financial_account_token [String]
+        #   @param effective_date [Date]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

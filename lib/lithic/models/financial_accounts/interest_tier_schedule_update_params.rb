@@ -13,6 +13,11 @@ module Lithic
         #   @return [String]
         required :financial_account_token, String
 
+        # @!attribute effective_date
+        #
+        #   @return [Date]
+        required :effective_date, Date
+
         # @!attribute tier_name
         #   Name of a tier contained in the credit product. Mutually exclusive with
         #   tier_rates
@@ -26,12 +31,14 @@ module Lithic
         #   @return [Object, nil]
         optional :tier_rates, Lithic::Internal::Type::Unknown
 
-        # @!method initialize(financial_account_token:, tier_name: nil, tier_rates: nil, request_options: {})
+        # @!method initialize(financial_account_token:, effective_date:, tier_name: nil, tier_rates: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::InterestTierScheduleUpdateParams} for more
         #   details.
         #
         #   @param financial_account_token [String]
+        #
+        #   @param effective_date [Date]
         #
         #   @param tier_name [String] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
         #

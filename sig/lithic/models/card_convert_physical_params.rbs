@@ -2,6 +2,7 @@ module Lithic
   module Models
     type card_convert_physical_params =
       {
+        card_token: String,
         shipping_address: Lithic::ShippingAddress,
         carrier: Lithic::Carrier,
         product_id: String,
@@ -12,6 +13,8 @@ module Lithic
     class CardConvertPhysicalParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
 
       attr_accessor shipping_address: Lithic::ShippingAddress
 
@@ -30,6 +33,7 @@ module Lithic
       ) -> Lithic::Models::CardConvertPhysicalParams::shipping_method
 
       def initialize: (
+        card_token: String,
         shipping_address: Lithic::ShippingAddress,
         ?carrier: Lithic::Carrier,
         ?product_id: String,
@@ -38,6 +42,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        card_token: String,
         shipping_address: Lithic::ShippingAddress,
         carrier: Lithic::Carrier,
         product_id: String,

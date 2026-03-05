@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :financial_account_token
+
         # Return schedules with effective_date >= after_date (ISO format YYYY-MM-DD)
         sig { returns(T.nilable(Date)) }
         attr_reader :after_date
@@ -38,6 +41,7 @@ module Lithic
 
         sig do
           params(
+            financial_account_token: String,
             after_date: Date,
             before_date: Date,
             for_date: Date,
@@ -45,6 +49,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          financial_account_token:,
           # Return schedules with effective_date >= after_date (ISO format YYYY-MM-DD)
           after_date: nil,
           # Return schedules with effective_date <= before_date (ISO format YYYY-MM-DD)
@@ -58,6 +63,7 @@ module Lithic
         sig do
           override.returns(
             {
+              financial_account_token: String,
               after_date: Date,
               before_date: Date,
               for_date: Date,
