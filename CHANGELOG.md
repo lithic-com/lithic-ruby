@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.7.0 (2026-03-05)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/lithic-com/lithic-ruby/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** add action_counts to rule performance reports and code to authorization actions ([bd02001](https://github.com/lithic-com/lithic-ruby/commit/bd02001603d5893f1095ed7d89f9f019c780fff8))
+* **api:** Add Hold API for financial account fund reservations ([6b16d86](https://github.com/lithic-com/lithic-ruby/commit/6b16d86f054b238b7d2b91c9e0e62df67e88fbd7))
+* **api:** Remove deprecated beneficial owner entities field ([7c54dcf](https://github.com/lithic-com/lithic-ruby/commit/7c54dcf052f9c13b7ab73862f80e279d1184e8ee))
+
+
+### Chores
+
+* **internal:** codegen related update ([199e518](https://github.com/lithic-com/lithic-ruby/commit/199e518f942530266541eef7343ff626dfbf7c10))
+* **internal:** codegen related update ([412e84f](https://github.com/lithic-com/lithic-ruby/commit/412e84f1d1e0b574fd791ea420fbf88707a6985a))
+
 ## 0.6.0 (2026-02-27)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/lithic-com/lithic-ruby/compare/v0.5.0...v0.6.0)
