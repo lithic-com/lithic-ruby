@@ -13,8 +13,14 @@ module Lithic
         #   @return [String]
         required :event_token, String
 
-        # @!method initialize(event_token:, request_options: {})
+        # @!attribute event_subscription_token
+        #
+        #   @return [String]
+        required :event_subscription_token, String
+
+        # @!method initialize(event_token:, event_subscription_token:, request_options: {})
         #   @param event_token [String]
+        #   @param event_subscription_token [String]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

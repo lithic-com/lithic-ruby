@@ -2,107 +2,269 @@ module Lithic
   module Models
     module AuthRules
       type v2_create_params =
-        {
-          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
-          type: Lithic::Models::AuthRules::V2CreateParams::type_,
-          account_tokens: ::Array[String],
-          business_account_tokens: ::Array[String],
-          event_stream: Lithic::Models::AuthRules::event_stream,
-          name: String?,
-          card_tokens: ::Array[String],
-          program_level: bool,
-          excluded_card_tokens: ::Array[String]
-        }
+        { body: Lithic::Models::AuthRules::V2CreateParams::body }
         & Lithic::Internal::Type::request_parameters
 
       class V2CreateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        attr_accessor parameters: Lithic::Models::AuthRules::V2CreateParams::parameters
-
-        attr_accessor type: Lithic::Models::AuthRules::V2CreateParams::type_
-
-        attr_reader account_tokens: ::Array[String]?
-
-        def account_tokens=: (::Array[String]) -> ::Array[String]
-
-        attr_reader business_account_tokens: ::Array[String]?
-
-        def business_account_tokens=: (::Array[String]) -> ::Array[String]
-
-        attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
-
-        def event_stream=: (
-          Lithic::Models::AuthRules::event_stream
-        ) -> Lithic::Models::AuthRules::event_stream
-
-        attr_accessor name: String?
-
-        attr_accessor card_tokens: ::Array[String]
-
-        attr_accessor program_level: bool
-
-        attr_reader excluded_card_tokens: ::Array[String]?
-
-        def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
+        attr_accessor body: Lithic::Models::AuthRules::V2CreateParams::body
 
         def initialize: (
-          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
-          type: Lithic::Models::AuthRules::V2CreateParams::type_,
-          card_tokens: ::Array[String],
-          program_level: bool,
-          ?account_tokens: ::Array[String],
-          ?business_account_tokens: ::Array[String],
-          ?event_stream: Lithic::Models::AuthRules::event_stream,
-          ?name: String?,
-          ?excluded_card_tokens: ::Array[String],
+          body: Lithic::Models::AuthRules::V2CreateParams::body,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
-          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
-          type: Lithic::Models::AuthRules::V2CreateParams::type_,
-          account_tokens: ::Array[String],
-          business_account_tokens: ::Array[String],
-          event_stream: Lithic::Models::AuthRules::event_stream,
-          name: String?,
-          card_tokens: ::Array[String],
-          program_level: bool,
-          excluded_card_tokens: ::Array[String],
+          body: Lithic::Models::AuthRules::V2CreateParams::body,
           request_options: Lithic::RequestOptions
         }
 
-        type parameters =
-          Lithic::AuthRules::ConditionalBlockParameters
-          | Lithic::AuthRules::VelocityLimitParams
-          | Lithic::AuthRules::MerchantLockParameters
-          | Lithic::AuthRules::Conditional3DSActionParameters
-          | Lithic::AuthRules::ConditionalAuthorizationActionParameters
-          | Lithic::AuthRules::ConditionalACHActionParameters
-          | Lithic::AuthRules::ConditionalTokenizationActionParameters
+        type body =
+          Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule
+          | Lithic::AuthRules::V2CreateParams::Body::CardLevelRule
+          | Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule
 
-        module Parameters
+        module Body
           extend Lithic::Internal::Type::Union
 
-          def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::parameters]
-        end
+          type account_level_rule =
+            {
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_,
+              account_tokens: ::Array[String],
+              business_account_tokens: ::Array[String],
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              name: String?
+            }
 
-        type type_ =
-          :CONDITIONAL_BLOCK
-          | :VELOCITY_LIMIT
-          | :MERCHANT_LOCK
-          | :CONDITIONAL_ACTION
+          class AccountLevelRule < Lithic::Internal::Type::BaseModel
+            attr_accessor parameters: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::parameters
 
-        module Type
-          extend Lithic::Internal::Type::Enum
+            attr_accessor type: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_
 
-          CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
-          VELOCITY_LIMIT: :VELOCITY_LIMIT
-          MERCHANT_LOCK: :MERCHANT_LOCK
-          CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+            attr_reader account_tokens: ::Array[String]?
 
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::type_]
+            def account_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_reader business_account_tokens: ::Array[String]?
+
+            def business_account_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
+
+            def event_stream=: (
+              Lithic::Models::AuthRules::event_stream
+            ) -> Lithic::Models::AuthRules::event_stream
+
+            attr_accessor name: String?
+
+            def initialize: (
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_,
+              ?account_tokens: ::Array[String],
+              ?business_account_tokens: ::Array[String],
+              ?event_stream: Lithic::Models::AuthRules::event_stream,
+              ?name: String?
+            ) -> void
+
+            def to_hash: -> {
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_,
+              account_tokens: ::Array[String],
+              business_account_tokens: ::Array[String],
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              name: String?
+            }
+
+            type parameters =
+              Lithic::AuthRules::ConditionalBlockParameters
+              | Lithic::AuthRules::VelocityLimitParams
+              | Lithic::AuthRules::MerchantLockParameters
+              | Lithic::AuthRules::Conditional3DSActionParameters
+              | Lithic::AuthRules::ConditionalAuthorizationActionParameters
+              | Lithic::AuthRules::ConditionalACHActionParameters
+              | Lithic::AuthRules::ConditionalTokenizationActionParameters
+
+            module Parameters
+              extend Lithic::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::parameters]
+            end
+
+            type type_ =
+              :CONDITIONAL_BLOCK
+              | :VELOCITY_LIMIT
+              | :MERCHANT_LOCK
+              | :CONDITIONAL_ACTION
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
+              VELOCITY_LIMIT: :VELOCITY_LIMIT
+              MERCHANT_LOCK: :MERCHANT_LOCK
+              CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_]
+            end
+          end
+
+          type card_level_rule =
+            {
+              card_tokens: ::Array[String],
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_,
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              name: String?
+            }
+
+          class CardLevelRule < Lithic::Internal::Type::BaseModel
+            attr_accessor card_tokens: ::Array[String]
+
+            attr_accessor parameters: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::parameters
+
+            attr_accessor type: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_
+
+            attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
+
+            def event_stream=: (
+              Lithic::Models::AuthRules::event_stream
+            ) -> Lithic::Models::AuthRules::event_stream
+
+            attr_accessor name: String?
+
+            def initialize: (
+              card_tokens: ::Array[String],
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_,
+              ?event_stream: Lithic::Models::AuthRules::event_stream,
+              ?name: String?
+            ) -> void
+
+            def to_hash: -> {
+              card_tokens: ::Array[String],
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_,
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              name: String?
+            }
+
+            type parameters =
+              Lithic::AuthRules::ConditionalBlockParameters
+              | Lithic::AuthRules::VelocityLimitParams
+              | Lithic::AuthRules::MerchantLockParameters
+              | Lithic::AuthRules::Conditional3DSActionParameters
+              | Lithic::AuthRules::ConditionalAuthorizationActionParameters
+              | Lithic::AuthRules::ConditionalACHActionParameters
+              | Lithic::AuthRules::ConditionalTokenizationActionParameters
+
+            module Parameters
+              extend Lithic::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::parameters]
+            end
+
+            type type_ =
+              :CONDITIONAL_BLOCK
+              | :VELOCITY_LIMIT
+              | :MERCHANT_LOCK
+              | :CONDITIONAL_ACTION
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
+              VELOCITY_LIMIT: :VELOCITY_LIMIT
+              MERCHANT_LOCK: :MERCHANT_LOCK
+              CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_]
+            end
+          end
+
+          type program_level_rule =
+            {
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::parameters,
+              program_level: bool,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_,
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              excluded_card_tokens: ::Array[String],
+              name: String?
+            }
+
+          class ProgramLevelRule < Lithic::Internal::Type::BaseModel
+            attr_accessor parameters: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::parameters
+
+            attr_accessor program_level: bool
+
+            attr_accessor type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_
+
+            attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
+
+            def event_stream=: (
+              Lithic::Models::AuthRules::event_stream
+            ) -> Lithic::Models::AuthRules::event_stream
+
+            attr_reader excluded_card_tokens: ::Array[String]?
+
+            def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_accessor name: String?
+
+            def initialize: (
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::parameters,
+              program_level: bool,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_,
+              ?event_stream: Lithic::Models::AuthRules::event_stream,
+              ?excluded_card_tokens: ::Array[String],
+              ?name: String?
+            ) -> void
+
+            def to_hash: -> {
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::parameters,
+              program_level: bool,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_,
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              excluded_card_tokens: ::Array[String],
+              name: String?
+            }
+
+            type parameters =
+              Lithic::AuthRules::ConditionalBlockParameters
+              | Lithic::AuthRules::VelocityLimitParams
+              | Lithic::AuthRules::MerchantLockParameters
+              | Lithic::AuthRules::Conditional3DSActionParameters
+              | Lithic::AuthRules::ConditionalAuthorizationActionParameters
+              | Lithic::AuthRules::ConditionalACHActionParameters
+              | Lithic::AuthRules::ConditionalTokenizationActionParameters
+
+            module Parameters
+              extend Lithic::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::parameters]
+            end
+
+            type type_ =
+              :CONDITIONAL_BLOCK
+              | :VELOCITY_LIMIT
+              | :MERCHANT_LOCK
+              | :CONDITIONAL_ACTION
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
+              VELOCITY_LIMIT: :VELOCITY_LIMIT
+              MERCHANT_LOCK: :MERCHANT_LOCK
+              CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::body]
         end
       end
     end

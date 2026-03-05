@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute dispute_token
+      #
+      #   @return [String]
+      required :dispute_token, String
+
       # @!attribute amount
       #   Amount to dispute
       #
@@ -31,7 +36,9 @@ module Lithic
       #   @return [Symbol, Lithic::Models::DisputeUpdateParams::Reason, nil]
       optional :reason, enum: -> { Lithic::DisputeUpdateParams::Reason }
 
-      # @!method initialize(amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
+      # @!method initialize(dispute_token:, amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
+      #   @param dispute_token [String]
+      #
       #   @param amount [Integer] Amount to dispute
       #
       #   @param customer_filed_date [Time] Date the customer filed the dispute

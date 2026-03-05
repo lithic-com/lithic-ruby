@@ -18,19 +18,24 @@ module Lithic
         sig { returns(String) }
         attr_accessor :account_holder_token
 
+        sig { returns(String) }
+        attr_accessor :entity_token
+
         sig do
           params(
             account_holder_token: String,
+            entity_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(account_holder_token:, request_options: {})
+        def self.new(account_holder_token:, entity_token:, request_options: {})
         end
 
         sig do
           override.returns(
             {
               account_holder_token: String,
+              entity_token: String,
               request_options: Lithic::RequestOptions
             }
           )

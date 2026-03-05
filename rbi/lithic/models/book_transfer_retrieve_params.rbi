@@ -11,15 +11,26 @@ module Lithic
           T.any(Lithic::BookTransferRetrieveParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :book_transfer_token
+
       sig do
-        params(request_options: Lithic::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          book_transfer_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(book_transfer_token:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Lithic::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            book_transfer_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
     end

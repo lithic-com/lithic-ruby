@@ -15,15 +15,26 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :event_subscription_token
+
         sig do
-          params(request_options: Lithic::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            event_subscription_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(event_subscription_token:, request_options: {})
         end
 
-        sig { override.returns({ request_options: Lithic::RequestOptions }) }
+        sig do
+          override.returns(
+            {
+              event_subscription_token: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
         def to_hash
         end
       end

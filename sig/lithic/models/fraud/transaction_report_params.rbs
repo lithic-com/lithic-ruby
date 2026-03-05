@@ -3,6 +3,7 @@ module Lithic
     module Fraud
       type transaction_report_params =
         {
+          transaction_token: String,
           fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
           comment: String,
           fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type
@@ -12,6 +13,8 @@ module Lithic
       class TransactionReportParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor transaction_token: String
 
         attr_accessor fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status
 
@@ -26,6 +29,7 @@ module Lithic
         ) -> Lithic::Models::Fraud::TransactionReportParams::fraud_type
 
         def initialize: (
+          transaction_token: String,
           fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
           ?comment: String,
           ?fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type,
@@ -33,6 +37,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          transaction_token: String,
           fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
           comment: String,
           fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type,

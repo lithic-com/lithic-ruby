@@ -15,15 +15,26 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :credit_product_token
+
         sig do
-          params(request_options: Lithic::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            credit_product_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(credit_product_token:, request_options: {})
         end
 
-        sig { override.returns({ request_options: Lithic::RequestOptions }) }
+        sig do
+          override.returns(
+            {
+              credit_product_token: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
         def to_hash
         end
       end

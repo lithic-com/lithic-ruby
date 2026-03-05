@@ -6,9 +6,6 @@ module Lithic
       # @return [Lithic::Resources::AccountHolders::Entities]
       attr_reader :entities
 
-      # Some parameter documentations has been truncated, see
-      # {Lithic::Models::AccountHolderCreateParams} for more details.
-      #
       # Create an account holder and initiate the appropriate onboarding workflow.
       # Account holders and accounts have a 1:1 relationship. When an account holder is
       # successfully created an associated account is also created. All calls to this
@@ -18,46 +15,9 @@ module Lithic
       # process. This endpoint can only be used on accounts that are part of the program
       # that the calling API key manages.
       #
-      # @overload create(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, external_id: nil, kyb_passed_timestamp: nil, naics_code: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
+      # @overload create(body:, request_options: {})
       #
-      # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened.
-      #
-      # @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
-      #
-      # @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow] Specifies the workflow type. This must be 'KYC_EXEMPT'
-      #
-      # @param individual [Lithic::Models::AccountHolderCreateParams::Individual] Information on individual for whom the account is being opened and KYC is being
-      #
-      # @param address [Lithic::Models::Address] KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-      #
-      # @param email [String] The KYC Exempt user's email
-      #
-      # @param first_name [String] The KYC Exempt user's first name
-      #
-      # @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType] Specifies the type of KYC Exempt user
-      #
-      # @param last_name [String] The KYC Exempt user's last name
-      #
-      # @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
-      #
-      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You can submit a list of all direct and indirect individuals with 25% or more ow
-      #
-      # @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
-      #
-      # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
-      #
-      # @param external_id [String] A user provided id that can be used to link an account holder with an external s
-      #
-      # @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYB was completed on the busin
-      #
-      # @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
-      #
-      # @param website_url [String] Company website URL.
-      #
-      # @param kyc_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the indiv
-      #
-      # @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #
+      # @param body [Lithic::Models::KYB, Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated, Lithic::Models::KYC, Lithic::Models::KYCExempt]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolderCreateResponse]
@@ -68,7 +28,7 @@ module Lithic
         @client.request(
           method: :post,
           path: "v1/account_holders",
-          body: parsed,
+          body: parsed[:body],
           model: Lithic::Models::AccountHolderCreateResponse,
           options: {timeout: 300, **options}
         )
@@ -95,9 +55,6 @@ module Lithic
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Lithic::Models::AccountHolderUpdateParams} for more details.
-      #
       # Update the information associated with a particular account holder (including
       # business owners and control persons associated to a business account). If Lithic
       # is performing KYB or KYC and additional verification is required we will run the
@@ -109,51 +66,23 @@ module Lithic
       # process. This endpoint can only be used on existing accounts that are part of
       # the program that the calling API key manages.
       #
-      # @overload update(account_holder_token, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, naics_code: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
+      # @overload update(account_holder_token, body:, request_options: {})
       #
       # @param account_holder_token [String] Globally unique identifier for the account holder.
       #
-      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
-      #
-      # @param business_entity [Lithic::Models::AccountHolderUpdateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
-      #
-      # @param control_person [Lithic::Models::AccountHolderUpdateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
-      #
-      # @param external_id [String] A user provided id that can be used to link an account holder with an external s
-      #
-      # @param naics_code [String] 6-digit North American Industry Classification System (NAICS) code for the busin
-      #
-      # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
-      #
-      # @param website_url [String] Company website URL.
-      #
-      # @param individual [Lithic::Models::AccountHolderUpdateParams::Individual] Information on the individual for whom the account is being opened and KYC is be
-      #
-      # @param address [Lithic::Models::AddressUpdate] Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
-      #
-      # @param business_account_token [String] Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
-      #
-      # @param email [String] Allowed for all Account Holders. Account holder's email address. The primary pur
-      #
-      # @param first_name [String] Allowed for KYC-Exempt, BYO-KYC. Account holder's first name.
-      #
-      # @param last_name [String] Allowed for KYC-Exempt, BYO-KYC. Account holder's last name.
-      #
-      # @param legal_business_name [String] Allowed for BYO-KYB. Legal business name of the account holder.
-      #
-      # @param phone_number [String] Allowed for all Account Holders. Account holder's phone number, entered in E.164
+      # @param body [Lithic::Models::AccountHolderUpdateParams::Body::KYBPatchRequest, Lithic::Models::AccountHolderUpdateParams::Body::KYCPatchRequest, Lithic::Models::AccountHolderUpdateParams::Body::PatchRequest] The KYB request payload for updating a business.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
       #
       # @see Lithic::Models::AccountHolderUpdateParams
-      def update(account_holder_token, params = {})
+      def update(account_holder_token, params)
         parsed, options = Lithic::AccountHolderUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/account_holders/%1$s", account_holder_token],
-          body: parsed,
+          body: parsed[:body],
           model: Lithic::Models::AccountHolderUpdateResponse,
           options: options
         )

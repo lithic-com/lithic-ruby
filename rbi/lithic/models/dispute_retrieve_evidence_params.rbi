@@ -17,18 +17,26 @@ module Lithic
       sig { returns(String) }
       attr_accessor :dispute_token
 
+      sig { returns(String) }
+      attr_accessor :evidence_token
+
       sig do
         params(
           dispute_token: String,
+          evidence_token: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(dispute_token:, request_options: {})
+      def self.new(dispute_token:, evidence_token:, request_options: {})
       end
 
       sig do
         override.returns(
-          { dispute_token: String, request_options: Lithic::RequestOptions }
+          {
+            dispute_token: String,
+            evidence_token: String,
+            request_options: Lithic::RequestOptions
+          }
         )
       end
       def to_hash

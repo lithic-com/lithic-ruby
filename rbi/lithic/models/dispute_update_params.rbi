@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::DisputeUpdateParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :dispute_token
+
       # Amount to dispute
       sig { returns(T.nilable(Integer)) }
       attr_reader :amount
@@ -41,6 +44,7 @@ module Lithic
 
       sig do
         params(
+          dispute_token: String,
           amount: Integer,
           customer_filed_date: Time,
           customer_note: String,
@@ -49,6 +53,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        dispute_token:,
         # Amount to dispute
         amount: nil,
         # Date the customer filed the dispute
@@ -64,6 +69,7 @@ module Lithic
       sig do
         override.returns(
           {
+            dispute_token: String,
             amount: Integer,
             customer_filed_date: Time,
             customer_note: String,

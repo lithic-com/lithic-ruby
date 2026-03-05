@@ -11,15 +11,26 @@ module Lithic
           T.any(Lithic::AccountHolderRetrieveParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :account_holder_token
+
       sig do
-        params(request_options: Lithic::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          account_holder_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(account_holder_token:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Lithic::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            account_holder_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
     end

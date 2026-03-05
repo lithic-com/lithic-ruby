@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :card_token
+
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
@@ -103,6 +106,7 @@ module Lithic
 
         sig do
           params(
+            card_token: String,
             begin_: Time,
             category:
               Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol,
@@ -117,6 +121,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          card_token:,
           # Date string in RFC 3339 format. Only entries created after the specified time
           # will be included. UTC time zone.
           begin_: nil,
@@ -142,6 +147,7 @@ module Lithic
         sig do
           override.returns(
             {
+              card_token: String,
               begin_: Time,
               category:
                 Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol,

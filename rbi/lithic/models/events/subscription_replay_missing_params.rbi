@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :event_subscription_token
+
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
@@ -33,12 +36,14 @@ module Lithic
 
         sig do
           params(
+            event_subscription_token: String,
             begin_: Time,
             end_: Time,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          event_subscription_token:,
           # Date string in RFC 3339 format. Only entries created after the specified time
           # will be included. UTC time zone.
           begin_: nil,
@@ -52,6 +57,7 @@ module Lithic
         sig do
           override.returns(
             {
+              event_subscription_token: String,
               begin_: Time,
               end_: Time,
               request_options: Lithic::RequestOptions

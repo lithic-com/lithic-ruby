@@ -2,12 +2,19 @@ module Lithic
   module Models
     module FinancialAccounts
       type interest_tier_schedule_list_params =
-        { after_date: Date, before_date: Date, for_date: Date }
+        {
+          financial_account_token: String,
+          after_date: Date,
+          before_date: Date,
+          for_date: Date
+        }
         & Lithic::Internal::Type::request_parameters
 
       class InterestTierScheduleListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor financial_account_token: String
 
         attr_reader after_date: Date?
 
@@ -22,6 +29,7 @@ module Lithic
         def for_date=: (Date) -> Date
 
         def initialize: (
+          financial_account_token: String,
           ?after_date: Date,
           ?before_date: Date,
           ?for_date: Date,
@@ -29,6 +37,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          financial_account_token: String,
           after_date: Date,
           before_date: Date,
           for_date: Date,

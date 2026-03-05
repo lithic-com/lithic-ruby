@@ -2,6 +2,7 @@ module Lithic
   module Models
     type external_bank_account_update_params =
       {
+        external_bank_account_token: String,
         address: Lithic::ExternalBankAccountAddress,
         company_id: String,
         dob: Date,
@@ -17,6 +18,8 @@ module Lithic
     class ExternalBankAccountUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor external_bank_account_token: String
 
       attr_reader address: Lithic::ExternalBankAccountAddress?
 
@@ -61,6 +64,7 @@ module Lithic
       def user_defined_id=: (String) -> String
 
       def initialize: (
+        external_bank_account_token: String,
         ?address: Lithic::ExternalBankAccountAddress,
         ?company_id: String,
         ?dob: Date,
@@ -74,6 +78,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        external_bank_account_token: String,
         address: Lithic::ExternalBankAccountAddress,
         company_id: String,
         dob: Date,

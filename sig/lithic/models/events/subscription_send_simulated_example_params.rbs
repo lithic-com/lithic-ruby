@@ -3,6 +3,7 @@ module Lithic
     module Events
       type subscription_send_simulated_example_params =
         {
+          event_subscription_token: String,
           event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type
         }
         & Lithic::Internal::Type::request_parameters
@@ -11,6 +12,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        attr_accessor event_subscription_token: String
+
         attr_reader event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type?
 
         def event_type=: (
@@ -18,11 +21,13 @@ module Lithic
         ) -> Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type
 
         def initialize: (
+          event_subscription_token: String,
           ?event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
+          event_subscription_token: String,
           event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type,
           request_options: Lithic::RequestOptions
         }

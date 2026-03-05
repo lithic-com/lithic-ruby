@@ -2,15 +2,23 @@ module Lithic
   module Models
     module Reports
       type settlement_summary_params =
-        {  } & Lithic::Internal::Type::request_parameters
+        { report_date: Date } & Lithic::Internal::Type::request_parameters
 
       class SettlementSummaryParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: Lithic::request_opts) -> void
+        attr_accessor report_date: Date
 
-        def to_hash: -> { request_options: Lithic::RequestOptions }
+        def initialize: (
+          report_date: Date,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          report_date: Date,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :auth_rule_token
+
         sig { returns(T.nilable(String)) }
         attr_reader :account_token
 
@@ -29,17 +32,24 @@ module Lithic
 
         sig do
           params(
+            auth_rule_token: String,
             account_token: String,
             card_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(account_token: nil, card_token: nil, request_options: {})
+        def self.new(
+          auth_rule_token:,
+          account_token: nil,
+          card_token: nil,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
+              auth_rule_token: String,
               account_token: String,
               card_token: String,
               request_options: Lithic::RequestOptions

@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute account_holder_token
+        #
+        #   @return [String]
+        required :account_holder_token, String
+
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -61,9 +66,11 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AccountHolders::EntityCreateParams::Type]
         required :type, enum: -> { Lithic::AccountHolders::EntityCreateParams::Type }
 
-        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:, type:, request_options: {})
+        # @!method initialize(account_holder_token:, address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:, type:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AccountHolders::EntityCreateParams} for more details.
+        #
+        #   @param account_holder_token [String]
         #
         #   @param address [Lithic::Models::AccountHolders::EntityCreateParams::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #

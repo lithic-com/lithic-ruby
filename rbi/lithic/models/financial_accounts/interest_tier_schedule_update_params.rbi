@@ -18,6 +18,9 @@ module Lithic
         sig { returns(String) }
         attr_accessor :financial_account_token
 
+        sig { returns(Date) }
+        attr_accessor :effective_date
+
         # Name of a tier contained in the credit product. Mutually exclusive with
         # tier_rates
         sig { returns(T.nilable(String)) }
@@ -36,6 +39,7 @@ module Lithic
         sig do
           params(
             financial_account_token: String,
+            effective_date: Date,
             tier_name: String,
             tier_rates: T.anything,
             request_options: Lithic::RequestOptions::OrHash
@@ -43,6 +47,7 @@ module Lithic
         end
         def self.new(
           financial_account_token:,
+          effective_date:,
           # Name of a tier contained in the credit product. Mutually exclusive with
           # tier_rates
           tier_name: nil,
@@ -56,6 +61,7 @@ module Lithic
           override.returns(
             {
               financial_account_token: String,
+              effective_date: Date,
               tier_name: String,
               tier_rates: T.anything,
               request_options: Lithic::RequestOptions

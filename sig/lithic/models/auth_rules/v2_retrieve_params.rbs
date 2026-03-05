@@ -2,15 +2,23 @@ module Lithic
   module Models
     module AuthRules
       type v2_retrieve_params =
-        {  } & Lithic::Internal::Type::request_parameters
+        { auth_rule_token: String } & Lithic::Internal::Type::request_parameters
 
       class V2RetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: Lithic::request_opts) -> void
+        attr_accessor auth_rule_token: String
 
-        def to_hash: -> { request_options: Lithic::RequestOptions }
+        def initialize: (
+          auth_rule_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          auth_rule_token: String,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

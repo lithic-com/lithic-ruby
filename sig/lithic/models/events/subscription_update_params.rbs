@@ -3,6 +3,7 @@ module Lithic
     module Events
       type subscription_update_params =
         {
+          event_subscription_token: String,
           url: String,
           description: String,
           disabled: bool,
@@ -13,6 +14,8 @@ module Lithic
       class SubscriptionUpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor event_subscription_token: String
 
         attr_accessor url: String
 
@@ -31,6 +34,7 @@ module Lithic
         ) -> ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type]
 
         def initialize: (
+          event_subscription_token: String,
           url: String,
           ?description: String,
           ?disabled: bool,
@@ -39,6 +43,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          event_subscription_token: String,
           url: String,
           description: String,
           disabled: bool,

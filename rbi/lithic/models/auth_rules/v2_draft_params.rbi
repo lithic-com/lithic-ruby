@@ -12,6 +12,9 @@ module Lithic
             T.any(Lithic::AuthRules::V2DraftParams, Lithic::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :auth_rule_token
+
         # Parameters for the Auth Rule
         sig do
           returns(
@@ -32,6 +35,7 @@ module Lithic
 
         sig do
           params(
+            auth_rule_token: String,
             parameters:
               T.nilable(
                 T.any(
@@ -48,6 +52,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          auth_rule_token:,
           # Parameters for the Auth Rule
           parameters: nil,
           request_options: {}
@@ -57,6 +62,7 @@ module Lithic
         sig do
           override.returns(
             {
+              auth_rule_token: String,
               parameters:
                 T.nilable(
                   T.any(

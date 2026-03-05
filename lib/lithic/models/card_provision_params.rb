@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute card_token
+      #
+      #   @return [String]
+      required :card_token, String
+
       # @!attribute certificate
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Apple's public leaf certificate. Base64
@@ -54,9 +59,11 @@ module Lithic
       #   @return [String, nil]
       optional :nonce_signature, String
 
-      # @!method initialize(certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
+      # @!method initialize(card_token:, certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardProvisionParams} for more details.
+      #
+      #   @param card_token [String]
       #
       #   @param certificate [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
       #

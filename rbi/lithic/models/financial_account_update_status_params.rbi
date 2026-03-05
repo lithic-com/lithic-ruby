@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :financial_account_token
+
       # Status of the financial account
       sig do
         returns(Lithic::FinancialAccountUpdateStatusParams::Status::OrSymbol)
@@ -39,6 +42,7 @@ module Lithic
 
       sig do
         params(
+          financial_account_token: String,
           status: Lithic::FinancialAccountUpdateStatusParams::Status::OrSymbol,
           substatus:
             T.nilable(
@@ -49,6 +53,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        financial_account_token:,
         # Status of the financial account
         status:,
         # Substatus for the financial account
@@ -62,6 +67,7 @@ module Lithic
       sig do
         override.returns(
           {
+            financial_account_token: String,
             status:
               Lithic::FinancialAccountUpdateStatusParams::Status::OrSymbol,
             substatus:

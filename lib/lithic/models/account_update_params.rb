@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute account_token
+      #
+      #   @return [String]
+      required :account_token, String
+
       # @!attribute comment
       #   Additional context or information related to the account.
       #
@@ -88,9 +93,11 @@ module Lithic
       #   @return [Lithic::Models::AccountUpdateParams::VerificationAddress, nil]
       optional :verification_address, -> { Lithic::AccountUpdateParams::VerificationAddress }
 
-      # @!method initialize(comment: nil, daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, substatus: nil, verification_address: nil, request_options: {})
+      # @!method initialize(account_token:, comment: nil, daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, substatus: nil, verification_address: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountUpdateParams} for more details.
+      #
+      #   @param account_token [String]
       #
       #   @param comment [String] Additional context or information related to the account.
       #

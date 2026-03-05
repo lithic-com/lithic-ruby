@@ -2,6 +2,7 @@ module Lithic
   module Models
     type tokenization_resend_activation_code_params =
       {
+        tokenization_token: String,
         activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type
       }
       & Lithic::Internal::Type::request_parameters
@@ -10,6 +11,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      attr_accessor tokenization_token: String
+
       attr_reader activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type?
 
       def activation_method_type=: (
@@ -17,11 +20,13 @@ module Lithic
       ) -> Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type
 
       def initialize: (
+        tokenization_token: String,
         ?activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
+        tokenization_token: String,
         activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type,
         request_options: Lithic::RequestOptions
       }

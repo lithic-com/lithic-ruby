@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::CardWebProvisionParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :card_token
+
       # Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push
       # Provisioning device identifier required for the tokenization flow
       sig { returns(T.nilable(String)) }
@@ -53,6 +56,7 @@ module Lithic
 
       sig do
         params(
+          card_token: String,
           client_device_id: String,
           client_wallet_account_id: String,
           digital_wallet:
@@ -62,6 +66,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        card_token:,
         # Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push
         # Provisioning device identifier required for the tokenization flow
         client_device_id: nil,
@@ -80,6 +85,7 @@ module Lithic
       sig do
         override.returns(
           {
+            card_token: String,
             client_device_id: String,
             client_wallet_account_id: String,
             digital_wallet:

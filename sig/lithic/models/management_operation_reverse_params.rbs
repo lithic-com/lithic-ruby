@@ -1,12 +1,14 @@
 module Lithic
   module Models
     type management_operation_reverse_params =
-      { effective_date: Date, memo: String }
+      { management_operation_token: String, effective_date: Date, memo: String }
       & Lithic::Internal::Type::request_parameters
 
     class ManagementOperationReverseParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor management_operation_token: String
 
       attr_accessor effective_date: Date
 
@@ -15,12 +17,14 @@ module Lithic
       def memo=: (String) -> String
 
       def initialize: (
+        management_operation_token: String,
         effective_date: Date,
         ?memo: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
+        management_operation_token: String,
         effective_date: Date,
         memo: String,
         request_options: Lithic::RequestOptions

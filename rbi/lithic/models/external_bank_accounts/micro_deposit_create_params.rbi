@@ -15,21 +15,30 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :external_bank_account_token
+
         sig { returns(T::Array[Integer]) }
         attr_accessor :micro_deposits
 
         sig do
           params(
+            external_bank_account_token: String,
             micro_deposits: T::Array[Integer],
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(micro_deposits:, request_options: {})
+        def self.new(
+          external_bank_account_token:,
+          micro_deposits:,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
+              external_bank_account_token: String,
               micro_deposits: T::Array[Integer],
               request_options: Lithic::RequestOptions
             }

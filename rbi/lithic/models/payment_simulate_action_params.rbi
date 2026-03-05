@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::PaymentSimulateActionParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :payment_token
+
       # Event Type
       sig { returns(Lithic::PaymentSimulateActionParams::EventType::OrSymbol) }
       attr_accessor :event_type
@@ -56,6 +59,7 @@ module Lithic
 
       sig do
         params(
+          payment_token: String,
           event_type: Lithic::PaymentSimulateActionParams::EventType::OrSymbol,
           date_of_death: Date,
           decline_reason:
@@ -66,6 +70,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        payment_token:,
         # Event Type
         event_type:,
         # Date of Death for ACH Return
@@ -83,6 +88,7 @@ module Lithic
       sig do
         override.returns(
           {
+            payment_token: String,
             event_type:
               Lithic::PaymentSimulateActionParams::EventType::OrSymbol,
             date_of_death: Date,

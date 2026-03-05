@@ -3,6 +3,7 @@ module Lithic
     module AccountHolders
       type entity_create_params =
         {
+          account_holder_token: String,
           address: Lithic::AccountHolders::EntityCreateParams::Address,
           dob: String,
           email: String,
@@ -17,6 +18,8 @@ module Lithic
       class EntityCreateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor account_holder_token: String
 
         attr_accessor address: Lithic::AccountHolders::EntityCreateParams::Address
 
@@ -35,6 +38,7 @@ module Lithic
         attr_accessor type: Lithic::Models::AccountHolders::EntityCreateParams::type_
 
         def initialize: (
+          account_holder_token: String,
           address: Lithic::AccountHolders::EntityCreateParams::Address,
           dob: String,
           email: String,
@@ -47,6 +51,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          account_holder_token: String,
           address: Lithic::AccountHolders::EntityCreateParams::Address,
           dob: String,
           email: String,

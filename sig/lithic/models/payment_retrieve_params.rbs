@@ -1,15 +1,23 @@
 module Lithic
   module Models
     type payment_retrieve_params =
-      {  } & Lithic::Internal::Type::request_parameters
+      { payment_token: String } & Lithic::Internal::Type::request_parameters
 
     class PaymentRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Lithic::request_opts) -> void
+      attr_accessor payment_token: String
 
-      def to_hash: -> { request_options: Lithic::RequestOptions }
+      def initialize: (
+        payment_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        payment_token: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

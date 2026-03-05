@@ -7,31 +7,11 @@ module Lithic
         # @return [Lithic::Resources::AuthRules::V2::Backtests]
         attr_reader :backtests
 
-        # Some parameter documentations has been truncated, see
-        # {Lithic::Models::AuthRules::V2CreateParams} for more details.
-        #
         # Creates a new V2 Auth rule in draft mode
         #
-        # @overload create(parameters:, type:, card_tokens:, program_level:, account_tokens: nil, business_account_tokens: nil, event_stream: nil, name: nil, excluded_card_tokens: nil, request_options: {})
+        # @overload create(body:, request_options: {})
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
-        #
-        # @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule. For certain rule types, this determines the event stream
-        #
-        # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
-        #
-        # @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
-        #
-        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
-        #
-        # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
-        #
-        # @param event_stream [Symbol, Lithic::Models::AuthRules::EventStream] The event stream during which the rule will be evaluated.
-        #
-        # @param name [String, nil] Auth Rule Name
-        #
-        # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
-        #
+        # @param body [Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule, Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule, Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::AuthRule]
@@ -42,7 +22,7 @@ module Lithic
           @client.request(
             method: :post,
             path: "v2/auth_rules",
-            body: parsed,
+            body: parsed[:body],
             model: Lithic::AuthRules::AuthRule,
             options: options
           )
@@ -67,44 +47,27 @@ module Lithic
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Lithic::Models::AuthRules::V2UpdateParams} for more details.
-        #
         # Updates a V2 Auth rule's properties
         #
         # If `account_tokens`, `card_tokens`, `program_level`, or `excluded_card_tokens`
         # is provided, this will replace existing associations with the provided list of
         # entities.
         #
-        # @overload update(auth_rule_token, account_tokens: nil, business_account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
+        # @overload update(auth_rule_token, body:, request_options: {})
         #
         # @param auth_rule_token [String]
-        #
-        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
-        #
-        # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
-        #
-        # @param name [String, nil] Auth Rule Name
-        #
-        # @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule.
-        #
-        # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
-        #
-        # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
-        #
-        # @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
-        #
+        # @param body [Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule, Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule, Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::AuthRule]
         #
         # @see Lithic::Models::AuthRules::V2UpdateParams
-        def update(auth_rule_token, params = {})
+        def update(auth_rule_token, params)
           parsed, options = Lithic::AuthRules::V2UpdateParams.dump_request(params)
           @client.request(
             method: :patch,
             path: ["v2/auth_rules/%1$s", auth_rule_token],
-            body: parsed,
+            body: parsed[:body],
             model: Lithic::AuthRules::AuthRule,
             options: options
           )

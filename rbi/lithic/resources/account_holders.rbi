@@ -16,102 +16,17 @@ module Lithic
       # that the calling API key manages.
       sig do
         params(
-          business_entity:
-            Lithic::AccountHolderCreateParams::BusinessEntity::OrHash,
-          tos_timestamp: String,
-          workflow: Lithic::AccountHolderCreateParams::Workflow::OrSymbol,
-          individual: Lithic::AccountHolderCreateParams::Individual::OrHash,
-          address: Lithic::Address::OrHash,
-          email: String,
-          first_name: String,
-          kyc_exemption_type:
-            Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
-          last_name: String,
-          phone_number: String,
-          beneficial_owner_individuals:
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
-            ],
-          control_person:
-            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
-          nature_of_business: String,
-          external_id: String,
-          kyb_passed_timestamp: String,
-          naics_code: String,
-          website_url: String,
-          kyc_passed_timestamp: String,
-          business_account_token: String,
+          body:
+            T.any(
+              Lithic::KYB::OrHash,
+              Lithic::AccountHolderCreateParams::Body::KYBDelegated::OrHash,
+              Lithic::KYC::OrHash,
+              Lithic::KYCExempt::OrHash
+            ),
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Models::AccountHolderCreateResponse)
       end
-      def create(
-        # Information for business for which the account is being opened.
-        business_entity:,
-        # An RFC 3339 timestamp indicating when the account holder accepted the applicable
-        # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
-        # implementation with Lithic.
-        tos_timestamp:,
-        # Specifies the workflow type. This must be 'KYC_EXEMPT'
-        workflow:,
-        # Information on individual for whom the account is being opened and KYC is being
-        # run.
-        individual:,
-        # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable.
-        address:,
-        # The KYC Exempt user's email
-        email:,
-        # The KYC Exempt user's first name
-        first_name:,
-        # Specifies the type of KYC Exempt user
-        kyc_exemption_type:,
-        # The KYC Exempt user's last name
-        last_name:,
-        # The KYC Exempt user's phone number, entered in E.164 format.
-        phone_number:,
-        # You can submit a list of all direct and indirect individuals with 25% or more
-        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-        # no individual owns 25% of the company you do not need to send beneficial owner
-        # information. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section I) for more background on individuals that should be included.
-        beneficial_owner_individuals: nil,
-        # An individual with significant responsibility for managing the legal entity
-        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        # Officer, Managing Member, General Partner, President, Vice President, or
-        # Treasurer). This can be an executive, or someone who will have program-wide
-        # access to the cards that Lithic will provide. In some cases, this individual
-        # could also be a beneficial owner listed above. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section II) for more background.
-        control_person: nil,
-        # Short description of the company's line of business (i.e., what does the company
-        # do?).
-        nature_of_business: nil,
-        # A user provided id that can be used to link an account holder with an external
-        # system
-        external_id: nil,
-        # An RFC 3339 timestamp indicating when precomputed KYB was completed on the
-        # business with a pass result.
-        #
-        # This field is required only if workflow type is `KYB_BYO`.
-        kyb_passed_timestamp: nil,
-        # 6-digit North American Industry Classification System (NAICS) code for the
-        # business.
-        naics_code: nil,
-        # Company website URL.
-        website_url: nil,
-        # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
-        # individual with a pass result.
-        #
-        # This field is required only if workflow type is `KYC_BYO`.
-        kyc_passed_timestamp: nil,
-        # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-        # users of businesses. Pass the account_token of the enrolled business associated
-        # with the AUTHORIZED_USER in this field.
-        business_account_token: nil,
-        request_options: {}
-      )
+      def create(body:, request_options: {})
       end
 
       # Get an Individual or Business Account Holder and/or their KYC or KYB evaluation
@@ -142,84 +57,20 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          beneficial_owner_individuals:
-            T::Array[
-              Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual::OrHash
-            ],
-          business_entity:
-            Lithic::AccountHolderUpdateParams::BusinessEntity::OrHash,
-          control_person:
-            Lithic::AccountHolderUpdateParams::ControlPerson::OrHash,
-          external_id: String,
-          naics_code: String,
-          nature_of_business: String,
-          website_url: String,
-          individual: Lithic::AccountHolderUpdateParams::Individual::OrHash,
-          address: Lithic::AddressUpdate::OrHash,
-          business_account_token: String,
-          email: String,
-          first_name: String,
-          last_name: String,
-          legal_business_name: String,
-          phone_number: String,
+          body:
+            T.any(
+              Lithic::AccountHolderUpdateParams::Body::KYBPatchRequest::OrHash,
+              Lithic::AccountHolderUpdateParams::Body::KYCPatchRequest::OrHash,
+              Lithic::AccountHolderUpdateParams::Body::PatchRequest::OrHash
+            ),
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Models::AccountHolderUpdateResponse::Variants)
       end
       def update(
         # Globally unique identifier for the account holder.
         account_holder_token,
-        # You must submit a list of all direct and indirect individuals with 25% or more
-        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-        # no individual owns 25% of the company you do not need to send beneficial owner
-        # information. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section I) for more background on individuals that should be included.
-        beneficial_owner_individuals: nil,
-        # Information for business for which the account is being opened and KYB is being
-        # run.
-        business_entity: nil,
-        # An individual with significant responsibility for managing the legal entity
-        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        # Officer, Managing Member, General Partner, President, Vice President, or
-        # Treasurer). This can be an executive, or someone who will have program-wide
-        # access to the cards that Lithic will provide. In some cases, this individual
-        # could also be a beneficial owner listed above. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section II) for more background.
-        control_person: nil,
-        # A user provided id that can be used to link an account holder with an external
-        # system
-        external_id: nil,
-        # 6-digit North American Industry Classification System (NAICS) code for the
-        # business.
-        naics_code: nil,
-        # Short description of the company's line of business (i.e., what does the company
-        # do?).
-        nature_of_business: nil,
-        # Company website URL.
-        website_url: nil,
-        # Information on the individual for whom the account is being opened and KYC is
-        # being run.
-        individual: nil,
-        # Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
-        address: nil,
-        # Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
-        # account holder is associated.
-        business_account_token: nil,
-        # Allowed for all Account Holders. Account holder's email address. The primary
-        # purpose of this field is for cardholder identification and verification during
-        # the digital wallet tokenization process.
-        email: nil,
-        # Allowed for KYC-Exempt, BYO-KYC. Account holder's first name.
-        first_name: nil,
-        # Allowed for KYC-Exempt, BYO-KYC. Account holder's last name.
-        last_name: nil,
-        # Allowed for BYO-KYB. Legal business name of the account holder.
-        legal_business_name: nil,
-        # Allowed for all Account Holders. Account holder's phone number, entered in E.164
-        # format. The primary purpose of this field is for cardholder identification and
-        # verification during the digital wallet tokenization process.
-        phone_number: nil,
+        # The KYB request payload for updating a business.
+        body:,
         request_options: {}
       )
       end

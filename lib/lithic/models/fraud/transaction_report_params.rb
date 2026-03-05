@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute transaction_token
+        #
+        #   @return [String]
+        required :transaction_token, String
+
         # @!attribute fraud_status
         #   The fraud status of the transaction, string (enum) supporting the following
         #   values:
@@ -57,9 +62,11 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Fraud::TransactionReportParams::FraudType, nil]
         optional :fraud_type, enum: -> { Lithic::Fraud::TransactionReportParams::FraudType }
 
-        # @!method initialize(fraud_status:, comment: nil, fraud_type: nil, request_options: {})
+        # @!method initialize(transaction_token:, fraud_status:, comment: nil, fraud_type: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Fraud::TransactionReportParams} for more details.
+        #
+        #   @param transaction_token [String]
         #
         #   @param fraud_status [Symbol, Lithic::Models::Fraud::TransactionReportParams::FraudStatus] The fraud status of the transaction, string (enum) supporting the following valu
         #

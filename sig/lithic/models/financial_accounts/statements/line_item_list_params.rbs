@@ -5,6 +5,7 @@ module Lithic
         type line_item_list_params =
           {
             financial_account_token: String,
+            statement_token: String,
             ending_before: String,
             page_size: Integer,
             starting_after: String
@@ -16,6 +17,8 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           attr_accessor financial_account_token: String
+
+          attr_accessor statement_token: String
 
           attr_reader ending_before: String?
 
@@ -31,6 +34,7 @@ module Lithic
 
           def initialize: (
             financial_account_token: String,
+            statement_token: String,
             ?ending_before: String,
             ?page_size: Integer,
             ?starting_after: String,
@@ -39,6 +43,7 @@ module Lithic
 
           def to_hash: -> {
             financial_account_token: String,
+            statement_token: String,
             ending_before: String,
             page_size: Integer,
             starting_after: String,

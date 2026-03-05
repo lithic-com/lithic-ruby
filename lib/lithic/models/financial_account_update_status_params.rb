@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute financial_account_token
+      #
+      #   @return [String]
+      required :financial_account_token, String
+
       # @!attribute status
       #   Status of the financial account
       #
@@ -25,7 +30,9 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_status, String
 
-      # @!method initialize(status:, substatus:, user_defined_status: nil, request_options: {})
+      # @!method initialize(financial_account_token:, status:, substatus:, user_defined_status: nil, request_options: {})
+      #   @param financial_account_token [String]
+      #
       #   @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
       #
       #   @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account

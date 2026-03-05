@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute event_subscription_token
+        #
+        #   @return [String]
+        required :event_subscription_token, String
+
         # @!attribute url
         #   URL to which event webhooks will be sent. URL must be a valid HTTPS address.
         #
@@ -34,9 +39,11 @@ module Lithic
         optional :event_types,
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Events::SubscriptionUpdateParams::EventType] }
 
-        # @!method initialize(url:, description: nil, disabled: nil, event_types: nil, request_options: {})
+        # @!method initialize(event_subscription_token:, url:, description: nil, disabled: nil, event_types: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Events::SubscriptionUpdateParams} for more details.
+        #
+        #   @param event_subscription_token [String]
         #
         #   @param url [String] URL to which event webhooks will be sent. URL must be a valid HTTPS address.
         #

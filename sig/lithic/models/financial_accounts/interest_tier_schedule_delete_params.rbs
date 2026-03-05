@@ -2,7 +2,7 @@ module Lithic
   module Models
     module FinancialAccounts
       type interest_tier_schedule_delete_params =
-        { financial_account_token: String }
+        { financial_account_token: String, effective_date: Date }
         & Lithic::Internal::Type::request_parameters
 
       class InterestTierScheduleDeleteParams < Lithic::Internal::Type::BaseModel
@@ -11,13 +11,17 @@ module Lithic
 
         attr_accessor financial_account_token: String
 
+        attr_accessor effective_date: Date
+
         def initialize: (
           financial_account_token: String,
+          effective_date: Date,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
           financial_account_token: String,
+          effective_date: Date,
           request_options: Lithic::RequestOptions
         }
       end

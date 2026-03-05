@@ -15,6 +15,12 @@ module Lithic
           #   @return [String]
           required :financial_account_token, String
 
+          # @!attribute statement_token
+          #   Globally unique identifier for statements.
+          #
+          #   @return [String]
+          required :statement_token, String
+
           # @!attribute ending_before
           #   A cursor representing an item's token before which a page of results should end.
           #   Used to retrieve the previous page of results before this item.
@@ -35,12 +41,14 @@ module Lithic
           #   @return [String, nil]
           optional :starting_after, String
 
-          # @!method initialize(financial_account_token:, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+          # @!method initialize(financial_account_token:, statement_token:, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::Statements::LineItemListParams} for more
           #   details.
           #
           #   @param financial_account_token [String] Globally unique identifier for financial account.
+          #
+          #   @param statement_token [String] Globally unique identifier for statements.
           #
           #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
           #

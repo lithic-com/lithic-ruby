@@ -2,6 +2,7 @@ module Lithic
   module Models
     type account_update_params =
       {
+        account_token: String,
         comment: String,
         daily_spend_limit: Integer,
         lifetime_spend_limit: Integer,
@@ -15,6 +16,8 @@ module Lithic
     class AccountUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor account_token: String
 
       attr_reader comment: String?
 
@@ -51,6 +54,7 @@ module Lithic
       ) -> Lithic::AccountUpdateParams::VerificationAddress
 
       def initialize: (
+        account_token: String,
         ?comment: String,
         ?daily_spend_limit: Integer,
         ?lifetime_spend_limit: Integer,
@@ -62,6 +66,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        account_token: String,
         comment: String,
         daily_spend_limit: Integer,
         lifetime_spend_limit: Integer,

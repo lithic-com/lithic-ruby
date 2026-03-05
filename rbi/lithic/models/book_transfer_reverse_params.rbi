@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::BookTransferReverseParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :book_transfer_token
+
       # Optional descriptor for the reversal.
       sig { returns(T.nilable(String)) }
       attr_reader :memo
@@ -20,11 +23,13 @@ module Lithic
 
       sig do
         params(
+          book_transfer_token: String,
           memo: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        book_transfer_token:,
         # Optional descriptor for the reversal.
         memo: nil,
         request_options: {}
@@ -33,7 +38,11 @@ module Lithic
 
       sig do
         override.returns(
-          { memo: String, request_options: Lithic::RequestOptions }
+          {
+            book_transfer_token: String,
+            memo: String,
+            request_options: Lithic::RequestOptions
+          }
         )
       end
       def to_hash

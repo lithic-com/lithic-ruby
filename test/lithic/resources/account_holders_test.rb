@@ -6,19 +6,53 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
   def test_create_required_params
     response =
       @lithic.account_holders.create(
-        address: {
-          address1: "123 Old Forest Way",
-          city: "Omaha",
-          country: "USA",
-          postal_code: "68022",
-          state: "NE"
-        },
-        email: "email",
-        first_name: "first_name",
-        kyc_exemption_type: :AUTHORIZED_USER,
-        last_name: "last_name",
-        phone_number: "phone_number",
-        workflow: :KYC_EXEMPT
+        body: {
+          beneficial_owner_individuals: [
+            {
+              address: {
+                address1: "300 Normal Forest Way",
+                city: "Portland",
+                country: "USA",
+                postal_code: "90210",
+                state: "OR"
+              },
+              dob: "1991-03-08T08:00:00Z",
+              email: "tim@left-earth.com",
+              first_name: "Timmy",
+              government_id: "211-23-1412",
+              last_name: "Turner"
+            }
+          ],
+          business_entity: {
+            address: {
+              address1: "123 Old Forest Way",
+              city: "Omaha",
+              country: "USA",
+              postal_code: "61022",
+              state: "NE"
+            },
+            government_id: "12-3456789",
+            legal_business_name: "Busy Business, Inc.",
+            phone_numbers: ["+15555555555"]
+          },
+          control_person: {
+            address: {
+              address1: "451 New Forest Way",
+              city: "Springfield",
+              country: "USA",
+              postal_code: "68022",
+              state: "IL"
+            },
+            dob: "1991-03-08T08:00:00Z",
+            email: "tom@middle-pluto.com",
+            first_name: "Tom",
+            government_id: "111-23-1412",
+            last_name: "Timothy"
+          },
+          nature_of_business: "Software company selling solutions to the restaurant industry",
+          tos_timestamp: "2022-03-08T08:00:00Z",
+          workflow: :KYB_BYO
+        }
       )
 
     assert_pattern do
@@ -71,8 +105,8 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
     end
   end
 
-  def test_update
-    response = @lithic.account_holders.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_update_required_params
+    response = @lithic.account_holders.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", body: {})
 
     assert_pattern do
       response => Lithic::Models::AccountHolderUpdateResponse

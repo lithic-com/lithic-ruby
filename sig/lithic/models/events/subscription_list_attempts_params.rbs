@@ -3,6 +3,7 @@ module Lithic
     module Events
       type subscription_list_attempts_params =
         {
+          event_subscription_token: String,
           begin_: Time,
           end_: Time,
           ending_before: String,
@@ -15,6 +16,8 @@ module Lithic
       class SubscriptionListAttemptsParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor event_subscription_token: String
 
         attr_reader begin_: Time?
 
@@ -43,6 +46,7 @@ module Lithic
         ) -> Lithic::Models::Events::SubscriptionListAttemptsParams::status
 
         def initialize: (
+          event_subscription_token: String,
           ?begin_: Time,
           ?end_: Time,
           ?ending_before: String,
@@ -53,6 +57,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          event_subscription_token: String,
           begin_: Time,
           end_: Time,
           ending_before: String,

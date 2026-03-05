@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute tokenization_token
+      #
+      #   @return [String]
+      required :tokenization_token, String
+
       # @!attribute digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet for
       #   a tokenization. This artwork must be approved by the network and configured by
@@ -16,9 +21,11 @@ module Lithic
       #   @return [String, nil]
       optional :digital_card_art_token, String
 
-      # @!method initialize(digital_card_art_token: nil, request_options: {})
+      # @!method initialize(tokenization_token:, digital_card_art_token: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TokenizationUpdateDigitalCardArtParams} for more details.
+      #
+      #   @param tokenization_token [String]
       #
       #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet for
       #

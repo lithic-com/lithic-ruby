@@ -18,18 +18,30 @@ module Lithic
         sig { returns(String) }
         attr_accessor :event_token
 
+        sig { returns(String) }
+        attr_accessor :event_subscription_token
+
         sig do
           params(
             event_token: String,
+            event_subscription_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(event_token:, request_options: {})
+        def self.new(
+          event_token:,
+          event_subscription_token:,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
-            { event_token: String, request_options: Lithic::RequestOptions }
+            {
+              event_token: String,
+              event_subscription_token: String,
+              request_options: Lithic::RequestOptions
+            }
           )
         end
         def to_hash

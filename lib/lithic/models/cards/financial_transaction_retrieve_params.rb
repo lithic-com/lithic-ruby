@@ -13,8 +13,14 @@ module Lithic
         #   @return [String]
         required :card_token, String
 
-        # @!method initialize(card_token:, request_options: {})
+        # @!attribute financial_transaction_token
+        #
+        #   @return [String]
+        required :financial_transaction_token, String
+
+        # @!method initialize(card_token:, financial_transaction_token:, request_options: {})
         #   @param card_token [String]
+        #   @param financial_transaction_token [String]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

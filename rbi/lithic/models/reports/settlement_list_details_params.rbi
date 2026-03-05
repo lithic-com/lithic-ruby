@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(Date) }
+        attr_accessor :report_date
+
         # A cursor representing an item's token before which a page of results should end.
         # Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
@@ -40,6 +43,7 @@ module Lithic
 
         sig do
           params(
+            report_date: Date,
             ending_before: String,
             page_size: Integer,
             starting_after: String,
@@ -47,6 +51,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          report_date:,
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
@@ -62,6 +67,7 @@ module Lithic
         sig do
           override.returns(
             {
+              report_date: Date,
               ending_before: String,
               page_size: Integer,
               starting_after: String,

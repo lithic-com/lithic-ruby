@@ -2,6 +2,7 @@ module Lithic
   module Models
     type card_update_params =
       {
+        card_token: String,
         comment: String,
         digital_card_art_token: String,
         memo: String,
@@ -18,6 +19,8 @@ module Lithic
     class CardUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
 
       attr_reader comment: String?
 
@@ -68,6 +71,7 @@ module Lithic
       ) -> Lithic::Models::CardUpdateParams::substatus
 
       def initialize: (
+        card_token: String,
         ?comment: String,
         ?digital_card_art_token: String,
         ?memo: String,
@@ -82,6 +86,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        card_token: String,
         comment: String,
         digital_card_art_token: String,
         memo: String,

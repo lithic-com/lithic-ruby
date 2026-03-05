@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute tokenization_token
+      #
+      #   @return [String]
+      required :tokenization_token, String
+
       # @!attribute activation_method_type
       #   The communication method that the user has selected to use to receive the
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
@@ -16,9 +21,11 @@ module Lithic
       optional :activation_method_type,
                enum: -> { Lithic::TokenizationResendActivationCodeParams::ActivationMethodType }
 
-      # @!method initialize(activation_method_type: nil, request_options: {})
+      # @!method initialize(tokenization_token:, activation_method_type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TokenizationResendActivationCodeParams} for more details.
+      #
+      #   @param tokenization_token [String]
       #
       #   @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType] The communication method that the user has selected to use to receive the authen
       #

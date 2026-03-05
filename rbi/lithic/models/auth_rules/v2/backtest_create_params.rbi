@@ -16,6 +16,9 @@ module Lithic
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :auth_rule_token
+
           # The end time of the backtest.
           sig { returns(T.nilable(Time)) }
           attr_reader :end_
@@ -32,12 +35,14 @@ module Lithic
 
           sig do
             params(
+              auth_rule_token: String,
               end_: Time,
               start: Time,
               request_options: Lithic::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            auth_rule_token:,
             # The end time of the backtest.
             end_: nil,
             # The start time of the backtest.
@@ -49,6 +54,7 @@ module Lithic
           sig do
             override.returns(
               {
+                auth_rule_token: String,
                 end_: Time,
                 start: Time,
                 request_options: Lithic::RequestOptions

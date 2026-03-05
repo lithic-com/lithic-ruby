@@ -6,9 +6,10 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
   def test_create_required_params
     response =
       @lithic.auth_rules.v2.create(
-        card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-        parameters: {conditions: [{attribute: :MCC, operation: :IS_ONE_OF, value: "string"}]},
-        type: :CONDITIONAL_BLOCK
+        body: {
+          parameters: {conditions: [{attribute: :MCC, operation: :IS_ONE_OF, value: "string"}]},
+          type: :CONDITIONAL_BLOCK
+        }
       )
 
     assert_pattern do
@@ -60,8 +61,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
   end
 
-  def test_update
-    response = @lithic.auth_rules.v2.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_update_required_params
+    response = @lithic.auth_rules.v2.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", body: {})
 
     assert_pattern do
       response => Lithic::AuthRules::AuthRule
