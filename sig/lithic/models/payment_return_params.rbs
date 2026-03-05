@@ -2,6 +2,7 @@ module Lithic
   module Models
     type payment_return_params =
       {
+        payment_token: String,
         financial_account_token: String,
         return_reason_code: String,
         addenda: String?,
@@ -14,6 +15,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      attr_accessor payment_token: String
+
       attr_accessor financial_account_token: String
 
       attr_accessor return_reason_code: String
@@ -25,6 +28,7 @@ module Lithic
       attr_accessor memo: String?
 
       def initialize: (
+        payment_token: String,
         financial_account_token: String,
         return_reason_code: String,
         ?addenda: String?,
@@ -34,6 +38,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        payment_token: String,
         financial_account_token: String,
         return_reason_code: String,
         addenda: String?,

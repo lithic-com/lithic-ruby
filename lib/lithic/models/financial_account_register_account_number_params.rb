@@ -7,12 +7,18 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute financial_account_token
+      #
+      #   @return [String]
+      required :financial_account_token, String
+
       # @!attribute account_number
       #
       #   @return [String]
       required :account_number, String
 
-      # @!method initialize(account_number:, request_options: {})
+      # @!method initialize(financial_account_token:, account_number:, request_options: {})
+      #   @param financial_account_token [String]
       #   @param account_number [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end

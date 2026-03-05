@@ -3,12 +3,14 @@ module Lithic
     module AuthRules
       module V2
         type backtest_create_params =
-          { end_: Time, start: Time }
+          { auth_rule_token: String, end_: Time, start: Time }
           & Lithic::Internal::Type::request_parameters
 
         class BacktestCreateParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
+
+          attr_accessor auth_rule_token: String
 
           attr_reader end_: Time?
 
@@ -19,12 +21,14 @@ module Lithic
           def start=: (Time) -> Time
 
           def initialize: (
+            auth_rule_token: String,
             ?end_: Time,
             ?start: Time,
             ?request_options: Lithic::request_opts
           ) -> void
 
           def to_hash: -> {
+            auth_rule_token: String,
             end_: Time,
             start: Time,
             request_options: Lithic::RequestOptions

@@ -8,6 +8,12 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute credit_product_token
+        #   Globally unique identifier for credit products.
+        #
+        #   @return [String]
+        required :credit_product_token, String
+
         # @!attribute ending_before
         #   The effective date that the prime rates ends before
         #
@@ -20,7 +26,9 @@ module Lithic
         #   @return [Date, nil]
         optional :starting_after, Date
 
-        # @!method initialize(ending_before: nil, starting_after: nil, request_options: {})
+        # @!method initialize(credit_product_token:, ending_before: nil, starting_after: nil, request_options: {})
+        #   @param credit_product_token [String] Globally unique identifier for credit products.
+        #
         #   @param ending_before [Date] The effective date that the prime rates ends before
         #
         #   @param starting_after [Date] The effective date that the prime rate starts after

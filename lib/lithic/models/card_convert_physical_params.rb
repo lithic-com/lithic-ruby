@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute card_token
+      #
+      #   @return [String]
+      required :card_token, String
+
       # @!attribute shipping_address
       #   The shipping address this card will be sent to.
       #
@@ -47,9 +52,11 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardConvertPhysicalParams::ShippingMethod }
 
-      # @!method initialize(shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
+      # @!method initialize(card_token:, shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardConvertPhysicalParams} for more details.
+      #
+      #   @param card_token [String]
       #
       #   @param shipping_address [Lithic::Models::ShippingAddress] The shipping address this card will be sent to.
       #

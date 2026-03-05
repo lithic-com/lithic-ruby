@@ -2,12 +2,14 @@ module Lithic
   module Models
     module Events
       type subscription_replay_missing_params =
-        { begin_: Time, end_: Time }
+        { event_subscription_token: String, begin_: Time, end_: Time }
         & Lithic::Internal::Type::request_parameters
 
       class SubscriptionReplayMissingParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor event_subscription_token: String
 
         attr_reader begin_: Time?
 
@@ -18,12 +20,14 @@ module Lithic
         def end_=: (Time) -> Time
 
         def initialize: (
+          event_subscription_token: String,
           ?begin_: Time,
           ?end_: Time,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
+          event_subscription_token: String,
           begin_: Time,
           end_: Time,
           request_options: Lithic::RequestOptions

@@ -15,6 +15,10 @@ module Lithic
             )
           end
 
+        # Globally unique identifier for financial account.
+        sig { returns(String) }
+        attr_accessor :financial_account_token
+
         # Date string in RFC 3339 format. Only entries created after the specified date
         # will be included.
         sig { returns(T.nilable(Date)) }
@@ -56,6 +60,7 @@ module Lithic
 
         sig do
           params(
+            financial_account_token: String,
             begin_: Date,
             end_: Date,
             ending_before: String,
@@ -65,6 +70,8 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier for financial account.
+          financial_account_token:,
           # Date string in RFC 3339 format. Only entries created after the specified date
           # will be included.
           begin_: nil,
@@ -86,6 +93,7 @@ module Lithic
         sig do
           override.returns(
             {
+              financial_account_token: String,
               begin_: Date,
               end_: Date,
               ending_before: String,

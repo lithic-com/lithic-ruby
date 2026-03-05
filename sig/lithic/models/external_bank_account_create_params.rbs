@@ -1,144 +1,388 @@
 module Lithic
   module Models
     type external_bank_account_create_params =
-      {
-        account_number: String,
-        country: String,
-        currency: String,
-        financial_account_token: String,
-        owner: String,
-        owner_type: Lithic::Models::owner_type,
-        routing_number: String,
-        type: Lithic::Models::ExternalBankAccountCreateParams::type_,
-        verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
-        account_token: String,
-        address: Lithic::ExternalBankAccountAddress,
-        company_id: String,
-        dob: Date,
-        doing_business_as: String,
-        name: String,
-        user_defined_id: String,
-        verification_enforcement: bool
-      }
+      { body: Lithic::Models::ExternalBankAccountCreateParams::body }
       & Lithic::Internal::Type::request_parameters
 
     class ExternalBankAccountCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      attr_accessor account_number: String
-
-      attr_accessor country: String
-
-      attr_accessor currency: String
-
-      attr_accessor financial_account_token: String
-
-      attr_accessor owner: String
-
-      attr_accessor owner_type: Lithic::Models::owner_type
-
-      attr_accessor routing_number: String
-
-      attr_accessor type: Lithic::Models::ExternalBankAccountCreateParams::type_
-
-      attr_accessor verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method
-
-      attr_reader account_token: String?
-
-      def account_token=: (String) -> String
-
-      attr_reader address: Lithic::ExternalBankAccountAddress?
-
-      def address=: (
-        Lithic::ExternalBankAccountAddress
-      ) -> Lithic::ExternalBankAccountAddress
-
-      attr_reader company_id: String?
-
-      def company_id=: (String) -> String
-
-      attr_reader dob: Date?
-
-      def dob=: (Date) -> Date
-
-      attr_reader doing_business_as: String?
-
-      def doing_business_as=: (String) -> String
-
-      attr_reader name: String?
-
-      def name=: (String) -> String
-
-      attr_reader user_defined_id: String?
-
-      def user_defined_id=: (String) -> String
-
-      attr_reader verification_enforcement: bool?
-
-      def verification_enforcement=: (bool) -> bool
+      attr_accessor body: Lithic::Models::ExternalBankAccountCreateParams::body
 
       def initialize: (
-        account_number: String,
-        country: String,
-        currency: String,
-        financial_account_token: String,
-        owner: String,
-        owner_type: Lithic::Models::owner_type,
-        routing_number: String,
-        type: Lithic::Models::ExternalBankAccountCreateParams::type_,
-        verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
-        ?account_token: String,
-        ?address: Lithic::ExternalBankAccountAddress,
-        ?company_id: String,
-        ?dob: Date,
-        ?doing_business_as: String,
-        ?name: String,
-        ?user_defined_id: String,
-        ?verification_enforcement: bool,
+        body: Lithic::Models::ExternalBankAccountCreateParams::body,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
-        account_number: String,
-        country: String,
-        currency: String,
-        financial_account_token: String,
-        owner: String,
-        owner_type: Lithic::Models::owner_type,
-        routing_number: String,
-        type: Lithic::Models::ExternalBankAccountCreateParams::type_,
-        verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
-        account_token: String,
-        address: Lithic::ExternalBankAccountAddress,
-        company_id: String,
-        dob: Date,
-        doing_business_as: String,
-        name: String,
-        user_defined_id: String,
-        verification_enforcement: bool,
+        body: Lithic::Models::ExternalBankAccountCreateParams::body,
         request_options: Lithic::RequestOptions
       }
 
-      type type_ = :CHECKING | :SAVINGS
+      type body =
+        Lithic::ExternalBankAccountCreateParams::Body::ExternallyVerified
+        | Lithic::ExternalBankAccountCreateParams::Body::Unverified
+        | Lithic::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest
 
-      module Type
-        extend Lithic::Internal::Type::Enum
+      module Body
+        extend Lithic::Internal::Type::Union
 
-        CHECKING: :CHECKING
-        SAVINGS: :SAVINGS
+        type bank_verified_create_bank_account_api_request =
+          {
+            account_number: String,
+            country: String,
+            currency: String,
+            financial_account_token: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest::type_,
+            verification_method: Lithic::Models::verification_method,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String,
+            verification_enforcement: bool
+          }
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::type_]
-      end
+        class BankVerifiedCreateBankAccountAPIRequest < Lithic::Internal::Type::BaseModel
+          attr_accessor account_number: String
 
-      type verification_method = :UNVERIFIED
+          attr_accessor country: String
 
-      module VerificationMethod
-        extend Lithic::Internal::Type::Enum
+          attr_accessor currency: String
 
-        UNVERIFIED: :UNVERIFIED
+          attr_accessor financial_account_token: String
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::verification_method]
+          attr_accessor owner: String
+
+          attr_accessor owner_type: Lithic::Models::owner_type
+
+          attr_accessor routing_number: String
+
+          attr_accessor type: Lithic::Models::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest::type_
+
+          attr_accessor verification_method: Lithic::Models::verification_method
+
+          attr_reader account_token: String?
+
+          def account_token=: (String) -> String
+
+          attr_reader address: Lithic::ExternalBankAccountAddress?
+
+          def address=: (
+            Lithic::ExternalBankAccountAddress
+          ) -> Lithic::ExternalBankAccountAddress
+
+          attr_reader company_id: String?
+
+          def company_id=: (String) -> String
+
+          attr_reader dob: Date?
+
+          def dob=: (Date) -> Date
+
+          attr_reader doing_business_as: String?
+
+          def doing_business_as=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader user_defined_id: String?
+
+          def user_defined_id=: (String) -> String
+
+          attr_reader verification_enforcement: bool?
+
+          def verification_enforcement=: (bool) -> bool
+
+          def initialize: (
+            account_number: String,
+            country: String,
+            currency: String,
+            financial_account_token: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest::type_,
+            verification_method: Lithic::Models::verification_method,
+            ?account_token: String,
+            ?address: Lithic::ExternalBankAccountAddress,
+            ?company_id: String,
+            ?dob: Date,
+            ?doing_business_as: String,
+            ?name: String,
+            ?user_defined_id: String,
+            ?verification_enforcement: bool
+          ) -> void
+
+          def to_hash: -> {
+            account_number: String,
+            country: String,
+            currency: String,
+            financial_account_token: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest::type_,
+            verification_method: Lithic::Models::verification_method,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String,
+            verification_enforcement: bool
+          }
+
+          type type_ = :CHECKING | :SAVINGS
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            CHECKING: :CHECKING
+            SAVINGS: :SAVINGS
+
+            def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest::type_]
+          end
+        end
+
+        type externally_verified =
+          {
+            account_number: String,
+            country: String,
+            currency: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::ExternallyVerified::type_,
+            verification_method: :EXTERNALLY_VERIFIED,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String
+          }
+
+        class ExternallyVerified < Lithic::Internal::Type::BaseModel
+          attr_accessor account_number: String
+
+          attr_accessor country: String
+
+          attr_accessor currency: String
+
+          attr_accessor owner: String
+
+          attr_accessor owner_type: Lithic::Models::owner_type
+
+          attr_accessor routing_number: String
+
+          attr_accessor type: Lithic::Models::ExternalBankAccountCreateParams::Body::ExternallyVerified::type_
+
+          attr_accessor verification_method: :EXTERNALLY_VERIFIED
+
+          attr_reader account_token: String?
+
+          def account_token=: (String) -> String
+
+          attr_reader address: Lithic::ExternalBankAccountAddress?
+
+          def address=: (
+            Lithic::ExternalBankAccountAddress
+          ) -> Lithic::ExternalBankAccountAddress
+
+          attr_reader company_id: String?
+
+          def company_id=: (String) -> String
+
+          attr_reader dob: Date?
+
+          def dob=: (Date) -> Date
+
+          attr_reader doing_business_as: String?
+
+          def doing_business_as=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader user_defined_id: String?
+
+          def user_defined_id=: (String) -> String
+
+          def initialize: (
+            account_number: String,
+            country: String,
+            currency: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::ExternallyVerified::type_,
+            ?account_token: String,
+            ?address: Lithic::ExternalBankAccountAddress,
+            ?company_id: String,
+            ?dob: Date,
+            ?doing_business_as: String,
+            ?name: String,
+            ?user_defined_id: String,
+            ?verification_method: :EXTERNALLY_VERIFIED
+          ) -> void
+
+          def to_hash: -> {
+            account_number: String,
+            country: String,
+            currency: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::ExternallyVerified::type_,
+            verification_method: :EXTERNALLY_VERIFIED,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String
+          }
+
+          type type_ = :CHECKING | :SAVINGS
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            CHECKING: :CHECKING
+            SAVINGS: :SAVINGS
+
+            def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::Body::ExternallyVerified::type_]
+          end
+        end
+
+        type unverified =
+          {
+            account_number: String,
+            country: String,
+            currency: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::Unverified::type_,
+            verification_method: :UNVERIFIED,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String
+          }
+
+        class Unverified < Lithic::Internal::Type::BaseModel
+          attr_accessor account_number: String
+
+          attr_accessor country: String
+
+          attr_accessor currency: String
+
+          attr_accessor owner: String
+
+          attr_accessor owner_type: Lithic::Models::owner_type
+
+          attr_accessor routing_number: String
+
+          attr_accessor type: Lithic::Models::ExternalBankAccountCreateParams::Body::Unverified::type_
+
+          attr_accessor verification_method: :UNVERIFIED
+
+          attr_reader account_token: String?
+
+          def account_token=: (String) -> String
+
+          attr_reader address: Lithic::ExternalBankAccountAddress?
+
+          def address=: (
+            Lithic::ExternalBankAccountAddress
+          ) -> Lithic::ExternalBankAccountAddress
+
+          attr_reader company_id: String?
+
+          def company_id=: (String) -> String
+
+          attr_reader dob: Date?
+
+          def dob=: (Date) -> Date
+
+          attr_reader doing_business_as: String?
+
+          def doing_business_as=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader user_defined_id: String?
+
+          def user_defined_id=: (String) -> String
+
+          def initialize: (
+            account_number: String,
+            country: String,
+            currency: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::Unverified::type_,
+            ?account_token: String,
+            ?address: Lithic::ExternalBankAccountAddress,
+            ?company_id: String,
+            ?dob: Date,
+            ?doing_business_as: String,
+            ?name: String,
+            ?user_defined_id: String,
+            ?verification_method: :UNVERIFIED
+          ) -> void
+
+          def to_hash: -> {
+            account_number: String,
+            country: String,
+            currency: String,
+            owner: String,
+            owner_type: Lithic::Models::owner_type,
+            routing_number: String,
+            type: Lithic::Models::ExternalBankAccountCreateParams::Body::Unverified::type_,
+            verification_method: :UNVERIFIED,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String
+          }
+
+          type type_ = :CHECKING | :SAVINGS
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            CHECKING: :CHECKING
+            SAVINGS: :SAVINGS
+
+            def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::Body::Unverified::type_]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::body]
       end
     end
   end

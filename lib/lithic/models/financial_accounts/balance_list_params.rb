@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute financial_account_token
+        #
+        #   @return [String]
+        required :financial_account_token, String
+
         # @!attribute balance_date
         #   UTC date of the balance to retrieve. Defaults to latest available balance
         #
@@ -22,9 +27,11 @@ module Lithic
         #   @return [String, nil]
         optional :last_transaction_event_token, String
 
-        # @!method initialize(balance_date: nil, last_transaction_event_token: nil, request_options: {})
+        # @!method initialize(financial_account_token:, balance_date: nil, last_transaction_event_token: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::BalanceListParams} for more details.
+        #
+        #   @param financial_account_token [String]
         #
         #   @param balance_date [Time] UTC date of the balance to retrieve. Defaults to latest available balance
         #

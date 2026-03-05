@@ -8,7 +8,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute report_date
+        #
+        #   @return [Date]
+        required :report_date, Date
+
+        # @!method initialize(report_date:, request_options: {})
+        #   @param report_date [Date]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

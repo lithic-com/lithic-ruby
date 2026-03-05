@@ -2,6 +2,7 @@ module Lithic
   module Models
     type card_provision_params =
       {
+        card_token: String,
         certificate: String,
         client_device_id: String,
         client_wallet_account_id: String,
@@ -14,6 +15,8 @@ module Lithic
     class CardProvisionParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
 
       attr_reader certificate: String?
 
@@ -42,6 +45,7 @@ module Lithic
       def nonce_signature=: (String) -> String
 
       def initialize: (
+        card_token: String,
         ?certificate: String,
         ?client_device_id: String,
         ?client_wallet_account_id: String,
@@ -52,6 +56,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        card_token: String,
         certificate: String,
         client_device_id: String,
         client_wallet_account_id: String,

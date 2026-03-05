@@ -1,15 +1,23 @@
 module Lithic
   module Models
     type card_retrieve_spend_limits_params =
-      {  } & Lithic::Internal::Type::request_parameters
+      { card_token: String } & Lithic::Internal::Type::request_parameters
 
     class CardRetrieveSpendLimitsParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Lithic::request_opts) -> void
+      attr_accessor card_token: String
 
-      def to_hash: -> { request_options: Lithic::RequestOptions }
+      def initialize: (
+        card_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        card_token: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

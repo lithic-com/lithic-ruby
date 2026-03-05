@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :external_bank_account_token
+
       sig { returns(T.nilable(String)) }
       attr_reader :financial_account_token
 
@@ -22,16 +25,22 @@ module Lithic
 
       sig do
         params(
+          external_bank_account_token: String,
           financial_account_token: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(financial_account_token: nil, request_options: {})
+      def self.new(
+        external_bank_account_token:,
+        financial_account_token: nil,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
+            external_bank_account_token: String,
             financial_account_token: String,
             request_options: Lithic::RequestOptions
           }

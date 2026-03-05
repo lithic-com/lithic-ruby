@@ -11,15 +11,26 @@ module Lithic
           T.any(Lithic::NetworkProgramRetrieveParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :network_program_token
+
       sig do
-        params(request_options: Lithic::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          network_program_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(network_program_token:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Lithic::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            network_program_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
     end

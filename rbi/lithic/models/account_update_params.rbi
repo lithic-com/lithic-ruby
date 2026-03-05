@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::AccountUpdateParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :account_token
+
       # Additional context or information related to the account.
       sig { returns(T.nilable(String)) }
       attr_reader :comment
@@ -110,6 +113,7 @@ module Lithic
 
       sig do
         params(
+          account_token: String,
           comment: String,
           daily_spend_limit: Integer,
           lifetime_spend_limit: Integer,
@@ -122,6 +126,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        account_token:,
         # Additional context or information related to the account.
         comment: nil,
         # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
@@ -180,6 +185,7 @@ module Lithic
       sig do
         override.returns(
           {
+            account_token: String,
             comment: String,
             daily_spend_limit: Integer,
             lifetime_spend_limit: Integer,

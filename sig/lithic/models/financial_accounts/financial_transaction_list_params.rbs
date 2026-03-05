@@ -3,6 +3,7 @@ module Lithic
     module FinancialAccounts
       type financial_transaction_list_params =
         {
+          financial_account_token: String,
           begin_: Time,
           category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           end_: Time,
@@ -16,6 +17,8 @@ module Lithic
       class FinancialTransactionListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor financial_account_token: String
 
         attr_reader begin_: Time?
 
@@ -52,6 +55,7 @@ module Lithic
         ) -> Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status
 
         def initialize: (
+          financial_account_token: String,
           ?begin_: Time,
           ?category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           ?end_: Time,
@@ -63,6 +67,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          financial_account_token: String,
           begin_: Time,
           category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           end_: Time,

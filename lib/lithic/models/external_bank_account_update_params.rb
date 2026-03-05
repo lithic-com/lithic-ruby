@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute external_bank_account_token
+      #
+      #   @return [String]
+      required :external_bank_account_token, String
+
       # @!attribute address
       #   Address
       #
@@ -61,9 +66,11 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, owner: nil, owner_type: nil, type: nil, user_defined_id: nil, request_options: {})
+      # @!method initialize(external_bank_account_token:, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, owner: nil, owner_type: nil, type: nil, user_defined_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::ExternalBankAccountUpdateParams} for more details.
+      #
+      #   @param external_bank_account_token [String]
       #
       #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
       #

@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute report_date
+        #
+        #   @return [Date]
+        required :report_date, Date
+
         # @!attribute ending_before
         #   A cursor representing an item's token before which a page of results should end.
         #   Used to retrieve the previous page of results before this item.
@@ -28,9 +33,11 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+        # @!method initialize(report_date:, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Reports::SettlementListDetailsParams} for more details.
+        #
+        #   @param report_date [Date]
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #

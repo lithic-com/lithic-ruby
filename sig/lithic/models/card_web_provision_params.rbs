@@ -2,6 +2,7 @@ module Lithic
   module Models
     type card_web_provision_params =
       {
+        card_token: String,
         client_device_id: String,
         client_wallet_account_id: String,
         digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
@@ -12,6 +13,8 @@ module Lithic
     class CardWebProvisionParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
 
       attr_reader client_device_id: String?
 
@@ -32,6 +35,7 @@ module Lithic
       def server_session_id=: (String) -> String
 
       def initialize: (
+        card_token: String,
         ?client_device_id: String,
         ?client_wallet_account_id: String,
         ?digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
@@ -40,6 +44,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        card_token: String,
         client_device_id: String,
         client_wallet_account_id: String,
         digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,

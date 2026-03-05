@@ -8,7 +8,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute auth_rule_token
+        #
+        #   @return [String]
+        required :auth_rule_token, String
+
+        # @!method initialize(auth_rule_token:, request_options: {})
+        #   @param auth_rule_token [String]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :financial_account_token
+
         # UTC date of the balance to retrieve. Defaults to latest available balance
         sig { returns(T.nilable(Time)) }
         attr_reader :balance_date
@@ -33,12 +36,14 @@ module Lithic
 
         sig do
           params(
+            financial_account_token: String,
             balance_date: Time,
             last_transaction_event_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          financial_account_token:,
           # UTC date of the balance to retrieve. Defaults to latest available balance
           balance_date: nil,
           # Balance after a given financial event occured. For example, passing the
@@ -52,6 +57,7 @@ module Lithic
         sig do
           override.returns(
             {
+              financial_account_token: String,
               balance_date: Time,
               last_transaction_event_token: String,
               request_options: Lithic::RequestOptions

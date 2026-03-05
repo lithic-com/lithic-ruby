@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :financial_account_token
+
         sig do
           returns(
             T.nilable(
@@ -60,6 +63,7 @@ module Lithic
 
         sig do
           params(
+            financial_account_token: String,
             auto_collection_configuration:
               Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration::OrHash,
             credit_limit: Integer,
@@ -70,6 +74,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          financial_account_token:,
           auto_collection_configuration: nil,
           credit_limit: nil,
           # Globally unique identifier for the credit product
@@ -84,6 +89,7 @@ module Lithic
         sig do
           override.returns(
             {
+              financial_account_token: String,
               auto_collection_configuration:
                 Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
               credit_limit: Integer,

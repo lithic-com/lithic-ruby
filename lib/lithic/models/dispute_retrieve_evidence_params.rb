@@ -12,8 +12,14 @@ module Lithic
       #   @return [String]
       required :dispute_token, String
 
-      # @!method initialize(dispute_token:, request_options: {})
+      # @!attribute evidence_token
+      #
+      #   @return [String]
+      required :evidence_token, String
+
+      # @!method initialize(dispute_token:, evidence_token:, request_options: {})
       #   @param dispute_token [String]
+      #   @param evidence_token [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

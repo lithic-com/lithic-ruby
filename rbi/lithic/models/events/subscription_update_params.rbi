@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :event_subscription_token
+
         # URL to which event webhooks will be sent. URL must be a valid HTTPS address.
         sig { returns(String) }
         attr_accessor :url
@@ -58,6 +61,7 @@ module Lithic
 
         sig do
           params(
+            event_subscription_token: String,
             url: String,
             description: String,
             disabled: T::Boolean,
@@ -69,6 +73,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          event_subscription_token:,
           # URL to which event webhooks will be sent. URL must be a valid HTTPS address.
           url:,
           # Event subscription description.
@@ -85,6 +90,7 @@ module Lithic
         sig do
           override.returns(
             {
+              event_subscription_token: String,
               url: String,
               description: String,
               disabled: T::Boolean,

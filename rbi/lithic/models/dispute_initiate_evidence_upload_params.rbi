@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :dispute_token
+
       # Filename of the evidence.
       sig { returns(T.nilable(String)) }
       attr_reader :filename
@@ -23,11 +26,13 @@ module Lithic
 
       sig do
         params(
+          dispute_token: String,
           filename: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        dispute_token:,
         # Filename of the evidence.
         filename: nil,
         request_options: {}
@@ -36,7 +41,11 @@ module Lithic
 
       sig do
         override.returns(
-          { filename: String, request_options: Lithic::RequestOptions }
+          {
+            dispute_token: String,
+            filename: String,
+            request_options: Lithic::RequestOptions
+          }
         )
       end
       def to_hash

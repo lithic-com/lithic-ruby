@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute financial_account_token
+        #
+        #   @return [String]
+        required :financial_account_token, String
+
         # @!attribute after_date
         #   Return schedules with effective_date >= after_date (ISO format YYYY-MM-DD)
         #
@@ -26,7 +31,9 @@ module Lithic
         #   @return [Date, nil]
         optional :for_date, Date
 
-        # @!method initialize(after_date: nil, before_date: nil, for_date: nil, request_options: {})
+        # @!method initialize(financial_account_token:, after_date: nil, before_date: nil, for_date: nil, request_options: {})
+        #   @param financial_account_token [String]
+        #
         #   @param after_date [Date] Return schedules with effective_date >= after_date (ISO format YYYY-MM-DD)
         #
         #   @param before_date [Date] Return schedules with effective_date <= before_date (ISO format YYYY-MM-DD)

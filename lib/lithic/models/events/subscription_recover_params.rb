@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute event_subscription_token
+        #
+        #   @return [String]
+        required :event_subscription_token, String
+
         # @!attribute begin_
         #   Date string in RFC 3339 format. Only entries created after the specified time
         #   will be included. UTC time zone.
@@ -22,9 +27,11 @@ module Lithic
         #   @return [Time, nil]
         optional :end_, Time
 
-        # @!method initialize(begin_: nil, end_: nil, request_options: {})
+        # @!method initialize(event_subscription_token:, begin_: nil, end_: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Events::SubscriptionRecoverParams} for more details.
+        #
+        #   @param event_subscription_token [String]
         #
         #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
         #

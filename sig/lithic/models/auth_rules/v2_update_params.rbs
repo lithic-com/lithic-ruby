@@ -3,13 +3,8 @@ module Lithic
     module AuthRules
       type v2_update_params =
         {
-          account_tokens: ::Array[String],
-          business_account_tokens: ::Array[String],
-          name: String?,
-          state: Lithic::Models::AuthRules::V2UpdateParams::state,
-          card_tokens: ::Array[String],
-          excluded_card_tokens: ::Array[String],
-          program_level: bool
+          auth_rule_token: String,
+          body: Lithic::Models::AuthRules::V2UpdateParams::body
         }
         & Lithic::Internal::Type::request_parameters
 
@@ -17,64 +12,174 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        attr_reader account_tokens: ::Array[String]?
+        attr_accessor auth_rule_token: String
 
-        def account_tokens=: (::Array[String]) -> ::Array[String]
-
-        attr_reader business_account_tokens: ::Array[String]?
-
-        def business_account_tokens=: (::Array[String]) -> ::Array[String]
-
-        attr_accessor name: String?
-
-        attr_reader state: Lithic::Models::AuthRules::V2UpdateParams::state?
-
-        def state=: (
-          Lithic::Models::AuthRules::V2UpdateParams::state
-        ) -> Lithic::Models::AuthRules::V2UpdateParams::state
-
-        attr_reader card_tokens: ::Array[String]?
-
-        def card_tokens=: (::Array[String]) -> ::Array[String]
-
-        attr_reader excluded_card_tokens: ::Array[String]?
-
-        def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
-
-        attr_reader program_level: bool?
-
-        def program_level=: (bool) -> bool
+        attr_accessor body: Lithic::Models::AuthRules::V2UpdateParams::body
 
         def initialize: (
-          ?account_tokens: ::Array[String],
-          ?business_account_tokens: ::Array[String],
-          ?name: String?,
-          ?state: Lithic::Models::AuthRules::V2UpdateParams::state,
-          ?card_tokens: ::Array[String],
-          ?excluded_card_tokens: ::Array[String],
-          ?program_level: bool,
+          auth_rule_token: String,
+          body: Lithic::Models::AuthRules::V2UpdateParams::body,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
-          account_tokens: ::Array[String],
-          business_account_tokens: ::Array[String],
-          name: String?,
-          state: Lithic::Models::AuthRules::V2UpdateParams::state,
-          card_tokens: ::Array[String],
-          excluded_card_tokens: ::Array[String],
-          program_level: bool,
+          auth_rule_token: String,
+          body: Lithic::Models::AuthRules::V2UpdateParams::body,
           request_options: Lithic::RequestOptions
         }
 
-        type state = :INACTIVE
+        type body =
+          Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule
+          | Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule
+          | Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule
 
-        module State
-          extend Lithic::Internal::Type::Enum
+        module Body
+          extend Lithic::Internal::Type::Union
 
-          INACTIVE: :INACTIVE
+          type account_level_rule =
+            {
+              account_tokens: ::Array[String],
+              business_account_tokens: ::Array[String],
+              name: String?,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state
+            }
 
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::state]
+          class AccountLevelRule < Lithic::Internal::Type::BaseModel
+            attr_reader account_tokens: ::Array[String]?
+
+            def account_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_reader business_account_tokens: ::Array[String]?
+
+            def business_account_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_accessor name: String?
+
+            attr_reader state: Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state?
+
+            def state=: (
+              Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state
+            ) -> Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state
+
+            def initialize: (
+              ?account_tokens: ::Array[String],
+              ?business_account_tokens: ::Array[String],
+              ?name: String?,
+              ?state: Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state
+            ) -> void
+
+            def to_hash: -> {
+              account_tokens: ::Array[String],
+              business_account_tokens: ::Array[String],
+              name: String?,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state
+            }
+
+            type state = :INACTIVE
+
+            module State
+              extend Lithic::Internal::Type::Enum
+
+              INACTIVE: :INACTIVE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule::state]
+            end
+          end
+
+          type card_level_rule =
+            {
+              card_tokens: ::Array[String],
+              name: String?,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state
+            }
+
+          class CardLevelRule < Lithic::Internal::Type::BaseModel
+            attr_reader card_tokens: ::Array[String]?
+
+            def card_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_accessor name: String?
+
+            attr_reader state: Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state?
+
+            def state=: (
+              Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state
+            ) -> Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state
+
+            def initialize: (
+              ?card_tokens: ::Array[String],
+              ?name: String?,
+              ?state: Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state
+            ) -> void
+
+            def to_hash: -> {
+              card_tokens: ::Array[String],
+              name: String?,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state
+            }
+
+            type state = :INACTIVE
+
+            module State
+              extend Lithic::Internal::Type::Enum
+
+              INACTIVE: :INACTIVE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule::state]
+            end
+          end
+
+          type program_level_rule =
+            {
+              excluded_card_tokens: ::Array[String],
+              name: String?,
+              program_level: bool,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state
+            }
+
+          class ProgramLevelRule < Lithic::Internal::Type::BaseModel
+            attr_reader excluded_card_tokens: ::Array[String]?
+
+            def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_accessor name: String?
+
+            attr_reader program_level: bool?
+
+            def program_level=: (bool) -> bool
+
+            attr_reader state: Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state?
+
+            def state=: (
+              Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state
+            ) -> Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state
+
+            def initialize: (
+              ?excluded_card_tokens: ::Array[String],
+              ?name: String?,
+              ?program_level: bool,
+              ?state: Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state
+            ) -> void
+
+            def to_hash: -> {
+              excluded_card_tokens: ::Array[String],
+              name: String?,
+              program_level: bool,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state
+            }
+
+            type state = :INACTIVE
+
+            module State
+              extend Lithic::Internal::Type::Enum
+
+              INACTIVE: :INACTIVE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::body]
         end
       end
     end

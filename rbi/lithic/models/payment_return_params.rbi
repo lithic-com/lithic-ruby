@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::PaymentReturnParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :payment_token
+
       # Globally unique identifier for the financial account
       sig { returns(String) }
       attr_accessor :financial_account_token
@@ -38,6 +41,7 @@ module Lithic
 
       sig do
         params(
+          payment_token: String,
           financial_account_token: String,
           return_reason_code: String,
           addenda: T.nilable(String),
@@ -47,6 +51,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        payment_token:,
         # Globally unique identifier for the financial account
         financial_account_token:,
         # ACH return reason code indicating the reason for returning the payment.
@@ -69,6 +74,7 @@ module Lithic
       sig do
         override.returns(
           {
+            payment_token: String,
             financial_account_token: String,
             return_reason_code: String,
             addenda: T.nilable(String),

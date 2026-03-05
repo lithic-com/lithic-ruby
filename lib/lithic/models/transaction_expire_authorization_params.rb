@@ -7,7 +7,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute transaction_token
+      #
+      #   @return [String]
+      required :transaction_token, String
+
+      # @!method initialize(transaction_token:, request_options: {})
+      #   @param transaction_token [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

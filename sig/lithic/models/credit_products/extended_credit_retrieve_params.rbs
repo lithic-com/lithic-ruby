@@ -2,15 +2,24 @@ module Lithic
   module Models
     module CreditProducts
       type extended_credit_retrieve_params =
-        {  } & Lithic::Internal::Type::request_parameters
+        { credit_product_token: String }
+        & Lithic::Internal::Type::request_parameters
 
       class ExtendedCreditRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: Lithic::request_opts) -> void
+        attr_accessor credit_product_token: String
 
-        def to_hash: -> { request_options: Lithic::RequestOptions }
+        def initialize: (
+          credit_product_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          credit_product_token: String,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

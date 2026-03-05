@@ -7,13 +7,20 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute bulk_order_token
+      #
+      #   @return [String]
+      required :bulk_order_token, String
+
       # @!attribute status
       #   Status to update the bulk order to. Use LOCKED to finalize the order
       #
       #   @return [Symbol, Lithic::Models::CardBulkOrderUpdateParams::Status]
       required :status, enum: -> { Lithic::CardBulkOrderUpdateParams::Status }
 
-      # @!method initialize(status:, request_options: {})
+      # @!method initialize(bulk_order_token:, status:, request_options: {})
+      #   @param bulk_order_token [String]
+      #
       #   @param status [Symbol, Lithic::Models::CardBulkOrderUpdateParams::Status] Status to update the bulk order to. Use LOCKED to finalize the order
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]

@@ -10,58 +10,16 @@ module Lithic
         # Creates a new V2 Auth rule in draft mode
         sig do
           params(
-            parameters:
+            body:
               T.any(
-                Lithic::AuthRules::ConditionalBlockParameters::OrHash,
-                Lithic::AuthRules::VelocityLimitParams::OrHash,
-                Lithic::AuthRules::MerchantLockParameters::OrHash,
-                Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
-                Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
-                Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
-                Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
+                Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::OrHash,
+                Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::OrHash,
+                Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::OrHash
               ),
-            type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
-            card_tokens: T::Array[String],
-            program_level: T::Boolean,
-            account_tokens: T::Array[String],
-            business_account_tokens: T::Array[String],
-            event_stream: Lithic::AuthRules::EventStream::OrSymbol,
-            name: T.nilable(String),
-            excluded_card_tokens: T::Array[String],
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::AuthRules::AuthRule)
         end
-        def create(
-          # Parameters for the Auth Rule
-          parameters:,
-          # The type of Auth Rule. For certain rule types, this determines the event stream
-          # during which it will be evaluated. For rules that can be applied to one of
-          # several event streams, the effective one is defined by the separate
-          # `event_stream` field.
-          #
-          # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-          #   AUTHORIZATION event stream.
-          # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
-          # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
-          # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-          #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
-          type:,
-          # Card tokens to which the Auth Rule applies.
-          card_tokens:,
-          # Whether the Auth Rule applies to all authorizations on the card program.
-          program_level:,
-          # Account tokens to which the Auth Rule applies.
-          account_tokens: nil,
-          # Business Account tokens to which the Auth Rule applies.
-          business_account_tokens: nil,
-          # The event stream during which the rule will be evaluated.
-          event_stream: nil,
-          # Auth Rule Name
-          name: nil,
-          # Card tokens to which the Auth Rule does not apply.
-          excluded_card_tokens: nil,
-          request_options: {}
-        )
+        def create(body:, request_options: {})
         end
 
         # Fetches a V2 Auth rule by its token
@@ -82,38 +40,16 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
-            account_tokens: T::Array[String],
-            business_account_tokens: T::Array[String],
-            name: T.nilable(String),
-            state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol,
-            card_tokens: T::Array[String],
-            excluded_card_tokens: T::Array[String],
-            program_level: T::Boolean,
+            body:
+              T.any(
+                Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule::OrHash,
+                Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule::OrHash,
+                Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule::OrHash
+              ),
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::AuthRules::AuthRule)
         end
-        def update(
-          auth_rule_token,
-          # Account tokens to which the Auth Rule applies.
-          account_tokens: nil,
-          # Business Account tokens to which the Auth Rule applies.
-          business_account_tokens: nil,
-          # Auth Rule Name
-          name: nil,
-          # The desired state of the Auth Rule.
-          #
-          # Note that only deactivating an Auth Rule through this endpoint is supported at
-          # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
-          # should be used to promote a draft to the currently active version.
-          state: nil,
-          # Card tokens to which the Auth Rule applies.
-          card_tokens: nil,
-          # Card tokens to which the Auth Rule does not apply.
-          excluded_card_tokens: nil,
-          # Whether the Auth Rule applies to all authorizations on the card program.
-          program_level: nil,
-          request_options: {}
-        )
+        def update(auth_rule_token, body:, request_options: {})
         end
 
         # Lists V2 Auth rules

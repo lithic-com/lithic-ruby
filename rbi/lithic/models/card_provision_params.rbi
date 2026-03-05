@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::CardProvisionParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :card_token
+
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       # `activationData` in the response. Apple's public leaf certificate. Base64
       # encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
@@ -72,6 +75,7 @@ module Lithic
 
       sig do
         params(
+          card_token: String,
           certificate: String,
           client_device_id: String,
           client_wallet_account_id: String,
@@ -82,6 +86,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        card_token:,
         # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
         # `activationData` in the response. Apple's public leaf certificate. Base64
         # encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
@@ -112,6 +117,7 @@ module Lithic
       sig do
         override.returns(
           {
+            card_token: String,
             certificate: String,
             client_device_id: String,
             client_wallet_account_id: String,

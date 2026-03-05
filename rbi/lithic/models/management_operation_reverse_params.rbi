@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :management_operation_token
+
       sig { returns(Date) }
       attr_accessor :effective_date
 
@@ -25,17 +28,24 @@ module Lithic
 
       sig do
         params(
+          management_operation_token: String,
           effective_date: Date,
           memo: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(effective_date:, memo: nil, request_options: {})
+      def self.new(
+        management_operation_token:,
+        effective_date:,
+        memo: nil,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
+            management_operation_token: String,
             effective_date: Date,
             memo: String,
             request_options: Lithic::RequestOptions

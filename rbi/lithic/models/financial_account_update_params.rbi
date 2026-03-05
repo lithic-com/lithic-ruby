@@ -11,6 +11,9 @@ module Lithic
           T.any(Lithic::FinancialAccountUpdateParams, Lithic::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :financial_account_token
+
       sig { returns(T.nilable(String)) }
       attr_reader :nickname
 
@@ -19,16 +22,21 @@ module Lithic
 
       sig do
         params(
+          financial_account_token: String,
           nickname: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(nickname: nil, request_options: {})
+      def self.new(financial_account_token:, nickname: nil, request_options: {})
       end
 
       sig do
         override.returns(
-          { nickname: String, request_options: Lithic::RequestOptions }
+          {
+            financial_account_token: String,
+            nickname: String,
+            request_options: Lithic::RequestOptions
+          }
         )
       end
       def to_hash

@@ -18,19 +18,28 @@ module Lithic
         sig { returns(String) }
         attr_accessor :financial_account_token
 
+        sig { returns(String) }
+        attr_accessor :financial_transaction_token
+
         sig do
           params(
             financial_account_token: String,
+            financial_transaction_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(financial_account_token:, request_options: {})
+        def self.new(
+          financial_account_token:,
+          financial_transaction_token:,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
               financial_account_token: String,
+              financial_transaction_token: String,
               request_options: Lithic::RequestOptions
             }
           )

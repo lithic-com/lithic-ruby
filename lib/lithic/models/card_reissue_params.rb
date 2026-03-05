@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute card_token
+      #
+      #   @return [String]
+      required :card_token, String
+
       # @!attribute carrier
       #   If omitted, the previous carrier will be used.
       #
@@ -47,9 +52,11 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardReissueParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardReissueParams::ShippingMethod }
 
-      # @!method initialize(carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {})
+      # @!method initialize(card_token:, carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardReissueParams} for more details.
+      #
+      #   @param card_token [String]
       #
       #   @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
       #

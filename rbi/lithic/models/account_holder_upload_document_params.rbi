@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :account_holder_token
+
       # The type of document to upload
       sig do
         returns(
@@ -28,6 +31,7 @@ module Lithic
 
       sig do
         params(
+          account_holder_token: String,
           document_type:
             Lithic::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
@@ -35,6 +39,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        account_holder_token:,
         # The type of document to upload
         document_type:,
         # Globally unique identifier for the entity.
@@ -46,6 +51,7 @@ module Lithic
       sig do
         override.returns(
           {
+            account_holder_token: String,
             document_type:
               Lithic::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
             entity_token: String,

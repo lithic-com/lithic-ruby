@@ -1,22 +1,30 @@
 module Lithic
   module Models
     type book_transfer_reverse_params =
-      { memo: String } & Lithic::Internal::Type::request_parameters
+      { book_transfer_token: String, memo: String }
+      & Lithic::Internal::Type::request_parameters
 
     class BookTransferReverseParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor book_transfer_token: String
 
       attr_reader memo: String?
 
       def memo=: (String) -> String
 
       def initialize: (
+        book_transfer_token: String,
         ?memo: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> { memo: String, request_options: Lithic::RequestOptions }
+      def to_hash: -> {
+        book_transfer_token: String,
+        memo: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

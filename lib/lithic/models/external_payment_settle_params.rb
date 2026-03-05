@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute external_payment_token
+      #
+      #   @return [String]
+      required :external_payment_token, String
+
       # @!attribute effective_date
       #
       #   @return [Date]
@@ -22,7 +27,8 @@ module Lithic
       #   @return [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo, nil]
       optional :progress_to, enum: -> { Lithic::ExternalPaymentSettleParams::ProgressTo }
 
-      # @!method initialize(effective_date:, memo: nil, progress_to: nil, request_options: {})
+      # @!method initialize(external_payment_token:, effective_date:, memo: nil, progress_to: nil, request_options: {})
+      #   @param external_payment_token [String]
       #   @param effective_date [Date]
       #   @param memo [String]
       #   @param progress_to [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]

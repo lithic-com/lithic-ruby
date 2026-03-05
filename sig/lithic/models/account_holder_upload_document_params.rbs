@@ -2,6 +2,7 @@ module Lithic
   module Models
     type account_holder_upload_document_params =
       {
+        account_holder_token: String,
         document_type: Lithic::Models::AccountHolderUploadDocumentParams::document_type,
         entity_token: String
       }
@@ -11,17 +12,21 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      attr_accessor account_holder_token: String
+
       attr_accessor document_type: Lithic::Models::AccountHolderUploadDocumentParams::document_type
 
       attr_accessor entity_token: String
 
       def initialize: (
+        account_holder_token: String,
         document_type: Lithic::Models::AccountHolderUploadDocumentParams::document_type,
         entity_token: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
+        account_holder_token: String,
         document_type: Lithic::Models::AccountHolderUploadDocumentParams::document_type,
         entity_token: String,
         request_options: Lithic::RequestOptions

@@ -19,19 +19,28 @@ module Lithic
           sig { returns(String) }
           attr_accessor :auth_rule_token
 
+          sig { returns(String) }
+          attr_accessor :auth_rule_backtest_token
+
           sig do
             params(
               auth_rule_token: String,
+              auth_rule_backtest_token: String,
               request_options: Lithic::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(auth_rule_token:, request_options: {})
+          def self.new(
+            auth_rule_token:,
+            auth_rule_backtest_token:,
+            request_options: {}
+          )
           end
 
           sig do
             override.returns(
               {
                 auth_rule_token: String,
+                auth_rule_backtest_token: String,
                 request_options: Lithic::RequestOptions
               }
             )

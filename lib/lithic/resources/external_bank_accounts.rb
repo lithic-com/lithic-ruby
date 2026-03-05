@@ -6,47 +6,11 @@ module Lithic
       # @return [Lithic::Resources::ExternalBankAccounts::MicroDeposits]
       attr_reader :micro_deposits
 
-      # Some parameter documentations has been truncated, see
-      # {Lithic::Models::ExternalBankAccountCreateParams} for more details.
-      #
       # Creates an external bank account within a program or Lithic account.
       #
-      # @overload create(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
+      # @overload create(body:, request_options: {})
       #
-      # @param account_number [String] Account Number
-      #
-      # @param country [String] The country that the bank account is located in using ISO 3166-1. We will only a
-      #
-      # @param currency [String] currency of the external account 3-character alphabetic ISO 4217 code
-      #
-      # @param financial_account_token [String] The financial account token of the operating account to fund the micro deposits
-      #
-      # @param owner [String] Legal Name of the business or individual who owns the external account. This wil
-      #
-      # @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
-      #
-      # @param routing_number [String] Routing Number
-      #
-      # @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type] Account Type
-      #
-      # @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod] Verification Method
-      #
-      # @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
-      #
-      # @param address [Lithic::Models::ExternalBankAccountAddress] Address
-      #
-      # @param company_id [String] Optional field that helps identify bank accounts in receipts
-      #
-      # @param dob [Date] Date of Birth of the Individual that owns the external bank account
-      #
-      # @param doing_business_as [String] Doing Business As
-      #
-      # @param name [String] The nickname for this External Bank Account
-      #
-      # @param user_defined_id [String] User Defined ID
-      #
-      # @param verification_enforcement [Boolean]
-      #
+      # @param body [Lithic::Models::ExternalBankAccountCreateParams::Body::ExternallyVerified, Lithic::Models::ExternalBankAccountCreateParams::Body::Unverified, Lithic::Models::ExternalBankAccountCreateParams::Body::BankVerifiedCreateBankAccountAPIRequest]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalBankAccountCreateResponse]
@@ -57,7 +21,7 @@ module Lithic
         @client.request(
           method: :post,
           path: "v1/external_bank_accounts",
-          body: parsed,
+          body: parsed[:body],
           model: Lithic::Models::ExternalBankAccountCreateResponse,
           options: options
         )

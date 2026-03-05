@@ -14,8 +14,16 @@ module Lithic
         #   @return [String]
         required :financial_account_token, String
 
-        # @!method initialize(financial_account_token:, request_options: {})
+        # @!attribute loan_tape_token
+        #   Globally unique identifier for loan tape.
+        #
+        #   @return [String]
+        required :loan_tape_token, String
+
+        # @!method initialize(financial_account_token:, loan_tape_token:, request_options: {})
         #   @param financial_account_token [String] Globally unique identifier for financial account.
+        #
+        #   @param loan_tape_token [String] Globally unique identifier for loan tape.
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end

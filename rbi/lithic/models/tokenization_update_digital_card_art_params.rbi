@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :tokenization_token
+
       # Specifies the digital card art to be displayed in the user’s digital wallet for
       # a tokenization. This artwork must be approved by the network and configured by
       # Lithic to use. See
@@ -26,11 +29,13 @@ module Lithic
 
       sig do
         params(
+          tokenization_token: String,
           digital_card_art_token: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        tokenization_token:,
         # Specifies the digital card art to be displayed in the user’s digital wallet for
         # a tokenization. This artwork must be approved by the network and configured by
         # Lithic to use. See
@@ -43,6 +48,7 @@ module Lithic
       sig do
         override.returns(
           {
+            tokenization_token: String,
             digital_card_art_token: String,
             request_options: Lithic::RequestOptions
           }

@@ -1,15 +1,24 @@
 module Lithic
   module Models
     type tokenization_pause_params =
-      {  } & Lithic::Internal::Type::request_parameters
+      { tokenization_token: String }
+      & Lithic::Internal::Type::request_parameters
 
     class TokenizationPauseParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Lithic::request_opts) -> void
+      attr_accessor tokenization_token: String
 
-      def to_hash: -> { request_options: Lithic::RequestOptions }
+      def initialize: (
+        tokenization_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        tokenization_token: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

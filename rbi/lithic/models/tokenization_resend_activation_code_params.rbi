@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :tokenization_token
+
       # The communication method that the user has selected to use to receive the
       # authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
       # = "EMAIL_TO_CARDHOLDER_ADDRESS"
@@ -36,12 +39,14 @@ module Lithic
 
       sig do
         params(
+          tokenization_token: String,
           activation_method_type:
             Lithic::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        tokenization_token:,
         # The communication method that the user has selected to use to receive the
         # authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
         # = "EMAIL_TO_CARDHOLDER_ADDRESS"
@@ -53,6 +58,7 @@ module Lithic
       sig do
         override.returns(
           {
+            tokenization_token: String,
             activation_method_type:
               Lithic::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
             request_options: Lithic::RequestOptions

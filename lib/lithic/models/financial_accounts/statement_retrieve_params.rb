@@ -14,8 +14,16 @@ module Lithic
         #   @return [String]
         required :financial_account_token, String
 
-        # @!method initialize(financial_account_token:, request_options: {})
+        # @!attribute statement_token
+        #   Globally unique identifier for statements.
+        #
+        #   @return [String]
+        required :statement_token, String
+
+        # @!method initialize(financial_account_token:, statement_token:, request_options: {})
         #   @param financial_account_token [String] Globally unique identifier for financial account.
+        #
+        #   @param statement_token [String] Globally unique identifier for statements.
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end

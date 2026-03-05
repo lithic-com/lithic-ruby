@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :auth_rule_token
+
         # Start date for the report
         sig { returns(Date) }
         attr_accessor :begin_
@@ -25,12 +28,14 @@ module Lithic
 
         sig do
           params(
+            auth_rule_token: String,
             begin_: Date,
             end_: Date,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          auth_rule_token:,
           # Start date for the report
           begin_:,
           # End date for the report
@@ -42,6 +47,7 @@ module Lithic
         sig do
           override.returns(
             {
+              auth_rule_token: String,
               begin_: Date,
               end_: Date,
               request_options: Lithic::RequestOptions

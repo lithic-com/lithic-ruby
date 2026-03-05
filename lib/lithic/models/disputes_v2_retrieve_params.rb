@@ -7,7 +7,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute dispute_token
+      #
+      #   @return [String]
+      required :dispute_token, String
+
+      # @!method initialize(dispute_token:, request_options: {})
+      #   @param dispute_token [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -15,6 +15,9 @@ module Lithic
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :account_holder_token
+
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(Lithic::AccountHolders::EntityCreateParams::Address) }
@@ -63,6 +66,7 @@ module Lithic
 
         sig do
           params(
+            account_holder_token: String,
             address:
               Lithic::AccountHolders::EntityCreateParams::Address::OrHash,
             dob: String,
@@ -76,6 +80,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          account_holder_token:,
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
           # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
           address:,
@@ -104,6 +109,7 @@ module Lithic
         sig do
           override.returns(
             {
+              account_holder_token: String,
               address: Lithic::AccountHolders::EntityCreateParams::Address,
               dob: String,
               email: String,

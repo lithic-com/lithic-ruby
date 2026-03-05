@@ -14,6 +14,9 @@ module Lithic
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :external_bank_account_token
+
       # Address
       sig { returns(T.nilable(Lithic::ExternalBankAccountAddress)) }
       attr_reader :address
@@ -87,6 +90,7 @@ module Lithic
 
       sig do
         params(
+          external_bank_account_token: String,
           address: Lithic::ExternalBankAccountAddress::OrHash,
           company_id: String,
           dob: Date,
@@ -100,6 +104,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        external_bank_account_token:,
         # Address
         address: nil,
         # Optional field that helps identify bank accounts in receipts
@@ -125,6 +130,7 @@ module Lithic
       sig do
         override.returns(
           {
+            external_bank_account_token: String,
             address: Lithic::ExternalBankAccountAddress,
             company_id: String,
             dob: Date,

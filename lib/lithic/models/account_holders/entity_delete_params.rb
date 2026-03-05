@@ -13,8 +13,14 @@ module Lithic
         #   @return [String]
         required :account_holder_token, String
 
-        # @!method initialize(account_holder_token:, request_options: {})
+        # @!attribute entity_token
+        #
+        #   @return [String]
+        required :entity_token, String
+
+        # @!method initialize(account_holder_token:, entity_token:, request_options: {})
         #   @param account_holder_token [String]
+        #   @param entity_token [String]
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -7,6 +7,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute payment_token
+      #
+      #   @return [String]
+      required :payment_token, String
+
       # @!attribute event_type
       #   Event Type
       #
@@ -37,7 +42,9 @@ module Lithic
       #   @return [String, nil]
       optional :return_reason_code, String
 
-      # @!method initialize(event_type:, date_of_death: nil, decline_reason: nil, return_addenda: nil, return_reason_code: nil, request_options: {})
+      # @!method initialize(payment_token:, event_type:, date_of_death: nil, decline_reason: nil, return_addenda: nil, return_reason_code: nil, request_options: {})
+      #   @param payment_token [String]
+      #
       #   @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType] Event Type
       #
       #   @param date_of_death [Date] Date of Death for ACH Return

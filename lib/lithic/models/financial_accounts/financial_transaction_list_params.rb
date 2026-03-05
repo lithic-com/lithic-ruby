@@ -8,6 +8,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        # @!attribute financial_account_token
+        #
+        #   @return [String]
+        required :financial_account_token, String
+
         # @!attribute begin_
         #   Date string in RFC 3339 format. Only entries created after the specified time
         #   will be included. UTC time zone.
@@ -54,10 +59,12 @@ module Lithic
         #   @return [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status, nil]
         optional :status, enum: -> { Lithic::FinancialAccounts::FinancialTransactionListParams::Status }
 
-        # @!method initialize(begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+        # @!method initialize(financial_account_token:, begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::FinancialTransactionListParams} for more
         #   details.
+        #
+        #   @param financial_account_token [String]
         #
         #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
         #
