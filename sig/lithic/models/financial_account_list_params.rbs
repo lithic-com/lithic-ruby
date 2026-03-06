@@ -40,7 +40,12 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type type_ = :ISSUING | :OPERATING | :RESERVE | :SECURITY
+      type type_ =
+        :ISSUING
+        | :OPERATING
+        | :RESERVE
+        | :SECURITY
+        | :EARLY_DIRECT_DEPOSIT_FLOAT
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -49,6 +54,7 @@ module Lithic
         OPERATING: :OPERATING
         RESERVE: :RESERVE
         SECURITY: :SECURITY
+        EARLY_DIRECT_DEPOSIT_FLOAT: :EARLY_DIRECT_DEPOSIT_FLOAT
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccountListParams::type_]
       end

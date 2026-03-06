@@ -34,7 +34,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::AccountActivityListResponse::Internal, Lithic::Models::BookTransferResponse, Lithic::Models::AccountActivityListResponse::Card, Lithic::Models::Payment, Lithic::Models::ExternalPayment, Lithic::Models::ManagementOperationTransaction>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::AccountActivityListResponse::Internal, Lithic::Models::BookTransferResponse, Lithic::Models::AccountActivityListResponse::Card, Lithic::Models::Payment, Lithic::Models::ExternalPayment, Lithic::Models::ManagementOperationTransaction, Lithic::Models::Hold>]
       #
       # @see Lithic::Models::AccountActivityListParams
       def list(params = {})
@@ -58,7 +58,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal, Lithic::Models::BookTransferResponse, Lithic::Models::AccountActivityRetrieveTransactionResponse::Card, Lithic::Models::Payment, Lithic::Models::ExternalPayment, Lithic::Models::ManagementOperationTransaction]
+      # @return [Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal, Lithic::Models::BookTransferResponse, Lithic::Models::AccountActivityRetrieveTransactionResponse::Card, Lithic::Models::Payment, Lithic::Models::ExternalPayment, Lithic::Models::ManagementOperationTransaction, Lithic::Models::Hold]
       #
       # @see Lithic::Models::AccountActivityRetrieveTransactionParams
       def retrieve_transaction(transaction_token, params = {})

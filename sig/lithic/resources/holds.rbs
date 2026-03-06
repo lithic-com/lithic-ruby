@@ -1,0 +1,39 @@
+module Lithic
+  module Resources
+    class Holds
+      def create: (
+        String financial_account_token,
+        amount: Integer,
+        ?token: String,
+        ?expiration_datetime: Time,
+        ?memo: String?,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Hold
+
+      def retrieve: (
+        String hold_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Hold
+
+      def list: (
+        String financial_account_token,
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::HoldListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::CursorPage[Lithic::Hold]
+
+      def `void`: (
+        String hold_token,
+        ?memo: String?,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Hold
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

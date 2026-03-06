@@ -1,0 +1,28 @@
+module Lithic
+  module Models
+    type hold_void_params =
+      { hold_token: String, memo: String? }
+      & Lithic::Internal::Type::request_parameters
+
+    class HoldVoidParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor hold_token: String
+
+      attr_accessor memo: String?
+
+      def initialize: (
+        hold_token: String,
+        ?memo: String?,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        hold_token: String,
+        memo: String?,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

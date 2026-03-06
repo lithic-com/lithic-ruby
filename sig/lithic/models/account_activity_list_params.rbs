@@ -120,6 +120,7 @@ module Lithic
         | :MANAGEMENT_FEE
         | :MANAGEMENT_REWARD
         | :MANAGEMENT_DISBURSEMENT
+        | :HOLD
         | :PROGRAM_FUNDING
 
       module Category
@@ -144,6 +145,7 @@ module Lithic
         MANAGEMENT_FEE: :MANAGEMENT_FEE
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
         MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+        HOLD: :HOLD
         PROGRAM_FUNDING: :PROGRAM_FUNDING
 
         def self?.values: -> ::Array[Lithic::Models::AccountActivityListParams::category]

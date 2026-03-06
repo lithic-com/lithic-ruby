@@ -6,7 +6,8 @@ module Lithic
     # which transaction type is returned: INTERNAL returns FinancialTransaction,
     # TRANSFER returns BookTransferTransaction, CARD returns CardTransaction, PAYMENT
     # returns PaymentTransaction, EXTERNAL_PAYMENT returns ExternalPaymentResponse,
-    # and MANAGEMENT_OPERATION returns ManagementOperationTransaction
+    # MANAGEMENT_OPERATION returns ManagementOperationTransaction, and HOLD returns
+    # HoldTransaction
     module AccountActivityListResponse
       extend Lithic::Internal::Type::Union
 
@@ -18,7 +19,8 @@ module Lithic
             Lithic::Models::AccountActivityListResponse::Card,
             Lithic::Payment,
             Lithic::ExternalPayment,
-            Lithic::ManagementOperationTransaction
+            Lithic::ManagementOperationTransaction,
+            Lithic::Hold
           )
         end
 
@@ -277,6 +279,11 @@ module Lithic
           MANAGEMENT_DISBURSEMENT =
             T.let(
               :MANAGEMENT_DISBURSEMENT,
+              Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
+            )
+          HOLD =
+            T.let(
+              :HOLD,
               Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
             )
           PROGRAM_FUNDING =
