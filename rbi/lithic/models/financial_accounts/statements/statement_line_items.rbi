@@ -296,6 +296,11 @@ module Lithic
                   :MANAGEMENT_DISBURSEMENT,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              HOLD =
+                T.let(
+                  :HOLD,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
               PROGRAM_FUNDING =
                 T.let(
                   :PROGRAM_FUNDING,

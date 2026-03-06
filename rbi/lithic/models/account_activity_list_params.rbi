@@ -275,6 +275,11 @@ module Lithic
             :MANAGEMENT_DISBURSEMENT,
             Lithic::AccountActivityListParams::Category::TaggedSymbol
           )
+        HOLD =
+          T.let(
+            :HOLD,
+            Lithic::AccountActivityListParams::Category::TaggedSymbol
+          )
         PROGRAM_FUNDING =
           T.let(
             :PROGRAM_FUNDING,

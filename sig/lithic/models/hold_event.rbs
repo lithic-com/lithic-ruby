@@ -1,0 +1,91 @@
+module Lithic
+  module Models
+    type hold_event =
+      {
+        token: String,
+        amount: Integer,
+        created: Time,
+        detailed_results: ::Array[Lithic::Models::HoldEvent::detailed_result],
+        memo: String?,
+        result: Lithic::Models::HoldEvent::result,
+        settling_transaction_token: String?,
+        type: Lithic::Models::HoldEvent::type_
+      }
+
+    class HoldEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor amount: Integer
+
+      attr_accessor created: Time
+
+      attr_accessor detailed_results: ::Array[Lithic::Models::HoldEvent::detailed_result]
+
+      attr_accessor memo: String?
+
+      attr_accessor result: Lithic::Models::HoldEvent::result
+
+      attr_accessor settling_transaction_token: String?
+
+      attr_accessor type: Lithic::Models::HoldEvent::type_
+
+      def initialize: (
+        token: String,
+        amount: Integer,
+        created: Time,
+        detailed_results: ::Array[Lithic::Models::HoldEvent::detailed_result],
+        memo: String?,
+        result: Lithic::Models::HoldEvent::result,
+        settling_transaction_token: String?,
+        type: Lithic::Models::HoldEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        amount: Integer,
+        created: Time,
+        detailed_results: ::Array[Lithic::Models::HoldEvent::detailed_result],
+        memo: String?,
+        result: Lithic::Models::HoldEvent::result,
+        settling_transaction_token: String?,
+        type: Lithic::Models::HoldEvent::type_
+      }
+
+      type detailed_result = :APPROVED | :INSUFFICIENT_FUNDS
+
+      module DetailedResult
+        extend Lithic::Internal::Type::Enum
+
+        APPROVED: :APPROVED
+        INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+
+        def self?.values: -> ::Array[Lithic::Models::HoldEvent::detailed_result]
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      module Result
+        extend Lithic::Internal::Type::Enum
+
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self?.values: -> ::Array[Lithic::Models::HoldEvent::result]
+      end
+
+      type type_ =
+        :HOLD_INITIATED | :HOLD_VOIDED | :HOLD_EXPIRED | :HOLD_SETTLED
+
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        HOLD_INITIATED: :HOLD_INITIATED
+        HOLD_VOIDED: :HOLD_VOIDED
+        HOLD_EXPIRED: :HOLD_EXPIRED
+        HOLD_SETTLED: :HOLD_SETTLED
+
+        def self?.values: -> ::Array[Lithic::Models::HoldEvent::type_]
+      end
+    end
+  end
+end

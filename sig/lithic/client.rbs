@@ -75,6 +75,8 @@ module Lithic
 
     attr_reader network_programs: Lithic::Resources::NetworkPrograms
 
+    attr_reader holds: Lithic::Resources::Holds
+
     attr_reader account_activity: Lithic::Resources::AccountActivity
 
     attr_reader transfer_limits: Lithic::Resources::TransferLimits

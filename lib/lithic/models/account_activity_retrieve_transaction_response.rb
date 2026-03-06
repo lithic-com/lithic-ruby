@@ -6,7 +6,8 @@ module Lithic
     # which transaction type is returned: INTERNAL returns FinancialTransaction,
     # TRANSFER returns BookTransferTransaction, CARD returns CardTransaction, PAYMENT
     # returns PaymentTransaction, EXTERNAL_PAYMENT returns ExternalPaymentResponse,
-    # and MANAGEMENT_OPERATION returns ManagementOperationTransaction
+    # MANAGEMENT_OPERATION returns ManagementOperationTransaction, and HOLD returns
+    # HoldTransaction
     #
     # @see Lithic::Resources::AccountActivity#retrieve_transaction
     module AccountActivityRetrieveTransactionResponse
@@ -29,6 +30,9 @@ module Lithic
       variant :EXTERNAL_PAYMENT, -> { Lithic::ExternalPayment }
 
       variant :MANAGEMENT_OPERATION, -> { Lithic::ManagementOperationTransaction }
+
+      # A hold transaction representing reserved funds on a financial account. Holds move funds from available to pending balance in anticipation of future payments. They can be resolved via settlement (linked to payment), manual release, or expiration.
+      variant :HOLD, -> { Lithic::Hold }
 
       class Internal < Lithic::Internal::Type::BaseModel
         # @!attribute token
@@ -166,6 +170,7 @@ module Lithic
           MANAGEMENT_FEE = :MANAGEMENT_FEE
           MANAGEMENT_REWARD = :MANAGEMENT_REWARD
           MANAGEMENT_DISBURSEMENT = :MANAGEMENT_DISBURSEMENT
+          HOLD = :HOLD
           PROGRAM_FUNDING = :PROGRAM_FUNDING
 
           # @!method self.values
@@ -264,7 +269,7 @@ module Lithic
       end
 
       # @!method self.variants
-      #   @return [Array(Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal, Lithic::Models::BookTransferResponse, Lithic::Models::AccountActivityRetrieveTransactionResponse::Card, Lithic::Models::Payment, Lithic::Models::ExternalPayment, Lithic::Models::ManagementOperationTransaction)]
+      #   @return [Array(Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal, Lithic::Models::BookTransferResponse, Lithic::Models::AccountActivityRetrieveTransactionResponse::Card, Lithic::Models::Payment, Lithic::Models::ExternalPayment, Lithic::Models::ManagementOperationTransaction, Lithic::Models::Hold)]
     end
   end
 end

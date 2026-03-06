@@ -112,6 +112,9 @@ module Lithic
     sig { returns(Lithic::Resources::NetworkPrograms) }
     attr_reader :network_programs
 
+    sig { returns(Lithic::Resources::Holds) }
+    attr_reader :holds
+
     sig { returns(Lithic::Resources::AccountActivity) }
     attr_reader :account_activity
 
