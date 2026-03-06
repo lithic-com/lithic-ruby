@@ -98,6 +98,11 @@ module Lithic
             :SECURITY,
             Lithic::FinancialAccountListParams::Type::TaggedSymbol
           )
+        EARLY_DIRECT_DEPOSIT_FLOAT =
+          T.let(
+            :EARLY_DIRECT_DEPOSIT_FLOAT,
+            Lithic::FinancialAccountListParams::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(

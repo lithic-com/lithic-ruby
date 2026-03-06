@@ -168,6 +168,7 @@ module Lithic
         | :PROGRAM_RECEIVABLES
         | :COLLECTION
         | :PROGRAM_BANK_ACCOUNTS_PAYABLE
+        | :EARLY_DIRECT_DEPOSIT_FLOAT
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -182,6 +183,7 @@ module Lithic
         PROGRAM_RECEIVABLES: :PROGRAM_RECEIVABLES
         COLLECTION: :COLLECTION
         PROGRAM_BANK_ACCOUNTS_PAYABLE: :PROGRAM_BANK_ACCOUNTS_PAYABLE
+        EARLY_DIRECT_DEPOSIT_FLOAT: :EARLY_DIRECT_DEPOSIT_FLOAT
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
       end

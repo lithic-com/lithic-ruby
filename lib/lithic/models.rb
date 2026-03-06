@@ -365,6 +365,18 @@ module Lithic
 
   FundingEventRetrieveParams = Lithic::Models::FundingEventRetrieveParams
 
+  Hold = Lithic::Models::Hold
+
+  HoldCreateParams = Lithic::Models::HoldCreateParams
+
+  HoldEvent = Lithic::Models::HoldEvent
+
+  HoldListParams = Lithic::Models::HoldListParams
+
+  HoldRetrieveParams = Lithic::Models::HoldRetrieveParams
+
+  HoldVoidParams = Lithic::Models::HoldVoidParams
+
   InstanceFinancialAccountType = Lithic::Models::InstanceFinancialAccountType
 
   InternalTransactionAPI = Lithic::Models::InternalTransactionAPI

@@ -1,0 +1,57 @@
+module Lithic
+  module Models
+    type hold_create_params =
+      {
+        financial_account_token: String,
+        amount: Integer,
+        token: String,
+        expiration_datetime: Time,
+        memo: String?,
+        user_defined_id: String
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class HoldCreateParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor amount: Integer
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader expiration_datetime: Time?
+
+      def expiration_datetime=: (Time) -> Time
+
+      attr_accessor memo: String?
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      def initialize: (
+        financial_account_token: String,
+        amount: Integer,
+        ?token: String,
+        ?expiration_datetime: Time,
+        ?memo: String?,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        financial_account_token: String,
+        amount: Integer,
+        token: String,
+        expiration_datetime: Time,
+        memo: String?,
+        user_defined_id: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

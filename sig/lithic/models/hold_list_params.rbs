@@ -1,0 +1,83 @@
+module Lithic
+  module Models
+    type hold_list_params =
+      {
+        financial_account_token: String,
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::HoldListParams::status
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class HoldListParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor financial_account_token: String
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: Lithic::Models::HoldListParams::status?
+
+      def status=: (
+        Lithic::Models::HoldListParams::status
+      ) -> Lithic::Models::HoldListParams::status
+
+      def initialize: (
+        financial_account_token: String,
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::HoldListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        financial_account_token: String,
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::HoldListParams::status,
+        request_options: Lithic::RequestOptions
+      }
+
+      type status = :PENDING | :SETTLED | :EXPIRED | :VOIDED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        EXPIRED: :EXPIRED
+        VOIDED: :VOIDED
+
+        def self?.values: -> ::Array[Lithic::Models::HoldListParams::status]
+      end
+    end
+  end
+end

@@ -25,6 +25,7 @@ class Lithic::Test::Resources::AccountActivityTest < Lithic::Test::ResourceTest
       in Lithic::Payment
       in Lithic::ExternalPayment
       in Lithic::ManagementOperationTransaction
+      in Lithic::Hold
       end
     end
 
@@ -121,6 +122,20 @@ class Lithic::Test::Resources::AccountActivityTest < Lithic::Test::ResourceTest
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         user_defined_id: String | nil
       }
+      in {
+        family: :HOLD,
+        token: String,
+        created: Time,
+        status: Lithic::Hold::Status,
+        updated: Time,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::HoldEvent]) | nil,
+        expiration_datetime: Time | nil,
+        financial_account_token: String | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::Hold::Result | nil,
+        user_defined_id: String | nil
+      }
       end
     end
   end
@@ -140,6 +155,7 @@ class Lithic::Test::Resources::AccountActivityTest < Lithic::Test::ResourceTest
       in Lithic::Payment
       in Lithic::ExternalPayment
       in Lithic::ManagementOperationTransaction
+      in Lithic::Hold
       end
     end
 
@@ -234,6 +250,20 @@ class Lithic::Test::Resources::AccountActivityTest < Lithic::Test::ResourceTest
         result: Lithic::ManagementOperationTransaction::Result | nil,
         settled_amount: Integer | nil,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
+        user_defined_id: String | nil
+      }
+      in {
+        family: :HOLD,
+        token: String,
+        created: Time,
+        status: Lithic::Hold::Status,
+        updated: Time,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::HoldEvent]) | nil,
+        expiration_datetime: Time | nil,
+        financial_account_token: String | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::Hold::Result | nil,
         user_defined_id: String | nil
       }
       end

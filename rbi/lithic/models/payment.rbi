@@ -260,6 +260,7 @@ module Lithic
             :MANAGEMENT_DISBURSEMENT,
             Lithic::Payment::Category::TaggedSymbol
           )
+        HOLD = T.let(:HOLD, Lithic::Payment::Category::TaggedSymbol)
         PROGRAM_FUNDING =
           T.let(:PROGRAM_FUNDING, Lithic::Payment::Category::TaggedSymbol)
 

@@ -42,6 +42,7 @@ module Lithic
         OPERATING = :OPERATING
         RESERVE = :RESERVE
         SECURITY = :SECURITY
+        EARLY_DIRECT_DEPOSIT_FLOAT = :EARLY_DIRECT_DEPOSIT_FLOAT
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -45,6 +45,11 @@ module Lithic
           :PROGRAM_BANK_ACCOUNTS_PAYABLE,
           Lithic::InstanceFinancialAccountType::TaggedSymbol
         )
+      EARLY_DIRECT_DEPOSIT_FLOAT =
+        T.let(
+          :EARLY_DIRECT_DEPOSIT_FLOAT,
+          Lithic::InstanceFinancialAccountType::TaggedSymbol
+        )
 
       sig do
         override.returns(
