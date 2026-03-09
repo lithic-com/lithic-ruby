@@ -86,6 +86,7 @@ module Lithic
               | Lithic::AuthRules::ConditionalAuthorizationActionParameters
               | Lithic::AuthRules::ConditionalACHActionParameters
               | Lithic::AuthRules::ConditionalTokenizationActionParameters
+              | Lithic::AuthRules::TypescriptCodeParameters
 
             module Parameters
               extend Lithic::Internal::Type::Union
@@ -98,6 +99,7 @@ module Lithic
               | :VELOCITY_LIMIT
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
+              | :TYPESCRIPT_CODE
 
             module Type
               extend Lithic::Internal::Type::Enum
@@ -106,6 +108,7 @@ module Lithic
               VELOCITY_LIMIT: :VELOCITY_LIMIT
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+              TYPESCRIPT_CODE: :TYPESCRIPT_CODE
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_]
             end
@@ -159,6 +162,7 @@ module Lithic
               | Lithic::AuthRules::ConditionalAuthorizationActionParameters
               | Lithic::AuthRules::ConditionalACHActionParameters
               | Lithic::AuthRules::ConditionalTokenizationActionParameters
+              | Lithic::AuthRules::TypescriptCodeParameters
 
             module Parameters
               extend Lithic::Internal::Type::Union
@@ -171,6 +175,7 @@ module Lithic
               | :VELOCITY_LIMIT
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
+              | :TYPESCRIPT_CODE
 
             module Type
               extend Lithic::Internal::Type::Enum
@@ -179,6 +184,7 @@ module Lithic
               VELOCITY_LIMIT: :VELOCITY_LIMIT
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+              TYPESCRIPT_CODE: :TYPESCRIPT_CODE
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_]
             end
@@ -239,6 +245,7 @@ module Lithic
               | Lithic::AuthRules::ConditionalAuthorizationActionParameters
               | Lithic::AuthRules::ConditionalACHActionParameters
               | Lithic::AuthRules::ConditionalTokenizationActionParameters
+              | Lithic::AuthRules::TypescriptCodeParameters
 
             module Parameters
               extend Lithic::Internal::Type::Union
@@ -251,6 +258,7 @@ module Lithic
               | :VELOCITY_LIMIT
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
+              | :TYPESCRIPT_CODE
 
             module Type
               extend Lithic::Internal::Type::Enum
@@ -259,6 +267,7 @@ module Lithic
               VELOCITY_LIMIT: :VELOCITY_LIMIT
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+              TYPESCRIPT_CODE: :TYPESCRIPT_CODE
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_]
             end
