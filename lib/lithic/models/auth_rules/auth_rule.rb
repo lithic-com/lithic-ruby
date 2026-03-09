@@ -82,6 +82,8 @@ module Lithic
         #   - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         #   - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         #
         #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::Type]
         required :type, enum: -> { Lithic::AuthRules::AuthRule::Type }
@@ -127,7 +129,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters]
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters]
           required :parameters, union: -> { Lithic::AuthRules::AuthRule::CurrentVersion::Parameters }
 
           response_only do
@@ -143,7 +145,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::AuthRule::CurrentVersion} for more details.
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -168,18 +170,43 @@ module Lithic
 
             variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters }
 
+            # Parameters for defining a TypeScript code rule
+            variant -> { Lithic::AuthRules::TypescriptCodeParameters }
+
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters)]
           end
         end
 
         # @see Lithic::Models::AuthRules::AuthRule#draft_version
         class DraftVersion < Lithic::Internal::Type::BaseModel
+          # @!attribute error
+          #   An error message if the draft version failed compilation. Populated when `state`
+          #   is `ERROR`, `null` otherwise.
+          #
+          #   @return [String, nil]
+          required :error, String, nil?: true
+
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters]
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters]
           required :parameters, union: -> { Lithic::AuthRules::AuthRule::DraftVersion::Parameters }
+
+          # @!attribute state
+          #   The state of the draft version. Most rules are created synchronously and the
+          #   state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
+          #   asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
+          #   success or `ERROR` on failure.
+          #
+          #   - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+          #   - `SHADOWING`: The draft version is ready and evaluating in shadow mode
+          #     alongside the current active version. It can be promoted to the active
+          #     version.
+          #   - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+          #
+          #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::DraftVersion::State]
+          required :state, enum: -> { Lithic::AuthRules::AuthRule::DraftVersion::State }
 
           response_only do
             # @!attribute version
@@ -190,11 +217,15 @@ module Lithic
             required :version, Integer
           end
 
-          # @!method initialize(parameters:, version:)
+          # @!method initialize(error:, parameters:, state:, version:)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::AuthRule::DraftVersion} for more details.
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
+          #   @param error [String, nil] An error message if the draft version failed compilation. Populated when `state`
+          #
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
+          #
+          #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::DraftVersion::State] The state of the draft version. Most rules are created synchronously and the sta
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -219,8 +250,34 @@ module Lithic
 
             variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters }
 
+            # Parameters for defining a TypeScript code rule
+            variant -> { Lithic::AuthRules::TypescriptCodeParameters }
+
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters)]
+          end
+
+          # The state of the draft version. Most rules are created synchronously and the
+          # state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
+          # asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
+          # success or `ERROR` on failure.
+          #
+          # - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+          # - `SHADOWING`: The draft version is ready and evaluating in shadow mode
+          #   alongside the current active version. It can be promoted to the active
+          #   version.
+          # - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+          #
+          # @see Lithic::Models::AuthRules::AuthRule::DraftVersion#state
+          module State
+            extend Lithic::Internal::Type::Enum
+
+            PENDING = :PENDING
+            SHADOWING = :SHADOWING
+            ERROR = :ERROR
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -248,6 +305,8 @@ module Lithic
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         #
         # @see Lithic::Models::AuthRules::AuthRule#type
         module Type
@@ -257,6 +316,7 @@ module Lithic
           VELOCITY_LIMIT = :VELOCITY_LIMIT
           MERCHANT_LOCK = :MERCHANT_LOCK
           CONDITIONAL_ACTION = :CONDITIONAL_ACTION
+          TYPESCRIPT_CODE = :TYPESCRIPT_CODE
 
           # @!method self.values
           #   @return [Array<Symbol>]

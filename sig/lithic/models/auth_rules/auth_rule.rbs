@@ -110,6 +110,7 @@ module Lithic
             | Lithic::AuthRules::ConditionalAuthorizationActionParameters
             | Lithic::AuthRules::ConditionalACHActionParameters
             | Lithic::AuthRules::ConditionalTokenizationActionParameters
+            | Lithic::AuthRules::TypescriptCodeParameters
 
           module Parameters
             extend Lithic::Internal::Type::Union
@@ -120,22 +121,32 @@ module Lithic
 
         type draft_version =
           {
+            error: String?,
             parameters: Lithic::Models::AuthRules::AuthRule::DraftVersion::parameters,
+            state: Lithic::Models::AuthRules::AuthRule::DraftVersion::state,
             version: Integer
           }
 
         class DraftVersion < Lithic::Internal::Type::BaseModel
+          attr_accessor error: String?
+
           attr_accessor parameters: Lithic::Models::AuthRules::AuthRule::DraftVersion::parameters
+
+          attr_accessor state: Lithic::Models::AuthRules::AuthRule::DraftVersion::state
 
           attr_accessor version: Integer
 
           def initialize: (
+            error: String?,
             parameters: Lithic::Models::AuthRules::AuthRule::DraftVersion::parameters,
+            state: Lithic::Models::AuthRules::AuthRule::DraftVersion::state,
             version: Integer
           ) -> void
 
           def to_hash: -> {
+            error: String?,
             parameters: Lithic::Models::AuthRules::AuthRule::DraftVersion::parameters,
+            state: Lithic::Models::AuthRules::AuthRule::DraftVersion::state,
             version: Integer
           }
 
@@ -147,11 +158,24 @@ module Lithic
             | Lithic::AuthRules::ConditionalAuthorizationActionParameters
             | Lithic::AuthRules::ConditionalACHActionParameters
             | Lithic::AuthRules::ConditionalTokenizationActionParameters
+            | Lithic::AuthRules::TypescriptCodeParameters
 
           module Parameters
             extend Lithic::Internal::Type::Union
 
             def self?.variants: -> ::Array[Lithic::Models::AuthRules::AuthRule::DraftVersion::parameters]
+          end
+
+          type state = :PENDING | :SHADOWING | :ERROR
+
+          module State
+            extend Lithic::Internal::Type::Enum
+
+            PENDING: :PENDING
+            SHADOWING: :SHADOWING
+            ERROR: :ERROR
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRule::DraftVersion::state]
           end
         end
 
@@ -171,6 +195,7 @@ module Lithic
           | :VELOCITY_LIMIT
           | :MERCHANT_LOCK
           | :CONDITIONAL_ACTION
+          | :TYPESCRIPT_CODE
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -179,6 +204,7 @@ module Lithic
           VELOCITY_LIMIT: :VELOCITY_LIMIT
           MERCHANT_LOCK: :MERCHANT_LOCK
           CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+          TYPESCRIPT_CODE: :TYPESCRIPT_CODE
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRule::type_]
         end

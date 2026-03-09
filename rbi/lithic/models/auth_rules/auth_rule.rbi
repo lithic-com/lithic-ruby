@@ -81,6 +81,8 @@ module Lithic
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         sig { returns(Lithic::AuthRules::AuthRule::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -142,6 +144,8 @@ module Lithic
           # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
           # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
           # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+          #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+          # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
           #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
           type:,
           # Card tokens to which the Auth Rule does not apply.
@@ -205,7 +209,8 @@ module Lithic
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
+                  Lithic::AuthRules::TypescriptCodeParameters::OrHash
                 ),
               version: Integer
             ).returns(T.attached_class)
@@ -244,7 +249,8 @@ module Lithic
                   Lithic::AuthRules::Conditional3DSActionParameters,
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters,
                   Lithic::AuthRules::ConditionalACHActionParameters,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                  Lithic::AuthRules::TypescriptCodeParameters
                 )
               end
 
@@ -269,6 +275,11 @@ module Lithic
               )
             end
 
+          # An error message if the draft version failed compilation. Populated when `state`
+          # is `ERROR`, `null` otherwise.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :error
+
           # Parameters for the Auth Rule
           sig do
             returns(
@@ -277,6 +288,23 @@ module Lithic
           end
           attr_accessor :parameters
 
+          # The state of the draft version. Most rules are created synchronously and the
+          # state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
+          # asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
+          # success or `ERROR` on failure.
+          #
+          # - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+          # - `SHADOWING`: The draft version is ready and evaluating in shadow mode
+          #   alongside the current active version. It can be promoted to the active
+          #   version.
+          # - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+          sig do
+            returns(
+              Lithic::AuthRules::AuthRule::DraftVersion::State::TaggedSymbol
+            )
+          end
+          attr_accessor :state
+
           # The version of the rule, this is incremented whenever the rule's parameters
           # change.
           sig { returns(Integer) }
@@ -284,6 +312,7 @@ module Lithic
 
           sig do
             params(
+              error: T.nilable(String),
               parameters:
                 T.any(
                   Lithic::AuthRules::ConditionalBlockParameters::OrHash,
@@ -292,14 +321,30 @@ module Lithic
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
+                  Lithic::AuthRules::TypescriptCodeParameters::OrHash
                 ),
+              state: Lithic::AuthRules::AuthRule::DraftVersion::State::OrSymbol,
               version: Integer
             ).returns(T.attached_class)
           end
           def self.new(
+            # An error message if the draft version failed compilation. Populated when `state`
+            # is `ERROR`, `null` otherwise.
+            error:,
             # Parameters for the Auth Rule
             parameters:,
+            # The state of the draft version. Most rules are created synchronously and the
+            # state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
+            # asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
+            # success or `ERROR` on failure.
+            #
+            # - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+            # - `SHADOWING`: The draft version is ready and evaluating in shadow mode
+            #   alongside the current active version. It can be promoted to the active
+            #   version.
+            # - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+            state:,
             # The version of the rule, this is incremented whenever the rule's parameters
             # change.
             version:
@@ -309,8 +354,11 @@ module Lithic
           sig do
             override.returns(
               {
+                error: T.nilable(String),
                 parameters:
                   Lithic::AuthRules::AuthRule::DraftVersion::Parameters::Variants,
+                state:
+                  Lithic::AuthRules::AuthRule::DraftVersion::State::TaggedSymbol,
                 version: Integer
               }
             )
@@ -331,7 +379,8 @@ module Lithic
                   Lithic::AuthRules::Conditional3DSActionParameters,
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters,
                   Lithic::AuthRules::ConditionalACHActionParameters,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                  Lithic::AuthRules::TypescriptCodeParameters
                 )
               end
 
@@ -343,6 +392,52 @@ module Lithic
               )
             end
             def self.variants
+            end
+          end
+
+          # The state of the draft version. Most rules are created synchronously and the
+          # state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
+          # asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
+          # success or `ERROR` on failure.
+          #
+          # - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+          # - `SHADOWING`: The draft version is ready and evaluating in shadow mode
+          #   alongside the current active version. It can be promoted to the active
+          #   version.
+          # - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+          module State
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Lithic::AuthRules::AuthRule::DraftVersion::State)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PENDING =
+              T.let(
+                :PENDING,
+                Lithic::AuthRules::AuthRule::DraftVersion::State::TaggedSymbol
+              )
+            SHADOWING =
+              T.let(
+                :SHADOWING,
+                Lithic::AuthRules::AuthRule::DraftVersion::State::TaggedSymbol
+              )
+            ERROR =
+              T.let(
+                :ERROR,
+                Lithic::AuthRules::AuthRule::DraftVersion::State::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::AuthRules::AuthRule::DraftVersion::State::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end
@@ -380,6 +475,8 @@ module Lithic
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -405,6 +502,11 @@ module Lithic
           CONDITIONAL_ACTION =
             T.let(
               :CONDITIONAL_ACTION,
+              Lithic::AuthRules::AuthRule::Type::TaggedSymbol
+            )
+          TYPESCRIPT_CODE =
+            T.let(
+              :TYPESCRIPT_CODE,
               Lithic::AuthRules::AuthRule::Type::TaggedSymbol
             )
 

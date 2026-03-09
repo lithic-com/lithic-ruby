@@ -121,7 +121,8 @@ module Lithic
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
-                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
+                  Lithic::AuthRules::TypescriptCodeParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash
