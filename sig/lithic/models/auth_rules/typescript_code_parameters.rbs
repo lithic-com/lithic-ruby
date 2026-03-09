@@ -1,0 +1,27 @@
+module Lithic
+  module Models
+    module AuthRules
+      type typescript_code_parameters =
+        {
+          code: String,
+          features: ::Array[Lithic::Models::AuthRules::rule_feature]
+        }
+
+      class TypescriptCodeParameters < Lithic::Internal::Type::BaseModel
+        attr_accessor code: String
+
+        attr_accessor features: ::Array[Lithic::Models::AuthRules::rule_feature]
+
+        def initialize: (
+          code: String,
+          features: ::Array[Lithic::Models::AuthRules::rule_feature]
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          features: ::Array[Lithic::Models::AuthRules::rule_feature]
+        }
+      end
+    end
+  end
+end

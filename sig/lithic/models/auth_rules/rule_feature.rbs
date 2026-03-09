@@ -1,0 +1,173 @@
+module Lithic
+  module Models
+    module AuthRules
+      type rule_feature =
+        Lithic::AuthRules::RuleFeature::AuthorizationFeature
+        | Lithic::AuthRules::RuleFeature::AuthenticationFeature
+        | Lithic::AuthRules::RuleFeature::TokenizationFeature
+        | Lithic::AuthRules::RuleFeature::ACHReceiptFeature
+        | Lithic::AuthRules::RuleFeature::CardFeature
+        | Lithic::AuthRules::RuleFeature::AccountHolderFeature
+        | Lithic::AuthRules::RuleFeature::IPMetadataFeature
+        | Lithic::AuthRules::RuleFeature::SpendVelocityFeature
+
+      module RuleFeature
+        extend Lithic::Internal::Type::Union
+
+        type authorization_feature = { type: :AUTHORIZATION, name: String }
+
+        class AuthorizationFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :AUTHORIZATION
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :AUTHORIZATION) -> void
+
+          def to_hash: -> { type: :AUTHORIZATION, name: String }
+        end
+
+        type authentication_feature = { type: :AUTHENTICATION, name: String }
+
+        class AuthenticationFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :AUTHENTICATION
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :AUTHENTICATION) -> void
+
+          def to_hash: -> { type: :AUTHENTICATION, name: String }
+        end
+
+        type tokenization_feature = { type: :TOKENIZATION, name: String }
+
+        class TokenizationFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :TOKENIZATION
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :TOKENIZATION) -> void
+
+          def to_hash: -> { type: :TOKENIZATION, name: String }
+        end
+
+        type ach_receipt_feature = { type: :ACH_RECEIPT, name: String }
+
+        class ACHReceiptFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :ACH_RECEIPT
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :ACH_RECEIPT) -> void
+
+          def to_hash: -> { type: :ACH_RECEIPT, name: String }
+        end
+
+        type card_feature = { type: :CARD, name: String }
+
+        class CardFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :CARD
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :CARD) -> void
+
+          def to_hash: -> { type: :CARD, name: String }
+        end
+
+        type account_holder_feature = { type: :ACCOUNT_HOLDER, name: String }
+
+        class AccountHolderFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :ACCOUNT_HOLDER
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :ACCOUNT_HOLDER) -> void
+
+          def to_hash: -> { type: :ACCOUNT_HOLDER, name: String }
+        end
+
+        type ip_metadata_feature = { type: :IP_METADATA, name: String }
+
+        class IPMetadataFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :IP_METADATA
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :IP_METADATA) -> void
+
+          def to_hash: -> { type: :IP_METADATA, name: String }
+        end
+
+        type spend_velocity_feature =
+          {
+            period: Lithic::Models::AuthRules::velocity_limit_period,
+            scope: Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature::scope,
+            type: :SPEND_VELOCITY,
+            filters: Lithic::AuthRules::VelocityLimitFilters,
+            name: String
+          }
+
+        class SpendVelocityFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor period: Lithic::Models::AuthRules::velocity_limit_period
+
+          attr_accessor scope: Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature::scope
+
+          attr_accessor type: :SPEND_VELOCITY
+
+          attr_reader filters: Lithic::AuthRules::VelocityLimitFilters?
+
+          def filters=: (
+            Lithic::AuthRules::VelocityLimitFilters
+          ) -> Lithic::AuthRules::VelocityLimitFilters
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            period: Lithic::Models::AuthRules::velocity_limit_period,
+            scope: Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature::scope,
+            ?filters: Lithic::AuthRules::VelocityLimitFilters,
+            ?name: String,
+            ?type: :SPEND_VELOCITY
+          ) -> void
+
+          def to_hash: -> {
+            period: Lithic::Models::AuthRules::velocity_limit_period,
+            scope: Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature::scope,
+            type: :SPEND_VELOCITY,
+            filters: Lithic::AuthRules::VelocityLimitFilters,
+            name: String
+          }
+
+          type scope = :CARD | :ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD: :CARD
+            ACCOUNT: :ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature::scope]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::rule_feature]
+      end
+    end
+  end
+end
