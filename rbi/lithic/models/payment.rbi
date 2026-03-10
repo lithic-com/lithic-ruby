@@ -330,6 +330,8 @@ module Lithic
         # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
         # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
         #   balance.
+        # - `ACH_RECEIPT_RELEASED_EARLY` - ACH receipt released early from pending to
+        #   available balance.
         # - `ACH_RETURN_INITIATED` - ACH initiated return for an ACH receipt.
         # - `ACH_RETURN_PROCESSED` - ACH receipt returned by the Receiving Depository
         #   Financial Institution.
@@ -403,6 +405,8 @@ module Lithic
           # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
           # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
           #   balance.
+          # - `ACH_RECEIPT_RELEASED_EARLY` - ACH receipt released early from pending to
+          #   available balance.
           # - `ACH_RETURN_INITIATED` - ACH initiated return for an ACH receipt.
           # - `ACH_RETURN_PROCESSED` - ACH receipt returned by the Receiving Depository
           #   Financial Institution.
@@ -475,6 +479,8 @@ module Lithic
         # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
         # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
         #   balance.
+        # - `ACH_RECEIPT_RELEASED_EARLY` - ACH receipt released early from pending to
+        #   available balance.
         # - `ACH_RETURN_INITIATED` - ACH initiated return for an ACH receipt.
         # - `ACH_RETURN_PROCESSED` - ACH receipt returned by the Receiving Depository
         #   Financial Institution.
@@ -532,6 +538,11 @@ module Lithic
           ACH_RECEIPT_RELEASED =
             T.let(
               :ACH_RECEIPT_RELEASED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          ACH_RECEIPT_RELEASED_EARLY =
+            T.let(
+              :ACH_RECEIPT_RELEASED_EARLY,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
           ACH_RECEIPT_SETTLED =
