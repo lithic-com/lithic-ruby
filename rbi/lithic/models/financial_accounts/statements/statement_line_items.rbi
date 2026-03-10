@@ -122,6 +122,10 @@ module Lithic
             sig { params(descriptor: String).void }
             attr_writer :descriptor
 
+            # Subtype of the event that generated the line items
+            sig { returns(T.nilable(String)) }
+            attr_accessor :event_subtype
+
             sig do
               params(
                 token: String,
@@ -137,7 +141,8 @@ module Lithic
                 financial_transaction_event_token: String,
                 financial_transaction_token: String,
                 card_token: String,
-                descriptor: String
+                descriptor: String,
+                event_subtype: T.nilable(String)
               ).returns(T.attached_class)
             end
             def self.new(
@@ -162,7 +167,9 @@ module Lithic
               financial_transaction_token:,
               # Globally unique identifier for a card
               card_token: nil,
-              descriptor: nil
+              descriptor: nil,
+              # Subtype of the event that generated the line items
+              event_subtype: nil
             )
             end
 
@@ -182,7 +189,8 @@ module Lithic
                   financial_transaction_event_token: String,
                   financial_transaction_token: String,
                   card_token: String,
-                  descriptor: String
+                  descriptor: String,
+                  event_subtype: T.nilable(String)
                 }
               )
             end
