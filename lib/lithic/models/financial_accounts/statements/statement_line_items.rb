@@ -98,7 +98,13 @@ module Lithic
             #   @return [String, nil]
             optional :event_subtype, String, nil?: true
 
-            # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil, event_subtype: nil)
+            # @!attribute loan_tape_date
+            #   Date of the loan tape that generated this line item
+            #
+            #   @return [Date, nil]
+            optional :loan_tape_date, Date, nil?: true
+
+            # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil, event_subtype: nil, loan_tape_date: nil)
             #   Some parameter documentations has been truncated, see
             #   {Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data} for
             #   more details.
@@ -128,6 +134,8 @@ module Lithic
             #   @param descriptor [String]
             #
             #   @param event_subtype [String, nil] Subtype of the event that generated the line items
+            #
+            #   @param loan_tape_date [Date, nil] Date of the loan tape that generated this line item
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category

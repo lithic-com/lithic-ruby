@@ -35,7 +35,8 @@ class Lithic::Test::Resources::FinancialAccounts::Statements::LineItemsTest < Li
         financial_transaction_token: String,
         card_token: String | nil,
         descriptor: String | nil,
-        event_subtype: String | nil
+        event_subtype: String | nil,
+        loan_tape_date: Date | nil
       }
     end
   end
