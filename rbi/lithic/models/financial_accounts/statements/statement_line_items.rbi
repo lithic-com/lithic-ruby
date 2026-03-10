@@ -126,6 +126,10 @@ module Lithic
             sig { returns(T.nilable(String)) }
             attr_accessor :event_subtype
 
+            # Date of the loan tape that generated this line item
+            sig { returns(T.nilable(Date)) }
+            attr_accessor :loan_tape_date
+
             sig do
               params(
                 token: String,
@@ -142,7 +146,8 @@ module Lithic
                 financial_transaction_token: String,
                 card_token: String,
                 descriptor: String,
-                event_subtype: T.nilable(String)
+                event_subtype: T.nilable(String),
+                loan_tape_date: T.nilable(Date)
               ).returns(T.attached_class)
             end
             def self.new(
@@ -169,7 +174,9 @@ module Lithic
               card_token: nil,
               descriptor: nil,
               # Subtype of the event that generated the line items
-              event_subtype: nil
+              event_subtype: nil,
+              # Date of the loan tape that generated this line item
+              loan_tape_date: nil
             )
             end
 
@@ -190,7 +197,8 @@ module Lithic
                   financial_transaction_token: String,
                   card_token: String,
                   descriptor: String,
-                  event_subtype: T.nilable(String)
+                  event_subtype: T.nilable(String),
+                  loan_tape_date: T.nilable(Date)
                 }
               )
             end
