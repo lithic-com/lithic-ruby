@@ -38,7 +38,8 @@ module Lithic
               financial_transaction_event_token: String,
               financial_transaction_token: String,
               card_token: String,
-              descriptor: String
+              descriptor: String,
+              event_subtype: String?
             }
 
           class Data < Lithic::Internal::Type::BaseModel
@@ -70,6 +71,8 @@ module Lithic
 
             def descriptor=: (String) -> String
 
+            attr_accessor event_subtype: String?
+
             def initialize: (
               token: String,
               amount: Integer,
@@ -82,7 +85,8 @@ module Lithic
               financial_transaction_event_token: String,
               financial_transaction_token: String,
               ?card_token: String,
-              ?descriptor: String
+              ?descriptor: String,
+              ?event_subtype: String?
             ) -> void
 
             def to_hash: -> {
@@ -97,7 +101,8 @@ module Lithic
               financial_transaction_event_token: String,
               financial_transaction_token: String,
               card_token: String,
-              descriptor: String
+              descriptor: String,
+              event_subtype: String?
             }
 
             type category =
