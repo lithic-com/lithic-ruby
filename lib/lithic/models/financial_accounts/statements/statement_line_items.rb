@@ -92,7 +92,13 @@ module Lithic
             #   @return [String, nil]
             optional :descriptor, String
 
-            # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil)
+            # @!attribute event_subtype
+            #   Subtype of the event that generated the line items
+            #
+            #   @return [String, nil]
+            optional :event_subtype, String, nil?: true
+
+            # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil, event_subtype: nil)
             #   Some parameter documentations has been truncated, see
             #   {Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data} for
             #   more details.
@@ -120,6 +126,8 @@ module Lithic
             #   @param card_token [String] Globally unique identifier for a card
             #
             #   @param descriptor [String]
+            #
+            #   @param event_subtype [String, nil] Subtype of the event that generated the line items
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category
