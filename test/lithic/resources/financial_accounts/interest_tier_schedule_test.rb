@@ -19,6 +19,7 @@ class Lithic::Test::Resources::FinancialAccounts::InterestTierScheduleTest < Lit
       response => {
         credit_product_token: String,
         effective_date: Date,
+        penalty_rates: Lithic::Internal::Type::Unknown | nil,
         tier_name: String | nil,
         tier_rates: Lithic::Internal::Type::Unknown | nil
       }
@@ -40,6 +41,7 @@ class Lithic::Test::Resources::FinancialAccounts::InterestTierScheduleTest < Lit
       response => {
         credit_product_token: String,
         effective_date: Date,
+        penalty_rates: Lithic::Internal::Type::Unknown | nil,
         tier_name: String | nil,
         tier_rates: Lithic::Internal::Type::Unknown | nil
       }
@@ -61,6 +63,7 @@ class Lithic::Test::Resources::FinancialAccounts::InterestTierScheduleTest < Lit
       response => {
         credit_product_token: String,
         effective_date: Date,
+        penalty_rates: Lithic::Internal::Type::Unknown | nil,
         tier_name: String | nil,
         tier_rates: Lithic::Internal::Type::Unknown | nil
       }
@@ -85,6 +88,7 @@ class Lithic::Test::Resources::FinancialAccounts::InterestTierScheduleTest < Lit
       row => {
         credit_product_token: String,
         effective_date: Date,
+        penalty_rates: Lithic::Internal::Type::Unknown | nil,
         tier_name: String | nil,
         tier_rates: Lithic::Internal::Type::Unknown | nil
       }
