@@ -2,7 +2,9 @@ module Lithic
   module Resources
     class Webhooks
       def parsed: (
-        String payload
+        String payload,
+        headers: ::Hash[String, String],
+        ?key: String?
       ) -> (Lithic::AccountHolderCreatedWebhookEvent
       | Lithic::ParsedWebhookEvent::KYBPayload
       | Lithic::ParsedWebhookEvent::KYCPayload
