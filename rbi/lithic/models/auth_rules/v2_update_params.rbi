@@ -314,6 +314,22 @@ module Lithic
                 )
               end
 
+            # Account tokens to which the Auth Rule does not apply.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :excluded_account_tokens
+
+            sig { params(excluded_account_tokens: T::Array[String]).void }
+            attr_writer :excluded_account_tokens
+
+            # Business account tokens to which the Auth Rule does not apply.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :excluded_business_account_tokens
+
+            sig do
+              params(excluded_business_account_tokens: T::Array[String]).void
+            end
+            attr_writer :excluded_business_account_tokens
+
             # Card tokens to which the Auth Rule does not apply.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_card_tokens
@@ -356,6 +372,8 @@ module Lithic
 
             sig do
               params(
+                excluded_account_tokens: T::Array[String],
+                excluded_business_account_tokens: T::Array[String],
                 excluded_card_tokens: T::Array[String],
                 name: T.nilable(String),
                 program_level: T::Boolean,
@@ -364,6 +382,10 @@ module Lithic
               ).returns(T.attached_class)
             end
             def self.new(
+              # Account tokens to which the Auth Rule does not apply.
+              excluded_account_tokens: nil,
+              # Business account tokens to which the Auth Rule does not apply.
+              excluded_business_account_tokens: nil,
               # Card tokens to which the Auth Rule does not apply.
               excluded_card_tokens: nil,
               # Auth Rule Name
@@ -382,6 +404,8 @@ module Lithic
             sig do
               override.returns(
                 {
+                  excluded_account_tokens: T::Array[String],
+                  excluded_business_account_tokens: T::Array[String],
                   excluded_card_tokens: T::Array[String],
                   name: T.nilable(String),
                   program_level: T::Boolean,
