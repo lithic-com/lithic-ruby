@@ -22,6 +22,9 @@ module Lithic
     sig { returns(String) }
     attr_reader :api_key
 
+    sig { returns(T.nilable(String)) }
+    attr_reader :webhook_secret
+
     sig { returns(Lithic::Resources::Accounts) }
     attr_reader :accounts
 
@@ -142,6 +145,7 @@ module Lithic
     sig do
       params(
         api_key: T.nilable(String),
+        webhook_secret: T.nilable(String),
         environment: T.nilable(T.any(Symbol, String)),
         base_url: T.nilable(String),
         max_retries: Integer,
@@ -153,6 +157,8 @@ module Lithic
     def self.new(
       # Defaults to `ENV["LITHIC_API_KEY"]`
       api_key: ENV["LITHIC_API_KEY"],
+      # Defaults to `ENV["LITHIC_WEBHOOK_SECRET"]`
+      webhook_secret: ENV["LITHIC_WEBHOOK_SECRET"],
       # Specifies the environment to use for the API.
       #
       # Each environment maps to a different base URL:

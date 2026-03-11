@@ -71,7 +71,14 @@ module Lithic
           )
         )
       end
-      def parse(payload, headers:, secret: nil)
+      def parse(
+        # The raw webhook payload as a string
+        payload,
+        # The raw HTTP headers that came with the payload
+        headers:,
+        # The webhook signing secret
+        secret: nil
+      )
       end
 
       sig { params(payload: String).returns(Lithic::ParsedWebhookEvent::Variants) }
