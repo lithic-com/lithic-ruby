@@ -196,6 +196,8 @@ module Lithic
               program_level: bool,
               type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_,
               event_stream: Lithic::Models::AuthRules::event_stream,
+              excluded_account_tokens: ::Array[String],
+              excluded_business_account_tokens: ::Array[String],
               excluded_card_tokens: ::Array[String],
               name: String?
             }
@@ -213,6 +215,16 @@ module Lithic
               Lithic::Models::AuthRules::event_stream
             ) -> Lithic::Models::AuthRules::event_stream
 
+            attr_reader excluded_account_tokens: ::Array[String]?
+
+            def excluded_account_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_reader excluded_business_account_tokens: ::Array[String]?
+
+            def excluded_business_account_tokens=: (
+              ::Array[String]
+            ) -> ::Array[String]
+
             attr_reader excluded_card_tokens: ::Array[String]?
 
             def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
@@ -224,6 +236,8 @@ module Lithic
               program_level: bool,
               type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_,
               ?event_stream: Lithic::Models::AuthRules::event_stream,
+              ?excluded_account_tokens: ::Array[String],
+              ?excluded_business_account_tokens: ::Array[String],
               ?excluded_card_tokens: ::Array[String],
               ?name: String?
             ) -> void
@@ -233,6 +247,8 @@ module Lithic
               program_level: bool,
               type: Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_,
               event_stream: Lithic::Models::AuthRules::event_stream,
+              excluded_account_tokens: ::Array[String],
+              excluded_business_account_tokens: ::Array[String],
               excluded_card_tokens: ::Array[String],
               name: String?
             }

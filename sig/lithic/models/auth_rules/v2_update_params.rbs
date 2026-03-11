@@ -131,6 +131,8 @@ module Lithic
 
           type program_level_rule =
             {
+              excluded_account_tokens: ::Array[String],
+              excluded_business_account_tokens: ::Array[String],
               excluded_card_tokens: ::Array[String],
               name: String?,
               program_level: bool,
@@ -138,6 +140,16 @@ module Lithic
             }
 
           class ProgramLevelRule < Lithic::Internal::Type::BaseModel
+            attr_reader excluded_account_tokens: ::Array[String]?
+
+            def excluded_account_tokens=: (::Array[String]) -> ::Array[String]
+
+            attr_reader excluded_business_account_tokens: ::Array[String]?
+
+            def excluded_business_account_tokens=: (
+              ::Array[String]
+            ) -> ::Array[String]
+
             attr_reader excluded_card_tokens: ::Array[String]?
 
             def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
@@ -155,6 +167,8 @@ module Lithic
             ) -> Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::state
 
             def initialize: (
+              ?excluded_account_tokens: ::Array[String],
+              ?excluded_business_account_tokens: ::Array[String],
               ?excluded_card_tokens: ::Array[String],
               ?name: String?,
               ?program_level: bool,
@@ -162,6 +176,8 @@ module Lithic
             ) -> void
 
             def to_hash: -> {
+              excluded_account_tokens: ::Array[String],
+              excluded_business_account_tokens: ::Array[String],
               excluded_card_tokens: ::Array[String],
               name: String?,
               program_level: bool,

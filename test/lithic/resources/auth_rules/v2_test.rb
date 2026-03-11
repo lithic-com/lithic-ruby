@@ -30,6 +30,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::AuthRules::AuthRule::State,
         type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -56,6 +58,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::AuthRules::AuthRule::State,
         type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -82,6 +86,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::AuthRules::AuthRule::State,
         type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -115,6 +121,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::AuthRules::AuthRule::State,
         type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -149,6 +157,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::AuthRules::AuthRule::State,
         type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -199,6 +209,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::AuthRules::AuthRule::State,
         type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end

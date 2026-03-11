@@ -143,6 +143,18 @@ module Lithic
           end
 
           class ProgramLevelRule < Lithic::Internal::Type::BaseModel
+            # @!attribute excluded_account_tokens
+            #   Account tokens to which the Auth Rule does not apply.
+            #
+            #   @return [Array<String>, nil]
+            optional :excluded_account_tokens, Lithic::Internal::Type::ArrayOf[String]
+
+            # @!attribute excluded_business_account_tokens
+            #   Business account tokens to which the Auth Rule does not apply.
+            #
+            #   @return [Array<String>, nil]
+            optional :excluded_business_account_tokens, Lithic::Internal::Type::ArrayOf[String]
+
             # @!attribute excluded_card_tokens
             #   Card tokens to which the Auth Rule does not apply.
             #
@@ -171,10 +183,14 @@ module Lithic
             #   @return [Symbol, Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule::State, nil]
             optional :state, enum: -> { Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule::State }
 
-            # @!method initialize(excluded_card_tokens: nil, name: nil, program_level: nil, state: nil)
+            # @!method initialize(excluded_account_tokens: nil, excluded_business_account_tokens: nil, excluded_card_tokens: nil, name: nil, program_level: nil, state: nil)
             #   Some parameter documentations has been truncated, see
             #   {Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule} for more
             #   details.
+            #
+            #   @param excluded_account_tokens [Array<String>] Account tokens to which the Auth Rule does not apply.
+            #
+            #   @param excluded_business_account_tokens [Array<String>] Business account tokens to which the Auth Rule does not apply.
             #
             #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
             #

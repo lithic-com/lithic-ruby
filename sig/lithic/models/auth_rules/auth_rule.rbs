@@ -17,6 +17,8 @@ module Lithic
           program_level: bool,
           state: Lithic::Models::AuthRules::AuthRule::state,
           type: Lithic::Models::AuthRules::AuthRule::type_,
+          excluded_account_tokens: ::Array[String],
+          excluded_business_account_tokens: ::Array[String],
           excluded_card_tokens: ::Array[String]
         }
 
@@ -45,6 +47,16 @@ module Lithic
 
         attr_accessor type: Lithic::Models::AuthRules::AuthRule::type_
 
+        attr_reader excluded_account_tokens: ::Array[String]?
+
+        def excluded_account_tokens=: (::Array[String]) -> ::Array[String]
+
+        attr_reader excluded_business_account_tokens: ::Array[String]?
+
+        def excluded_business_account_tokens=: (
+          ::Array[String]
+        ) -> ::Array[String]
+
         attr_reader excluded_card_tokens: ::Array[String]?
 
         def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
@@ -62,6 +74,8 @@ module Lithic
           program_level: bool,
           state: Lithic::Models::AuthRules::AuthRule::state,
           type: Lithic::Models::AuthRules::AuthRule::type_,
+          ?excluded_account_tokens: ::Array[String],
+          ?excluded_business_account_tokens: ::Array[String],
           ?excluded_card_tokens: ::Array[String]
         ) -> void
 
@@ -78,6 +92,8 @@ module Lithic
           program_level: bool,
           state: Lithic::Models::AuthRules::AuthRule::state,
           type: Lithic::Models::AuthRules::AuthRule::type_,
+          excluded_account_tokens: ::Array[String],
+          excluded_business_account_tokens: ::Array[String],
           excluded_card_tokens: ::Array[String]
         }
 

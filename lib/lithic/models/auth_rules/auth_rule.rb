@@ -88,13 +88,25 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::Type]
         required :type, enum: -> { Lithic::AuthRules::AuthRule::Type }
 
+        # @!attribute excluded_account_tokens
+        #   Account tokens to which the Auth Rule does not apply.
+        #
+        #   @return [Array<String>, nil]
+        optional :excluded_account_tokens, Lithic::Internal::Type::ArrayOf[String]
+
+        # @!attribute excluded_business_account_tokens
+        #   Business account tokens to which the Auth Rule does not apply.
+        #
+        #   @return [Array<String>, nil]
+        optional :excluded_business_account_tokens, Lithic::Internal::Type::ArrayOf[String]
+
         # @!attribute excluded_card_tokens
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, event_stream:, lithic_managed:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
+        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, event_stream:, lithic_managed:, name:, program_level:, state:, type:, excluded_account_tokens: nil, excluded_business_account_tokens: nil, excluded_card_tokens: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::AuthRule} for more details.
         #
@@ -121,6 +133,10 @@ module Lithic
         #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State] The state of the Auth Rule
         #
         #   @param type [Symbol, Lithic::Models::AuthRules::AuthRule::Type] The type of Auth Rule. For certain rule types, this determines the event stream
+        #
+        #   @param excluded_account_tokens [Array<String>] Account tokens to which the Auth Rule does not apply.
+        #
+        #   @param excluded_business_account_tokens [Array<String>] Business account tokens to which the Auth Rule does not apply.
         #
         #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
 

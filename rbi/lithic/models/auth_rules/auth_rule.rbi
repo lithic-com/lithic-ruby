@@ -86,6 +86,20 @@ module Lithic
         sig { returns(Lithic::AuthRules::AuthRule::Type::TaggedSymbol) }
         attr_accessor :type
 
+        # Account tokens to which the Auth Rule does not apply.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :excluded_account_tokens
+
+        sig { params(excluded_account_tokens: T::Array[String]).void }
+        attr_writer :excluded_account_tokens
+
+        # Business account tokens to which the Auth Rule does not apply.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :excluded_business_account_tokens
+
+        sig { params(excluded_business_account_tokens: T::Array[String]).void }
+        attr_writer :excluded_business_account_tokens
+
         # Card tokens to which the Auth Rule does not apply.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :excluded_card_tokens
@@ -109,6 +123,8 @@ module Lithic
             program_level: T::Boolean,
             state: Lithic::AuthRules::AuthRule::State::OrSymbol,
             type: Lithic::AuthRules::AuthRule::Type::OrSymbol,
+            excluded_account_tokens: T::Array[String],
+            excluded_business_account_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String]
           ).returns(T.attached_class)
         end
@@ -148,6 +164,10 @@ module Lithic
           # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
           #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
           type:,
+          # Account tokens to which the Auth Rule does not apply.
+          excluded_account_tokens: nil,
+          # Business account tokens to which the Auth Rule does not apply.
+          excluded_business_account_tokens: nil,
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil
         )
@@ -170,6 +190,8 @@ module Lithic
               program_level: T::Boolean,
               state: Lithic::AuthRules::AuthRule::State::TaggedSymbol,
               type: Lithic::AuthRules::AuthRule::Type::TaggedSymbol,
+              excluded_account_tokens: T::Array[String],
+              excluded_business_account_tokens: T::Array[String],
               excluded_card_tokens: T::Array[String]
             }
           )
