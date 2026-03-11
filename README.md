@@ -93,10 +93,10 @@ event = lithic.webhooks.parse_unsafe(request.body.read)
 
 #### Installing standardwebhooks (optional)
 
-To use signature verification, install from GitHub:
+To use signature verification, add the gem to your Gemfile:
 
 ```ruby
-gem "standardwebhooks", "~> 1.0", github: "standard-webhooks/standard-webhooks", glob: "libraries/ruby/*.gemspec"
+gem "standardwebhooks", "~> 1.0"
 ```
 
 ### Handling errors

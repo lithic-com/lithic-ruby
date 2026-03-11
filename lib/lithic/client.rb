@@ -23,6 +23,9 @@ module Lithic
     # @return [String]
     attr_reader :api_key
 
+    # @return [String, nil]
+    attr_reader :webhook_secret
+
     # @return [Lithic::Resources::Accounts]
     attr_reader :accounts
 
@@ -149,6 +152,8 @@ module Lithic
     #
     # @param api_key [String, nil] Defaults to `ENV["LITHIC_API_KEY"]`
     #
+    # @param webhook_secret [String, nil] Defaults to `ENV["LITHIC_WEBHOOK_SECRET"]`
+    #
     # @param environment [:production, :sandbox, nil] Specifies the environment to use for the API.
     #
     # Each environment maps to a different base URL:
@@ -168,6 +173,7 @@ module Lithic
     # @param max_retry_delay [Float]
     def initialize(
       api_key: ENV["LITHIC_API_KEY"],
+      webhook_secret: ENV["LITHIC_WEBHOOK_SECRET"],
       environment: nil,
       base_url: ENV["LITHIC_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
@@ -185,6 +191,7 @@ module Lithic
       end
 
       @api_key = api_key.to_s
+      @webhook_secret = webhook_secret&.to_s
 
       super(
         base_url: base_url,

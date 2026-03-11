@@ -14,7 +14,6 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
     }.to_json
 
     event = @lithic.webhooks.parse_unsafe(payload)
-    # Verify the event was parsed successfully
     assert(event)
     assert_equal("card.created", event.event_type)
   end
@@ -28,7 +27,6 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
     payload = '{"event_type":"card.created","card_token":"test_card_token_123"}'
     timestamp = Time.now.to_i.to_s
 
-    # Generate a valid signature
     wh = StandardWebhooks::Webhook.new(secret)
     signature = wh.sign("test_msg_id", timestamp, payload)
 
@@ -38,17 +36,45 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
       "webhook-signature" => signature
     }
 
-    # Should verify and return typed event
     event = @lithic.webhooks.parse(payload, headers: headers, secret: secret)
     assert(event)
     assert_equal(:"card.created", event.event_type)
 
-    # Verify we can pattern match on the typed event
     case event
     when Lithic::Models::CardCreatedWebhookEvent
       assert_equal("test_card_token_123", event.card_token)
     else
       flunk("Expected CardCreatedWebhookEvent, got #{event.class}")
+    end
+  end
+
+  def test_parse_with_invalid_signatures
+    skip("standardwebhooks gem not installed") unless gem_installed?("standardwebhooks")
+
+    require("standardwebhooks")
+
+    secret = "whsec_test_secret"
+    payload = '{"event_type":"card.created"}'
+    timestamp = Time.now.to_i.to_s
+
+    wh = StandardWebhooks::Webhook.new(secret)
+    signature = wh.sign("test_msg_id", timestamp, payload)
+
+    headers = {
+      "webhook-id" => "test_msg_id",
+      "webhook-timestamp" => timestamp,
+      "webhook-signature" => signature
+    }
+
+    bad_headers = [
+      headers.merge("webhook-id" => "bad"),
+      headers.merge("webhook-timestamp" => "0"),
+      headers.merge("webhook-signature" => wh.sign("test_msg_id", timestamp, "xxx"))
+    ]
+    bad_headers.each do |bad_header|
+      assert_raises(StandardWebhooks::WebhookVerificationError) do
+        @lithic.webhooks.parse(payload, headers: bad_header, secret: secret)
+      end
     end
   end
 
@@ -61,7 +87,6 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
     payload = '{"event_type":"card.created","data":{"token":"test_token"}}'
     timestamp = Time.now.to_i.to_s
 
-    # Generate a valid signature
     wh = StandardWebhooks::Webhook.new(secret)
     signature = wh.sign("test_msg_id", timestamp, payload)
 
@@ -71,10 +96,8 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
       "webhook-signature" => signature
     }
 
-    # Set env var
     ENV["LITHIC_WEBHOOK_SECRET"] = secret
     begin
-      # Should use env var when secret not provided
       event = @lithic.webhooks.parse(payload, headers: headers)
       assert(event)
       assert_equal("card.created", event.event_type)
@@ -93,7 +116,6 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
       "webhook-signature" => "v1,invalid"
     }
 
-    # Ensure env var is not set
     ENV.delete("LITHIC_WEBHOOK_SECRET")
 
     error = assert_raises(ArgumentError) do
@@ -112,7 +134,6 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
     payload = '{"event_type":"card.created"}'
     timestamp = Time.now.to_i.to_s
 
-    # Generate a valid signature
     wh = StandardWebhooks::Webhook.new(secret)
     signature = wh.sign("test_msg_id", timestamp, payload)
 
@@ -122,14 +143,12 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
       "webhook-signature" => signature
     }
 
-    # Should not raise an error and returns the parsed JSON
     result = @lithic.webhooks.verify_signature(
       payload: payload,
       headers: headers,
       secret: secret
     )
 
-    # verify returns the parsed JSON content with symbolized keys
     assert_equal("card.created", result[:event_type])
   end
 
@@ -165,7 +184,6 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
     payload = '{"event_type":"card.created"}'
     timestamp = Time.now.to_i.to_s
 
-    # Generate a valid signature
     wh = StandardWebhooks::Webhook.new(secret)
     signature = wh.sign("test_msg_id", timestamp, payload)
 
@@ -175,10 +193,8 @@ class Lithic::Test::Resources::WebhooksTest < Lithic::Test::ResourceTest
       "webhook-signature" => signature
     }
 
-    # Set env var
     ENV["LITHIC_WEBHOOK_SECRET"] = secret
     begin
-      # Should use env var when secret not provided
       result = @lithic.webhooks.verify_signature(payload: payload, headers: headers)
       assert_equal("card.created", result[:event_type])
     ensure
