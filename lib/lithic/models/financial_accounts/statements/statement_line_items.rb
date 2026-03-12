@@ -34,6 +34,9 @@ module Lithic
             required :amount, Integer
 
             # @!attribute category
+            #   Note: Inbound wire transfers are coming soon (availability varies by partner
+            #   bank). The WIRE category is a preview. To learn more, contact your customer
+            #   success manager.
             #
             #   @return [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
             required :category, enum: -> { Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category }
@@ -113,7 +116,7 @@ module Lithic
             #
             #   @param amount [Integer] Transaction amount in cents
             #
-            #   @param category [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
+            #   @param category [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category] Note: Inbound wire transfers are coming soon (availability varies by partner ban
             #
             #   @param created [Time] Timestamp of when the line item was generated
             #
@@ -137,11 +140,16 @@ module Lithic
             #
             #   @param loan_tape_date [Date, nil] Date of the loan tape that generated this line item
 
+            # Note: Inbound wire transfers are coming soon (availability varies by partner
+            # bank). The WIRE category is a preview. To learn more, contact your customer
+            # success manager.
+            #
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category
               extend Lithic::Internal::Type::Enum
 
               ACH = :ACH
+              WIRE = :WIRE
               BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
               FEE = :FEE
               REWARD = :REWARD
