@@ -188,6 +188,20 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
   end
 
+  def test_list_versions
+    response = @lithic.auth_rules.v2.list_versions("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::Models::AuthRules::V2ListVersionsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::AuthRuleVersion])
+      }
+    end
+  end
+
   def test_promote
     response = @lithic.auth_rules.v2.promote("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

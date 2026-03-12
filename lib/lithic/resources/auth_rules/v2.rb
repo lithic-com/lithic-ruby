@@ -209,6 +209,26 @@ module Lithic
           )
         end
 
+        # Returns all versions of an auth rule, sorted by version number descending
+        # (newest first).
+        #
+        # @overload list_versions(auth_rule_token, request_options: {})
+        #
+        # @param auth_rule_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Lithic::Models::AuthRules::V2ListVersionsResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2ListVersionsParams
+        def list_versions(auth_rule_token, params = {})
+          @client.request(
+            method: :get,
+            path: ["v2/auth_rules/%1$s/versions", auth_rule_token],
+            model: Lithic::Models::AuthRules::V2ListVersionsResponse,
+            options: params[:request_options]
+          )
+        end
+
         # Promotes the draft version of an Auth rule to the currently active version such
         # that it is enforced in the respective stream.
         #
