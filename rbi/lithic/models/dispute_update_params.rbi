@@ -14,28 +14,28 @@ module Lithic
       sig { returns(String) }
       attr_accessor :dispute_token
 
-      # Amount to dispute
+      # Amount for chargeback
       sig { returns(T.nilable(Integer)) }
       attr_reader :amount
 
       sig { params(amount: Integer).void }
       attr_writer :amount
 
-      # Date the customer filed the dispute
+      # Date the customer filed the chargeback request
       sig { returns(T.nilable(Time)) }
       attr_reader :customer_filed_date
 
       sig { params(customer_filed_date: Time).void }
       attr_writer :customer_filed_date
 
-      # Customer description of dispute
+      # Customer description
       sig { returns(T.nilable(String)) }
       attr_reader :customer_note
 
       sig { params(customer_note: String).void }
       attr_writer :customer_note
 
-      # Reason for dispute
+      # Reason for chargeback
       sig { returns(T.nilable(Lithic::DisputeUpdateParams::Reason::OrSymbol)) }
       attr_reader :reason
 
@@ -54,13 +54,13 @@ module Lithic
       end
       def self.new(
         dispute_token:,
-        # Amount to dispute
+        # Amount for chargeback
         amount: nil,
-        # Date the customer filed the dispute
+        # Date the customer filed the chargeback request
         customer_filed_date: nil,
-        # Customer description of dispute
+        # Customer description
         customer_note: nil,
-        # Reason for dispute
+        # Reason for chargeback
         reason: nil,
         request_options: {}
       )
@@ -81,7 +81,7 @@ module Lithic
       def to_hash
       end
 
-      # Reason for dispute
+      # Reason for chargeback
       module Reason
         extend Lithic::Internal::Type::Enum
 

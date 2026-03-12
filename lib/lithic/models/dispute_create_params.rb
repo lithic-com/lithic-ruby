@@ -8,49 +8,49 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
-      #   Amount to dispute
+      #   Amount for chargeback
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute reason
-      #   Reason for dispute
+      #   Reason for chargeback
       #
       #   @return [Symbol, Lithic::Models::DisputeCreateParams::Reason]
       required :reason, enum: -> { Lithic::DisputeCreateParams::Reason }
 
       # @!attribute transaction_token
-      #   Transaction to dispute
+      #   Transaction for chargeback
       #
       #   @return [String]
       required :transaction_token, String
 
       # @!attribute customer_filed_date
-      #   Date the customer filed the dispute
+      #   Date the customer filed the chargeback request
       #
       #   @return [Time, nil]
       optional :customer_filed_date, Time
 
       # @!attribute customer_note
-      #   Customer description of dispute
+      #   Customer description
       #
       #   @return [String, nil]
       optional :customer_note, String
 
       # @!method initialize(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
-      #   @param amount [Integer] Amount to dispute
+      #   @param amount [Integer] Amount for chargeback
       #
-      #   @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for dispute
+      #   @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for chargeback
       #
-      #   @param transaction_token [String] Transaction to dispute
+      #   @param transaction_token [String] Transaction for chargeback
       #
-      #   @param customer_filed_date [Time] Date the customer filed the dispute
+      #   @param customer_filed_date [Time] Date the customer filed the chargeback request
       #
-      #   @param customer_note [String] Customer description of dispute
+      #   @param customer_note [String] Customer description
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-      # Reason for dispute
+      # Reason for chargeback
       module Reason
         extend Lithic::Internal::Type::Enum
 
