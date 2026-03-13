@@ -50,16 +50,29 @@ module Lithic
             }
           end
 
-          type simulation_parameters = { end_: Time, start: Time }
+          type simulation_parameters =
+            { auth_rule_token: String, end_: Time, start: Time }
 
           class SimulationParameters < Lithic::Internal::Type::BaseModel
-            attr_accessor end_: Time
+            attr_reader auth_rule_token: String?
 
-            attr_accessor start: Time
+            def auth_rule_token=: (String) -> String
 
-            def initialize: (end_: Time, start: Time) -> void
+            attr_reader end_: Time?
 
-            def to_hash: -> { end_: Time, start: Time }
+            def end_=: (Time) -> Time
+
+            attr_reader start: Time?
+
+            def start=: (Time) -> Time
+
+            def initialize: (
+              ?auth_rule_token: String,
+              ?end_: Time,
+              ?start: Time
+            ) -> void
+
+            def to_hash: -> { auth_rule_token: String, end_: Time, start: Time }
           end
         end
       end

@@ -3,19 +3,19 @@
 module Lithic
   module Resources
     class Disputes
-      # Request a chargeback.
+      # Initiate a dispute.
       #
       # @overload create(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
       #
-      # @param amount [Integer] Amount for chargeback
+      # @param amount [Integer] Amount to dispute
       #
-      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for chargeback
+      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for dispute
       #
-      # @param transaction_token [String] Transaction for chargeback
+      # @param transaction_token [String] Transaction to dispute
       #
-      # @param customer_filed_date [Time] Date the customer filed the chargeback request
+      # @param customer_filed_date [Time] Date the customer filed the dispute
       #
-      # @param customer_note [String] Customer description
+      # @param customer_note [String] Customer description of dispute
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -33,7 +33,7 @@ module Lithic
         )
       end
 
-      # Get chargeback request.
+      # Get dispute.
       #
       # @overload retrieve(dispute_token, request_options: {})
       #
@@ -52,19 +52,19 @@ module Lithic
         )
       end
 
-      # Update chargeback request. Can only be modified if status is `NEW`.
+      # Update dispute. Can only be modified if status is `NEW`.
       #
       # @overload update(dispute_token, amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
       #
       # @param dispute_token [String]
       #
-      # @param amount [Integer] Amount for chargeback
+      # @param amount [Integer] Amount to dispute
       #
-      # @param customer_filed_date [Time] Date the customer filed the chargeback request
+      # @param customer_filed_date [Time] Date the customer filed the dispute
       #
-      # @param customer_note [String] Customer description
+      # @param customer_note [String] Customer description of dispute
       #
-      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for chargeback
+      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for dispute
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -85,7 +85,7 @@ module Lithic
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::DisputeListParams} for more details.
       #
-      # List chargeback requests.
+      # List disputes.
       #
       # @overload list(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, transaction_tokens: nil, request_options: {})
       #
@@ -99,7 +99,7 @@ module Lithic
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::Models::DisputeListParams::Status] Filter by status.
+      # @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
       #
       # @param transaction_tokens [Array<String>] Transaction tokens to filter by.
       #
@@ -121,7 +121,7 @@ module Lithic
         )
       end
 
-      # Withdraw chargeback request.
+      # Withdraw dispute.
       #
       # @overload delete(dispute_token, request_options: {})
       #
@@ -140,8 +140,8 @@ module Lithic
         )
       end
 
-      # Soft delete evidence for a chargeback request. Evidence will not be reviewed or
-      # submitted by Lithic after it is withdrawn.
+      # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
+      # by Lithic after it is withdrawn.
       #
       # @overload delete_evidence(evidence_token, dispute_token:, request_options: {})
       #
@@ -166,8 +166,8 @@ module Lithic
         )
       end
 
-      # Use this endpoint to upload evidence for a chargeback request. It will return a
-      # URL to upload your documents to. The URL will expire in 30 minutes.
+      # Use this endpoint to upload evidences for the dispute. It will return a URL to
+      # upload your documents to. The URL will expire in 30 minutes.
       #
       # Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
       # less than 5 GiB.
@@ -197,7 +197,7 @@ module Lithic
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::DisputeListEvidencesParams} for more details.
       #
-      # List evidence for a chargeback request.
+      # List evidence metadata for a dispute.
       #
       # @overload list_evidences(dispute_token, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #
@@ -231,7 +231,7 @@ module Lithic
         )
       end
 
-      # Get evidence for a chargeback request.
+      # Get a dispute's evidence metadata.
       #
       # @overload retrieve_evidence(evidence_token, dispute_token:, request_options: {})
       #

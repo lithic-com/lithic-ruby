@@ -186,17 +186,6 @@ module Lithic
         )
         end
 
-        # Returns all versions of an auth rule, sorted by version number descending
-        # (newest first).
-        sig do
-          params(
-            auth_rule_token: String,
-            request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2ListVersionsResponse)
-        end
-        def list_versions(auth_rule_token, request_options: {})
-        end
-
         # Promotes the draft version of an Auth rule to the currently active version such
         # that it is enforced in the respective stream.
         sig do

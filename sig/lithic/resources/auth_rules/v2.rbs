@@ -56,11 +56,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::Internal::CursorPage[Lithic::Models::AuthRules::v2_list_results_response]
 
-        def list_versions: (
-          String auth_rule_token,
-          ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2ListVersionsResponse
-
         def promote: (
           String auth_rule_token,
           ?request_options: Lithic::request_opts

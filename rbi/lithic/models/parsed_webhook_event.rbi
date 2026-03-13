@@ -16,7 +16,6 @@ module Lithic
             Lithic::AccountHolderVerificationWebhookEvent,
             Lithic::AccountHolderDocumentUpdatedWebhookEvent,
             Lithic::CardAuthorizationApprovalRequestWebhookEvent,
-            Lithic::TokenizationDecisioningRequestWebhookEvent,
             Lithic::AuthRulesBacktestReportCreatedWebhookEvent,
             Lithic::BalanceUpdatedWebhookEvent,
             Lithic::BookTransferTransactionCreatedWebhookEvent,
