@@ -23,26 +23,6 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # Contains the metadata for the customer tokenization decision.
-      sig do
-        returns(
-          T.nilable(
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision
-          )
-        )
-      end
-      attr_reader :customer_tokenization_decision
-
-      sig do
-        params(
-          customer_tokenization_decision:
-            T.nilable(
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::OrHash
-            )
-        ).void
-      end
-      attr_writer :customer_tokenization_decision
-
       # Contains the metadata for the digital wallet being tokenized.
       sig { returns(Lithic::TokenMetadata) }
       attr_reader :digital_wallet_token_metadata
@@ -93,13 +73,34 @@ module Lithic
       end
       attr_writer :wallet_decisioning_info
 
+      # Contains the metadata for the customer tokenization decision.
+      sig do
+        returns(
+          T.nilable(
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision
+          )
+        )
+      end
+      attr_reader :customer_tokenization_decision
+
+      sig do
+        params(
+          customer_tokenization_decision:
+            T.nilable(
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::OrHash
+            )
+        ).void
+      end
+      attr_writer :customer_tokenization_decision
+
       sig { returns(T.nilable(Lithic::Device)) }
       attr_reader :device
 
       sig { params(device: Lithic::Device::OrHash).void }
       attr_writer :device
 
-      # Results from rules that were evaluated for this tokenization
+      # Results from rules that were evaluated for this tokenization. Only populated in
+      # webhook events, not in the initial decisioning request
       sig { returns(T.nilable(T::Array[Lithic::TokenizationRuleResult])) }
       attr_reader :rule_results
 
@@ -110,7 +111,8 @@ module Lithic
       end
       attr_writer :rule_results
 
-      # List of reasons why the tokenization was declined
+      # List of reasons why the tokenization was declined. Only populated in webhook
+      # events, not in the initial decisioning request
       sig do
         returns(
           T.nilable(T::Array[Lithic::TokenizationDeclineReason::TaggedSymbol])
@@ -144,7 +146,8 @@ module Lithic
       end
       attr_writer :tokenization_source
 
-      # List of reasons why two-factor authentication was required
+      # List of reasons why two-factor authentication was required. Only populated in
+      # webhook events, not in the initial decisioning request
       sig do
         returns(
           T.nilable(T::Array[Lithic::TokenizationTfaReason::TaggedSymbol])
@@ -160,15 +163,17 @@ module Lithic
       end
       attr_writer :tokenization_tfa_reasons
 
+      # Payload for digital wallet tokenization approval requests. Used for both the
+      # decisioning responder request (sent to the customer's endpoint for a real-time
+      # decision) and the subsequent webhook event (sent after the decision is made).
+      # Fields like customer_tokenization_decision, tokenization_decline_reasons,
+      # tokenization_tfa_reasons, and rule_results are only populated in the webhook
+      # event, not in the initial decisioning request.
       sig do
         params(
           account_token: String,
           card_token: String,
           created: Time,
-          customer_tokenization_decision:
-            T.nilable(
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::OrHash
-            ),
           digital_wallet_token_metadata: Lithic::TokenMetadata::OrHash,
           event_type:
             Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType::OrSymbol,
@@ -178,6 +183,10 @@ module Lithic
             Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::OrSymbol,
           tokenization_token: String,
           wallet_decisioning_info: Lithic::WalletDecisioningInfo::OrHash,
+          customer_tokenization_decision:
+            T.nilable(
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision::OrHash
+            ),
           device: Lithic::Device::OrHash,
           rule_results: T::Array[Lithic::TokenizationRuleResult::OrHash],
           tokenization_decline_reasons:
@@ -195,8 +204,6 @@ module Lithic
         card_token:,
         # Indicate when the request was received from Mastercard or Visa
         created:,
-        # Contains the metadata for the customer tokenization decision.
-        customer_tokenization_decision:,
         # Contains the metadata for the digital wallet being tokenized.
         digital_wallet_token_metadata:,
         # The name of this event
@@ -209,14 +216,19 @@ module Lithic
         # Unique identifier for the digital wallet token attempt
         tokenization_token:,
         wallet_decisioning_info:,
+        # Contains the metadata for the customer tokenization decision.
+        customer_tokenization_decision: nil,
         device: nil,
-        # Results from rules that were evaluated for this tokenization
+        # Results from rules that were evaluated for this tokenization. Only populated in
+        # webhook events, not in the initial decisioning request
         rule_results: nil,
-        # List of reasons why the tokenization was declined
+        # List of reasons why the tokenization was declined. Only populated in webhook
+        # events, not in the initial decisioning request
         tokenization_decline_reasons: nil,
         # The source of the tokenization.
         tokenization_source: nil,
-        # List of reasons why two-factor authentication was required
+        # List of reasons why two-factor authentication was required. Only populated in
+        # webhook events, not in the initial decisioning request
         tokenization_tfa_reasons: nil
       )
       end
@@ -227,10 +239,6 @@ module Lithic
             account_token: String,
             card_token: String,
             created: Time,
-            customer_tokenization_decision:
-              T.nilable(
-                Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision
-              ),
             digital_wallet_token_metadata: Lithic::TokenMetadata,
             event_type:
               Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType::TaggedSymbol,
@@ -240,6 +248,10 @@ module Lithic
               Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol,
             tokenization_token: String,
             wallet_decisioning_info: Lithic::WalletDecisioningInfo,
+            customer_tokenization_decision:
+              T.nilable(
+                Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::CustomerTokenizationDecision
+              ),
             device: Lithic::Device,
             rule_results: T::Array[Lithic::TokenizationRuleResult],
             tokenization_decline_reasons:
@@ -252,6 +264,112 @@ module Lithic
         )
       end
       def to_hash
+      end
+
+      # The name of this event
+      module EventType
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST =
+          T.let(
+            :"digital_wallet.tokenization_approval_request",
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Whether Lithic decisioned on the token, and if so, what the decision was.
+      # APPROVED/VERIFICATION_REQUIRED/DENIED.
+      module IssuerDecision
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        APPROVED =
+          T.let(
+            :APPROVED,
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
+          )
+        DENIED =
+          T.let(
+            :DENIED,
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
+          )
+        VERIFICATION_REQUIRED =
+          T.let(
+            :VERIFICATION_REQUIRED,
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # The channel through which the tokenization was made.
+      module TokenizationChannel
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        DIGITAL_WALLET =
+          T.let(
+            :DIGITAL_WALLET,
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol
+          )
+        MERCHANT =
+          T.let(
+            :MERCHANT,
+            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class CustomerTokenizationDecision < Lithic::Internal::Type::BaseModel
@@ -378,112 +496,6 @@ module Lithic
           end
           def self.values
           end
-        end
-      end
-
-      # The name of this event
-      module EventType
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST =
-          T.let(
-            :"digital_wallet.tokenization_approval_request",
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::EventType::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Whether Lithic decisioned on the token, and if so, what the decision was.
-      # APPROVED/VERIFICATION_REQUIRED/DENIED.
-      module IssuerDecision
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        APPROVED =
-          T.let(
-            :APPROVED,
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
-          )
-        DENIED =
-          T.let(
-            :DENIED,
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
-          )
-        VERIFICATION_REQUIRED =
-          T.let(
-            :VERIFICATION_REQUIRED,
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::IssuerDecision::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # The channel through which the tokenization was made.
-      module TokenizationChannel
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        DIGITAL_WALLET =
-          T.let(
-            :DIGITAL_WALLET,
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol
-          )
-        MERCHANT =
-          T.let(
-            :MERCHANT,
-            Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent::TokenizationChannel::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
         end
       end
 

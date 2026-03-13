@@ -134,24 +134,47 @@ module Lithic
                 )
               end
 
-            # The end time of the simulation
-            sig { returns(Time) }
-            attr_accessor :end_
+            # Auth Rule Token
+            sig { returns(T.nilable(String)) }
+            attr_reader :auth_rule_token
 
-            # The start time of the simulation
-            sig { returns(Time) }
-            attr_accessor :start
+            sig { params(auth_rule_token: String).void }
+            attr_writer :auth_rule_token
 
-            sig { params(end_: Time, start: Time).returns(T.attached_class) }
+            # The end time of the simulation.
+            sig { returns(T.nilable(Time)) }
+            attr_reader :end_
+
+            sig { params(end_: Time).void }
+            attr_writer :end_
+
+            # The start time of the simulation.
+            sig { returns(T.nilable(Time)) }
+            attr_reader :start
+
+            sig { params(start: Time).void }
+            attr_writer :start
+
+            sig do
+              params(auth_rule_token: String, end_: Time, start: Time).returns(
+                T.attached_class
+              )
+            end
             def self.new(
-              # The end time of the simulation
-              end_:,
-              # The start time of the simulation
-              start:
+              # Auth Rule Token
+              auth_rule_token: nil,
+              # The end time of the simulation.
+              end_: nil,
+              # The start time of the simulation.
+              start: nil
             )
             end
 
-            sig { override.returns({ end_: Time, start: Time }) }
+            sig do
+              override.returns(
+                { auth_rule_token: String, end_: Time, start: Time }
+              )
+            end
             def to_hash
             end
           end

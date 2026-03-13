@@ -110,7 +110,6 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
-        WIRE = :WIRE
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         FEE = :FEE
         REWARD = :REWARD
