@@ -70,9 +70,6 @@ module Lithic
             sig { returns(Integer) }
             attr_accessor :amount
 
-            # Note: Inbound wire transfers are coming soon (availability varies by partner
-            # bank). The WIRE category is a preview. To learn more, contact your customer
-            # success manager.
             sig do
               returns(
                 Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
@@ -158,9 +155,6 @@ module Lithic
               token:,
               # Transaction amount in cents
               amount:,
-              # Note: Inbound wire transfers are coming soon (availability varies by partner
-              # bank). The WIRE category is a preview. To learn more, contact your customer
-              # success manager.
               category:,
               # Timestamp of when the line item was generated
               created:,
@@ -211,9 +205,6 @@ module Lithic
             def to_hash
             end
 
-            # Note: Inbound wire transfers are coming soon (availability varies by partner
-            # bank). The WIRE category is a preview. To learn more, contact your customer
-            # success manager.
             module Category
               extend Lithic::Internal::Type::Enum
 
@@ -229,11 +220,6 @@ module Lithic
               ACH =
                 T.let(
                   :ACH,
-                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
-                )
-              WIRE =
-                T.let(
-                  :WIRE,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
               BALANCE_OR_FUNDING =

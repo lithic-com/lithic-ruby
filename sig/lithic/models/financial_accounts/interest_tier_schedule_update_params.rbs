@@ -5,7 +5,6 @@ module Lithic
         {
           financial_account_token: String,
           effective_date: Date,
-          penalty_rates: top,
           tier_name: String,
           tier_rates: top
         }
@@ -19,10 +18,6 @@ module Lithic
 
         attr_accessor effective_date: Date
 
-        attr_reader penalty_rates: top?
-
-        def penalty_rates=: (top) -> top
-
         attr_reader tier_name: String?
 
         def tier_name=: (String) -> String
@@ -34,7 +29,6 @@ module Lithic
         def initialize: (
           financial_account_token: String,
           effective_date: Date,
-          ?penalty_rates: top,
           ?tier_name: String,
           ?tier_rates: top,
           ?request_options: Lithic::request_opts
@@ -43,7 +37,6 @@ module Lithic
         def to_hash: -> {
           financial_account_token: String,
           effective_date: Date,
-          penalty_rates: top,
           tier_name: String,
           tier_rates: top,
           request_options: Lithic::RequestOptions

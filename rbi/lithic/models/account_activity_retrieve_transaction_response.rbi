@@ -191,11 +191,6 @@ module Lithic
               :ACH,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal::Category::TaggedSymbol
             )
-          WIRE =
-            T.let(
-              :WIRE,
-              Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal::Category::TaggedSymbol
-            )
           BALANCE_OR_FUNDING =
             T.let(
               :BALANCE_OR_FUNDING,

@@ -47,7 +47,6 @@ module Lithic
           CARD_RENEWED = :"card.renewed"
           CARD_SHIPPED = :"card.shipped"
           CARD_UPDATED = :"card.updated"
-          DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST = :"digital_wallet.tokenization_approval_request"
           DIGITAL_WALLET_TOKENIZATION_RESULT = :"digital_wallet.tokenization_result"
           DIGITAL_WALLET_TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE =
             :"digital_wallet.tokenization_two_factor_authentication_code"

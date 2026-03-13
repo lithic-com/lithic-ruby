@@ -3,7 +3,7 @@
 module Lithic
   module Resources
     class Disputes
-      # Request a chargeback.
+      # Initiate a dispute.
       sig do
         params(
           amount: Integer,
@@ -15,21 +15,21 @@ module Lithic
         ).returns(Lithic::Dispute)
       end
       def create(
-        # Amount for chargeback
+        # Amount to dispute
         amount:,
-        # Reason for chargeback
+        # Reason for dispute
         reason:,
-        # Transaction for chargeback
+        # Transaction to dispute
         transaction_token:,
-        # Date the customer filed the chargeback request
+        # Date the customer filed the dispute
         customer_filed_date: nil,
-        # Customer description
+        # Customer description of dispute
         customer_note: nil,
         request_options: {}
       )
       end
 
-      # Get chargeback request.
+      # Get dispute.
       sig do
         params(
           dispute_token: String,
@@ -39,7 +39,7 @@ module Lithic
       def retrieve(dispute_token, request_options: {})
       end
 
-      # Update chargeback request. Can only be modified if status is `NEW`.
+      # Update dispute. Can only be modified if status is `NEW`.
       sig do
         params(
           dispute_token: String,
@@ -52,19 +52,19 @@ module Lithic
       end
       def update(
         dispute_token,
-        # Amount for chargeback
+        # Amount to dispute
         amount: nil,
-        # Date the customer filed the chargeback request
+        # Date the customer filed the dispute
         customer_filed_date: nil,
-        # Customer description
+        # Customer description of dispute
         customer_note: nil,
-        # Reason for chargeback
+        # Reason for dispute
         reason: nil,
         request_options: {}
       )
       end
 
-      # List chargeback requests.
+      # List disputes.
       sig do
         params(
           begin_: Time,
@@ -92,7 +92,7 @@ module Lithic
         # A cursor representing an item's token after which a page of results should
         # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
-        # Filter by status.
+        # List disputes of a specific status.
         status: nil,
         # Transaction tokens to filter by.
         transaction_tokens: nil,
@@ -100,7 +100,7 @@ module Lithic
       )
       end
 
-      # Withdraw chargeback request.
+      # Withdraw dispute.
       sig do
         params(
           dispute_token: String,
@@ -110,8 +110,8 @@ module Lithic
       def delete(dispute_token, request_options: {})
       end
 
-      # Soft delete evidence for a chargeback request. Evidence will not be reviewed or
-      # submitted by Lithic after it is withdrawn.
+      # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
+      # by Lithic after it is withdrawn.
       sig do
         params(
           evidence_token: String,
@@ -122,8 +122,8 @@ module Lithic
       def delete_evidence(evidence_token, dispute_token:, request_options: {})
       end
 
-      # Use this endpoint to upload evidence for a chargeback request. It will return a
-      # URL to upload your documents to. The URL will expire in 30 minutes.
+      # Use this endpoint to upload evidences for the dispute. It will return a URL to
+      # upload your documents to. The URL will expire in 30 minutes.
       #
       # Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
       # less than 5 GiB.
@@ -142,7 +142,7 @@ module Lithic
       )
       end
 
-      # List evidence for a chargeback request.
+      # List evidence metadata for a dispute.
       sig do
         params(
           dispute_token: String,
@@ -174,7 +174,7 @@ module Lithic
       )
       end
 
-      # Get evidence for a chargeback request.
+      # Get a dispute's evidence metadata.
       sig do
         params(
           evidence_token: String,

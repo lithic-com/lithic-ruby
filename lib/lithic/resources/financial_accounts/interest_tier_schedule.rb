@@ -10,15 +10,13 @@ module Lithic
         #
         # Create a new interest tier schedule entry for a supported financial account
         #
-        # @overload create(financial_account_token, credit_product_token:, effective_date:, penalty_rates: nil, tier_name: nil, tier_rates: nil, request_options: {})
+        # @overload create(financial_account_token, credit_product_token:, effective_date:, tier_name: nil, tier_rates: nil, request_options: {})
         #
         # @param financial_account_token [String] Globally unique identifier for financial account
         #
         # @param credit_product_token [String] Globally unique identifier for a credit product
         #
         # @param effective_date [Date] Date the tier should be effective in YYYY-MM-DD format
-        #
-        # @param penalty_rates [Object] Custom rates per category for penalties
         #
         # @param tier_name [String] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
         #
@@ -77,13 +75,11 @@ module Lithic
         #
         # Update an existing interest tier schedule
         #
-        # @overload update(effective_date, financial_account_token:, penalty_rates: nil, tier_name: nil, tier_rates: nil, request_options: {})
+        # @overload update(effective_date, financial_account_token:, tier_name: nil, tier_rates: nil, request_options: {})
         #
         # @param effective_date [Date] Path param: Effective date in ISO format (YYYY-MM-DD)
         #
         # @param financial_account_token [String] Path param: Globally unique identifier for financial account
-        #
-        # @param penalty_rates [Object] Body param: Custom rates per category for penalties
         #
         # @param tier_name [String] Body param: Name of a tier contained in the credit product. Mutually exclusive w
         #

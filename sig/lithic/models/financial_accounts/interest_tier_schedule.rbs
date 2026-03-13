@@ -5,7 +5,6 @@ module Lithic
         {
           credit_product_token: String,
           effective_date: Date,
-          penalty_rates: top,
           tier_name: String,
           tier_rates: top
         }
@@ -14,10 +13,6 @@ module Lithic
         attr_accessor credit_product_token: String
 
         attr_accessor effective_date: Date
-
-        attr_reader penalty_rates: top?
-
-        def penalty_rates=: (top) -> top
 
         attr_reader tier_name: String?
 
@@ -30,7 +25,6 @@ module Lithic
         def initialize: (
           credit_product_token: String,
           effective_date: Date,
-          ?penalty_rates: top,
           ?tier_name: String,
           ?tier_rates: top
         ) -> void
@@ -38,7 +32,6 @@ module Lithic
         def to_hash: -> {
           credit_product_token: String,
           effective_date: Date,
-          penalty_rates: top,
           tier_name: String,
           tier_rates: top
         }

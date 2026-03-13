@@ -163,11 +163,6 @@ module Lithic
               :"card.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
-          DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST =
-            T.let(
-              :"digital_wallet.tokenization_approval_request",
-              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
-            )
           DIGITAL_WALLET_TOKENIZATION_RESULT =
             T.let(
               :"digital_wallet.tokenization_result",

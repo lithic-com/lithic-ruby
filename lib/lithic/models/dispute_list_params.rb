@@ -42,7 +42,7 @@ module Lithic
       optional :starting_after, String
 
       # @!attribute status
-      #   Filter by status.
+      #   List disputes of a specific status.
       #
       #   @return [Symbol, Lithic::Models::DisputeListParams::Status, nil]
       optional :status, enum: -> { Lithic::DisputeListParams::Status }
@@ -67,13 +67,13 @@ module Lithic
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param status [Symbol, Lithic::Models::DisputeListParams::Status] Filter by status.
+      #   @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
       #
       #   @param transaction_tokens [Array<String>] Transaction tokens to filter by.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-      # Filter by status.
+      # List disputes of a specific status.
       module Status
         extend Lithic::Internal::Type::Enum
 

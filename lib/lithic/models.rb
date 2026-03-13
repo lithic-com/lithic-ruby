@@ -510,8 +510,6 @@ module Lithic
 
   TokenizationDeactivateParams = Lithic::Models::TokenizationDeactivateParams
 
-  TokenizationDecisioningRequestWebhookEvent = Lithic::Models::TokenizationDecisioningRequestWebhookEvent
-
   TokenizationDecisioningRetrieveSecretParams = Lithic::Models::TokenizationDecisioningRetrieveSecretParams
 
   TokenizationDecisioningRotateSecretParams = Lithic::Models::TokenizationDecisioningRotateSecretParams

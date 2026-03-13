@@ -20,13 +20,6 @@ module Lithic
         sig { returns(Date) }
         attr_accessor :effective_date
 
-        # Custom rates per category for penalties
-        sig { returns(T.nilable(T.anything)) }
-        attr_reader :penalty_rates
-
-        sig { params(penalty_rates: T.anything).void }
-        attr_writer :penalty_rates
-
         # Name of a tier contained in the credit product. Mutually exclusive with
         # tier_rates
         sig { returns(T.nilable(String)) }
@@ -47,7 +40,6 @@ module Lithic
           params(
             credit_product_token: String,
             effective_date: Date,
-            penalty_rates: T.anything,
             tier_name: String,
             tier_rates: T.anything
           ).returns(T.attached_class)
@@ -57,8 +49,6 @@ module Lithic
           credit_product_token:,
           # Date the tier should be effective in YYYY-MM-DD format
           effective_date:,
-          # Custom rates per category for penalties
-          penalty_rates: nil,
           # Name of a tier contained in the credit product. Mutually exclusive with
           # tier_rates
           tier_name: nil,
@@ -72,7 +62,6 @@ module Lithic
             {
               credit_product_token: String,
               effective_date: Date,
-              penalty_rates: T.anything,
               tier_name: String,
               tier_rates: T.anything
             }
