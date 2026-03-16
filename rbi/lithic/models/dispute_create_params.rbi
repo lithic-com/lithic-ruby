@@ -11,26 +11,26 @@ module Lithic
           T.any(Lithic::DisputeCreateParams, Lithic::Internal::AnyHash)
         end
 
-      # Amount to dispute
+      # Amount for chargeback
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # Reason for dispute
+      # Reason for chargeback
       sig { returns(Lithic::DisputeCreateParams::Reason::OrSymbol) }
       attr_accessor :reason
 
-      # Transaction to dispute
+      # Transaction for chargeback
       sig { returns(String) }
       attr_accessor :transaction_token
 
-      # Date the customer filed the dispute
+      # Date the customer filed the chargeback request
       sig { returns(T.nilable(Time)) }
       attr_reader :customer_filed_date
 
       sig { params(customer_filed_date: Time).void }
       attr_writer :customer_filed_date
 
-      # Customer description of dispute
+      # Customer description
       sig { returns(T.nilable(String)) }
       attr_reader :customer_note
 
@@ -48,15 +48,15 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
-        # Amount to dispute
+        # Amount for chargeback
         amount:,
-        # Reason for dispute
+        # Reason for chargeback
         reason:,
-        # Transaction to dispute
+        # Transaction for chargeback
         transaction_token:,
-        # Date the customer filed the dispute
+        # Date the customer filed the chargeback request
         customer_filed_date: nil,
-        # Customer description of dispute
+        # Customer description
         customer_note: nil,
         request_options: {}
       )
@@ -77,7 +77,7 @@ module Lithic
       def to_hash
       end
 
-      # Reason for dispute
+      # Reason for chargeback
       module Reason
         extend Lithic::Internal::Type::Enum
 

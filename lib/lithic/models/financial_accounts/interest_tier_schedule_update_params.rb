@@ -18,6 +18,12 @@ module Lithic
         #   @return [Date]
         required :effective_date, Date
 
+        # @!attribute penalty_rates
+        #   Custom rates per category for penalties
+        #
+        #   @return [Object, nil]
+        optional :penalty_rates, Lithic::Internal::Type::Unknown
+
         # @!attribute tier_name
         #   Name of a tier contained in the credit product. Mutually exclusive with
         #   tier_rates
@@ -31,7 +37,7 @@ module Lithic
         #   @return [Object, nil]
         optional :tier_rates, Lithic::Internal::Type::Unknown
 
-        # @!method initialize(financial_account_token:, effective_date:, tier_name: nil, tier_rates: nil, request_options: {})
+        # @!method initialize(financial_account_token:, effective_date:, penalty_rates: nil, tier_name: nil, tier_rates: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::InterestTierScheduleUpdateParams} for more
         #   details.
@@ -39,6 +45,8 @@ module Lithic
         #   @param financial_account_token [String]
         #
         #   @param effective_date [Date]
+        #
+        #   @param penalty_rates [Object] Custom rates per category for penalties
         #
         #   @param tier_name [String] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
         #

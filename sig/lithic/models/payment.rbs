@@ -129,6 +129,7 @@ module Lithic
 
       type category =
         :ACH
+        | :WIRE
         | :BALANCE_OR_FUNDING
         | :FEE
         | :REWARD
@@ -154,6 +155,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         ACH: :ACH
+        WIRE: :WIRE
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
         FEE: :FEE
         REWARD: :REWARD
@@ -266,6 +268,13 @@ module Lithic
           | :ACH_RETURN_PROCESSED
           | :ACH_RETURN_REJECTED
           | :ACH_RETURN_SETTLED
+          | :WIRE_TRANSFER_INBOUND_RECEIVED
+          | :WIRE_TRANSFER_INBOUND_SETTLED
+          | :WIRE_TRANSFER_INBOUND_BLOCKED
+          | :WIRE_RETURN_OUTBOUND_INITIATED
+          | :WIRE_RETURN_OUTBOUND_SENT
+          | :WIRE_RETURN_OUTBOUND_SETTLED
+          | :WIRE_RETURN_OUTBOUND_REJECTED
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -285,6 +294,13 @@ module Lithic
           ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
           ACH_RETURN_REJECTED: :ACH_RETURN_REJECTED
           ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
+          WIRE_TRANSFER_INBOUND_RECEIVED: :WIRE_TRANSFER_INBOUND_RECEIVED
+          WIRE_TRANSFER_INBOUND_SETTLED: :WIRE_TRANSFER_INBOUND_SETTLED
+          WIRE_TRANSFER_INBOUND_BLOCKED: :WIRE_TRANSFER_INBOUND_BLOCKED
+          WIRE_RETURN_OUTBOUND_INITIATED: :WIRE_RETURN_OUTBOUND_INITIATED
+          WIRE_RETURN_OUTBOUND_SENT: :WIRE_RETURN_OUTBOUND_SENT
+          WIRE_RETURN_OUTBOUND_SETTLED: :WIRE_RETURN_OUTBOUND_SETTLED
+          WIRE_RETURN_OUTBOUND_REJECTED: :WIRE_RETURN_OUTBOUND_REJECTED
 
           def self?.values: -> ::Array[Lithic::Models::Payment::Event::type_]
         end
@@ -407,8 +423,7 @@ module Lithic
             wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
             creditor: Lithic::WirePartyDetails,
             debtor: Lithic::WirePartyDetails,
-            message_id: String?,
-            remittance_information: String?
+            message_id: String?
           }
 
         class WireMethodAttributes < Lithic::Internal::Type::BaseModel
@@ -426,15 +441,12 @@ module Lithic
 
           attr_accessor message_id: String?
 
-          attr_accessor remittance_information: String?
-
           def initialize: (
             wire_message_type: String?,
             wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
             ?creditor: Lithic::WirePartyDetails,
             ?debtor: Lithic::WirePartyDetails,
-            ?message_id: String?,
-            ?remittance_information: String?
+            ?message_id: String?
           ) -> void
 
           def to_hash: -> {
@@ -442,8 +454,7 @@ module Lithic
             wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
             creditor: Lithic::WirePartyDetails,
             debtor: Lithic::WirePartyDetails,
-            message_id: String?,
-            remittance_information: String?
+            message_id: String?
           }
 
           type wire_network = :FEDWIRE | :SWIFT
