@@ -189,6 +189,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
+        WIRE = :WIRE
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         FEE = :FEE
         REWARD = :REWARD
@@ -255,7 +256,13 @@ module Lithic
         required :result, enum: -> { Lithic::Payment::Event::Result }
 
         # @!attribute type
+        #   Note: Inbound wire transfers are coming soon (availability varies by partner
+        #   bank). Wire-related event types below are a preview. To learn more, contact your
+        #   customer success manager.
+        #
         #   Event types:
+        #
+        #   ACH events:
         #
         #   - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
         #     approval/release from an ACH hold.
@@ -282,6 +289,26 @@ module Lithic
         #   - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
         #     Financial Institution.
         #
+        #   Wire transfer events:
+        #
+        #   - `WIRE_TRANSFER_INBOUND_RECEIVED` - Inbound wire transfer received from the
+        #     Federal Reserve and pending release to available balance.
+        #   - `WIRE_TRANSFER_INBOUND_SETTLED` - Inbound wire transfer funds released from
+        #     pending to available balance.
+        #   - `WIRE_TRANSFER_INBOUND_BLOCKED` - Inbound wire transfer blocked and funds
+        #     frozen for regulatory review.
+        #
+        #   Wire return events:
+        #
+        #   - `WIRE_RETURN_OUTBOUND_INITIATED` - Outbound wire return initiated to return
+        #     funds from an inbound wire transfer.
+        #   - `WIRE_RETURN_OUTBOUND_SENT` - Outbound wire return sent to the Federal Reserve
+        #     and pending acceptance.
+        #   - `WIRE_RETURN_OUTBOUND_SETTLED` - Outbound wire return accepted by the Federal
+        #     Reserve and funds returned to sender.
+        #   - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
+        #     Reserve.
+        #
         #   @return [Symbol, Lithic::Models::Payment::Event::Type]
         required :type, enum: -> { Lithic::Payment::Event::Type }
 
@@ -293,7 +320,9 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Payment::Event::DetailedResult] }
 
         # @!attribute external_id
-        #   Payment event external ID, for example, ACH trace number.
+        #   Payment event external ID. For ACH transactions, this is the ACH trace number.
+        #   For inbound wire transfers, this is the IMAD (Input Message Accountability
+        #   Data).
         #
         #   @return [String, nil]
         optional :external_id, String, nil?: true
@@ -301,6 +330,10 @@ module Lithic
         # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil, external_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Payment::Event} for more details.
+        #
+        #   Note: Inbound wire transfers are coming soon (availability varies by partner
+        #   bank). Wire-related fields below are a preview. To learn more, contact your
+        #   customer success manager.
         #
         #   Payment Event
         #
@@ -312,11 +345,11 @@ module Lithic
         #
         #   @param result [Symbol, Lithic::Models::Payment::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
         #
-        #   @param type [Symbol, Lithic::Models::Payment::Event::Type] Event types:
+        #   @param type [Symbol, Lithic::Models::Payment::Event::Type] Note: Inbound wire transfers are coming soon (availability varies by partner ban
         #
         #   @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>] More detailed reasons for the event
         #
-        #   @param external_id [String, nil] Payment event external ID, for example, ACH trace number.
+        #   @param external_id [String, nil] Payment event external ID. For ACH transactions, this is the ACH trace number.
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
@@ -332,7 +365,13 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
+        # Note: Inbound wire transfers are coming soon (availability varies by partner
+        # bank). Wire-related event types below are a preview. To learn more, contact your
+        # customer success manager.
+        #
         # Event types:
+        #
+        # ACH events:
         #
         # - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
         #   approval/release from an ACH hold.
@@ -359,6 +398,26 @@ module Lithic
         # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
         #   Financial Institution.
         #
+        # Wire transfer events:
+        #
+        # - `WIRE_TRANSFER_INBOUND_RECEIVED` - Inbound wire transfer received from the
+        #   Federal Reserve and pending release to available balance.
+        # - `WIRE_TRANSFER_INBOUND_SETTLED` - Inbound wire transfer funds released from
+        #   pending to available balance.
+        # - `WIRE_TRANSFER_INBOUND_BLOCKED` - Inbound wire transfer blocked and funds
+        #   frozen for regulatory review.
+        #
+        # Wire return events:
+        #
+        # - `WIRE_RETURN_OUTBOUND_INITIATED` - Outbound wire return initiated to return
+        #   funds from an inbound wire transfer.
+        # - `WIRE_RETURN_OUTBOUND_SENT` - Outbound wire return sent to the Federal Reserve
+        #   and pending acceptance.
+        # - `WIRE_RETURN_OUTBOUND_SETTLED` - Outbound wire return accepted by the Federal
+        #   Reserve and funds returned to sender.
+        # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
+        #   Reserve.
+        #
         # @see Lithic::Models::Payment::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
@@ -378,6 +437,13 @@ module Lithic
           ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
           ACH_RETURN_REJECTED = :ACH_RETURN_REJECTED
           ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
+          WIRE_TRANSFER_INBOUND_RECEIVED = :WIRE_TRANSFER_INBOUND_RECEIVED
+          WIRE_TRANSFER_INBOUND_SETTLED = :WIRE_TRANSFER_INBOUND_SETTLED
+          WIRE_TRANSFER_INBOUND_BLOCKED = :WIRE_TRANSFER_INBOUND_BLOCKED
+          WIRE_RETURN_OUTBOUND_INITIATED = :WIRE_RETURN_OUTBOUND_INITIATED
+          WIRE_RETURN_OUTBOUND_SENT = :WIRE_RETURN_OUTBOUND_SENT
+          WIRE_RETURN_OUTBOUND_SETTLED = :WIRE_RETURN_OUTBOUND_SETTLED
+          WIRE_RETURN_OUTBOUND_REJECTED = :WIRE_RETURN_OUTBOUND_REJECTED
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -537,13 +603,7 @@ module Lithic
           #   @return [String, nil]
           optional :message_id, String, nil?: true
 
-          # @!attribute remittance_information
-          #   Payment details or invoice reference
-          #
-          #   @return [String, nil]
-          optional :remittance_information, String, nil?: true
-
-          # @!method initialize(wire_message_type:, wire_network:, creditor: nil, debtor: nil, message_id: nil, remittance_information: nil)
+          # @!method initialize(wire_message_type:, wire_network:, creditor: nil, debtor: nil, message_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::Payment::MethodAttributes::WireMethodAttributes} for more
           #   details.
@@ -557,8 +617,6 @@ module Lithic
           #   @param debtor [Lithic::Models::WirePartyDetails]
           #
           #   @param message_id [String, nil] Point to point reference identifier, as assigned by the instructing party, used
-          #
-          #   @param remittance_information [String, nil] Payment details or invoice reference
 
           # Type of wire transfer
           #

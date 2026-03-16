@@ -48,30 +48,22 @@ module Lithic
 
           # @see Lithic::Models::AuthRules::V2::BacktestResults#simulation_parameters
           class SimulationParameters < Lithic::Internal::Type::BaseModel
-            # @!attribute auth_rule_token
-            #   Auth Rule Token
-            #
-            #   @return [String, nil]
-            optional :auth_rule_token, String
-
             # @!attribute end_
-            #   The end time of the simulation.
+            #   The end time of the simulation
             #
-            #   @return [Time, nil]
-            optional :end_, Time, api_name: :end
+            #   @return [Time]
+            required :end_, Time, api_name: :end
 
             # @!attribute start
-            #   The start time of the simulation.
+            #   The start time of the simulation
             #
-            #   @return [Time, nil]
-            optional :start, Time
+            #   @return [Time]
+            required :start, Time
 
-            # @!method initialize(auth_rule_token: nil, end_: nil, start: nil)
-            #   @param auth_rule_token [String] Auth Rule Token
+            # @!method initialize(end_:, start:)
+            #   @param end_ [Time] The end time of the simulation
             #
-            #   @param end_ [Time] The end time of the simulation.
-            #
-            #   @param start [Time] The start time of the simulation.
+            #   @param start [Time] The start time of the simulation
           end
         end
       end

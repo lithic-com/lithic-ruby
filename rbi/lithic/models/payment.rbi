@@ -226,6 +226,7 @@ module Lithic
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACH = T.let(:ACH, Lithic::Payment::Category::TaggedSymbol)
+        WIRE = T.let(:WIRE, Lithic::Payment::Category::TaggedSymbol)
         BALANCE_OR_FUNDING =
           T.let(:BALANCE_OR_FUNDING, Lithic::Payment::Category::TaggedSymbol)
         FEE = T.let(:FEE, Lithic::Payment::Category::TaggedSymbol)
@@ -313,7 +314,13 @@ module Lithic
         sig { returns(Lithic::Payment::Event::Result::TaggedSymbol) }
         attr_accessor :result
 
+        # Note: Inbound wire transfers are coming soon (availability varies by partner
+        # bank). Wire-related event types below are a preview. To learn more, contact your
+        # customer success manager.
+        #
         # Event types:
+        #
+        # ACH events:
         #
         # - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
         #   approval/release from an ACH hold.
@@ -339,6 +346,26 @@ module Lithic
         #   Financial Institution.
         # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
         #   Financial Institution.
+        #
+        # Wire transfer events:
+        #
+        # - `WIRE_TRANSFER_INBOUND_RECEIVED` - Inbound wire transfer received from the
+        #   Federal Reserve and pending release to available balance.
+        # - `WIRE_TRANSFER_INBOUND_SETTLED` - Inbound wire transfer funds released from
+        #   pending to available balance.
+        # - `WIRE_TRANSFER_INBOUND_BLOCKED` - Inbound wire transfer blocked and funds
+        #   frozen for regulatory review.
+        #
+        # Wire return events:
+        #
+        # - `WIRE_RETURN_OUTBOUND_INITIATED` - Outbound wire return initiated to return
+        #   funds from an inbound wire transfer.
+        # - `WIRE_RETURN_OUTBOUND_SENT` - Outbound wire return sent to the Federal Reserve
+        #   and pending acceptance.
+        # - `WIRE_RETURN_OUTBOUND_SETTLED` - Outbound wire return accepted by the Federal
+        #   Reserve and funds returned to sender.
+        # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
+        #   Reserve.
         sig { returns(Lithic::Payment::Event::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -360,10 +387,16 @@ module Lithic
         end
         attr_writer :detailed_results
 
-        # Payment event external ID, for example, ACH trace number.
+        # Payment event external ID. For ACH transactions, this is the ACH trace number.
+        # For inbound wire transfers, this is the IMAD (Input Message Accountability
+        # Data).
         sig { returns(T.nilable(String)) }
         attr_accessor :external_id
 
+        # Note: Inbound wire transfers are coming soon (availability varies by partner
+        # bank). Wire-related fields below are a preview. To learn more, contact your
+        # customer success manager.
+        #
         # Payment Event
         sig do
           params(
@@ -388,7 +421,13 @@ module Lithic
           # APPROVED financial events were successful while DECLINED financial events were
           # declined by user, Lithic, or the network.
           result:,
+          # Note: Inbound wire transfers are coming soon (availability varies by partner
+          # bank). Wire-related event types below are a preview. To learn more, contact your
+          # customer success manager.
+          #
           # Event types:
+          #
+          # ACH events:
           #
           # - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
           #   approval/release from an ACH hold.
@@ -414,10 +453,32 @@ module Lithic
           #   Financial Institution.
           # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
           #   Financial Institution.
+          #
+          # Wire transfer events:
+          #
+          # - `WIRE_TRANSFER_INBOUND_RECEIVED` - Inbound wire transfer received from the
+          #   Federal Reserve and pending release to available balance.
+          # - `WIRE_TRANSFER_INBOUND_SETTLED` - Inbound wire transfer funds released from
+          #   pending to available balance.
+          # - `WIRE_TRANSFER_INBOUND_BLOCKED` - Inbound wire transfer blocked and funds
+          #   frozen for regulatory review.
+          #
+          # Wire return events:
+          #
+          # - `WIRE_RETURN_OUTBOUND_INITIATED` - Outbound wire return initiated to return
+          #   funds from an inbound wire transfer.
+          # - `WIRE_RETURN_OUTBOUND_SENT` - Outbound wire return sent to the Federal Reserve
+          #   and pending acceptance.
+          # - `WIRE_RETURN_OUTBOUND_SETTLED` - Outbound wire return accepted by the Federal
+          #   Reserve and funds returned to sender.
+          # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
+          #   Reserve.
           type:,
           # More detailed reasons for the event
           detailed_results: nil,
-          # Payment event external ID, for example, ACH trace number.
+          # Payment event external ID. For ACH transactions, this is the ACH trace number.
+          # For inbound wire transfers, this is the IMAD (Input Message Accountability
+          # Data).
           external_id: nil
         )
         end
@@ -462,7 +523,13 @@ module Lithic
           end
         end
 
+        # Note: Inbound wire transfers are coming soon (availability varies by partner
+        # bank). Wire-related event types below are a preview. To learn more, contact your
+        # customer success manager.
+        #
         # Event types:
+        #
+        # ACH events:
         #
         # - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
         #   approval/release from an ACH hold.
@@ -488,6 +555,26 @@ module Lithic
         #   Financial Institution.
         # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
         #   Financial Institution.
+        #
+        # Wire transfer events:
+        #
+        # - `WIRE_TRANSFER_INBOUND_RECEIVED` - Inbound wire transfer received from the
+        #   Federal Reserve and pending release to available balance.
+        # - `WIRE_TRANSFER_INBOUND_SETTLED` - Inbound wire transfer funds released from
+        #   pending to available balance.
+        # - `WIRE_TRANSFER_INBOUND_BLOCKED` - Inbound wire transfer blocked and funds
+        #   frozen for regulatory review.
+        #
+        # Wire return events:
+        #
+        # - `WIRE_RETURN_OUTBOUND_INITIATED` - Outbound wire return initiated to return
+        #   funds from an inbound wire transfer.
+        # - `WIRE_RETURN_OUTBOUND_SENT` - Outbound wire return sent to the Federal Reserve
+        #   and pending acceptance.
+        # - `WIRE_RETURN_OUTBOUND_SETTLED` - Outbound wire return accepted by the Federal
+        #   Reserve and funds returned to sender.
+        # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
+        #   Reserve.
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -568,6 +655,41 @@ module Lithic
           ACH_RETURN_SETTLED =
             T.let(
               :ACH_RETURN_SETTLED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_TRANSFER_INBOUND_RECEIVED =
+            T.let(
+              :WIRE_TRANSFER_INBOUND_RECEIVED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_TRANSFER_INBOUND_SETTLED =
+            T.let(
+              :WIRE_TRANSFER_INBOUND_SETTLED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_TRANSFER_INBOUND_BLOCKED =
+            T.let(
+              :WIRE_TRANSFER_INBOUND_BLOCKED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_RETURN_OUTBOUND_INITIATED =
+            T.let(
+              :WIRE_RETURN_OUTBOUND_INITIATED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_RETURN_OUTBOUND_SENT =
+            T.let(
+              :WIRE_RETURN_OUTBOUND_SENT,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_RETURN_OUTBOUND_SETTLED =
+            T.let(
+              :WIRE_RETURN_OUTBOUND_SETTLED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          WIRE_RETURN_OUTBOUND_REJECTED =
+            T.let(
+              :WIRE_RETURN_OUTBOUND_REJECTED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
 
@@ -860,10 +982,6 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :message_id
 
-          # Payment details or invoice reference
-          sig { returns(T.nilable(String)) }
-          attr_accessor :remittance_information
-
           sig do
             params(
               wire_message_type: T.nilable(String),
@@ -871,8 +989,7 @@ module Lithic
                 Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::OrSymbol,
               creditor: Lithic::WirePartyDetails::OrHash,
               debtor: Lithic::WirePartyDetails::OrHash,
-              message_id: T.nilable(String),
-              remittance_information: T.nilable(String)
+              message_id: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -884,9 +1001,7 @@ module Lithic
             debtor: nil,
             # Point to point reference identifier, as assigned by the instructing party, used
             # for tracking the message through the Fedwire system
-            message_id: nil,
-            # Payment details or invoice reference
-            remittance_information: nil
+            message_id: nil
           )
           end
 
@@ -898,8 +1013,7 @@ module Lithic
                   Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol,
                 creditor: Lithic::WirePartyDetails,
                 debtor: Lithic::WirePartyDetails,
-                message_id: T.nilable(String),
-                remittance_information: T.nilable(String)
+                message_id: T.nilable(String)
               }
             )
           end
