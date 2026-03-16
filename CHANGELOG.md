@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.8.0 (2026-03-16)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/lithic-com/lithic-ruby/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** add EARLY_DIRECT_DEPOSIT_FLOAT to financial account types ([3e0194f](https://github.com/lithic-com/lithic-ruby/commit/3e0194f79f315f44b8bc95c7e18452c99d91ce81))
+* **api:** Add event_subtype to statement line items ([3e9c63c](https://github.com/lithic-com/lithic-ruby/commit/3e9c63ca2f2c3ddf7cfebef2bbf603646f0c6e7d))
+* **api:** add excluded_account_tokens field to auth_rules ([df3f09b](https://github.com/lithic-com/lithic-ruby/commit/df3f09b0f5fe02307e747af719d5f4ab5a8ebf04))
+* **api:** add loan_tape_date field to statement line items ([9dd0f14](https://github.com/lithic-com/lithic-ruby/commit/9dd0f14b35ebd87561dda0a11da9b440d9a4f1cb))
+* **api:** add penalty_rates parameter to interest_tier_schedule ([d5d3ecb](https://github.com/lithic-com/lithic-ruby/commit/d5d3ecb2d87d8475aead81558b3152fd922cf267))
+* **api:** Add support for early direct deposit ([5b75c2f](https://github.com/lithic-com/lithic-ruby/commit/5b75c2fdb30131890b8ea83befd70c6f7cba804f))
+* **api:** add TypeScript code rules, draft version state tracking to auth_rules ([1dbdb68](https://github.com/lithic-com/lithic-ruby/commit/1dbdb688fffb5909af5c568bb16b2e3f899a6a42))
+* **api:** add versions field to auth_rules daily statistics ([827bf68](https://github.com/lithic-com/lithic-ruby/commit/827bf6825c3dae568720c02beceedb1cc0f357f8))
+* **api:** add WIRE category to account_activity/statements/payment, wire event types, remove field ([a9df6e3](https://github.com/lithic-com/lithic-ruby/commit/a9df6e398525050cf3cb0d7d1166a4fd27d5d182))
+* **client:** add webhook support ([e31938a](https://github.com/lithic-com/lithic-ruby/commit/e31938aed255ccf33ac8cafcde59f0b53334cd52))
+
+
+### Bug Fixes
+
+* **api:** [breaking] unify webhook schemas for digital_wallet.tokenization_approval_request webhooks ([46555c1](https://github.com/lithic-com/lithic-ruby/commit/46555c112e45b4aa389e3d8f0a5231a0a7c3ce19))
+* **api:** Disable MCP server to fix TypeScript SDK package publishing ([b977c80](https://github.com/lithic-com/lithic-ruby/commit/b977c80b191364666f305fc9527d161c653a43f7))
+* **types:** require start/end_, remove auth_rule_token in auth_rules v2 backtest ([7307a40](https://github.com/lithic-com/lithic-ruby/commit/7307a40c8d1c7e50bc79ef302b1563da333ccb53))
+
+
+### Chores
+
+* **internal:** codegen related update ([489f19b](https://github.com/lithic-com/lithic-ruby/commit/489f19b1c8c76d08aed0a313d45bed73406025b5))
+* **internal:** regenerate SDK with no functional changes ([13a1d1b](https://github.com/lithic-com/lithic-ruby/commit/13a1d1bd178d109ca6d5c8d3f3199f471b643cfa))
+
+
+### Documentation
+
+* **api:** update disputes terminology to chargeback request ([94dadbc](https://github.com/lithic-com/lithic-ruby/commit/94dadbcaa0c7f98b6a7e8b66fcdf5bfdc0e8fa5d))
+* **client:** add MCP Server section to README ([fbf0234](https://github.com/lithic-com/lithic-ruby/commit/fbf0234627af6b16c0844a258c3133f2d671613c))
+
 ## 0.7.0 (2026-03-05)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/lithic-com/lithic-ruby/compare/v0.6.0...v0.7.0)
