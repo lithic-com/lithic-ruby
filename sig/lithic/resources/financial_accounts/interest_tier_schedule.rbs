@@ -6,6 +6,7 @@ module Lithic
           String financial_account_token,
           credit_product_token: String,
           effective_date: Date,
+          ?penalty_rates: top,
           ?tier_name: String,
           ?tier_rates: top,
           ?request_options: Lithic::request_opts
@@ -20,6 +21,7 @@ module Lithic
         def update: (
           Date effective_date,
           financial_account_token: String,
+          ?penalty_rates: top,
           ?tier_name: String,
           ?tier_rates: top,
           ?request_options: Lithic::request_opts

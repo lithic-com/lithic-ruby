@@ -50,7 +50,7 @@ module Lithic
       sig { params(starting_after: String).void }
       attr_writer :starting_after
 
-      # List disputes of a specific status.
+      # Filter by status.
       sig { returns(T.nilable(Lithic::DisputeListParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -91,7 +91,7 @@ module Lithic
         # A cursor representing an item's token after which a page of results should
         # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
-        # List disputes of a specific status.
+        # Filter by status.
         status: nil,
         # Transaction tokens to filter by.
         transaction_tokens: nil,
@@ -116,7 +116,7 @@ module Lithic
       def to_hash
       end
 
-      # List disputes of a specific status.
+      # Filter by status.
       module Status
         extend Lithic::Internal::Type::Enum
 

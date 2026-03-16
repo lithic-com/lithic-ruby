@@ -10,6 +10,7 @@ module Lithic
             financial_account_token: String,
             credit_product_token: String,
             effective_date: Date,
+            penalty_rates: T.anything,
             tier_name: String,
             tier_rates: T.anything,
             request_options: Lithic::RequestOptions::OrHash
@@ -24,6 +25,8 @@ module Lithic
           credit_product_token:,
           # Date the tier should be effective in YYYY-MM-DD format
           effective_date:,
+          # Custom rates per category for penalties
+          penalty_rates: nil,
           # Name of a tier contained in the credit product. Mutually exclusive with
           # tier_rates
           tier_name: nil,
@@ -57,6 +60,7 @@ module Lithic
           params(
             effective_date: Date,
             financial_account_token: String,
+            penalty_rates: T.anything,
             tier_name: String,
             tier_rates: T.anything,
             request_options: Lithic::RequestOptions::OrHash
@@ -69,6 +73,8 @@ module Lithic
           effective_date,
           # Path param: Globally unique identifier for financial account
           financial_account_token:,
+          # Body param: Custom rates per category for penalties
+          penalty_rates: nil,
           # Body param: Name of a tier contained in the credit product. Mutually exclusive
           # with tier_rates
           tier_name: nil,
