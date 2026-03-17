@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.9.0 (2026-03-17)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/lithic-com/lithic-ruby/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** add remittance_information field to payment wire method attributes ([100269f](https://github.com/lithic-com/lithic-ruby/commit/100269f1b5978d70bb1349ec194ecb960ded5e10))
+
+
+### Bug Fixes
+
+* **types:** make first_name/last_name required in account holder beneficial owner/control person ([8925468](https://github.com/lithic-com/lithic-ruby/commit/892546852aadf3b3442879869f7b0c2059bcbb4c))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([6cd6af9](https://github.com/lithic-com/lithic-ruby/commit/6cd6af964276e2a5d921dc2efcb1e30aab3c1212))
+
+
+### Documentation
+
+* **api:** add pdf to supported file types in account_holders ([cc89c60](https://github.com/lithic-com/lithic-ruby/commit/cc89c60c821f98d9ed8602acf255e627a5d663af))
+
 ## 0.8.0 (2026-03-16)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/lithic-com/lithic-ruby/compare/v0.7.0...v0.8.0)
