@@ -395,37 +395,46 @@ module Lithic
                 )
               end
 
+            # Individual's first name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :first_name
+
+            # Individual's last name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :last_name
+
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
             # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-            sig { returns(Lithic::Address) }
+            sig { returns(T.nilable(Lithic::Address)) }
             attr_reader :address
 
             sig { params(address: Lithic::Address::OrHash).void }
             attr_writer :address
 
             # Individual's date of birth, as an RFC 3339 date.
-            sig { returns(String) }
-            attr_accessor :dob
+            sig { returns(T.nilable(String)) }
+            attr_reader :dob
+
+            sig { params(dob: String).void }
+            attr_writer :dob
 
             # Individual's email address. If utilizing Lithic for chargeback processing, this
             # customer email address may be used to communicate dispute status and resolution.
-            sig { returns(String) }
-            attr_accessor :email
+            sig { returns(T.nilable(String)) }
+            attr_reader :email
 
-            # Individual's first name, as it appears on government-issued identity documents.
-            sig { returns(String) }
-            attr_accessor :first_name
+            sig { params(email: String).void }
+            attr_writer :email
 
             # Government-issued identification number (required for identity verification and
             # compliance with banking regulations). Social Security Numbers (SSN) and
             # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
             # entered as full nine-digits, with or without hyphens
-            sig { returns(String) }
-            attr_accessor :government_id
+            sig { returns(T.nilable(String)) }
+            attr_reader :government_id
 
-            # Individual's last name, as it appears on government-issued identity documents.
-            sig { returns(String) }
-            attr_accessor :last_name
+            sig { params(government_id: String).void }
+            attr_writer :government_id
 
             # Individual's phone number, entered in E.164 format.
             sig { returns(T.nilable(String)) }
@@ -434,36 +443,37 @@ module Lithic
             sig { params(phone_number: String).void }
             attr_writer :phone_number
 
-            # Individuals associated with a KYB application. Phone number is optional.
+            # Individuals associated with a KYB_DELEGATED application. Only first and last
+            # name are required.
             sig do
               params(
+                first_name: String,
+                last_name: String,
                 address: Lithic::Address::OrHash,
                 dob: String,
                 email: String,
-                first_name: String,
                 government_id: String,
-                last_name: String,
                 phone_number: String
               ).returns(T.attached_class)
             end
             def self.new(
-              # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-              address:,
-              # Individual's date of birth, as an RFC 3339 date.
-              dob:,
-              # Individual's email address. If utilizing Lithic for chargeback processing, this
-              # customer email address may be used to communicate dispute status and resolution.
-              email:,
               # Individual's first name, as it appears on government-issued identity documents.
               first_name:,
+              # Individual's last name, as it appears on government-issued identity documents.
+              last_name:,
+              # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              address: nil,
+              # Individual's date of birth, as an RFC 3339 date.
+              dob: nil,
+              # Individual's email address. If utilizing Lithic for chargeback processing, this
+              # customer email address may be used to communicate dispute status and resolution.
+              email: nil,
               # Government-issued identification number (required for identity verification and
               # compliance with banking regulations). Social Security Numbers (SSN) and
               # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
               # entered as full nine-digits, with or without hyphens
-              government_id:,
-              # Individual's last name, as it appears on government-issued identity documents.
-              last_name:,
+              government_id: nil,
               # Individual's phone number, entered in E.164 format.
               phone_number: nil
             )
@@ -472,12 +482,12 @@ module Lithic
             sig do
               override.returns(
                 {
+                  first_name: String,
+                  last_name: String,
                   address: Lithic::Address,
                   dob: String,
                   email: String,
-                  first_name: String,
                   government_id: String,
-                  last_name: String,
                   phone_number: String
                 }
               )
@@ -495,37 +505,46 @@ module Lithic
                 )
               end
 
+            # Individual's first name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :first_name
+
+            # Individual's last name, as it appears on government-issued identity documents.
+            sig { returns(String) }
+            attr_accessor :last_name
+
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
             # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-            sig { returns(Lithic::Address) }
+            sig { returns(T.nilable(Lithic::Address)) }
             attr_reader :address
 
             sig { params(address: Lithic::Address::OrHash).void }
             attr_writer :address
 
             # Individual's date of birth, as an RFC 3339 date.
-            sig { returns(String) }
-            attr_accessor :dob
+            sig { returns(T.nilable(String)) }
+            attr_reader :dob
+
+            sig { params(dob: String).void }
+            attr_writer :dob
 
             # Individual's email address. If utilizing Lithic for chargeback processing, this
             # customer email address may be used to communicate dispute status and resolution.
-            sig { returns(String) }
-            attr_accessor :email
+            sig { returns(T.nilable(String)) }
+            attr_reader :email
 
-            # Individual's first name, as it appears on government-issued identity documents.
-            sig { returns(String) }
-            attr_accessor :first_name
+            sig { params(email: String).void }
+            attr_writer :email
 
             # Government-issued identification number (required for identity verification and
             # compliance with banking regulations). Social Security Numbers (SSN) and
             # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
             # entered as full nine-digits, with or without hyphens
-            sig { returns(String) }
-            attr_accessor :government_id
+            sig { returns(T.nilable(String)) }
+            attr_reader :government_id
 
-            # Individual's last name, as it appears on government-issued identity documents.
-            sig { returns(String) }
-            attr_accessor :last_name
+            sig { params(government_id: String).void }
+            attr_writer :government_id
 
             # Individual's phone number, entered in E.164 format.
             sig { returns(T.nilable(String)) }
@@ -544,33 +563,33 @@ module Lithic
             # (Section II) for more background.
             sig do
               params(
+                first_name: String,
+                last_name: String,
                 address: Lithic::Address::OrHash,
                 dob: String,
                 email: String,
-                first_name: String,
                 government_id: String,
-                last_name: String,
                 phone_number: String
               ).returns(T.attached_class)
             end
             def self.new(
-              # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-              address:,
-              # Individual's date of birth, as an RFC 3339 date.
-              dob:,
-              # Individual's email address. If utilizing Lithic for chargeback processing, this
-              # customer email address may be used to communicate dispute status and resolution.
-              email:,
               # Individual's first name, as it appears on government-issued identity documents.
               first_name:,
+              # Individual's last name, as it appears on government-issued identity documents.
+              last_name:,
+              # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              address: nil,
+              # Individual's date of birth, as an RFC 3339 date.
+              dob: nil,
+              # Individual's email address. If utilizing Lithic for chargeback processing, this
+              # customer email address may be used to communicate dispute status and resolution.
+              email: nil,
               # Government-issued identification number (required for identity verification and
               # compliance with banking regulations). Social Security Numbers (SSN) and
               # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
               # entered as full nine-digits, with or without hyphens
-              government_id:,
-              # Individual's last name, as it appears on government-issued identity documents.
-              last_name:,
+              government_id: nil,
               # Individual's phone number, entered in E.164 format.
               phone_number: nil
             )
@@ -579,12 +598,12 @@ module Lithic
             sig do
               override.returns(
                 {
+                  first_name: String,
+                  last_name: String,
                   address: Lithic::Address,
                   dob: String,
                   email: String,
-                  first_name: String,
                   government_id: String,
-                  last_name: String,
                   phone_number: String
                 }
               )
