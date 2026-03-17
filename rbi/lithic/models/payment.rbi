@@ -982,6 +982,10 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :message_id
 
+          # Payment details or invoice reference
+          sig { returns(T.nilable(String)) }
+          attr_accessor :remittance_information
+
           sig do
             params(
               wire_message_type: T.nilable(String),
@@ -989,7 +993,8 @@ module Lithic
                 Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::OrSymbol,
               creditor: Lithic::WirePartyDetails::OrHash,
               debtor: Lithic::WirePartyDetails::OrHash,
-              message_id: T.nilable(String)
+              message_id: T.nilable(String),
+              remittance_information: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1001,7 +1006,9 @@ module Lithic
             debtor: nil,
             # Point to point reference identifier, as assigned by the instructing party, used
             # for tracking the message through the Fedwire system
-            message_id: nil
+            message_id: nil,
+            # Payment details or invoice reference
+            remittance_information: nil
           )
           end
 
@@ -1013,7 +1020,8 @@ module Lithic
                   Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol,
                 creditor: Lithic::WirePartyDetails,
                 debtor: Lithic::WirePartyDetails,
-                message_id: T.nilable(String)
+                message_id: T.nilable(String),
+                remittance_information: T.nilable(String)
               }
             )
           end

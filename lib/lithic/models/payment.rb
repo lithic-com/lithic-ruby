@@ -603,7 +603,13 @@ module Lithic
           #   @return [String, nil]
           optional :message_id, String, nil?: true
 
-          # @!method initialize(wire_message_type:, wire_network:, creditor: nil, debtor: nil, message_id: nil)
+          # @!attribute remittance_information
+          #   Payment details or invoice reference
+          #
+          #   @return [String, nil]
+          optional :remittance_information, String, nil?: true
+
+          # @!method initialize(wire_message_type:, wire_network:, creditor: nil, debtor: nil, message_id: nil, remittance_information: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::Payment::MethodAttributes::WireMethodAttributes} for more
           #   details.
@@ -617,6 +623,8 @@ module Lithic
           #   @param debtor [Lithic::Models::WirePartyDetails]
           #
           #   @param message_id [String, nil] Point to point reference identifier, as assigned by the instructing party, used
+          #
+          #   @param remittance_information [String, nil] Payment details or invoice reference
 
           # Type of wire transfer
           #
