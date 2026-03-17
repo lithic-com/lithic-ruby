@@ -159,98 +159,114 @@ module Lithic
 
           type beneficial_owner_individual =
             {
+              first_name: String,
+              last_name: String,
               address: Lithic::Address,
               dob: String,
               email: String,
-              first_name: String,
               government_id: String,
-              last_name: String,
               phone_number: String
             }
 
           class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-            attr_accessor address: Lithic::Address
-
-            attr_accessor dob: String
-
-            attr_accessor email: String
-
             attr_accessor first_name: String
 
-            attr_accessor government_id: String
-
             attr_accessor last_name: String
+
+            attr_reader address: Lithic::Address?
+
+            def address=: (Lithic::Address) -> Lithic::Address
+
+            attr_reader dob: String?
+
+            def dob=: (String) -> String
+
+            attr_reader email: String?
+
+            def email=: (String) -> String
+
+            attr_reader government_id: String?
+
+            def government_id=: (String) -> String
 
             attr_reader phone_number: String?
 
             def phone_number=: (String) -> String
 
             def initialize: (
-              address: Lithic::Address,
-              dob: String,
-              email: String,
               first_name: String,
-              government_id: String,
               last_name: String,
+              ?address: Lithic::Address,
+              ?dob: String,
+              ?email: String,
+              ?government_id: String,
               ?phone_number: String
             ) -> void
 
             def to_hash: -> {
+              first_name: String,
+              last_name: String,
               address: Lithic::Address,
               dob: String,
               email: String,
-              first_name: String,
               government_id: String,
-              last_name: String,
               phone_number: String
             }
           end
 
           type control_person =
             {
+              first_name: String,
+              last_name: String,
               address: Lithic::Address,
               dob: String,
               email: String,
-              first_name: String,
               government_id: String,
-              last_name: String,
               phone_number: String
             }
 
           class ControlPerson < Lithic::Internal::Type::BaseModel
-            attr_accessor address: Lithic::Address
-
-            attr_accessor dob: String
-
-            attr_accessor email: String
-
             attr_accessor first_name: String
 
-            attr_accessor government_id: String
-
             attr_accessor last_name: String
+
+            attr_reader address: Lithic::Address?
+
+            def address=: (Lithic::Address) -> Lithic::Address
+
+            attr_reader dob: String?
+
+            def dob=: (String) -> String
+
+            attr_reader email: String?
+
+            def email=: (String) -> String
+
+            attr_reader government_id: String?
+
+            def government_id=: (String) -> String
 
             attr_reader phone_number: String?
 
             def phone_number=: (String) -> String
 
             def initialize: (
-              address: Lithic::Address,
-              dob: String,
-              email: String,
               first_name: String,
-              government_id: String,
               last_name: String,
+              ?address: Lithic::Address,
+              ?dob: String,
+              ?email: String,
+              ?government_id: String,
               ?phone_number: String
             ) -> void
 
             def to_hash: -> {
+              first_name: String,
+              last_name: String,
               address: Lithic::Address,
               dob: String,
               email: String,
-              first_name: String,
               government_id: String,
-              last_name: String,
               phone_number: String
             }
           end
