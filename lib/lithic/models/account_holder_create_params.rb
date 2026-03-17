@@ -187,40 +187,11 @@ module Lithic
           end
 
           class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-            # @!attribute address
-            #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-            #
-            #   @return [Lithic::Models::Address]
-            required :address, -> { Lithic::Address }
-
-            # @!attribute dob
-            #   Individual's date of birth, as an RFC 3339 date.
-            #
-            #   @return [String]
-            required :dob, String
-
-            # @!attribute email
-            #   Individual's email address. If utilizing Lithic for chargeback processing, this
-            #   customer email address may be used to communicate dispute status and resolution.
-            #
-            #   @return [String]
-            required :email, String
-
             # @!attribute first_name
             #   Individual's first name, as it appears on government-issued identity documents.
             #
             #   @return [String]
             required :first_name, String
-
-            # @!attribute government_id
-            #   Government-issued identification number (required for identity verification and
-            #   compliance with banking regulations). Social Security Numbers (SSN) and
-            #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-            #   entered as full nine-digits, with or without hyphens
-            #
-            #   @return [String]
-            required :government_id, String
 
             # @!attribute last_name
             #   Individual's last name, as it appears on government-issued identity documents.
@@ -228,18 +199,52 @@ module Lithic
             #   @return [String]
             required :last_name, String
 
+            # @!attribute address
+            #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            #
+            #   @return [Lithic::Models::Address, nil]
+            optional :address, -> { Lithic::Address }
+
+            # @!attribute dob
+            #   Individual's date of birth, as an RFC 3339 date.
+            #
+            #   @return [String, nil]
+            optional :dob, String
+
+            # @!attribute email
+            #   Individual's email address. If utilizing Lithic for chargeback processing, this
+            #   customer email address may be used to communicate dispute status and resolution.
+            #
+            #   @return [String, nil]
+            optional :email, String
+
+            # @!attribute government_id
+            #   Government-issued identification number (required for identity verification and
+            #   compliance with banking regulations). Social Security Numbers (SSN) and
+            #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+            #   entered as full nine-digits, with or without hyphens
+            #
+            #   @return [String, nil]
+            optional :government_id, String
+
             # @!attribute phone_number
             #   Individual's phone number, entered in E.164 format.
             #
             #   @return [String, nil]
             optional :phone_number, String
 
-            # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+            # @!method initialize(first_name:, last_name:, address: nil, dob: nil, email: nil, government_id: nil, phone_number: nil)
             #   Some parameter documentations has been truncated, see
             #   {Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::BeneficialOwnerIndividual}
             #   for more details.
             #
-            #   Individuals associated with a KYB application. Phone number is optional.
+            #   Individuals associated with a KYB_DELEGATED application. Only first and last
+            #   name are required.
+            #
+            #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+            #
+            #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
             #
             #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
             #
@@ -247,51 +252,18 @@ module Lithic
             #
             #   @param email [String] Individual's email address.
             #
-            #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
-            #
             #   @param government_id [String] Government-issued identification number (required for identity verification and
-            #
-            #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
             #
             #   @param phone_number [String] Individual's phone number, entered in E.164 format.
           end
 
           # @see Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated#control_person
           class ControlPerson < Lithic::Internal::Type::BaseModel
-            # @!attribute address
-            #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-            #
-            #   @return [Lithic::Models::Address]
-            required :address, -> { Lithic::Address }
-
-            # @!attribute dob
-            #   Individual's date of birth, as an RFC 3339 date.
-            #
-            #   @return [String]
-            required :dob, String
-
-            # @!attribute email
-            #   Individual's email address. If utilizing Lithic for chargeback processing, this
-            #   customer email address may be used to communicate dispute status and resolution.
-            #
-            #   @return [String]
-            required :email, String
-
             # @!attribute first_name
             #   Individual's first name, as it appears on government-issued identity documents.
             #
             #   @return [String]
             required :first_name, String
-
-            # @!attribute government_id
-            #   Government-issued identification number (required for identity verification and
-            #   compliance with banking regulations). Social Security Numbers (SSN) and
-            #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-            #   entered as full nine-digits, with or without hyphens
-            #
-            #   @return [String]
-            required :government_id, String
 
             # @!attribute last_name
             #   Individual's last name, as it appears on government-issued identity documents.
@@ -299,13 +271,42 @@ module Lithic
             #   @return [String]
             required :last_name, String
 
+            # @!attribute address
+            #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            #
+            #   @return [Lithic::Models::Address, nil]
+            optional :address, -> { Lithic::Address }
+
+            # @!attribute dob
+            #   Individual's date of birth, as an RFC 3339 date.
+            #
+            #   @return [String, nil]
+            optional :dob, String
+
+            # @!attribute email
+            #   Individual's email address. If utilizing Lithic for chargeback processing, this
+            #   customer email address may be used to communicate dispute status and resolution.
+            #
+            #   @return [String, nil]
+            optional :email, String
+
+            # @!attribute government_id
+            #   Government-issued identification number (required for identity verification and
+            #   compliance with banking regulations). Social Security Numbers (SSN) and
+            #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+            #   entered as full nine-digits, with or without hyphens
+            #
+            #   @return [String, nil]
+            optional :government_id, String
+
             # @!attribute phone_number
             #   Individual's phone number, entered in E.164 format.
             #
             #   @return [String, nil]
             optional :phone_number, String
 
-            # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+            # @!method initialize(first_name:, last_name:, address: nil, dob: nil, email: nil, government_id: nil, phone_number: nil)
             #   Some parameter documentations has been truncated, see
             #   {Lithic::Models::AccountHolderCreateParams::Body::KYBDelegated::ControlPerson}
             #   for more details.
@@ -319,17 +320,17 @@ module Lithic
             #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
             #   (Section II) for more background.
             #
+            #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+            #
+            #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+            #
             #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
             #
             #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
             #
             #   @param email [String] Individual's email address.
             #
-            #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
-            #
             #   @param government_id [String] Government-issued identification number (required for identity verification and
-            #
-            #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
             #
             #   @param phone_number [String] Individual's phone number, entered in E.164 format.
           end
