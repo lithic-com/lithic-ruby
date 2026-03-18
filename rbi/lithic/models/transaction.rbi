@@ -76,10 +76,11 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :financial_account_token
 
-      sig { returns(Lithic::Merchant) }
+      # Merchant information including full location details.
+      sig { returns(Lithic::Transaction::Merchant) }
       attr_reader :merchant
 
-      sig { params(merchant: Lithic::Merchant::OrHash).void }
+      sig { params(merchant: Lithic::Transaction::Merchant::OrHash).void }
       attr_writer :merchant
 
       # Analogous to the 'amount', but in the merchant currency.
@@ -115,6 +116,20 @@ module Lithic
 
       sig { returns(Lithic::Transaction::Result::TaggedSymbol) }
       attr_accessor :result
+
+      # Where the cardholder received the service, when different from the card acceptor
+      # location. This is populated from network data elements such as Mastercard DE-122
+      # SE1 SF9-14 and Visa F34 DS02.
+      sig { returns(T.nilable(Lithic::Transaction::ServiceLocation)) }
+      attr_reader :service_location
+
+      sig do
+        params(
+          service_location:
+            T.nilable(Lithic::Transaction::ServiceLocation::OrHash)
+        ).void
+      end
+      attr_writer :service_location
 
       # The settled amount of the transaction in the settlement currency.
       sig { returns(Integer) }
@@ -161,7 +176,7 @@ module Lithic
             T.nilable(Lithic::CardholderAuthentication::OrHash),
           created: Time,
           financial_account_token: T.nilable(String),
-          merchant: Lithic::Merchant::OrHash,
+          merchant: Lithic::Transaction::Merchant::OrHash,
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
           merchant_currency: String,
@@ -169,6 +184,8 @@ module Lithic
           network_risk_score: T.nilable(Integer),
           pos: Lithic::Transaction::Pos::OrHash,
           result: Lithic::Transaction::Result::OrSymbol,
+          service_location:
+            T.nilable(Lithic::Transaction::ServiceLocation::OrHash),
           settled_amount: Integer,
           status: Lithic::Transaction::Status::OrSymbol,
           tags: T::Hash[Symbol, String],
@@ -208,6 +225,7 @@ module Lithic
         # Date and time when the transaction first occurred. UTC time zone.
         created:,
         financial_account_token:,
+        # Merchant information including full location details.
         merchant:,
         # Analogous to the 'amount', but in the merchant currency.
         merchant_amount:,
@@ -226,6 +244,10 @@ module Lithic
         network_risk_score:,
         pos:,
         result:,
+        # Where the cardholder received the service, when different from the card acceptor
+        # location. This is populated from network data elements such as Mastercard DE-122
+        # SE1 SF9-14 and Visa F34 DS02.
+        service_location:,
         # The settled amount of the transaction in the settlement currency.
         settled_amount:,
         # Status of the transaction.
@@ -257,7 +279,7 @@ module Lithic
               T.nilable(Lithic::CardholderAuthentication),
             created: Time,
             financial_account_token: T.nilable(String),
-            merchant: Lithic::Merchant,
+            merchant: Lithic::Transaction::Merchant,
             merchant_amount: T.nilable(Integer),
             merchant_authorization_amount: T.nilable(Integer),
             merchant_currency: String,
@@ -265,6 +287,7 @@ module Lithic
             network_risk_score: T.nilable(Integer),
             pos: Lithic::Transaction::Pos,
             result: Lithic::Transaction::Result::TaggedSymbol,
+            service_location: T.nilable(Lithic::Transaction::ServiceLocation),
             settled_amount: Integer,
             status: Lithic::Transaction::Status::TaggedSymbol,
             tags: T::Hash[Symbol, String],
@@ -518,6 +541,55 @@ module Lithic
         end
 
         sig { override.returns({ address: String, zipcode: String }) }
+        def to_hash
+        end
+      end
+
+      class Merchant < Lithic::Models::Merchant
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::Merchant, Lithic::Internal::AnyHash)
+          end
+
+        # Phone number of card acceptor.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :phone_number
+
+        # Postal code of card acceptor.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :postal_code
+
+        # Street address of card acceptor.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :street_address
+
+        # Merchant information including full location details.
+        sig do
+          params(
+            phone_number: T.nilable(String),
+            postal_code: T.nilable(String),
+            street_address: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Phone number of card acceptor.
+          phone_number:,
+          # Postal code of card acceptor.
+          postal_code:,
+          # Street address of card acceptor.
+          street_address:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              phone_number: T.nilable(String),
+              postal_code: T.nilable(String),
+              street_address: T.nilable(String)
+            }
+          )
+        end
         def to_hash
         end
       end
@@ -1294,6 +1366,76 @@ module Lithic
           override.returns(T::Array[Lithic::Transaction::Result::TaggedSymbol])
         end
         def self.values
+        end
+      end
+
+      class ServiceLocation < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Transaction::ServiceLocation,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # City of service location.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :city
+
+        # Country code of service location, ISO 3166-1 alpha-3.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :country
+
+        # Postal code of service location.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :postal_code
+
+        # State/province code of service location, ISO 3166-2.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :state
+
+        # Street address of service location.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :street_address
+
+        # Where the cardholder received the service, when different from the card acceptor
+        # location. This is populated from network data elements such as Mastercard DE-122
+        # SE1 SF9-14 and Visa F34 DS02.
+        sig do
+          params(
+            city: T.nilable(String),
+            country: T.nilable(String),
+            postal_code: T.nilable(String),
+            state: T.nilable(String),
+            street_address: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # City of service location.
+          city:,
+          # Country code of service location, ISO 3166-1 alpha-3.
+          country:,
+          # Postal code of service location.
+          postal_code:,
+          # State/province code of service location, ISO 3166-2.
+          state:,
+          # Street address of service location.
+          street_address:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              city: T.nilable(String),
+              country: T.nilable(String),
+              postal_code: T.nilable(String),
+              state: T.nilable(String),
+              street_address: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
         end
       end
 

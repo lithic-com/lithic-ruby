@@ -93,9 +93,10 @@ module Lithic
       required :financial_account_token, String, nil?: true
 
       # @!attribute merchant
+      #   Merchant information including full location details.
       #
-      #   @return [Lithic::Models::Merchant]
-      required :merchant, -> { Lithic::Merchant }
+      #   @return [Lithic::Models::Transaction::Merchant]
+      required :merchant, -> { Lithic::Transaction::Merchant }
 
       # @!attribute merchant_amount
       #   @deprecated
@@ -148,6 +149,14 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Transaction::Result]
       required :result, enum: -> { Lithic::Transaction::Result }
 
+      # @!attribute service_location
+      #   Where the cardholder received the service, when different from the card acceptor
+      #   location. This is populated from network data elements such as Mastercard DE-122
+      #   SE1 SF9-14 and Visa F34 DS02.
+      #
+      #   @return [Lithic::Models::Transaction::ServiceLocation, nil]
+      required :service_location, -> { Lithic::Transaction::ServiceLocation }, nil?: true
+
       # @!attribute settled_amount
       #   @deprecated
       #
@@ -185,7 +194,7 @@ module Lithic
       #   @return [Array<Lithic::Models::Transaction::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event] }
 
-      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, financial_account_token:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, tags:, token_info:, updated:, events: nil)
+      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, financial_account_token:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, service_location:, settled_amount:, status:, tags:, token_info:, updated:, events: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::Transaction} for more details.
       #
@@ -215,7 +224,7 @@ module Lithic
       #
       #   @param financial_account_token [String, nil]
       #
-      #   @param merchant [Lithic::Models::Merchant]
+      #   @param merchant [Lithic::Models::Transaction::Merchant] Merchant information including full location details.
       #
       #   @param merchant_amount [Integer, nil] Analogous to the 'amount', but in the merchant currency.
       #
@@ -230,6 +239,8 @@ module Lithic
       #   @param pos [Lithic::Models::Transaction::Pos]
       #
       #   @param result [Symbol, Lithic::Models::Transaction::Result]
+      #
+      #   @param service_location [Lithic::Models::Transaction::ServiceLocation, nil] Where the cardholder received the service, when different from the card acceptor
       #
       #   @param settled_amount [Integer] The settled amount of the transaction in the settlement currency.
       #
@@ -383,6 +394,36 @@ module Lithic
         #   @param address [String] Cardholder address
         #
         #   @param zipcode [String] Cardholder ZIP code
+      end
+
+      # @see Lithic::Models::Transaction#merchant
+      class Merchant < Lithic::Models::Merchant
+        # @!attribute phone_number
+        #   Phone number of card acceptor.
+        #
+        #   @return [String, nil]
+        required :phone_number, String, nil?: true
+
+        # @!attribute postal_code
+        #   Postal code of card acceptor.
+        #
+        #   @return [String, nil]
+        required :postal_code, String, nil?: true
+
+        # @!attribute street_address
+        #   Street address of card acceptor.
+        #
+        #   @return [String, nil]
+        required :street_address, String, nil?: true
+
+        # @!method initialize(phone_number:, postal_code:, street_address:)
+        #   Merchant information including full location details.
+        #
+        #   @param phone_number [String, nil] Phone number of card acceptor.
+        #
+        #   @param postal_code [String, nil] Postal code of card acceptor.
+        #
+        #   @param street_address [String, nil] Street address of card acceptor.
       end
 
       # Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
@@ -691,6 +732,54 @@ module Lithic
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Lithic::Models::Transaction#service_location
+      class ServiceLocation < Lithic::Internal::Type::BaseModel
+        # @!attribute city
+        #   City of service location.
+        #
+        #   @return [String, nil]
+        required :city, String, nil?: true
+
+        # @!attribute country
+        #   Country code of service location, ISO 3166-1 alpha-3.
+        #
+        #   @return [String, nil]
+        required :country, String, nil?: true
+
+        # @!attribute postal_code
+        #   Postal code of service location.
+        #
+        #   @return [String, nil]
+        required :postal_code, String, nil?: true
+
+        # @!attribute state
+        #   State/province code of service location, ISO 3166-2.
+        #
+        #   @return [String, nil]
+        required :state, String, nil?: true
+
+        # @!attribute street_address
+        #   Street address of service location.
+        #
+        #   @return [String, nil]
+        required :street_address, String, nil?: true
+
+        # @!method initialize(city:, country:, postal_code:, state:, street_address:)
+        #   Where the cardholder received the service, when different from the card acceptor
+        #   location. This is populated from network data elements such as Mastercard DE-122
+        #   SE1 SF9-14 and Visa F34 DS02.
+        #
+        #   @param city [String, nil] City of service location.
+        #
+        #   @param country [String, nil] Country code of service location, ISO 3166-1 alpha-3.
+        #
+        #   @param postal_code [String, nil] Postal code of service location.
+        #
+        #   @param state [String, nil] State/province code of service location, ISO 3166-2.
+        #
+        #   @param street_address [String, nil] Street address of service location.
       end
 
       # Status of the transaction.
