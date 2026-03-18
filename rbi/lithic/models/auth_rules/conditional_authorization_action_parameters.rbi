@@ -159,6 +159,9 @@ module Lithic
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
+          # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
+          #   of the authorization.
           sig do
             returns(
               Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::OrSymbol
@@ -237,6 +240,9 @@ module Lithic
             # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
             #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
             #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+            # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
+            # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
+            #   of the authorization.
             attribute:,
             # The operation to apply to the attribute
             operation:,
@@ -312,6 +318,9 @@ module Lithic
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
+          # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
+          #   of the authorization.
           module Attribute
             extend Lithic::Internal::Type::Enum
 
@@ -417,6 +426,16 @@ module Lithic
             ADDRESS_MATCH =
               T.let(
                 :ADDRESS_MATCH,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            CARD_AGE =
+              T.let(
+                :CARD_AGE,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            ACCOUNT_AGE =
+              T.let(
+                :ACCOUNT_AGE,
                 Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
               )
 

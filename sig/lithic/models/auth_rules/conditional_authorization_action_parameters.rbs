@@ -79,6 +79,8 @@ module Lithic
             | :WALLET_TYPE
             | :TRANSACTION_INITIATOR
             | :ADDRESS_MATCH
+            | :CARD_AGE
+            | :ACCOUNT_AGE
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -102,6 +104,8 @@ module Lithic
             WALLET_TYPE: :WALLET_TYPE
             TRANSACTION_INITIATOR: :TRANSACTION_INITIATOR
             ADDRESS_MATCH: :ADDRESS_MATCH
+            CARD_AGE: :CARD_AGE
+            ACCOUNT_AGE: :ACCOUNT_AGE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute]
           end
