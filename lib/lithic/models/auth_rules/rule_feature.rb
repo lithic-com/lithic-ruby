@@ -18,7 +18,7 @@ module Lithic
       # - `CARD`: The card associated with the event. Available for AUTHORIZATION and
       #   THREE_DS_AUTHENTICATION event stream rules.
       # - `ACCOUNT_HOLDER`: The account holder associated with the card. Available for
-      #   THREE_DS_AUTHENTICATION event stream rules.
+      #   AUTHORIZATION and THREE_DS_AUTHENTICATION event stream rules.
       # - `IP_METADATA`: IP address metadata for the request. Available for
       #   THREE_DS_AUTHENTICATION event stream rules.
       # - `SPEND_VELOCITY`: Spend velocity data for the card or account. Requires
