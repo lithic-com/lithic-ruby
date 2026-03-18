@@ -90,6 +90,14 @@ module Lithic
           #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          #   - `SERVICE_LOCATION_STATE`: The state/province code (ISO 3166-2) where the
+          #     cardholder received the service, e.g. "NY". When a service location is present
+          #     in the network data, the service location state is used. Otherwise, falls back
+          #     to the card acceptor state.
+          #   - `SERVICE_LOCATION_POSTAL_CODE`: The postal code where the cardholder received
+          #     the service, e.g. "10001". When a service location is present in the network
+          #     data, the service location postal code is used. Otherwise, falls back to the
+          #     card acceptor postal code.
           #   - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
           #   - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
           #     of the authorization.
@@ -175,6 +183,14 @@ module Lithic
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          # - `SERVICE_LOCATION_STATE`: The state/province code (ISO 3166-2) where the
+          #   cardholder received the service, e.g. "NY". When a service location is present
+          #   in the network data, the service location state is used. Otherwise, falls back
+          #   to the card acceptor state.
+          # - `SERVICE_LOCATION_POSTAL_CODE`: The postal code where the cardholder received
+          #   the service, e.g. "10001". When a service location is present in the network
+          #   data, the service location postal code is used. Otherwise, falls back to the
+          #   card acceptor postal code.
           # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
           # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
           #   of the authorization.
@@ -202,6 +218,8 @@ module Lithic
             WALLET_TYPE = :WALLET_TYPE
             TRANSACTION_INITIATOR = :TRANSACTION_INITIATOR
             ADDRESS_MATCH = :ADDRESS_MATCH
+            SERVICE_LOCATION_STATE = :SERVICE_LOCATION_STATE
+            SERVICE_LOCATION_POSTAL_CODE = :SERVICE_LOCATION_POSTAL_CODE
             CARD_AGE = :CARD_AGE
             ACCOUNT_AGE = :ACCOUNT_AGE
 
