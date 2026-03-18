@@ -90,9 +90,10 @@ module Lithic
       required :event_type, const: :"card_authorization.approval_request"
 
       # @!attribute merchant
+      #   Merchant information including full location details.
       #
-      #   @return [Lithic::Models::Merchant]
-      required :merchant, -> { Lithic::Merchant }
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Merchant]
+      required :merchant, -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant }
 
       # @!attribute merchant_amount
       #   @deprecated
@@ -113,6 +114,16 @@ module Lithic
       #
       #   @return [String]
       required :merchant_currency, String
+
+      # @!attribute service_location
+      #   Where the cardholder received the service, when different from the card acceptor
+      #   location. This is populated from network data elements such as Mastercard DE-122
+      #   SE1 SF9-14 and Visa F34 DS02.
+      #
+      #   @return [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation, nil]
+      required :service_location,
+               -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation },
+               nil?: true
 
       # @!attribute settled_amount
       #   @deprecated
@@ -232,7 +243,7 @@ module Lithic
       #   @return [Time, nil]
       optional :ttl, Time
 
-      # @!method initialize(token:, acquirer_fee:, amount:, amounts:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil, event_type: :"card_authorization.approval_request")
+      # @!method initialize(token:, acquirer_fee:, amount:, amounts:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, service_location:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil, event_type: :"card_authorization.approval_request")
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent} for more details.
       #
@@ -256,11 +267,13 @@ module Lithic
       #
       #   @param created [Time] Date and time when the transaction first occurred in UTC.
       #
-      #   @param merchant [Lithic::Models::Merchant]
+      #   @param merchant [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Merchant] Merchant information including full location details.
       #
       #   @param merchant_amount [Integer] Deprecated, use `amounts`. The amount that the merchant will receive, denominate
       #
       #   @param merchant_currency [String] 3-character alphabetic ISO 4217 code for the local currency of the transaction.
+      #
+      #   @param service_location [Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation, nil] Where the cardholder received the service, when different from the card acceptor
       #
       #   @param settled_amount [Integer] Deprecated, use `amounts`. Amount (in cents) of the transaction that has been se
       #
@@ -603,6 +616,84 @@ module Lithic
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#merchant
+      class Merchant < Lithic::Models::Merchant
+        # @!attribute phone_number
+        #   Phone number of card acceptor.
+        #
+        #   @return [String, nil]
+        required :phone_number, String, nil?: true
+
+        # @!attribute postal_code
+        #   Postal code of card acceptor.
+        #
+        #   @return [String, nil]
+        required :postal_code, String, nil?: true
+
+        # @!attribute street_address
+        #   Street address of card acceptor.
+        #
+        #   @return [String, nil]
+        required :street_address, String, nil?: true
+
+        # @!method initialize(phone_number:, postal_code:, street_address:)
+        #   Merchant information including full location details.
+        #
+        #   @param phone_number [String, nil] Phone number of card acceptor.
+        #
+        #   @param postal_code [String, nil] Postal code of card acceptor.
+        #
+        #   @param street_address [String, nil] Street address of card acceptor.
+      end
+
+      # @see Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent#service_location
+      class ServiceLocation < Lithic::Internal::Type::BaseModel
+        # @!attribute city
+        #   City of service location.
+        #
+        #   @return [String, nil]
+        required :city, String, nil?: true
+
+        # @!attribute country
+        #   Country code of service location, ISO 3166-1 alpha-3.
+        #
+        #   @return [String, nil]
+        required :country, String, nil?: true
+
+        # @!attribute postal_code
+        #   Postal code of service location.
+        #
+        #   @return [String, nil]
+        required :postal_code, String, nil?: true
+
+        # @!attribute state
+        #   State/province code of service location, ISO 3166-2.
+        #
+        #   @return [String, nil]
+        required :state, String, nil?: true
+
+        # @!attribute street_address
+        #   Street address of service location.
+        #
+        #   @return [String, nil]
+        required :street_address, String, nil?: true
+
+        # @!method initialize(city:, country:, postal_code:, state:, street_address:)
+        #   Where the cardholder received the service, when different from the card acceptor
+        #   location. This is populated from network data elements such as Mastercard DE-122
+        #   SE1 SF9-14 and Visa F34 DS02.
+        #
+        #   @param city [String, nil] City of service location.
+        #
+        #   @param country [String, nil] Country code of service location, ISO 3166-1 alpha-3.
+        #
+        #   @param postal_code [String, nil] Postal code of service location.
+        #
+        #   @param state [String, nil] State/province code of service location, ISO 3166-2.
+        #
+        #   @param street_address [String, nil] Street address of service location.
       end
 
       # The type of authorization request that this request is for. Note that

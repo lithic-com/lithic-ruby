@@ -13,9 +13,10 @@ module Lithic
         cash_amount: Integer,
         created: Time,
         event_type: :"card_authorization.approval_request",
-        merchant: Lithic::Merchant,
+        merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant,
         merchant_amount: Integer,
         merchant_currency: String,
+        service_location: Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::status,
         transaction_initiator: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::transaction_initiator,
@@ -57,11 +58,13 @@ module Lithic
 
       attr_accessor event_type: :"card_authorization.approval_request"
 
-      attr_accessor merchant: Lithic::Merchant
+      attr_accessor merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant
 
       attr_accessor merchant_amount: Integer
 
       attr_accessor merchant_currency: String
+
+      attr_accessor service_location: Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation?
 
       attr_accessor settled_amount: Integer
 
@@ -134,9 +137,10 @@ module Lithic
         cardholder_currency: String,
         cash_amount: Integer,
         created: Time,
-        merchant: Lithic::Merchant,
+        merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant,
         merchant_amount: Integer,
         merchant_currency: String,
+        service_location: Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::status,
         transaction_initiator: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::transaction_initiator,
@@ -168,9 +172,10 @@ module Lithic
         cash_amount: Integer,
         created: Time,
         event_type: :"card_authorization.approval_request",
-        merchant: Lithic::Merchant,
+        merchant: Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant,
         merchant_amount: Integer,
         merchant_currency: String,
+        service_location: Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::status,
         transaction_initiator: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::transaction_initiator,
@@ -448,6 +453,72 @@ module Lithic
 
           def self?.values: -> ::Array[Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_]
         end
+      end
+
+      type merchant =
+        { phone_number: String?, postal_code: String?, street_address: String? }
+
+      class Merchant < Lithic::Models::Merchant
+        def phone_number: -> String?
+
+        def phone_number=: (String? _) -> String?
+
+        def postal_code: -> String?
+
+        def postal_code=: (String? _) -> String?
+
+        def street_address: -> String?
+
+        def street_address=: (String? _) -> String?
+
+        def initialize: (
+          phone_number: String?,
+          postal_code: String?,
+          street_address: String?
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String?,
+          postal_code: String?,
+          street_address: String?
+        }
+      end
+
+      type service_location =
+        {
+          city: String?,
+          country: String?,
+          postal_code: String?,
+          state: String?,
+          street_address: String?
+        }
+
+      class ServiceLocation < Lithic::Internal::Type::BaseModel
+        attr_accessor city: String?
+
+        attr_accessor country: String?
+
+        attr_accessor postal_code: String?
+
+        attr_accessor state: String?
+
+        attr_accessor street_address: String?
+
+        def initialize: (
+          city: String?,
+          country: String?,
+          postal_code: String?,
+          state: String?,
+          street_address: String?
+        ) -> void
+
+        def to_hash: -> {
+          city: String?,
+          country: String?,
+          postal_code: String?,
+          state: String?,
+          street_address: String?
+        }
       end
 
       type status =

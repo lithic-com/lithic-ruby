@@ -96,10 +96,18 @@ module Lithic
       sig { returns(Symbol) }
       attr_accessor :event_type
 
-      sig { returns(Lithic::Merchant) }
+      # Merchant information including full location details.
+      sig do
+        returns(Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant)
+      end
       attr_reader :merchant
 
-      sig { params(merchant: Lithic::Merchant::OrHash).void }
+      sig do
+        params(
+          merchant:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant::OrHash
+        ).void
+      end
       attr_writer :merchant
 
       # Deprecated, use `amounts`. The amount that the merchant will receive,
@@ -113,6 +121,28 @@ module Lithic
       # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
       sig { returns(String) }
       attr_accessor :merchant_currency
+
+      # Where the cardholder received the service, when different from the card acceptor
+      # location. This is populated from network data elements such as Mastercard DE-122
+      # SE1 SF9-14 and Visa F34 DS02.
+      sig do
+        returns(
+          T.nilable(
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation
+          )
+        )
+      end
+      attr_reader :service_location
+
+      sig do
+        params(
+          service_location:
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation::OrHash
+            )
+        ).void
+      end
+      attr_writer :service_location
 
       # Deprecated, use `amounts`. Amount (in cents) of the transaction that has been
       # settled, including any acquirer fees.
@@ -323,9 +353,14 @@ module Lithic
           cardholder_currency: String,
           cash_amount: Integer,
           created: Time,
-          merchant: Lithic::Merchant::OrHash,
+          merchant:
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant::OrHash,
           merchant_amount: Integer,
           merchant_currency: String,
+          service_location:
+            T.nilable(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation::OrHash
+            ),
           settled_amount: Integer,
           status:
             Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::OrSymbol,
@@ -393,6 +428,7 @@ module Lithic
         cash_amount:,
         # Date and time when the transaction first occurred in UTC.
         created:,
+        # Merchant information including full location details.
         merchant:,
         # Deprecated, use `amounts`. The amount that the merchant will receive,
         # denominated in `merchant_currency` and in the smallest currency unit. Note the
@@ -402,6 +438,10 @@ module Lithic
         merchant_amount:,
         # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
         merchant_currency:,
+        # Where the cardholder received the service, when different from the card acceptor
+        # location. This is populated from network data elements such as Mastercard DE-122
+        # SE1 SF9-14 and Visa F34 DS02.
+        service_location:,
         # Deprecated, use `amounts`. Amount (in cents) of the transaction that has been
         # settled, including any acquirer fees.
         settled_amount:,
@@ -468,9 +508,14 @@ module Lithic
             cash_amount: Integer,
             created: Time,
             event_type: Symbol,
-            merchant: Lithic::Merchant,
+            merchant:
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant,
             merchant_amount: Integer,
             merchant_currency: String,
+            service_location:
+              T.nilable(
+                Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation
+              ),
             settled_amount: Integer,
             status:
               Lithic::CardAuthorizationApprovalRequestWebhookEvent::Status::TaggedSymbol,
@@ -1207,6 +1252,128 @@ module Lithic
           end
           def self.values
           end
+        end
+      end
+
+      class Merchant < Lithic::Models::Merchant
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Merchant,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # Phone number of card acceptor.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :phone_number
+
+        # Postal code of card acceptor.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :postal_code
+
+        # Street address of card acceptor.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :street_address
+
+        # Merchant information including full location details.
+        sig do
+          params(
+            phone_number: T.nilable(String),
+            postal_code: T.nilable(String),
+            street_address: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Phone number of card acceptor.
+          phone_number:,
+          # Postal code of card acceptor.
+          postal_code:,
+          # Street address of card acceptor.
+          street_address:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              phone_number: T.nilable(String),
+              postal_code: T.nilable(String),
+              street_address: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+
+      class ServiceLocation < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardAuthorizationApprovalRequestWebhookEvent::ServiceLocation,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # City of service location.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :city
+
+        # Country code of service location, ISO 3166-1 alpha-3.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :country
+
+        # Postal code of service location.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :postal_code
+
+        # State/province code of service location, ISO 3166-2.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :state
+
+        # Street address of service location.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :street_address
+
+        # Where the cardholder received the service, when different from the card acceptor
+        # location. This is populated from network data elements such as Mastercard DE-122
+        # SE1 SF9-14 and Visa F34 DS02.
+        sig do
+          params(
+            city: T.nilable(String),
+            country: T.nilable(String),
+            postal_code: T.nilable(String),
+            state: T.nilable(String),
+            street_address: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # City of service location.
+          city:,
+          # Country code of service location, ISO 3166-1 alpha-3.
+          country:,
+          # Postal code of service location.
+          postal_code:,
+          # State/province code of service location, ISO 3166-2.
+          state:,
+          # Street address of service location.
+          street_address:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              city: T.nilable(String),
+              country: T.nilable(String),
+              postal_code: T.nilable(String),
+              state: T.nilable(String),
+              street_address: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
         end
       end
 

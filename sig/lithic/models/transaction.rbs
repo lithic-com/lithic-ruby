@@ -15,7 +15,7 @@ module Lithic
         cardholder_authentication: Lithic::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
-        merchant: Lithic::Merchant,
+        merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
         merchant_currency: String,
@@ -23,6 +23,7 @@ module Lithic
         network_risk_score: Integer?,
         pos: Lithic::Transaction::Pos,
         result: Lithic::Models::Transaction::result,
+        service_location: Lithic::Transaction::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::Transaction::status,
         tags: ::Hash[Symbol, String],
@@ -58,7 +59,7 @@ module Lithic
 
       attr_accessor financial_account_token: String?
 
-      attr_accessor merchant: Lithic::Merchant
+      attr_accessor merchant: Lithic::Transaction::Merchant
 
       attr_accessor merchant_amount: Integer?
 
@@ -73,6 +74,8 @@ module Lithic
       attr_accessor pos: Lithic::Transaction::Pos
 
       attr_accessor result: Lithic::Models::Transaction::result
+
+      attr_accessor service_location: Lithic::Transaction::ServiceLocation?
 
       attr_accessor settled_amount: Integer
 
@@ -104,7 +107,7 @@ module Lithic
         cardholder_authentication: Lithic::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
-        merchant: Lithic::Merchant,
+        merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
         merchant_currency: String,
@@ -112,6 +115,7 @@ module Lithic
         network_risk_score: Integer?,
         pos: Lithic::Transaction::Pos,
         result: Lithic::Models::Transaction::result,
+        service_location: Lithic::Transaction::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::Transaction::status,
         tags: ::Hash[Symbol, String],
@@ -134,7 +138,7 @@ module Lithic
         cardholder_authentication: Lithic::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
-        merchant: Lithic::Merchant,
+        merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
         merchant_currency: String,
@@ -142,6 +146,7 @@ module Lithic
         network_risk_score: Integer?,
         pos: Lithic::Transaction::Pos,
         result: Lithic::Models::Transaction::result,
+        service_location: Lithic::Transaction::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::Transaction::status,
         tags: ::Hash[Symbol, String],
@@ -251,6 +256,35 @@ module Lithic
         def initialize: (address: String, zipcode: String) -> void
 
         def to_hash: -> { address: String, zipcode: String }
+      end
+
+      type merchant =
+        { phone_number: String?, postal_code: String?, street_address: String? }
+
+      class Merchant < Lithic::Models::Merchant
+        def phone_number: -> String?
+
+        def phone_number=: (String? _) -> String?
+
+        def postal_code: -> String?
+
+        def postal_code=: (String? _) -> String?
+
+        def street_address: -> String?
+
+        def street_address=: (String? _) -> String?
+
+        def initialize: (
+          phone_number: String?,
+          postal_code: String?,
+          street_address: String?
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String?,
+          postal_code: String?,
+          street_address: String?
+        }
       end
 
       type network =
@@ -598,6 +632,43 @@ module Lithic
         USER_TRANSACTION_LIMIT: :USER_TRANSACTION_LIMIT
 
         def self?.values: -> ::Array[Lithic::Models::Transaction::result]
+      end
+
+      type service_location =
+        {
+          city: String?,
+          country: String?,
+          postal_code: String?,
+          state: String?,
+          street_address: String?
+        }
+
+      class ServiceLocation < Lithic::Internal::Type::BaseModel
+        attr_accessor city: String?
+
+        attr_accessor country: String?
+
+        attr_accessor postal_code: String?
+
+        attr_accessor state: String?
+
+        attr_accessor street_address: String?
+
+        def initialize: (
+          city: String?,
+          country: String?,
+          postal_code: String?,
+          state: String?,
+          street_address: String?
+        ) -> void
+
+        def to_hash: -> {
+          city: String?,
+          country: String?,
+          postal_code: String?,
+          state: String?,
+          street_address: String?
+        }
       end
 
       type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
