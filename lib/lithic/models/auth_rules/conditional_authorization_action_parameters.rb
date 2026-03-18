@@ -90,6 +90,9 @@ module Lithic
           #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          #   - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
+          #   - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
+          #     of the authorization.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute]
           required :attribute,
@@ -172,6 +175,9 @@ module Lithic
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
+          # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
+          #   of the authorization.
           #
           # @see Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition#attribute
           module Attribute
@@ -196,6 +202,8 @@ module Lithic
             WALLET_TYPE = :WALLET_TYPE
             TRANSACTION_INITIATOR = :TRANSACTION_INITIATOR
             ADDRESS_MATCH = :ADDRESS_MATCH
+            CARD_AGE = :CARD_AGE
+            ACCOUNT_AGE = :ACCOUNT_AGE
 
             # @!method self.values
             #   @return [Array<Symbol>]
