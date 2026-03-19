@@ -514,6 +514,13 @@ module Lithic
           #   @return [String, nil]
           optional :company_id, String, nil?: true
 
+          # @!attribute override_company_name
+          #   Value to override the configured company name with. Can only be used if allowed
+          #   to override
+          #
+          #   @return [String, nil]
+          optional :override_company_name, String, nil?: true
+
           # @!attribute receipt_routing_number
           #   Receipt routing number
           #
@@ -538,7 +545,11 @@ module Lithic
           #   @return [Array<String>, nil]
           optional :trace_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil, company_id: nil, receipt_routing_number: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
+          # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil, company_id: nil, override_company_name: nil, receipt_routing_number: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes} for more
+          #   details.
+          #
           #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::SecCode] SEC code for ACH transaction
           #
           #   @param ach_hold_period [Integer, nil] Number of days the ACH transaction is on hold
@@ -546,6 +557,8 @@ module Lithic
           #   @param addenda [String, nil] Addenda information
           #
           #   @param company_id [String, nil] Company ID for the ACH transaction
+          #
+          #   @param override_company_name [String, nil] Value to override the configured company name with. Can only be used if allowed
           #
           #   @param receipt_routing_number [String, nil] Receipt routing number
           #

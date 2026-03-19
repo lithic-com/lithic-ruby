@@ -818,6 +818,11 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :company_id
 
+          # Value to override the configured company name with. Can only be used if allowed
+          # to override
+          sig { returns(T.nilable(String)) }
+          attr_accessor :override_company_name
+
           # Receipt routing number
           sig { returns(T.nilable(String)) }
           attr_accessor :receipt_routing_number
@@ -844,6 +849,7 @@ module Lithic
               ach_hold_period: T.nilable(Integer),
               addenda: T.nilable(String),
               company_id: T.nilable(String),
+              override_company_name: T.nilable(String),
               receipt_routing_number: T.nilable(String),
               retries: T.nilable(Integer),
               return_reason_code: T.nilable(String),
@@ -859,6 +865,9 @@ module Lithic
             addenda: nil,
             # Company ID for the ACH transaction
             company_id: nil,
+            # Value to override the configured company name with. Can only be used if allowed
+            # to override
+            override_company_name: nil,
             # Receipt routing number
             receipt_routing_number: nil,
             # Number of retries attempted
@@ -878,6 +887,7 @@ module Lithic
                 ach_hold_period: T.nilable(Integer),
                 addenda: T.nilable(String),
                 company_id: T.nilable(String),
+                override_company_name: T.nilable(String),
                 receipt_routing_number: T.nilable(String),
                 retries: T.nilable(Integer),
                 return_reason_code: T.nilable(String),
