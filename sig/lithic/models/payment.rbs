@@ -354,6 +354,7 @@ module Lithic
             ach_hold_period: Integer?,
             addenda: String?,
             company_id: String?,
+            override_company_name: String?,
             receipt_routing_number: String?,
             retries: Integer?,
             return_reason_code: String?,
@@ -368,6 +369,8 @@ module Lithic
           attr_accessor addenda: String?
 
           attr_accessor company_id: String?
+
+          attr_accessor override_company_name: String?
 
           attr_accessor receipt_routing_number: String?
 
@@ -384,6 +387,7 @@ module Lithic
             ?ach_hold_period: Integer?,
             ?addenda: String?,
             ?company_id: String?,
+            ?override_company_name: String?,
             ?receipt_routing_number: String?,
             ?retries: Integer?,
             ?return_reason_code: String?,
@@ -395,6 +399,7 @@ module Lithic
             ach_hold_period: Integer?,
             addenda: String?,
             company_id: String?,
+            override_company_name: String?,
             receipt_routing_number: String?,
             retries: Integer?,
             return_reason_code: String?,
