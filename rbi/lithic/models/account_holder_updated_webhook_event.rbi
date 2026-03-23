@@ -79,7 +79,8 @@ module Lithic
         attr_writer :naics_code
 
         # Short description of the company's line of business (i.e., what does the company
-        # do?).
+        # do?). Values longer than 255 characters will be truncated before KYB
+        # verification
         sig { returns(T.nilable(String)) }
         attr_reader :nature_of_business
 
@@ -121,7 +122,8 @@ module Lithic
           # business. Only present if naics_code was included in the update request.
           naics_code: nil,
           # Short description of the company's line of business (i.e., what does the company
-          # do?).
+          # do?). Values longer than 255 characters will be truncated before KYB
+          # verification
           nature_of_business: nil,
           # Company website URL.
           website_url: nil

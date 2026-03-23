@@ -75,7 +75,8 @@ module Lithic
 
           # @!attribute nature_of_business
           #   Short description of the company's line of business (i.e., what does the company
-          #   do?).
+          #   do?). Values longer than 255 characters will be truncated before KYB
+          #   verification
           #
           #   @return [String, nil]
           optional :nature_of_business, String
