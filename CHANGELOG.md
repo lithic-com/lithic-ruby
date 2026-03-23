@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.10.0 (2026-03-23)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/lithic-com/lithic-ruby/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** Add CARD_AGE and ACCOUNT_AGE attributes to authorization rules ([b5bc545](https://github.com/lithic-com/lithic-ruby/commit/b5bc54552df7e04862780f15b0dc96d2732ad038))
+* **api:** add override_company_name parameter to external payment create ([73612ab](https://github.com/lithic-com/lithic-ruby/commit/73612ab7a4e46f5572f7d12839acddb7beeb4b75))
+* **api:** Add service and merchant location fields ([d0111e3](https://github.com/lithic-com/lithic-ruby/commit/d0111e33b4f6ca04b75f07440f3fc11e0406bbcd))
+
+
+### Chores
+
+* **internal:** replace steady mock server with prism ([180a5d5](https://github.com/lithic-com/lithic-ruby/commit/180a5d5b2986fd1c32ea81bb3b036eb609c35e9a))
+* **internal:** update gitignore ([eac11a4](https://github.com/lithic-com/lithic-ruby/commit/eac11a49332ba63990479fb14e171fcb09edab93))
+* **tests:** bump steady to v0.19.4 ([ecee69a](https://github.com/lithic-com/lithic-ruby/commit/ecee69aa012a80f970784d78a9298db6155dd991))
+* **tests:** bump steady to v0.19.5 ([8a046d1](https://github.com/lithic-com/lithic-ruby/commit/8a046d1ed8d6b7409244efb552809b28937ebed8))
+* **tests:** bump steady to v0.19.6 ([5b45679](https://github.com/lithic-com/lithic-ruby/commit/5b45679d7f42fb122e2c7254a8568189cc8ae2c7))
+
+
+### Documentation
+
+* Update field descriptions for character limits and allowlist requirements ([e999dc1](https://github.com/lithic-com/lithic-ruby/commit/e999dc1091255c9688545bb50e39ec62fcdad9fc))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([74cea9d](https://github.com/lithic-com/lithic-ruby/commit/74cea9d46211777e8e1de61ef24f52b0412564cd))
+
 ## 0.9.0 (2026-03-17)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/lithic-com/lithic-ruby/compare/v0.8.0...v0.9.0)
