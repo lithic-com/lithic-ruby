@@ -6,7 +6,9 @@ module Lithic
       OrHash =
         T.type_alias { T.any(Lithic::Carrier, Lithic::Internal::AnyHash) }
 
-      # QR code url to display on the card carrier
+      # QR code URL to display on the card carrier. The `qr_code_url` field requires
+      # your domain to be allowlisted by Lithic before use. Contact Support to configure
+      # your QR code domain
       sig { returns(T.nilable(String)) }
       attr_reader :qr_code_url
 
@@ -15,7 +17,9 @@ module Lithic
 
       sig { params(qr_code_url: String).returns(T.attached_class) }
       def self.new(
-        # QR code url to display on the card carrier
+        # QR code URL to display on the card carrier. The `qr_code_url` field requires
+        # your domain to be allowlisted by Lithic before use. Contact Support to configure
+        # your QR code domain
         qr_code_url: nil
       )
       end
