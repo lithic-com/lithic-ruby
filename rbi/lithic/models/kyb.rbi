@@ -37,7 +37,8 @@ module Lithic
       attr_writer :control_person
 
       # Short description of the company's line of business (i.e., what does the company
-      # do?).
+      # do?). Values longer than 255 characters will be truncated before KYB
+      # verification
       sig { returns(String) }
       attr_accessor :nature_of_business
 
@@ -120,7 +121,8 @@ module Lithic
         # (Section II) for more background.
         control_person:,
         # Short description of the company's line of business (i.e., what does the company
-        # do?).
+        # do?). Values longer than 255 characters will be truncated before KYB
+        # verification
         nature_of_business:,
         # An RFC 3339 timestamp indicating when the account holder accepted the applicable
         # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
