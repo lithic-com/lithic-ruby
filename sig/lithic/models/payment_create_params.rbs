@@ -92,7 +92,8 @@ module Lithic
         {
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
           ach_hold_period: Integer,
-          addenda: String?
+          addenda: String?,
+          override_company_name: String?
         }
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
@@ -104,16 +105,20 @@ module Lithic
 
         attr_accessor addenda: String?
 
+        attr_accessor override_company_name: String?
+
         def initialize: (
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
           ?ach_hold_period: Integer,
-          ?addenda: String?
+          ?addenda: String?,
+          ?override_company_name: String?
         ) -> void
 
         def to_hash: -> {
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
           ach_hold_period: Integer,
-          addenda: String?
+          addenda: String?,
+          override_company_name: String?
         }
 
         type sec_code = :CCD | :PPD | :WEB
