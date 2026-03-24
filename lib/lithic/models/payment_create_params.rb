@@ -113,12 +113,24 @@ module Lithic
         #   @return [String, nil]
         optional :addenda, String, nil?: true
 
-        # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil)
+        # @!attribute override_company_name
+        #   Value to override the configured company name with. Can only be used if allowed
+        #   to override
+        #
+        #   @return [String, nil]
+        optional :override_company_name, String, nil?: true
+
+        # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil, override_company_name: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::PaymentCreateParams::MethodAttributes} for more details.
+        #
         #   @param sec_code [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
         #
         #   @param ach_hold_period [Integer] Number of days to hold the ACH payment
         #
         #   @param addenda [String, nil]
+        #
+        #   @param override_company_name [String, nil] Value to override the configured company name with. Can only be used if allowed
 
         # @see Lithic::Models::PaymentCreateParams::MethodAttributes#sec_code
         module SecCode

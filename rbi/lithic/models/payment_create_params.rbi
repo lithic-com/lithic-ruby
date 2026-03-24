@@ -171,19 +171,28 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :addenda
 
+        # Value to override the configured company name with. Can only be used if allowed
+        # to override
+        sig { returns(T.nilable(String)) }
+        attr_accessor :override_company_name
+
         sig do
           params(
             sec_code:
               Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol,
             ach_hold_period: Integer,
-            addenda: T.nilable(String)
+            addenda: T.nilable(String),
+            override_company_name: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
           sec_code:,
           # Number of days to hold the ACH payment
           ach_hold_period: nil,
-          addenda: nil
+          addenda: nil,
+          # Value to override the configured company name with. Can only be used if allowed
+          # to override
+          override_company_name: nil
         )
         end
 
@@ -193,7 +202,8 @@ module Lithic
               sec_code:
                 Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol,
               ach_hold_period: Integer,
-              addenda: T.nilable(String)
+              addenda: T.nilable(String),
+              override_company_name: T.nilable(String)
             }
           )
         end
