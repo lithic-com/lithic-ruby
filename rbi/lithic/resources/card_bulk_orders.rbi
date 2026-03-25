@@ -3,12 +3,11 @@
 module Lithic
   module Resources
     class CardBulkOrders
-      # Create a new bulk order for physical card shipments **[BETA]**. Cards can be
-      # added to the order via the POST /v1/cards endpoint by specifying the
-      # bulk_order_token. Lock the order via PATCH
-      # /v1/card_bulk_orders/{bulk_order_token} to prepare for shipment. Please work
-      # with your Customer Success Manager and card personalization bureau to ensure
-      # bulk shipping is supported for your program.
+      # Create a new bulk order for physical card shipments. Cards can be added to the
+      # order via the POST /v1/cards endpoint by specifying the bulk_order_token. Lock
+      # the order via PATCH /v1/card_bulk_orders/{bulk_order_token} to prepare for
+      # shipment. Please work with your Customer Success Manager and card
+      # personalization bureau to ensure bulk shipping is supported for your program.
       sig do
         params(
           customer_product_id: String,
@@ -24,13 +23,14 @@ module Lithic
         customer_product_id:,
         # Shipping address for all cards in this bulk order
         shipping_address:,
-        # Shipping method for all cards in this bulk order
+        # Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
+        # BULK_EXPRESS are only available with Perfect Plastic Printing
         shipping_method:,
         request_options: {}
       )
       end
 
-      # Retrieve a specific bulk order by token **[BETA]**
+      # Retrieve a specific bulk order by token
       sig do
         params(
           bulk_order_token: String,
@@ -44,8 +44,8 @@ module Lithic
       )
       end
 
-      # Update a bulk order **[BETA]**. Primarily used to lock the order, preventing
-      # additional cards from being added
+      # Update a bulk order. Primarily used to lock the order, preventing additional
+      # cards from being added
       sig do
         params(
           bulk_order_token: String,
@@ -62,7 +62,7 @@ module Lithic
       )
       end
 
-      # List bulk orders for physical card shipments **[BETA]**
+      # List bulk orders for physical card shipments
       sig do
         params(
           begin_: Time,

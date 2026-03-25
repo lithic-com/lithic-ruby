@@ -21,7 +21,8 @@ module Lithic
       required :shipping_address, Lithic::Internal::Type::Unknown
 
       # @!attribute shipping_method
-      #   Shipping method for all cards in this bulk order
+      #   Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
+      #   BULK_EXPRESS are only available with Perfect Plastic Printing
       #
       #   @return [Symbol, Lithic::Models::CardBulkOrderCreateParams::ShippingMethod]
       required :shipping_method, enum: -> { Lithic::CardBulkOrderCreateParams::ShippingMethod }
@@ -34,15 +35,19 @@ module Lithic
       #
       #   @param shipping_address [Object] Shipping address for all cards in this bulk order
       #
-      #   @param shipping_method [Symbol, Lithic::Models::CardBulkOrderCreateParams::ShippingMethod] Shipping method for all cards in this bulk order
+      #   @param shipping_method [Symbol, Lithic::Models::CardBulkOrderCreateParams::ShippingMethod] Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-      # Shipping method for all cards in this bulk order
+      # Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
+      # BULK_EXPRESS are only available with Perfect Plastic Printing
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
         BULK_EXPEDITED = :BULK_EXPEDITED
+        BULK_PRIORITY = :BULK_PRIORITY
+        BULK_2_DAY = :BULK_2_DAY
+        BULK_EXPRESS = :BULK_EXPRESS
 
         # @!method self.values
         #   @return [Array<Symbol>]

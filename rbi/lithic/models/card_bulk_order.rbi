@@ -27,7 +27,8 @@ module Lithic
       sig { returns(T.anything) }
       attr_accessor :shipping_address
 
-      # Shipping method for all cards in this bulk order
+      # Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
+      # BULK_EXPRESS are only available with Perfect Plastic Printing
       sig { returns(Lithic::CardBulkOrder::ShippingMethod::TaggedSymbol) }
       attr_accessor :shipping_method
 
@@ -65,7 +66,8 @@ module Lithic
         customer_product_id:,
         # Shipping address for all cards in this bulk order
         shipping_address:,
-        # Shipping method for all cards in this bulk order
+        # Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
+        # BULK_EXPRESS are only available with Perfect Plastic Printing
         shipping_method:,
         # Status of the bulk order. OPEN indicates the order is accepting cards. LOCKED
         # indicates the order is finalized and no more cards can be added
@@ -93,7 +95,8 @@ module Lithic
       def to_hash
       end
 
-      # Shipping method for all cards in this bulk order
+      # Shipping method for all cards in this bulk order. BULK_PRIORITY, BULK_2_DAY, and
+      # BULK_EXPRESS are only available with Perfect Plastic Printing
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
@@ -104,6 +107,21 @@ module Lithic
         BULK_EXPEDITED =
           T.let(
             :BULK_EXPEDITED,
+            Lithic::CardBulkOrder::ShippingMethod::TaggedSymbol
+          )
+        BULK_PRIORITY =
+          T.let(
+            :BULK_PRIORITY,
+            Lithic::CardBulkOrder::ShippingMethod::TaggedSymbol
+          )
+        BULK_2_DAY =
+          T.let(
+            :BULK_2_DAY,
+            Lithic::CardBulkOrder::ShippingMethod::TaggedSymbol
+          )
+        BULK_EXPRESS =
+          T.let(
+            :BULK_EXPRESS,
             Lithic::CardBulkOrder::ShippingMethod::TaggedSymbol
           )
 
