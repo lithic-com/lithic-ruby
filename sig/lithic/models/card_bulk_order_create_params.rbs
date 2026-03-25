@@ -32,12 +32,16 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type shipping_method = :BULK_EXPEDITED
+      type shipping_method =
+        :BULK_EXPEDITED | :BULK_PRIORITY | :BULK_2_DAY | :BULK_EXPRESS
 
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
         BULK_EXPEDITED: :BULK_EXPEDITED
+        BULK_PRIORITY: :BULK_PRIORITY
+        BULK_2_DAY: :BULK_2_DAY
+        BULK_EXPRESS: :BULK_EXPRESS
 
         def self?.values: -> ::Array[Lithic::Models::CardBulkOrderCreateParams::shipping_method]
       end

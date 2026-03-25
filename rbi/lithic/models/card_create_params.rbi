@@ -208,7 +208,8 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
-      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
+      # - `BULK` - Card will be shipped as part of a bulk fulfillment order. The
+      #   shipping method and timeline are inherited from the parent bulk order.
       sig do
         returns(T.nilable(Lithic::CardCreateParams::ShippingMethod::OrSymbol))
       end
@@ -409,7 +410,8 @@ module Lithic
         #   tracking
         # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
         #   or similar international option, with tracking
-        # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
+        # - `BULK` - Card will be shipped as part of a bulk fulfillment order. The
+        #   shipping method and timeline are inherited from the parent bulk order.
         shipping_method: nil,
         # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
         # $1,000 limit). Transaction requests above the spend limit will be declined. Note
@@ -635,7 +637,8 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
-      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
+      # - `BULK` - Card will be shipped as part of a bulk fulfillment order. The
+      #   shipping method and timeline are inherited from the parent bulk order.
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
@@ -650,11 +653,8 @@ module Lithic
             :"2_DAY",
             Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
           )
-        BULK_EXPEDITED =
-          T.let(
-            :BULK_EXPEDITED,
-            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
-          )
+        BULK =
+          T.let(:BULK, Lithic::CardCreateParams::ShippingMethod::TaggedSymbol)
         EXPEDITED =
           T.let(
             :EXPEDITED,
