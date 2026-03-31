@@ -144,6 +144,12 @@ module Lithic
           #   trailing hour up and until the authorization.
           # - `CARD_TRANSACTION_COUNT_24H`: The number of transactions on the card in the
           #   trailing 24 hours up and until the authorization.
+          # - `CARD_DECLINE_COUNT_15M`: The number of declined transactions on the card in
+          #   the trailing 15 minutes before the authorization.
+          # - `CARD_DECLINE_COUNT_1H`: The number of declined transactions on the card in
+          #   the trailing hour up and until the authorization.
+          # - `CARD_DECLINE_COUNT_24H`: The number of declined transactions on the card in
+          #   the trailing 24 hours up and until the authorization.
           # - `CARD_STATE`: The current state of the card associated with the transaction.
           #   Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
           #   `PENDING_FULFILLMENT`.
@@ -233,6 +239,12 @@ module Lithic
             #   trailing hour up and until the authorization.
             # - `CARD_TRANSACTION_COUNT_24H`: The number of transactions on the card in the
             #   trailing 24 hours up and until the authorization.
+            # - `CARD_DECLINE_COUNT_15M`: The number of declined transactions on the card in
+            #   the trailing 15 minutes before the authorization.
+            # - `CARD_DECLINE_COUNT_1H`: The number of declined transactions on the card in
+            #   the trailing hour up and until the authorization.
+            # - `CARD_DECLINE_COUNT_24H`: The number of declined transactions on the card in
+            #   the trailing 24 hours up and until the authorization.
             # - `CARD_STATE`: The current state of the card associated with the transaction.
             #   Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
             #   `PENDING_FULFILLMENT`.
@@ -319,6 +331,12 @@ module Lithic
           #   trailing hour up and until the authorization.
           # - `CARD_TRANSACTION_COUNT_24H`: The number of transactions on the card in the
           #   trailing 24 hours up and until the authorization.
+          # - `CARD_DECLINE_COUNT_15M`: The number of declined transactions on the card in
+          #   the trailing 15 minutes before the authorization.
+          # - `CARD_DECLINE_COUNT_1H`: The number of declined transactions on the card in
+          #   the trailing hour up and until the authorization.
+          # - `CARD_DECLINE_COUNT_24H`: The number of declined transactions on the card in
+          #   the trailing 24 hours up and until the authorization.
           # - `CARD_STATE`: The current state of the card associated with the transaction.
           #   Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
           #   `PENDING_FULFILLMENT`.
@@ -420,6 +438,21 @@ module Lithic
             CARD_TRANSACTION_COUNT_24_H =
               T.let(
                 :CARD_TRANSACTION_COUNT_24H,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            CARD_DECLINE_COUNT_15_M =
+              T.let(
+                :CARD_DECLINE_COUNT_15M,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            CARD_DECLINE_COUNT_1_H =
+              T.let(
+                :CARD_DECLINE_COUNT_1H,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            CARD_DECLINE_COUNT_24_H =
+              T.let(
+                :CARD_DECLINE_COUNT_24H,
                 Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
               )
             CARD_STATE =
