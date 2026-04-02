@@ -24,7 +24,8 @@ module Lithic
           interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
           next_payment_due_date: Date,
           next_statement_end_date: Date,
-          payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?
+          payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?,
+          statement_totals: Lithic::StatementTotals
         }
 
       class Statement < Lithic::Internal::Type::BaseModel
@@ -76,6 +77,12 @@ module Lithic
 
         attr_accessor payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?
 
+        attr_reader statement_totals: Lithic::StatementTotals?
+
+        def statement_totals=: (
+          Lithic::StatementTotals
+        ) -> Lithic::StatementTotals
+
         def initialize: (
           token: String,
           account_standing: Lithic::FinancialAccounts::Statement::AccountStanding,
@@ -98,7 +105,8 @@ module Lithic
           ?interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
           ?next_payment_due_date: Date,
           ?next_statement_end_date: Date,
-          ?payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?
+          ?payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?,
+          ?statement_totals: Lithic::StatementTotals
         ) -> void
 
         def to_hash: -> {
@@ -123,7 +131,8 @@ module Lithic
           interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
           next_payment_due_date: Date,
           next_statement_end_date: Date,
-          payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?
+          payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?,
+          statement_totals: Lithic::StatementTotals
         }
 
         type account_standing =

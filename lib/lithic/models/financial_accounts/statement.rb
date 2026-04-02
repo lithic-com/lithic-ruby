@@ -132,7 +132,12 @@ module Lithic
         #   @return [Lithic::Models::FinancialAccounts::Statement::PayoffDetails, nil]
         optional :payoff_details, -> { Lithic::FinancialAccounts::Statement::PayoffDetails }, nil?: true
 
-        # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil, payoff_details: nil)
+        # @!attribute statement_totals
+        #
+        #   @return [Lithic::Models::StatementTotals, nil]
+        optional :statement_totals, -> { Lithic::StatementTotals }
+
+        # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil, payoff_details: nil, statement_totals: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::Statement} for more details.
         #
@@ -179,6 +184,8 @@ module Lithic
         #   @param next_statement_end_date [Date] Date when the next billing period will end
         #
         #   @param payoff_details [Lithic::Models::FinancialAccounts::Statement::PayoffDetails, nil] Details on number and size of payments to pay off balance
+        #
+        #   @param statement_totals [Lithic::Models::StatementTotals]
 
         # @see Lithic::Models::FinancialAccounts::Statement#account_standing
         class AccountStanding < Lithic::Internal::Type::BaseModel
