@@ -154,6 +154,12 @@ module Lithic
         end
         attr_writer :payoff_details
 
+        sig { returns(T.nilable(Lithic::StatementTotals)) }
+        attr_reader :statement_totals
+
+        sig { params(statement_totals: Lithic::StatementTotals::OrHash).void }
+        attr_writer :statement_totals
+
         sig do
           params(
             token: String,
@@ -185,7 +191,8 @@ module Lithic
             payoff_details:
               T.nilable(
                 Lithic::FinancialAccounts::Statement::PayoffDetails::OrHash
-              )
+              ),
+            statement_totals: Lithic::StatementTotals::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -227,7 +234,8 @@ module Lithic
           # Date when the next billing period will end
           next_statement_end_date: nil,
           # Details on number and size of payments to pay off balance
-          payoff_details: nil
+          payoff_details: nil,
+          statement_totals: nil
         )
         end
 
@@ -261,7 +269,8 @@ module Lithic
               next_payment_due_date: Date,
               next_statement_end_date: Date,
               payoff_details:
-                T.nilable(Lithic::FinancialAccounts::Statement::PayoffDetails)
+                T.nilable(Lithic::FinancialAccounts::Statement::PayoffDetails),
+              statement_totals: Lithic::StatementTotals
             }
           )
         end
