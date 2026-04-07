@@ -50,7 +50,7 @@ module Lithic
         attr_accessor :credit_limit
 
         # Globally unique identifier for a credit product
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :credit_product_token
 
         # Number of days in the billing cycle
@@ -169,7 +169,7 @@ module Lithic
             available_credit: Integer,
             created: Time,
             credit_limit: Integer,
-            credit_product_token: String,
+            credit_product_token: T.nilable(String),
             days_in_billing_cycle: Integer,
             ending_balance: Integer,
             financial_account_token: String,
@@ -249,7 +249,7 @@ module Lithic
               available_credit: Integer,
               created: Time,
               credit_limit: Integer,
-              credit_product_token: String,
+              credit_product_token: T.nilable(String),
               days_in_billing_cycle: Integer,
               ending_balance: Integer,
               financial_account_token: String,
