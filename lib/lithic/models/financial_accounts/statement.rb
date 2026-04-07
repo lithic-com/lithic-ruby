@@ -42,8 +42,8 @@ module Lithic
         # @!attribute credit_product_token
         #   Globally unique identifier for a credit product
         #
-        #   @return [String]
-        required :credit_product_token, String
+        #   @return [String, nil]
+        required :credit_product_token, String, nil?: true
 
         # @!attribute days_in_billing_cycle
         #   Number of days in the billing cycle
@@ -153,7 +153,7 @@ module Lithic
         #
         #   @param credit_limit [Integer] This is the maximum credit balance extended by the lender in cents
         #
-        #   @param credit_product_token [String] Globally unique identifier for a credit product
+        #   @param credit_product_token [String, nil] Globally unique identifier for a credit product
         #
         #   @param days_in_billing_cycle [Integer] Number of days in the billing cycle
         #

@@ -9,7 +9,7 @@ module Lithic
           available_credit: Integer,
           created: Time,
           credit_limit: Integer,
-          credit_product_token: String,
+          credit_product_token: String?,
           days_in_billing_cycle: Integer,
           ending_balance: Integer,
           financial_account_token: String,
@@ -41,7 +41,7 @@ module Lithic
 
         attr_accessor credit_limit: Integer
 
-        attr_accessor credit_product_token: String
+        attr_accessor credit_product_token: String?
 
         attr_accessor days_in_billing_cycle: Integer
 
@@ -90,7 +90,7 @@ module Lithic
           available_credit: Integer,
           created: Time,
           credit_limit: Integer,
-          credit_product_token: String,
+          credit_product_token: String?,
           days_in_billing_cycle: Integer,
           ending_balance: Integer,
           financial_account_token: String,
@@ -116,7 +116,7 @@ module Lithic
           available_credit: Integer,
           created: Time,
           credit_limit: Integer,
-          credit_product_token: String,
+          credit_product_token: String?,
           days_in_billing_cycle: Integer,
           ending_balance: Integer,
           financial_account_token: String,
