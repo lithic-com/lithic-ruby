@@ -944,33 +944,16 @@ module Lithic
           end
 
         # Globally unique identifier for the card.
-        sig { returns(T.nilable(String)) }
-        attr_reader :token
-
-        sig { params(token: String).void }
-        attr_writer :token
-
-        # Hostname of card’s locked merchant (will be empty if not applicable)
-        sig { returns(T.nilable(String)) }
-        attr_reader :hostname
-
-        sig { params(hostname: String).void }
-        attr_writer :hostname
+        sig { returns(String) }
+        attr_accessor :token
 
         # Last four digits of the card number
-        sig { returns(T.nilable(String)) }
-        attr_reader :last_four
+        sig { returns(String) }
+        attr_accessor :last_four
 
-        sig { params(last_four: String).void }
-        attr_writer :last_four
-
-        # Customizable name to identify the card. We recommend against using this field to
-        # store JSON data as it can cause unexpected behavior.
-        sig { returns(T.nilable(String)) }
-        attr_reader :memo
-
-        sig { params(memo: String).void }
-        attr_writer :memo
+        # Customizable name to identify the card
+        sig { returns(String) }
+        attr_accessor :memo
 
         # Amount (in cents) to limit approved authorizations. Purchase requests above the
         # spend limit will be declined (refunds and credits will be approved).
@@ -980,71 +963,37 @@ module Lithic
         # reconciliation-level accuracy. Spend limits also cannot block force posted
         # charges (i.e., when a merchant sends a clearing message without a prior
         # authorization).
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :spend_limit
-
-        sig { params(spend_limit: Integer).void }
-        attr_writer :spend_limit
+        sig { returns(Integer) }
+        attr_accessor :spend_limit
 
         # Note that to support recurring monthly payments, which can occur on different
         # day every month, the time window we consider for MONTHLY velocity starts 6 days
         # after the current calendar date one month prior.
         sig do
           returns(
-            T.nilable(
-              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
-            )
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::TaggedSymbol
           )
         end
-        attr_reader :spend_limit_duration
-
-        sig do
-          params(
-            spend_limit_duration:
-              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration::OrSymbol
-          ).void
-        end
-        attr_writer :spend_limit_duration
+        attr_accessor :spend_limit_duration
 
         sig do
           returns(
-            T.nilable(
-              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
-            )
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::TaggedSymbol
           )
         end
-        attr_reader :state
-
-        sig do
-          params(
-            state:
-              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State::OrSymbol
-          ).void
-        end
-        attr_writer :state
+        attr_accessor :state
 
         sig do
           returns(
-            T.nilable(
-              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
-            )
+            Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::TaggedSymbol
           )
         end
-        attr_reader :type
-
-        sig do
-          params(
-            type:
-              Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type::OrSymbol
-          ).void
-        end
-        attr_writer :type
+        attr_accessor :type
 
         # Card object in ASA
         sig do
           params(
             token: String,
-            hostname: String,
             last_four: String,
             memo: String,
             spend_limit: Integer,
@@ -1058,14 +1007,11 @@ module Lithic
         end
         def self.new(
           # Globally unique identifier for the card.
-          token: nil,
-          # Hostname of card’s locked merchant (will be empty if not applicable)
-          hostname: nil,
+          token:,
           # Last four digits of the card number
-          last_four: nil,
-          # Customizable name to identify the card. We recommend against using this field to
-          # store JSON data as it can cause unexpected behavior.
-          memo: nil,
+          last_four:,
+          # Customizable name to identify the card
+          memo:,
           # Amount (in cents) to limit approved authorizations. Purchase requests above the
           # spend limit will be declined (refunds and credits will be approved).
           #
@@ -1074,13 +1020,13 @@ module Lithic
           # reconciliation-level accuracy. Spend limits also cannot block force posted
           # charges (i.e., when a merchant sends a clearing message without a prior
           # authorization).
-          spend_limit: nil,
+          spend_limit:,
           # Note that to support recurring monthly payments, which can occur on different
           # day every month, the time window we consider for MONTHLY velocity starts 6 days
           # after the current calendar date one month prior.
-          spend_limit_duration: nil,
-          state: nil,
-          type: nil
+          spend_limit_duration:,
+          state:,
+          type:
         )
         end
 
@@ -1088,7 +1034,6 @@ module Lithic
           override.returns(
             {
               token: String,
-              hostname: String,
               last_four: String,
               memo: String,
               spend_limit: Integer,
