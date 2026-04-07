@@ -494,27 +494,20 @@ module Lithic
         # @!attribute token
         #   Globally unique identifier for the card.
         #
-        #   @return [String, nil]
-        optional :token, String
-
-        # @!attribute hostname
-        #   Hostname of card’s locked merchant (will be empty if not applicable)
-        #
-        #   @return [String, nil]
-        optional :hostname, String
+        #   @return [String]
+        required :token, String
 
         # @!attribute last_four
         #   Last four digits of the card number
         #
-        #   @return [String, nil]
-        optional :last_four, String
+        #   @return [String]
+        required :last_four, String
 
         # @!attribute memo
-        #   Customizable name to identify the card. We recommend against using this field to
-        #   store JSON data as it can cause unexpected behavior.
+        #   Customizable name to identify the card
         #
-        #   @return [String, nil]
-        optional :memo, String
+        #   @return [String]
+        required :memo, String
 
         # @!attribute spend_limit
         #   Amount (in cents) to limit approved authorizations. Purchase requests above the
@@ -526,29 +519,29 @@ module Lithic
         #   charges (i.e., when a merchant sends a clearing message without a prior
         #   authorization).
         #
-        #   @return [Integer, nil]
-        optional :spend_limit, Integer
+        #   @return [Integer]
+        required :spend_limit, Integer
 
         # @!attribute spend_limit_duration
         #   Note that to support recurring monthly payments, which can occur on different
         #   day every month, the time window we consider for MONTHLY velocity starts 6 days
         #   after the current calendar date one month prior.
         #
-        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration, nil]
-        optional :spend_limit_duration,
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration]
+        required :spend_limit_duration,
                  enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::SpendLimitDuration }
 
         # @!attribute state
         #
-        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::State, nil]
-        optional :state, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::State]
+        required :state, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::State }
 
         # @!attribute type
         #
-        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::Type, nil]
-        optional :type, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type }
+        #   @return [Symbol, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::Type]
+        required :type, enum: -> { Lithic::CardAuthorizationApprovalRequestWebhookEvent::Card::Type }
 
-        # @!method initialize(token: nil, hostname: nil, last_four: nil, memo: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, type: nil)
+        # @!method initialize(token:, last_four:, memo:, spend_limit:, spend_limit_duration:, state:, type:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card} for more
         #   details.
@@ -557,11 +550,9 @@ module Lithic
         #
         #   @param token [String] Globally unique identifier for the card.
         #
-        #   @param hostname [String] Hostname of card’s locked merchant (will be empty if not applicable)
-        #
         #   @param last_four [String] Last four digits of the card number
         #
-        #   @param memo [String] Customizable name to identify the card. We recommend against using this field to
+        #   @param memo [String] Customizable name to identify the card
         #
         #   @param spend_limit [Integer] Amount (in cents) to limit approved authorizations. Purchase requests above the
         #
