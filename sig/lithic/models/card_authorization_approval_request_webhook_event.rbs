@@ -334,7 +334,6 @@ module Lithic
       type card =
         {
           token: String,
-          hostname: String,
           last_four: String,
           memo: String,
           spend_limit: Integer,
@@ -344,58 +343,32 @@ module Lithic
         }
 
       class Card < Lithic::Internal::Type::BaseModel
-        attr_reader token: String?
+        attr_accessor token: String
 
-        def token=: (String) -> String
+        attr_accessor last_four: String
 
-        attr_reader hostname: String?
+        attr_accessor memo: String
 
-        def hostname=: (String) -> String
+        attr_accessor spend_limit: Integer
 
-        attr_reader last_four: String?
+        attr_accessor spend_limit_duration: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::spend_limit_duration
 
-        def last_four=: (String) -> String
+        attr_accessor state: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::state
 
-        attr_reader memo: String?
-
-        def memo=: (String) -> String
-
-        attr_reader spend_limit: Integer?
-
-        def spend_limit=: (Integer) -> Integer
-
-        attr_reader spend_limit_duration: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::spend_limit_duration?
-
-        def spend_limit_duration=: (
-          Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::spend_limit_duration
-        ) -> Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::spend_limit_duration
-
-        attr_reader state: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::state?
-
-        def state=: (
-          Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::state
-        ) -> Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::state
-
-        attr_reader type: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_?
-
-        def type=: (
-          Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_
-        ) -> Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_
+        attr_accessor type: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_
 
         def initialize: (
-          ?token: String,
-          ?hostname: String,
-          ?last_four: String,
-          ?memo: String,
-          ?spend_limit: Integer,
-          ?spend_limit_duration: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::spend_limit_duration,
-          ?state: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::state,
-          ?type: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_
+          token: String,
+          last_four: String,
+          memo: String,
+          spend_limit: Integer,
+          spend_limit_duration: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::spend_limit_duration,
+          state: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::state,
+          type: Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent::Card::type_
         ) -> void
 
         def to_hash: -> {
           token: String,
-          hostname: String,
           last_four: String,
           memo: String,
           spend_limit: Integer,
