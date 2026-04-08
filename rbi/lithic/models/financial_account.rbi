@@ -349,6 +349,15 @@ module Lithic
             :EARLY_DIRECT_DEPOSIT_FLOAT,
             Lithic::FinancialAccount::Type::TaggedSymbol
           )
+        INTERCHANGE =
+          T.let(:INTERCHANGE, Lithic::FinancialAccount::Type::TaggedSymbol)
+        CHARGEBACK =
+          T.let(:CHARGEBACK, Lithic::FinancialAccount::Type::TaggedSymbol)
+        PROVISIONAL_CREDIT_ACCOUNT =
+          T.let(
+            :PROVISIONAL_CREDIT_ACCOUNT,
+            Lithic::FinancialAccount::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(
