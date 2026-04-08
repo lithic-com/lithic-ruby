@@ -50,6 +50,15 @@ module Lithic
           :EARLY_DIRECT_DEPOSIT_FLOAT,
           Lithic::InstanceFinancialAccountType::TaggedSymbol
         )
+      INTERCHANGE =
+        T.let(:INTERCHANGE, Lithic::InstanceFinancialAccountType::TaggedSymbol)
+      CHARGEBACK =
+        T.let(:CHARGEBACK, Lithic::InstanceFinancialAccountType::TaggedSymbol)
+      PROVISIONAL_CREDIT_ACCOUNT =
+        T.let(
+          :PROVISIONAL_CREDIT_ACCOUNT,
+          Lithic::InstanceFinancialAccountType::TaggedSymbol
+        )
 
       sig do
         override.returns(
