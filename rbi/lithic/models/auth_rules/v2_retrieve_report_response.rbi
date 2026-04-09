@@ -274,6 +274,10 @@ module Lithic
               sig { returns(Time) }
               attr_accessor :timestamp
 
+              # The token of the transaction associated with the event
+              sig { returns(T.nilable(String)) }
+              attr_accessor :transaction_token
+
               sig do
                 params(
                   actions:
@@ -289,7 +293,8 @@ module Lithic
                       )
                     ],
                   event_token: String,
-                  timestamp: Time
+                  timestamp: Time,
+                  transaction_token: T.nilable(String)
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -298,7 +303,9 @@ module Lithic
                 # The event token.
                 event_token:,
                 # The timestamp of the event.
-                timestamp:
+                timestamp:,
+                # The token of the transaction associated with the event
+                transaction_token: nil
               )
               end
 
@@ -310,7 +317,8 @@ module Lithic
                         Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::Variants
                       ],
                     event_token: String,
-                    timestamp: Time
+                    timestamp: Time,
+                    transaction_token: T.nilable(String)
                   }
                 )
               end
