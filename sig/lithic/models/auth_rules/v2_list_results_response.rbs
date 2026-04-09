@@ -19,7 +19,8 @@ module Lithic
             event_stream: :AUTHORIZATION,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
         class AuthorizationResult < Lithic::Internal::Type::BaseModel
@@ -39,6 +40,8 @@ module Lithic
 
           attr_accessor rule_version: Integer
 
+          attr_accessor transaction_token: String?
+
           def initialize: (
             token: String,
             actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::action],
@@ -47,6 +50,7 @@ module Lithic
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode,
             rule_version: Integer,
+            transaction_token: String?,
             ?event_stream: :AUTHORIZATION
           ) -> void
 
@@ -58,7 +62,8 @@ module Lithic
             event_stream: :AUTHORIZATION,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
           type action =
@@ -288,7 +293,8 @@ module Lithic
             event_stream: :THREE_DS_AUTHENTICATION,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
         class Authentication3DSResult < Lithic::Internal::Type::BaseModel
@@ -308,6 +314,8 @@ module Lithic
 
           attr_accessor rule_version: Integer
 
+          attr_accessor transaction_token: String?
+
           def initialize: (
             token: String,
             actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action],
@@ -316,6 +324,7 @@ module Lithic
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode,
             rule_version: Integer,
+            transaction_token: String?,
             ?event_stream: :THREE_DS_AUTHENTICATION
           ) -> void
 
@@ -327,7 +336,8 @@ module Lithic
             event_stream: :THREE_DS_AUTHENTICATION,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
           type action =
@@ -386,7 +396,8 @@ module Lithic
             event_stream: :TOKENIZATION,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
         class TokenizationResult < Lithic::Internal::Type::BaseModel
@@ -406,6 +417,8 @@ module Lithic
 
           attr_accessor rule_version: Integer
 
+          attr_accessor transaction_token: String?
+
           def initialize: (
             token: String,
             actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::action],
@@ -414,6 +427,7 @@ module Lithic
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode,
             rule_version: Integer,
+            transaction_token: String?,
             ?event_stream: :TOKENIZATION
           ) -> void
 
@@ -425,7 +439,8 @@ module Lithic
             event_stream: :TOKENIZATION,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
           type action =
@@ -619,7 +634,8 @@ module Lithic
             event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
         class ACHResult < Lithic::Internal::Type::BaseModel
@@ -639,6 +655,8 @@ module Lithic
 
           attr_accessor rule_version: Integer
 
+          attr_accessor transaction_token: String?
+
           def initialize: (
             token: String,
             actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::action],
@@ -647,7 +665,8 @@ module Lithic
             event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           ) -> void
 
           def to_hash: -> {
@@ -658,7 +677,8 @@ module Lithic
             event_stream: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::event_stream,
             event_token: String,
             mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode,
-            rule_version: Integer
+            rule_version: Integer,
+            transaction_token: String?
           }
 
           type action =
