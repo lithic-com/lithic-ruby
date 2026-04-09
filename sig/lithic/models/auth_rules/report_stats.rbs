@@ -55,7 +55,8 @@ module Lithic
             approved: bool,
             decision: Lithic::Models::AuthRules::ReportStats::Example::decision,
             event_token: String,
-            timestamp: Time
+            timestamp: Time,
+            transaction_token: String?
           }
 
         class Example < Lithic::Internal::Type::BaseModel
@@ -83,12 +84,15 @@ module Lithic
 
           def timestamp=: (Time) -> Time
 
+          attr_accessor transaction_token: String?
+
           def initialize: (
             ?actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action],
             ?approved: bool,
             ?decision: Lithic::Models::AuthRules::ReportStats::Example::decision,
             ?event_token: String,
-            ?timestamp: Time
+            ?timestamp: Time,
+            ?transaction_token: String?
           ) -> void
 
           def to_hash: -> {
@@ -96,7 +100,8 @@ module Lithic
             approved: bool,
             decision: Lithic::Models::AuthRules::ReportStats::Example::decision,
             event_token: String,
-            timestamp: Time
+            timestamp: Time,
+            transaction_token: String?
           }
 
           type action =

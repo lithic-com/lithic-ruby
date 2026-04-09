@@ -77,12 +77,20 @@ module Lithic
           #   @return [Time, nil]
           optional :timestamp, Time
 
-          # @!method initialize(decision: nil, event_token: nil, timestamp: nil)
+          # @!attribute transaction_token
+          #   The token of the transaction associated with the event
+          #
+          #   @return [String, nil]
+          optional :transaction_token, String, nil?: true
+
+          # @!method initialize(decision: nil, event_token: nil, timestamp: nil, transaction_token: nil)
           #   @param decision [Symbol, Lithic::Models::AuthRules::BacktestStats::Example::Decision] The decision made by the rule for this event.
           #
           #   @param event_token [String] The event token.
           #
           #   @param timestamp [Time] The timestamp of the event.
+          #
+          #   @param transaction_token [String, nil] The token of the transaction associated with the event
 
           # The decision made by the rule for this event.
           #

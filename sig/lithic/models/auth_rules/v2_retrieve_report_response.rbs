@@ -98,7 +98,8 @@ module Lithic
               {
                 actions: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::action],
                 event_token: String,
-                timestamp: Time
+                timestamp: Time,
+                transaction_token: String?
               }
 
             class Example < Lithic::Internal::Type::BaseModel
@@ -108,16 +109,20 @@ module Lithic
 
               attr_accessor timestamp: Time
 
+              attr_accessor transaction_token: String?
+
               def initialize: (
                 actions: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::action],
                 event_token: String,
-                timestamp: Time
+                timestamp: Time,
+                ?transaction_token: String?
               ) -> void
 
               def to_hash: -> {
                 actions: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::action],
                 event_token: String,
-                timestamp: Time
+                timestamp: Time,
+                transaction_token: String?
               }
 
               type action =

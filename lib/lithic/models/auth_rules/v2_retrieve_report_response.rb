@@ -142,12 +142,20 @@ module Lithic
               #   @return [Time]
               required :timestamp, Time
 
-              # @!method initialize(actions:, event_token:, timestamp:)
+              # @!attribute transaction_token
+              #   The token of the transaction associated with the event
+              #
+              #   @return [String, nil]
+              optional :transaction_token, String, nil?: true
+
+              # @!method initialize(actions:, event_token:, timestamp:, transaction_token: nil)
               #   @param actions [Array<Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic::Version::Example::Action::ReturnAction>] The actions taken by this version for this event.
               #
               #   @param event_token [String] The event token.
               #
               #   @param timestamp [Time] The timestamp of the event.
+              #
+              #   @param transaction_token [String, nil] The token of the transaction associated with the event
 
               module Action
                 extend Lithic::Internal::Type::Union
