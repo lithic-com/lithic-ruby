@@ -67,7 +67,13 @@ module Lithic
           #   @return [Integer]
           required :rule_version, Integer
 
-          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, event_stream: :AUTHORIZATION)
+          # @!attribute transaction_token
+          #   The token of the transaction that triggered the rule evaluation
+          #
+          #   @return [String, nil]
+          required :transaction_token, String, nil?: true
+
+          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, transaction_token:, event_stream: :AUTHORIZATION)
           #   @param token [String] Globally unique identifier for the evaluation
           #
           #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::ChallengeActionAuthorization>] Actions returned by the rule evaluation
@@ -81,6 +87,8 @@ module Lithic
           #   @param mode [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Mode] The state of the Auth Rule
           #
           #   @param rule_version [Integer] Version of the rule that was evaluated
+          #
+          #   @param transaction_token [String, nil] The token of the transaction that triggered the rule evaluation
           #
           #   @param event_stream [Symbol, :AUTHORIZATION] The event stream during which the rule was evaluated
 
@@ -295,7 +303,13 @@ module Lithic
           #   @return [Integer]
           required :rule_version, Integer
 
-          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, event_stream: :THREE_DS_AUTHENTICATION)
+          # @!attribute transaction_token
+          #   The token of the transaction that triggered the rule evaluation
+          #
+          #   @return [String, nil]
+          required :transaction_token, String, nil?: true
+
+          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, transaction_token:, event_stream: :THREE_DS_AUTHENTICATION)
           #   @param token [String] Globally unique identifier for the evaluation
           #
           #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Action>] Actions returned by the rule evaluation
@@ -309,6 +323,8 @@ module Lithic
           #   @param mode [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Mode] The state of the Auth Rule
           #
           #   @param rule_version [Integer] Version of the rule that was evaluated
+          #
+          #   @param transaction_token [String, nil] The token of the transaction that triggered the rule evaluation
           #
           #   @param event_stream [Symbol, :THREE_DS_AUTHENTICATION] The event stream during which the rule was evaluated
 
@@ -406,7 +422,13 @@ module Lithic
           #   @return [Integer]
           required :rule_version, Integer
 
-          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, event_stream: :TOKENIZATION)
+          # @!attribute transaction_token
+          #   The token of the transaction that triggered the rule evaluation
+          #
+          #   @return [String, nil]
+          required :transaction_token, String, nil?: true
+
+          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, transaction_token:, event_stream: :TOKENIZATION)
           #   @param token [String] Globally unique identifier for the evaluation
           #
           #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::DeclineActionTokenization, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Action::RequireTfaAction>] Actions returned by the rule evaluation
@@ -420,6 +442,8 @@ module Lithic
           #   @param mode [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Mode] The state of the Auth Rule
           #
           #   @param rule_version [Integer] Version of the rule that was evaluated
+          #
+          #   @param transaction_token [String, nil] The token of the transaction that triggered the rule evaluation
           #
           #   @param event_stream [Symbol, :TOKENIZATION] The event stream during which the rule was evaluated
 
@@ -631,7 +655,13 @@ module Lithic
           #   @return [Integer]
           required :rule_version, Integer
 
-          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_stream:, event_token:, mode:, rule_version:)
+          # @!attribute transaction_token
+          #   The token of the transaction that triggered the rule evaluation
+          #
+          #   @return [String, nil]
+          required :transaction_token, String, nil?: true
+
+          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_stream:, event_token:, mode:, rule_version:, transaction_token:)
           #   @param token [String] Globally unique identifier for the evaluation
           #
           #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ApproveActionACH, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Action::ReturnAction>] Actions returned by the rule evaluation
@@ -647,6 +677,8 @@ module Lithic
           #   @param mode [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Mode] The state of the Auth Rule
           #
           #   @param rule_version [Integer] Version of the rule that was evaluated
+          #
+          #   @param transaction_token [String, nil] The token of the transaction that triggered the rule evaluation
 
           module Action
             extend Lithic::Internal::Type::Union

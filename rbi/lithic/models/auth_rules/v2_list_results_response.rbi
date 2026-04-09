@@ -68,6 +68,10 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :rule_version
 
+          # The token of the transaction that triggered the rule evaluation
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
           sig do
             params(
               token: String,
@@ -84,6 +88,7 @@ module Lithic
               mode:
                 Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Mode::OrSymbol,
               rule_version: Integer,
+              transaction_token: T.nilable(String),
               event_stream: Symbol
             ).returns(T.attached_class)
           end
@@ -102,6 +107,8 @@ module Lithic
             mode:,
             # Version of the rule that was evaluated
             rule_version:,
+            # The token of the transaction that triggered the rule evaluation
+            transaction_token:,
             # The event stream during which the rule was evaluated
             event_stream: :AUTHORIZATION
           )
@@ -121,7 +128,8 @@ module Lithic
                 event_token: String,
                 mode:
                   Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Mode::TaggedSymbol,
-                rule_version: Integer
+                rule_version: Integer,
+                transaction_token: T.nilable(String)
               }
             )
           end
@@ -719,6 +727,10 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :rule_version
 
+          # The token of the transaction that triggered the rule evaluation
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
           sig do
             params(
               token: String,
@@ -732,6 +744,7 @@ module Lithic
               mode:
                 Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Mode::OrSymbol,
               rule_version: Integer,
+              transaction_token: T.nilable(String),
               event_stream: Symbol
             ).returns(T.attached_class)
           end
@@ -750,6 +763,8 @@ module Lithic
             mode:,
             # Version of the rule that was evaluated
             rule_version:,
+            # The token of the transaction that triggered the rule evaluation
+            transaction_token:,
             # The event stream during which the rule was evaluated
             event_stream: :THREE_DS_AUTHENTICATION
           )
@@ -769,7 +784,8 @@ module Lithic
                 event_token: String,
                 mode:
                   Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult::Mode::TaggedSymbol,
-                rule_version: Integer
+                rule_version: Integer,
+                transaction_token: T.nilable(String)
               }
             )
           end
@@ -947,6 +963,10 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :rule_version
 
+          # The token of the transaction that triggered the rule evaluation
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
           sig do
             params(
               token: String,
@@ -963,6 +983,7 @@ module Lithic
               mode:
                 Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Mode::OrSymbol,
               rule_version: Integer,
+              transaction_token: T.nilable(String),
               event_stream: Symbol
             ).returns(T.attached_class)
           end
@@ -981,6 +1002,8 @@ module Lithic
             mode:,
             # Version of the rule that was evaluated
             rule_version:,
+            # The token of the transaction that triggered the rule evaluation
+            transaction_token:,
             # The event stream during which the rule was evaluated
             event_stream: :TOKENIZATION
           )
@@ -1000,7 +1023,8 @@ module Lithic
                 event_token: String,
                 mode:
                   Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult::Mode::TaggedSymbol,
-                rule_version: Integer
+                rule_version: Integer,
+                transaction_token: T.nilable(String)
               }
             )
           end
@@ -1522,6 +1546,10 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :rule_version
 
+          # The token of the transaction that triggered the rule evaluation
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
           sig do
             params(
               token: String,
@@ -1539,7 +1567,8 @@ module Lithic
               event_token: String,
               mode:
                 Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Mode::OrSymbol,
-              rule_version: Integer
+              rule_version: Integer,
+              transaction_token: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1558,7 +1587,9 @@ module Lithic
             # The state of the Auth Rule
             mode:,
             # Version of the rule that was evaluated
-            rule_version:
+            rule_version:,
+            # The token of the transaction that triggered the rule evaluation
+            transaction_token:
           )
           end
 
@@ -1577,7 +1608,8 @@ module Lithic
                 event_token: String,
                 mode:
                   Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Mode::TaggedSymbol,
-                rule_version: Integer
+                rule_version: Integer,
+                transaction_token: T.nilable(String)
               }
             )
           end
