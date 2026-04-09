@@ -148,12 +148,17 @@ module Lithic
           sig { params(timestamp: Time).void }
           attr_writer :timestamp
 
+          # The token of the transaction associated with the event
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
           sig do
             params(
               decision:
                 Lithic::AuthRules::BacktestStats::Example::Decision::OrSymbol,
               event_token: String,
-              timestamp: Time
+              timestamp: Time,
+              transaction_token: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -162,7 +167,9 @@ module Lithic
             # The event token.
             event_token: nil,
             # The timestamp of the event.
-            timestamp: nil
+            timestamp: nil,
+            # The token of the transaction associated with the event
+            transaction_token: nil
           )
           end
 
@@ -172,7 +179,8 @@ module Lithic
                 decision:
                   Lithic::AuthRules::BacktestStats::Example::Decision::TaggedSymbol,
                 event_token: String,
-                timestamp: Time
+                timestamp: Time,
+                transaction_token: T.nilable(String)
               }
             )
           end

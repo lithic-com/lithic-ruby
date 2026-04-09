@@ -53,7 +53,8 @@ module Lithic
           {
             decision: Lithic::Models::AuthRules::BacktestStats::Example::decision,
             event_token: String,
-            timestamp: Time
+            timestamp: Time,
+            transaction_token: String?
           }
 
         class Example < Lithic::Internal::Type::BaseModel
@@ -71,16 +72,20 @@ module Lithic
 
           def timestamp=: (Time) -> Time
 
+          attr_accessor transaction_token: String?
+
           def initialize: (
             ?decision: Lithic::Models::AuthRules::BacktestStats::Example::decision,
             ?event_token: String,
-            ?timestamp: Time
+            ?timestamp: Time,
+            ?transaction_token: String?
           ) -> void
 
           def to_hash: -> {
             decision: Lithic::Models::AuthRules::BacktestStats::Example::decision,
             event_token: String,
-            timestamp: Time
+            timestamp: Time,
+            transaction_token: String?
           }
 
           type decision = :APPROVED | :DECLINED | :CHALLENGED

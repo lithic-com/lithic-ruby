@@ -100,7 +100,13 @@ module Lithic
           #   @return [Time, nil]
           optional :timestamp, Time
 
-          # @!method initialize(actions: nil, approved: nil, decision: nil, event_token: nil, timestamp: nil)
+          # @!attribute transaction_token
+          #   The token of the transaction associated with the event
+          #
+          #   @return [String, nil]
+          optional :transaction_token, String, nil?: true
+
+          # @!method initialize(actions: nil, approved: nil, decision: nil, event_token: nil, timestamp: nil, transaction_token: nil)
           #   @param actions [Array<Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ReportStats::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::ReportStats::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::ReportStats::Example::Action::ReturnAction>] The actions taken by the rule for this event.
           #
           #   @param approved [Boolean] Whether the rule would have approved the request.
@@ -110,6 +116,8 @@ module Lithic
           #   @param event_token [String] The event token.
           #
           #   @param timestamp [Time] The timestamp of the event.
+          #
+          #   @param transaction_token [String, nil] The token of the transaction associated with the event
 
           module Action
             extend Lithic::Internal::Type::Union
