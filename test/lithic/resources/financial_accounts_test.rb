@@ -130,8 +130,8 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     response =
       @lithic.financial_accounts.update_status(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        status: :OPEN,
-        substatus: :CHARGED_OFF_FRAUD
+        status: :CLOSED,
+        substatus: :END_USER_REQUEST
       )
 
     assert_pattern do
