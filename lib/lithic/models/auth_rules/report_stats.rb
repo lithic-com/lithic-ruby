@@ -6,99 +6,62 @@ module Lithic
       class ReportStats < Lithic::Internal::Type::BaseModel
         # @!attribute action_counts
         #   A mapping of action types to the number of times that action was returned by
-        #   this rule during the relevant period. Actions are the possible outcomes of a
+        #   this version during the relevant period. Actions are the possible outcomes of a
         #   rule evaluation, such as DECLINE, CHALLENGE, REQUIRE_TFA, etc. In case rule
         #   didn't trigger any action, it's counted under NO_ACTION key.
         #
-        #   @return [Hash{Symbol=>Integer}, nil]
-        optional :action_counts, Lithic::Internal::Type::HashOf[Integer]
-
-        # @!attribute approved
-        #   @deprecated
-        #
-        #   The total number of historical transactions approved by this rule during the
-        #   relevant period, or the number of transactions that would have been approved if
-        #   the rule was evaluated in shadow mode.
-        #
-        #   @return [Integer, nil]
-        optional :approved, Integer
-
-        # @!attribute challenged
-        #   @deprecated
-        #
-        #   The total number of historical transactions challenged by this rule during the
-        #   relevant period, or the number of transactions that would have been challenged
-        #   if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
-        #   Rules.
-        #
-        #   @return [Integer, nil]
-        optional :challenged, Integer
-
-        # @!attribute declined
-        #   @deprecated
-        #
-        #   The total number of historical transactions declined by this rule during the
-        #   relevant period, or the number of transactions that would have been declined if
-        #   the rule was evaluated in shadow mode.
-        #
-        #   @return [Integer, nil]
-        optional :declined, Integer
+        #   @return [Hash{Symbol=>Integer}]
+        required :action_counts, Lithic::Internal::Type::HashOf[Integer]
 
         # @!attribute examples
-        #   Example events and their outcomes.
+        #   Example events and their outcomes for this version.
         #
-        #   @return [Array<Lithic::Models::AuthRules::ReportStats::Example>, nil]
-        optional :examples, -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ReportStats::Example] }
+        #   @return [Array<Lithic::Models::AuthRules::ReportStats::Example>]
+        required :examples, -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ReportStats::Example] }
 
-        # @!method initialize(action_counts: nil, approved: nil, challenged: nil, declined: nil, examples: nil)
+        # @!attribute state
+        #   The evaluation mode of this version during the reported period.
+        #
+        #   @return [Symbol, Lithic::Models::AuthRules::ReportStats::State]
+        required :state, enum: -> { Lithic::AuthRules::ReportStats::State }
+
+        # @!attribute version
+        #   The rule version number.
+        #
+        #   @return [Integer]
+        required :version, Integer
+
+        # @!method initialize(action_counts:, examples:, state:, version:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::ReportStats} for more details.
         #
         #   @param action_counts [Hash{Symbol=>Integer}] A mapping of action types to the number of times that action was returned by thi
         #
-        #   @param approved [Integer] The total number of historical transactions approved by this rule during the rel
+        #   @param examples [Array<Lithic::Models::AuthRules::ReportStats::Example>] Example events and their outcomes for this version.
         #
-        #   @param challenged [Integer] The total number of historical transactions challenged by this rule during the r
+        #   @param state [Symbol, Lithic::Models::AuthRules::ReportStats::State] The evaluation mode of this version during the reported period.
         #
-        #   @param declined [Integer] The total number of historical transactions declined by this rule during the rel
-        #
-        #   @param examples [Array<Lithic::Models::AuthRules::ReportStats::Example>] Example events and their outcomes.
+        #   @param version [Integer] The rule version number.
 
         class Example < Lithic::Internal::Type::BaseModel
           # @!attribute actions
-          #   The actions taken by the rule for this event.
+          #   The actions taken by this version for this event.
           #
-          #   @return [Array<Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ReportStats::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::ReportStats::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::ReportStats::Example::Action::ReturnAction>, nil]
-          optional :actions,
+          #   @return [Array<Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ReportStats::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::ReportStats::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::ReportStats::Example::Action::ReturnAction>]
+          required :actions,
                    -> { Lithic::Internal::Type::ArrayOf[union: Lithic::AuthRules::ReportStats::Example::Action] }
-
-          # @!attribute approved
-          #   @deprecated
-          #
-          #   Whether the rule would have approved the request.
-          #
-          #   @return [Boolean, nil]
-          optional :approved, Lithic::Internal::Type::Boolean
-
-          # @!attribute decision
-          #   @deprecated
-          #
-          #   The decision made by the rule for this event.
-          #
-          #   @return [Symbol, Lithic::Models::AuthRules::ReportStats::Example::Decision, nil]
-          optional :decision, enum: -> { Lithic::AuthRules::ReportStats::Example::Decision }
 
           # @!attribute event_token
           #   The event token.
           #
-          #   @return [String, nil]
-          optional :event_token, String
+          #   @return [String]
+          required :event_token, String
 
           # @!attribute timestamp
           #   The timestamp of the event.
           #
-          #   @return [Time, nil]
-          optional :timestamp, Time
+          #   @return [Time]
+          required :timestamp, Time
 
           # @!attribute transaction_token
           #   The token of the transaction associated with the event
@@ -106,12 +69,8 @@ module Lithic
           #   @return [String, nil]
           optional :transaction_token, String, nil?: true
 
-          # @!method initialize(actions: nil, approved: nil, decision: nil, event_token: nil, timestamp: nil, transaction_token: nil)
-          #   @param actions [Array<Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ReportStats::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::ReportStats::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::ReportStats::Example::Action::ReturnAction>] The actions taken by the rule for this event.
-          #
-          #   @param approved [Boolean] Whether the rule would have approved the request.
-          #
-          #   @param decision [Symbol, Lithic::Models::AuthRules::ReportStats::Example::Decision] The decision made by the rule for this event.
+          # @!method initialize(actions:, event_token:, timestamp:, transaction_token: nil)
+          #   @param actions [Array<Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ReportStats::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::ReportStats::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::ReportStats::Example::Action::ReturnAction>] The actions taken by this version for this event.
           #
           #   @param event_token [String] The event token.
           #
@@ -537,22 +496,20 @@ module Lithic
             # @!method self.variants
             #   @return [Array(Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization, Lithic::Models::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction, Lithic::Models::AuthRules::ReportStats::Example::Action::DeclineActionTokenization, Lithic::Models::AuthRules::ReportStats::Example::Action::RequireTfaAction, Lithic::Models::AuthRules::ReportStats::Example::Action::ApproveActionACH, Lithic::Models::AuthRules::ReportStats::Example::Action::ReturnAction)]
           end
+        end
 
-          # @deprecated
-          #
-          # The decision made by the rule for this event.
-          #
-          # @see Lithic::Models::AuthRules::ReportStats::Example#decision
-          module Decision
-            extend Lithic::Internal::Type::Enum
+        # The evaluation mode of this version during the reported period.
+        #
+        # @see Lithic::Models::AuthRules::ReportStats#state
+        module State
+          extend Lithic::Internal::Type::Enum
 
-            APPROVED = :APPROVED
-            DECLINED = :DECLINED
-            CHALLENGED = :CHALLENGED
+          ACTIVE = :ACTIVE
+          SHADOW = :SHADOW
+          INACTIVE = :INACTIVE
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

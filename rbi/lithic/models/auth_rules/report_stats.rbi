@@ -10,86 +10,44 @@ module Lithic
           end
 
         # A mapping of action types to the number of times that action was returned by
-        # this rule during the relevant period. Actions are the possible outcomes of a
+        # this version during the relevant period. Actions are the possible outcomes of a
         # rule evaluation, such as DECLINE, CHALLENGE, REQUIRE_TFA, etc. In case rule
         # didn't trigger any action, it's counted under NO_ACTION key.
-        sig { returns(T.nilable(T::Hash[Symbol, Integer])) }
-        attr_reader :action_counts
+        sig { returns(T::Hash[Symbol, Integer]) }
+        attr_accessor :action_counts
 
-        sig { params(action_counts: T::Hash[Symbol, Integer]).void }
-        attr_writer :action_counts
+        # Example events and their outcomes for this version.
+        sig { returns(T::Array[Lithic::AuthRules::ReportStats::Example]) }
+        attr_accessor :examples
 
-        # The total number of historical transactions approved by this rule during the
-        # relevant period, or the number of transactions that would have been approved if
-        # the rule was evaluated in shadow mode.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :approved
+        # The evaluation mode of this version during the reported period.
+        sig { returns(Lithic::AuthRules::ReportStats::State::TaggedSymbol) }
+        attr_accessor :state
 
-        sig { params(approved: Integer).void }
-        attr_writer :approved
-
-        # The total number of historical transactions challenged by this rule during the
-        # relevant period, or the number of transactions that would have been challenged
-        # if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
-        # Rules.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :challenged
-
-        sig { params(challenged: Integer).void }
-        attr_writer :challenged
-
-        # The total number of historical transactions declined by this rule during the
-        # relevant period, or the number of transactions that would have been declined if
-        # the rule was evaluated in shadow mode.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :declined
-
-        sig { params(declined: Integer).void }
-        attr_writer :declined
-
-        # Example events and their outcomes.
-        sig do
-          returns(T.nilable(T::Array[Lithic::AuthRules::ReportStats::Example]))
-        end
-        attr_reader :examples
-
-        sig do
-          params(
-            examples: T::Array[Lithic::AuthRules::ReportStats::Example::OrHash]
-          ).void
-        end
-        attr_writer :examples
+        # The rule version number.
+        sig { returns(Integer) }
+        attr_accessor :version
 
         sig do
           params(
             action_counts: T::Hash[Symbol, Integer],
-            approved: Integer,
-            challenged: Integer,
-            declined: Integer,
-            examples: T::Array[Lithic::AuthRules::ReportStats::Example::OrHash]
+            examples: T::Array[Lithic::AuthRules::ReportStats::Example::OrHash],
+            state: Lithic::AuthRules::ReportStats::State::OrSymbol,
+            version: Integer
           ).returns(T.attached_class)
         end
         def self.new(
           # A mapping of action types to the number of times that action was returned by
-          # this rule during the relevant period. Actions are the possible outcomes of a
+          # this version during the relevant period. Actions are the possible outcomes of a
           # rule evaluation, such as DECLINE, CHALLENGE, REQUIRE_TFA, etc. In case rule
           # didn't trigger any action, it's counted under NO_ACTION key.
-          action_counts: nil,
-          # The total number of historical transactions approved by this rule during the
-          # relevant period, or the number of transactions that would have been approved if
-          # the rule was evaluated in shadow mode.
-          approved: nil,
-          # The total number of historical transactions challenged by this rule during the
-          # relevant period, or the number of transactions that would have been challenged
-          # if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
-          # Rules.
-          challenged: nil,
-          # The total number of historical transactions declined by this rule during the
-          # relevant period, or the number of transactions that would have been declined if
-          # the rule was evaluated in shadow mode.
-          declined: nil,
-          # Example events and their outcomes.
-          examples: nil
+          action_counts:,
+          # Example events and their outcomes for this version.
+          examples:,
+          # The evaluation mode of this version during the reported period.
+          state:,
+          # The rule version number.
+          version:
         )
         end
 
@@ -97,10 +55,9 @@ module Lithic
           override.returns(
             {
               action_counts: T::Hash[Symbol, Integer],
-              approved: Integer,
-              challenged: Integer,
-              declined: Integer,
-              examples: T::Array[Lithic::AuthRules::ReportStats::Example]
+              examples: T::Array[Lithic::AuthRules::ReportStats::Example],
+              state: Lithic::AuthRules::ReportStats::State::TaggedSymbol,
+              version: Integer
             }
           )
         end
@@ -116,74 +73,23 @@ module Lithic
               )
             end
 
-          # The actions taken by the rule for this event.
+          # The actions taken by this version for this event.
           sig do
             returns(
-              T.nilable(
-                T::Array[
-                  Lithic::AuthRules::ReportStats::Example::Action::Variants
-                ]
-              )
+              T::Array[
+                Lithic::AuthRules::ReportStats::Example::Action::Variants
+              ]
             )
           end
-          attr_reader :actions
-
-          sig do
-            params(
-              actions:
-                T::Array[
-                  T.any(
-                    Lithic::AuthRules::ReportStats::Example::Action::DeclineActionAuthorization::OrHash,
-                    Lithic::AuthRules::ReportStats::Example::Action::ChallengeActionAuthorization::OrHash,
-                    Lithic::AuthRules::ReportStats::Example::Action::ResultAuthentication3DSAction::OrHash,
-                    Lithic::AuthRules::ReportStats::Example::Action::DeclineActionTokenization::OrHash,
-                    Lithic::AuthRules::ReportStats::Example::Action::RequireTfaAction::OrHash,
-                    Lithic::AuthRules::ReportStats::Example::Action::ApproveActionACH::OrHash,
-                    Lithic::AuthRules::ReportStats::Example::Action::ReturnAction::OrHash
-                  )
-                ]
-            ).void
-          end
-          attr_writer :actions
-
-          # Whether the rule would have approved the request.
-          sig { returns(T.nilable(T::Boolean)) }
-          attr_reader :approved
-
-          sig { params(approved: T::Boolean).void }
-          attr_writer :approved
-
-          # The decision made by the rule for this event.
-          sig do
-            returns(
-              T.nilable(
-                Lithic::AuthRules::ReportStats::Example::Decision::TaggedSymbol
-              )
-            )
-          end
-          attr_reader :decision
-
-          sig do
-            params(
-              decision:
-                Lithic::AuthRules::ReportStats::Example::Decision::OrSymbol
-            ).void
-          end
-          attr_writer :decision
+          attr_accessor :actions
 
           # The event token.
-          sig { returns(T.nilable(String)) }
-          attr_reader :event_token
-
-          sig { params(event_token: String).void }
-          attr_writer :event_token
+          sig { returns(String) }
+          attr_accessor :event_token
 
           # The timestamp of the event.
-          sig { returns(T.nilable(Time)) }
-          attr_reader :timestamp
-
-          sig { params(timestamp: Time).void }
-          attr_writer :timestamp
+          sig { returns(Time) }
+          attr_accessor :timestamp
 
           # The token of the transaction associated with the event
           sig { returns(T.nilable(String)) }
@@ -203,25 +109,18 @@ module Lithic
                     Lithic::AuthRules::ReportStats::Example::Action::ReturnAction::OrHash
                   )
                 ],
-              approved: T::Boolean,
-              decision:
-                Lithic::AuthRules::ReportStats::Example::Decision::OrSymbol,
               event_token: String,
               timestamp: Time,
               transaction_token: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
-            # The actions taken by the rule for this event.
-            actions: nil,
-            # Whether the rule would have approved the request.
-            approved: nil,
-            # The decision made by the rule for this event.
-            decision: nil,
+            # The actions taken by this version for this event.
+            actions:,
             # The event token.
-            event_token: nil,
+            event_token:,
             # The timestamp of the event.
-            timestamp: nil,
+            timestamp:,
             # The token of the transaction associated with the event
             transaction_token: nil
           )
@@ -234,9 +133,6 @@ module Lithic
                   T::Array[
                     Lithic::AuthRules::ReportStats::Example::Action::Variants
                   ],
-                approved: T::Boolean,
-                decision:
-                  Lithic::AuthRules::ReportStats::Example::Decision::TaggedSymbol,
                 event_token: String,
                 timestamp: Time,
                 transaction_token: T.nilable(String)
@@ -1718,42 +1614,34 @@ module Lithic
             def self.variants
             end
           end
+        end
 
-          # The decision made by the rule for this event.
-          module Decision
-            extend Lithic::Internal::Type::Enum
+        # The evaluation mode of this version during the reported period.
+        module State
+          extend Lithic::Internal::Type::Enum
 
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Lithic::AuthRules::ReportStats::Example::Decision)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            APPROVED =
-              T.let(
-                :APPROVED,
-                Lithic::AuthRules::ReportStats::Example::Decision::TaggedSymbol
-              )
-            DECLINED =
-              T.let(
-                :DECLINED,
-                Lithic::AuthRules::ReportStats::Example::Decision::TaggedSymbol
-              )
-            CHALLENGED =
-              T.let(
-                :CHALLENGED,
-                Lithic::AuthRules::ReportStats::Example::Decision::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Lithic::AuthRules::ReportStats::Example::Decision::TaggedSymbol
-                ]
-              )
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::AuthRules::ReportStats::State)
             end
-            def self.values
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ACTIVE =
+            T.let(:ACTIVE, Lithic::AuthRules::ReportStats::State::TaggedSymbol)
+          SHADOW =
+            T.let(:SHADOW, Lithic::AuthRules::ReportStats::State::TaggedSymbol)
+          INACTIVE =
+            T.let(
+              :INACTIVE,
+              Lithic::AuthRules::ReportStats::State::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::ReportStats::State::TaggedSymbol]
+            )
+          end
+          def self.values
           end
         end
       end
