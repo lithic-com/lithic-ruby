@@ -4,101 +4,60 @@ module Lithic
       type report_stats =
         {
           action_counts: ::Hash[Symbol, Integer],
-          approved: Integer,
-          challenged: Integer,
-          declined: Integer,
-          examples: ::Array[Lithic::AuthRules::ReportStats::Example]
+          examples: ::Array[Lithic::AuthRules::ReportStats::Example],
+          state: Lithic::Models::AuthRules::ReportStats::state,
+          version: Integer
         }
 
       class ReportStats < Lithic::Internal::Type::BaseModel
-        attr_reader action_counts: ::Hash[Symbol, Integer]?
+        attr_accessor action_counts: ::Hash[Symbol, Integer]
 
-        def action_counts=: (::Hash[Symbol, Integer]) -> ::Hash[Symbol, Integer]
+        attr_accessor examples: ::Array[Lithic::AuthRules::ReportStats::Example]
 
-        attr_reader approved: Integer?
+        attr_accessor state: Lithic::Models::AuthRules::ReportStats::state
 
-        def approved=: (Integer) -> Integer
-
-        attr_reader challenged: Integer?
-
-        def challenged=: (Integer) -> Integer
-
-        attr_reader declined: Integer?
-
-        def declined=: (Integer) -> Integer
-
-        attr_reader examples: ::Array[Lithic::AuthRules::ReportStats::Example]?
-
-        def examples=: (
-          ::Array[Lithic::AuthRules::ReportStats::Example]
-        ) -> ::Array[Lithic::AuthRules::ReportStats::Example]
+        attr_accessor version: Integer
 
         def initialize: (
-          ?action_counts: ::Hash[Symbol, Integer],
-          ?approved: Integer,
-          ?challenged: Integer,
-          ?declined: Integer,
-          ?examples: ::Array[Lithic::AuthRules::ReportStats::Example]
+          action_counts: ::Hash[Symbol, Integer],
+          examples: ::Array[Lithic::AuthRules::ReportStats::Example],
+          state: Lithic::Models::AuthRules::ReportStats::state,
+          version: Integer
         ) -> void
 
         def to_hash: -> {
           action_counts: ::Hash[Symbol, Integer],
-          approved: Integer,
-          challenged: Integer,
-          declined: Integer,
-          examples: ::Array[Lithic::AuthRules::ReportStats::Example]
+          examples: ::Array[Lithic::AuthRules::ReportStats::Example],
+          state: Lithic::Models::AuthRules::ReportStats::state,
+          version: Integer
         }
 
         type example =
           {
             actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action],
-            approved: bool,
-            decision: Lithic::Models::AuthRules::ReportStats::Example::decision,
             event_token: String,
             timestamp: Time,
             transaction_token: String?
           }
 
         class Example < Lithic::Internal::Type::BaseModel
-          attr_reader actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action]?
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action]
 
-          def actions=: (
-            ::Array[Lithic::Models::AuthRules::ReportStats::Example::action]
-          ) -> ::Array[Lithic::Models::AuthRules::ReportStats::Example::action]
+          attr_accessor event_token: String
 
-          attr_reader approved: bool?
-
-          def approved=: (bool) -> bool
-
-          attr_reader decision: Lithic::Models::AuthRules::ReportStats::Example::decision?
-
-          def decision=: (
-            Lithic::Models::AuthRules::ReportStats::Example::decision
-          ) -> Lithic::Models::AuthRules::ReportStats::Example::decision
-
-          attr_reader event_token: String?
-
-          def event_token=: (String) -> String
-
-          attr_reader timestamp: Time?
-
-          def timestamp=: (Time) -> Time
+          attr_accessor timestamp: Time
 
           attr_accessor transaction_token: String?
 
           def initialize: (
-            ?actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action],
-            ?approved: bool,
-            ?decision: Lithic::Models::AuthRules::ReportStats::Example::decision,
-            ?event_token: String,
-            ?timestamp: Time,
+            actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action],
+            event_token: String,
+            timestamp: Time,
             ?transaction_token: String?
           ) -> void
 
           def to_hash: -> {
             actions: ::Array[Lithic::Models::AuthRules::ReportStats::Example::action],
-            approved: bool,
-            decision: Lithic::Models::AuthRules::ReportStats::Example::decision,
             event_token: String,
             timestamp: Time,
             transaction_token: String?
@@ -682,18 +641,18 @@ module Lithic
 
             def self?.variants: -> ::Array[Lithic::Models::AuthRules::ReportStats::Example::action]
           end
+        end
 
-          type decision = :APPROVED | :DECLINED | :CHALLENGED
+        type state = :ACTIVE | :SHADOW | :INACTIVE
 
-          module Decision
-            extend Lithic::Internal::Type::Enum
+        module State
+          extend Lithic::Internal::Type::Enum
 
-            APPROVED: :APPROVED
-            DECLINED: :DECLINED
-            CHALLENGED: :CHALLENGED
+          ACTIVE: :ACTIVE
+          SHADOW: :SHADOW
+          INACTIVE: :INACTIVE
 
-            def self?.values: -> ::Array[Lithic::Models::AuthRules::ReportStats::Example::decision]
-          end
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::ReportStats::state]
         end
       end
     end
