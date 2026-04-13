@@ -159,6 +159,11 @@ module Lithic
             :INTEREST_AND_FEES_PAUSED,
             Lithic::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol
           )
+        DELINQUENT =
+          T.let(
+            :DELINQUENT,
+            Lithic::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol
+          )
 
         sig do
           override.returns(
