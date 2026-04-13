@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.11.0 (2026-04-13)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/lithic-com/lithic-ruby/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **api:** add card decline count attributes to auth_rules conditional authorization ([d8d98d9](https://github.com/lithic-com/lithic-ruby/commit/d8d98d927f33b011b1a28c37df6b971ab7c895a0))
+* **api:** add DELINQUENT substatus to financial account update status ([6a49f69](https://github.com/lithic-com/lithic-ruby/commit/6a49f690f00b7c261e22201aaac8521db124e4dc))
+* **api:** add interchange/chargeback/provisional_credit_account to financial account type enums ([3d54444](https://github.com/lithic-com/lithic-ruby/commit/3d544442bb1ecfc4c69c806fb72cf8a1b0564c8d))
+* **api:** add override_company_name field to payment create parameters ([7e916b6](https://github.com/lithic-com/lithic-ruby/commit/7e916b6bb6e41494aab381d5a30bb83f9ea6ca23))
+* **api:** add statement_totals field to financial accounts statement ([1fa7586](https://github.com/lithic-com/lithic-ruby/commit/1fa758668e1caf7beefca72abe384c99d112ae85))
+* **api:** add transaction_token field to auth_rules examples ([4729281](https://github.com/lithic-com/lithic-ruby/commit/47292818b9afc96e2ac358235012b4deb8987016))
+* **api:** add transaction_token field to auth_rules v2 results response ([acca757](https://github.com/lithic-com/lithic-ruby/commit/acca757780ead14f428e035409c3b7cb815d9d83))
+
+
+### Bug Fixes
+
+* align path encoding with RFC 3986 section 3.3 ([5624e72](https://github.com/lithic-com/lithic-ruby/commit/5624e7234a615d0de2ecc92e007be91a54a90c98))
+* **internal:** correct multipart form field name encoding ([abfc1fd](https://github.com/lithic-com/lithic-ruby/commit/abfc1fdd7c78682932979e362448f95bca347d43))
+* multipart encoding for file arrays ([5a0bdeb](https://github.com/lithic-com/lithic-ruby/commit/5a0bdeb87640bd6340039f86a366886894e9991a))
+* **types:** [breaking] remove deprecated fields from auth_rules report_stats ([f3089b7](https://github.com/lithic-com/lithic-ruby/commit/f3089b7a510244d7c566bc69cc68d4564b899bec))
+* **types:** make credit_product_token optional in financial_accounts statement ([a0fa401](https://github.com/lithic-com/lithic-ruby/commit/a0fa40166b98f3d7e91878d5ea948027c72ea440))
+* **types:** remove INTERCHANGE/CHARGEBACK from FinancialAccount/InstanceFinancialAccountType ([6077d32](https://github.com/lithic-com/lithic-ruby/commit/6077d32ca7a8bc77204000d9c2e0cf7f28569c4b))
+* **types:** require Card fields, remove hostname in authorization approval webhook ([fb4f7d9](https://github.com/lithic-com/lithic-ruby/commit/fb4f7d98735f400ca090a07b7fe59373e8eb9ef1))
+* variable name typo ([0156ca5](https://github.com/lithic-com/lithic-ruby/commit/0156ca5e46b58cdfb25fdbcd293d16778e762c2a))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([810ca31](https://github.com/lithic-com/lithic-ruby/commit/810ca31d3deeb0fd04c5843496dc601187076633))
+* **ci:** support opting out of skipping builds on metadata-only commits ([40b20fb](https://github.com/lithic-com/lithic-ruby/commit/40b20fb0c3c2c31e2870ee2df86d4a55fac67a04))
+
+
+### Documentation
+
+* **api:** update nature_of_business and qr_code_url field descriptions ([b11902d](https://github.com/lithic-com/lithic-ruby/commit/b11902d30b4b337e7ffc05358df51c18e6ea6648))
+* improve examples ([a7a4a69](https://github.com/lithic-com/lithic-ruby/commit/a7a4a69c9c6930cb8fb3b6bfe4b10e32d1a49213))
+* update examples ([985e1f5](https://github.com/lithic-com/lithic-ruby/commit/985e1f5f0e12517dce490224aaf82021875c8101))
+
 ## 0.10.0 (2026-03-23)
 
 Full Changelog: [v0.9.0...v0.10.0](https://github.com/lithic-com/lithic-ruby/compare/v0.9.0...v0.10.0)
