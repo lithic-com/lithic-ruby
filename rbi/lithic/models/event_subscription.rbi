@@ -86,6 +86,8 @@ module Lithic
       #   created.
       # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
       #   updated.
+      # - card_authorization.challenge_response: Occurs when a cardholder responds to an
+      #   SMS challenge during card authorization.
       # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
       #   data is processed for a transaction event.
       # - card_transaction.enhanced_data.updated: Occurs when L2/L3 enhanced commercial
@@ -215,6 +217,11 @@ module Lithic
         BOOK_TRANSFER_TRANSACTION_UPDATED =
           T.let(
             :"book_transfer_transaction.updated",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CARD_AUTHORIZATION_CHALLENGE_RESPONSE =
+          T.let(
+            :"card_authorization.challenge_response",
             Lithic::EventSubscription::EventType::TaggedSymbol
           )
         CARD_TRANSACTION_ENHANCED_DATA_CREATED =
