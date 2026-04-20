@@ -251,6 +251,8 @@ module Lithic
 
   module ExternalBankAccounts = Lithic::Models::ExternalBankAccounts
 
+  class ExternalBankAccountSetVerificationMethodParams = Lithic::Models::ExternalBankAccountSetVerificationMethodParams
+
   class ExternalBankAccountUnpauseParams = Lithic::Models::ExternalBankAccountUnpauseParams
 
   class ExternalBankAccountUpdatedWebhookEvent = Lithic::Models::ExternalBankAccountUpdatedWebhookEvent

@@ -146,6 +146,28 @@ module Lithic
       )
       end
 
+      # Update the verification method for an external bank account. Verification method
+      # can only be updated if the `verification_state` is `PENDING`.
+      sig do
+        params(
+          external_bank_account_token: String,
+          verification_method:
+            Lithic::ExternalBankAccountSetVerificationMethodParams::VerificationMethod::OrSymbol,
+          financial_account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalBankAccount)
+      end
+      def set_verification_method(
+        external_bank_account_token,
+        # The verification method to set for the external bank account
+        verification_method:,
+        # The financial account token of the operating account to fund the micro deposits.
+        # Required when verification_method is MICRO_DEPOSIT or PRENOTE.
+        financial_account_token: nil,
+        request_options: {}
+      )
+      end
+
       # Unpause an external bank account
       sig do
         params(
