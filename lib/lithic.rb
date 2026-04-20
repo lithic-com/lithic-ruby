@@ -271,6 +271,7 @@ require_relative "lithic/models/external_bank_account_retry_micro_deposits_respo
 require_relative "lithic/models/external_bank_account_retry_prenote_params"
 require_relative "lithic/models/external_bank_accounts/micro_deposit_create_params"
 require_relative "lithic/models/external_bank_accounts/micro_deposit_create_response"
+require_relative "lithic/models/external_bank_account_set_verification_method_params"
 require_relative "lithic/models/external_bank_account_unpause_params"
 require_relative "lithic/models/external_bank_account_updated_webhook_event"
 require_relative "lithic/models/external_bank_account_update_params"

@@ -52,6 +52,13 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::ExternalBankAccount
 
+      def set_verification_method: (
+        String external_bank_account_token,
+        verification_method: Lithic::Models::ExternalBankAccountSetVerificationMethodParams::verification_method,
+        ?financial_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::ExternalBankAccount
+
       def unpause: (
         String external_bank_account_token,
         ?request_options: Lithic::request_opts
