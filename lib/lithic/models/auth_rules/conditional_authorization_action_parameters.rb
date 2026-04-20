@@ -107,6 +107,33 @@ module Lithic
           #   - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
           #   - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
           #     of the authorization.
+          #   - `AMOUNT_Z_SCORE`: The z-score of the transaction amount relative to the
+          #     entity's transaction history. Null if fewer than 30 approved transactions in
+          #     the specified window. Requires `parameters.scope` and `parameters.interval`.
+          #   - `AVG_TRANSACTION_AMOUNT`: The average approved transaction amount for the
+          #     entity over the specified window, in cents. Requires `parameters.scope` and
+          #     `parameters.interval`.
+          #   - `STDEV_TRANSACTION_AMOUNT`: The standard deviation of approved transaction
+          #     amounts for the entity over the specified window, in cents. Null if fewer than
+          #     30 approved transactions in the specified window. Requires `parameters.scope`
+          #     and `parameters.interval`.
+          #   - `IS_NEW_COUNTRY`: Whether the transaction's merchant country has not been seen
+          #     in the entity's transaction history. Valid values are `TRUE`, `FALSE`.
+          #     Requires `parameters.scope`.
+          #   - `IS_NEW_MCC`: Whether the transaction's MCC has not been seen in the entity's
+          #     transaction history. Valid values are `TRUE`, `FALSE`. Requires
+          #     `parameters.scope`.
+          #   - `IS_FIRST_TRANSACTION`: Whether this is the first transaction for the entity.
+          #     Valid values are `TRUE`, `FALSE`. Requires `parameters.scope`.
+          #   - `CONSECUTIVE_DECLINES`: The number of consecutive declined transactions for
+          #     the entity over the last 30 days (rolling). Requires `parameters.scope`. Not
+          #     supported for `BUSINESS_ACCOUNT` scope.
+          #   - `TIME_SINCE_LAST_TRANSACTION`: The number of days since the last approved
+          #     transaction for the entity. Requires `parameters.scope`.
+          #   - `DISTINCT_COUNTRY_COUNT`: The number of distinct merchant countries seen in
+          #     the entity's transaction history. Requires `parameters.scope`.
+          #   - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
+          #     a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute]
           required :attribute,
@@ -124,7 +151,18 @@ module Lithic
           #   @return [String, Integer, Array<String>, Time]
           required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
-          # @!method initialize(attribute:, operation:, value:)
+          # @!attribute parameters
+          #   Additional parameters required for transaction history signal attributes.
+          #   Required when `attribute` is one of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
+          #   `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
+          #   `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
+          #   or `DISTINCT_COUNTRY_COUNT`. Not used for other attributes.
+          #
+          #   @return [Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters, nil]
+          optional :parameters,
+                   -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters }
+
+          # @!method initialize(attribute:, operation:, value:, parameters: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition}
           #   for more details.
@@ -134,6 +172,8 @@ module Lithic
           #   @param operation [Symbol, Lithic::Models::AuthRules::ConditionalOperation] The operation to apply to the attribute
           #
           #   @param value [String, Integer, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
+          #
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters] Additional parameters required for transaction history signal attributes. Requir
 
           # The attribute to target.
           #
@@ -206,6 +246,33 @@ module Lithic
           # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
           # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
           #   of the authorization.
+          # - `AMOUNT_Z_SCORE`: The z-score of the transaction amount relative to the
+          #   entity's transaction history. Null if fewer than 30 approved transactions in
+          #   the specified window. Requires `parameters.scope` and `parameters.interval`.
+          # - `AVG_TRANSACTION_AMOUNT`: The average approved transaction amount for the
+          #   entity over the specified window, in cents. Requires `parameters.scope` and
+          #   `parameters.interval`.
+          # - `STDEV_TRANSACTION_AMOUNT`: The standard deviation of approved transaction
+          #   amounts for the entity over the specified window, in cents. Null if fewer than
+          #   30 approved transactions in the specified window. Requires `parameters.scope`
+          #   and `parameters.interval`.
+          # - `IS_NEW_COUNTRY`: Whether the transaction's merchant country has not been seen
+          #   in the entity's transaction history. Valid values are `TRUE`, `FALSE`.
+          #   Requires `parameters.scope`.
+          # - `IS_NEW_MCC`: Whether the transaction's MCC has not been seen in the entity's
+          #   transaction history. Valid values are `TRUE`, `FALSE`. Requires
+          #   `parameters.scope`.
+          # - `IS_FIRST_TRANSACTION`: Whether this is the first transaction for the entity.
+          #   Valid values are `TRUE`, `FALSE`. Requires `parameters.scope`.
+          # - `CONSECUTIVE_DECLINES`: The number of consecutive declined transactions for
+          #   the entity over the last 30 days (rolling). Requires `parameters.scope`. Not
+          #   supported for `BUSINESS_ACCOUNT` scope.
+          # - `TIME_SINCE_LAST_TRANSACTION`: The number of days since the last approved
+          #   transaction for the entity. Requires `parameters.scope`.
+          # - `DISTINCT_COUNTRY_COUNT`: The number of distinct merchant countries seen in
+          #   the entity's transaction history. Requires `parameters.scope`.
+          # - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
+          #   a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
           #
           # @see Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition#attribute
           module Attribute
@@ -237,9 +304,84 @@ module Lithic
             SERVICE_LOCATION_POSTAL_CODE = :SERVICE_LOCATION_POSTAL_CODE
             CARD_AGE = :CARD_AGE
             ACCOUNT_AGE = :ACCOUNT_AGE
+            AMOUNT_Z_SCORE = :AMOUNT_Z_SCORE
+            AVG_TRANSACTION_AMOUNT = :AVG_TRANSACTION_AMOUNT
+            STDEV_TRANSACTION_AMOUNT = :STDEV_TRANSACTION_AMOUNT
+            IS_NEW_COUNTRY = :IS_NEW_COUNTRY
+            IS_NEW_MCC = :IS_NEW_MCC
+            IS_FIRST_TRANSACTION = :IS_FIRST_TRANSACTION
+            CONSECUTIVE_DECLINES = :CONSECUTIVE_DECLINES
+            TIME_SINCE_LAST_TRANSACTION = :TIME_SINCE_LAST_TRANSACTION
+            DISTINCT_COUNTRY_COUNT = :DISTINCT_COUNTRY_COUNT
+            THREE_DS_SUCCESS_RATE = :THREE_DS_SUCCESS_RATE
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition#parameters
+          class Parameters < Lithic::Internal::Type::BaseModel
+            # @!attribute interval
+            #   The time window for statistical attributes (`AMOUNT_Z_SCORE`,
+            #   `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`). Use `LIFETIME` for
+            #   all-time history or a specific window (`7D`, `30D`, `90D`).
+            #
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Interval, nil]
+            optional :interval,
+                     enum: -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Interval }
+
+            # @!attribute scope
+            #   The entity scope to evaluate the attribute against.
+            #
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope, nil]
+            optional :scope,
+                     enum: -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope }
+
+            # @!method initialize(interval: nil, scope: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters}
+            #   for more details.
+            #
+            #   Additional parameters required for transaction history signal attributes.
+            #   Required when `attribute` is one of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
+            #   `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
+            #   `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
+            #   or `DISTINCT_COUNTRY_COUNT`. Not used for other attributes.
+            #
+            #   @param interval [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Interval] The time window for statistical attributes (`AMOUNT_Z_SCORE`, `AVG_TRANSACTION_A
+            #
+            #   @param scope [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope] The entity scope to evaluate the attribute against.
+
+            # The time window for statistical attributes (`AMOUNT_Z_SCORE`,
+            # `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`). Use `LIFETIME` for
+            # all-time history or a specific window (`7D`, `30D`, `90D`).
+            #
+            # @see Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters#interval
+            module Interval
+              extend Lithic::Internal::Type::Enum
+
+              LIFETIME = :LIFETIME
+              INTERVAL_7_D = :"7D"
+              INTERVAL_30_D = :"30D"
+              INTERVAL_90_D = :"90D"
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The entity scope to evaluate the attribute against.
+            #
+            # @see Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters#scope
+            module Scope
+              extend Lithic::Internal::Type::Enum
+
+              CARD = :CARD
+              ACCOUNT = :ACCOUNT
+              BUSINESS_ACCOUNT = :BUSINESS_ACCOUNT
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
       end

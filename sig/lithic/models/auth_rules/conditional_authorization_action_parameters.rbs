@@ -37,7 +37,8 @@ module Lithic
           {
             attribute: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute,
             operation: Lithic::Models::AuthRules::conditional_operation,
-            value: Lithic::Models::AuthRules::conditional_value
+            value: Lithic::Models::AuthRules::conditional_value,
+            parameters: Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters
           }
 
         class Condition < Lithic::Internal::Type::BaseModel
@@ -47,16 +48,24 @@ module Lithic
 
           attr_accessor value: Lithic::Models::AuthRules::conditional_value
 
+          attr_reader parameters: Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters?
+
+          def parameters=: (
+            Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters
+          ) -> Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters
+
           def initialize: (
             attribute: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute,
             operation: Lithic::Models::AuthRules::conditional_operation,
-            value: Lithic::Models::AuthRules::conditional_value
+            value: Lithic::Models::AuthRules::conditional_value,
+            ?parameters: Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters
           ) -> void
 
           def to_hash: -> {
             attribute: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute,
             operation: Lithic::Models::AuthRules::conditional_operation,
-            value: Lithic::Models::AuthRules::conditional_value
+            value: Lithic::Models::AuthRules::conditional_value,
+            parameters: Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters
           }
 
           type attribute =
@@ -86,6 +95,16 @@ module Lithic
             | :SERVICE_LOCATION_POSTAL_CODE
             | :CARD_AGE
             | :ACCOUNT_AGE
+            | :AMOUNT_Z_SCORE
+            | :AVG_TRANSACTION_AMOUNT
+            | :STDEV_TRANSACTION_AMOUNT
+            | :IS_NEW_COUNTRY
+            | :IS_NEW_MCC
+            | :IS_FIRST_TRANSACTION
+            | :CONSECUTIVE_DECLINES
+            | :TIME_SINCE_LAST_TRANSACTION
+            | :DISTINCT_COUNTRY_COUNT
+            | :THREE_DS_SUCCESS_RATE
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -116,8 +135,73 @@ module Lithic
             SERVICE_LOCATION_POSTAL_CODE: :SERVICE_LOCATION_POSTAL_CODE
             CARD_AGE: :CARD_AGE
             ACCOUNT_AGE: :ACCOUNT_AGE
+            AMOUNT_Z_SCORE: :AMOUNT_Z_SCORE
+            AVG_TRANSACTION_AMOUNT: :AVG_TRANSACTION_AMOUNT
+            STDEV_TRANSACTION_AMOUNT: :STDEV_TRANSACTION_AMOUNT
+            IS_NEW_COUNTRY: :IS_NEW_COUNTRY
+            IS_NEW_MCC: :IS_NEW_MCC
+            IS_FIRST_TRANSACTION: :IS_FIRST_TRANSACTION
+            CONSECUTIVE_DECLINES: :CONSECUTIVE_DECLINES
+            TIME_SINCE_LAST_TRANSACTION: :TIME_SINCE_LAST_TRANSACTION
+            DISTINCT_COUNTRY_COUNT: :DISTINCT_COUNTRY_COUNT
+            THREE_DS_SUCCESS_RATE: :THREE_DS_SUCCESS_RATE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute]
+          end
+
+          type parameters =
+            {
+              interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval,
+              scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+            }
+
+          class Parameters < Lithic::Internal::Type::BaseModel
+            attr_reader interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval?
+
+            def interval=: (
+              Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval
+            ) -> Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval
+
+            attr_reader scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope?
+
+            def scope=: (
+              Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+            ) -> Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+
+            def initialize: (
+              ?interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval,
+              ?scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+            ) -> void
+
+            def to_hash: -> {
+              interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval,
+              scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+            }
+
+            type interval = :LIFETIME | :"7D" | :"30D" | :"90D"
+
+            module Interval
+              extend Lithic::Internal::Type::Enum
+
+              LIFETIME: :LIFETIME
+              INTERVAL_7_D: :"7D"
+              INTERVAL_30_D: :"30D"
+              INTERVAL_90_D: :"90D"
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval]
+            end
+
+            type scope = :CARD | :ACCOUNT | :BUSINESS_ACCOUNT
+
+            module Scope
+              extend Lithic::Internal::Type::Enum
+
+              CARD: :CARD
+              ACCOUNT: :ACCOUNT
+              BUSINESS_ACCOUNT: :BUSINESS_ACCOUNT
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope]
+            end
           end
         end
       end
