@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.0 (2026-04-20)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/lithic-com/lithic-ruby/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **api:** Add card_authorization.challenge_response webhook ([8abc734](https://github.com/lithic-com/lithic-ruby/commit/8abc7348e6ed248c532058d68388fc357e54f65f))
+* **api:** Add card/account/business account signals endpoints and behavioral rule attributes ([76de3de](https://github.com/lithic-com/lithic-ruby/commit/76de3de7a510e54712be632789e90457b7486f3d))
+* **api:** add set_verification_method to external_bank_accounts ([3878cb3](https://github.com/lithic-com/lithic-ruby/commit/3878cb30db9f591d2070bed948cc40da07dd3f0e))
+
 ## 0.11.0 (2026-04-13)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/lithic-com/lithic-ruby/compare/v0.10.0...v0.11.0)
