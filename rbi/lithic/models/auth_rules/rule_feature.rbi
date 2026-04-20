@@ -24,6 +24,10 @@ module Lithic
       # - `SPEND_VELOCITY`: Spend velocity data for the card or account. Requires
       #   `scope`, `period`, and optionally `filters` to configure the velocity
       #   calculation. Available for AUTHORIZATION event stream rules.
+      # - `TRANSACTION_HISTORY_SIGNALS`: Behavioral feature state derived from the
+      #   entity's transaction history. Requires `scope` to specify whether to load
+      #   card, account, or business account history. Available for AUTHORIZATION event
+      #   stream rules.
       module RuleFeature
         extend Lithic::Internal::Type::Union
 
@@ -37,7 +41,8 @@ module Lithic
               Lithic::AuthRules::RuleFeature::CardFeature,
               Lithic::AuthRules::RuleFeature::AccountHolderFeature,
               Lithic::AuthRules::RuleFeature::IPMetadataFeature,
-              Lithic::AuthRules::RuleFeature::SpendVelocityFeature
+              Lithic::AuthRules::RuleFeature::SpendVelocityFeature,
+              Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
             )
           end
 
@@ -395,6 +400,104 @@ module Lithic
               override.returns(
                 T::Array[
                   Lithic::AuthRules::RuleFeature::SpendVelocityFeature::Scope::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class TransactionHistorySignalsFeature < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # The entity scope to load transaction history signals for.
+          sig do
+            returns(
+              Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::OrSymbol
+            )
+          end
+          attr_accessor :scope
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # The variable name for this feature in the rule function signature
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
+          sig do
+            params(
+              scope:
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::OrSymbol,
+              name: String,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The entity scope to load transaction history signals for.
+            scope:,
+            # The variable name for this feature in the rule function signature
+            name: nil,
+            type: :TRANSACTION_HISTORY_SIGNALS
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                scope:
+                  Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::OrSymbol,
+                type: Symbol,
+                name: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The entity scope to load transaction history signals for.
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CARD =
+              T.let(
+                :CARD,
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::TaggedSymbol
+              )
+            ACCOUNT =
+              T.let(
+                :ACCOUNT,
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::TaggedSymbol
+              )
+            BUSINESS_ACCOUNT =
+              T.let(
+                :BUSINESS_ACCOUNT,
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope::TaggedSymbol
                 ]
               )
             end

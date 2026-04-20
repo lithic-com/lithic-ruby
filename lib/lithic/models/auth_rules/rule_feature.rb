@@ -24,6 +24,10 @@ module Lithic
       # - `SPEND_VELOCITY`: Spend velocity data for the card or account. Requires
       #   `scope`, `period`, and optionally `filters` to configure the velocity
       #   calculation. Available for AUTHORIZATION event stream rules.
+      # - `TRANSACTION_HISTORY_SIGNALS`: Behavioral feature state derived from the
+      #   entity's transaction history. Requires `scope` to specify whether to load
+      #   card, account, or business account history. Available for AUTHORIZATION event
+      #   stream rules.
       module RuleFeature
         extend Lithic::Internal::Type::Union
 
@@ -42,6 +46,8 @@ module Lithic
         variant -> { Lithic::AuthRules::RuleFeature::IPMetadataFeature }
 
         variant -> { Lithic::AuthRules::RuleFeature::SpendVelocityFeature }
+
+        variant -> { Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature }
 
         class AuthorizationFeature < Lithic::Internal::Type::BaseModel
           # @!attribute type
@@ -223,8 +229,48 @@ module Lithic
           end
         end
 
+        class TransactionHistorySignalsFeature < Lithic::Internal::Type::BaseModel
+          # @!attribute scope
+          #   The entity scope to load transaction history signals for.
+          #
+          #   @return [Symbol, Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope]
+          required :scope, enum: -> { Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, :TRANSACTION_HISTORY_SIGNALS]
+          required :type, const: :TRANSACTION_HISTORY_SIGNALS
+
+          # @!attribute name
+          #   The variable name for this feature in the rule function signature
+          #
+          #   @return [String, nil]
+          optional :name, String
+
+          # @!method initialize(scope:, name: nil, type: :TRANSACTION_HISTORY_SIGNALS)
+          #   @param scope [Symbol, Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::Scope] The entity scope to load transaction history signals for.
+          #
+          #   @param name [String] The variable name for this feature in the rule function signature
+          #
+          #   @param type [Symbol, :TRANSACTION_HISTORY_SIGNALS]
+
+          # The entity scope to load transaction history signals for.
+          #
+          # @see Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature#scope
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD = :CARD
+            ACCOUNT = :ACCOUNT
+            BUSINESS_ACCOUNT = :BUSINESS_ACCOUNT
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @!method self.variants
-        #   @return [Array(Lithic::Models::AuthRules::RuleFeature::AuthorizationFeature, Lithic::Models::AuthRules::RuleFeature::AuthenticationFeature, Lithic::Models::AuthRules::RuleFeature::TokenizationFeature, Lithic::Models::AuthRules::RuleFeature::ACHReceiptFeature, Lithic::Models::AuthRules::RuleFeature::CardFeature, Lithic::Models::AuthRules::RuleFeature::AccountHolderFeature, Lithic::Models::AuthRules::RuleFeature::IPMetadataFeature, Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature)]
+        #   @return [Array(Lithic::Models::AuthRules::RuleFeature::AuthorizationFeature, Lithic::Models::AuthRules::RuleFeature::AuthenticationFeature, Lithic::Models::AuthRules::RuleFeature::TokenizationFeature, Lithic::Models::AuthRules::RuleFeature::ACHReceiptFeature, Lithic::Models::AuthRules::RuleFeature::CardFeature, Lithic::Models::AuthRules::RuleFeature::AccountHolderFeature, Lithic::Models::AuthRules::RuleFeature::IPMetadataFeature, Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature, Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature)]
       end
     end
   end

@@ -30,7 +30,8 @@ module Lithic
                 Lithic::AuthRules::RuleFeature::CardFeature,
                 Lithic::AuthRules::RuleFeature::AccountHolderFeature,
                 Lithic::AuthRules::RuleFeature::IPMetadataFeature,
-                Lithic::AuthRules::RuleFeature::SpendVelocityFeature
+                Lithic::AuthRules::RuleFeature::SpendVelocityFeature,
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
               )
             ]
           )
@@ -51,7 +52,8 @@ module Lithic
                   Lithic::AuthRules::RuleFeature::CardFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::AccountHolderFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::IPMetadataFeature::OrHash,
-                  Lithic::AuthRules::RuleFeature::SpendVelocityFeature::OrHash
+                  Lithic::AuthRules::RuleFeature::SpendVelocityFeature::OrHash,
+                  Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::OrHash
                 )
               ]
           ).returns(T.attached_class)
@@ -80,7 +82,8 @@ module Lithic
                     Lithic::AuthRules::RuleFeature::CardFeature,
                     Lithic::AuthRules::RuleFeature::AccountHolderFeature,
                     Lithic::AuthRules::RuleFeature::IPMetadataFeature,
-                    Lithic::AuthRules::RuleFeature::SpendVelocityFeature
+                    Lithic::AuthRules::RuleFeature::SpendVelocityFeature,
+                    Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
                   )
                 ]
             }

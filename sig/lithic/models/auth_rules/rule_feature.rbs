@@ -10,6 +10,7 @@ module Lithic
         | Lithic::AuthRules::RuleFeature::AccountHolderFeature
         | Lithic::AuthRules::RuleFeature::IPMetadataFeature
         | Lithic::AuthRules::RuleFeature::SpendVelocityFeature
+        | Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
 
       module RuleFeature
         extend Lithic::Internal::Type::Union
@@ -163,6 +164,47 @@ module Lithic
             ACCOUNT: :ACCOUNT
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature::scope]
+          end
+        end
+
+        type transaction_history_signals_feature =
+          {
+            scope: Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope,
+            type: :TRANSACTION_HISTORY_SIGNALS,
+            name: String
+          }
+
+        class TransactionHistorySignalsFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor scope: Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope
+
+          attr_accessor type: :TRANSACTION_HISTORY_SIGNALS
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            scope: Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope,
+            ?name: String,
+            ?type: :TRANSACTION_HISTORY_SIGNALS
+          ) -> void
+
+          def to_hash: -> {
+            scope: Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope,
+            type: :TRANSACTION_HISTORY_SIGNALS,
+            name: String
+          }
+
+          type scope = :CARD | :ACCOUNT | :BUSINESS_ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD: :CARD
+            ACCOUNT: :ACCOUNT
+            BUSINESS_ACCOUNT: :BUSINESS_ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope]
           end
         end
 
