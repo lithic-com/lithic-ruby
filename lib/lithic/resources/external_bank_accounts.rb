@@ -176,6 +176,37 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::ExternalBankAccountSetVerificationMethodParams} for more
+      # details.
+      #
+      # Update the verification method for an external bank account. Verification method
+      # can only be updated if the `verification_state` is `PENDING`.
+      #
+      # @overload set_verification_method(external_bank_account_token, verification_method:, financial_account_token: nil, request_options: {})
+      #
+      # @param external_bank_account_token [String]
+      #
+      # @param verification_method [Symbol, Lithic::Models::ExternalBankAccountSetVerificationMethodParams::VerificationMethod] The verification method to set for the external bank account
+      #
+      # @param financial_account_token [String] The financial account token of the operating account to fund the micro deposits.
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::ExternalBankAccount]
+      #
+      # @see Lithic::Models::ExternalBankAccountSetVerificationMethodParams
+      def set_verification_method(external_bank_account_token, params)
+        parsed, options = Lithic::ExternalBankAccountSetVerificationMethodParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/external_bank_accounts/%1$s/set_verification_method", external_bank_account_token],
+          body: parsed,
+          model: Lithic::ExternalBankAccount,
+          options: options
+        )
+      end
+
       # Unpause an external bank account
       #
       # @overload unpause(external_bank_account_token, request_options: {})

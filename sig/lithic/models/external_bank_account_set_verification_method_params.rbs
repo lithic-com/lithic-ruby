@@ -1,0 +1,51 @@
+module Lithic
+  module Models
+    type external_bank_account_set_verification_method_params =
+      {
+        external_bank_account_token: String,
+        verification_method: Lithic::Models::ExternalBankAccountSetVerificationMethodParams::verification_method,
+        financial_account_token: String
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class ExternalBankAccountSetVerificationMethodParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor external_bank_account_token: String
+
+      attr_accessor verification_method: Lithic::Models::ExternalBankAccountSetVerificationMethodParams::verification_method
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      def initialize: (
+        external_bank_account_token: String,
+        verification_method: Lithic::Models::ExternalBankAccountSetVerificationMethodParams::verification_method,
+        ?financial_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        external_bank_account_token: String,
+        verification_method: Lithic::Models::ExternalBankAccountSetVerificationMethodParams::verification_method,
+        financial_account_token: String,
+        request_options: Lithic::RequestOptions
+      }
+
+      type verification_method =
+        :MICRO_DEPOSIT | :PRENOTE | :EXTERNALLY_VERIFIED
+
+      module VerificationMethod
+        extend Lithic::Internal::Type::Enum
+
+        MICRO_DEPOSIT: :MICRO_DEPOSIT
+        PRENOTE: :PRENOTE
+        EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
+
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountSetVerificationMethodParams::verification_method]
+      end
+    end
+  end
+end

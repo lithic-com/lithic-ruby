@@ -288,6 +288,9 @@ module Lithic
 
   ExternalBankAccounts = Lithic::Models::ExternalBankAccounts
 
+  ExternalBankAccountSetVerificationMethodParams =
+    Lithic::Models::ExternalBankAccountSetVerificationMethodParams
+
   ExternalBankAccountUnpauseParams =
     Lithic::Models::ExternalBankAccountUnpauseParams
 
