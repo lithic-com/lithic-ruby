@@ -44,7 +44,7 @@ module Lithic
       #
       # @param state [Symbol, Lithic::Models::AccountUpdateParams::State] Account states.
       #
-      # @param substatus [Symbol, Lithic::Models::AccountUpdateParams::Substatus] Account state substatus values:
+      # @param substatus [Symbol, Lithic::Models::AccountUpdateParams::Substatus, nil] Account state substatus values:
       #
       # @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
       #

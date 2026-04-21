@@ -10,7 +10,7 @@ module Lithic
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
         comment: String,
-        substatus: Lithic::Models::Account::substatus,
+        substatus: Lithic::Models::Account::substatus?,
         verification_address: Lithic::Account::VerificationAddress
       }
 
@@ -41,11 +41,7 @@ module Lithic
 
       def comment=: (String) -> String
 
-      attr_reader substatus: Lithic::Models::Account::substatus?
-
-      def substatus=: (
-        Lithic::Models::Account::substatus
-      ) -> Lithic::Models::Account::substatus
+      attr_accessor substatus: Lithic::Models::Account::substatus?
 
       attr_reader verification_address: Lithic::Account::VerificationAddress?
 
@@ -62,7 +58,7 @@ module Lithic
         ?auth_rule_tokens: ::Array[String],
         ?cardholder_currency: String,
         ?comment: String,
-        ?substatus: Lithic::Models::Account::substatus,
+        ?substatus: Lithic::Models::Account::substatus?,
         ?verification_address: Lithic::Account::VerificationAddress
       ) -> void
 
@@ -75,7 +71,7 @@ module Lithic
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
         comment: String,
-        substatus: Lithic::Models::Account::substatus,
+        substatus: Lithic::Models::Account::substatus?,
         verification_address: Lithic::Account::VerificationAddress
       }
 
