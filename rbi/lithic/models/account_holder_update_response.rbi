@@ -121,7 +121,7 @@ module Lithic
         sig { params(email: String).void }
         attr_writer :email
 
-        # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+        # The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
         # holder is not KYC-Exempt.
         sig do
           returns(
@@ -370,7 +370,7 @@ module Lithic
           # individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
           # Account Holder.
           email: nil,
-          # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+          # The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
           # holder is not KYC-Exempt.
           exemption_type: nil,
           # Customer-provided token that indicates a relationship with an object outside of
@@ -861,7 +861,7 @@ module Lithic
           end
         end
 
-        # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+        # The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
         # holder is not KYC-Exempt.
         module ExemptionType
           extend Lithic::Internal::Type::Enum

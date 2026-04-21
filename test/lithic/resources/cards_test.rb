@@ -47,7 +47,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::NonPCICard::Funding,
+        funding: Lithic::NonPCICard::Funding | nil,
         last_four: String,
         pin_status: Lithic::NonPCICard::PinStatus,
         spend_limit: Integer,

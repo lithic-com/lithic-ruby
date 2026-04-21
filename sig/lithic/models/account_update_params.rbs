@@ -8,7 +8,7 @@ module Lithic
         lifetime_spend_limit: Integer,
         monthly_spend_limit: Integer,
         state: Lithic::Models::AccountUpdateParams::state,
-        substatus: Lithic::Models::AccountUpdateParams::substatus,
+        substatus: Lithic::Models::AccountUpdateParams::substatus?,
         verification_address: Lithic::AccountUpdateParams::VerificationAddress
       }
       & Lithic::Internal::Type::request_parameters
@@ -41,11 +41,7 @@ module Lithic
         Lithic::Models::AccountUpdateParams::state
       ) -> Lithic::Models::AccountUpdateParams::state
 
-      attr_reader substatus: Lithic::Models::AccountUpdateParams::substatus?
-
-      def substatus=: (
-        Lithic::Models::AccountUpdateParams::substatus
-      ) -> Lithic::Models::AccountUpdateParams::substatus
+      attr_accessor substatus: Lithic::Models::AccountUpdateParams::substatus?
 
       attr_reader verification_address: Lithic::AccountUpdateParams::VerificationAddress?
 
@@ -60,7 +56,7 @@ module Lithic
         ?lifetime_spend_limit: Integer,
         ?monthly_spend_limit: Integer,
         ?state: Lithic::Models::AccountUpdateParams::state,
-        ?substatus: Lithic::Models::AccountUpdateParams::substatus,
+        ?substatus: Lithic::Models::AccountUpdateParams::substatus?,
         ?verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         ?request_options: Lithic::request_opts
       ) -> void
@@ -72,7 +68,7 @@ module Lithic
         lifetime_spend_limit: Integer,
         monthly_spend_limit: Integer,
         state: Lithic::Models::AccountUpdateParams::state,
-        substatus: Lithic::Models::AccountUpdateParams::substatus,
+        substatus: Lithic::Models::AccountUpdateParams::substatus?,
         verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         request_options: Lithic::RequestOptions
       }

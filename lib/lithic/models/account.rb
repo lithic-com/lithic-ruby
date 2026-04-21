@@ -102,7 +102,7 @@ module Lithic
       #     particular reason.
       #
       #   @return [Symbol, Lithic::Models::Account::Substatus, nil]
-      optional :substatus, enum: -> { Lithic::Account::Substatus }
+      optional :substatus, enum: -> { Lithic::Account::Substatus }, nil?: true
 
       # @!attribute verification_address
       #   @deprecated
@@ -130,7 +130,7 @@ module Lithic
       #
       #   @param comment [String] Additional context or information related to the account.
       #
-      #   @param substatus [Symbol, Lithic::Models::Account::Substatus] Account state substatus values:
+      #   @param substatus [Symbol, Lithic::Models::Account::Substatus, nil] Account state substatus values:
       #
       #   @param verification_address [Lithic::Models::Account::VerificationAddress]
 

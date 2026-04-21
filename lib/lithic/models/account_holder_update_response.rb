@@ -82,7 +82,7 @@ module Lithic
         optional :email, String
 
         # @!attribute exemption_type
-        #   The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+        #   The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
         #   holder is not KYC-Exempt.
         #
         #   @return [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType, nil]
@@ -196,7 +196,7 @@ module Lithic
         #
         #   @param email [String] (Deprecated. Use control_person.email when user_type == "BUSINESS".
         #
-        #   @param exemption_type [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType] The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+        #   @param exemption_type [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType] The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
         #
         #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
         #
@@ -473,7 +473,7 @@ module Lithic
           end
         end
 
-        # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+        # The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
         # holder is not KYC-Exempt.
         #
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#exemption_type

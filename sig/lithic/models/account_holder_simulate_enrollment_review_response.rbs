@@ -10,7 +10,7 @@ module Lithic
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         created: Time,
         email: String,
-        exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type,
+        exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?,
         external_id: String,
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
         naics_code: String,
@@ -61,11 +61,7 @@ module Lithic
 
       def email=: (String) -> String
 
-      attr_reader exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?
-
-      def exemption_type=: (
-        Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type
-      ) -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type
+      attr_accessor exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?
 
       attr_reader external_id: String?
 
@@ -132,7 +128,7 @@ module Lithic
         ?control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         ?created: Time,
         ?email: String,
-        ?exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type,
+        ?exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?,
         ?external_id: String,
         ?individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
         ?naics_code: String,
@@ -155,7 +151,7 @@ module Lithic
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         created: Time,
         email: String,
-        exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type,
+        exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?,
         external_id: String,
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
         naics_code: String,
