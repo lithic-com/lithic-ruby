@@ -29,10 +29,10 @@ module Lithic
       required :created, Time
 
       # @!attribute funding
-      #   Deprecated: Funding account for the card.
+      #   Funding account for a card
       #
-      #   @return [Lithic::Models::NonPCICard::Funding]
-      required :funding, -> { Lithic::NonPCICard::Funding }
+      #   @return [Lithic::Models::NonPCICard::Funding, nil]
+      required :funding, -> { Lithic::NonPCICard::Funding }, nil?: true
 
       # @!attribute last_four
       #   Last four digits of the card number.
@@ -141,7 +141,7 @@ module Lithic
       #   by Lithic to use.
       #
       #   @return [String, nil]
-      optional :digital_card_art_token, String
+      optional :digital_card_art_token, String, nil?: true
 
       # @!attribute exp_month
       #   Two digit (MM) expiry month.
@@ -189,7 +189,7 @@ module Lithic
       #   should be manufactured with.
       #
       #   @return [String, nil]
-      optional :product_id, String
+      optional :product_id, String, nil?: true
 
       # @!attribute replacement_for
       #   If the card is a replacement for another card, the globally unique identifier
@@ -221,7 +221,7 @@ module Lithic
       #   of the above categories. A comment can be provided to specify the reason.
       #
       #   @return [Symbol, Lithic::Models::NonPCICard::Substatus, nil]
-      optional :substatus, enum: -> { Lithic::NonPCICard::Substatus }
+      optional :substatus, enum: -> { Lithic::NonPCICard::Substatus }, nil?: true
 
       # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, bulk_order_token: nil, cardholder_currency: nil, comment: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, network_program_token: nil, pending_commands: nil, product_id: nil, replacement_for: nil, substatus: nil)
       #   Some parameter documentations has been truncated, see
@@ -237,7 +237,7 @@ module Lithic
       #
       #   @param created [Time] An RFC 3339 timestamp for when the card was created. UTC time zone.
       #
-      #   @param funding [Lithic::Models::NonPCICard::Funding] Deprecated: Funding account for the card.
+      #   @param funding [Lithic::Models::NonPCICard::Funding, nil] Funding account for a card
       #
       #   @param last_four [String] Last four digits of the card number.
       #
@@ -261,7 +261,7 @@ module Lithic
       #
       #   @param comment [String] Additional context or information related to the card.
       #
-      #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user's digital wallet afte
+      #   @param digital_card_art_token [String, nil] Specifies the digital card art to be displayed in the user's digital wallet afte
       #
       #   @param exp_month [String] Two digit (MM) expiry month.
       #
@@ -275,11 +275,11 @@ module Lithic
       #
       #   @param pending_commands [Array<String>] Indicates if there are offline PIN changes pending card interaction with an offl
       #
-      #   @param product_id [String] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
+      #   @param product_id [String, nil] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
       #
       #   @param replacement_for [String, nil] If the card is a replacement for another card, the globally unique identifier fo
       #
-      #   @param substatus [Symbol, Lithic::Models::NonPCICard::Substatus] Card state substatus values: \* `LOST` - The physical card is no longer in the
+      #   @param substatus [Symbol, Lithic::Models::NonPCICard::Substatus, nil] Card state substatus values: \* `LOST` - The physical card is no longer in the
       #   ca
 
       # @see Lithic::Models::NonPCICard#funding
@@ -330,13 +330,13 @@ module Lithic
         #   The nickname given to the `FundingAccount` or `null` if it has no nickname.
         #
         #   @return [String, nil]
-        optional :nickname, String
+        optional :nickname, String, nil?: true
 
         # @!method initialize(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::NonPCICard::Funding} for more details.
         #
-        #   Deprecated: Funding account for the card.
+        #   Funding account for a card
         #
         #   @param token [String] A globally unique identifier for this FundingAccount.
         #
@@ -351,7 +351,7 @@ module Lithic
         #
         #   @param account_name [String] Account name identifying the funding source. This may be `null`.
         #
-        #   @param nickname [String] The nickname given to the `FundingAccount` or `null` if it has no nickname.
+        #   @param nickname [String, nil] The nickname given to the `FundingAccount` or `null` if it has no nickname.
 
         # State of funding source. Funding source states: _ `ENABLED` - The funding
         # account is available to use for card creation and transactions. _ `PENDING` -

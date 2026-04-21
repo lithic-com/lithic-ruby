@@ -6,7 +6,7 @@ module Lithic
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::NonPCICard::Funding,
+        funding: Lithic::NonPCICard::Funding?,
         last_four: String,
         pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
@@ -17,16 +17,16 @@ module Lithic
         bulk_order_token: String?,
         cardholder_currency: String,
         comment: String,
-        digital_card_art_token: String,
+        digital_card_art_token: String?,
         exp_month: String,
         exp_year: String,
         hostname: String,
         memo: String,
         network_program_token: String?,
         pending_commands: ::Array[String],
-        product_id: String,
+        product_id: String?,
         replacement_for: String?,
-        substatus: Lithic::Models::NonPCICard::substatus
+        substatus: Lithic::Models::NonPCICard::substatus?
       }
 
     class NonPCICard < Lithic::Internal::Type::BaseModel
@@ -38,7 +38,7 @@ module Lithic
 
       attr_accessor created: Time
 
-      attr_accessor funding: Lithic::NonPCICard::Funding
+      attr_accessor funding: Lithic::NonPCICard::Funding?
 
       attr_accessor last_four: String
 
@@ -66,9 +66,7 @@ module Lithic
 
       def comment=: (String) -> String
 
-      attr_reader digital_card_art_token: String?
-
-      def digital_card_art_token=: (String) -> String
+      attr_accessor digital_card_art_token: String?
 
       attr_reader exp_month: String?
 
@@ -92,24 +90,18 @@ module Lithic
 
       def pending_commands=: (::Array[String]) -> ::Array[String]
 
-      attr_reader product_id: String?
-
-      def product_id=: (String) -> String
+      attr_accessor product_id: String?
 
       attr_accessor replacement_for: String?
 
-      attr_reader substatus: Lithic::Models::NonPCICard::substatus?
-
-      def substatus=: (
-        Lithic::Models::NonPCICard::substatus
-      ) -> Lithic::Models::NonPCICard::substatus
+      attr_accessor substatus: Lithic::Models::NonPCICard::substatus?
 
       def initialize: (
         token: String,
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::NonPCICard::Funding,
+        funding: Lithic::NonPCICard::Funding?,
         last_four: String,
         pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
@@ -120,16 +112,16 @@ module Lithic
         ?bulk_order_token: String?,
         ?cardholder_currency: String,
         ?comment: String,
-        ?digital_card_art_token: String,
+        ?digital_card_art_token: String?,
         ?exp_month: String,
         ?exp_year: String,
         ?hostname: String,
         ?memo: String,
         ?network_program_token: String?,
         ?pending_commands: ::Array[String],
-        ?product_id: String,
+        ?product_id: String?,
         ?replacement_for: String?,
-        ?substatus: Lithic::Models::NonPCICard::substatus
+        ?substatus: Lithic::Models::NonPCICard::substatus?
       ) -> void
 
       def to_hash: -> {
@@ -137,7 +129,7 @@ module Lithic
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::NonPCICard::Funding,
+        funding: Lithic::NonPCICard::Funding?,
         last_four: String,
         pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
@@ -148,16 +140,16 @@ module Lithic
         bulk_order_token: String?,
         cardholder_currency: String,
         comment: String,
-        digital_card_art_token: String,
+        digital_card_art_token: String?,
         exp_month: String,
         exp_year: String,
         hostname: String,
         memo: String,
         network_program_token: String?,
         pending_commands: ::Array[String],
-        product_id: String,
+        product_id: String?,
         replacement_for: String?,
-        substatus: Lithic::Models::NonPCICard::substatus
+        substatus: Lithic::Models::NonPCICard::substatus?
       }
 
       type funding =
@@ -168,7 +160,7 @@ module Lithic
           state: Lithic::Models::NonPCICard::Funding::state,
           type: Lithic::Models::NonPCICard::Funding::type_,
           account_name: String,
-          nickname: String
+          nickname: String?
         }
 
       class Funding < Lithic::Internal::Type::BaseModel
@@ -186,9 +178,7 @@ module Lithic
 
         def account_name=: (String) -> String
 
-        attr_reader nickname: String?
-
-        def nickname=: (String) -> String
+        attr_accessor nickname: String?
 
         def initialize: (
           token: String,
@@ -197,7 +187,7 @@ module Lithic
           state: Lithic::Models::NonPCICard::Funding::state,
           type: Lithic::Models::NonPCICard::Funding::type_,
           ?account_name: String,
-          ?nickname: String
+          ?nickname: String?
         ) -> void
 
         def to_hash: -> {
@@ -207,7 +197,7 @@ module Lithic
           state: Lithic::Models::NonPCICard::Funding::state,
           type: Lithic::Models::NonPCICard::Funding::type_,
           account_name: String,
-          nickname: String
+          nickname: String?
         }
 
         type state = :DELETED | :ENABLED | :PENDING

@@ -101,10 +101,7 @@ module Lithic
       #   of the above categories. A comment should be provided to specify the
       #   particular reason.
       sig { returns(T.nilable(Lithic::Account::Substatus::TaggedSymbol)) }
-      attr_reader :substatus
-
-      sig { params(substatus: Lithic::Account::Substatus::OrSymbol).void }
-      attr_writer :substatus
+      attr_accessor :substatus
 
       sig { returns(T.nilable(Lithic::Account::VerificationAddress)) }
       attr_reader :verification_address
@@ -126,7 +123,7 @@ module Lithic
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
           comment: String,
-          substatus: Lithic::Account::Substatus::OrSymbol,
+          substatus: T.nilable(Lithic::Account::Substatus::OrSymbol),
           verification_address: Lithic::Account::VerificationAddress::OrHash
         ).returns(T.attached_class)
       end
@@ -208,7 +205,7 @@ module Lithic
             auth_rule_tokens: T::Array[String],
             cardholder_currency: String,
             comment: String,
-            substatus: Lithic::Account::Substatus::TaggedSymbol,
+            substatus: T.nilable(Lithic::Account::Substatus::TaggedSymbol),
             verification_address: Lithic::Account::VerificationAddress
           }
         )

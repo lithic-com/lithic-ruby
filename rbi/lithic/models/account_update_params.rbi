@@ -87,12 +87,7 @@ module Lithic
       sig do
         returns(T.nilable(Lithic::AccountUpdateParams::Substatus::OrSymbol))
       end
-      attr_reader :substatus
-
-      sig do
-        params(substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol).void
-      end
-      attr_writer :substatus
+      attr_accessor :substatus
 
       # Address used during Address Verification Service (AVS) checks during
       # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
@@ -119,7 +114,8 @@ module Lithic
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::AccountUpdateParams::State::OrSymbol,
-          substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol,
+          substatus:
+            T.nilable(Lithic::AccountUpdateParams::Substatus::OrSymbol),
           verification_address:
             Lithic::AccountUpdateParams::VerificationAddress::OrHash,
           request_options: Lithic::RequestOptions::OrHash
@@ -191,7 +187,8 @@ module Lithic
             lifetime_spend_limit: Integer,
             monthly_spend_limit: Integer,
             state: Lithic::AccountUpdateParams::State::OrSymbol,
-            substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol,
+            substatus:
+              T.nilable(Lithic::AccountUpdateParams::Substatus::OrSymbol),
             verification_address:
               Lithic::AccountUpdateParams::VerificationAddress,
             request_options: Lithic::RequestOptions
