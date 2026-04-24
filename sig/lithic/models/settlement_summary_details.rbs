@@ -69,11 +69,13 @@ module Lithic
         transactions_gross_amount: Integer
       }
 
-      type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+      type network =
+        :AMEX | :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
       module Network
         extend Lithic::Internal::Type::Enum
 
+        AMEX: :AMEX
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
         MASTERCARD: :MASTERCARD

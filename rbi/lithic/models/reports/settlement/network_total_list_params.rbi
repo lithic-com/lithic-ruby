@@ -193,6 +193,11 @@ module Lithic
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+            AMEX =
+              T.let(
+                :AMEX,
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol
+              )
             VISA =
               T.let(
                 :VISA,
