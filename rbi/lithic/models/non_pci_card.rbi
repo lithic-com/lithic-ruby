@@ -22,11 +22,13 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # Deprecated: Funding account for the card.
-      sig { returns(Lithic::NonPCICard::Funding) }
+      # Funding account for a card
+      sig { returns(T.nilable(Lithic::NonPCICard::Funding)) }
       attr_reader :funding
 
-      sig { params(funding: Lithic::NonPCICard::Funding::OrHash).void }
+      sig do
+        params(funding: T.nilable(Lithic::NonPCICard::Funding::OrHash)).void
+      end
       attr_writer :funding
 
       # Last four digits of the card number.
@@ -121,10 +123,7 @@ module Lithic
       # after tokenization. This artwork must be approved by Mastercard and configured
       # by Lithic to use.
       sig { returns(T.nilable(String)) }
-      attr_reader :digital_card_art_token
-
-      sig { params(digital_card_art_token: String).void }
-      attr_writer :digital_card_art_token
+      attr_accessor :digital_card_art_token
 
       # Two digit (MM) expiry month.
       sig { returns(T.nilable(String)) }
@@ -173,10 +172,7 @@ module Lithic
       # before use. Specifies the configuration (i.e., physical card art) that the card
       # should be manufactured with.
       sig { returns(T.nilable(String)) }
-      attr_reader :product_id
-
-      sig { params(product_id: String).void }
-      attr_writer :product_id
+      attr_accessor :product_id
 
       # If the card is a replacement for another card, the globally unique identifier
       # for the card that was replaced.
@@ -204,10 +200,7 @@ module Lithic
       # has been returned. \* `OTHER` - The reason for the status does not fall into any
       # of the above categories. A comment can be provided to specify the reason.
       sig { returns(T.nilable(Lithic::NonPCICard::Substatus::TaggedSymbol)) }
-      attr_reader :substatus
-
-      sig { params(substatus: Lithic::NonPCICard::Substatus::OrSymbol).void }
-      attr_writer :substatus
+      attr_accessor :substatus
 
       # Card details without PCI information
       sig do
@@ -216,7 +209,7 @@ module Lithic
           account_token: String,
           card_program_token: String,
           created: Time,
-          funding: Lithic::NonPCICard::Funding::OrHash,
+          funding: T.nilable(Lithic::NonPCICard::Funding::OrHash),
           last_four: String,
           pin_status: Lithic::NonPCICard::PinStatus::OrSymbol,
           spend_limit: Integer,
@@ -227,16 +220,16 @@ module Lithic
           bulk_order_token: T.nilable(String),
           cardholder_currency: String,
           comment: String,
-          digital_card_art_token: String,
+          digital_card_art_token: T.nilable(String),
           exp_month: String,
           exp_year: String,
           hostname: String,
           memo: String,
           network_program_token: T.nilable(String),
           pending_commands: T::Array[String],
-          product_id: String,
+          product_id: T.nilable(String),
           replacement_for: T.nilable(String),
-          substatus: Lithic::NonPCICard::Substatus::OrSymbol
+          substatus: T.nilable(Lithic::NonPCICard::Substatus::OrSymbol)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -248,7 +241,7 @@ module Lithic
         card_program_token:,
         # An RFC 3339 timestamp for when the card was created. UTC time zone.
         created:,
-        # Deprecated: Funding account for the card.
+        # Funding account for a card
         funding:,
         # Last four digits of the card number.
         last_four:,
@@ -367,7 +360,7 @@ module Lithic
             account_token: String,
             card_program_token: String,
             created: Time,
-            funding: Lithic::NonPCICard::Funding,
+            funding: T.nilable(Lithic::NonPCICard::Funding),
             last_four: String,
             pin_status: Lithic::NonPCICard::PinStatus::TaggedSymbol,
             spend_limit: Integer,
@@ -378,16 +371,16 @@ module Lithic
             bulk_order_token: T.nilable(String),
             cardholder_currency: String,
             comment: String,
-            digital_card_art_token: String,
+            digital_card_art_token: T.nilable(String),
             exp_month: String,
             exp_year: String,
             hostname: String,
             memo: String,
             network_program_token: T.nilable(String),
             pending_commands: T::Array[String],
-            product_id: String,
+            product_id: T.nilable(String),
             replacement_for: T.nilable(String),
-            substatus: Lithic::NonPCICard::Substatus::TaggedSymbol
+            substatus: T.nilable(Lithic::NonPCICard::Substatus::TaggedSymbol)
           }
         )
       end
@@ -435,12 +428,9 @@ module Lithic
 
         # The nickname given to the `FundingAccount` or `null` if it has no nickname.
         sig { returns(T.nilable(String)) }
-        attr_reader :nickname
+        attr_accessor :nickname
 
-        sig { params(nickname: String).void }
-        attr_writer :nickname
-
-        # Deprecated: Funding account for the card.
+        # Funding account for a card
         sig do
           params(
             token: String,
@@ -449,7 +439,7 @@ module Lithic
             state: Lithic::NonPCICard::Funding::State::OrSymbol,
             type: Lithic::NonPCICard::Funding::Type::OrSymbol,
             account_name: String,
-            nickname: String
+            nickname: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -485,7 +475,7 @@ module Lithic
               state: Lithic::NonPCICard::Funding::State::TaggedSymbol,
               type: Lithic::NonPCICard::Funding::Type::TaggedSymbol,
               account_name: String,
-              nickname: String
+              nickname: T.nilable(String)
             }
           )
         end

@@ -188,6 +188,7 @@ module Lithic
       module Network
         extend Lithic::Internal::Type::Enum
 
+        AMEX = :AMEX
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
         MASTERCARD = :MASTERCARD

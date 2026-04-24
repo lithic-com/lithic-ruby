@@ -226,6 +226,7 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::SettlementDetail::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        AMEX = T.let(:AMEX, Lithic::SettlementDetail::Network::TaggedSymbol)
         INTERLINK =
           T.let(:INTERLINK, Lithic::SettlementDetail::Network::TaggedSymbol)
         MAESTRO =

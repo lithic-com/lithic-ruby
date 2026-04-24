@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.13.0 (2026-04-24)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/lithic-com/lithic-ruby/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** add AMEX network value to settlement models ([a209f16](https://github.com/lithic-com/lithic-ruby/commit/a209f16480d3a19ba50c00ea1c5b8c6b3950129e))
+
+
+### Bug Fixes
+
+* **api:** Allow null values for optional enum and object fields in schema validation ([9ebb823](https://github.com/lithic-com/lithic-ruby/commit/9ebb8239e22dc3f680560918ac628af6707a3114))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([b03a0eb](https://github.com/lithic-com/lithic-ruby/commit/b03a0eb40e63ea3c40ffe90eaa30796a7722feac))
+
 ## 0.12.0 (2026-04-20)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/lithic-com/lithic-ruby/compare/v0.11.0...v0.12.0)

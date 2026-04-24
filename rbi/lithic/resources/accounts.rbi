@@ -28,7 +28,8 @@ module Lithic
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::AccountUpdateParams::State::OrSymbol,
-          substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol,
+          substatus:
+            T.nilable(Lithic::AccountUpdateParams::Substatus::OrSymbol),
           verification_address:
             Lithic::AccountUpdateParams::VerificationAddress::OrHash,
           request_options: Lithic::RequestOptions::OrHash
