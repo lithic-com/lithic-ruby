@@ -26,14 +26,16 @@ module Lithic
 
       # @!attribute exp_month
       #   Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
-      #   an expiration date six years in the future will be generated.
+      #   an expiration date five years in the future will be generated. Five years is the
+      #   maximum expiration date.
       #
       #   @return [String, nil]
       optional :exp_month, String
 
       # @!attribute exp_year
       #   Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
-      #   provided, an expiration date six years in the future will be generated.
+      #   provided, an expiration date five years in the future will be generated. Five
+      #   years is the maximum expiration date.
       #
       #   @return [String, nil]
       optional :exp_year, String

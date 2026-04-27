@@ -29,7 +29,8 @@ module Lithic
       attr_writer :carrier
 
       # Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
-      # an expiration date six years in the future will be generated.
+      # an expiration date five years in the future will be generated. Five years is the
+      # maximum expiration date.
       sig { returns(T.nilable(String)) }
       attr_reader :exp_month
 
@@ -37,7 +38,8 @@ module Lithic
       attr_writer :exp_month
 
       # Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
-      # provided, an expiration date six years in the future will be generated.
+      # provided, an expiration date five years in the future will be generated. Five
+      # years is the maximum expiration date.
       sig { returns(T.nilable(String)) }
       attr_reader :exp_year
 
@@ -100,10 +102,12 @@ module Lithic
         # If omitted, the previous carrier will be used.
         carrier: nil,
         # Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
-        # an expiration date six years in the future will be generated.
+        # an expiration date five years in the future will be generated. Five years is the
+        # maximum expiration date.
         exp_month: nil,
         # Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
-        # provided, an expiration date six years in the future will be generated.
+        # provided, an expiration date five years in the future will be generated. Five
+        # years is the maximum expiration date.
         exp_year: nil,
         # Specifies the configuration (e.g. physical card art) that the card should be
         # manufactured with, and only applies to cards of type `PHYSICAL`. This must be
