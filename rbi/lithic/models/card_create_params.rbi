@@ -78,7 +78,8 @@ module Lithic
       attr_writer :digital_card_art_token
 
       # Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
-      # an expiration date will be generated.
+      # an expiration date five years in the future will be generated. Five years is the
+      # maximum expiration date.
       sig { returns(T.nilable(String)) }
       attr_reader :exp_month
 
@@ -86,7 +87,8 @@ module Lithic
       attr_writer :exp_month
 
       # Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
-      # provided, an expiration date will be generated.
+      # provided, an expiration date five years in the future will be generated. Five
+      # years is the maximum expiration date.
       sig { returns(T.nilable(String)) }
       attr_reader :exp_year
 
@@ -339,10 +341,12 @@ module Lithic
         # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
         digital_card_art_token: nil,
         # Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
-        # an expiration date will be generated.
+        # an expiration date five years in the future will be generated. Five years is the
+        # maximum expiration date.
         exp_month: nil,
         # Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
-        # provided, an expiration date will be generated.
+        # provided, an expiration date five years in the future will be generated. Five
+        # years is the maximum expiration date.
         exp_year: nil,
         # Friendly name to identify the card.
         memo: nil,
