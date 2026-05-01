@@ -49,7 +49,8 @@ module Lithic
       required :disputes_gross_amount, Integer
 
       # @!attribute event_tokens
-      #   Globally unique identifiers denoting the Events associated with this settlement.
+      #   Array of globally unique identifiers for the financial events that comprise this
+      #   settlement. Use these tokens to access detailed event-level information.
       #
       #   @return [Array<String>]
       required :event_tokens, Lithic::Internal::Type::ArrayOf[String]
@@ -106,7 +107,12 @@ module Lithic
       required :settlement_date, String
 
       # @!attribute transaction_token
-      #   Globally unique identifier denoting the associated Transaction object.
+      #   Globally unique identifier denoting the associated transaction. For settlement
+      #   records with type `CLEARING`, `FINANCIAL`, or `NON-FINANCIAL`, this references a
+      #   card transaction token. For settlement records with type `CHARGEBACK`,
+      #   `REPRESENTMENT`, `PREARBITRATION`, `ARBITRATION`, or `COLLABORATION`, this
+      #   references the dispute transaction token. May be null for certain settlement
+      #   types.
       #
       #   @return [String]
       required :transaction_token, String
@@ -154,7 +160,7 @@ module Lithic
       #
       #   @param disputes_gross_amount [Integer] The total gross amount of disputes settlements.
       #
-      #   @param event_tokens [Array<String>] Globally unique identifiers denoting the Events associated with this settlement.
+      #   @param event_tokens [Array<String>] Array of globally unique identifiers for the financial events that comprise this
       #
       #   @param institution [String] The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE f
       #
@@ -172,7 +178,7 @@ module Lithic
       #
       #   @param settlement_date [String] Date of when money movement is triggered for the transaction. One exception appl
       #
-      #   @param transaction_token [String] Globally unique identifier denoting the associated Transaction object.
+      #   @param transaction_token [String] Globally unique identifier denoting the associated transaction. For settlement r
       #
       #   @param transactions_gross_amount [Integer] The total amount of settlement impacting transactions (excluding interchange, fe
       #
