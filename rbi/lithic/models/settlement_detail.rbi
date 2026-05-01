@@ -39,7 +39,8 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :disputes_gross_amount
 
-      # Globally unique identifiers denoting the Events associated with this settlement.
+      # Array of globally unique identifiers for the financial events that comprise this
+      # settlement. Use these tokens to access detailed event-level information.
       sig { returns(T::Array[String]) }
       attr_accessor :event_tokens
 
@@ -85,7 +86,12 @@ module Lithic
       sig { returns(String) }
       attr_accessor :settlement_date
 
-      # Globally unique identifier denoting the associated Transaction object.
+      # Globally unique identifier denoting the associated transaction. For settlement
+      # records with type `CLEARING`, `FINANCIAL`, or `NON-FINANCIAL`, this references a
+      # card transaction token. For settlement records with type `CHARGEBACK`,
+      # `REPRESENTMENT`, `PREARBITRATION`, `ARBITRATION`, or `COLLABORATION`, this
+      # references the dispute transaction token. May be null for certain settlement
+      # types.
       sig { returns(String) }
       attr_accessor :transaction_token
 
@@ -153,7 +159,8 @@ module Lithic
         currency:,
         # The total gross amount of disputes settlements.
         disputes_gross_amount:,
-        # Globally unique identifiers denoting the Events associated with this settlement.
+        # Array of globally unique identifiers for the financial events that comprise this
+        # settlement. Use these tokens to access detailed event-level information.
         event_tokens:,
         # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
         # for Visa).
@@ -174,7 +181,12 @@ module Lithic
         # applies - for Mastercard dual message settlement, this is the settlement
         # advisement date, which is distinct from the date of money movement.
         settlement_date:,
-        # Globally unique identifier denoting the associated Transaction object.
+        # Globally unique identifier denoting the associated transaction. For settlement
+        # records with type `CLEARING`, `FINANCIAL`, or `NON-FINANCIAL`, this references a
+        # card transaction token. For settlement records with type `CHARGEBACK`,
+        # `REPRESENTMENT`, `PREARBITRATION`, `ARBITRATION`, or `COLLABORATION`, this
+        # references the dispute transaction token. May be null for certain settlement
+        # types.
         transaction_token:,
         # The total amount of settlement impacting transactions (excluding interchange,
         # fees, and disputes).
