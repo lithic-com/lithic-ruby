@@ -104,6 +104,7 @@ module Lithic
             | :CONSECUTIVE_DECLINES
             | :TIME_SINCE_LAST_TRANSACTION
             | :DISTINCT_COUNTRY_COUNT
+            | :IS_NEW_MERCHANT
             | :THREE_DS_SUCCESS_RATE
 
           module Attribute
@@ -144,6 +145,7 @@ module Lithic
             CONSECUTIVE_DECLINES: :CONSECUTIVE_DECLINES
             TIME_SINCE_LAST_TRANSACTION: :TIME_SINCE_LAST_TRANSACTION
             DISTINCT_COUNTRY_COUNT: :DISTINCT_COUNTRY_COUNT
+            IS_NEW_MERCHANT: :IS_NEW_MERCHANT
             THREE_DS_SUCCESS_RATE: :THREE_DS_SUCCESS_RATE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute]
