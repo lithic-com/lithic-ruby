@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.13.0 (2026-05-06)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/lithic-com/lithic-ruby/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** add AMEX network value to settlement models ([a209f16](https://github.com/lithic-com/lithic-ruby/commit/a209f16480d3a19ba50c00ea1c5b8c6b3950129e))
+* **api:** add CARD_TRANSACTION_UPDATE event stream to auth_rules ([7f395eb](https://github.com/lithic-com/lithic-ruby/commit/7f395eb5b666d1d5563705da6ebe8dd7d8d98787))
+* **api:** add IS_NEW_MERCHANT attribute to auth rules conditional authorization ([48b6bd5](https://github.com/lithic-com/lithic-ruby/commit/48b6bd5a7a5076b8e59b6b6f30730c4d1c706a0b))
+* support setting headers via env ([01b4c63](https://github.com/lithic-com/lithic-ruby/commit/01b4c634e91f47513e26619946ab010f5f1decec))
+
+
+### Bug Fixes
+
+* **api:** Allow null values for optional enum and object fields in schema validation ([9ebb823](https://github.com/lithic-com/lithic-ruby/commit/9ebb8239e22dc3f680560918ac628af6707a3114))
+
+
+### Chores
+
+* **internal:** codegen related update ([7da8cdf](https://github.com/lithic-com/lithic-ruby/commit/7da8cdf24a46edc1a7cdd8764275542590c729a7))
+* **internal:** more robust bootstrap script ([b03a0eb](https://github.com/lithic-com/lithic-ruby/commit/b03a0eb40e63ea3c40ffe90eaa30796a7722feac))
+
+
+### Documentation
+
+* **api:** update exp_month/exp_year descriptions in card create/renew params ([02db7be](https://github.com/lithic-com/lithic-ruby/commit/02db7be84225c5782bdcf2de90c55890bd2b0358))
+* **types:** clarify event_tokens and transaction_token fields in SettlementDetail ([5eacf6f](https://github.com/lithic-com/lithic-ruby/commit/5eacf6f69073956549ff4d3e2141d56650dd0ba7))
+
 ## 0.12.0 (2026-04-20)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/lithic-com/lithic-ruby/compare/v0.11.0...v0.12.0)
