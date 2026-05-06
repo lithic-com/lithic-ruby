@@ -1,0 +1,155 @@
+module Lithic
+  module Models
+    module AuthRules
+      type conditional_card_transaction_update_action_parameters =
+        {
+          action: Lithic::Models::AuthRules::card_transaction_update_action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition]
+        }
+
+      class ConditionalCardTransactionUpdateActionParameters < Lithic::Internal::Type::BaseModel
+        attr_accessor action: Lithic::Models::AuthRules::card_transaction_update_action
+
+        attr_accessor conditions: ::Array[Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition]
+
+        def initialize: (
+          action: Lithic::Models::AuthRules::card_transaction_update_action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition]
+        ) -> void
+
+        def to_hash: -> {
+          action: Lithic::Models::AuthRules::card_transaction_update_action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition]
+        }
+
+        type condition =
+          {
+            attribute: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value,
+            parameters: Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters
+          }
+
+        class Condition < Lithic::Internal::Type::BaseModel
+          attr_accessor attribute: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::attribute
+
+          attr_accessor operation: Lithic::Models::AuthRules::conditional_operation
+
+          attr_accessor value: Lithic::Models::AuthRules::conditional_value
+
+          attr_reader parameters: Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters?
+
+          def parameters=: (
+            Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters
+          ) -> Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters
+
+          def initialize: (
+            attribute: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value,
+            ?parameters: Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters
+          ) -> void
+
+          def to_hash: -> {
+            attribute: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value,
+            parameters: Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters
+          }
+
+          type attribute =
+            :MCC
+            | :COUNTRY
+            | :CURRENCY
+            | :MERCHANT_ID
+            | :DESCRIPTOR
+            | :TRANSACTION_AMOUNT
+            | :RISK_SCORE
+            | :TRANSACTION_STATUS
+            | :LAST_EVENT_TYPE
+            | :LIABILITY_SHIFT
+            | :PAN_ENTRY_MODE
+            | :WALLET_TYPE
+            | :CARD_AGE
+            | :ACCOUNT_AGE
+            | :SPEND_VELOCITY_COUNT
+            | :SPEND_VELOCITY_AMOUNT
+
+          module Attribute
+            extend Lithic::Internal::Type::Enum
+
+            MCC: :MCC
+            COUNTRY: :COUNTRY
+            CURRENCY: :CURRENCY
+            MERCHANT_ID: :MERCHANT_ID
+            DESCRIPTOR: :DESCRIPTOR
+            TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+            RISK_SCORE: :RISK_SCORE
+            TRANSACTION_STATUS: :TRANSACTION_STATUS
+            LAST_EVENT_TYPE: :LAST_EVENT_TYPE
+            LIABILITY_SHIFT: :LIABILITY_SHIFT
+            PAN_ENTRY_MODE: :PAN_ENTRY_MODE
+            WALLET_TYPE: :WALLET_TYPE
+            CARD_AGE: :CARD_AGE
+            ACCOUNT_AGE: :ACCOUNT_AGE
+            SPEND_VELOCITY_COUNT: :SPEND_VELOCITY_COUNT
+            SPEND_VELOCITY_AMOUNT: :SPEND_VELOCITY_AMOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::attribute]
+          end
+
+          type parameters =
+            {
+              filters: Lithic::AuthRules::SpendVelocityFilters,
+              period: Lithic::Models::AuthRules::velocity_limit_period,
+              scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+            }
+
+          class Parameters < Lithic::Internal::Type::BaseModel
+            attr_reader filters: Lithic::AuthRules::SpendVelocityFilters?
+
+            def filters=: (
+              Lithic::AuthRules::SpendVelocityFilters
+            ) -> Lithic::AuthRules::SpendVelocityFilters
+
+            attr_reader period: Lithic::Models::AuthRules::velocity_limit_period?
+
+            def period=: (
+              Lithic::Models::AuthRules::velocity_limit_period
+            ) -> Lithic::Models::AuthRules::velocity_limit_period
+
+            attr_reader scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope?
+
+            def scope=: (
+              Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+            ) -> Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+
+            def initialize: (
+              ?filters: Lithic::AuthRules::SpendVelocityFilters,
+              ?period: Lithic::Models::AuthRules::velocity_limit_period,
+              ?scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+            ) -> void
+
+            def to_hash: -> {
+              filters: Lithic::AuthRules::SpendVelocityFilters,
+              period: Lithic::Models::AuthRules::velocity_limit_period,
+              scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+            }
+
+            type scope = :CARD | :ACCOUNT | :GLOBAL
+
+            module Scope
+              extend Lithic::Internal::Type::Enum
+
+              CARD: :CARD
+              ACCOUNT: :ACCOUNT
+              GLOBAL: :GLOBAL
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope]
+            end
+          end
+        end
+      end
+    end
+  end
+end
