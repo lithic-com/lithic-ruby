@@ -36,6 +36,7 @@ module Lithic
           | Lithic::AuthRules::ConditionalAuthorizationActionParameters
           | Lithic::AuthRules::ConditionalACHActionParameters
           | Lithic::AuthRules::ConditionalTokenizationActionParameters
+          | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
           | Lithic::AuthRules::TypescriptCodeParameters
 
         module Parameters

@@ -80,7 +80,8 @@ module Lithic
         # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+        #   stream.
         # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         sig { returns(Lithic::AuthRules::AuthRule::Type::TaggedSymbol) }
@@ -160,7 +161,8 @@ module Lithic
           # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
           # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
           # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-          #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+          #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+          #   stream.
           # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
           #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
           type:,
@@ -232,6 +234,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                   Lithic::AuthRules::TypescriptCodeParameters::OrHash
                 ),
               version: Integer
@@ -272,6 +275,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters,
                   Lithic::AuthRules::ConditionalACHActionParameters,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                  Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                   Lithic::AuthRules::TypescriptCodeParameters
                 )
               end
@@ -344,6 +348,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                   Lithic::AuthRules::TypescriptCodeParameters::OrHash
                 ),
               state: Lithic::AuthRules::AuthRule::DraftVersion::State::OrSymbol,
@@ -402,6 +407,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters,
                   Lithic::AuthRules::ConditionalACHActionParameters,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                  Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                   Lithic::AuthRules::TypescriptCodeParameters
                 )
               end
@@ -496,7 +502,8 @@ module Lithic
         # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
         # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+        #   stream.
         # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         module Type

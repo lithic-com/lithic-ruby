@@ -30,6 +30,11 @@ module Lithic
             :ACH_DEBIT_RECEIPT,
             Lithic::AuthRules::EventStream::TaggedSymbol
           )
+        CARD_TRANSACTION_UPDATE =
+          T.let(
+            :CARD_TRANSACTION_UPDATE,
+            Lithic::AuthRules::EventStream::TaggedSymbol
+          )
 
         sig do
           override.returns(
