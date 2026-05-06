@@ -12,6 +12,7 @@ module Lithic
         TOKENIZATION = :TOKENIZATION
         ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
         ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
+        CARD_TRANSACTION_UPDATE = :CARD_TRANSACTION_UPDATE
 
         # @!method self.values
         #   @return [Array<Symbol>]

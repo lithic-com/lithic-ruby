@@ -1,0 +1,100 @@
+module Lithic
+  module Models
+    module AuthRules
+      type card_transaction_update_action =
+        Lithic::AuthRules::CardTransactionUpdateAction::TagAction
+        | Lithic::AuthRules::CardTransactionUpdateAction::CreateCaseAction
+
+      module CardTransactionUpdateAction
+        extend Lithic::Internal::Type::Union
+
+        type tag_action =
+          {
+            key: String,
+            type: Lithic::Models::AuthRules::CardTransactionUpdateAction::TagAction::type_,
+            value: String
+          }
+
+        class TagAction < Lithic::Internal::Type::BaseModel
+          attr_accessor key: String
+
+          attr_accessor type: Lithic::Models::AuthRules::CardTransactionUpdateAction::TagAction::type_
+
+          attr_accessor value: String
+
+          def initialize: (
+            key: String,
+            type: Lithic::Models::AuthRules::CardTransactionUpdateAction::TagAction::type_,
+            value: String
+          ) -> void
+
+          def to_hash: -> {
+            key: String,
+            type: Lithic::Models::AuthRules::CardTransactionUpdateAction::TagAction::type_,
+            value: String
+          }
+
+          type type_ = :TAG
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            TAG: :TAG
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::CardTransactionUpdateAction::TagAction::type_]
+          end
+        end
+
+        type create_case_action =
+          {
+            queue_token: String,
+            scope: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::scope,
+            type: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::type_
+          }
+
+        class CreateCaseAction < Lithic::Internal::Type::BaseModel
+          attr_accessor queue_token: String
+
+          attr_accessor scope: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::scope
+
+          attr_accessor type: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::type_
+
+          def initialize: (
+            queue_token: String,
+            scope: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::scope,
+            type: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::type_
+          ) -> void
+
+          def to_hash: -> {
+            queue_token: String,
+            scope: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::scope,
+            type: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::type_
+          }
+
+          type scope = :CARD | :ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD: :CARD
+            ACCOUNT: :ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::scope]
+          end
+
+          type type_ = :CREATE_CASE
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            CREATE_CASE: :CREATE_CASE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::type_]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::card_transaction_update_action]
+      end
+    end
+  end
+end
