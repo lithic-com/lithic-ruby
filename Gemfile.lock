@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    lithic (0.12.0)
+    lithic (0.13.0)
       cgi
       connection_pool
       standardwebhooks
