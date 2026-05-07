@@ -207,6 +207,15 @@ module Lithic
           #   `parameters` required.
           # - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
           #   a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
+          # - `TRAVEL_SPEED`: The estimated speed of travel derived from the distance
+          #   between the postal code centers of the last card-present transaction and the
+          #   current transaction, divided by the elapsed time. Null if there is no prior
+          #   card-present transaction, if either postal code cannot be geocoded, or if
+          #   elapsed time is zero. Requires `parameters.unit` set to `MPH` or `KPH`.
+          # - `DISTANCE_FROM_LAST_TRANSACTION`: The estimated distance between the postal
+          #   code centers of the last card-present transaction and the current transaction.
+          #   Null if there is no prior card-present transaction or if either postal code
+          #   cannot be geocoded. Requires `parameters.unit` set to `MILES` or `KILOMETERS`.
           sig do
             returns(
               Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::OrSymbol
@@ -222,11 +231,12 @@ module Lithic
           sig { returns(Lithic::AuthRules::ConditionalValue::Variants) }
           attr_accessor :value
 
-          # Additional parameters required for transaction history signal attributes.
-          # Required when `attribute` is one of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
-          # `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
-          # `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
-          # or `DISTINCT_COUNTRY_COUNT`. Not used for other attributes.
+          # Additional parameters for certain attributes. Required when `attribute` is one
+          # of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`,
+          # `IS_NEW_COUNTRY`, `IS_NEW_MCC`, `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`,
+          # `TIME_SINCE_LAST_TRANSACTION`, or `DISTINCT_COUNTRY_COUNT` (require `scope`); or
+          # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION` (require `unit`). Not used
+          # for other attributes.
           sig do
             returns(
               T.nilable(
@@ -357,16 +367,26 @@ module Lithic
             #   `parameters` required.
             # - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
             #   a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
+            # - `TRAVEL_SPEED`: The estimated speed of travel derived from the distance
+            #   between the postal code centers of the last card-present transaction and the
+            #   current transaction, divided by the elapsed time. Null if there is no prior
+            #   card-present transaction, if either postal code cannot be geocoded, or if
+            #   elapsed time is zero. Requires `parameters.unit` set to `MPH` or `KPH`.
+            # - `DISTANCE_FROM_LAST_TRANSACTION`: The estimated distance between the postal
+            #   code centers of the last card-present transaction and the current transaction.
+            #   Null if there is no prior card-present transaction or if either postal code
+            #   cannot be geocoded. Requires `parameters.unit` set to `MILES` or `KILOMETERS`.
             attribute:,
             # The operation to apply to the attribute
             operation:,
             # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
             value:,
-            # Additional parameters required for transaction history signal attributes.
-            # Required when `attribute` is one of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
-            # `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
-            # `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
-            # or `DISTINCT_COUNTRY_COUNT`. Not used for other attributes.
+            # Additional parameters for certain attributes. Required when `attribute` is one
+            # of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`,
+            # `IS_NEW_COUNTRY`, `IS_NEW_MCC`, `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`,
+            # `TIME_SINCE_LAST_TRANSACTION`, or `DISTINCT_COUNTRY_COUNT` (require `scope`); or
+            # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION` (require `unit`). Not used
+            # for other attributes.
             parameters: nil
           )
           end
@@ -488,6 +508,15 @@ module Lithic
           #   `parameters` required.
           # - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
           #   a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
+          # - `TRAVEL_SPEED`: The estimated speed of travel derived from the distance
+          #   between the postal code centers of the last card-present transaction and the
+          #   current transaction, divided by the elapsed time. Null if there is no prior
+          #   card-present transaction, if either postal code cannot be geocoded, or if
+          #   elapsed time is zero. Requires `parameters.unit` set to `MPH` or `KPH`.
+          # - `DISTANCE_FROM_LAST_TRANSACTION`: The estimated distance between the postal
+          #   code centers of the last card-present transaction and the current transaction.
+          #   Null if there is no prior card-present transaction or if either postal code
+          #   cannot be geocoded. Requires `parameters.unit` set to `MILES` or `KILOMETERS`.
           module Attribute
             extend Lithic::Internal::Type::Enum
 
@@ -685,6 +714,16 @@ module Lithic
                 :THREE_DS_SUCCESS_RATE,
                 Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
               )
+            TRAVEL_SPEED =
+              T.let(
+                :TRAVEL_SPEED,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            DISTANCE_FROM_LAST_TRANSACTION =
+              T.let(
+                :DISTANCE_FROM_LAST_TRANSACTION,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -744,17 +783,43 @@ module Lithic
             end
             attr_writer :scope
 
-            # Additional parameters required for transaction history signal attributes.
-            # Required when `attribute` is one of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
-            # `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
-            # `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
-            # or `DISTINCT_COUNTRY_COUNT`. Not used for other attributes.
+            # The unit for impossible travel attributes. Required when `attribute` is
+            # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION`.
+            #
+            # For `TRAVEL_SPEED`: `MPH` (miles per hour) or `KPH` (kilometers per hour).
+            #
+            # For `DISTANCE_FROM_LAST_TRANSACTION`: `MILES` or `KILOMETERS`.
+            sig do
+              returns(
+                T.nilable(
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::OrSymbol
+                )
+              )
+            end
+            attr_reader :unit
+
+            sig do
+              params(
+                unit:
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::OrSymbol
+              ).void
+            end
+            attr_writer :unit
+
+            # Additional parameters for certain attributes. Required when `attribute` is one
+            # of `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`,
+            # `IS_NEW_COUNTRY`, `IS_NEW_MCC`, `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`,
+            # `TIME_SINCE_LAST_TRANSACTION`, or `DISTINCT_COUNTRY_COUNT` (require `scope`); or
+            # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION` (require `unit`). Not used
+            # for other attributes.
             sig do
               params(
                 interval:
                   Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Interval::OrSymbol,
                 scope:
-                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope::OrSymbol
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope::OrSymbol,
+                unit:
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -763,7 +828,14 @@ module Lithic
               # all-time history or a specific window (`7D`, `30D`, `90D`).
               interval: nil,
               # The entity scope to evaluate the attribute against.
-              scope: nil
+              scope: nil,
+              # The unit for impossible travel attributes. Required when `attribute` is
+              # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION`.
+              #
+              # For `TRAVEL_SPEED`: `MPH` (miles per hour) or `KPH` (kilometers per hour).
+              #
+              # For `DISTANCE_FROM_LAST_TRANSACTION`: `MILES` or `KILOMETERS`.
+              unit: nil
             )
             end
 
@@ -773,7 +845,9 @@ module Lithic
                   interval:
                     Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Interval::OrSymbol,
                   scope:
-                    Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope::OrSymbol
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope::OrSymbol,
+                  unit:
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::OrSymbol
                 }
               )
             end
@@ -860,6 +934,56 @@ module Lithic
                 override.returns(
                   T::Array[
                     Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Scope::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # The unit for impossible travel attributes. Required when `attribute` is
+            # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION`.
+            #
+            # For `TRAVEL_SPEED`: `MPH` (miles per hour) or `KPH` (kilometers per hour).
+            #
+            # For `DISTANCE_FROM_LAST_TRANSACTION`: `MILES` or `KILOMETERS`.
+            module Unit
+              extend Lithic::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MPH =
+                T.let(
+                  :MPH,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::TaggedSymbol
+                )
+              KPH =
+                T.let(
+                  :KPH,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::TaggedSymbol
+                )
+              MILES =
+                T.let(
+                  :MILES,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::TaggedSymbol
+                )
+              KILOMETERS =
+                T.let(
+                  :KILOMETERS,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::Unit::TaggedSymbol
                   ]
                 )
               end

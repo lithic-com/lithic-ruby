@@ -106,6 +106,8 @@ module Lithic
             | :DISTINCT_COUNTRY_COUNT
             | :IS_NEW_MERCHANT
             | :THREE_DS_SUCCESS_RATE
+            | :TRAVEL_SPEED
+            | :DISTANCE_FROM_LAST_TRANSACTION
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -147,6 +149,8 @@ module Lithic
             DISTINCT_COUNTRY_COUNT: :DISTINCT_COUNTRY_COUNT
             IS_NEW_MERCHANT: :IS_NEW_MERCHANT
             THREE_DS_SUCCESS_RATE: :THREE_DS_SUCCESS_RATE
+            TRAVEL_SPEED: :TRAVEL_SPEED
+            DISTANCE_FROM_LAST_TRANSACTION: :DISTANCE_FROM_LAST_TRANSACTION
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::attribute]
           end
@@ -154,7 +158,8 @@ module Lithic
           type parameters =
             {
               interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval,
-              scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+              scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope,
+              unit: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit
             }
 
           class Parameters < Lithic::Internal::Type::BaseModel
@@ -170,14 +175,22 @@ module Lithic
               Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
             ) -> Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
 
+            attr_reader unit: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit?
+
+            def unit=: (
+              Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit
+            ) -> Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit
+
             def initialize: (
               ?interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval,
-              ?scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+              ?scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope,
+              ?unit: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit
             ) -> void
 
             def to_hash: -> {
               interval: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::interval,
-              scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope
+              scope: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope,
+              unit: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit
             }
 
             type interval = :LIFETIME | :"7D" | :"30D" | :"90D"
@@ -203,6 +216,19 @@ module Lithic
               BUSINESS_ACCOUNT: :BUSINESS_ACCOUNT
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::scope]
+            end
+
+            type unit = :MPH | :KPH | :MILES | :KILOMETERS
+
+            module Unit
+              extend Lithic::Internal::Type::Enum
+
+              MPH: :MPH
+              KPH: :KPH
+              MILES: :MILES
+              KILOMETERS: :KILOMETERS
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Condition::Parameters::unit]
             end
           end
         end
