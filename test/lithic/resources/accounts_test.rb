@@ -81,6 +81,50 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
     end
   end
 
+  def test_retrieve_signals
+    response = @lithic.accounts.retrieve_signals("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::SignalsResponse
+    end
+
+    assert_pattern do
+      response => {
+        approved_txn_amount_m2: Float | nil,
+        approved_txn_amount_m2_30d: Float | nil,
+        approved_txn_amount_m2_7d: Float | nil,
+        approved_txn_amount_m2_90d: Float | nil,
+        approved_txn_count: Integer | nil,
+        approved_txn_count_30d: Integer | nil,
+        approved_txn_count_7d: Integer | nil,
+        approved_txn_count_90d: Integer | nil,
+        avg_transaction_amount: Float | nil,
+        avg_transaction_amount_30d: Float | nil,
+        avg_transaction_amount_7d: Float | nil,
+        avg_transaction_amount_90d: Float | nil,
+        distinct_country_count: Integer | nil,
+        distinct_mcc_count: Integer | nil,
+        first_txn_at: Time | nil,
+        is_first_transaction: Lithic::Internal::Type::Boolean | nil,
+        last_cp_country: String | nil,
+        last_cp_postal_code: String | nil,
+        last_cp_timestamp: Time | nil,
+        last_txn_approved_at: Time | nil,
+        seen_countries: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        seen_mccs: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        seen_merchants: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        stdev_transaction_amount: Float | nil,
+        stdev_transaction_amount_30d: Float | nil,
+        stdev_transaction_amount_7d: Float | nil,
+        stdev_transaction_amount_90d: Float | nil,
+        three_ds_success_count: Integer | nil,
+        three_ds_success_rate: Float | nil,
+        three_ds_total_count: Integer | nil,
+        time_since_last_transaction_days: Float | nil
+      }
+    end
+  end
+
   def test_retrieve_spend_limits
     response = @lithic.accounts.retrieve_spend_limits("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

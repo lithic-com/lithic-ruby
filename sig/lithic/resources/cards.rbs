@@ -108,6 +108,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Card
 
+      def retrieve_signals: (
+        String card_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::SignalsResponse
+
       def retrieve_spend_limits: (
         String card_token,
         ?request_options: Lithic::request_opts
