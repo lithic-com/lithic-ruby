@@ -1,0 +1,170 @@
+module Lithic
+  module Models
+    type signals_response =
+      {
+        :approved_txn_amount_m2 => Float?,
+        :approved_txn_amount_m2_30d => Float?,
+        :approved_txn_amount_m2_7d => Float?,
+        :approved_txn_amount_m2_90d => Float?,
+        approved_txn_count: Integer?,
+        :approved_txn_count_30d => Integer?,
+        :approved_txn_count_7d => Integer?,
+        :approved_txn_count_90d => Integer?,
+        avg_transaction_amount: Float?,
+        :avg_transaction_amount_30d => Float?,
+        :avg_transaction_amount_7d => Float?,
+        :avg_transaction_amount_90d => Float?,
+        distinct_country_count: Integer?,
+        distinct_mcc_count: Integer?,
+        first_txn_at: Time?,
+        is_first_transaction: bool?,
+        last_cp_country: String?,
+        last_cp_postal_code: String?,
+        last_cp_timestamp: Time?,
+        last_txn_approved_at: Time?,
+        seen_countries: ::Array[String]?,
+        seen_mccs: ::Array[String]?,
+        seen_merchants: ::Array[String]?,
+        stdev_transaction_amount: Float?,
+        :stdev_transaction_amount_30d => Float?,
+        :stdev_transaction_amount_7d => Float?,
+        :stdev_transaction_amount_90d => Float?,
+        three_ds_success_count: Integer?,
+        three_ds_success_rate: Float?,
+        three_ds_total_count: Integer?,
+        time_since_last_transaction_days: Float?
+      }
+
+    class SignalsResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor approved_txn_amount_m2: Float?
+
+      attr_accessor approved_txn_amount_m2_30d: Float?
+
+      attr_accessor approved_txn_amount_m2_7d: Float?
+
+      attr_accessor approved_txn_amount_m2_90d: Float?
+
+      attr_accessor approved_txn_count: Integer?
+
+      attr_accessor approved_txn_count_30d: Integer?
+
+      attr_accessor approved_txn_count_7d: Integer?
+
+      attr_accessor approved_txn_count_90d: Integer?
+
+      attr_accessor avg_transaction_amount: Float?
+
+      attr_accessor avg_transaction_amount_30d: Float?
+
+      attr_accessor avg_transaction_amount_7d: Float?
+
+      attr_accessor avg_transaction_amount_90d: Float?
+
+      attr_accessor distinct_country_count: Integer?
+
+      attr_accessor distinct_mcc_count: Integer?
+
+      attr_accessor first_txn_at: Time?
+
+      attr_accessor is_first_transaction: bool?
+
+      attr_accessor last_cp_country: String?
+
+      attr_accessor last_cp_postal_code: String?
+
+      attr_accessor last_cp_timestamp: Time?
+
+      attr_accessor last_txn_approved_at: Time?
+
+      attr_accessor seen_countries: ::Array[String]?
+
+      attr_accessor seen_mccs: ::Array[String]?
+
+      attr_accessor seen_merchants: ::Array[String]?
+
+      attr_accessor stdev_transaction_amount: Float?
+
+      attr_accessor stdev_transaction_amount_30d: Float?
+
+      attr_accessor stdev_transaction_amount_7d: Float?
+
+      attr_accessor stdev_transaction_amount_90d: Float?
+
+      attr_accessor three_ds_success_count: Integer?
+
+      attr_accessor three_ds_success_rate: Float?
+
+      attr_accessor three_ds_total_count: Integer?
+
+      attr_accessor time_since_last_transaction_days: Float?
+
+      def initialize: (
+        approved_txn_amount_m2: Float?,
+        approved_txn_amount_m2_30d: Float?,
+        approved_txn_amount_m2_7d: Float?,
+        approved_txn_amount_m2_90d: Float?,
+        approved_txn_count: Integer?,
+        approved_txn_count_30d: Integer?,
+        approved_txn_count_7d: Integer?,
+        approved_txn_count_90d: Integer?,
+        avg_transaction_amount: Float?,
+        avg_transaction_amount_30d: Float?,
+        avg_transaction_amount_7d: Float?,
+        avg_transaction_amount_90d: Float?,
+        distinct_country_count: Integer?,
+        distinct_mcc_count: Integer?,
+        first_txn_at: Time?,
+        is_first_transaction: bool?,
+        last_cp_country: String?,
+        last_cp_postal_code: String?,
+        last_cp_timestamp: Time?,
+        last_txn_approved_at: Time?,
+        seen_countries: ::Array[String]?,
+        seen_mccs: ::Array[String]?,
+        seen_merchants: ::Array[String]?,
+        stdev_transaction_amount: Float?,
+        stdev_transaction_amount_30d: Float?,
+        stdev_transaction_amount_7d: Float?,
+        stdev_transaction_amount_90d: Float?,
+        three_ds_success_count: Integer?,
+        three_ds_success_rate: Float?,
+        three_ds_total_count: Integer?,
+        time_since_last_transaction_days: Float?
+      ) -> void
+
+      def to_hash: -> {
+        :approved_txn_amount_m2 => Float?,
+        :approved_txn_amount_m2_30d => Float?,
+        :approved_txn_amount_m2_7d => Float?,
+        :approved_txn_amount_m2_90d => Float?,
+        approved_txn_count: Integer?,
+        :approved_txn_count_30d => Integer?,
+        :approved_txn_count_7d => Integer?,
+        :approved_txn_count_90d => Integer?,
+        avg_transaction_amount: Float?,
+        :avg_transaction_amount_30d => Float?,
+        :avg_transaction_amount_7d => Float?,
+        :avg_transaction_amount_90d => Float?,
+        distinct_country_count: Integer?,
+        distinct_mcc_count: Integer?,
+        first_txn_at: Time?,
+        is_first_transaction: bool?,
+        last_cp_country: String?,
+        last_cp_postal_code: String?,
+        last_cp_timestamp: Time?,
+        last_txn_approved_at: Time?,
+        seen_countries: ::Array[String]?,
+        seen_mccs: ::Array[String]?,
+        seen_merchants: ::Array[String]?,
+        stdev_transaction_amount: Float?,
+        :stdev_transaction_amount_30d => Float?,
+        :stdev_transaction_amount_7d => Float?,
+        :stdev_transaction_amount_90d => Float?,
+        three_ds_success_count: Integer?,
+        three_ds_success_rate: Float?,
+        three_ds_total_count: Integer?,
+        time_since_last_transaction_days: Float?
+      }
+    end
+  end
+end

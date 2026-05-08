@@ -27,6 +27,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::CursorPage[Lithic::Account]
 
+      def retrieve_signals: (
+        String account_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::SignalsResponse
+
       def retrieve_spend_limits: (
         String account_token,
         ?request_options: Lithic::request_opts

@@ -1,0 +1,23 @@
+module Lithic
+  module Models
+    type card_retrieve_signals_params =
+      { card_token: String } & Lithic::Internal::Type::request_parameters
+
+    class CardRetrieveSignalsParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
+
+      def initialize: (
+        card_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        card_token: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end
