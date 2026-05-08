@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.14.0 (2026-05-08)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/lithic-com/lithic-ruby/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** add retrieve_signals method to accounts and cards ([c6446ff](https://github.com/lithic-com/lithic-ruby/commit/c6446ffce562ebe1d451d86a56372e3bf91004e9))
+* **api:** add travel speed/distance attributes and unit parameter to auth_rules ([846d5d9](https://github.com/lithic-com/lithic-ruby/commit/846d5d99cea53078bbda45f2a4b845bc4f7f33d2))
+
 ## 0.13.0 (2026-05-06)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/lithic-com/lithic-ruby/compare/v0.12.0...v0.13.0)
