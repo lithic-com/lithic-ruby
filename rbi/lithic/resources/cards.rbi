@@ -590,6 +590,25 @@ module Lithic
       )
       end
 
+      # Returns behavioral feature state derived from a card's transaction history.
+      #
+      # These signals expose the same data used by behavioral rule attributes (e.g.
+      # `AMOUNT_Z_SCORE` with `scope: CARD`, `IS_NEW_COUNTRY` with `scope: CARD`) and
+      # custom code `TRANSACTION_HISTORY_SIGNALS` features, allowing clients to inspect
+      # feature values before writing rules and debug rule behavior.
+      sig do
+        params(
+          card_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::SignalsResponse)
+      end
+      def retrieve_signals(
+        # The token of the card to fetch signals for.
+        card_token,
+        request_options: {}
+      )
+      end
+
       # Get a Card's available spend limit, which is based on the spend limit configured
       # on the Card and the amount already spent over the spend limit's duration. For
       # example, if the Card has a monthly spend limit of $1000 configured, and has

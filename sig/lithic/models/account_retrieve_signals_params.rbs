@@ -1,0 +1,23 @@
+module Lithic
+  module Models
+    type account_retrieve_signals_params =
+      { account_token: String } & Lithic::Internal::Type::request_parameters
+
+    class AccountRetrieveSignalsParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor account_token: String
+
+      def initialize: (
+        account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

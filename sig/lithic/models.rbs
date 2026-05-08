@@ -41,6 +41,8 @@ module Lithic
 
   class AccountRetrieveParams = Lithic::Models::AccountRetrieveParams
 
+  class AccountRetrieveSignalsParams = Lithic::Models::AccountRetrieveSignalsParams
+
   class AccountRetrieveSpendLimitsParams = Lithic::Models::AccountRetrieveSpendLimitsParams
 
   class AccountSpendLimits = Lithic::Models::AccountSpendLimits
@@ -132,6 +134,8 @@ module Lithic
   class CardRenewParams = Lithic::Models::CardRenewParams
 
   class CardRetrieveParams = Lithic::Models::CardRetrieveParams
+
+  class CardRetrieveSignalsParams = Lithic::Models::CardRetrieveSignalsParams
 
   class CardRetrieveSpendLimitsParams = Lithic::Models::CardRetrieveSpendLimitsParams
 
@@ -436,6 +440,8 @@ module Lithic
   class SettlementSummaryDetails = Lithic::Models::SettlementSummaryDetails
 
   class ShippingAddress = Lithic::Models::ShippingAddress
+
+  class SignalsResponse = Lithic::Models::SignalsResponse
 
   module SpendLimitDuration = Lithic::Models::SpendLimitDuration
 

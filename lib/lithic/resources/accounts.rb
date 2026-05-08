@@ -99,6 +99,33 @@ module Lithic
         )
       end
 
+      # Returns behavioral feature state derived from an account's transaction history.
+      #
+      # These signals expose the same data used by behavioral rule attributes (e.g.
+      # `AMOUNT_Z_SCORE` with `scope: ACCOUNT`, `IS_NEW_COUNTRY` with `scope: ACCOUNT`)
+      # and custom code `TRANSACTION_HISTORY_SIGNALS` features, allowing clients to
+      # inspect feature values before writing rules and debug rule behavior.
+      #
+      # Note: 3DS fields are not available at the account scope and will be null.
+      #
+      # @overload retrieve_signals(account_token, request_options: {})
+      #
+      # @param account_token [String] The token of the account to fetch signals for.
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::SignalsResponse]
+      #
+      # @see Lithic::Models::AccountRetrieveSignalsParams
+      def retrieve_signals(account_token, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/accounts/%1$s/signals", account_token],
+          model: Lithic::SignalsResponse,
+          options: params[:request_options]
+        )
+      end
+
       # Get an Account's available spend limits, which is based on the spend limit
       # configured on the Account and the amount already spent over the spend limit's
       # duration. For example, if the Account has a daily spend limit of $1000
