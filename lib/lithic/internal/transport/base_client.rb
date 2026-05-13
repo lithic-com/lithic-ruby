@@ -306,6 +306,8 @@ module Lithic
               Lithic::Internal::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
             end
 
+          headers.delete("content-type") if body.nil?
+
           url = Lithic::Internal::Util.join_parsed_uri(
             @base_url_components,
             {**req, path: path, query: query}
