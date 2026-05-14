@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.14.1 (2026-05-14)
+
+Full Changelog: [v0.14.0...v0.14.1](https://github.com/lithic-com/lithic-ruby/compare/v0.14.0...v0.14.1)
+
+### Bug Fixes
+
+* **client:** elide content type header on requests without body ([d3a58d5](https://github.com/lithic-com/lithic-ruby/commit/d3a58d57130f65c30e56d39ba380cf8fe04e49da))
+* **types:** correct value type from Integer to Float in auth rules ([c8a51d0](https://github.com/lithic-com/lithic-ruby/commit/c8a51d0231516251e038f074e3fc364222570f57))
+
 ## 0.14.0 (2026-05-08)
 
 Full Changelog: [v0.13.0...v0.14.0](https://github.com/lithic-com/lithic-ruby/compare/v0.13.0...v0.14.0)
