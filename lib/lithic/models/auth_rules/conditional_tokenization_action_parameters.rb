@@ -170,10 +170,10 @@ module Lithic
           #     `SAMSUNG_PAY`, `UNKNOWN`, `VISA_CHECKOUT`.
           #   - `WALLET_ACCOUNT_SCORE`: Risk score for the account in the digital wallet.
           #     Numeric value where lower numbers indicate higher risk (e.g., 1 = high risk, 2
-          #     = medium risk).
+          #     = medium risk). Use an integer value.
           #   - `WALLET_DEVICE_SCORE`: Risk score for the device in the digital wallet.
           #     Numeric value where lower numbers indicate higher risk (e.g., 1 = high risk, 2
-          #     = medium risk).
+          #     = medium risk). Use an integer value.
           #   - `WALLET_RECOMMENDED_DECISION`: The decision recommended by the digital wallet
           #     provider. Valid values include APPROVE, DECLINE,
           #     REQUIRE_ADDITIONAL_AUTHENTICATION.
@@ -214,7 +214,7 @@ module Lithic
           # @!attribute value
           #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           #
-          #   @return [String, Integer, Array<String>, Time]
+          #   @return [String, Integer, Float, Array<String>, Time]
           required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
           # @!method initialize(attribute:, operation:, value:)
@@ -226,7 +226,7 @@ module Lithic
           #
           #   @param operation [Symbol, Lithic::Models::AuthRules::ConditionalOperation] The operation to apply to the attribute
           #
-          #   @param value [String, Integer, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
+          #   @param value [String, Integer, Float, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
 
           # The attribute to target.
           #
@@ -245,10 +245,10 @@ module Lithic
           #   `SAMSUNG_PAY`, `UNKNOWN`, `VISA_CHECKOUT`.
           # - `WALLET_ACCOUNT_SCORE`: Risk score for the account in the digital wallet.
           #   Numeric value where lower numbers indicate higher risk (e.g., 1 = high risk, 2
-          #   = medium risk).
+          #   = medium risk). Use an integer value.
           # - `WALLET_DEVICE_SCORE`: Risk score for the device in the digital wallet.
           #   Numeric value where lower numbers indicate higher risk (e.g., 1 = high risk, 2
-          #   = medium risk).
+          #   = medium risk). Use an integer value.
           # - `WALLET_RECOMMENDED_DECISION`: The decision recommended by the digital wallet
           #   provider. Valid values include APPROVE, DECLINE,
           #   REQUIRE_ADDITIONAL_AUTHENTICATION.
