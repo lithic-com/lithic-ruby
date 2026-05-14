@@ -53,9 +53,10 @@ module Lithic
           #   - `TRANSACTION_AMOUNT`: The base transaction amount (in cents) plus the acquirer
           #     fee field in the settlement/cardholder billing currency. This is the amount
           #     the issuer should authorize against unless the issuer is paying the acquirer
-          #     fee on behalf of the cardholder.
+          #     fee on behalf of the cardholder. Use an integer value.
           #   - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
-          #     risk level, with a higher value indicating a higher amount of risk.
+          #     risk level, with a higher value indicating a higher amount of risk. Use an
+          #     integer value.
           #   - `MESSAGE_CATEGORY`: The category of the authentication being processed.
           #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
@@ -73,7 +74,7 @@ module Lithic
           # @!attribute value
           #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           #
-          #   @return [String, Integer, Array<String>, Time]
+          #   @return [String, Integer, Float, Array<String>, Time]
           required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
           # @!method initialize(attribute:, operation:, value:)
@@ -85,7 +86,7 @@ module Lithic
           #
           #   @param operation [Symbol, Lithic::Models::AuthRules::ConditionalOperation] The operation to apply to the attribute
           #
-          #   @param value [String, Integer, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
+          #   @param value [String, Integer, Float, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
 
           # The attribute to target.
           #
@@ -104,9 +105,10 @@ module Lithic
           # - `TRANSACTION_AMOUNT`: The base transaction amount (in cents) plus the acquirer
           #   fee field in the settlement/cardholder billing currency. This is the amount
           #   the issuer should authorize against unless the issuer is paying the acquirer
-          #   fee on behalf of the cardholder.
+          #   fee on behalf of the cardholder. Use an integer value.
           # - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
-          #   risk level, with a higher value indicating a higher amount of risk.
+          #   risk level, with a higher value indicating a higher amount of risk. Use an
+          #   integer value.
           # - `MESSAGE_CATEGORY`: The category of the authentication being processed.
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,

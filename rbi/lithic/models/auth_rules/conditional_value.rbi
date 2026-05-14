@@ -8,7 +8,7 @@ module Lithic
         extend Lithic::Internal::Type::Union
 
         Variants =
-          T.type_alias { T.any(String, Integer, T::Array[String], Time) }
+          T.type_alias { T.any(String, Integer, Float, T::Array[String], Time) }
 
         sig do
           override.returns(

@@ -190,7 +190,7 @@ module Lithic
           #     ID) of the entity initiating the ACH transaction.
           #   - `TIMESTAMP`: The timestamp of the ACH transaction in ISO 8601 format.
           #   - `TRANSACTION_AMOUNT`: The amount of the ACH transaction in minor units
-          #     (cents).
+          #     (cents). Use an integer value.
           #   - `SEC_CODE`: Standard Entry Class code indicating the type of ACH transaction.
           #     Valid values include PPD (Prearranged Payment and Deposit Entry), CCD
           #     (Corporate Credit or Debit Entry), WEB (Internet-Initiated/Mobile Entry), TEL
@@ -209,7 +209,7 @@ module Lithic
           # @!attribute value
           #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           #
-          #   @return [String, Integer, Array<String>, Time]
+          #   @return [String, Integer, Float, Array<String>, Time]
           required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
           # @!method initialize(attribute:, operation:, value:)
@@ -221,7 +221,7 @@ module Lithic
           #
           #   @param operation [Symbol, Lithic::Models::AuthRules::ConditionalOperation] The operation to apply to the attribute
           #
-          #   @param value [String, Integer, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
+          #   @param value [String, Integer, Float, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
 
           # The attribute to target.
           #
@@ -232,7 +232,7 @@ module Lithic
           #   ID) of the entity initiating the ACH transaction.
           # - `TIMESTAMP`: The timestamp of the ACH transaction in ISO 8601 format.
           # - `TRANSACTION_AMOUNT`: The amount of the ACH transaction in minor units
-          #   (cents).
+          #   (cents). Use an integer value.
           # - `SEC_CODE`: Standard Entry Class code indicating the type of ACH transaction.
           #   Valid values include PPD (Prearranged Payment and Deposit Entry), CCD
           #   (Corporate Credit or Debit Entry), WEB (Internet-Initiated/Mobile Entry), TEL
