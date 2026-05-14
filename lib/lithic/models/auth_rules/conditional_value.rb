@@ -10,8 +10,9 @@ module Lithic
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         variant String
 
-        # A number, to be used with `IS_GREATER_THAN`, `IS_GREATER_THAN_OR_EQUAL_TO`, `IS_LESS_THAN`, `IS_LESS_THAN_OR_EQUAL_TO`, `IS_EQUAL_TO`, or `IS_NOT_EQUAL_TO`
         variant Integer
+
+        variant Float
 
         # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`
         variant -> { Lithic::Models::AuthRules::ConditionalValue::StringArray }
@@ -20,7 +21,7 @@ module Lithic
         variant Time
 
         # @!method self.variants
-        #   @return [Array(String, Integer, Array<String>, Time)]
+        #   @return [Array(String, Integer, Float, Array<String>, Time)]
 
         # @type [Lithic::Internal::Type::Converter]
         StringArray = Lithic::Internal::Type::ArrayOf[String]
