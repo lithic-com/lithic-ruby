@@ -31,6 +31,8 @@ module Lithic
 
     attr_reader cards: Lithic::Resources::Cards
 
+    attr_reader card_authorizations: Lithic::Resources::CardAuthorizations
+
     attr_reader card_bulk_orders: Lithic::Resources::CardBulkOrders
 
     attr_reader balances: Lithic::Resources::Balances

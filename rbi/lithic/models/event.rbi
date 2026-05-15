@@ -29,6 +29,10 @@ module Lithic
       #   created.
       # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
       #   updated.
+      # - card_authorization.challenge: Occurs when an Out of Band challenge is issued
+      #   during card authorization. The card program should issue its own challenge to
+      #   the cardholder and then respond via
+      #   [/v1/card_authorizations/{event_token}/challenge_response](https://docs.lithic.com/reference/respondtoauthorizationchallenge).
       # - card_authorization.challenge_response: Occurs when a cardholder responds to an
       #   SMS challenge during card authorization.
       # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
@@ -151,6 +155,10 @@ module Lithic
         #   created.
         # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
         #   updated.
+        # - card_authorization.challenge: Occurs when an Out of Band challenge is issued
+        #   during card authorization. The card program should issue its own challenge to
+        #   the cardholder and then respond via
+        #   [/v1/card_authorizations/{event_token}/challenge_response](https://docs.lithic.com/reference/respondtoauthorizationchallenge).
         # - card_authorization.challenge_response: Occurs when a cardholder responds to an
         #   SMS challenge during card authorization.
         # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
@@ -269,6 +277,10 @@ module Lithic
       #   created.
       # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
       #   updated.
+      # - card_authorization.challenge: Occurs when an Out of Band challenge is issued
+      #   during card authorization. The card program should issue its own challenge to
+      #   the cardholder and then respond via
+      #   [/v1/card_authorizations/{event_token}/challenge_response](https://docs.lithic.com/reference/respondtoauthorizationchallenge).
       # - card_authorization.challenge_response: Occurs when a cardholder responds to an
       #   SMS challenge during card authorization.
       # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
@@ -396,6 +408,11 @@ module Lithic
         BOOK_TRANSFER_TRANSACTION_UPDATED =
           T.let(
             :"book_transfer_transaction.updated",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        CARD_AUTHORIZATION_CHALLENGE =
+          T.let(
+            :"card_authorization.challenge",
             Lithic::Event::EventType::TaggedSymbol
           )
         CARD_AUTHORIZATION_CHALLENGE_RESPONSE =

@@ -118,6 +118,11 @@ module Lithic
               :"book_transfer_transaction.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          CARD_AUTHORIZATION_CHALLENGE =
+            T.let(
+              :"card_authorization.challenge",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           CARD_AUTHORIZATION_CHALLENGE_RESPONSE =
             T.let(
               :"card_authorization.challenge_response",

@@ -89,9 +89,15 @@ module Lithic
 
   class Card = Lithic::Models::Card
 
+  class CardAuthorization = Lithic::Models::CardAuthorization
+
   class CardAuthorizationApprovalRequestWebhookEvent = Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent
 
+  class CardAuthorizationChallengeResponseParams = Lithic::Models::CardAuthorizationChallengeResponseParams
+
   class CardAuthorizationChallengeResponseWebhookEvent = Lithic::Models::CardAuthorizationChallengeResponseWebhookEvent
+
+  class CardAuthorizationChallengeWebhookEvent = Lithic::Models::CardAuthorizationChallengeWebhookEvent
 
   class CardBulkOrder = Lithic::Models::CardBulkOrder
 
