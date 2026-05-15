@@ -108,7 +108,8 @@ module Lithic
           #   - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
           #     Use an integer value.
           #   - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
-          #     of the authorization. Use an integer value.
+          #     of the authorization. Use an integer value. For programs where Lithic does not
+          #     manage or retain account holder data, this attribute does not evaluate.
           #   - `AMOUNT_Z_SCORE`: The z-score of the transaction amount relative to the
           #     entity's transaction history. Null if fewer than 30 approved transactions in
           #     the specified window. Requires `parameters.scope` and `parameters.interval`.
@@ -269,7 +270,8 @@ module Lithic
           # - `CARD_AGE`: The age of the card in seconds at the time of the authorization.
           #   Use an integer value.
           # - `ACCOUNT_AGE`: The age of the account holder's account in seconds at the time
-          #   of the authorization. Use an integer value.
+          #   of the authorization. Use an integer value. For programs where Lithic does not
+          #   manage or retain account holder data, this attribute does not evaluate.
           # - `AMOUNT_Z_SCORE`: The z-score of the transaction amount relative to the
           #   entity's transaction history. Null if fewer than 30 approved transactions in
           #   the specified window. Requires `parameters.scope` and `parameters.interval`.
