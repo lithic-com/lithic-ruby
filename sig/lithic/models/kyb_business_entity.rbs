@@ -7,7 +7,7 @@ module Lithic
         legal_business_name: String,
         phone_numbers: ::Array[String],
         dba_business_name: String,
-        parent_company: String
+        parent_company: String?
       }
 
     class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
@@ -23,9 +23,7 @@ module Lithic
 
       def dba_business_name=: (String) -> String
 
-      attr_reader parent_company: String?
-
-      def parent_company=: (String) -> String
+      attr_accessor parent_company: String?
 
       def initialize: (
         address: Lithic::KYBBusinessEntity::Address,
@@ -33,7 +31,7 @@ module Lithic
         legal_business_name: String,
         phone_numbers: ::Array[String],
         ?dba_business_name: String,
-        ?parent_company: String
+        ?parent_company: String?
       ) -> void
 
       def to_hash: -> {
@@ -42,7 +40,7 @@ module Lithic
         legal_business_name: String,
         phone_numbers: ::Array[String],
         dba_business_name: String,
-        parent_company: String
+        parent_company: String?
       }
 
       type address =
