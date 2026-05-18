@@ -88,7 +88,7 @@ module Lithic
       #   the Lithic ecosystem.
       #
       #   @return [String, nil]
-      optional :external_id, String
+      optional :external_id, String, nil?: true
 
       # @!attribute individual
       #   Only present when user_type == "INDIVIDUAL". Information about the individual
@@ -102,7 +102,7 @@ module Lithic
       #   Classification System (NAICS) code for the business.
       #
       #   @return [String, nil]
-      optional :naics_code, String
+      optional :naics_code, String, nil?: true
 
       # @!attribute nature_of_business
       #   Only present when user_type == "BUSINESS". User-submitted description of the
@@ -191,11 +191,11 @@ module Lithic
       #
       #   @param exemption_type [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType, nil] The type of KYC exemption for a KYC-Exempt Account Holder. `null` if the account
       #
-      #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
+      #   @param external_id [String, nil] Customer-provided token that indicates a relationship with an object outside of
       #
       #   @param individual [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual] Only present when user_type == "INDIVIDUAL". Information about the individual fo
       #
-      #   @param naics_code [String] Only present when user_type == "BUSINESS". 6-digit North American Industry Class
+      #   @param naics_code [String, nil] Only present when user_type == "BUSINESS". 6-digit North American Industry Class
       #
       #   @param nature_of_business [String] Only present when user_type == "BUSINESS". User-submitted description of the bus
       #

@@ -11,9 +11,9 @@ module Lithic
         created: Time,
         email: String,
         exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?,
-        external_id: String,
+        external_id: String?,
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-        naics_code: String,
+        naics_code: String?,
         nature_of_business: String,
         phone_number: String,
         required_documents: ::Array[Lithic::RequiredDocument],
@@ -63,9 +63,7 @@ module Lithic
 
       attr_accessor exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?
 
-      attr_reader external_id: String?
-
-      def external_id=: (String) -> String
+      attr_accessor external_id: String?
 
       attr_reader individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual?
 
@@ -73,9 +71,7 @@ module Lithic
         Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual
       ) -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual
 
-      attr_reader naics_code: String?
-
-      def naics_code=: (String) -> String
+      attr_accessor naics_code: String?
 
       attr_reader nature_of_business: String?
 
@@ -129,9 +125,9 @@ module Lithic
         ?created: Time,
         ?email: String,
         ?exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?,
-        ?external_id: String,
+        ?external_id: String?,
         ?individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-        ?naics_code: String,
+        ?naics_code: String?,
         ?nature_of_business: String,
         ?phone_number: String,
         ?required_documents: ::Array[Lithic::RequiredDocument],
@@ -152,9 +148,9 @@ module Lithic
         created: Time,
         email: String,
         exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type?,
-        external_id: String,
+        external_id: String?,
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-        naics_code: String,
+        naics_code: String?,
         nature_of_business: String,
         phone_number: String,
         required_documents: ::Array[Lithic::RequiredDocument],
