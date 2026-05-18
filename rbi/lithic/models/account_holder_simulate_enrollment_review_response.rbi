@@ -124,10 +124,7 @@ module Lithic
       # Customer-provided token that indicates a relationship with an object outside of
       # the Lithic ecosystem.
       sig { returns(T.nilable(String)) }
-      attr_reader :external_id
-
-      sig { params(external_id: String).void }
-      attr_writer :external_id
+      attr_accessor :external_id
 
       # Only present when user_type == "INDIVIDUAL". Information about the individual
       # for which the account is being opened and KYC is being run.
@@ -151,10 +148,7 @@ module Lithic
       # Only present when user_type == "BUSINESS". 6-digit North American Industry
       # Classification System (NAICS) code for the business.
       sig { returns(T.nilable(String)) }
-      attr_reader :naics_code
-
-      sig { params(naics_code: String).void }
-      attr_writer :naics_code
+      attr_accessor :naics_code
 
       # Only present when user_type == "BUSINESS". User-submitted description of the
       # business.
@@ -296,10 +290,10 @@ module Lithic
             T.nilable(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol
             ),
-          external_id: String,
+          external_id: T.nilable(String),
           individual:
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::OrHash,
-          naics_code: String,
+          naics_code: T.nilable(String),
           nature_of_business: String,
           phone_number: String,
           required_documents: T::Array[Lithic::RequiredDocument::OrHash],
@@ -417,10 +411,10 @@ module Lithic
               T.nilable(
                 Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol
               ),
-            external_id: String,
+            external_id: T.nilable(String),
             individual:
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-            naics_code: String,
+            naics_code: T.nilable(String),
             nature_of_business: String,
             phone_number: String,
             required_documents: T::Array[Lithic::RequiredDocument],

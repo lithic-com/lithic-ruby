@@ -41,10 +41,7 @@ module Lithic
 
       # Parent company name (if applicable).
       sig { returns(T.nilable(String)) }
-      attr_reader :parent_company
-
-      sig { params(parent_company: String).void }
-      attr_writer :parent_company
+      attr_accessor :parent_company
 
       sig do
         params(
@@ -53,7 +50,7 @@ module Lithic
           legal_business_name: String,
           phone_numbers: T::Array[String],
           dba_business_name: String,
-          parent_company: String
+          parent_company: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -85,7 +82,7 @@ module Lithic
             legal_business_name: String,
             phone_numbers: T::Array[String],
             dba_business_name: String,
-            parent_company: String
+            parent_company: T.nilable(String)
           }
         )
       end

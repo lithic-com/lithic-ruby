@@ -42,7 +42,7 @@ module Lithic
       #   Parent company name (if applicable).
       #
       #   @return [String, nil]
-      optional :parent_company, String
+      optional :parent_company, String, nil?: true
 
       # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
       #   Some parameter documentations has been truncated, see
@@ -58,7 +58,7 @@ module Lithic
       #
       #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
       #
-      #   @param parent_company [String] Parent company name (if applicable).
+      #   @param parent_company [String, nil] Parent company name (if applicable).
 
       # @see Lithic::Models::KYBBusinessEntity#address
       class Address < Lithic::Internal::Type::BaseModel
