@@ -1381,13 +1381,26 @@ module Lithic
             )
           end
 
-        # The phone number used for sending Authorization Challenge SMS.
-        sig { returns(String) }
+        # The method used to deliver the challenge to the cardholder
+        #
+        # - `SMS` - Challenge was delivered via SMS
+        # - `OUT_OF_BAND` - Challenge was delivered via an out-of-band method
+        sig do
+          returns(
+            Lithic::CardAuthorization::LatestChallenge::Method::TaggedSymbol
+          )
+        end
+        attr_accessor :method_
+
+        # The phone number used for sending the Authorization Challenge. Present only when
+        # the challenge method is `SMS`.
+        sig { returns(T.nilable(String)) }
         attr_accessor :phone_number
 
         # The status of the Authorization Challenge
         #
         # - `COMPLETED` - Challenge was successfully completed by the cardholder
+        # - `DECLINED` - Challenge was declined by the cardholder
         # - `PENDING` - Challenge is still open
         # - `EXPIRED` - Challenge has expired without being completed
         # - `ERROR` - There was an error processing the challenge
@@ -1410,18 +1423,27 @@ module Lithic
         # merchant.
         sig do
           params(
-            phone_number: String,
+            method_:
+              Lithic::CardAuthorization::LatestChallenge::Method::OrSymbol,
+            phone_number: T.nilable(String),
             status:
               Lithic::CardAuthorization::LatestChallenge::Status::OrSymbol,
             completed_at: Time
           ).returns(T.attached_class)
         end
         def self.new(
-          # The phone number used for sending Authorization Challenge SMS.
+          # The method used to deliver the challenge to the cardholder
+          #
+          # - `SMS` - Challenge was delivered via SMS
+          # - `OUT_OF_BAND` - Challenge was delivered via an out-of-band method
+          method_:,
+          # The phone number used for sending the Authorization Challenge. Present only when
+          # the challenge method is `SMS`.
           phone_number:,
           # The status of the Authorization Challenge
           #
           # - `COMPLETED` - Challenge was successfully completed by the cardholder
+          # - `DECLINED` - Challenge was declined by the cardholder
           # - `PENDING` - Challenge is still open
           # - `EXPIRED` - Challenge has expired without being completed
           # - `ERROR` - There was an error processing the challenge
@@ -1435,7 +1457,9 @@ module Lithic
         sig do
           override.returns(
             {
-              phone_number: String,
+              method_:
+                Lithic::CardAuthorization::LatestChallenge::Method::TaggedSymbol,
+              phone_number: T.nilable(String),
               status:
                 Lithic::CardAuthorization::LatestChallenge::Status::TaggedSymbol,
               completed_at: Time
@@ -1445,9 +1469,45 @@ module Lithic
         def to_hash
         end
 
+        # The method used to deliver the challenge to the cardholder
+        #
+        # - `SMS` - Challenge was delivered via SMS
+        # - `OUT_OF_BAND` - Challenge was delivered via an out-of-band method
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::CardAuthorization::LatestChallenge::Method)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SMS =
+            T.let(
+              :SMS,
+              Lithic::CardAuthorization::LatestChallenge::Method::TaggedSymbol
+            )
+          OUT_OF_BAND =
+            T.let(
+              :OUT_OF_BAND,
+              Lithic::CardAuthorization::LatestChallenge::Method::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::CardAuthorization::LatestChallenge::Method::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
         # The status of the Authorization Challenge
         #
         # - `COMPLETED` - Challenge was successfully completed by the cardholder
+        # - `DECLINED` - Challenge was declined by the cardholder
         # - `PENDING` - Challenge is still open
         # - `EXPIRED` - Challenge has expired without being completed
         # - `ERROR` - There was an error processing the challenge
@@ -1463,6 +1523,11 @@ module Lithic
           COMPLETED =
             T.let(
               :COMPLETED,
+              Lithic::CardAuthorization::LatestChallenge::Status::TaggedSymbol
+            )
+          DECLINED =
+            T.let(
+              :DECLINED,
               Lithic::CardAuthorization::LatestChallenge::Status::TaggedSymbol
             )
           PENDING =
