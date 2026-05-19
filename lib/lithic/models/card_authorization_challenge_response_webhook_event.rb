@@ -81,6 +81,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         SMS = :SMS
+        OUT_OF_BAND = :OUT_OF_BAND
 
         # @!method self.values
         #   @return [Array<Symbol>]

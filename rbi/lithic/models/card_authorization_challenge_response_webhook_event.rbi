@@ -124,6 +124,11 @@ module Lithic
             :SMS,
             Lithic::CardAuthorizationChallengeResponseWebhookEvent::ChallengeMethod::TaggedSymbol
           )
+        OUT_OF_BAND =
+          T.let(
+            :OUT_OF_BAND,
+            Lithic::CardAuthorizationChallengeResponseWebhookEvent::ChallengeMethod::TaggedSymbol
+          )
 
         sig do
           override.returns(

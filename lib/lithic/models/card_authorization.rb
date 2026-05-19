@@ -793,16 +793,27 @@ module Lithic
 
       # @see Lithic::Models::CardAuthorization#latest_challenge
       class LatestChallenge < Lithic::Internal::Type::BaseModel
-        # @!attribute phone_number
-        #   The phone number used for sending Authorization Challenge SMS.
+        # @!attribute method_
+        #   The method used to deliver the challenge to the cardholder
         #
-        #   @return [String]
-        required :phone_number, String
+        #   - `SMS` - Challenge was delivered via SMS
+        #   - `OUT_OF_BAND` - Challenge was delivered via an out-of-band method
+        #
+        #   @return [Symbol, Lithic::Models::CardAuthorization::LatestChallenge::Method]
+        required :method_, enum: -> { Lithic::CardAuthorization::LatestChallenge::Method }, api_name: :method
+
+        # @!attribute phone_number
+        #   The phone number used for sending the Authorization Challenge. Present only when
+        #   the challenge method is `SMS`.
+        #
+        #   @return [String, nil]
+        required :phone_number, String, nil?: true
 
         # @!attribute status
         #   The status of the Authorization Challenge
         #
         #   - `COMPLETED` - Challenge was successfully completed by the cardholder
+        #   - `DECLINED` - Challenge was declined by the cardholder
         #   - `PENDING` - Challenge is still open
         #   - `EXPIRED` - Challenge has expired without being completed
         #   - `ERROR` - There was an error processing the challenge
@@ -817,22 +828,41 @@ module Lithic
         #   @return [Time, nil]
         optional :completed_at, Time
 
-        # @!method initialize(phone_number:, status:, completed_at: nil)
+        # @!method initialize(method_:, phone_number:, status:, completed_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::CardAuthorization::LatestChallenge} for more details.
         #
         #   The latest Authorization Challenge that was issued to the cardholder for this
         #   merchant.
         #
-        #   @param phone_number [String] The phone number used for sending Authorization Challenge SMS.
+        #   @param method_ [Symbol, Lithic::Models::CardAuthorization::LatestChallenge::Method] The method used to deliver the challenge to the cardholder
+        #
+        #   @param phone_number [String, nil] The phone number used for sending the Authorization Challenge. Present only when
         #
         #   @param status [Symbol, Lithic::Models::CardAuthorization::LatestChallenge::Status] The status of the Authorization Challenge
         #
         #   @param completed_at [Time] The date and time when the Authorization Challenge was completed in UTC. Present
 
+        # The method used to deliver the challenge to the cardholder
+        #
+        # - `SMS` - Challenge was delivered via SMS
+        # - `OUT_OF_BAND` - Challenge was delivered via an out-of-band method
+        #
+        # @see Lithic::Models::CardAuthorization::LatestChallenge#method_
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          SMS = :SMS
+          OUT_OF_BAND = :OUT_OF_BAND
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # The status of the Authorization Challenge
         #
         # - `COMPLETED` - Challenge was successfully completed by the cardholder
+        # - `DECLINED` - Challenge was declined by the cardholder
         # - `PENDING` - Challenge is still open
         # - `EXPIRED` - Challenge has expired without being completed
         # - `ERROR` - There was an error processing the challenge
@@ -842,6 +872,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           COMPLETED = :COMPLETED
+          DECLINED = :DECLINED
           PENDING = :PENDING
           EXPIRED = :EXPIRED
           ERROR = :ERROR

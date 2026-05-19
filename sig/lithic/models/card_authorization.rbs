@@ -588,13 +588,16 @@ module Lithic
 
       type latest_challenge =
         {
-          phone_number: String,
+          method_: Lithic::Models::CardAuthorization::LatestChallenge::method_,
+          phone_number: String?,
           status: Lithic::Models::CardAuthorization::LatestChallenge::status,
           completed_at: Time
         }
 
       class LatestChallenge < Lithic::Internal::Type::BaseModel
-        attr_accessor phone_number: String
+        attr_accessor method_: Lithic::Models::CardAuthorization::LatestChallenge::method_
+
+        attr_accessor phone_number: String?
 
         attr_accessor status: Lithic::Models::CardAuthorization::LatestChallenge::status
 
@@ -603,23 +606,37 @@ module Lithic
         def completed_at=: (Time) -> Time
 
         def initialize: (
-          phone_number: String,
+          method_: Lithic::Models::CardAuthorization::LatestChallenge::method_,
+          phone_number: String?,
           status: Lithic::Models::CardAuthorization::LatestChallenge::status,
           ?completed_at: Time
         ) -> void
 
         def to_hash: -> {
-          phone_number: String,
+          method_: Lithic::Models::CardAuthorization::LatestChallenge::method_,
+          phone_number: String?,
           status: Lithic::Models::CardAuthorization::LatestChallenge::status,
           completed_at: Time
         }
 
-        type status = :COMPLETED | :PENDING | :EXPIRED | :ERROR
+        type method_ = :SMS | :OUT_OF_BAND
+
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          SMS: :SMS
+          OUT_OF_BAND: :OUT_OF_BAND
+
+          def self?.values: -> ::Array[Lithic::Models::CardAuthorization::LatestChallenge::method_]
+        end
+
+        type status = :COMPLETED | :DECLINED | :PENDING | :EXPIRED | :ERROR
 
         module Status
           extend Lithic::Internal::Type::Enum
 
           COMPLETED: :COMPLETED
+          DECLINED: :DECLINED
           PENDING: :PENDING
           EXPIRED: :EXPIRED
           ERROR: :ERROR
