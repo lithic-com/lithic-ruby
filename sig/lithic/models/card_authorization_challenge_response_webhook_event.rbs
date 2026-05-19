@@ -51,12 +51,13 @@ module Lithic
         transaction_token: String?
       }
 
-      type challenge_method = :SMS
+      type challenge_method = :SMS | :OUT_OF_BAND
 
       module ChallengeMethod
         extend Lithic::Internal::Type::Enum
 
         SMS: :SMS
+        OUT_OF_BAND: :OUT_OF_BAND
 
         def self?.values: -> ::Array[Lithic::Models::CardAuthorizationChallengeResponseWebhookEvent::challenge_method]
       end
