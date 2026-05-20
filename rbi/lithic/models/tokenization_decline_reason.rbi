@@ -60,6 +60,8 @@ module Lithic
           :DIGITAL_CARD_ART_REQUIRED,
           Lithic::TokenizationDeclineReason::TaggedSymbol
         )
+      INVALID_PAN =
+        T.let(:INVALID_PAN, Lithic::TokenizationDeclineReason::TaggedSymbol)
 
       sig do
         override.returns(

@@ -19,6 +19,7 @@ module Lithic
       NETWORK_FAILURE = :NETWORK_FAILURE
       GENERIC_DECLINE = :GENERIC_DECLINE
       DIGITAL_CARD_ART_REQUIRED = :DIGITAL_CARD_ART_REQUIRED
+      INVALID_PAN = :INVALID_PAN
 
       # @!method self.values
       #   @return [Array<Symbol>]

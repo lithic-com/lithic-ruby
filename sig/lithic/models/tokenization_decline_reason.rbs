@@ -14,6 +14,7 @@ module Lithic
       | :NETWORK_FAILURE
       | :GENERIC_DECLINE
       | :DIGITAL_CARD_ART_REQUIRED
+      | :INVALID_PAN
 
     module TokenizationDeclineReason
       extend Lithic::Internal::Type::Enum
@@ -31,6 +32,7 @@ module Lithic
       NETWORK_FAILURE: :NETWORK_FAILURE
       GENERIC_DECLINE: :GENERIC_DECLINE
       DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
+      INVALID_PAN: :INVALID_PAN
 
       def self?.values: -> ::Array[Lithic::Models::tokenization_decline_reason]
     end
