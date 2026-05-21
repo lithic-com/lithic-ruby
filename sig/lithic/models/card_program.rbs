@@ -8,7 +8,7 @@ module Lithic
         name: String,
         pan_range_end: String,
         pan_range_start: String,
-        cardholder_currency: String,
+        cardholder_currency: String?,
         settlement_currencies: ::Array[String]
       }
 
@@ -25,9 +25,7 @@ module Lithic
 
       attr_accessor pan_range_start: String
 
-      attr_reader cardholder_currency: String?
-
-      def cardholder_currency=: (String) -> String
+      attr_accessor cardholder_currency: String?
 
       attr_reader settlement_currencies: ::Array[String]?
 
@@ -40,7 +38,7 @@ module Lithic
         name: String,
         pan_range_end: String,
         pan_range_start: String,
-        ?cardholder_currency: String,
+        ?cardholder_currency: String?,
         ?settlement_currencies: ::Array[String]
       ) -> void
 
@@ -51,7 +49,7 @@ module Lithic
         name: String,
         pan_range_end: String,
         pan_range_start: String,
-        cardholder_currency: String,
+        cardholder_currency: String?,
         settlement_currencies: ::Array[String]
       }
     end

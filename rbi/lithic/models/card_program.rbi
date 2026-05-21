@@ -33,10 +33,7 @@ module Lithic
 
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
-      attr_reader :cardholder_currency
-
-      sig { params(cardholder_currency: String).void }
-      attr_writer :cardholder_currency
+      attr_accessor :cardholder_currency
 
       # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
       # program supports for settlement.
@@ -54,7 +51,7 @@ module Lithic
           name: String,
           pan_range_end: String,
           pan_range_start: String,
-          cardholder_currency: String,
+          cardholder_currency: T.nilable(String),
           settlement_currencies: T::Array[String]
         ).returns(T.attached_class)
       end
@@ -89,7 +86,7 @@ module Lithic
             name: String,
             pan_range_end: String,
             pan_range_start: String,
-            cardholder_currency: String,
+            cardholder_currency: T.nilable(String),
             settlement_currencies: T::Array[String]
           }
         )
