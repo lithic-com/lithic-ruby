@@ -45,7 +45,7 @@ module Lithic
       #   3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
       #   @return [String, nil]
-      optional :cardholder_currency, String
+      optional :cardholder_currency, String, nil?: true
 
       # @!attribute settlement_currencies
       #   List of 3-character alphabetic ISO 4217 codes for the currencies that the card
@@ -70,7 +70,7 @@ module Lithic
       #
       #   @param pan_range_start [String] The first digits of the card number that this card program starts with.
       #
-      #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      #   @param cardholder_currency [String, nil] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
       #   @param settlement_currencies [Array<String>] List of 3-character alphabetic ISO 4217 codes for the currencies that the card p
     end
