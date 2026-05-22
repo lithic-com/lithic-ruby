@@ -149,6 +149,7 @@ module Lithic
         | :QUARTERLY_REVERSAL
         | :MONTHLY
         | :MONTHLY_REVERSAL
+        | :ACCOUNT_TO_ACCOUNT
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -240,6 +241,7 @@ module Lithic
         QUARTERLY_REVERSAL: :QUARTERLY_REVERSAL
         MONTHLY: :MONTHLY
         MONTHLY_REVERSAL: :MONTHLY_REVERSAL
+        ACCOUNT_TO_ACCOUNT: :ACCOUNT_TO_ACCOUNT
 
         def self?.values: -> ::Array[Lithic::Models::FinancialEvent::type_]
       end

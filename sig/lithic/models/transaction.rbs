@@ -698,7 +698,7 @@ module Lithic
           rule_results: ::Array[Lithic::Transaction::Event::RuleResult],
           type: Lithic::Models::Transaction::Event::type_,
           account_type: Lithic::Models::Transaction::Event::account_type,
-          network_specific_data: Lithic::Transaction::Event::NetworkSpecificData
+          network_specific_data: Lithic::Transaction::Event::NetworkSpecificData?
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -728,11 +728,7 @@ module Lithic
           Lithic::Models::Transaction::Event::account_type
         ) -> Lithic::Models::Transaction::Event::account_type
 
-        attr_reader network_specific_data: Lithic::Transaction::Event::NetworkSpecificData?
-
-        def network_specific_data=: (
-          Lithic::Transaction::Event::NetworkSpecificData
-        ) -> Lithic::Transaction::Event::NetworkSpecificData
+        attr_accessor network_specific_data: Lithic::Transaction::Event::NetworkSpecificData?
 
         def initialize: (
           token: String,
@@ -746,7 +742,7 @@ module Lithic
           rule_results: ::Array[Lithic::Transaction::Event::RuleResult],
           type: Lithic::Models::Transaction::Event::type_,
           ?account_type: Lithic::Models::Transaction::Event::account_type,
-          ?network_specific_data: Lithic::Transaction::Event::NetworkSpecificData
+          ?network_specific_data: Lithic::Transaction::Event::NetworkSpecificData?
         ) -> void
 
         def to_hash: -> {
@@ -761,7 +757,7 @@ module Lithic
           rule_results: ::Array[Lithic::Transaction::Event::RuleResult],
           type: Lithic::Models::Transaction::Event::type_,
           account_type: Lithic::Models::Transaction::Event::account_type,
-          network_specific_data: Lithic::Transaction::Event::NetworkSpecificData
+          network_specific_data: Lithic::Transaction::Event::NetworkSpecificData?
         }
 
         type amounts =

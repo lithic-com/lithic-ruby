@@ -22,8 +22,8 @@ module Lithic
           updated: Time,
           ytd_totals: Lithic::StatementTotals,
           interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
-          next_payment_due_date: Date,
-          next_statement_end_date: Date,
+          next_payment_due_date: Date?,
+          next_statement_end_date: Date?,
           payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?,
           statement_totals: Lithic::StatementTotals
         }
@@ -67,13 +67,9 @@ module Lithic
 
         attr_accessor interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?
 
-        attr_reader next_payment_due_date: Date?
+        attr_accessor next_payment_due_date: Date?
 
-        def next_payment_due_date=: (Date) -> Date
-
-        attr_reader next_statement_end_date: Date?
-
-        def next_statement_end_date=: (Date) -> Date
+        attr_accessor next_statement_end_date: Date?
 
         attr_accessor payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?
 
@@ -103,8 +99,8 @@ module Lithic
           updated: Time,
           ytd_totals: Lithic::StatementTotals,
           ?interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
-          ?next_payment_due_date: Date,
-          ?next_statement_end_date: Date,
+          ?next_payment_due_date: Date?,
+          ?next_statement_end_date: Date?,
           ?payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?,
           ?statement_totals: Lithic::StatementTotals
         ) -> void
@@ -129,8 +125,8 @@ module Lithic
           updated: Time,
           ytd_totals: Lithic::StatementTotals,
           interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
-          next_payment_due_date: Date,
-          next_statement_end_date: Date,
+          next_payment_due_date: Date?,
+          next_statement_end_date: Date?,
           payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails?,
           statement_totals: Lithic::StatementTotals
         }

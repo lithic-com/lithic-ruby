@@ -104,14 +104,14 @@ module Lithic
             #   Amount originated towards limit
             #
             #   @return [Integer, nil]
-            optional :amount_originated, Integer
+            optional :amount_originated, Integer, nil?: true
 
             # @!method initialize(limit:, amount_originated: nil)
             #   Credit limits
             #
             #   @param limit [Integer] The limit amount
             #
-            #   @param amount_originated [Integer] Amount originated towards limit
+            #   @param amount_originated [Integer, nil] Amount originated towards limit
           end
 
           # @see Lithic::Models::TransferLimitsResponse::Data::DailyLimit#debit
@@ -126,14 +126,14 @@ module Lithic
             #   Amount originated towards limit
             #
             #   @return [Integer, nil]
-            optional :amount_originated, Integer
+            optional :amount_originated, Integer, nil?: true
 
             # @!method initialize(limit:, amount_originated: nil)
             #   Debit limits
             #
             #   @param limit [Integer] The limit amount
             #
-            #   @param amount_originated [Integer] Amount originated towards limit
+            #   @param amount_originated [Integer, nil] Amount originated towards limit
           end
         end
 
@@ -170,14 +170,14 @@ module Lithic
             #   Amount originated towards limit
             #
             #   @return [Integer, nil]
-            optional :amount_originated, Integer
+            optional :amount_originated, Integer, nil?: true
 
             # @!method initialize(limit:, amount_originated: nil)
             #   Credit limits
             #
             #   @param limit [Integer] The limit amount
             #
-            #   @param amount_originated [Integer] Amount originated towards limit
+            #   @param amount_originated [Integer, nil] Amount originated towards limit
           end
 
           # @see Lithic::Models::TransferLimitsResponse::Data::MonthlyLimit#debit
@@ -192,14 +192,14 @@ module Lithic
             #   Amount originated towards limit
             #
             #   @return [Integer, nil]
-            optional :amount_originated, Integer
+            optional :amount_originated, Integer, nil?: true
 
             # @!method initialize(limit:, amount_originated: nil)
             #   Debit limits
             #
             #   @param limit [Integer] The limit amount
             #
-            #   @param amount_originated [Integer] Amount originated towards limit
+            #   @param amount_originated [Integer, nil] Amount originated towards limit
           end
         end
 
@@ -236,14 +236,14 @@ module Lithic
             #   Amount originated towards limit
             #
             #   @return [Integer, nil]
-            optional :amount_originated, Integer
+            optional :amount_originated, Integer, nil?: true
 
             # @!method initialize(limit:, amount_originated: nil)
             #   Credit limits
             #
             #   @param limit [Integer] The limit amount
             #
-            #   @param amount_originated [Integer] Amount originated towards limit
+            #   @param amount_originated [Integer, nil] Amount originated towards limit
           end
 
           # @see Lithic::Models::TransferLimitsResponse::Data::ProgramLimitPerTransaction#debit
@@ -258,14 +258,14 @@ module Lithic
             #   Amount originated towards limit
             #
             #   @return [Integer, nil]
-            optional :amount_originated, Integer
+            optional :amount_originated, Integer, nil?: true
 
             # @!method initialize(limit:, amount_originated: nil)
             #   Debit limits
             #
             #   @param limit [Integer] The limit amount
             #
-            #   @param amount_originated [Integer] Amount originated towards limit
+            #   @param amount_originated [Integer, nil] Amount originated towards limit
           end
         end
       end

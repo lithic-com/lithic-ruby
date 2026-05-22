@@ -124,17 +124,11 @@ module Lithic
 
         # Date when the next payment is due
         sig { returns(T.nilable(Date)) }
-        attr_reader :next_payment_due_date
-
-        sig { params(next_payment_due_date: Date).void }
-        attr_writer :next_payment_due_date
+        attr_accessor :next_payment_due_date
 
         # Date when the next billing period will end
         sig { returns(T.nilable(Date)) }
-        attr_reader :next_statement_end_date
-
-        sig { params(next_statement_end_date: Date).void }
-        attr_writer :next_statement_end_date
+        attr_accessor :next_statement_end_date
 
         # Details on number and size of payments to pay off balance
         sig do
@@ -186,8 +180,8 @@ module Lithic
               T.nilable(
                 Lithic::FinancialAccounts::Statement::InterestDetails::OrHash
               ),
-            next_payment_due_date: Date,
-            next_statement_end_date: Date,
+            next_payment_due_date: T.nilable(Date),
+            next_statement_end_date: T.nilable(Date),
             payoff_details:
               T.nilable(
                 Lithic::FinancialAccounts::Statement::PayoffDetails::OrHash
@@ -266,8 +260,8 @@ module Lithic
                 T.nilable(
                   Lithic::FinancialAccounts::Statement::InterestDetails
                 ),
-              next_payment_due_date: Date,
-              next_statement_end_date: Date,
+              next_payment_due_date: T.nilable(Date),
+              next_statement_end_date: T.nilable(Date),
               payoff_details:
                 T.nilable(Lithic::FinancialAccounts::Statement::PayoffDetails),
               statement_totals: Lithic::StatementTotals

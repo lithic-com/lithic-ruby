@@ -43,24 +43,15 @@ module Lithic
 
       # Breakdown of credits
       sig { returns(T.nilable(T.anything)) }
-      attr_reader :credit_details
-
-      sig { params(credit_details: T.anything).void }
-      attr_writer :credit_details
+      attr_accessor :credit_details
 
       # Breakdown of debits
       sig { returns(T.nilable(T.anything)) }
-      attr_reader :debit_details
-
-      sig { params(debit_details: T.anything).void }
-      attr_writer :debit_details
+      attr_accessor :debit_details
 
       # Breakdown of payments
       sig { returns(T.nilable(T.anything)) }
-      attr_reader :payment_details
-
-      sig { params(payment_details: T.anything).void }
-      attr_writer :payment_details
+      attr_accessor :payment_details
 
       sig do
         params(
@@ -72,9 +63,9 @@ module Lithic
           interest: Integer,
           payments: Integer,
           purchases: Integer,
-          credit_details: T.anything,
-          debit_details: T.anything,
-          payment_details: T.anything
+          credit_details: T.nilable(T.anything),
+          debit_details: T.nilable(T.anything),
+          payment_details: T.nilable(T.anything)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -115,9 +106,9 @@ module Lithic
             interest: Integer,
             payments: Integer,
             purchases: Integer,
-            credit_details: T.anything,
-            debit_details: T.anything,
-            payment_details: T.anything
+            credit_details: T.nilable(T.anything),
+            debit_details: T.nilable(T.anything),
+            payment_details: T.nilable(T.anything)
           }
         )
       end

@@ -874,7 +874,7 @@ module Lithic
         # @!attribute network_specific_data
         #
         #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData, nil]
-        optional :network_specific_data, -> { Lithic::Transaction::Event::NetworkSpecificData }
+        optional :network_specific_data, -> { Lithic::Transaction::Event::NetworkSpecificData }, nil?: true
 
         # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:, account_type: nil, network_specific_data: nil)
         #   Some parameter documentations has been truncated, see
@@ -902,7 +902,7 @@ module Lithic
         #
         #   @param account_type [Symbol, Lithic::Models::Transaction::Event::AccountType]
         #
-        #   @param network_specific_data [Lithic::Models::Transaction::Event::NetworkSpecificData]
+        #   @param network_specific_data [Lithic::Models::Transaction::Event::NetworkSpecificData, nil]
 
         # @see Lithic::Models::Transaction::Event#amounts
         class Amounts < Lithic::Internal::Type::BaseModel

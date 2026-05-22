@@ -155,6 +155,7 @@ module Lithic
         QUARTERLY_REVERSAL = :QUARTERLY_REVERSAL
         MONTHLY = :MONTHLY
         MONTHLY_REVERSAL = :MONTHLY_REVERSAL
+        ACCOUNT_TO_ACCOUNT = :ACCOUNT_TO_ACCOUNT
 
         # @!method self.values
         #   @return [Array<Symbol>]
