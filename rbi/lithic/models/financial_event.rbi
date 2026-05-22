@@ -457,6 +457,8 @@ module Lithic
         MONTHLY = T.let(:MONTHLY, Lithic::FinancialEvent::Type::TaggedSymbol)
         MONTHLY_REVERSAL =
           T.let(:MONTHLY_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
+        ACCOUNT_TO_ACCOUNT =
+          T.let(:ACCOUNT_TO_ACCOUNT, Lithic::FinancialEvent::Type::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::FinancialEvent::Type::TaggedSymbol])

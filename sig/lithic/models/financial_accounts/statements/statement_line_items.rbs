@@ -37,7 +37,7 @@ module Lithic
               financial_account_token: String,
               financial_transaction_event_token: String,
               financial_transaction_token: String,
-              card_token: String,
+              card_token: String?,
               descriptor: String,
               event_subtype: String?,
               loan_tape_date: Date?
@@ -64,9 +64,7 @@ module Lithic
 
             attr_accessor financial_transaction_token: String
 
-            attr_reader card_token: String?
-
-            def card_token=: (String) -> String
+            attr_accessor card_token: String?
 
             attr_reader descriptor: String?
 
@@ -87,7 +85,7 @@ module Lithic
               financial_account_token: String,
               financial_transaction_event_token: String,
               financial_transaction_token: String,
-              ?card_token: String,
+              ?card_token: String?,
               ?descriptor: String,
               ?event_subtype: String?,
               ?loan_tape_date: Date?
@@ -104,7 +102,7 @@ module Lithic
               financial_account_token: String,
               financial_transaction_event_token: String,
               financial_transaction_token: String,
-              card_token: String,
+              card_token: String?,
               descriptor: String,
               event_subtype: String?,
               loan_tape_date: Date?
@@ -251,6 +249,7 @@ module Lithic
               | :QUARTERLY_REVERSAL
               | :MONTHLY
               | :MONTHLY_REVERSAL
+              | :ACCOUNT_TO_ACCOUNT
 
             module EventType
               extend Lithic::Internal::Type::Enum
@@ -342,6 +341,7 @@ module Lithic
               QUARTERLY_REVERSAL: :QUARTERLY_REVERSAL
               MONTHLY: :MONTHLY
               MONTHLY_REVERSAL: :MONTHLY_REVERSAL
+              ACCOUNT_TO_ACCOUNT: :ACCOUNT_TO_ACCOUNT
 
               def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type]
             end

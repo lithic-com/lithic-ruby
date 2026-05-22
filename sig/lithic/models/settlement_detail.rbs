@@ -3,9 +3,9 @@ module Lithic
     type settlement_detail =
       {
         token: String,
-        account_token: String,
-        card_program_token: String,
-        card_token: String,
+        account_token: String?,
+        card_program_token: String?,
+        card_token: String?,
         created: Time,
         currency: String,
         disputes_gross_amount: Integer,
@@ -18,7 +18,7 @@ module Lithic
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
-        transaction_token: String,
+        transaction_token: String?,
         transactions_gross_amount: Integer,
         type: Lithic::Models::SettlementDetail::type_,
         updated: Time,
@@ -28,11 +28,11 @@ module Lithic
     class SettlementDetail < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor account_token: String
+      attr_accessor account_token: String?
 
-      attr_accessor card_program_token: String
+      attr_accessor card_program_token: String?
 
-      attr_accessor card_token: String
+      attr_accessor card_token: String?
 
       attr_accessor created: Time
 
@@ -58,7 +58,7 @@ module Lithic
 
       attr_accessor settlement_date: String
 
-      attr_accessor transaction_token: String
+      attr_accessor transaction_token: String?
 
       attr_accessor transactions_gross_amount: Integer
 
@@ -72,9 +72,9 @@ module Lithic
 
       def initialize: (
         token: String,
-        account_token: String,
-        card_program_token: String,
-        card_token: String,
+        account_token: String?,
+        card_program_token: String?,
+        card_token: String?,
         created: Time,
         currency: String,
         disputes_gross_amount: Integer,
@@ -87,7 +87,7 @@ module Lithic
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
-        transaction_token: String,
+        transaction_token: String?,
         transactions_gross_amount: Integer,
         type: Lithic::Models::SettlementDetail::type_,
         updated: Time,
@@ -96,9 +96,9 @@ module Lithic
 
       def to_hash: -> {
         token: String,
-        account_token: String,
-        card_program_token: String,
-        card_token: String,
+        account_token: String?,
+        card_program_token: String?,
+        card_token: String?,
         created: Time,
         currency: String,
         disputes_gross_amount: Integer,
@@ -111,7 +111,7 @@ module Lithic
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
-        transaction_token: String,
+        transaction_token: String?,
         transactions_gross_amount: Integer,
         type: Lithic::Models::SettlementDetail::type_,
         updated: Time,
@@ -154,7 +154,7 @@ module Lithic
         | :COLLABORATION
         | :FEE
         | :FINANCIAL
-        | :"NON-FINANCIAL"
+        | :NON_FINANCIAL
         | :PREARBITRATION
         | :REPRESENTMENT
 
@@ -168,7 +168,7 @@ module Lithic
         COLLABORATION: :COLLABORATION
         FEE: :FEE
         FINANCIAL: :FINANCIAL
-        NON_FINANCIAL: :"NON-FINANCIAL"
+        NON_FINANCIAL: :NON_FINANCIAL
         PREARBITRATION: :PREARBITRATION
         REPRESENTMENT: :REPRESENTMENT
 

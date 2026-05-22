@@ -56,19 +56,19 @@ module Lithic
       #   Breakdown of credits
       #
       #   @return [Object, nil]
-      optional :credit_details, Lithic::Internal::Type::Unknown
+      optional :credit_details, Lithic::Internal::Type::Unknown, nil?: true
 
       # @!attribute debit_details
       #   Breakdown of debits
       #
       #   @return [Object, nil]
-      optional :debit_details, Lithic::Internal::Type::Unknown
+      optional :debit_details, Lithic::Internal::Type::Unknown, nil?: true
 
       # @!attribute payment_details
       #   Breakdown of payments
       #
       #   @return [Object, nil]
-      optional :payment_details, Lithic::Internal::Type::Unknown
+      optional :payment_details, Lithic::Internal::Type::Unknown, nil?: true
 
       # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil, payment_details: nil)
       #   Some parameter documentations has been truncated, see
@@ -90,11 +90,11 @@ module Lithic
       #
       #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
       #
-      #   @param credit_details [Object] Breakdown of credits
+      #   @param credit_details [Object, nil] Breakdown of credits
       #
-      #   @param debit_details [Object] Breakdown of debits
+      #   @param debit_details [Object, nil] Breakdown of debits
       #
-      #   @param payment_details [Object] Breakdown of payments
+      #   @param payment_details [Object, nil] Breakdown of payments
     end
   end
 end

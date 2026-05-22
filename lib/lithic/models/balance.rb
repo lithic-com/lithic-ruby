@@ -38,15 +38,15 @@ module Lithic
       #   Globally unique identifier for the last financial transaction event that
       #   impacted this balance.
       #
-      #   @return [String]
-      required :last_transaction_event_token, String
+      #   @return [String, nil]
+      required :last_transaction_event_token, String, nil?: true
 
       # @!attribute last_transaction_token
       #   Globally unique identifier for the last financial transaction that impacted this
       #   balance.
       #
-      #   @return [String]
-      required :last_transaction_token, String
+      #   @return [String, nil]
+      required :last_transaction_token, String, nil?: true
 
       # @!attribute pending_amount
       #   Funds not available for spend due to card authorizations or pending ACH release.
@@ -84,9 +84,9 @@ module Lithic
       #
       #   @param financial_account_type [Symbol, Lithic::Models::Balance::FinancialAccountType] Type of financial account.
       #
-      #   @param last_transaction_event_token [String] Globally unique identifier for the last financial transaction event that impacte
+      #   @param last_transaction_event_token [String, nil] Globally unique identifier for the last financial transaction event that impacte
       #
-      #   @param last_transaction_token [String] Globally unique identifier for the last financial transaction that impacted this
+      #   @param last_transaction_token [String, nil] Globally unique identifier for the last financial transaction that impacted this
       #
       #   @param pending_amount [Integer] Funds not available for spend due to card authorizations or pending ACH release.
       #
@@ -100,8 +100,10 @@ module Lithic
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 
+        CARD = :CARD
         ISSUING = :ISSUING
         OPERATING = :OPERATING
+        PROGRAM_RECEIVABLES = :PROGRAM_RECEIVABLES
         RESERVE = :RESERVE
         SECURITY = :SECURITY
 

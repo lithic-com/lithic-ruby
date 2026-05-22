@@ -20,9 +20,9 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
     assert_pattern do
       row => {
         token: String,
-        account_token: String,
-        card_program_token: String,
-        card_token: String,
+        account_token: String | nil,
+        card_program_token: String | nil,
+        card_token: String | nil,
         created: Time,
         currency: String,
         disputes_gross_amount: Integer,
@@ -35,7 +35,7 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
-        transaction_token: String,
+        transaction_token: String | nil,
         transactions_gross_amount: Integer,
         type: Lithic::SettlementDetail::Type,
         updated: Time,
