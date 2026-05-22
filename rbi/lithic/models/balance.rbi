@@ -28,12 +28,12 @@ module Lithic
 
       # Globally unique identifier for the last financial transaction event that
       # impacted this balance.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :last_transaction_event_token
 
       # Globally unique identifier for the last financial transaction that impacted this
       # balance.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :last_transaction_token
 
       # Funds not available for spend due to card authorizations or pending ACH release.
@@ -59,8 +59,8 @@ module Lithic
           financial_account_token: String,
           financial_account_type:
             Lithic::Balance::FinancialAccountType::OrSymbol,
-          last_transaction_event_token: String,
-          last_transaction_token: String,
+          last_transaction_event_token: T.nilable(String),
+          last_transaction_token: T.nilable(String),
           pending_amount: Integer,
           total_amount: Integer,
           updated: Time
@@ -103,8 +103,8 @@ module Lithic
             financial_account_token: String,
             financial_account_type:
               Lithic::Balance::FinancialAccountType::TaggedSymbol,
-            last_transaction_event_token: String,
-            last_transaction_token: String,
+            last_transaction_event_token: T.nilable(String),
+            last_transaction_token: T.nilable(String),
             pending_amount: Integer,
             total_amount: Integer,
             updated: Time
@@ -122,10 +122,16 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::Balance::FinancialAccountType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        CARD = T.let(:CARD, Lithic::Balance::FinancialAccountType::TaggedSymbol)
         ISSUING =
           T.let(:ISSUING, Lithic::Balance::FinancialAccountType::TaggedSymbol)
         OPERATING =
           T.let(:OPERATING, Lithic::Balance::FinancialAccountType::TaggedSymbol)
+        PROGRAM_RECEIVABLES =
+          T.let(
+            :PROGRAM_RECEIVABLES,
+            Lithic::Balance::FinancialAccountType::TaggedSymbol
+          )
         RESERVE =
           T.let(:RESERVE, Lithic::Balance::FinancialAccountType::TaggedSymbol)
         SECURITY =

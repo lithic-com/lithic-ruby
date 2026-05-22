@@ -80,38 +80,34 @@ module Lithic
             debit: Lithic::TransferLimitsResponse::Data::DailyLimit::Debit
           }
 
-          type credit = { limit: Integer, amount_originated: Integer }
+          type credit = { limit: Integer, amount_originated: Integer? }
 
           class Credit < Lithic::Internal::Type::BaseModel
             attr_accessor limit: Integer
 
-            attr_reader amount_originated: Integer?
-
-            def amount_originated=: (Integer) -> Integer
+            attr_accessor amount_originated: Integer?
 
             def initialize: (
               limit: Integer,
-              ?amount_originated: Integer
+              ?amount_originated: Integer?
             ) -> void
 
-            def to_hash: -> { limit: Integer, amount_originated: Integer }
+            def to_hash: -> { limit: Integer, amount_originated: Integer? }
           end
 
-          type debit = { limit: Integer, amount_originated: Integer }
+          type debit = { limit: Integer, amount_originated: Integer? }
 
           class Debit < Lithic::Internal::Type::BaseModel
             attr_accessor limit: Integer
 
-            attr_reader amount_originated: Integer?
-
-            def amount_originated=: (Integer) -> Integer
+            attr_accessor amount_originated: Integer?
 
             def initialize: (
               limit: Integer,
-              ?amount_originated: Integer
+              ?amount_originated: Integer?
             ) -> void
 
-            def to_hash: -> { limit: Integer, amount_originated: Integer }
+            def to_hash: -> { limit: Integer, amount_originated: Integer? }
           end
         end
 
@@ -136,38 +132,34 @@ module Lithic
             debit: Lithic::TransferLimitsResponse::Data::MonthlyLimit::Debit
           }
 
-          type credit = { limit: Integer, amount_originated: Integer }
+          type credit = { limit: Integer, amount_originated: Integer? }
 
           class Credit < Lithic::Internal::Type::BaseModel
             attr_accessor limit: Integer
 
-            attr_reader amount_originated: Integer?
-
-            def amount_originated=: (Integer) -> Integer
+            attr_accessor amount_originated: Integer?
 
             def initialize: (
               limit: Integer,
-              ?amount_originated: Integer
+              ?amount_originated: Integer?
             ) -> void
 
-            def to_hash: -> { limit: Integer, amount_originated: Integer }
+            def to_hash: -> { limit: Integer, amount_originated: Integer? }
           end
 
-          type debit = { limit: Integer, amount_originated: Integer }
+          type debit = { limit: Integer, amount_originated: Integer? }
 
           class Debit < Lithic::Internal::Type::BaseModel
             attr_accessor limit: Integer
 
-            attr_reader amount_originated: Integer?
-
-            def amount_originated=: (Integer) -> Integer
+            attr_accessor amount_originated: Integer?
 
             def initialize: (
               limit: Integer,
-              ?amount_originated: Integer
+              ?amount_originated: Integer?
             ) -> void
 
-            def to_hash: -> { limit: Integer, amount_originated: Integer }
+            def to_hash: -> { limit: Integer, amount_originated: Integer? }
           end
         end
 
@@ -192,38 +184,34 @@ module Lithic
             debit: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction::Debit
           }
 
-          type credit = { limit: Integer, amount_originated: Integer }
+          type credit = { limit: Integer, amount_originated: Integer? }
 
           class Credit < Lithic::Internal::Type::BaseModel
             attr_accessor limit: Integer
 
-            attr_reader amount_originated: Integer?
-
-            def amount_originated=: (Integer) -> Integer
+            attr_accessor amount_originated: Integer?
 
             def initialize: (
               limit: Integer,
-              ?amount_originated: Integer
+              ?amount_originated: Integer?
             ) -> void
 
-            def to_hash: -> { limit: Integer, amount_originated: Integer }
+            def to_hash: -> { limit: Integer, amount_originated: Integer? }
           end
 
-          type debit = { limit: Integer, amount_originated: Integer }
+          type debit = { limit: Integer, amount_originated: Integer? }
 
           class Debit < Lithic::Internal::Type::BaseModel
             attr_accessor limit: Integer
 
-            attr_reader amount_originated: Integer?
-
-            def amount_originated=: (Integer) -> Integer
+            attr_accessor amount_originated: Integer?
 
             def initialize: (
               limit: Integer,
-              ?amount_originated: Integer
+              ?amount_originated: Integer?
             ) -> void
 
-            def to_hash: -> { limit: Integer, amount_originated: Integer }
+            def to_hash: -> { limit: Integer, amount_originated: Integer? }
           end
         end
       end

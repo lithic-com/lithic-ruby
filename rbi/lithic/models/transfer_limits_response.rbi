@@ -228,16 +228,14 @@ module Lithic
 
             # Amount originated towards limit
             sig { returns(T.nilable(Integer)) }
-            attr_reader :amount_originated
-
-            sig { params(amount_originated: Integer).void }
-            attr_writer :amount_originated
+            attr_accessor :amount_originated
 
             # Credit limits
             sig do
-              params(limit: Integer, amount_originated: Integer).returns(
-                T.attached_class
-              )
+              params(
+                limit: Integer,
+                amount_originated: T.nilable(Integer)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The limit amount
@@ -248,7 +246,9 @@ module Lithic
             end
 
             sig do
-              override.returns({ limit: Integer, amount_originated: Integer })
+              override.returns(
+                { limit: Integer, amount_originated: T.nilable(Integer) }
+              )
             end
             def to_hash
             end
@@ -269,16 +269,14 @@ module Lithic
 
             # Amount originated towards limit
             sig { returns(T.nilable(Integer)) }
-            attr_reader :amount_originated
-
-            sig { params(amount_originated: Integer).void }
-            attr_writer :amount_originated
+            attr_accessor :amount_originated
 
             # Debit limits
             sig do
-              params(limit: Integer, amount_originated: Integer).returns(
-                T.attached_class
-              )
+              params(
+                limit: Integer,
+                amount_originated: T.nilable(Integer)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The limit amount
@@ -289,7 +287,9 @@ module Lithic
             end
 
             sig do
-              override.returns({ limit: Integer, amount_originated: Integer })
+              override.returns(
+                { limit: Integer, amount_originated: T.nilable(Integer) }
+              )
             end
             def to_hash
             end
@@ -377,16 +377,14 @@ module Lithic
 
             # Amount originated towards limit
             sig { returns(T.nilable(Integer)) }
-            attr_reader :amount_originated
-
-            sig { params(amount_originated: Integer).void }
-            attr_writer :amount_originated
+            attr_accessor :amount_originated
 
             # Credit limits
             sig do
-              params(limit: Integer, amount_originated: Integer).returns(
-                T.attached_class
-              )
+              params(
+                limit: Integer,
+                amount_originated: T.nilable(Integer)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The limit amount
@@ -397,7 +395,9 @@ module Lithic
             end
 
             sig do
-              override.returns({ limit: Integer, amount_originated: Integer })
+              override.returns(
+                { limit: Integer, amount_originated: T.nilable(Integer) }
+              )
             end
             def to_hash
             end
@@ -418,16 +418,14 @@ module Lithic
 
             # Amount originated towards limit
             sig { returns(T.nilable(Integer)) }
-            attr_reader :amount_originated
-
-            sig { params(amount_originated: Integer).void }
-            attr_writer :amount_originated
+            attr_accessor :amount_originated
 
             # Debit limits
             sig do
-              params(limit: Integer, amount_originated: Integer).returns(
-                T.attached_class
-              )
+              params(
+                limit: Integer,
+                amount_originated: T.nilable(Integer)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The limit amount
@@ -438,7 +436,9 @@ module Lithic
             end
 
             sig do
-              override.returns({ limit: Integer, amount_originated: Integer })
+              override.returns(
+                { limit: Integer, amount_originated: T.nilable(Integer) }
+              )
             end
             def to_hash
             end
@@ -531,16 +531,14 @@ module Lithic
 
             # Amount originated towards limit
             sig { returns(T.nilable(Integer)) }
-            attr_reader :amount_originated
-
-            sig { params(amount_originated: Integer).void }
-            attr_writer :amount_originated
+            attr_accessor :amount_originated
 
             # Credit limits
             sig do
-              params(limit: Integer, amount_originated: Integer).returns(
-                T.attached_class
-              )
+              params(
+                limit: Integer,
+                amount_originated: T.nilable(Integer)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The limit amount
@@ -551,7 +549,9 @@ module Lithic
             end
 
             sig do
-              override.returns({ limit: Integer, amount_originated: Integer })
+              override.returns(
+                { limit: Integer, amount_originated: T.nilable(Integer) }
+              )
             end
             def to_hash
             end
@@ -572,16 +572,14 @@ module Lithic
 
             # Amount originated towards limit
             sig { returns(T.nilable(Integer)) }
-            attr_reader :amount_originated
-
-            sig { params(amount_originated: Integer).void }
-            attr_writer :amount_originated
+            attr_accessor :amount_originated
 
             # Debit limits
             sig do
-              params(limit: Integer, amount_originated: Integer).returns(
-                T.attached_class
-              )
+              params(
+                limit: Integer,
+                amount_originated: T.nilable(Integer)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The limit amount
@@ -592,7 +590,9 @@ module Lithic
             end
 
             sig do
-              override.returns({ limit: Integer, amount_originated: Integer })
+              override.returns(
+                { limit: Integer, amount_originated: T.nilable(Integer) }
+              )
             end
             def to_hash
             end

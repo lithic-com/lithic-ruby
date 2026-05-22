@@ -14,17 +14,17 @@ module Lithic
 
       # Globally unique identifier denoting the account that the associated transaction
       # occurred on.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :account_token
 
       # Globally unique identifier denoting the card program that the associated
       # transaction occurred on.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :card_program_token
 
       # Globally unique identifier denoting the card that the associated transaction
       # occurred on.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :card_token
 
       # Date and time when the transaction first occurred. UTC time zone.
@@ -87,12 +87,12 @@ module Lithic
       attr_accessor :settlement_date
 
       # Globally unique identifier denoting the associated transaction. For settlement
-      # records with type `CLEARING`, `FINANCIAL`, or `NON-FINANCIAL`, this references a
+      # records with type `CLEARING`, `FINANCIAL`, or `NON_FINANCIAL`, this references a
       # card transaction token. For settlement records with type `CHARGEBACK`,
       # `REPRESENTMENT`, `PREARBITRATION`, `ARBITRATION`, or `COLLABORATION`, this
       # references the dispute transaction token. May be null for certain settlement
       # types.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :transaction_token
 
       # The total amount of settlement impacting transactions (excluding interchange,
@@ -118,9 +118,9 @@ module Lithic
       sig do
         params(
           token: String,
-          account_token: String,
-          card_program_token: String,
-          card_token: String,
+          account_token: T.nilable(String),
+          card_program_token: T.nilable(String),
+          card_token: T.nilable(String),
           created: Time,
           currency: String,
           disputes_gross_amount: Integer,
@@ -134,7 +134,7 @@ module Lithic
           other_fees_gross_amount: Integer,
           report_date: String,
           settlement_date: String,
-          transaction_token: String,
+          transaction_token: T.nilable(String),
           transactions_gross_amount: Integer,
           type: Lithic::SettlementDetail::Type::OrSymbol,
           updated: Time,
@@ -182,7 +182,7 @@ module Lithic
         # advisement date, which is distinct from the date of money movement.
         settlement_date:,
         # Globally unique identifier denoting the associated transaction. For settlement
-        # records with type `CLEARING`, `FINANCIAL`, or `NON-FINANCIAL`, this references a
+        # records with type `CLEARING`, `FINANCIAL`, or `NON_FINANCIAL`, this references a
         # card transaction token. For settlement records with type `CHARGEBACK`,
         # `REPRESENTMENT`, `PREARBITRATION`, `ARBITRATION`, or `COLLABORATION`, this
         # references the dispute transaction token. May be null for certain settlement
@@ -204,9 +204,9 @@ module Lithic
         override.returns(
           {
             token: String,
-            account_token: String,
-            card_program_token: String,
-            card_token: String,
+            account_token: T.nilable(String),
+            card_program_token: T.nilable(String),
+            card_token: T.nilable(String),
             created: Time,
             currency: String,
             disputes_gross_amount: Integer,
@@ -219,7 +219,7 @@ module Lithic
             other_fees_gross_amount: Integer,
             report_date: String,
             settlement_date: String,
-            transaction_token: String,
+            transaction_token: T.nilable(String),
             transactions_gross_amount: Integer,
             type: Lithic::SettlementDetail::Type::TaggedSymbol,
             updated: Time,
@@ -305,7 +305,7 @@ module Lithic
         FINANCIAL =
           T.let(:FINANCIAL, Lithic::SettlementDetail::Type::TaggedSymbol)
         NON_FINANCIAL =
-          T.let(:"NON-FINANCIAL", Lithic::SettlementDetail::Type::TaggedSymbol)
+          T.let(:NON_FINANCIAL, Lithic::SettlementDetail::Type::TaggedSymbol)
         PREARBITRATION =
           T.let(:PREARBITRATION, Lithic::SettlementDetail::Type::TaggedSymbol)
         REPRESENTMENT =

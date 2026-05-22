@@ -114,10 +114,7 @@ module Lithic
 
             # Globally unique identifier for a card
             sig { returns(T.nilable(String)) }
-            attr_reader :card_token
-
-            sig { params(card_token: String).void }
-            attr_writer :card_token
+            attr_accessor :card_token
 
             sig { returns(T.nilable(String)) }
             attr_reader :descriptor
@@ -147,7 +144,7 @@ module Lithic
                 financial_account_token: String,
                 financial_transaction_event_token: String,
                 financial_transaction_token: String,
-                card_token: String,
+                card_token: T.nilable(String),
                 descriptor: String,
                 event_subtype: T.nilable(String),
                 loan_tape_date: T.nilable(Date)
@@ -201,7 +198,7 @@ module Lithic
                   financial_account_token: String,
                   financial_transaction_event_token: String,
                   financial_transaction_token: String,
-                  card_token: String,
+                  card_token: T.nilable(String),
                   descriptor: String,
                   event_subtype: T.nilable(String),
                   loan_tape_date: T.nilable(Date)
@@ -793,6 +790,11 @@ module Lithic
               MONTHLY_REVERSAL =
                 T.let(
                   :MONTHLY_REVERSAL,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              ACCOUNT_TO_ACCOUNT =
+                T.let(
+                  :ACCOUNT_TO_ACCOUNT,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
 

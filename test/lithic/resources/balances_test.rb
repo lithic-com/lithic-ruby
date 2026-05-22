@@ -24,8 +24,8 @@ class Lithic::Test::Resources::BalancesTest < Lithic::Test::ResourceTest
         currency: String,
         financial_account_token: String,
         financial_account_type: Lithic::Balance::FinancialAccountType,
-        last_transaction_event_token: String,
-        last_transaction_token: String,
+        last_transaction_event_token: String | nil,
+        last_transaction_token: String | nil,
         pending_amount: Integer,
         total_amount: Integer,
         updated: Time

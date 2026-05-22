@@ -13,22 +13,22 @@ module Lithic
       #   Globally unique identifier denoting the account that the associated transaction
       #   occurred on.
       #
-      #   @return [String]
-      required :account_token, String
+      #   @return [String, nil]
+      required :account_token, String, nil?: true
 
       # @!attribute card_program_token
       #   Globally unique identifier denoting the card program that the associated
       #   transaction occurred on.
       #
-      #   @return [String]
-      required :card_program_token, String
+      #   @return [String, nil]
+      required :card_program_token, String, nil?: true
 
       # @!attribute card_token
       #   Globally unique identifier denoting the card that the associated transaction
       #   occurred on.
       #
-      #   @return [String]
-      required :card_token, String
+      #   @return [String, nil]
+      required :card_token, String, nil?: true
 
       # @!attribute created
       #   Date and time when the transaction first occurred. UTC time zone.
@@ -108,14 +108,14 @@ module Lithic
 
       # @!attribute transaction_token
       #   Globally unique identifier denoting the associated transaction. For settlement
-      #   records with type `CLEARING`, `FINANCIAL`, or `NON-FINANCIAL`, this references a
+      #   records with type `CLEARING`, `FINANCIAL`, or `NON_FINANCIAL`, this references a
       #   card transaction token. For settlement records with type `CHARGEBACK`,
       #   `REPRESENTMENT`, `PREARBITRATION`, `ARBITRATION`, or `COLLABORATION`, this
       #   references the dispute transaction token. May be null for certain settlement
       #   types.
       #
-      #   @return [String]
-      required :transaction_token, String
+      #   @return [String, nil]
+      required :transaction_token, String, nil?: true
 
       # @!attribute transactions_gross_amount
       #   The total amount of settlement impacting transactions (excluding interchange,
@@ -148,11 +148,11 @@ module Lithic
       #
       #   @param token [String] Globally unique identifier denoting the Settlement Detail.
       #
-      #   @param account_token [String] Globally unique identifier denoting the account that the associated transaction
+      #   @param account_token [String, nil] Globally unique identifier denoting the account that the associated transaction
       #
-      #   @param card_program_token [String] Globally unique identifier denoting the card program that the associated transac
+      #   @param card_program_token [String, nil] Globally unique identifier denoting the card program that the associated transac
       #
-      #   @param card_token [String] Globally unique identifier denoting the card that the associated transaction occ
+      #   @param card_token [String, nil] Globally unique identifier denoting the card that the associated transaction occ
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
       #
@@ -178,7 +178,7 @@ module Lithic
       #
       #   @param settlement_date [String] Date of when money movement is triggered for the transaction. One exception appl
       #
-      #   @param transaction_token [String] Globally unique identifier denoting the associated transaction. For settlement r
+      #   @param transaction_token [String, nil] Globally unique identifier denoting the associated transaction. For settlement r
       #
       #   @param transactions_gross_amount [Integer] The total amount of settlement impacting transactions (excluding interchange, fe
       #
@@ -231,7 +231,7 @@ module Lithic
         COLLABORATION = :COLLABORATION
         FEE = :FEE
         FINANCIAL = :FINANCIAL
-        NON_FINANCIAL = :"NON-FINANCIAL"
+        NON_FINANCIAL = :NON_FINANCIAL
         PREARBITRATION = :PREARBITRATION
         REPRESENTMENT = :REPRESENTMENT
 

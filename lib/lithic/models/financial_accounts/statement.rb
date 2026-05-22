@@ -118,13 +118,13 @@ module Lithic
         #   Date when the next payment is due
         #
         #   @return [Date, nil]
-        optional :next_payment_due_date, Date
+        optional :next_payment_due_date, Date, nil?: true
 
         # @!attribute next_statement_end_date
         #   Date when the next billing period will end
         #
         #   @return [Date, nil]
-        optional :next_statement_end_date, Date
+        optional :next_statement_end_date, Date, nil?: true
 
         # @!attribute payoff_details
         #   Details on number and size of payments to pay off balance
@@ -179,9 +179,9 @@ module Lithic
         #
         #   @param interest_details [Lithic::Models::FinancialAccounts::Statement::InterestDetails, nil]
         #
-        #   @param next_payment_due_date [Date] Date when the next payment is due
+        #   @param next_payment_due_date [Date, nil] Date when the next payment is due
         #
-        #   @param next_statement_end_date [Date] Date when the next billing period will end
+        #   @param next_statement_end_date [Date, nil] Date when the next billing period will end
         #
         #   @param payoff_details [Lithic::Models::FinancialAccounts::Statement::PayoffDetails, nil] Details on number and size of payments to pay off balance
         #

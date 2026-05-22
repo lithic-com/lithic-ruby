@@ -88,7 +88,7 @@ module Lithic
             #   Globally unique identifier for a card
             #
             #   @return [String, nil]
-            optional :card_token, String
+            optional :card_token, String, nil?: true
 
             # @!attribute descriptor
             #
@@ -132,7 +132,7 @@ module Lithic
             #
             #   @param financial_transaction_token [String] Globally unique identifier for a financial transaction
             #
-            #   @param card_token [String] Globally unique identifier for a card
+            #   @param card_token [String, nil] Globally unique identifier for a card
             #
             #   @param descriptor [String]
             #
@@ -266,6 +266,7 @@ module Lithic
               QUARTERLY_REVERSAL = :QUARTERLY_REVERSAL
               MONTHLY = :MONTHLY
               MONTHLY_REVERSAL = :MONTHLY_REVERSAL
+              ACCOUNT_TO_ACCOUNT = :ACCOUNT_TO_ACCOUNT
 
               # @!method self.values
               #   @return [Array<Symbol>]

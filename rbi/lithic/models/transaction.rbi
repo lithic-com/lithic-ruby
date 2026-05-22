@@ -1551,7 +1551,7 @@ module Lithic
         sig do
           params(
             network_specific_data:
-              Lithic::Transaction::Event::NetworkSpecificData::OrHash
+              T.nilable(Lithic::Transaction::Event::NetworkSpecificData::OrHash)
           ).void
         end
         attr_writer :network_specific_data
@@ -1574,7 +1574,7 @@ module Lithic
             type: Lithic::Transaction::Event::Type::OrSymbol,
             account_type: Lithic::Transaction::Event::AccountType::OrSymbol,
             network_specific_data:
-              Lithic::Transaction::Event::NetworkSpecificData::OrHash
+              T.nilable(Lithic::Transaction::Event::NetworkSpecificData::OrHash)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1627,7 +1627,7 @@ module Lithic
               account_type:
                 Lithic::Transaction::Event::AccountType::TaggedSymbol,
               network_specific_data:
-                Lithic::Transaction::Event::NetworkSpecificData
+                T.nilable(Lithic::Transaction::Event::NetworkSpecificData)
             }
           )
         end
