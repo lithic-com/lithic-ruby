@@ -43,7 +43,8 @@ module Lithic
                 Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                 Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
-                Lithic::AuthRules::TypescriptCodeParameters::OrHash
+                Lithic::AuthRules::TypescriptCodeParameters::OrHash,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
               ),
             state: Lithic::AuthRules::AuthRuleVersion::State::OrSymbol,
             version: Integer
@@ -91,7 +92,8 @@ module Lithic
                 Lithic::AuthRules::ConditionalACHActionParameters,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters,
                 Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
-                Lithic::AuthRules::TypescriptCodeParameters
+                Lithic::AuthRules::TypescriptCodeParameters,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
               )
             end
 
