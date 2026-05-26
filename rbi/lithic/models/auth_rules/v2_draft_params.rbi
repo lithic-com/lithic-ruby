@@ -28,7 +28,8 @@ module Lithic
                 Lithic::AuthRules::ConditionalACHActionParameters,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters,
                 Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
-                Lithic::AuthRules::TypescriptCodeParameters
+                Lithic::AuthRules::TypescriptCodeParameters,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
               )
             )
           )
@@ -49,7 +50,8 @@ module Lithic
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
-                  Lithic::AuthRules::TypescriptCodeParameters::OrHash
+                  Lithic::AuthRules::TypescriptCodeParameters::OrHash,
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash
@@ -78,7 +80,8 @@ module Lithic
                     Lithic::AuthRules::ConditionalACHActionParameters,
                     Lithic::AuthRules::ConditionalTokenizationActionParameters,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
-                    Lithic::AuthRules::TypescriptCodeParameters
+                    Lithic::AuthRules::TypescriptCodeParameters,
+                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
                   )
                 ),
               request_options: Lithic::RequestOptions
@@ -103,7 +106,8 @@ module Lithic
                 Lithic::AuthRules::ConditionalACHActionParameters,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters,
                 Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
-                Lithic::AuthRules::TypescriptCodeParameters
+                Lithic::AuthRules::TypescriptCodeParameters,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
               )
             end
 
