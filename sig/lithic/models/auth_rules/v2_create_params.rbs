@@ -88,6 +88,7 @@ module Lithic
               | Lithic::AuthRules::ConditionalTokenizationActionParameters
               | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
               | Lithic::AuthRules::TypescriptCodeParameters
+              | Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
 
             module Parameters
               extend Lithic::Internal::Type::Union
@@ -165,6 +166,7 @@ module Lithic
               | Lithic::AuthRules::ConditionalTokenizationActionParameters
               | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
               | Lithic::AuthRules::TypescriptCodeParameters
+              | Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
 
             module Parameters
               extend Lithic::Internal::Type::Union
@@ -265,6 +267,7 @@ module Lithic
               | Lithic::AuthRules::ConditionalTokenizationActionParameters
               | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
               | Lithic::AuthRules::TypescriptCodeParameters
+              | Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
 
             module Parameters
               extend Lithic::Internal::Type::Union
