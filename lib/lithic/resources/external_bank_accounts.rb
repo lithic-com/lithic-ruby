@@ -132,6 +132,25 @@ module Lithic
         )
       end
 
+      # Pause an external bank account
+      #
+      # @overload pause(external_bank_account_token, request_options: {})
+      #
+      # @param external_bank_account_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::ExternalBankAccount]
+      #
+      # @see Lithic::Models::ExternalBankAccountPauseParams
+      def pause(external_bank_account_token, params = {})
+        @client.request(
+          method: :post,
+          path: ["v1/external_bank_accounts/%1$s/pause", external_bank_account_token],
+          model: Lithic::ExternalBankAccount,
+          options: params[:request_options]
+        )
+      end
+
       # Retry external bank account micro deposit verification.
       #
       # @overload retry_micro_deposits(external_bank_account_token, financial_account_token: nil, request_options: {})

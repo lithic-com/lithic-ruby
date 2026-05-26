@@ -289,6 +289,9 @@ module Lithic
 
   ExternalBankAccountListParams = Lithic::Models::ExternalBankAccountListParams
 
+  ExternalBankAccountPauseParams =
+    Lithic::Models::ExternalBankAccountPauseParams
+
   ExternalBankAccountRetrieveParams =
     Lithic::Models::ExternalBankAccountRetrieveParams
 
