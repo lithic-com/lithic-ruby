@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    # @see Lithic::Resources::ExternalBankAccounts#retry_prenote
+    # @see Lithic::Resources::ExternalBankAccounts#pause
     class ExternalBankAccount < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   A globally unique identifier for this record of an external bank account

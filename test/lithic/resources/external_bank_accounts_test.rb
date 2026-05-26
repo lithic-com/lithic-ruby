@@ -163,6 +163,41 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
     end
   end
 
+  def test_pause
+    response = @lithic.external_bank_accounts.pause("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::ExternalBankAccount
+    end
+
+    assert_pattern do
+      response => {
+        token: String,
+        country: String,
+        created: Time,
+        currency: String,
+        last_four: String,
+        owner: String,
+        owner_type: Lithic::OwnerType,
+        routing_number: String,
+        state: Lithic::ExternalBankAccount::State,
+        type: Lithic::ExternalBankAccount::Type,
+        verification_attempts: Integer,
+        verification_method: Lithic::VerificationMethod,
+        verification_state: Lithic::ExternalBankAccount::VerificationState,
+        account_token: String | nil,
+        address: Lithic::ExternalBankAccountAddress | nil,
+        company_id: String | nil,
+        dob: Date | nil,
+        doing_business_as: String | nil,
+        financial_account_token: String | nil,
+        name: String | nil,
+        user_defined_id: String | nil,
+        verification_failed_reason: String | nil
+      }
+    end
+  end
+
   def test_retry_micro_deposits
     response = @lithic.external_bank_accounts.retry_micro_deposits("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

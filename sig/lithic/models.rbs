@@ -253,6 +253,8 @@ module Lithic
 
   class ExternalBankAccountListParams = Lithic::Models::ExternalBankAccountListParams
 
+  class ExternalBankAccountPauseParams = Lithic::Models::ExternalBankAccountPauseParams
+
   class ExternalBankAccountRetrieveParams = Lithic::Models::ExternalBankAccountRetrieveParams
 
   class ExternalBankAccountRetryMicroDepositsParams = Lithic::Models::ExternalBankAccountRetryMicroDepositsParams
