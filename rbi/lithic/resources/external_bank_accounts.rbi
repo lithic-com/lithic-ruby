@@ -116,6 +116,16 @@ module Lithic
       )
       end
 
+      # Pause an external bank account
+      sig do
+        params(
+          external_bank_account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalBankAccount)
+      end
+      def pause(external_bank_account_token, request_options: {})
+      end
+
       # Retry external bank account micro deposit verification.
       sig do
         params(

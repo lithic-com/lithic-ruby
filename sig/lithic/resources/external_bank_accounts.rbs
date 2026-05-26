@@ -40,6 +40,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::CursorPage[Lithic::Models::ExternalBankAccountListResponse]
 
+      def pause: (
+        String external_bank_account_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::ExternalBankAccount
+
       def retry_micro_deposits: (
         String external_bank_account_token,
         ?financial_account_token: String,

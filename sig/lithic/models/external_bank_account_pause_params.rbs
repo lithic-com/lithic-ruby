@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    type external_bank_account_pause_params =
+      { external_bank_account_token: String }
+      & Lithic::Internal::Type::request_parameters
+
+    class ExternalBankAccountPauseParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor external_bank_account_token: String
+
+      def initialize: (
+        external_bank_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        external_bank_account_token: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end
