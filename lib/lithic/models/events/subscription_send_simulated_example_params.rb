@@ -38,6 +38,7 @@ module Lithic
           BALANCE_UPDATED = :"balance.updated"
           BOOK_TRANSFER_TRANSACTION_CREATED = :"book_transfer_transaction.created"
           BOOK_TRANSFER_TRANSACTION_UPDATED = :"book_transfer_transaction.updated"
+          CARD_AUTHORIZATION_CHALLENGE = :"card_authorization.challenge"
           CARD_AUTHORIZATION_CHALLENGE_RESPONSE = :"card_authorization.challenge_response"
           CARD_TRANSACTION_ENHANCED_DATA_CREATED = :"card_transaction.enhanced_data.created"
           CARD_TRANSACTION_ENHANCED_DATA_UPDATED = :"card_transaction.enhanced_data.updated"

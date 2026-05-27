@@ -17,6 +17,7 @@ module Lithic
             Lithic::AccountHolderVerificationWebhookEvent,
             Lithic::AccountHolderDocumentUpdatedWebhookEvent,
             Lithic::CardAuthorizationApprovalRequestWebhookEvent,
+            Lithic::CardAuthorizationChallengeWebhookEvent,
             Lithic::CardAuthorizationChallengeResponseWebhookEvent,
             Lithic::AuthRulesBacktestReportCreatedWebhookEvent,
             Lithic::BalanceUpdatedWebhookEvent,
@@ -81,7 +82,9 @@ module Lithic
       )
       end
 
-      sig { params(payload: String).returns(Lithic::ParsedWebhookEvent::Variants) }
+      sig do
+        params(payload: String).returns(Lithic::ParsedWebhookEvent::Variants)
+      end
       def parse_unsafe(payload)
       end
 

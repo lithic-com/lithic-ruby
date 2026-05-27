@@ -46,6 +46,9 @@ module Lithic
     sig { returns(Lithic::Resources::Cards) }
     attr_reader :cards
 
+    sig { returns(Lithic::Resources::CardAuthorizations) }
+    attr_reader :card_authorizations
+
     sig { returns(Lithic::Resources::CardBulkOrders) }
     attr_reader :card_bulk_orders
 
