@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.15.0 (2026-05-27)
+
+Full Changelog: [v0.14.0...v0.15.0](https://github.com/lithic-com/lithic-ruby/compare/v0.14.0...v0.15.0)
+
+### Features
+
+* **api:** Add authorization challenge response endpoint and webhook ([a270862](https://github.com/lithic-com/lithic-ruby/commit/a270862d8522a456f88111f92d91d7adfe285b96))
+* **api:** add INVALID_PAN value to TokenizationDeclineReason enum ([751f176](https://github.com/lithic-com/lithic-ruby/commit/751f176d6bd4a895c00edce99cb22055001c5597))
+* **api:** Add OUT_OF_BAND challenge method and DECLINED status to Authorization ([886bb10](https://github.com/lithic-com/lithic-ruby/commit/886bb1020fcc81e4862cbceee98fcb8eb7ac9b35))
+* **api:** Add pause external bank account endpoint ([1f9fdd2](https://github.com/lithic-com/lithic-ruby/commit/1f9fdd2ba99353edb1560877ca098664e4fbb1a9))
+* **api:** Add schemas for authorization adjustment rules ([61998a2](https://github.com/lithic-com/lithic-ruby/commit/61998a2d54a2eb05f1fe517e34bfbedbe1dbd02c))
+
+
+### Bug Fixes
+
+* **client:** elide content type header on requests without body ([d3a58d5](https://github.com/lithic-com/lithic-ruby/commit/d3a58d57130f65c30e56d39ba380cf8fe04e49da))
+* **types:** correct value type from Integer to Float in auth rules ([c8a51d0](https://github.com/lithic-com/lithic-ruby/commit/c8a51d0231516251e038f074e3fc364222570f57))
+* **types:** make cardholder_currency nullable in CardProgram ([89ded5f](https://github.com/lithic-com/lithic-ruby/commit/89ded5fe6729b1e0db8cb280e1da402b9a1a01b8))
+* **types:** make external_id, naics_code nullable in enrollment, parent_company in kyb ([1128d8d](https://github.com/lithic-com/lithic-ruby/commit/1128d8df654667a9a2db5ec75e5a5eb9755c75e2))
+* **types:** make fields nullable across balance/statement/settlement/etc, add enum values ([6259d4f](https://github.com/lithic-com/lithic-ruby/commit/6259d4fa0c42b77ce2f7abe4962c64ca9eb53117))
+
+
+### Documentation
+
+* **api:** clarify ACCOUNT_AGE behavior in auth_rules conditional parameters ([8b7bfc8](https://github.com/lithic-com/lithic-ruby/commit/8b7bfc850151d17038fb50aecc6509aa81196e77))
+
 ## 0.14.0 (2026-05-08)
 
 Full Changelog: [v0.13.0...v0.14.0](https://github.com/lithic-com/lithic-ruby/compare/v0.13.0...v0.14.0)
