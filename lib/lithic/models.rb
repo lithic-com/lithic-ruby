@@ -130,11 +130,17 @@ module Lithic
 
   Card = Lithic::Models::Card
 
+  CardAuthorization = Lithic::Models::CardAuthorization
+
   CardAuthorizationApprovalRequestWebhookEvent =
     Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent
 
+  CardAuthorizationChallengeResponseParams = Lithic::Models::CardAuthorizationChallengeResponseParams
+
   CardAuthorizationChallengeResponseWebhookEvent =
     Lithic::Models::CardAuthorizationChallengeResponseWebhookEvent
+
+  CardAuthorizationChallengeWebhookEvent = Lithic::Models::CardAuthorizationChallengeWebhookEvent
 
   CardBulkOrder = Lithic::Models::CardBulkOrder
 

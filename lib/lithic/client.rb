@@ -47,6 +47,9 @@ module Lithic
     # @return [Lithic::Resources::Cards]
     attr_reader :cards
 
+    # @return [Lithic::Resources::CardAuthorizations]
+    attr_reader :card_authorizations
+
     # @return [Lithic::Resources::CardBulkOrders]
     attr_reader :card_bulk_orders
 
@@ -222,6 +225,7 @@ module Lithic
       @tokenization_decisioning = Lithic::Resources::TokenizationDecisioning.new(client: self)
       @tokenizations = Lithic::Resources::Tokenizations.new(client: self)
       @cards = Lithic::Resources::Cards.new(client: self)
+      @card_authorizations = Lithic::Resources::CardAuthorizations.new(client: self)
       @card_bulk_orders = Lithic::Resources::CardBulkOrders.new(client: self)
       @balances = Lithic::Resources::Balances.new(client: self)
       @disputes = Lithic::Resources::Disputes.new(client: self)

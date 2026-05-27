@@ -33,6 +33,10 @@ module Lithic
       #     created.
       #   - book_transfer_transaction.updated: Occurs when a book transfer transaction is
       #     updated.
+      #   - card_authorization.challenge: Occurs when an Out of Band challenge is issued
+      #     during card authorization. The card program should issue its own challenge to
+      #     the cardholder and then respond via
+      #     [/v1/card_authorizations/{event_token}/challenge_response](https://docs.lithic.com/reference/respondtoauthorizationchallenge).
       #   - card_authorization.challenge_response: Occurs when a cardholder responds to an
       #     SMS challenge during card authorization.
       #   - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
@@ -156,6 +160,10 @@ module Lithic
       #   created.
       # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
       #   updated.
+      # - card_authorization.challenge: Occurs when an Out of Band challenge is issued
+      #   during card authorization. The card program should issue its own challenge to
+      #   the cardholder and then respond via
+      #   [/v1/card_authorizations/{event_token}/challenge_response](https://docs.lithic.com/reference/respondtoauthorizationchallenge).
       # - card_authorization.challenge_response: Occurs when a cardholder responds to an
       #   SMS challenge during card authorization.
       # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
@@ -255,6 +263,7 @@ module Lithic
         BALANCE_UPDATED = :"balance.updated"
         BOOK_TRANSFER_TRANSACTION_CREATED = :"book_transfer_transaction.created"
         BOOK_TRANSFER_TRANSACTION_UPDATED = :"book_transfer_transaction.updated"
+        CARD_AUTHORIZATION_CHALLENGE = :"card_authorization.challenge"
         CARD_AUTHORIZATION_CHALLENGE_RESPONSE = :"card_authorization.challenge_response"
         CARD_TRANSACTION_ENHANCED_DATA_CREATED = :"card_transaction.enhanced_data.created"
         CARD_TRANSACTION_ENHANCED_DATA_UPDATED = :"card_transaction.enhanced_data.updated"

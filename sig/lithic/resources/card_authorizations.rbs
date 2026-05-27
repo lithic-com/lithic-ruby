@@ -1,0 +1,13 @@
+module Lithic
+  module Resources
+    class CardAuthorizations
+      def challenge_response: (
+        String event_token,
+        response: Lithic::Models::CardAuthorizationChallengeResponseParams::response,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end
