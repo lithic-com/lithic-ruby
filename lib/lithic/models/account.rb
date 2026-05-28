@@ -38,7 +38,7 @@ module Lithic
       #     accounts are unable to be transitioned to `ACTIVE` or `PAUSED` states.
       #     Accounts can be manually set to `CLOSED`, or this can be done by Lithic due to
       #     failure to pass KYB/KYC or for risk/compliance reasons. Please contact
-      #     [support@lithic.com](mailto:support@lithic.com) if you believe this was done
+      #     [support.lithic.com](https://support.lithic.com/) if you believe this was done
       #     by mistake.
       #
       #   @return [Symbol, Lithic::Models::Account::State]
@@ -177,7 +177,7 @@ module Lithic
       #   accounts are unable to be transitioned to `ACTIVE` or `PAUSED` states.
       #   Accounts can be manually set to `CLOSED`, or this can be done by Lithic due to
       #   failure to pass KYB/KYC or for risk/compliance reasons. Please contact
-      #   [support@lithic.com](mailto:support@lithic.com) if you believe this was done
+      #   [support.lithic.com](https://support.lithic.com/) if you believe this was done
       #   by mistake.
       #
       # @see Lithic::Models::Account#state

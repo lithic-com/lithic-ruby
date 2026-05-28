@@ -36,7 +36,7 @@ module Lithic
       #   accounts are unable to be transitioned to `ACTIVE` or `PAUSED` states.
       #   Accounts can be manually set to `CLOSED`, or this can be done by Lithic due to
       #   failure to pass KYB/KYC or for risk/compliance reasons. Please contact
-      #   [support@lithic.com](mailto:support@lithic.com) if you believe this was done
+      #   [support.lithic.com](https://support.lithic.com/) if you believe this was done
       #   by mistake.
       sig { returns(Lithic::Account::State::TaggedSymbol) }
       attr_accessor :state
@@ -149,7 +149,7 @@ module Lithic
         #   accounts are unable to be transitioned to `ACTIVE` or `PAUSED` states.
         #   Accounts can be manually set to `CLOSED`, or this can be done by Lithic due to
         #   failure to pass KYB/KYC or for risk/compliance reasons. Please contact
-        #   [support@lithic.com](mailto:support@lithic.com) if you believe this was done
+        #   [support.lithic.com](https://support.lithic.com/) if you believe this was done
         #   by mistake.
         state:,
         account_holder: nil,
@@ -269,7 +269,7 @@ module Lithic
       #   accounts are unable to be transitioned to `ACTIVE` or `PAUSED` states.
       #   Accounts can be manually set to `CLOSED`, or this can be done by Lithic due to
       #   failure to pass KYB/KYC or for risk/compliance reasons. Please contact
-      #   [support@lithic.com](mailto:support@lithic.com) if you believe this was done
+      #   [support.lithic.com](https://support.lithic.com/) if you believe this was done
       #   by mistake.
       module State
         extend Lithic::Internal::Type::Enum
