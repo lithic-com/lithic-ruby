@@ -793,6 +793,19 @@ module Lithic
 
       # @see Lithic::Models::CardAuthorization#latest_challenge
       class LatestChallenge < Lithic::Internal::Type::BaseModel
+        # @!attribute completed_at
+        #   The date and time when the Authorization Challenge was completed in UTC. Filled
+        #   only if the challenge has been completed.
+        #
+        #   @return [Time, nil]
+        required :completed_at, Time, nil?: true
+
+        # @!attribute created
+        #   The date and time when the Authorization Challenge was created in UTC
+        #
+        #   @return [Time]
+        required :created, Time
+
         # @!attribute method_
         #   The method used to deliver the challenge to the cardholder
         #
@@ -821,27 +834,22 @@ module Lithic
         #   @return [Symbol, Lithic::Models::CardAuthorization::LatestChallenge::Status]
         required :status, enum: -> { Lithic::CardAuthorization::LatestChallenge::Status }
 
-        # @!attribute completed_at
-        #   The date and time when the Authorization Challenge was completed in UTC. Present
-        #   only if the status is `COMPLETED`.
-        #
-        #   @return [Time, nil]
-        optional :completed_at, Time
-
-        # @!method initialize(method_:, phone_number:, status:, completed_at: nil)
+        # @!method initialize(completed_at:, created:, method_:, phone_number:, status:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::CardAuthorization::LatestChallenge} for more details.
         #
         #   The latest Authorization Challenge that was issued to the cardholder for this
         #   merchant.
         #
+        #   @param completed_at [Time, nil] The date and time when the Authorization Challenge was completed in UTC. Filled
+        #
+        #   @param created [Time] The date and time when the Authorization Challenge was created in UTC
+        #
         #   @param method_ [Symbol, Lithic::Models::CardAuthorization::LatestChallenge::Method] The method used to deliver the challenge to the cardholder
         #
         #   @param phone_number [String, nil] The phone number used for sending the Authorization Challenge. Present only when
         #
         #   @param status [Symbol, Lithic::Models::CardAuthorization::LatestChallenge::Status] The status of the Authorization Challenge
-        #
-        #   @param completed_at [Time] The date and time when the Authorization Challenge was completed in UTC. Present
 
         # The method used to deliver the challenge to the cardholder
         #
