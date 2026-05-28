@@ -1381,6 +1381,15 @@ module Lithic
             )
           end
 
+        # The date and time when the Authorization Challenge was completed in UTC. Filled
+        # only if the challenge has been completed.
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :completed_at
+
+        # The date and time when the Authorization Challenge was created in UTC
+        sig { returns(Time) }
+        attr_accessor :created
+
         # The method used to deliver the challenge to the cardholder
         #
         # - `SMS` - Challenge was delivered via SMS
@@ -1411,27 +1420,24 @@ module Lithic
         end
         attr_accessor :status
 
-        # The date and time when the Authorization Challenge was completed in UTC. Present
-        # only if the status is `COMPLETED`.
-        sig { returns(T.nilable(Time)) }
-        attr_reader :completed_at
-
-        sig { params(completed_at: Time).void }
-        attr_writer :completed_at
-
         # The latest Authorization Challenge that was issued to the cardholder for this
         # merchant.
         sig do
           params(
+            completed_at: T.nilable(Time),
+            created: Time,
             method_:
               Lithic::CardAuthorization::LatestChallenge::Method::OrSymbol,
             phone_number: T.nilable(String),
-            status:
-              Lithic::CardAuthorization::LatestChallenge::Status::OrSymbol,
-            completed_at: Time
+            status: Lithic::CardAuthorization::LatestChallenge::Status::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
+          # The date and time when the Authorization Challenge was completed in UTC. Filled
+          # only if the challenge has been completed.
+          completed_at:,
+          # The date and time when the Authorization Challenge was created in UTC
+          created:,
           # The method used to deliver the challenge to the cardholder
           #
           # - `SMS` - Challenge was delivered via SMS
@@ -1447,22 +1453,20 @@ module Lithic
           # - `PENDING` - Challenge is still open
           # - `EXPIRED` - Challenge has expired without being completed
           # - `ERROR` - There was an error processing the challenge
-          status:,
-          # The date and time when the Authorization Challenge was completed in UTC. Present
-          # only if the status is `COMPLETED`.
-          completed_at: nil
+          status:
         )
         end
 
         sig do
           override.returns(
             {
+              completed_at: T.nilable(Time),
+              created: Time,
               method_:
                 Lithic::CardAuthorization::LatestChallenge::Method::TaggedSymbol,
               phone_number: T.nilable(String),
               status:
-                Lithic::CardAuthorization::LatestChallenge::Status::TaggedSymbol,
-              completed_at: Time
+                Lithic::CardAuthorization::LatestChallenge::Status::TaggedSymbol
             }
           )
         end
