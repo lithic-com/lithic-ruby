@@ -588,35 +588,38 @@ module Lithic
 
       type latest_challenge =
         {
+          completed_at: Time?,
+          created: Time,
           method_: Lithic::Models::CardAuthorization::LatestChallenge::method_,
           phone_number: String?,
-          status: Lithic::Models::CardAuthorization::LatestChallenge::status,
-          completed_at: Time
+          status: Lithic::Models::CardAuthorization::LatestChallenge::status
         }
 
       class LatestChallenge < Lithic::Internal::Type::BaseModel
+        attr_accessor completed_at: Time?
+
+        attr_accessor created: Time
+
         attr_accessor method_: Lithic::Models::CardAuthorization::LatestChallenge::method_
 
         attr_accessor phone_number: String?
 
         attr_accessor status: Lithic::Models::CardAuthorization::LatestChallenge::status
 
-        attr_reader completed_at: Time?
-
-        def completed_at=: (Time) -> Time
-
         def initialize: (
+          completed_at: Time?,
+          created: Time,
           method_: Lithic::Models::CardAuthorization::LatestChallenge::method_,
           phone_number: String?,
-          status: Lithic::Models::CardAuthorization::LatestChallenge::status,
-          ?completed_at: Time
+          status: Lithic::Models::CardAuthorization::LatestChallenge::status
         ) -> void
 
         def to_hash: -> {
+          completed_at: Time?,
+          created: Time,
           method_: Lithic::Models::CardAuthorization::LatestChallenge::method_,
           phone_number: String?,
-          status: Lithic::Models::CardAuthorization::LatestChallenge::status,
-          completed_at: Time
+          status: Lithic::Models::CardAuthorization::LatestChallenge::status
         }
 
         type method_ = :SMS | :OUT_OF_BAND
