@@ -15,6 +15,7 @@ module Lithic
         merchant: Lithic::CardAuthorization::Merchant,
         merchant_amount: Integer,
         merchant_currency: String,
+        name_validation: Lithic::CardAuthorization::NameValidation?,
         service_location: Lithic::CardAuthorization::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::CardAuthorization::status,
@@ -60,6 +61,8 @@ module Lithic
       attr_accessor merchant_amount: Integer
 
       attr_accessor merchant_currency: String
+
+      attr_accessor name_validation: Lithic::CardAuthorization::NameValidation?
 
       attr_accessor service_location: Lithic::CardAuthorization::ServiceLocation?
 
@@ -137,6 +140,7 @@ module Lithic
         merchant: Lithic::CardAuthorization::Merchant,
         merchant_amount: Integer,
         merchant_currency: String,
+        name_validation: Lithic::CardAuthorization::NameValidation?,
         service_location: Lithic::CardAuthorization::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::CardAuthorization::status,
@@ -170,6 +174,7 @@ module Lithic
         merchant: Lithic::CardAuthorization::Merchant,
         merchant_amount: Integer,
         merchant_currency: String,
+        name_validation: Lithic::CardAuthorization::NameValidation?,
         service_location: Lithic::CardAuthorization::ServiceLocation?,
         settled_amount: Integer,
         status: Lithic::Models::CardAuthorization::status,
@@ -450,6 +455,72 @@ module Lithic
           postal_code: String?,
           street_address: String?
         }
+      end
+
+      type name_validation =
+        {
+          name: Lithic::CardAuthorization::NameValidation::Name,
+          name_on_file_match: Lithic::CardAuthorization::NameValidation::NameOnFileMatch
+        }
+
+      class NameValidation < Lithic::Internal::Type::BaseModel
+        attr_accessor name: Lithic::CardAuthorization::NameValidation::Name
+
+        attr_accessor name_on_file_match: Lithic::CardAuthorization::NameValidation::NameOnFileMatch
+
+        def initialize: (
+          name: Lithic::CardAuthorization::NameValidation::Name,
+          name_on_file_match: Lithic::CardAuthorization::NameValidation::NameOnFileMatch
+        ) -> void
+
+        def to_hash: -> {
+          name: Lithic::CardAuthorization::NameValidation::Name,
+          name_on_file_match: Lithic::CardAuthorization::NameValidation::NameOnFileMatch
+        }
+
+        type name_ = { first: String, last: String, middle: String? }
+
+        class Name < Lithic::Internal::Type::BaseModel
+          attr_accessor first: String
+
+          attr_accessor last: String
+
+          attr_accessor middle: String?
+
+          def initialize: (first: String, last: String, middle: String?) -> void
+
+          def to_hash: -> { first: String, last: String, middle: String? }
+        end
+
+        type name_on_file_match =
+          {
+            full_name: Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::full_name
+          }
+
+        class NameOnFileMatch < Lithic::Internal::Type::BaseModel
+          attr_accessor full_name: Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::full_name
+
+          def initialize: (
+            full_name: Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::full_name
+          ) -> void
+
+          def to_hash: -> {
+            full_name: Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::full_name
+          }
+
+          type full_name = :MATCH | :PARTIAL_MATCH | :NO_MATCH | :UNVERIFIED
+
+          module FullName
+            extend Lithic::Internal::Type::Enum
+
+            MATCH: :MATCH
+            PARTIAL_MATCH: :PARTIAL_MATCH
+            NO_MATCH: :NO_MATCH
+            UNVERIFIED: :UNVERIFIED
+
+            def self?.values: -> ::Array[Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::full_name]
+          end
+        end
       end
 
       type service_location =

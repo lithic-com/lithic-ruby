@@ -91,6 +91,20 @@ module Lithic
       sig { returns(String) }
       attr_accessor :merchant_currency
 
+      # Network name validation data, present when the card network requested name
+      # validation for this transaction. Contains the cardholder name provided by the
+      # network and Lithic's computed match result against KYC data on file.
+      sig { returns(T.nilable(Lithic::CardAuthorization::NameValidation)) }
+      attr_reader :name_validation
+
+      sig do
+        params(
+          name_validation:
+            T.nilable(Lithic::CardAuthorization::NameValidation::OrHash)
+        ).void
+      end
+      attr_writer :name_validation
+
       # Where the cardholder received the service, when different from the card acceptor
       # location. This is populated from network data elements such as Mastercard DE-122
       # SE1 SF9-14 and Visa F34 DS02.
@@ -263,6 +277,8 @@ module Lithic
           merchant: Lithic::CardAuthorization::Merchant::OrHash,
           merchant_amount: Integer,
           merchant_currency: String,
+          name_validation:
+            T.nilable(Lithic::CardAuthorization::NameValidation::OrHash),
           service_location:
             T.nilable(Lithic::CardAuthorization::ServiceLocation::OrHash),
           settled_amount: Integer,
@@ -331,6 +347,10 @@ module Lithic
         merchant_amount:,
         # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
         merchant_currency:,
+        # Network name validation data, present when the card network requested name
+        # validation for this transaction. Contains the cardholder name provided by the
+        # network and Lithic's computed match result against KYC data on file.
+        name_validation:,
         # Where the cardholder received the service, when different from the card acceptor
         # location. This is populated from network data elements such as Mastercard DE-122
         # SE1 SF9-14 and Visa F34 DS02.
@@ -401,6 +421,8 @@ module Lithic
             merchant: Lithic::CardAuthorization::Merchant,
             merchant_amount: Integer,
             merchant_currency: String,
+            name_validation:
+              T.nilable(Lithic::CardAuthorization::NameValidation),
             service_location:
               T.nilable(Lithic::CardAuthorization::ServiceLocation),
             settled_amount: Integer,
@@ -1039,6 +1061,209 @@ module Lithic
           )
         end
         def to_hash
+        end
+      end
+
+      class NameValidation < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardAuthorization::NameValidation,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # Cardholder name as provided by the card network.
+        sig { returns(Lithic::CardAuthorization::NameValidation::Name) }
+        attr_reader :name
+
+        sig do
+          params(
+            name: Lithic::CardAuthorization::NameValidation::Name::OrHash
+          ).void
+        end
+        attr_writer :name
+
+        # Lithic's computed match result comparing the network-provided name to the name
+        # on file.
+        sig do
+          returns(Lithic::CardAuthorization::NameValidation::NameOnFileMatch)
+        end
+        attr_reader :name_on_file_match
+
+        sig do
+          params(
+            name_on_file_match:
+              Lithic::CardAuthorization::NameValidation::NameOnFileMatch::OrHash
+          ).void
+        end
+        attr_writer :name_on_file_match
+
+        # Network name validation data, present when the card network requested name
+        # validation for this transaction. Contains the cardholder name provided by the
+        # network and Lithic's computed match result against KYC data on file.
+        sig do
+          params(
+            name: Lithic::CardAuthorization::NameValidation::Name::OrHash,
+            name_on_file_match:
+              Lithic::CardAuthorization::NameValidation::NameOnFileMatch::OrHash
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Cardholder name as provided by the card network.
+          name:,
+          # Lithic's computed match result comparing the network-provided name to the name
+          # on file.
+          name_on_file_match:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              name: Lithic::CardAuthorization::NameValidation::Name,
+              name_on_file_match:
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Name < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::CardAuthorization::NameValidation::Name,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # First name
+          sig { returns(String) }
+          attr_accessor :first
+
+          # Last name
+          sig { returns(String) }
+          attr_accessor :last
+
+          # Middle name
+          sig { returns(T.nilable(String)) }
+          attr_accessor :middle
+
+          # Cardholder name as provided by the card network.
+          sig do
+            params(
+              first: String,
+              last: String,
+              middle: T.nilable(String)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # First name
+            first:,
+            # Last name
+            last:,
+            # Middle name
+            middle:
+          )
+          end
+
+          sig do
+            override.returns(
+              { first: String, last: String, middle: T.nilable(String) }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class NameOnFileMatch < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Overall name match result.
+          sig do
+            returns(
+              Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+            )
+          end
+          attr_accessor :full_name
+
+          # Lithic's computed match result comparing the network-provided name to the name
+          # on file.
+          sig do
+            params(
+              full_name:
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Overall name match result.
+            full_name:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                full_name:
+                  Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Overall name match result.
+          module FullName
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            MATCH =
+              T.let(
+                :MATCH,
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+              )
+            PARTIAL_MATCH =
+              T.let(
+                :PARTIAL_MATCH,
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+              )
+            NO_MATCH =
+              T.let(
+                :NO_MATCH,
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+              )
+            UNVERIFIED =
+              T.let(
+                :UNVERIFIED,
+                Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
       end
 
