@@ -110,6 +110,14 @@ module Lithic
       #   @return [String]
       required :merchant_currency, String
 
+      # @!attribute name_validation
+      #   Network name validation data, present when the card network requested name
+      #   validation for this transaction. Contains the cardholder name provided by the
+      #   network and Lithic's computed match result against KYC data on file.
+      #
+      #   @return [Lithic::Models::CardAuthorization::NameValidation, nil]
+      required :name_validation, -> { Lithic::CardAuthorization::NameValidation }, nil?: true
+
       # @!attribute service_location
       #   Where the cardholder received the service, when different from the card acceptor
       #   location. This is populated from network data elements such as Mastercard DE-122
@@ -233,7 +241,7 @@ module Lithic
       #   @return [Time, nil]
       optional :ttl, Time
 
-      # @!method initialize(token:, acquirer_fee:, amount:, amounts:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, service_location:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil)
+      # @!method initialize(token:, acquirer_fee:, amount:, amounts:, authorization_amount:, avs:, card:, cardholder_currency:, cash_amount:, created:, merchant:, merchant_amount:, merchant_currency:, name_validation:, service_location:, settled_amount:, status:, transaction_initiator:, account_type: nil, cardholder_authentication: nil, cashback: nil, conversion_rate: nil, event_token: nil, fleet_info: nil, latest_challenge: nil, network: nil, network_risk_score: nil, network_specific_data: nil, pos: nil, token_info: nil, ttl: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardAuthorization} for more details.
       #
@@ -264,6 +272,8 @@ module Lithic
       #   @param merchant_amount [Integer] Deprecated, use `amounts`. The amount that the merchant will receive, denominate
       #
       #   @param merchant_currency [String] 3-character alphabetic ISO 4217 code for the local currency of the transaction.
+      #
+      #   @param name_validation [Lithic::Models::CardAuthorization::NameValidation, nil] Network name validation data, present when the card network requested name valid
       #
       #   @param service_location [Lithic::Models::CardAuthorization::ServiceLocation, nil] Where the cardholder received the service, when different from the card acceptor
       #
@@ -621,6 +631,94 @@ module Lithic
         #   @param postal_code [String, nil] Postal code of card acceptor.
         #
         #   @param street_address [String, nil] Street address of card acceptor.
+      end
+
+      # @see Lithic::Models::CardAuthorization#name_validation
+      class NameValidation < Lithic::Internal::Type::BaseModel
+        # @!attribute name
+        #   Cardholder name as provided by the card network.
+        #
+        #   @return [Lithic::Models::CardAuthorization::NameValidation::Name]
+        required :name, -> { Lithic::CardAuthorization::NameValidation::Name }
+
+        # @!attribute name_on_file_match
+        #   Lithic's computed match result comparing the network-provided name to the name
+        #   on file.
+        #
+        #   @return [Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch]
+        required :name_on_file_match, -> { Lithic::CardAuthorization::NameValidation::NameOnFileMatch }
+
+        # @!method initialize(name:, name_on_file_match:)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::CardAuthorization::NameValidation} for more details.
+        #
+        #   Network name validation data, present when the card network requested name
+        #   validation for this transaction. Contains the cardholder name provided by the
+        #   network and Lithic's computed match result against KYC data on file.
+        #
+        #   @param name [Lithic::Models::CardAuthorization::NameValidation::Name] Cardholder name as provided by the card network.
+        #
+        #   @param name_on_file_match [Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch] Lithic's computed match result comparing the network-provided name to the name o
+
+        # @see Lithic::Models::CardAuthorization::NameValidation#name
+        class Name < Lithic::Internal::Type::BaseModel
+          # @!attribute first
+          #   First name
+          #
+          #   @return [String]
+          required :first, String
+
+          # @!attribute last
+          #   Last name
+          #
+          #   @return [String]
+          required :last, String
+
+          # @!attribute middle
+          #   Middle name
+          #
+          #   @return [String, nil]
+          required :middle, String, nil?: true
+
+          # @!method initialize(first:, last:, middle:)
+          #   Cardholder name as provided by the card network.
+          #
+          #   @param first [String] First name
+          #
+          #   @param last [String] Last name
+          #
+          #   @param middle [String, nil] Middle name
+        end
+
+        # @see Lithic::Models::CardAuthorization::NameValidation#name_on_file_match
+        class NameOnFileMatch < Lithic::Internal::Type::BaseModel
+          # @!attribute full_name
+          #   Overall name match result.
+          #
+          #   @return [Symbol, Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::FullName]
+          required :full_name, enum: -> { Lithic::CardAuthorization::NameValidation::NameOnFileMatch::FullName }
+
+          # @!method initialize(full_name:)
+          #   Lithic's computed match result comparing the network-provided name to the name
+          #   on file.
+          #
+          #   @param full_name [Symbol, Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch::FullName] Overall name match result.
+
+          # Overall name match result.
+          #
+          # @see Lithic::Models::CardAuthorization::NameValidation::NameOnFileMatch#full_name
+          module FullName
+            extend Lithic::Internal::Type::Enum
+
+            MATCH = :MATCH
+            PARTIAL_MATCH = :PARTIAL_MATCH
+            NO_MATCH = :NO_MATCH
+            UNVERIFIED = :UNVERIFIED
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
 
       # @see Lithic::Models::CardAuthorization#service_location
