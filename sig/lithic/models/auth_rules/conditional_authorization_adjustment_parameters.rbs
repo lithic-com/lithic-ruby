@@ -3,48 +3,48 @@ module Lithic
     module AuthRules
       type conditional_authorization_adjustment_parameters =
         {
-          adjustment: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment,
+          action: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action,
           conditions: ::Array[Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition]
         }
 
       class ConditionalAuthorizationAdjustmentParameters < Lithic::Internal::Type::BaseModel
-        attr_accessor adjustment: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment
+        attr_accessor action: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action
 
         attr_accessor conditions: ::Array[Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition]
 
         def initialize: (
-          adjustment: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment,
+          action: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action,
           conditions: ::Array[Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition]
         ) -> void
 
         def to_hash: -> {
-          adjustment: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment,
+          action: Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action,
           conditions: ::Array[Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition]
         }
 
-        type adjustment =
+        type action =
           {
-            mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::mode,
-            type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::type_,
+            mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::mode,
+            type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::type_,
             value: Integer
           }
 
-        class Adjustment < Lithic::Internal::Type::BaseModel
-          attr_accessor mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::mode
+        class Action < Lithic::Internal::Type::BaseModel
+          attr_accessor mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::mode
 
-          attr_accessor type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::type_
+          attr_accessor type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::type_
 
           attr_accessor value: Integer
 
           def initialize: (
-            mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::mode,
-            type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::type_,
+            mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::mode,
+            type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::type_,
             value: Integer
           ) -> void
 
           def to_hash: -> {
-            mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::mode,
-            type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::type_,
+            mode: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::mode,
+            type: Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::type_,
             value: Integer
           }
 
@@ -57,7 +57,7 @@ module Lithic
             ADD_PERCENTAGE: :ADD_PERCENTAGE
             ADD_AMOUNT: :ADD_AMOUNT
 
-            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::mode]
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::mode]
           end
 
           type type_ = :HOLD_ADJUSTMENT
@@ -67,7 +67,7 @@ module Lithic
 
             HOLD_ADJUSTMENT: :HOLD_ADJUSTMENT
 
-            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::type_]
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::type_]
           end
         end
 
