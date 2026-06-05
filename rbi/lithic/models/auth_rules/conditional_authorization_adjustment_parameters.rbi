@@ -12,21 +12,21 @@ module Lithic
             )
           end
 
-        # The hold adjustment to apply if the conditions are met
+        # The hold adjustment to apply if the conditions are met.
         sig do
           returns(
-            Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment
+            Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action
           )
         end
-        attr_reader :adjustment
+        attr_reader :action
 
         sig do
           params(
-            adjustment:
-              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::OrHash
+            action:
+              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::OrHash
           ).void
         end
-        attr_writer :adjustment
+        attr_writer :action
 
         sig do
           returns(
@@ -39,8 +39,8 @@ module Lithic
 
         sig do
           params(
-            adjustment:
-              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::OrHash,
+            action:
+              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::OrHash,
             conditions:
               T::Array[
                 Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition::OrHash
@@ -48,8 +48,8 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
-          # The hold adjustment to apply if the conditions are met
-          adjustment:,
+          # The hold adjustment to apply if the conditions are met.
+          action:,
           conditions:
         )
         end
@@ -57,8 +57,8 @@ module Lithic
         sig do
           override.returns(
             {
-              adjustment:
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment,
+              action:
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action,
               conditions:
                 T::Array[
                   Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition
@@ -69,11 +69,11 @@ module Lithic
         def to_hash
         end
 
-        class Adjustment < Lithic::Internal::Type::BaseModel
+        class Action < Lithic::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action,
                 Lithic::Internal::AnyHash
               )
             end
@@ -86,7 +86,7 @@ module Lithic
           # - `ADD_AMOUNT`: The value is added to the hold amount in cents.
           sig do
             returns(
-              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::OrSymbol
+              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::OrSymbol
             )
           end
           attr_accessor :mode
@@ -94,7 +94,7 @@ module Lithic
           # The type of adjustment to apply
           sig do
             returns(
-              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type::OrSymbol
+              Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type::OrSymbol
             )
           end
           attr_accessor :type
@@ -103,13 +103,13 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :value
 
-          # The hold adjustment to apply if the conditions are met
+          # The hold adjustment to apply if the conditions are met.
           sig do
             params(
               mode:
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::OrSymbol,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::OrSymbol,
               type:
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type::OrSymbol,
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type::OrSymbol,
               value: Integer
             ).returns(T.attached_class)
           end
@@ -132,9 +132,9 @@ module Lithic
             override.returns(
               {
                 mode:
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::OrSymbol,
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::OrSymbol,
                 type:
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type::OrSymbol,
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type::OrSymbol,
                 value: Integer
               }
             )
@@ -155,7 +155,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -163,23 +163,23 @@ module Lithic
             REPLACE_WITH_AMOUNT =
               T.let(
                 :REPLACE_WITH_AMOUNT,
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::TaggedSymbol
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::TaggedSymbol
               )
             ADD_PERCENTAGE =
               T.let(
                 :ADD_PERCENTAGE,
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::TaggedSymbol
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::TaggedSymbol
               )
             ADD_AMOUNT =
               T.let(
                 :ADD_AMOUNT,
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::TaggedSymbol
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode::TaggedSymbol
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode::TaggedSymbol
                 ]
               )
             end
@@ -195,7 +195,7 @@ module Lithic
               T.type_alias do
                 T.all(
                   Symbol,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -203,13 +203,13 @@ module Lithic
             HOLD_ADJUSTMENT =
               T.let(
                 :HOLD_ADJUSTMENT,
-                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type::TaggedSymbol
+                Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type::TaggedSymbol
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type::TaggedSymbol
                 ]
               )
             end
