@@ -4,11 +4,11 @@ module Lithic
   module Models
     module AuthRules
       class ConditionalAuthorizationAdjustmentParameters < Lithic::Internal::Type::BaseModel
-        # @!attribute adjustment
-        #   The hold adjustment to apply if the conditions are met
+        # @!attribute action
+        #   The hold adjustment to apply if the conditions are met.
         #
-        #   @return [Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment]
-        required :adjustment, -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment }
+        #   @return [Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action]
+        required :action, -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action }
 
         # @!attribute conditions
         #
@@ -16,13 +16,13 @@ module Lithic
         required :conditions,
                  -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition] }
 
-        # @!method initialize(adjustment:, conditions:)
-        #   @param adjustment [Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment] The hold adjustment to apply if the conditions are met
+        # @!method initialize(action:, conditions:)
+        #   @param action [Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action] The hold adjustment to apply if the conditions are met.
         #
         #   @param conditions [Array<Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Condition>]
 
-        # @see Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters#adjustment
-        class Adjustment < Lithic::Internal::Type::BaseModel
+        # @see Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters#action
+        class Action < Lithic::Internal::Type::BaseModel
           # @!attribute mode
           #   The mode of the hold adjustment, determining how the value is interpreted:
           #
@@ -31,16 +31,14 @@ module Lithic
           #     represents a 10% increase, 0 represents no change.
           #   - `ADD_AMOUNT`: The value is added to the hold amount in cents.
           #
-          #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode]
-          required :mode,
-                   enum: -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode }
+          #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode]
+          required :mode, enum: -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode }
 
           # @!attribute type
           #   The type of adjustment to apply
           #
-          #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type]
-          required :type,
-                   enum: -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type }
+          #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type]
+          required :type, enum: -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type }
 
           # @!attribute value
           #   The value used for the hold adjustment, interpreted based on the mode
@@ -50,14 +48,14 @@ module Lithic
 
           # @!method initialize(mode:, type:, value:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment}
+          #   {Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action}
           #   for more details.
           #
-          #   The hold adjustment to apply if the conditions are met
+          #   The hold adjustment to apply if the conditions are met.
           #
-          #   @param mode [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Mode] The mode of the hold adjustment, determining how the value is interpreted:
+          #   @param mode [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Mode] The mode of the hold adjustment, determining how the value is interpreted:
           #
-          #   @param type [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment::Type] The type of adjustment to apply
+          #   @param type [Symbol, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action::Type] The type of adjustment to apply
           #
           #   @param value [Integer] The value used for the hold adjustment, interpreted based on the mode
 
@@ -68,7 +66,7 @@ module Lithic
           #   represents a 10% increase, 0 represents no change.
           # - `ADD_AMOUNT`: The value is added to the hold amount in cents.
           #
-          # @see Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment#mode
+          # @see Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action#mode
           module Mode
             extend Lithic::Internal::Type::Enum
 
@@ -82,7 +80,7 @@ module Lithic
 
           # The type of adjustment to apply
           #
-          # @see Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Adjustment#type
+          # @see Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters::Action#type
           module Type
             extend Lithic::Internal::Type::Enum
 
