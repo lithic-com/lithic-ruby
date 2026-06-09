@@ -37,6 +37,7 @@ class Lithic::Test::Resources::FinancialAccounts::LoanTapesTest < Lithic::Test::
         updated: Time,
         version: Integer,
         ytd_totals: Lithic::StatementTotals,
+        day_of_period: Integer | nil,
         tier: String | nil
       }
     end
@@ -79,6 +80,7 @@ class Lithic::Test::Resources::FinancialAccounts::LoanTapesTest < Lithic::Test::
         updated: Time,
         version: Integer,
         ytd_totals: Lithic::StatementTotals,
+        day_of_period: Integer | nil,
         tier: String | nil
       }
     end

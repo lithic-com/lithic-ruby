@@ -24,6 +24,7 @@ module Lithic
           updated: Time,
           version: Integer,
           ytd_totals: Lithic::StatementTotals,
+          day_of_period: Integer?,
           tier: String?
         }
 
@@ -70,6 +71,8 @@ module Lithic
 
         attr_accessor ytd_totals: Lithic::StatementTotals
 
+        attr_accessor day_of_period: Integer?
+
         attr_accessor tier: String?
 
         def initialize: (
@@ -94,6 +97,7 @@ module Lithic
           updated: Time,
           version: Integer,
           ytd_totals: Lithic::StatementTotals,
+          ?day_of_period: Integer?,
           ?tier: String?
         ) -> void
 
@@ -119,6 +123,7 @@ module Lithic
           updated: Time,
           version: Integer,
           ytd_totals: Lithic::StatementTotals,
+          day_of_period: Integer?,
           tier: String?
         }
 
