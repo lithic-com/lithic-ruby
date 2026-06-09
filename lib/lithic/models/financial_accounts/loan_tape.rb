@@ -126,13 +126,19 @@ module Lithic
         #   @return [Lithic::Models::StatementTotals]
         required :ytd_totals, -> { Lithic::StatementTotals }
 
+        # @!attribute day_of_period
+        #   Day of the billing period that this loan tape covers, starting at 1
+        #
+        #   @return [Integer, nil]
+        optional :day_of_period, Integer, nil?: true
+
         # @!attribute tier
         #   Interest tier to which this account belongs to
         #
         #   @return [String, nil]
         optional :tier, String, nil?: true
 
-        # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, tier: nil)
+        # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, day_of_period: nil, tier: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::LoanTape} for more details.
         #
@@ -177,6 +183,8 @@ module Lithic
         #   @param version [Integer] Version number of the loan tape. This starts at 1
         #
         #   @param ytd_totals [Lithic::Models::StatementTotals]
+        #
+        #   @param day_of_period [Integer, nil] Day of the billing period that this loan tape covers, starting at 1
         #
         #   @param tier [String, nil] Interest tier to which this account belongs to
 

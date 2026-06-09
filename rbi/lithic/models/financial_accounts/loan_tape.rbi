@@ -157,6 +157,10 @@ module Lithic
         sig { params(ytd_totals: Lithic::StatementTotals::OrHash).void }
         attr_writer :ytd_totals
 
+        # Day of the billing period that this loan tape covers, starting at 1
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :day_of_period
+
         # Interest tier to which this account belongs to
         sig { returns(T.nilable(String)) }
         attr_accessor :tier
@@ -191,6 +195,7 @@ module Lithic
             updated: Time,
             version: Integer,
             ytd_totals: Lithic::StatementTotals::OrHash,
+            day_of_period: T.nilable(Integer),
             tier: T.nilable(String)
           ).returns(T.attached_class)
         end
@@ -232,6 +237,8 @@ module Lithic
           # Version number of the loan tape. This starts at 1
           version:,
           ytd_totals:,
+          # Day of the billing period that this loan tape covers, starting at 1
+          day_of_period: nil,
           # Interest tier to which this account belongs to
           tier: nil
         )
@@ -266,6 +273,7 @@ module Lithic
               updated: Time,
               version: Integer,
               ytd_totals: Lithic::StatementTotals,
+              day_of_period: T.nilable(Integer),
               tier: T.nilable(String)
             }
           )
