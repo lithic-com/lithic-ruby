@@ -11,7 +11,7 @@ module Lithic
           government_id: String,
           last_name: String,
           phone_number: String,
-          type: Lithic::Models::AccountHolders::EntityCreateParams::type_
+          type: Lithic::Models::TransactionMonitoring::entity_type
         }
         & Lithic::Internal::Type::request_parameters
 
@@ -35,7 +35,7 @@ module Lithic
 
         attr_accessor phone_number: String
 
-        attr_accessor type: Lithic::Models::AccountHolders::EntityCreateParams::type_
+        attr_accessor type: Lithic::Models::TransactionMonitoring::entity_type
 
         def initialize: (
           account_holder_token: String,
@@ -46,7 +46,7 @@ module Lithic
           government_id: String,
           last_name: String,
           phone_number: String,
-          type: Lithic::Models::AccountHolders::EntityCreateParams::type_,
+          type: Lithic::Models::TransactionMonitoring::entity_type,
           ?request_options: Lithic::request_opts
         ) -> void
 
@@ -59,7 +59,7 @@ module Lithic
           government_id: String,
           last_name: String,
           phone_number: String,
-          type: Lithic::Models::AccountHolders::EntityCreateParams::type_,
+          type: Lithic::Models::TransactionMonitoring::entity_type,
           request_options: Lithic::RequestOptions
         }
 
@@ -105,17 +105,6 @@ module Lithic
             state: String,
             :address2 => String
           }
-        end
-
-        type type_ = :BENEFICIAL_OWNER_INDIVIDUAL | :CONTROL_PERSON
-
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          BENEFICIAL_OWNER_INDIVIDUAL: :BENEFICIAL_OWNER_INDIVIDUAL
-          CONTROL_PERSON: :CONTROL_PERSON
-
-          def self?.values: -> ::Array[Lithic::Models::AccountHolders::EntityCreateParams::type_]
         end
       end
     end

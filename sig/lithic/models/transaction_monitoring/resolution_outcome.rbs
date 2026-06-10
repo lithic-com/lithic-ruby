@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type resolution_outcome =
+        :CONFIRMED_FRAUD
+        | :SUSPICIOUS_ACTIVITY
+        | :FALSE_POSITIVE
+        | :NO_ACTION_REQUIRED
+        | :ESCALATED_EXTERNAL
+
+      module ResolutionOutcome
+        extend Lithic::Internal::Type::Enum
+
+        CONFIRMED_FRAUD: :CONFIRMED_FRAUD
+        SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+        FALSE_POSITIVE: :FALSE_POSITIVE
+        NO_ACTION_REQUIRED: :NO_ACTION_REQUIRED
+        ESCALATED_EXTERNAL: :ESCALATED_EXTERNAL
+
+        def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::resolution_outcome]
+      end
+    end
+  end
+end

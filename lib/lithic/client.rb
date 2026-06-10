@@ -35,6 +35,9 @@ module Lithic
     # @return [Lithic::Resources::AuthRules]
     attr_reader :auth_rules
 
+    # @return [Lithic::Resources::TransactionMonitoring]
+    attr_reader :transaction_monitoring
+
     # @return [Lithic::Resources::AuthStreamEnrollment]
     attr_reader :auth_stream_enrollment
 
@@ -221,6 +224,7 @@ module Lithic
       @accounts = Lithic::Resources::Accounts.new(client: self)
       @account_holders = Lithic::Resources::AccountHolders.new(client: self)
       @auth_rules = Lithic::Resources::AuthRules.new(client: self)
+      @transaction_monitoring = Lithic::Resources::TransactionMonitoring.new(client: self)
       @auth_stream_enrollment = Lithic::Resources::AuthStreamEnrollment.new(client: self)
       @tokenization_decisioning = Lithic::Resources::TokenizationDecisioning.new(client: self)
       @tokenizations = Lithic::Resources::Tokenizations.new(client: self)

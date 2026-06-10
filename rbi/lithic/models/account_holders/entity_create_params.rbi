@@ -59,9 +59,7 @@ module Lithic
         attr_accessor :phone_number
 
         # The type of entity to create on the account holder
-        sig do
-          returns(Lithic::AccountHolders::EntityCreateParams::Type::OrSymbol)
-        end
+        sig { returns(Lithic::TransactionMonitoring::EntityType::OrSymbol) }
         attr_accessor :type
 
         sig do
@@ -75,7 +73,7 @@ module Lithic
             government_id: String,
             last_name: String,
             phone_number: String,
-            type: Lithic::AccountHolders::EntityCreateParams::Type::OrSymbol,
+            type: Lithic::TransactionMonitoring::EntityType::OrSymbol,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -117,7 +115,7 @@ module Lithic
               government_id: String,
               last_name: String,
               phone_number: String,
-              type: Lithic::AccountHolders::EntityCreateParams::Type::OrSymbol,
+              type: Lithic::TransactionMonitoring::EntityType::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -208,38 +206,6 @@ module Lithic
             )
           end
           def to_hash
-          end
-        end
-
-        # The type of entity to create on the account holder
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AccountHolders::EntityCreateParams::Type)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          BENEFICIAL_OWNER_INDIVIDUAL =
-            T.let(
-              :BENEFICIAL_OWNER_INDIVIDUAL,
-              Lithic::AccountHolders::EntityCreateParams::Type::TaggedSymbol
-            )
-          CONTROL_PERSON =
-            T.let(
-              :CONTROL_PERSON,
-              Lithic::AccountHolders::EntityCreateParams::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::AccountHolders::EntityCreateParams::Type::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
           end
         end
       end

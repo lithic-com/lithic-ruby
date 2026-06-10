@@ -1,0 +1,102 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type monitoring_case =
+        {
+          token: String,
+          assignee: String?,
+          collection_stopped: Time?,
+          created: Time,
+          entity: Lithic::TransactionMonitoring::CaseEntity?,
+          pending_transactions: bool,
+          priority: Lithic::Models::TransactionMonitoring::case_priority,
+          queue_token: String,
+          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome?,
+          resolution_notes: String?,
+          resolved: Time?,
+          rule_token: String?,
+          sla_deadline: Time?,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          tags: ::Hash[Symbol, String],
+          title: String?,
+          updated: Time
+        }
+
+      class MonitoringCase < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor assignee: String?
+
+        attr_accessor collection_stopped: Time?
+
+        attr_accessor created: Time
+
+        attr_accessor entity: Lithic::TransactionMonitoring::CaseEntity?
+
+        attr_accessor pending_transactions: bool
+
+        attr_accessor priority: Lithic::Models::TransactionMonitoring::case_priority
+
+        attr_accessor queue_token: String
+
+        attr_accessor resolution: Lithic::Models::TransactionMonitoring::resolution_outcome?
+
+        attr_accessor resolution_notes: String?
+
+        attr_accessor resolved: Time?
+
+        attr_accessor rule_token: String?
+
+        attr_accessor sla_deadline: Time?
+
+        attr_accessor status: Lithic::Models::TransactionMonitoring::case_status
+
+        attr_accessor tags: ::Hash[Symbol, String]
+
+        attr_accessor title: String?
+
+        attr_accessor updated: Time
+
+        def initialize: (
+          token: String,
+          assignee: String?,
+          collection_stopped: Time?,
+          created: Time,
+          entity: Lithic::TransactionMonitoring::CaseEntity?,
+          pending_transactions: bool,
+          priority: Lithic::Models::TransactionMonitoring::case_priority,
+          queue_token: String,
+          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome?,
+          resolution_notes: String?,
+          resolved: Time?,
+          rule_token: String?,
+          sla_deadline: Time?,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          tags: ::Hash[Symbol, String],
+          title: String?,
+          updated: Time
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          assignee: String?,
+          collection_stopped: Time?,
+          created: Time,
+          entity: Lithic::TransactionMonitoring::CaseEntity?,
+          pending_transactions: bool,
+          priority: Lithic::Models::TransactionMonitoring::case_priority,
+          queue_token: String,
+          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome?,
+          resolution_notes: String?,
+          resolved: Time?,
+          rule_token: String?,
+          sla_deadline: Time?,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          tags: ::Hash[Symbol, String],
+          title: String?,
+          updated: Time
+        }
+      end
+    end
+  end
+end

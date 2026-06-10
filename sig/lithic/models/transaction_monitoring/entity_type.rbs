@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type entity_type = :BENEFICIAL_OWNER_INDIVIDUAL | :CONTROL_PERSON
+
+      module EntityType
+        extend Lithic::Internal::Type::Enum
+
+        BENEFICIAL_OWNER_INDIVIDUAL: :BENEFICIAL_OWNER_INDIVIDUAL
+        CONTROL_PERSON: :CONTROL_PERSON
+
+        def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::entity_type]
+      end
+    end
+  end
+end

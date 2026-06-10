@@ -1,0 +1,47 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_activity_entry =
+        {
+          token: String,
+          actor_token: String?,
+          created: Time,
+          entry_type: Lithic::Models::TransactionMonitoring::case_activity_type,
+          new_value: String?,
+          previous_value: String?
+        }
+
+      class CaseActivityEntry < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor actor_token: String?
+
+        attr_accessor created: Time
+
+        attr_accessor entry_type: Lithic::Models::TransactionMonitoring::case_activity_type
+
+        attr_accessor new_value: String?
+
+        attr_accessor previous_value: String?
+
+        def initialize: (
+          token: String,
+          actor_token: String?,
+          created: Time,
+          entry_type: Lithic::Models::TransactionMonitoring::case_activity_type,
+          new_value: String?,
+          previous_value: String?
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          actor_token: String?,
+          created: Time,
+          entry_type: Lithic::Models::TransactionMonitoring::case_activity_type,
+          new_value: String?,
+          previous_value: String?
+        }
+      end
+    end
+  end
+end

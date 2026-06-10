@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_card =
+        {
+          account_token: String,
+          card_token: String,
+          transaction_count: Integer
+        }
+
+      class CaseCard < Lithic::Internal::Type::BaseModel
+        attr_accessor account_token: String
+
+        attr_accessor card_token: String
+
+        attr_accessor transaction_count: Integer
+
+        def initialize: (
+          account_token: String,
+          card_token: String,
+          transaction_count: Integer
+        ) -> void
+
+        def to_hash: -> {
+          account_token: String,
+          card_token: String,
+          transaction_count: Integer
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_priority = :LOW | :MEDIUM | :HIGH | :CRITICAL
+
+      module CasePriority
+        extend Lithic::Internal::Type::Enum
+
+        LOW: :LOW
+        MEDIUM: :MEDIUM
+        HIGH: :HIGH
+        CRITICAL: :CRITICAL
+
+        def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::case_priority]
+      end
+    end
+  end
+end
