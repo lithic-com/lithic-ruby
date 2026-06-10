@@ -1,0 +1,39 @@
+module Lithic
+  module Resources
+    class TransactionMonitoring
+      class Queues
+        def create: (
+          name: String,
+          ?description: String?,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::TransactionMonitoring::Queue
+
+        def retrieve: (
+          String queue_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::TransactionMonitoring::Queue
+
+        def update: (
+          String queue_token,
+          ?description: String?,
+          ?name: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::TransactionMonitoring::Queue
+
+        def list: (
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Internal::CursorPage[Lithic::TransactionMonitoring::Queue]
+
+        def delete: (
+          String queue_token,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

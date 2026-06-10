@@ -1,0 +1,71 @@
+module Lithic
+  module Resources
+    class TransactionMonitoring
+      class Cases
+        attr_reader comments: Lithic::Resources::TransactionMonitoring::Cases::Comments
+
+        attr_reader files: Lithic::Resources::TransactionMonitoring::Cases::Files
+
+        def retrieve: (
+          String case_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::TransactionMonitoring::MonitoringCase
+
+        def update: (
+          String case_token,
+          ?actor_token: String,
+          ?assignee: String?,
+          ?priority: Lithic::Models::TransactionMonitoring::case_priority,
+          ?resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          ?resolution_notes: String,
+          ?sla_deadline: Time?,
+          ?status: Lithic::Models::TransactionMonitoring::case_status,
+          ?tags: ::Hash[Symbol, String],
+          ?title: String?,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::TransactionMonitoring::MonitoringCase
+
+        def list: (
+          ?account_token: String,
+          ?assignee: String,
+          ?begin_: Time,
+          ?card_token: String,
+          ?end_: Time,
+          ?ending_before: String,
+          ?entity_token: String,
+          ?page_size: Integer,
+          ?queue_token: String,
+          ?rule_token: String,
+          ?sort_by: Lithic::Models::TransactionMonitoring::case_sort_order,
+          ?starting_after: String,
+          ?status: Lithic::Models::TransactionMonitoring::case_status,
+          ?transaction_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Internal::CursorPage[Lithic::TransactionMonitoring::MonitoringCase]
+
+        def list_activity: (
+          String case_token,
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Internal::CursorPage[Lithic::TransactionMonitoring::CaseActivityEntry]
+
+        def list_transactions: (
+          String case_token,
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Internal::CursorPage[Lithic::TransactionMonitoring::CaseTransaction]
+
+        def retrieve_cards: (
+          String case_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::TransactionMonitoring::case_retrieve_cards_response
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

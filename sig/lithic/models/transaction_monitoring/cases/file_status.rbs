@@ -1,0 +1,19 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      module Cases
+        type file_status = :PENDING | :READY | :REJECTED
+
+        module FileStatus
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          READY: :READY
+          REJECTED: :REJECTED
+
+          def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::Cases::file_status]
+        end
+      end
+    end
+  end
+end

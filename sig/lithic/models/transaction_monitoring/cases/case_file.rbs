@@ -1,0 +1,86 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      class CaseFile = Cases::CaseFile
+
+      module Cases
+        type case_file =
+          {
+            token: String,
+            created: Time,
+            download_url: String?,
+            download_url_expires: Time?,
+            failure_reason: String?,
+            mime_type: String?,
+            name: String,
+            size_bytes: Integer?,
+            status: Lithic::Models::TransactionMonitoring::Cases::file_status,
+            updated: Time,
+            upload_constraints: Lithic::TransactionMonitoring::Cases::UploadConstraints?,
+            upload_url: String?,
+            upload_url_expires: Time?
+          }
+
+        class CaseFile < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor created: Time
+
+          attr_accessor download_url: String?
+
+          attr_accessor download_url_expires: Time?
+
+          attr_accessor failure_reason: String?
+
+          attr_accessor mime_type: String?
+
+          attr_accessor name: String
+
+          attr_accessor size_bytes: Integer?
+
+          attr_accessor status: Lithic::Models::TransactionMonitoring::Cases::file_status
+
+          attr_accessor updated: Time
+
+          attr_accessor upload_constraints: Lithic::TransactionMonitoring::Cases::UploadConstraints?
+
+          attr_accessor upload_url: String?
+
+          attr_accessor upload_url_expires: Time?
+
+          def initialize: (
+            token: String,
+            created: Time,
+            download_url: String?,
+            download_url_expires: Time?,
+            failure_reason: String?,
+            mime_type: String?,
+            name: String,
+            size_bytes: Integer?,
+            status: Lithic::Models::TransactionMonitoring::Cases::file_status,
+            updated: Time,
+            upload_constraints: Lithic::TransactionMonitoring::Cases::UploadConstraints?,
+            upload_url: String?,
+            upload_url_expires: Time?
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            created: Time,
+            download_url: String?,
+            download_url_expires: Time?,
+            failure_reason: String?,
+            mime_type: String?,
+            name: String,
+            size_bytes: Integer?,
+            status: Lithic::Models::TransactionMonitoring::Cases::file_status,
+            updated: Time,
+            upload_constraints: Lithic::TransactionMonitoring::Cases::UploadConstraints?,
+            upload_url: String?,
+            upload_url_expires: Time?
+          }
+        end
+      end
+    end
+  end
+end

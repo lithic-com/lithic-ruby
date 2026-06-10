@@ -1,0 +1,32 @@
+module Lithic
+  module Resources
+    class TransactionMonitoring
+      class Cases
+        class Comments
+          def create: (
+            String case_token,
+            comment: String,
+            ?actor_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::TransactionMonitoring::CaseActivityEntry
+
+          def update: (
+            String comment_token,
+            case_token: String,
+            comment: String,
+            ?actor_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::TransactionMonitoring::CaseActivityEntry
+
+          def delete: (
+            String comment_token,
+            case_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> nil
+
+          def initialize: (client: Lithic::Client) -> void
+        end
+      end
+    end
+  end
+end

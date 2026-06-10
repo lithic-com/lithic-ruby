@@ -1,0 +1,38 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      module Cases
+        type comment_create_params =
+          { case_token: String, comment: String, actor_token: String }
+          & Lithic::Internal::Type::request_parameters
+
+        class CommentCreateParams < Lithic::Internal::Type::BaseModel
+          extend Lithic::Internal::Type::RequestParameters::Converter
+          include Lithic::Internal::Type::RequestParameters
+
+          attr_accessor case_token: String
+
+          attr_accessor comment: String
+
+          attr_reader actor_token: String?
+
+          def actor_token=: (String) -> String
+
+          def initialize: (
+            case_token: String,
+            comment: String,
+            ?actor_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            case_token: String,
+            comment: String,
+            actor_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

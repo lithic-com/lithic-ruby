@@ -63,8 +63,8 @@ module Lithic
         # @!attribute type
         #   The type of entity to create on the account holder
         #
-        #   @return [Symbol, Lithic::Models::AccountHolders::EntityCreateParams::Type]
-        required :type, enum: -> { Lithic::AccountHolders::EntityCreateParams::Type }
+        #   @return [Symbol, Lithic::Models::TransactionMonitoring::EntityType]
+        required :type, enum: -> { Lithic::TransactionMonitoring::EntityType }
 
         # @!method initialize(account_holder_token:, address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:, type:, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -86,7 +86,7 @@ module Lithic
         #
         #   @param phone_number [String] Individual's phone number, entered in E.164 format.
         #
-        #   @param type [Symbol, Lithic::Models::AccountHolders::EntityCreateParams::Type] The type of entity to create on the account holder
+        #   @param type [Symbol, Lithic::Models::TransactionMonitoring::EntityType] The type of entity to create on the account holder
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
@@ -148,17 +148,6 @@ module Lithic
           #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
           #
           #   @param address2 [String] Unit or apartment number (if applicable).
-        end
-
-        # The type of entity to create on the account holder
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          BENEFICIAL_OWNER_INDIVIDUAL = :BENEFICIAL_OWNER_INDIVIDUAL
-          CONTROL_PERSON = :CONTROL_PERSON
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
         end
       end
     end

@@ -1,0 +1,91 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_update_params =
+        {
+          case_token: String,
+          actor_token: String,
+          assignee: String?,
+          priority: Lithic::Models::TransactionMonitoring::case_priority,
+          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          resolution_notes: String,
+          sla_deadline: Time?,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          tags: ::Hash[Symbol, String],
+          title: String?
+        }
+        & Lithic::Internal::Type::request_parameters
+
+      class CaseUpdateParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor case_token: String
+
+        attr_reader actor_token: String?
+
+        def actor_token=: (String) -> String
+
+        attr_accessor assignee: String?
+
+        attr_reader priority: Lithic::Models::TransactionMonitoring::case_priority?
+
+        def priority=: (
+          Lithic::Models::TransactionMonitoring::case_priority
+        ) -> Lithic::Models::TransactionMonitoring::case_priority
+
+        attr_reader resolution: Lithic::Models::TransactionMonitoring::resolution_outcome?
+
+        def resolution=: (
+          Lithic::Models::TransactionMonitoring::resolution_outcome
+        ) -> Lithic::Models::TransactionMonitoring::resolution_outcome
+
+        attr_reader resolution_notes: String?
+
+        def resolution_notes=: (String) -> String
+
+        attr_accessor sla_deadline: Time?
+
+        attr_reader status: Lithic::Models::TransactionMonitoring::case_status?
+
+        def status=: (
+          Lithic::Models::TransactionMonitoring::case_status
+        ) -> Lithic::Models::TransactionMonitoring::case_status
+
+        attr_reader tags: ::Hash[Symbol, String]?
+
+        def tags=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+        attr_accessor title: String?
+
+        def initialize: (
+          case_token: String,
+          ?actor_token: String,
+          ?assignee: String?,
+          ?priority: Lithic::Models::TransactionMonitoring::case_priority,
+          ?resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          ?resolution_notes: String,
+          ?sla_deadline: Time?,
+          ?status: Lithic::Models::TransactionMonitoring::case_status,
+          ?tags: ::Hash[Symbol, String],
+          ?title: String?,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          case_token: String,
+          actor_token: String,
+          assignee: String?,
+          priority: Lithic::Models::TransactionMonitoring::case_priority,
+          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          resolution_notes: String,
+          sla_deadline: Time?,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          tags: ::Hash[Symbol, String],
+          title: String?,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -34,6 +34,9 @@ module Lithic
     sig { returns(Lithic::Resources::AuthRules) }
     attr_reader :auth_rules
 
+    sig { returns(Lithic::Resources::TransactionMonitoring) }
+    attr_reader :transaction_monitoring
+
     sig { returns(Lithic::Resources::AuthStreamEnrollment) }
     attr_reader :auth_stream_enrollment
 

@@ -62,8 +62,8 @@ module Lithic
         # @!attribute type
         #   The type of entity
         #
-        #   @return [Symbol, Lithic::Models::AccountHolders::AccountHolderEntity::Type]
-        required :type, enum: -> { Lithic::AccountHolders::AccountHolderEntity::Type }
+        #   @return [Symbol, Lithic::Models::TransactionMonitoring::EntityType]
+        required :type, enum: -> { Lithic::TransactionMonitoring::EntityType }
 
         # @!method initialize(token:, account_holder_token:, address:, dob:, email:, first_name:, last_name:, phone_number:, status:, type:)
         #   Information about an entity associated with an account holder
@@ -86,7 +86,7 @@ module Lithic
         #
         #   @param status [Symbol, Lithic::Models::AccountHolders::AccountHolderEntity::Status] The status of the entity
         #
-        #   @param type [Symbol, Lithic::Models::AccountHolders::AccountHolderEntity::Type] The type of entity
+        #   @param type [Symbol, Lithic::Models::TransactionMonitoring::EntityType] The type of entity
 
         # @see Lithic::Models::AccountHolders::AccountHolderEntity#address
         class Address < Lithic::Internal::Type::BaseModel
@@ -158,19 +158,6 @@ module Lithic
           INACTIVE = :INACTIVE
           PENDING_REVIEW = :PENDING_REVIEW
           REJECTED = :REJECTED
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # The type of entity
-        #
-        # @see Lithic::Models::AccountHolders::AccountHolderEntity#type
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          BENEFICIAL_OWNER_INDIVIDUAL = :BENEFICIAL_OWNER_INDIVIDUAL
-          CONTROL_PERSON = :CONTROL_PERSON
 
           # @!method self.values
           #   @return [Array<Symbol>]

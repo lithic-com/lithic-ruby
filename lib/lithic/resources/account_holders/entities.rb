@@ -31,7 +31,7 @@ module Lithic
         #
         # @param phone_number [String] Individual's phone number, entered in E.164 format.
         #
-        # @param type [Symbol, Lithic::Models::AccountHolders::EntityCreateParams::Type] The type of entity to create on the account holder
+        # @param type [Symbol, Lithic::Models::TransactionMonitoring::EntityType] The type of entity to create on the account holder
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

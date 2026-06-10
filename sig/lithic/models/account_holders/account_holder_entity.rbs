@@ -14,7 +14,7 @@ module Lithic
           last_name: String?,
           phone_number: String?,
           status: Lithic::Models::AccountHolders::AccountHolderEntity::status,
-          type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+          type: Lithic::Models::TransactionMonitoring::entity_type
         }
 
       class AccountHolderEntity < Lithic::Internal::Type::BaseModel
@@ -36,7 +36,7 @@ module Lithic
 
         attr_accessor status: Lithic::Models::AccountHolders::AccountHolderEntity::status
 
-        attr_accessor type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+        attr_accessor type: Lithic::Models::TransactionMonitoring::entity_type
 
         def initialize: (
           token: String,
@@ -48,7 +48,7 @@ module Lithic
           last_name: String?,
           phone_number: String?,
           status: Lithic::Models::AccountHolders::AccountHolderEntity::status,
-          type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+          type: Lithic::Models::TransactionMonitoring::entity_type
         ) -> void
 
         def to_hash: -> {
@@ -61,7 +61,7 @@ module Lithic
           last_name: String?,
           phone_number: String?,
           status: Lithic::Models::AccountHolders::AccountHolderEntity::status,
-          type: Lithic::Models::AccountHolders::AccountHolderEntity::type_
+          type: Lithic::Models::TransactionMonitoring::entity_type
         }
 
         type address =
@@ -119,17 +119,6 @@ module Lithic
           REJECTED: :REJECTED
 
           def self?.values: -> ::Array[Lithic::Models::AccountHolders::AccountHolderEntity::status]
-        end
-
-        type type_ = :BENEFICIAL_OWNER_INDIVIDUAL | :CONTROL_PERSON
-
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          BENEFICIAL_OWNER_INDIVIDUAL: :BENEFICIAL_OWNER_INDIVIDUAL
-          CONTROL_PERSON: :CONTROL_PERSON
-
-          def self?.values: -> ::Array[Lithic::Models::AccountHolders::AccountHolderEntity::type_]
         end
       end
     end

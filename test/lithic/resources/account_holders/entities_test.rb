@@ -61,7 +61,7 @@ class Lithic::Test::Resources::AccountHolders::EntitiesTest < Lithic::Test::Reso
         last_name: String | nil,
         phone_number: String | nil,
         status: Lithic::AccountHolders::AccountHolderEntity::Status,
-        type: Lithic::AccountHolders::AccountHolderEntity::Type
+        type: Lithic::TransactionMonitoring::EntityType
       }
     end
   end

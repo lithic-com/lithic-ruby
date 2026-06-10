@@ -1,0 +1,11 @@
+module Lithic
+  module Resources
+    class TransactionMonitoring
+      attr_reader cases: Lithic::Resources::TransactionMonitoring::Cases
+
+      attr_reader queues: Lithic::Resources::TransactionMonitoring::Queues
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,10 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_retrieve_cards_response =
+        ::Array[Lithic::TransactionMonitoring::CaseCard]
+
+      CaseRetrieveCardsResponse: Lithic::Internal::Type::Converter
+    end
+  end
+end

@@ -1,0 +1,38 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_entity =
+        {
+          entity_token: String,
+          entity_type: Lithic::Models::TransactionMonitoring::CaseEntity::entity_type
+        }
+
+      class CaseEntity < Lithic::Internal::Type::BaseModel
+        attr_accessor entity_token: String
+
+        attr_accessor entity_type: Lithic::Models::TransactionMonitoring::CaseEntity::entity_type
+
+        def initialize: (
+          entity_token: String,
+          entity_type: Lithic::Models::TransactionMonitoring::CaseEntity::entity_type
+        ) -> void
+
+        def to_hash: -> {
+          entity_token: String,
+          entity_type: Lithic::Models::TransactionMonitoring::CaseEntity::entity_type
+        }
+
+        type entity_type = :CARD | :ACCOUNT
+
+        module EntityType
+          extend Lithic::Internal::Type::Enum
+
+          CARD: :CARD
+          ACCOUNT: :ACCOUNT
+
+          def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::CaseEntity::entity_type]
+        end
+      end
+    end
+  end
+end

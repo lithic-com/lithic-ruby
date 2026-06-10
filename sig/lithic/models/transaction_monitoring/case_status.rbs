@@ -1,0 +1,21 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_status =
+        :OPEN | :ASSIGNED | :IN_REVIEW | :ESCALATED | :RESOLVED | :CLOSED
+
+      module CaseStatus
+        extend Lithic::Internal::Type::Enum
+
+        OPEN: :OPEN
+        ASSIGNED: :ASSIGNED
+        IN_REVIEW: :IN_REVIEW
+        ESCALATED: :ESCALATED
+        RESOLVED: :RESOLVED
+        CLOSED: :CLOSED
+
+        def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::case_status]
+      end
+    end
+  end
+end

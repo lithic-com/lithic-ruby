@@ -1,0 +1,30 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type queue_create_params =
+        { name: String, description: String? }
+        & Lithic::Internal::Type::request_parameters
+
+      class QueueCreateParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor name: String
+
+        attr_accessor description: String?
+
+        def initialize: (
+          name: String,
+          ?description: String?,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          name: String,
+          description: String?,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_activity_type =
+        :STATUS
+        | :TITLE
+        | :ASSIGNED_TO
+        | :RESOLUTION_OUTCOME
+        | :RESOLUTION_NOTES
+        | :TAGS
+        | :PRIORITY
+        | :COMMENT
+        | :FILE
+
+      module CaseActivityType
+        extend Lithic::Internal::Type::Enum
+
+        STATUS: :STATUS
+        TITLE: :TITLE
+        ASSIGNED_TO: :ASSIGNED_TO
+        RESOLUTION_OUTCOME: :RESOLUTION_OUTCOME
+        RESOLUTION_NOTES: :RESOLUTION_NOTES
+        TAGS: :TAGS
+        PRIORITY: :PRIORITY
+        COMMENT: :COMMENT
+        FILE: :FILE
+
+        def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::case_activity_type]
+      end
+    end
+  end
+end

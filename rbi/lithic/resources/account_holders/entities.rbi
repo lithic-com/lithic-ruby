@@ -20,7 +20,7 @@ module Lithic
             government_id: String,
             last_name: String,
             phone_number: String,
-            type: Lithic::AccountHolders::EntityCreateParams::Type::OrSymbol,
+            type: Lithic::TransactionMonitoring::EntityType::OrSymbol,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::Models::AccountHolders::EntityCreateResponse)
         end
