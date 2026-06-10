@@ -11,7 +11,7 @@ module Lithic
           government_id: String,
           last_name: String,
           phone_number: String,
-          type: Lithic::Models::AccountHolders::EntityCreateParams::type_,
+          type: Lithic::Models::TransactionMonitoring::entity_type,
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::AccountHolders::EntityCreateResponse
 

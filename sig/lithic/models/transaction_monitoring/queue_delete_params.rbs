@@ -1,0 +1,25 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type queue_delete_params =
+        { queue_token: String } & Lithic::Internal::Type::request_parameters
+
+      class QueueDeleteParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor queue_token: String
+
+        def initialize: (
+          queue_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          queue_token: String,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

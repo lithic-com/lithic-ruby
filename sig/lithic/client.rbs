@@ -23,6 +23,8 @@ module Lithic
 
     attr_reader auth_rules: Lithic::Resources::AuthRules
 
+    attr_reader transaction_monitoring: Lithic::Resources::TransactionMonitoring
+
     attr_reader auth_stream_enrollment: Lithic::Resources::AuthStreamEnrollment
 
     attr_reader tokenization_decisioning: Lithic::Resources::TokenizationDecisioning

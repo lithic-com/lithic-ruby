@@ -521,6 +521,8 @@ module Lithic
 
   class TransactionListParams = Lithic::Models::TransactionListParams
 
+  module TransactionMonitoring = Lithic::Models::TransactionMonitoring
+
   class TransactionRetrieveParams = Lithic::Models::TransactionRetrieveParams
 
   module Transactions = Lithic::Models::Transactions

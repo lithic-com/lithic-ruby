@@ -14,6 +14,9 @@ module Lithic
       module Cards
       end
 
+      module Cases
+      end
+
       module CreditProducts
       end
 
@@ -43,6 +46,11 @@ module Lithic
       end
 
       module ThreeDS
+      end
+
+      module TransactionMonitoring
+        module Cases
+        end
       end
 
       module Transactions

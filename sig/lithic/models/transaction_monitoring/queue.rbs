@@ -1,0 +1,101 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type queue =
+        {
+          token: String,
+          case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
+          created: Time,
+          description: String?,
+          name: String,
+          updated: Time
+        }
+
+      class Queue < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts
+
+        attr_accessor created: Time
+
+        attr_accessor description: String?
+
+        attr_accessor name: String
+
+        attr_accessor updated: Time
+
+        def initialize: (
+          token: String,
+          case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
+          created: Time,
+          description: String?,
+          name: String,
+          updated: Time
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
+          created: Time,
+          description: String?,
+          name: String,
+          updated: Time
+        }
+
+        type case_counts =
+          {
+            assigned: Integer,
+            closed: Integer,
+            escalated: Integer,
+            in_review: Integer,
+            open_: Integer,
+            resolved: Integer
+          }
+
+        class CaseCounts < Lithic::Internal::Type::BaseModel
+          attr_reader assigned: Integer?
+
+          def assigned=: (Integer) -> Integer
+
+          attr_reader closed: Integer?
+
+          def closed=: (Integer) -> Integer
+
+          attr_reader escalated: Integer?
+
+          def escalated=: (Integer) -> Integer
+
+          attr_reader in_review: Integer?
+
+          def in_review=: (Integer) -> Integer
+
+          attr_reader open_: Integer?
+
+          def open_=: (Integer) -> Integer
+
+          attr_reader resolved: Integer?
+
+          def resolved=: (Integer) -> Integer
+
+          def initialize: (
+            ?assigned: Integer,
+            ?closed: Integer,
+            ?escalated: Integer,
+            ?in_review: Integer,
+            ?open_: Integer,
+            ?resolved: Integer
+          ) -> void
+
+          def to_hash: -> {
+            assigned: Integer,
+            closed: Integer,
+            escalated: Integer,
+            in_review: Integer,
+            open_: Integer,
+            resolved: Integer
+          }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      module Cases
+        type upload_constraints =
+          { accepted_mime_types: ::Array[String], max_size_bytes: Integer }
+
+        class UploadConstraints < Lithic::Internal::Type::BaseModel
+          attr_accessor accepted_mime_types: ::Array[String]
+
+          attr_accessor max_size_bytes: Integer
+
+          def initialize: (
+            accepted_mime_types: ::Array[String],
+            max_size_bytes: Integer
+          ) -> void
+
+          def to_hash: -> {
+            accepted_mime_types: ::Array[String],
+            max_size_bytes: Integer
+          }
+        end
+      end
+    end
+  end
+end

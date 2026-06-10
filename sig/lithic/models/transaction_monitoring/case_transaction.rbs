@@ -1,0 +1,42 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_transaction =
+        {
+          token: String,
+          account_token: String,
+          added_at: Time,
+          card_token: String,
+          transaction_created_at: Time
+        }
+
+      class CaseTransaction < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor account_token: String
+
+        attr_accessor added_at: Time
+
+        attr_accessor card_token: String
+
+        attr_accessor transaction_created_at: Time
+
+        def initialize: (
+          token: String,
+          account_token: String,
+          added_at: Time,
+          card_token: String,
+          transaction_created_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          account_token: String,
+          added_at: Time,
+          card_token: String,
+          transaction_created_at: Time
+        }
+      end
+    end
+  end
+end

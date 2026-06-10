@@ -1,0 +1,125 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_list_params =
+        {
+          account_token: String,
+          assignee: String,
+          begin_: Time,
+          card_token: String,
+          end_: Time,
+          ending_before: String,
+          entity_token: String,
+          page_size: Integer,
+          queue_token: String,
+          rule_token: String,
+          sort_by: Lithic::Models::TransactionMonitoring::case_sort_order,
+          starting_after: String,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          transaction_token: String
+        }
+        & Lithic::Internal::Type::request_parameters
+
+      class CaseListParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_reader account_token: String?
+
+        def account_token=: (String) -> String
+
+        attr_reader assignee: String?
+
+        def assignee=: (String) -> String
+
+        attr_reader begin_: Time?
+
+        def begin_=: (Time) -> Time
+
+        attr_reader card_token: String?
+
+        def card_token=: (String) -> String
+
+        attr_reader end_: Time?
+
+        def end_=: (Time) -> Time
+
+        attr_reader ending_before: String?
+
+        def ending_before=: (String) -> String
+
+        attr_reader entity_token: String?
+
+        def entity_token=: (String) -> String
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader queue_token: String?
+
+        def queue_token=: (String) -> String
+
+        attr_reader rule_token: String?
+
+        def rule_token=: (String) -> String
+
+        attr_reader sort_by: Lithic::Models::TransactionMonitoring::case_sort_order?
+
+        def sort_by=: (
+          Lithic::Models::TransactionMonitoring::case_sort_order
+        ) -> Lithic::Models::TransactionMonitoring::case_sort_order
+
+        attr_reader starting_after: String?
+
+        def starting_after=: (String) -> String
+
+        attr_reader status: Lithic::Models::TransactionMonitoring::case_status?
+
+        def status=: (
+          Lithic::Models::TransactionMonitoring::case_status
+        ) -> Lithic::Models::TransactionMonitoring::case_status
+
+        attr_reader transaction_token: String?
+
+        def transaction_token=: (String) -> String
+
+        def initialize: (
+          ?account_token: String,
+          ?assignee: String,
+          ?begin_: Time,
+          ?card_token: String,
+          ?end_: Time,
+          ?ending_before: String,
+          ?entity_token: String,
+          ?page_size: Integer,
+          ?queue_token: String,
+          ?rule_token: String,
+          ?sort_by: Lithic::Models::TransactionMonitoring::case_sort_order,
+          ?starting_after: String,
+          ?status: Lithic::Models::TransactionMonitoring::case_status,
+          ?transaction_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_token: String,
+          assignee: String,
+          begin_: Time,
+          card_token: String,
+          end_: Time,
+          ending_before: String,
+          entity_token: String,
+          page_size: Integer,
+          queue_token: String,
+          rule_token: String,
+          sort_by: Lithic::Models::TransactionMonitoring::case_sort_order,
+          starting_after: String,
+          status: Lithic::Models::TransactionMonitoring::case_status,
+          transaction_token: String,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

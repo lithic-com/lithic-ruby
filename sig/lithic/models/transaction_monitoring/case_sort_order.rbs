@@ -1,0 +1,26 @@
+module Lithic
+  module Models
+    module TransactionMonitoring
+      type case_sort_order =
+        :CREATED_ASC
+        | :CREATED_DESC
+        | :PRIORITY_DESC
+        | :PRIORITY_ASC
+        | :STATUS_DESC
+        | :STATUS_ASC
+
+      module CaseSortOrder
+        extend Lithic::Internal::Type::Enum
+
+        CREATED_ASC: :CREATED_ASC
+        CREATED_DESC: :CREATED_DESC
+        PRIORITY_DESC: :PRIORITY_DESC
+        PRIORITY_ASC: :PRIORITY_ASC
+        STATUS_DESC: :STATUS_DESC
+        STATUS_ASC: :STATUS_ASC
+
+        def self?.values: -> ::Array[Lithic::Models::TransactionMonitoring::case_sort_order]
+      end
+    end
+  end
+end

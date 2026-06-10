@@ -63,11 +63,7 @@ module Lithic
         attr_accessor :status
 
         # The type of entity
-        sig do
-          returns(
-            Lithic::AccountHolders::AccountHolderEntity::Type::TaggedSymbol
-          )
-        end
+        sig { returns(Lithic::TransactionMonitoring::EntityType::TaggedSymbol) }
         attr_accessor :type
 
         # Information about an entity associated with an account holder
@@ -84,7 +80,7 @@ module Lithic
             phone_number: T.nilable(String),
             status:
               Lithic::AccountHolders::AccountHolderEntity::Status::OrSymbol,
-            type: Lithic::AccountHolders::AccountHolderEntity::Type::OrSymbol
+            type: Lithic::TransactionMonitoring::EntityType::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -124,8 +120,7 @@ module Lithic
               phone_number: T.nilable(String),
               status:
                 Lithic::AccountHolders::AccountHolderEntity::Status::TaggedSymbol,
-              type:
-                Lithic::AccountHolders::AccountHolderEntity::Type::TaggedSymbol
+              type: Lithic::TransactionMonitoring::EntityType::TaggedSymbol
             }
           )
         end
@@ -252,38 +247,6 @@ module Lithic
             override.returns(
               T::Array[
                 Lithic::AccountHolders::AccountHolderEntity::Status::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # The type of entity
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AccountHolders::AccountHolderEntity::Type)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          BENEFICIAL_OWNER_INDIVIDUAL =
-            T.let(
-              :BENEFICIAL_OWNER_INDIVIDUAL,
-              Lithic::AccountHolders::AccountHolderEntity::Type::TaggedSymbol
-            )
-          CONTROL_PERSON =
-            T.let(
-              :CONTROL_PERSON,
-              Lithic::AccountHolders::AccountHolderEntity::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::AccountHolders::AccountHolderEntity::Type::TaggedSymbol
               ]
             )
           end

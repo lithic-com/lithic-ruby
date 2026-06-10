@@ -1,0 +1,37 @@
+module Lithic
+  module Resources
+    class TransactionMonitoring
+      class Cases
+        class Files
+          def create: (
+            String case_token,
+            name: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::TransactionMonitoring::Cases::CaseFile
+
+          def retrieve: (
+            String file_token,
+            case_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::TransactionMonitoring::Cases::CaseFile
+
+          def list: (
+            String case_token,
+            ?ending_before: String,
+            ?page_size: Integer,
+            ?starting_after: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::Internal::CursorPage[Lithic::TransactionMonitoring::Cases::CaseFile]
+
+          def delete: (
+            String file_token,
+            case_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> nil
+
+          def initialize: (client: Lithic::Client) -> void
+        end
+      end
+    end
+  end
+end
