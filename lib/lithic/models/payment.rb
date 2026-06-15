@@ -124,6 +124,13 @@ module Lithic
       #   @return [String, nil]
       optional :external_bank_account_token, String, nil?: true
 
+      # @!attribute tags
+      #   Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+      #   metadata with a resource for your own purposes.
+      #
+      #   @return [Hash{Symbol=>String}, nil]
+      optional :tags, Lithic::Internal::Type::HashOf[String]
+
       # @!attribute type
       #
       #   @return [Symbol, Lithic::Models::Payment::Type, nil]
@@ -135,7 +142,10 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String, nil?: true
 
-      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
+      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, tags: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
+      #   for more details.
+      #
       #   Payment transaction
       #
       #   @param token [String] Unique identifier for the transaction
@@ -175,6 +185,8 @@ module Lithic
       #   @param expected_release_date [Date, nil] Expected release date for the transaction
       #
       #   @param external_bank_account_token [String, nil] External bank account token
+      #
+      #   @param tags [Hash{Symbol=>String}] Key-value pairs for tagging resources. Tags allow you to associate arbitrary met
       #
       #   @param type [Symbol, Lithic::Models::Payment::Type]
       #
