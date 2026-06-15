@@ -48,6 +48,7 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         currency: String | nil,
         expected_release_date: Date | nil,
         external_bank_account_token: String | nil,
+        tags: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         type: Lithic::Payment::Type | nil,
         user_defined_id: String | nil
       }
@@ -90,6 +91,7 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         currency: String | nil,
         expected_release_date: Date | nil,
         external_bank_account_token: String | nil,
+        tags: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         type: Lithic::Payment::Type | nil,
         user_defined_id: String | nil
       }
@@ -138,6 +140,7 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         currency: String | nil,
         expected_release_date: Date | nil,
         external_bank_account_token: String | nil,
+        tags: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         type: Lithic::Payment::Type | nil,
         user_defined_id: String | nil
       }
