@@ -74,6 +74,19 @@ module Lithic
             | :ACCOUNT_AGE
             | :SPEND_VELOCITY_COUNT
             | :SPEND_VELOCITY_AMOUNT
+            | :AMOUNT_Z_SCORE
+            | :AVG_TRANSACTION_AMOUNT
+            | :STDEV_TRANSACTION_AMOUNT
+            | :IS_NEW_COUNTRY
+            | :IS_NEW_MCC
+            | :IS_FIRST_TRANSACTION
+            | :CONSECUTIVE_DECLINES
+            | :TIME_SINCE_LAST_TRANSACTION
+            | :DISTINCT_COUNTRY_COUNT
+            | :IS_NEW_MERCHANT
+            | :THREE_DS_SUCCESS_RATE
+            | :TRAVEL_SPEED
+            | :DISTANCE_FROM_LAST_TRANSACTION
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -94,6 +107,19 @@ module Lithic
             ACCOUNT_AGE: :ACCOUNT_AGE
             SPEND_VELOCITY_COUNT: :SPEND_VELOCITY_COUNT
             SPEND_VELOCITY_AMOUNT: :SPEND_VELOCITY_AMOUNT
+            AMOUNT_Z_SCORE: :AMOUNT_Z_SCORE
+            AVG_TRANSACTION_AMOUNT: :AVG_TRANSACTION_AMOUNT
+            STDEV_TRANSACTION_AMOUNT: :STDEV_TRANSACTION_AMOUNT
+            IS_NEW_COUNTRY: :IS_NEW_COUNTRY
+            IS_NEW_MCC: :IS_NEW_MCC
+            IS_FIRST_TRANSACTION: :IS_FIRST_TRANSACTION
+            CONSECUTIVE_DECLINES: :CONSECUTIVE_DECLINES
+            TIME_SINCE_LAST_TRANSACTION: :TIME_SINCE_LAST_TRANSACTION
+            DISTINCT_COUNTRY_COUNT: :DISTINCT_COUNTRY_COUNT
+            IS_NEW_MERCHANT: :IS_NEW_MERCHANT
+            THREE_DS_SUCCESS_RATE: :THREE_DS_SUCCESS_RATE
+            TRAVEL_SPEED: :TRAVEL_SPEED
+            DISTANCE_FROM_LAST_TRANSACTION: :DISTANCE_FROM_LAST_TRANSACTION
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::attribute]
           end
@@ -101,8 +127,10 @@ module Lithic
           type parameters =
             {
               filters: Lithic::AuthRules::SpendVelocityFilters,
+              interval: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval,
               period: Lithic::Models::AuthRules::velocity_limit_period,
-              scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+              scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope,
+              unit: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit
             }
 
           class Parameters < Lithic::Internal::Type::BaseModel
@@ -111,6 +139,12 @@ module Lithic
             def filters=: (
               Lithic::AuthRules::SpendVelocityFilters
             ) -> Lithic::AuthRules::SpendVelocityFilters
+
+            attr_reader interval: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval?
+
+            def interval=: (
+              Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval
+            ) -> Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval
 
             attr_reader period: Lithic::Models::AuthRules::velocity_limit_period?
 
@@ -124,17 +158,40 @@ module Lithic
               Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
             ) -> Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
 
+            attr_reader unit: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit?
+
+            def unit=: (
+              Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit
+            ) -> Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit
+
             def initialize: (
               ?filters: Lithic::AuthRules::SpendVelocityFilters,
+              ?interval: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval,
               ?period: Lithic::Models::AuthRules::velocity_limit_period,
-              ?scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+              ?scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope,
+              ?unit: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit
             ) -> void
 
             def to_hash: -> {
               filters: Lithic::AuthRules::SpendVelocityFilters,
+              interval: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval,
               period: Lithic::Models::AuthRules::velocity_limit_period,
-              scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope
+              scope: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope,
+              unit: Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit
             }
+
+            type interval = :LIFETIME | :"7D" | :"30D" | :"90D"
+
+            module Interval
+              extend Lithic::Internal::Type::Enum
+
+              LIFETIME: :LIFETIME
+              INTERVAL_7_D: :"7D"
+              INTERVAL_30_D: :"30D"
+              INTERVAL_90_D: :"90D"
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::interval]
+            end
 
             type scope = :CARD | :ACCOUNT | :GLOBAL
 
@@ -146,6 +203,19 @@ module Lithic
               GLOBAL: :GLOBAL
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::scope]
+            end
+
+            type unit = :MPH | :KPH | :MILES | :KILOMETERS
+
+            module Unit
+              extend Lithic::Internal::Type::Enum
+
+              MPH: :MPH
+              KPH: :KPH
+              MILES: :MILES
+              KILOMETERS: :KILOMETERS
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::unit]
             end
           end
         end

@@ -77,6 +77,52 @@ module Lithic
           #   - `SPEND_VELOCITY_AMOUNT`: The total spend amount (in cents) of transactions
           #     matching the specified filters within the given period. Requires `parameters`
           #     with `scope`, `period`, and optional `filters`. Use an integer value.
+          #   - `AMOUNT_Z_SCORE`: The z-score of the transaction amount relative to the
+          #     entity's transaction history. Null if fewer than 30 approved transactions in
+          #     the specified window. Requires `parameters.scope` and `parameters.interval`.
+          #     Use a decimal value.
+          #   - `AVG_TRANSACTION_AMOUNT`: The average approved transaction amount for the
+          #     entity over the specified window, in cents. Requires `parameters.scope` and
+          #     `parameters.interval`. Use a decimal value.
+          #   - `STDEV_TRANSACTION_AMOUNT`: The standard deviation of approved transaction
+          #     amounts for the entity over the specified window, in cents. Null if fewer than
+          #     30 approved transactions in the specified window. Requires `parameters.scope`
+          #     and `parameters.interval`. Use a decimal value.
+          #   - `IS_NEW_COUNTRY`: Whether the transaction's merchant country has not been seen
+          #     in the entity's transaction history. Valid values are `TRUE`, `FALSE`.
+          #     Requires `parameters.scope`.
+          #   - `IS_NEW_MCC`: Whether the transaction's MCC has not been seen in the entity's
+          #     transaction history. Valid values are `TRUE`, `FALSE`. Requires
+          #     `parameters.scope`.
+          #   - `IS_FIRST_TRANSACTION`: Whether this is the first transaction for the entity.
+          #     Valid values are `TRUE`, `FALSE`. Requires `parameters.scope`.
+          #   - `CONSECUTIVE_DECLINES`: The number of consecutive declined transactions for
+          #     the entity over the last 30 days (rolling). Requires `parameters.scope`. Use
+          #     an integer value.
+          #   - `TIME_SINCE_LAST_TRANSACTION`: The number of days since the last approved
+          #     transaction for the entity, rounded to the nearest whole day. Requires
+          #     `parameters.scope`. Use an integer value.
+          #   - `DISTINCT_COUNTRY_COUNT`: The number of distinct merchant countries seen in
+          #     the entity's transaction history. Requires `parameters.scope`. Use an integer
+          #     value.
+          #   - `IS_NEW_MERCHANT`: Whether the card acceptor ID has not been seen in the
+          #     card's approved transaction history (capped at the 1000 most recently seen
+          #     merchants). Valid values are `TRUE`, `FALSE`. Card-scoped only; no
+          #     `parameters` required.
+          #   - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
+          #     a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
+          #     Use a decimal value.
+          #   - `TRAVEL_SPEED`: The estimated speed of travel derived from the distance
+          #     between the postal code centers of the last card-present transaction and the
+          #     current transaction, divided by the elapsed time. Null if there is no prior
+          #     card-present transaction, if either postal code cannot be geocoded, or if
+          #     elapsed time is zero. Requires `parameters.unit` set to `MPH` or `KPH`. Use a
+          #     decimal value.
+          #   - `DISTANCE_FROM_LAST_TRANSACTION`: The estimated distance between the postal
+          #     code centers of the last card-present transaction and the current transaction.
+          #     Null if there is no prior card-present transaction or if either postal code
+          #     cannot be geocoded. Requires `parameters.unit` set to `MILES` or `KILOMETERS`.
+          #     Use a decimal value.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Attribute]
           required :attribute,
@@ -95,8 +141,14 @@ module Lithic
           required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
           # @!attribute parameters
-          #   Additional parameters for spend velocity attributes. Required when `attribute`
-          #   is `SPEND_VELOCITY_COUNT` or `SPEND_VELOCITY_AMOUNT`. Not used for other
+          #   Additional parameters for certain attributes. Required when `attribute` is
+          #   `SPEND_VELOCITY_COUNT` or `SPEND_VELOCITY_AMOUNT` (require `scope`, `period`,
+          #   and optional `filters`); `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
+          #   `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
+          #   `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
+          #   or `DISTINCT_COUNTRY_COUNT` (require `scope`, and additionally `interval` for
+          #   the statistical attributes); or `TRAVEL_SPEED` or
+          #   `DISTANCE_FROM_LAST_TRANSACTION` (require `unit`). Not used for other
           #   attributes.
           #
           #   @return [Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters, nil]
@@ -114,7 +166,7 @@ module Lithic
           #
           #   @param value [String, Integer, Float, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters] Additional parameters for spend velocity attributes. Required when `attribute` i
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters] Additional parameters for certain attributes. Required when `attribute` is
 
           # The attribute to target.
           #
@@ -170,6 +222,52 @@ module Lithic
           # - `SPEND_VELOCITY_AMOUNT`: The total spend amount (in cents) of transactions
           #   matching the specified filters within the given period. Requires `parameters`
           #   with `scope`, `period`, and optional `filters`. Use an integer value.
+          # - `AMOUNT_Z_SCORE`: The z-score of the transaction amount relative to the
+          #   entity's transaction history. Null if fewer than 30 approved transactions in
+          #   the specified window. Requires `parameters.scope` and `parameters.interval`.
+          #   Use a decimal value.
+          # - `AVG_TRANSACTION_AMOUNT`: The average approved transaction amount for the
+          #   entity over the specified window, in cents. Requires `parameters.scope` and
+          #   `parameters.interval`. Use a decimal value.
+          # - `STDEV_TRANSACTION_AMOUNT`: The standard deviation of approved transaction
+          #   amounts for the entity over the specified window, in cents. Null if fewer than
+          #   30 approved transactions in the specified window. Requires `parameters.scope`
+          #   and `parameters.interval`. Use a decimal value.
+          # - `IS_NEW_COUNTRY`: Whether the transaction's merchant country has not been seen
+          #   in the entity's transaction history. Valid values are `TRUE`, `FALSE`.
+          #   Requires `parameters.scope`.
+          # - `IS_NEW_MCC`: Whether the transaction's MCC has not been seen in the entity's
+          #   transaction history. Valid values are `TRUE`, `FALSE`. Requires
+          #   `parameters.scope`.
+          # - `IS_FIRST_TRANSACTION`: Whether this is the first transaction for the entity.
+          #   Valid values are `TRUE`, `FALSE`. Requires `parameters.scope`.
+          # - `CONSECUTIVE_DECLINES`: The number of consecutive declined transactions for
+          #   the entity over the last 30 days (rolling). Requires `parameters.scope`. Use
+          #   an integer value.
+          # - `TIME_SINCE_LAST_TRANSACTION`: The number of days since the last approved
+          #   transaction for the entity, rounded to the nearest whole day. Requires
+          #   `parameters.scope`. Use an integer value.
+          # - `DISTINCT_COUNTRY_COUNT`: The number of distinct merchant countries seen in
+          #   the entity's transaction history. Requires `parameters.scope`. Use an integer
+          #   value.
+          # - `IS_NEW_MERCHANT`: Whether the card acceptor ID has not been seen in the
+          #   card's approved transaction history (capped at the 1000 most recently seen
+          #   merchants). Valid values are `TRUE`, `FALSE`. Card-scoped only; no
+          #   `parameters` required.
+          # - `THREE_DS_SUCCESS_RATE`: The 3DS authentication success rate for the card, as
+          #   a percentage from 0.0 to 100.0. Card-scoped only; no `parameters` required.
+          #   Use a decimal value.
+          # - `TRAVEL_SPEED`: The estimated speed of travel derived from the distance
+          #   between the postal code centers of the last card-present transaction and the
+          #   current transaction, divided by the elapsed time. Null if there is no prior
+          #   card-present transaction, if either postal code cannot be geocoded, or if
+          #   elapsed time is zero. Requires `parameters.unit` set to `MPH` or `KPH`. Use a
+          #   decimal value.
+          # - `DISTANCE_FROM_LAST_TRANSACTION`: The estimated distance between the postal
+          #   code centers of the last card-present transaction and the current transaction.
+          #   Null if there is no prior card-present transaction or if either postal code
+          #   cannot be geocoded. Requires `parameters.unit` set to `MILES` or `KILOMETERS`.
+          #   Use a decimal value.
           #
           # @see Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition#attribute
           module Attribute
@@ -191,6 +289,19 @@ module Lithic
             ACCOUNT_AGE = :ACCOUNT_AGE
             SPEND_VELOCITY_COUNT = :SPEND_VELOCITY_COUNT
             SPEND_VELOCITY_AMOUNT = :SPEND_VELOCITY_AMOUNT
+            AMOUNT_Z_SCORE = :AMOUNT_Z_SCORE
+            AVG_TRANSACTION_AMOUNT = :AVG_TRANSACTION_AMOUNT
+            STDEV_TRANSACTION_AMOUNT = :STDEV_TRANSACTION_AMOUNT
+            IS_NEW_COUNTRY = :IS_NEW_COUNTRY
+            IS_NEW_MCC = :IS_NEW_MCC
+            IS_FIRST_TRANSACTION = :IS_FIRST_TRANSACTION
+            CONSECUTIVE_DECLINES = :CONSECUTIVE_DECLINES
+            TIME_SINCE_LAST_TRANSACTION = :TIME_SINCE_LAST_TRANSACTION
+            DISTINCT_COUNTRY_COUNT = :DISTINCT_COUNTRY_COUNT
+            IS_NEW_MERCHANT = :IS_NEW_MERCHANT
+            THREE_DS_SUCCESS_RATE = :THREE_DS_SUCCESS_RATE
+            TRAVEL_SPEED = :TRAVEL_SPEED
+            DISTANCE_FROM_LAST_TRANSACTION = :DISTANCE_FROM_LAST_TRANSACTION
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -203,6 +314,15 @@ module Lithic
             #   @return [Lithic::Models::AuthRules::SpendVelocityFilters, nil]
             optional :filters, -> { Lithic::AuthRules::SpendVelocityFilters }
 
+            # @!attribute interval
+            #   The time window for statistical attributes (`AMOUNT_Z_SCORE`,
+            #   `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`). Use `LIFETIME` for
+            #   all-time history or a specific window (`7D`, `30D`, `90D`).
+            #
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Interval, nil]
+            optional :interval,
+                     enum: -> { Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Interval }
+
             # @!attribute period
             #   The time period over which to calculate the spend velocity.
             #
@@ -210,24 +330,70 @@ module Lithic
             optional :period, union: -> { Lithic::AuthRules::VelocityLimitPeriod }
 
             # @!attribute scope
-            #   The entity scope to evaluate the attribute against.
+            #   The entity scope to evaluate the attribute against. `GLOBAL` is only valid for
+            #   spend velocity attributes.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Scope, nil]
             optional :scope,
                      enum: -> { Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Scope }
 
-            # @!method initialize(filters: nil, period: nil, scope: nil)
-            #   Additional parameters for spend velocity attributes. Required when `attribute`
-            #   is `SPEND_VELOCITY_COUNT` or `SPEND_VELOCITY_AMOUNT`. Not used for other
+            # @!attribute unit
+            #   The unit for impossible travel attributes. Required when `attribute` is
+            #   `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION`.
+            #
+            #   For `TRAVEL_SPEED`: `MPH` (miles per hour) or `KPH` (kilometers per hour).
+            #
+            #   For `DISTANCE_FROM_LAST_TRANSACTION`: `MILES` or `KILOMETERS`.
+            #
+            #   @return [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Unit, nil]
+            optional :unit,
+                     enum: -> { Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Unit }
+
+            # @!method initialize(filters: nil, interval: nil, period: nil, scope: nil, unit: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters}
+            #   for more details.
+            #
+            #   Additional parameters for certain attributes. Required when `attribute` is
+            #   `SPEND_VELOCITY_COUNT` or `SPEND_VELOCITY_AMOUNT` (require `scope`, `period`,
+            #   and optional `filters`); `AMOUNT_Z_SCORE`, `AVG_TRANSACTION_AMOUNT`,
+            #   `STDEV_TRANSACTION_AMOUNT`, `IS_NEW_COUNTRY`, `IS_NEW_MCC`,
+            #   `IS_FIRST_TRANSACTION`, `CONSECUTIVE_DECLINES`, `TIME_SINCE_LAST_TRANSACTION`,
+            #   or `DISTINCT_COUNTRY_COUNT` (require `scope`, and additionally `interval` for
+            #   the statistical attributes); or `TRAVEL_SPEED` or
+            #   `DISTANCE_FROM_LAST_TRANSACTION` (require `unit`). Not used for other
             #   attributes.
             #
             #   @param filters [Lithic::Models::AuthRules::SpendVelocityFilters]
             #
+            #   @param interval [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Interval] The time window for statistical attributes (`AMOUNT_Z_SCORE`, `AVG_TRANSACTION_A
+            #
             #   @param period [Lithic::Models::AuthRules::VelocityLimitPeriod::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowYear] The time period over which to calculate the spend velocity.
             #
-            #   @param scope [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Scope] The entity scope to evaluate the attribute against.
+            #   @param scope [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Scope] The entity scope to evaluate the attribute against. `GLOBAL` is only valid for
+            #
+            #   @param unit [Symbol, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters::Unit] The unit for impossible travel attributes. Required when `attribute` is
+            #   `TRAVEL\_
 
-            # The entity scope to evaluate the attribute against.
+            # The time window for statistical attributes (`AMOUNT_Z_SCORE`,
+            # `AVG_TRANSACTION_AMOUNT`, `STDEV_TRANSACTION_AMOUNT`). Use `LIFETIME` for
+            # all-time history or a specific window (`7D`, `30D`, `90D`).
+            #
+            # @see Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters#interval
+            module Interval
+              extend Lithic::Internal::Type::Enum
+
+              LIFETIME = :LIFETIME
+              INTERVAL_7_D = :"7D"
+              INTERVAL_30_D = :"30D"
+              INTERVAL_90_D = :"90D"
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The entity scope to evaluate the attribute against. `GLOBAL` is only valid for
+            # spend velocity attributes.
             #
             # @see Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters#scope
             module Scope
@@ -236,6 +402,26 @@ module Lithic
               CARD = :CARD
               ACCOUNT = :ACCOUNT
               GLOBAL = :GLOBAL
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The unit for impossible travel attributes. Required when `attribute` is
+            # `TRAVEL_SPEED` or `DISTANCE_FROM_LAST_TRANSACTION`.
+            #
+            # For `TRAVEL_SPEED`: `MPH` (miles per hour) or `KPH` (kilometers per hour).
+            #
+            # For `DISTANCE_FROM_LAST_TRANSACTION`: `MILES` or `KILOMETERS`.
+            #
+            # @see Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters::Condition::Parameters#unit
+            module Unit
+              extend Lithic::Internal::Type::Enum
+
+              MPH = :MPH
+              KPH = :KPH
+              MILES = :MILES
+              KILOMETERS = :KILOMETERS
 
               # @!method self.values
               #   @return [Array<Symbol>]
