@@ -97,6 +97,14 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :external_bank_account_token
 
+      # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+      # metadata with a resource for your own purposes.
+      sig { returns(T.nilable(T::Hash[Symbol, String])) }
+      attr_reader :tags
+
+      sig { params(tags: T::Hash[Symbol, String]).void }
+      attr_writer :tags
+
       sig { returns(T.nilable(Lithic::Payment::Type::TaggedSymbol)) }
       attr_reader :type
 
@@ -134,6 +142,7 @@ module Lithic
           currency: String,
           expected_release_date: T.nilable(Date),
           external_bank_account_token: T.nilable(String),
+          tags: T::Hash[Symbol, String],
           type: Lithic::Payment::Type::OrSymbol,
           user_defined_id: T.nilable(String),
           family: Symbol
@@ -178,6 +187,9 @@ module Lithic
         expected_release_date: nil,
         # External bank account token
         external_bank_account_token: nil,
+        # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+        # metadata with a resource for your own purposes.
+        tags: nil,
         type: nil,
         # User-defined identifier
         user_defined_id: nil,
@@ -210,6 +222,7 @@ module Lithic
             currency: String,
             expected_release_date: T.nilable(Date),
             external_bank_account_token: T.nilable(String),
+            tags: T::Hash[Symbol, String],
             type: Lithic::Payment::Type::TaggedSymbol,
             user_defined_id: T.nilable(String)
           }
