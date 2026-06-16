@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.16.0 (2026-06-16)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/lithic-com/lithic-ruby/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** add CardTransactionFeature to auth_rules RuleFeature ([1071dc2](https://github.com/lithic-com/lithic-ruby/commit/1071dc23ec9899d915a1b6211ca2a876ab1b223d))
+* **api:** add condition attributes, interval/unit/scope to auth_rules ([28a4b65](https://github.com/lithic-com/lithic-ruby/commit/28a4b658b44f1aff6e6902fa6c7b32b0e4d2e197))
+* **api:** Add created field to Challenge object ([e442303](https://github.com/lithic-com/lithic-ruby/commit/e44230324af07930c8cc84b3035677df54bc031f))
+* **api:** add day_of_period field to loan_tape ([71ab28b](https://github.com/lithic-com/lithic-ruby/commit/71ab28b5af8e6118b2133bc8ed190520b6be2396))
+* **api:** add hold_adjustment_action variant to auth_rules action parameter ([bae640f](https://github.com/lithic-com/lithic-ruby/commit/bae640faf01eef0b956cb24eaa73f92c40536082))
+* **api:** add NVS name_validation fields to ASA request and response ([5747fda](https://github.com/lithic-com/lithic-ruby/commit/5747fda7c1065d257bc60d03e770f66be8677d48))
+* **api:** add route method to transactions ([74346e6](https://github.com/lithic-com/lithic-ruby/commit/74346e6f43f4c5153960d99954b7c120296c640f))
+* **api:** add tags field to Payment model ([745a6cd](https://github.com/lithic-com/lithic-ruby/commit/745a6cd3d832409fdcbbd191f06de40f7a8f2ecb))
+* **api:** add transaction_monitoring with cases/comments/files/queues, refactor entity_type ([37af713](https://github.com/lithic-com/lithic-ruby/commit/37af713a243f3380aea47019af34fe1d698bae35))
+
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([d5b5510](https://github.com/lithic-com/lithic-ruby/commit/d5b551022172beeeb6feccd1886a130ece8a9cc9))
+
+
+### Documentation
+
+* **api:** update support contact from email to URL in account/card resources ([bd7f679](https://github.com/lithic-com/lithic-ruby/commit/bd7f67927187e7daa99059f5e9190c1df79424c3))
+
 ## 0.15.0 (2026-05-27)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/lithic-com/lithic-ruby/compare/v0.14.0...v0.15.0)
