@@ -106,7 +106,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             sig do
               returns(
                 Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::OrSymbol
@@ -182,7 +183,8 @@ module Lithic
               #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
               #   stream.
               # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-              #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+              #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+              #   stream.
               type:,
               # Account tokens to which the Auth Rule applies.
               account_tokens: nil,
@@ -267,7 +269,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -363,7 +366,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             sig do
               returns(
                 Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::OrSymbol
@@ -426,7 +430,8 @@ module Lithic
               #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
               #   stream.
               # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-              #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+              #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+              #   stream.
               type:,
               # The event stream during which the rule will be evaluated.
               event_stream: nil,
@@ -506,7 +511,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -602,7 +608,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             sig do
               returns(
                 Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type::OrSymbol
@@ -691,7 +698,8 @@ module Lithic
               #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
               #   stream.
               # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-              #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+              #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+              #   stream.
               type:,
               # The event stream during which the rule will be evaluated.
               event_stream: nil,
@@ -780,7 +788,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             module Type
               extend Lithic::Internal::Type::Enum
 
