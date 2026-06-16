@@ -100,6 +100,18 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
     end
   end
 
+  def test_route_required_params
+    response =
+      @lithic.transactions.route(
+        "00000000-0000-0000-0000-000000000000",
+        financial_account_token: "00000000-0000-0000-0000-000000000000"
+      )
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_simulate_authorization_required_params
     response =
       @lithic.transactions.simulate_authorization(

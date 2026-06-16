@@ -28,6 +28,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> nil
 
+      def route: (
+        String transaction_token,
+        financial_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
       def simulate_authorization: (
         amount: Integer,
         descriptor: String,
