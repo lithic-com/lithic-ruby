@@ -94,6 +94,31 @@ module Lithic
         )
       end
 
+      # Route a card transaction to a financial account. Only available for select use
+      # cases and programs.
+      #
+      # @overload route(transaction_token, financial_account_token:, request_options: {})
+      #
+      # @param transaction_token [String] The token of the transaction to route.
+      #
+      # @param financial_account_token [String] The token of the financial account to route the transaction to.
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Lithic::Models::TransactionRouteParams
+      def route(transaction_token, params)
+        parsed, options = Lithic::TransactionRouteParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/transactions/%1$s/route", transaction_token],
+          body: parsed,
+          model: NilClass,
+          options: options
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::TransactionSimulateAuthorizationParams} for more details.
       #
