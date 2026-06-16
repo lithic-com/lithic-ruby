@@ -47,7 +47,8 @@ module Lithic
             #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #     stream.
             #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #     stream.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::Type]
             required :type, enum: -> { Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type }
@@ -138,7 +139,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             #
             # @see Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule#type
             module Type
@@ -182,7 +184,8 @@ module Lithic
             #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #     stream.
             #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #     stream.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::Type]
             required :type, enum: -> { Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type }
@@ -259,7 +262,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             #
             # @see Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule#type
             module Type
@@ -303,7 +307,8 @@ module Lithic
             #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #     stream.
             #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #     stream.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type]
             required :type, enum: -> { Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type }
@@ -404,7 +409,8 @@ module Lithic
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
             #   stream.
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
-            #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, or CARD_TRANSACTION_UPDATE event
+            #   stream.
             #
             # @see Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule#type
             module Type

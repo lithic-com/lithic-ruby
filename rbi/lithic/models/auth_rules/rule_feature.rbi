@@ -15,10 +15,13 @@ module Lithic
       #   TOKENIZATION event stream rules.
       # - `ACH_RECEIPT`: The ACH receipt being evaluated. Only available for
       #   ACH_CREDIT_RECEIPT and ACH_DEBIT_RECEIPT event stream rules.
-      # - `CARD`: The card associated with the event. Available for AUTHORIZATION and
-      #   THREE_DS_AUTHENTICATION event stream rules.
+      # - `CARD_TRANSACTION`: The card transaction being evaluated. Only available for
+      #   CARD_TRANSACTION_UPDATE event stream rules.
+      # - `CARD`: The card associated with the event. Available for AUTHORIZATION,
+      #   THREE_DS_AUTHENTICATION, and CARD_TRANSACTION_UPDATE event stream rules.
       # - `ACCOUNT_HOLDER`: The account holder associated with the card. Available for
-      #   AUTHORIZATION and THREE_DS_AUTHENTICATION event stream rules.
+      #   AUTHORIZATION, THREE_DS_AUTHENTICATION, and CARD_TRANSACTION_UPDATE event
+      #   stream rules.
       # - `IP_METADATA`: IP address metadata for the request. Available for
       #   THREE_DS_AUTHENTICATION event stream rules.
       # - `SPEND_VELOCITY`: Spend velocity data for the card or account. Requires
@@ -26,8 +29,8 @@ module Lithic
       #   calculation. Available for AUTHORIZATION event stream rules.
       # - `TRANSACTION_HISTORY_SIGNALS`: Behavioral feature state derived from the
       #   entity's transaction history. Requires `scope` to specify whether to load
-      #   card, account, or business account history. Available for AUTHORIZATION event
-      #   stream rules.
+      #   card, account, or business account history. Available for AUTHORIZATION and
+      #   CARD_TRANSACTION_UPDATE event stream rules.
       module RuleFeature
         extend Lithic::Internal::Type::Union
 
@@ -38,6 +41,7 @@ module Lithic
               Lithic::AuthRules::RuleFeature::AuthenticationFeature,
               Lithic::AuthRules::RuleFeature::TokenizationFeature,
               Lithic::AuthRules::RuleFeature::ACHReceiptFeature,
+              Lithic::AuthRules::RuleFeature::CardTransactionFeature,
               Lithic::AuthRules::RuleFeature::CardFeature,
               Lithic::AuthRules::RuleFeature::AccountHolderFeature,
               Lithic::AuthRules::RuleFeature::IPMetadataFeature,
@@ -166,6 +170,38 @@ module Lithic
             # The variable name for this feature in the rule function signature
             name: nil,
             type: :ACH_RECEIPT
+          )
+          end
+
+          sig { override.returns({ type: Symbol, name: String }) }
+          def to_hash
+          end
+        end
+
+        class CardTransactionFeature < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::RuleFeature::CardTransactionFeature,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # The variable name for this feature in the rule function signature
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
+          sig { params(name: String, type: Symbol).returns(T.attached_class) }
+          def self.new(
+            # The variable name for this feature in the rule function signature
+            name: nil,
+            type: :CARD_TRANSACTION
           )
           end
 
