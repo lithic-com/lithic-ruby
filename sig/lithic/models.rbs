@@ -525,6 +525,8 @@ module Lithic
 
   class TransactionRetrieveParams = Lithic::Models::TransactionRetrieveParams
 
+  class TransactionRouteParams = Lithic::Models::TransactionRouteParams
+
   module Transactions = Lithic::Models::Transactions
 
   class TransactionSimulateAuthorizationAdviceParams = Lithic::Models::TransactionSimulateAuthorizationAdviceParams

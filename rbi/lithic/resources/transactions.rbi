@@ -82,6 +82,24 @@ module Lithic
       )
       end
 
+      # Route a card transaction to a financial account. Only available for select use
+      # cases and programs.
+      sig do
+        params(
+          transaction_token: String,
+          financial_account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
+      def route(
+        # The token of the transaction to route.
+        transaction_token,
+        # The token of the financial account to route the transaction to.
+        financial_account_token:,
+        request_options: {}
+      )
+      end
+
       # Simulates an authorization request from the card network as if it came from a
       # merchant acquirer. If you are configured for ASA, simulating authorizations
       # requires your ASA client to be set up properly, i.e. be able to respond to the

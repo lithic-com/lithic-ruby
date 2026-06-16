@@ -578,6 +578,8 @@ module Lithic
 
   TransactionRetrieveParams = Lithic::Models::TransactionRetrieveParams
 
+  TransactionRouteParams = Lithic::Models::TransactionRouteParams
+
   Transactions = Lithic::Models::Transactions
 
   TransactionSimulateAuthorizationAdviceParams =
