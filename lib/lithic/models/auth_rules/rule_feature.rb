@@ -17,11 +17,13 @@ module Lithic
       #   ACH_CREDIT_RECEIPT and ACH_DEBIT_RECEIPT event stream rules.
       # - `CARD_TRANSACTION`: The card transaction being evaluated. Only available for
       #   CARD_TRANSACTION_UPDATE event stream rules.
+      # - `ACH_PAYMENT`: The ACH payment being evaluated. Only available for
+      #   ACH_PAYMENT_UPDATE event stream rules.
       # - `CARD`: The card associated with the event. Available for AUTHORIZATION,
       #   THREE_DS_AUTHENTICATION, and CARD_TRANSACTION_UPDATE event stream rules.
-      # - `ACCOUNT_HOLDER`: The account holder associated with the card. Available for
-      #   AUTHORIZATION, THREE_DS_AUTHENTICATION, and CARD_TRANSACTION_UPDATE event
-      #   stream rules.
+      # - `ACCOUNT_HOLDER`: The account holder associated with the event. Available for
+      #   AUTHORIZATION, THREE_DS_AUTHENTICATION, CARD_TRANSACTION_UPDATE, and
+      #   ACH_PAYMENT_UPDATE event stream rules.
       # - `IP_METADATA`: IP address metadata for the request. Available for
       #   THREE_DS_AUTHENTICATION event stream rules.
       # - `SPEND_VELOCITY`: Spend velocity data for the card or account. Requires
@@ -43,6 +45,8 @@ module Lithic
         variant -> { Lithic::AuthRules::RuleFeature::ACHReceiptFeature }
 
         variant -> { Lithic::AuthRules::RuleFeature::CardTransactionFeature }
+
+        variant -> { Lithic::AuthRules::RuleFeature::ACHPaymentFeature }
 
         variant -> { Lithic::AuthRules::RuleFeature::CardFeature }
 
@@ -142,6 +146,24 @@ module Lithic
           #   @param name [String] The variable name for this feature in the rule function signature
           #
           #   @param type [Symbol, :CARD_TRANSACTION]
+        end
+
+        class ACHPaymentFeature < Lithic::Internal::Type::BaseModel
+          # @!attribute type
+          #
+          #   @return [Symbol, :ACH_PAYMENT]
+          required :type, const: :ACH_PAYMENT
+
+          # @!attribute name
+          #   The variable name for this feature in the rule function signature
+          #
+          #   @return [String, nil]
+          optional :name, String
+
+          # @!method initialize(name: nil, type: :ACH_PAYMENT)
+          #   @param name [String] The variable name for this feature in the rule function signature
+          #
+          #   @param type [Symbol, :ACH_PAYMENT]
         end
 
         class CardFeature < Lithic::Internal::Type::BaseModel
@@ -293,7 +315,7 @@ module Lithic
         end
 
         # @!method self.variants
-        #   @return [Array(Lithic::Models::AuthRules::RuleFeature::AuthorizationFeature, Lithic::Models::AuthRules::RuleFeature::AuthenticationFeature, Lithic::Models::AuthRules::RuleFeature::TokenizationFeature, Lithic::Models::AuthRules::RuleFeature::ACHReceiptFeature, Lithic::Models::AuthRules::RuleFeature::CardTransactionFeature, Lithic::Models::AuthRules::RuleFeature::CardFeature, Lithic::Models::AuthRules::RuleFeature::AccountHolderFeature, Lithic::Models::AuthRules::RuleFeature::IPMetadataFeature, Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature, Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature)]
+        #   @return [Array(Lithic::Models::AuthRules::RuleFeature::AuthorizationFeature, Lithic::Models::AuthRules::RuleFeature::AuthenticationFeature, Lithic::Models::AuthRules::RuleFeature::TokenizationFeature, Lithic::Models::AuthRules::RuleFeature::ACHReceiptFeature, Lithic::Models::AuthRules::RuleFeature::CardTransactionFeature, Lithic::Models::AuthRules::RuleFeature::ACHPaymentFeature, Lithic::Models::AuthRules::RuleFeature::CardFeature, Lithic::Models::AuthRules::RuleFeature::AccountHolderFeature, Lithic::Models::AuthRules::RuleFeature::IPMetadataFeature, Lithic::Models::AuthRules::RuleFeature::SpendVelocityFeature, Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature)]
       end
     end
   end

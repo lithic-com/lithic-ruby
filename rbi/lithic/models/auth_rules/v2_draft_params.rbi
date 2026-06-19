@@ -28,6 +28,7 @@ module Lithic
                 Lithic::AuthRules::ConditionalACHActionParameters,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters,
                 Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
+                Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
                 Lithic::AuthRules::TypescriptCodeParameters,
                 Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
               )
@@ -50,6 +51,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
                   Lithic::AuthRules::TypescriptCodeParameters::OrHash,
                   Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
                 )
@@ -80,6 +82,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalACHActionParameters,
                     Lithic::AuthRules::ConditionalTokenizationActionParameters,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
+                    Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
                     Lithic::AuthRules::TypescriptCodeParameters,
                     Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
                   )
@@ -106,6 +109,7 @@ module Lithic
                 Lithic::AuthRules::ConditionalACHActionParameters,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters,
                 Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
+                Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
                 Lithic::AuthRules::TypescriptCodeParameters,
                 Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
               )

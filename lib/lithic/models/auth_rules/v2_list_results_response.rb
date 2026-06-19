@@ -17,6 +17,10 @@ module Lithic
 
         variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult }
 
+        variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult }
+
+        variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult }
+
         class AuthorizationResult < Lithic::Internal::Type::BaseModel
           # @!attribute token
           #   Globally unique identifier for the evaluation
@@ -880,8 +884,429 @@ module Lithic
           end
         end
 
+        class CardTransactionUpdateResult < Lithic::Internal::Type::BaseModel
+          # @!attribute token
+          #   Globally unique identifier for the evaluation
+          #
+          #   @return [String]
+          required :token, String
+
+          # @!attribute actions
+          #   Actions returned by the rule evaluation
+          #
+          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction>]
+          required :actions,
+                   -> { Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action] }
+
+          # @!attribute auth_rule_token
+          #   The Auth Rule token
+          #
+          #   @return [String]
+          required :auth_rule_token, String
+
+          # @!attribute evaluation_time
+          #   Timestamp of the rule evaluation
+          #
+          #   @return [Time]
+          required :evaluation_time, Time
+
+          # @!attribute event_stream
+          #   The event stream during which the rule was evaluated
+          #
+          #   @return [Symbol, :CARD_TRANSACTION_UPDATE]
+          required :event_stream, const: :CARD_TRANSACTION_UPDATE
+
+          # @!attribute event_token
+          #   Token of the event that triggered the evaluation
+          #
+          #   @return [String]
+          required :event_token, String
+
+          # @!attribute mode
+          #   The state of the Auth Rule
+          #
+          #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode]
+          required :mode,
+                   enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode }
+
+          # @!attribute rule_version
+          #   Version of the rule that was evaluated
+          #
+          #   @return [Integer]
+          required :rule_version, Integer
+
+          # @!attribute transaction_token
+          #   The token of the transaction that triggered the rule evaluation
+          #
+          #   @return [String, nil]
+          required :transaction_token, String, nil?: true
+
+          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, transaction_token:, event_stream: :CARD_TRANSACTION_UPDATE)
+          #   @param token [String] Globally unique identifier for the evaluation
+          #
+          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction>] Actions returned by the rule evaluation
+          #
+          #   @param auth_rule_token [String] The Auth Rule token
+          #
+          #   @param evaluation_time [Time] Timestamp of the rule evaluation
+          #
+          #   @param event_token [String] Token of the event that triggered the evaluation
+          #
+          #   @param mode [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode] The state of the Auth Rule
+          #
+          #   @param rule_version [Integer] Version of the rule that was evaluated
+          #
+          #   @param transaction_token [String, nil] The token of the transaction that triggered the rule evaluation
+          #
+          #   @param event_stream [Symbol, :CARD_TRANSACTION_UPDATE] The event stream during which the rule was evaluated
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction }
+
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction }
+
+            class TagAction < Lithic::Internal::Type::BaseModel
+              # @!attribute key
+              #   The key of the tag to apply to the transaction
+              #
+              #   @return [String]
+              required :key, String
+
+              # @!attribute type
+              #   Tag the transaction with key-value metadata
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type]
+              required :type,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type }
+
+              # @!attribute value
+              #   The value of the tag to apply to the transaction
+              #
+              #   @return [String]
+              required :value, String
+
+              # @!attribute explanation
+              #   Optional explanation for why this action was taken
+              #
+              #   @return [String, nil]
+              optional :explanation, String
+
+              # @!method initialize(key:, type:, value:, explanation: nil)
+              #   @param key [String] The key of the tag to apply to the transaction
+              #
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type] Tag the transaction with key-value metadata
+              #
+              #   @param value [String] The value of the tag to apply to the transaction
+              #
+              #   @param explanation [String] Optional explanation for why this action was taken
+
+              # Tag the transaction with key-value metadata
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction#type
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TAG = :TAG
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            class CreateCaseAction < Lithic::Internal::Type::BaseModel
+              # @!attribute queue_token
+              #   The token of the queue to create the case in
+              #
+              #   @return [String]
+              required :queue_token, String
+
+              # @!attribute scope
+              #   The scope of the case to create
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope]
+              required :scope,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope }
+
+              # @!attribute type
+              #   Create a case for the transaction
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type]
+              required :type,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type }
+
+              # @!attribute explanation
+              #   Optional explanation for why this action was taken
+              #
+              #   @return [String, nil]
+              optional :explanation, String
+
+              # @!method initialize(queue_token:, scope:, type:, explanation: nil)
+              #   @param queue_token [String] The token of the queue to create the case in
+              #
+              #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope] The scope of the case to create
+              #
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type] Create a case for the transaction
+              #
+              #   @param explanation [String] Optional explanation for why this action was taken
+
+              # The scope of the case to create
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction#scope
+              module Scope
+                extend Lithic::Internal::Type::Enum
+
+                CARD = :CARD
+                ACCOUNT = :ACCOUNT
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Create a case for the transaction
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction#type
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                CREATE_CASE = :CREATE_CASE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction)]
+          end
+
+          # The state of the Auth Rule
+          #
+          # @see Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult#mode
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE = :ACTIVE
+            INACTIVE = :INACTIVE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class ACHPaymentUpdateResult < Lithic::Internal::Type::BaseModel
+          # @!attribute token
+          #   Globally unique identifier for the evaluation
+          #
+          #   @return [String]
+          required :token, String
+
+          # @!attribute actions
+          #   Actions returned by the rule evaluation
+          #
+          #   @return [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction>]
+          required :actions,
+                   -> { Lithic::Internal::Type::ArrayOf[union: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action] }
+
+          # @!attribute auth_rule_token
+          #   The Auth Rule token
+          #
+          #   @return [String]
+          required :auth_rule_token, String
+
+          # @!attribute evaluation_time
+          #   Timestamp of the rule evaluation
+          #
+          #   @return [Time]
+          required :evaluation_time, Time
+
+          # @!attribute event_stream
+          #   The event stream during which the rule was evaluated
+          #
+          #   @return [Symbol, :ACH_PAYMENT_UPDATE]
+          required :event_stream, const: :ACH_PAYMENT_UPDATE
+
+          # @!attribute event_token
+          #   Token of the event that triggered the evaluation
+          #
+          #   @return [String]
+          required :event_token, String
+
+          # @!attribute mode
+          #   The state of the Auth Rule
+          #
+          #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode]
+          required :mode,
+                   enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode }
+
+          # @!attribute rule_version
+          #   Version of the rule that was evaluated
+          #
+          #   @return [Integer]
+          required :rule_version, Integer
+
+          # @!attribute transaction_token
+          #   The token of the transaction that triggered the rule evaluation
+          #
+          #   @return [String, nil]
+          required :transaction_token, String, nil?: true
+
+          # @!method initialize(token:, actions:, auth_rule_token:, evaluation_time:, event_token:, mode:, rule_version:, transaction_token:, event_stream: :ACH_PAYMENT_UPDATE)
+          #   @param token [String] Globally unique identifier for the evaluation
+          #
+          #   @param actions [Array<Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction>] Actions returned by the rule evaluation
+          #
+          #   @param auth_rule_token [String] The Auth Rule token
+          #
+          #   @param evaluation_time [Time] Timestamp of the rule evaluation
+          #
+          #   @param event_token [String] Token of the event that triggered the evaluation
+          #
+          #   @param mode [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode] The state of the Auth Rule
+          #
+          #   @param rule_version [Integer] Version of the rule that was evaluated
+          #
+          #   @param transaction_token [String, nil] The token of the transaction that triggered the rule evaluation
+          #
+          #   @param event_stream [Symbol, :ACH_PAYMENT_UPDATE] The event stream during which the rule was evaluated
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction }
+
+            variant -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction }
+
+            class TagAction < Lithic::Internal::Type::BaseModel
+              # @!attribute key
+              #   The key of the tag to apply to the payment
+              #
+              #   @return [String]
+              required :key, String
+
+              # @!attribute type
+              #   Tag the payment with key-value metadata
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type]
+              required :type,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type }
+
+              # @!attribute value
+              #   The value of the tag to apply to the payment
+              #
+              #   @return [String]
+              required :value, String
+
+              # @!attribute explanation
+              #   Optional explanation for why this action was taken
+              #
+              #   @return [String, nil]
+              optional :explanation, String
+
+              # @!method initialize(key:, type:, value:, explanation: nil)
+              #   @param key [String] The key of the tag to apply to the payment
+              #
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type] Tag the payment with key-value metadata
+              #
+              #   @param value [String] The value of the tag to apply to the payment
+              #
+              #   @param explanation [String] Optional explanation for why this action was taken
+
+              # Tag the payment with key-value metadata
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction#type
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TAG = :TAG
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            class CreateCaseAction < Lithic::Internal::Type::BaseModel
+              # @!attribute queue_token
+              #   The token of the queue to create the case in
+              #
+              #   @return [String]
+              required :queue_token, String
+
+              # @!attribute scope
+              #   The scope of the case to create
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope]
+              required :scope,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope }
+
+              # @!attribute type
+              #   Create a case for the payment
+              #
+              #   @return [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type]
+              required :type,
+                       enum: -> { Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type }
+
+              # @!attribute explanation
+              #   Optional explanation for why this action was taken
+              #
+              #   @return [String, nil]
+              optional :explanation, String
+
+              # @!method initialize(queue_token:, scope:, type:, explanation: nil)
+              #   @param queue_token [String] The token of the queue to create the case in
+              #
+              #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope] The scope of the case to create
+              #
+              #   @param type [Symbol, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type] Create a case for the payment
+              #
+              #   @param explanation [String] Optional explanation for why this action was taken
+
+              # The scope of the case to create
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction#scope
+              module Scope
+                extend Lithic::Internal::Type::Enum
+
+                FINANCIAL_ACCOUNT = :FINANCIAL_ACCOUNT
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Create a case for the payment
+              #
+              # @see Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction#type
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                CREATE_CASE = :CREATE_CASE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction)]
+          end
+
+          # The state of the Auth Rule
+          #
+          # @see Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult#mode
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE = :ACTIVE
+            INACTIVE = :INACTIVE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @!method self.variants
-        #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult)]
+        #   @return [Array(Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult)]
       end
     end
   end
