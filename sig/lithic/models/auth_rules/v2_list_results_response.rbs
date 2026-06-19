@@ -6,6 +6,8 @@ module Lithic
         | Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult
         | Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult
         | Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult
+        | Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult
+        | Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult
 
       module V2ListResultsResponse
         extend Lithic::Internal::Type::Union
@@ -933,6 +935,359 @@ module Lithic
             INACTIVE: :INACTIVE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::mode]
+          end
+        end
+
+        type card_transaction_update_result =
+          {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :CARD_TRANSACTION_UPDATE,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::mode,
+            rule_version: Integer,
+            transaction_token: String?
+          }
+
+        class CardTransactionUpdateResult < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::action]
+
+          attr_accessor auth_rule_token: String
+
+          attr_accessor evaluation_time: Time
+
+          attr_accessor event_stream: :CARD_TRANSACTION_UPDATE
+
+          attr_accessor event_token: String
+
+          attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::mode
+
+          attr_accessor rule_version: Integer
+
+          attr_accessor transaction_token: String?
+
+          def initialize: (
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::mode,
+            rule_version: Integer,
+            transaction_token: String?,
+            ?event_stream: :CARD_TRANSACTION_UPDATE
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :CARD_TRANSACTION_UPDATE,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::mode,
+            rule_version: Integer,
+            transaction_token: String?
+          }
+
+          type action =
+            Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction
+            | Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            type tag_action =
+              {
+                key: String,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::type_,
+                value: String,
+                explanation: String
+              }
+
+            class TagAction < Lithic::Internal::Type::BaseModel
+              attr_accessor key: String
+
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::type_
+
+              attr_accessor value: String
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                key: String,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::type_,
+                value: String,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                key: String,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::type_,
+                value: String,
+                explanation: String
+              }
+
+              type type_ = :TAG
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TAG: :TAG
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::type_]
+              end
+            end
+
+            type create_case_action =
+              {
+                queue_token: String,
+                scope: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::scope,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::type_,
+                explanation: String
+              }
+
+            class CreateCaseAction < Lithic::Internal::Type::BaseModel
+              attr_accessor queue_token: String
+
+              attr_accessor scope: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::scope
+
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                queue_token: String,
+                scope: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::scope,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::type_,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                queue_token: String,
+                scope: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::scope,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::type_,
+                explanation: String
+              }
+
+              type scope = :CARD | :ACCOUNT
+
+              module Scope
+                extend Lithic::Internal::Type::Enum
+
+                CARD: :CARD
+                ACCOUNT: :ACCOUNT
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::scope]
+              end
+
+              type type_ = :CREATE_CASE
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                CREATE_CASE: :CREATE_CASE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::action]
+          end
+
+          type mode = :ACTIVE | :INACTIVE
+
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE: :ACTIVE
+            INACTIVE: :INACTIVE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::mode]
+          end
+        end
+
+        type ach_payment_update_result =
+          {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :ACH_PAYMENT_UPDATE,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::mode,
+            rule_version: Integer,
+            transaction_token: String?
+          }
+
+        class ACHPaymentUpdateResult < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::action]
+
+          attr_accessor auth_rule_token: String
+
+          attr_accessor evaluation_time: Time
+
+          attr_accessor event_stream: :ACH_PAYMENT_UPDATE
+
+          attr_accessor event_token: String
+
+          attr_accessor mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::mode
+
+          attr_accessor rule_version: Integer
+
+          attr_accessor transaction_token: String?
+
+          def initialize: (
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::mode,
+            rule_version: Integer,
+            transaction_token: String?,
+            ?event_stream: :ACH_PAYMENT_UPDATE
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            actions: ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::action],
+            auth_rule_token: String,
+            evaluation_time: Time,
+            event_stream: :ACH_PAYMENT_UPDATE,
+            event_token: String,
+            mode: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::mode,
+            rule_version: Integer,
+            transaction_token: String?
+          }
+
+          type action =
+            Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction
+            | Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            type tag_action =
+              {
+                key: String,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::type_,
+                value: String,
+                explanation: String
+              }
+
+            class TagAction < Lithic::Internal::Type::BaseModel
+              attr_accessor key: String
+
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::type_
+
+              attr_accessor value: String
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                key: String,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::type_,
+                value: String,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                key: String,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::type_,
+                value: String,
+                explanation: String
+              }
+
+              type type_ = :TAG
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TAG: :TAG
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::type_]
+              end
+            end
+
+            type create_case_action =
+              {
+                queue_token: String,
+                scope: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::scope,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::type_,
+                explanation: String
+              }
+
+            class CreateCaseAction < Lithic::Internal::Type::BaseModel
+              attr_accessor queue_token: String
+
+              attr_accessor scope: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::scope
+
+              attr_accessor type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::type_
+
+              attr_reader explanation: String?
+
+              def explanation=: (String) -> String
+
+              def initialize: (
+                queue_token: String,
+                scope: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::scope,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::type_,
+                ?explanation: String
+              ) -> void
+
+              def to_hash: -> {
+                queue_token: String,
+                scope: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::scope,
+                type: Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::type_,
+                explanation: String
+              }
+
+              type scope = :FINANCIAL_ACCOUNT
+
+              module Scope
+                extend Lithic::Internal::Type::Enum
+
+                FINANCIAL_ACCOUNT: :FINANCIAL_ACCOUNT
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::scope]
+              end
+
+              type type_ = :CREATE_CASE
+
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                CREATE_CASE: :CREATE_CASE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::action]
+          end
+
+          type mode = :ACTIVE | :INACTIVE
+
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            ACTIVE: :ACTIVE
+            INACTIVE: :INACTIVE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::mode]
           end
         end
 

@@ -184,6 +184,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       in Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult
       in Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult
       in Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult
+      in Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult
+      in Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult
       end
     end
   end

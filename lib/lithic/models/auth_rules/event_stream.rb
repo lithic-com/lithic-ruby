@@ -13,6 +13,7 @@ module Lithic
         ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
         ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
         CARD_TRANSACTION_UPDATE = :CARD_TRANSACTION_UPDATE
+        ACH_PAYMENT_UPDATE = :ACH_PAYMENT_UPDATE
 
         # @!method self.values
         #   @return [Array<Symbol>]

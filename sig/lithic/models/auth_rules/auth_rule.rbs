@@ -127,6 +127,7 @@ module Lithic
             | Lithic::AuthRules::ConditionalACHActionParameters
             | Lithic::AuthRules::ConditionalTokenizationActionParameters
             | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
+            | Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters
             | Lithic::AuthRules::TypescriptCodeParameters
             | Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
 
@@ -177,6 +178,7 @@ module Lithic
             | Lithic::AuthRules::ConditionalACHActionParameters
             | Lithic::AuthRules::ConditionalTokenizationActionParameters
             | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
+            | Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters
             | Lithic::AuthRules::TypescriptCodeParameters
             | Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
 

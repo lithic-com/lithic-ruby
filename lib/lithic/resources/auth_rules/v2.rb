@@ -144,7 +144,7 @@ module Lithic
         #
         # @param auth_rule_token [String]
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters, nil] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters, nil] Parameters for the Auth Rule
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -193,7 +193,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult, Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult, Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult, Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult>]
         #
         # @see Lithic::Models::AuthRules::V2ListResultsParams
         def list_results(params = {})
