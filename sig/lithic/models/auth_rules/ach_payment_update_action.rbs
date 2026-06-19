@@ -1,0 +1,99 @@
+module Lithic
+  module Models
+    module AuthRules
+      type ach_payment_update_action =
+        Lithic::AuthRules::ACHPaymentUpdateAction::TagAction
+        | Lithic::AuthRules::ACHPaymentUpdateAction::CreateCaseAction
+
+      module ACHPaymentUpdateAction
+        extend Lithic::Internal::Type::Union
+
+        type tag_action =
+          {
+            key: String,
+            type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::TagAction::type_,
+            value: String
+          }
+
+        class TagAction < Lithic::Internal::Type::BaseModel
+          attr_accessor key: String
+
+          attr_accessor type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::TagAction::type_
+
+          attr_accessor value: String
+
+          def initialize: (
+            key: String,
+            type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::TagAction::type_,
+            value: String
+          ) -> void
+
+          def to_hash: -> {
+            key: String,
+            type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::TagAction::type_,
+            value: String
+          }
+
+          type type_ = :TAG
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            TAG: :TAG
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ACHPaymentUpdateAction::TagAction::type_]
+          end
+        end
+
+        type create_case_action =
+          {
+            queue_token: String,
+            scope: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::scope,
+            type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::type_
+          }
+
+        class CreateCaseAction < Lithic::Internal::Type::BaseModel
+          attr_accessor queue_token: String
+
+          attr_accessor scope: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::scope
+
+          attr_accessor type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::type_
+
+          def initialize: (
+            queue_token: String,
+            scope: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::scope,
+            type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::type_
+          ) -> void
+
+          def to_hash: -> {
+            queue_token: String,
+            scope: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::scope,
+            type: Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::type_
+          }
+
+          type scope = :FINANCIAL_ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            FINANCIAL_ACCOUNT: :FINANCIAL_ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::scope]
+          end
+
+          type type_ = :CREATE_CASE
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            CREATE_CASE: :CREATE_CASE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::type_]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::ach_payment_update_action]
+      end
+    end
+  end
+end

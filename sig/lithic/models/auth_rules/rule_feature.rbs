@@ -7,6 +7,7 @@ module Lithic
         | Lithic::AuthRules::RuleFeature::TokenizationFeature
         | Lithic::AuthRules::RuleFeature::ACHReceiptFeature
         | Lithic::AuthRules::RuleFeature::CardTransactionFeature
+        | Lithic::AuthRules::RuleFeature::ACHPaymentFeature
         | Lithic::AuthRules::RuleFeature::CardFeature
         | Lithic::AuthRules::RuleFeature::AccountHolderFeature
         | Lithic::AuthRules::RuleFeature::IPMetadataFeature
@@ -85,6 +86,20 @@ module Lithic
           def initialize: (?name: String, ?type: :CARD_TRANSACTION) -> void
 
           def to_hash: -> { type: :CARD_TRANSACTION, name: String }
+        end
+
+        type ach_payment_feature = { type: :ACH_PAYMENT, name: String }
+
+        class ACHPaymentFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :ACH_PAYMENT
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :ACH_PAYMENT) -> void
+
+          def to_hash: -> { type: :ACH_PAYMENT, name: String }
         end
 
         type card_feature = { type: :CARD, name: String }

@@ -13,7 +13,9 @@ module Lithic
               Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult,
               Lithic::Models::AuthRules::V2ListResultsResponse::Authentication3DSResult,
               Lithic::Models::AuthRules::V2ListResultsResponse::TokenizationResult,
-              Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult
+              Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult,
+              Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult,
+              Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult
             )
           end
 
@@ -2260,6 +2262,829 @@ module Lithic
               override.returns(
                 T::Array[
                   Lithic::Models::AuthRules::V2ListResultsResponse::ACHResult::Mode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class CardTransactionUpdateResult < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Globally unique identifier for the evaluation
+          sig { returns(String) }
+          attr_accessor :token
+
+          # Actions returned by the rule evaluation
+          sig do
+            returns(
+              T::Array[
+                Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::Variants
+              ]
+            )
+          end
+          attr_accessor :actions
+
+          # The Auth Rule token
+          sig { returns(String) }
+          attr_accessor :auth_rule_token
+
+          # Timestamp of the rule evaluation
+          sig { returns(Time) }
+          attr_accessor :evaluation_time
+
+          # The event stream during which the rule was evaluated
+          sig { returns(Symbol) }
+          attr_accessor :event_stream
+
+          # Token of the event that triggered the evaluation
+          sig { returns(String) }
+          attr_accessor :event_token
+
+          # The state of the Auth Rule
+          sig do
+            returns(
+              Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode::TaggedSymbol
+            )
+          end
+          attr_accessor :mode
+
+          # Version of the rule that was evaluated
+          sig { returns(Integer) }
+          attr_accessor :rule_version
+
+          # The token of the transaction that triggered the rule evaluation
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
+          sig do
+            params(
+              token: String,
+              actions:
+                T::Array[
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::OrHash,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::OrHash
+                  )
+                ],
+              auth_rule_token: String,
+              evaluation_time: Time,
+              event_token: String,
+              mode:
+                Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode::OrSymbol,
+              rule_version: Integer,
+              transaction_token: T.nilable(String),
+              event_stream: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Globally unique identifier for the evaluation
+            token:,
+            # Actions returned by the rule evaluation
+            actions:,
+            # The Auth Rule token
+            auth_rule_token:,
+            # Timestamp of the rule evaluation
+            evaluation_time:,
+            # Token of the event that triggered the evaluation
+            event_token:,
+            # The state of the Auth Rule
+            mode:,
+            # Version of the rule that was evaluated
+            rule_version:,
+            # The token of the transaction that triggered the rule evaluation
+            transaction_token:,
+            # The event stream during which the rule was evaluated
+            event_stream: :CARD_TRANSACTION_UPDATE
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                actions:
+                  T::Array[
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::Variants
+                  ],
+                auth_rule_token: String,
+                evaluation_time: Time,
+                event_stream: Symbol,
+                event_token: String,
+                mode:
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode::TaggedSymbol,
+                rule_version: Integer,
+                transaction_token: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction
+                )
+              end
+
+            class TagAction < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction,
+                    Lithic::Internal::AnyHash
+                  )
+                end
+
+              # The key of the tag to apply to the transaction
+              sig { returns(String) }
+              attr_accessor :key
+
+              # Tag the transaction with key-value metadata
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type::TaggedSymbol
+                )
+              end
+              attr_accessor :type
+
+              # The value of the tag to apply to the transaction
+              sig { returns(String) }
+              attr_accessor :value
+
+              # Optional explanation for why this action was taken
+              sig { returns(T.nilable(String)) }
+              attr_reader :explanation
+
+              sig { params(explanation: String).void }
+              attr_writer :explanation
+
+              sig do
+                params(
+                  key: String,
+                  type:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type::OrSymbol,
+                  value: String,
+                  explanation: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The key of the tag to apply to the transaction
+                key:,
+                # Tag the transaction with key-value metadata
+                type:,
+                # The value of the tag to apply to the transaction
+                value:,
+                # Optional explanation for why this action was taken
+                explanation: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    key: String,
+                    type:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type::TaggedSymbol,
+                    value: String,
+                    explanation: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # Tag the transaction with key-value metadata
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                TAG =
+                  T.let(
+                    :TAG,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::TagAction::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class CreateCaseAction < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction,
+                    Lithic::Internal::AnyHash
+                  )
+                end
+
+              # The token of the queue to create the case in
+              sig { returns(String) }
+              attr_accessor :queue_token
+
+              # The scope of the case to create
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                )
+              end
+              attr_accessor :scope
+
+              # Create a case for the transaction
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol
+                )
+              end
+              attr_accessor :type
+
+              # Optional explanation for why this action was taken
+              sig { returns(T.nilable(String)) }
+              attr_reader :explanation
+
+              sig { params(explanation: String).void }
+              attr_writer :explanation
+
+              sig do
+                params(
+                  queue_token: String,
+                  scope:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::OrSymbol,
+                  type:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type::OrSymbol,
+                  explanation: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The token of the queue to create the case in
+                queue_token:,
+                # The scope of the case to create
+                scope:,
+                # Create a case for the transaction
+                type:,
+                # Optional explanation for why this action was taken
+                explanation: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    queue_token: String,
+                    scope:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol,
+                    type:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol,
+                    explanation: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The scope of the case to create
+              module Scope
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                CARD =
+                  T.let(
+                    :CARD,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                  )
+                ACCOUNT =
+                  T.let(
+                    :ACCOUNT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Create a case for the transaction
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                CREATE_CASE =
+                  T.let(
+                    :CREATE_CASE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+          end
+
+          # The state of the Auth Rule
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ACTIVE =
+              T.let(
+                :ACTIVE,
+                Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode::TaggedSymbol
+              )
+            INACTIVE =
+              T.let(
+                :INACTIVE,
+                Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Mode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class ACHPaymentUpdateResult < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Globally unique identifier for the evaluation
+          sig { returns(String) }
+          attr_accessor :token
+
+          # Actions returned by the rule evaluation
+          sig do
+            returns(
+              T::Array[
+                Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::Variants
+              ]
+            )
+          end
+          attr_accessor :actions
+
+          # The Auth Rule token
+          sig { returns(String) }
+          attr_accessor :auth_rule_token
+
+          # Timestamp of the rule evaluation
+          sig { returns(Time) }
+          attr_accessor :evaluation_time
+
+          # The event stream during which the rule was evaluated
+          sig { returns(Symbol) }
+          attr_accessor :event_stream
+
+          # Token of the event that triggered the evaluation
+          sig { returns(String) }
+          attr_accessor :event_token
+
+          # The state of the Auth Rule
+          sig do
+            returns(
+              Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode::TaggedSymbol
+            )
+          end
+          attr_accessor :mode
+
+          # Version of the rule that was evaluated
+          sig { returns(Integer) }
+          attr_accessor :rule_version
+
+          # The token of the transaction that triggered the rule evaluation
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_token
+
+          sig do
+            params(
+              token: String,
+              actions:
+                T::Array[
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::OrHash,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::OrHash
+                  )
+                ],
+              auth_rule_token: String,
+              evaluation_time: Time,
+              event_token: String,
+              mode:
+                Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode::OrSymbol,
+              rule_version: Integer,
+              transaction_token: T.nilable(String),
+              event_stream: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Globally unique identifier for the evaluation
+            token:,
+            # Actions returned by the rule evaluation
+            actions:,
+            # The Auth Rule token
+            auth_rule_token:,
+            # Timestamp of the rule evaluation
+            evaluation_time:,
+            # Token of the event that triggered the evaluation
+            event_token:,
+            # The state of the Auth Rule
+            mode:,
+            # Version of the rule that was evaluated
+            rule_version:,
+            # The token of the transaction that triggered the rule evaluation
+            transaction_token:,
+            # The event stream during which the rule was evaluated
+            event_stream: :ACH_PAYMENT_UPDATE
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                actions:
+                  T::Array[
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::Variants
+                  ],
+                auth_rule_token: String,
+                evaluation_time: Time,
+                event_stream: Symbol,
+                event_token: String,
+                mode:
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode::TaggedSymbol,
+                rule_version: Integer,
+                transaction_token: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Action
+            extend Lithic::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction
+                )
+              end
+
+            class TagAction < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction,
+                    Lithic::Internal::AnyHash
+                  )
+                end
+
+              # The key of the tag to apply to the payment
+              sig { returns(String) }
+              attr_accessor :key
+
+              # Tag the payment with key-value metadata
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type::TaggedSymbol
+                )
+              end
+              attr_accessor :type
+
+              # The value of the tag to apply to the payment
+              sig { returns(String) }
+              attr_accessor :value
+
+              # Optional explanation for why this action was taken
+              sig { returns(T.nilable(String)) }
+              attr_reader :explanation
+
+              sig { params(explanation: String).void }
+              attr_writer :explanation
+
+              sig do
+                params(
+                  key: String,
+                  type:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type::OrSymbol,
+                  value: String,
+                  explanation: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The key of the tag to apply to the payment
+                key:,
+                # Tag the payment with key-value metadata
+                type:,
+                # The value of the tag to apply to the payment
+                value:,
+                # Optional explanation for why this action was taken
+                explanation: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    key: String,
+                    type:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type::TaggedSymbol,
+                    value: String,
+                    explanation: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # Tag the payment with key-value metadata
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                TAG =
+                  T.let(
+                    :TAG,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::TagAction::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class CreateCaseAction < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction,
+                    Lithic::Internal::AnyHash
+                  )
+                end
+
+              # The token of the queue to create the case in
+              sig { returns(String) }
+              attr_accessor :queue_token
+
+              # The scope of the case to create
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                )
+              end
+              attr_accessor :scope
+
+              # Create a case for the payment
+              sig do
+                returns(
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol
+                )
+              end
+              attr_accessor :type
+
+              # Optional explanation for why this action was taken
+              sig { returns(T.nilable(String)) }
+              attr_reader :explanation
+
+              sig { params(explanation: String).void }
+              attr_writer :explanation
+
+              sig do
+                params(
+                  queue_token: String,
+                  scope:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::OrSymbol,
+                  type:
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type::OrSymbol,
+                  explanation: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The token of the queue to create the case in
+                queue_token:,
+                # The scope of the case to create
+                scope:,
+                # Create a case for the payment
+                type:,
+                # Optional explanation for why this action was taken
+                explanation: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    queue_token: String,
+                    scope:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol,
+                    type:
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol,
+                    explanation: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The scope of the case to create
+              module Scope
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                FINANCIAL_ACCOUNT =
+                  T.let(
+                    :FINANCIAL_ACCOUNT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Create a case for the payment
+              module Type
+                extend Lithic::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                CREATE_CASE =
+                  T.let(
+                    :CREATE_CASE,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+          end
+
+          # The state of the Auth Rule
+          module Mode
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ACTIVE =
+              T.let(
+                :ACTIVE,
+                Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode::TaggedSymbol
+              )
+            INACTIVE =
+              T.let(
+                :INACTIVE,
+                Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Mode::TaggedSymbol
                 ]
               )
             end

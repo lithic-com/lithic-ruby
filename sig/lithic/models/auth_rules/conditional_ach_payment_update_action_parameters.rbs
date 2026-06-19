@@ -1,0 +1,79 @@
+module Lithic
+  module Models
+    module AuthRules
+      type conditional_ach_payment_update_action_parameters =
+        {
+          action: Lithic::Models::AuthRules::ach_payment_update_action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition]
+        }
+
+      class ConditionalACHPaymentUpdateActionParameters < Lithic::Internal::Type::BaseModel
+        attr_accessor action: Lithic::Models::AuthRules::ach_payment_update_action
+
+        attr_accessor conditions: ::Array[Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition]
+
+        def initialize: (
+          action: Lithic::Models::AuthRules::ach_payment_update_action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition]
+        ) -> void
+
+        def to_hash: -> {
+          action: Lithic::Models::AuthRules::ach_payment_update_action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition]
+        }
+
+        type condition =
+          {
+            attribute: Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          }
+
+        class Condition < Lithic::Internal::Type::BaseModel
+          attr_accessor attribute: Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition::attribute
+
+          attr_accessor operation: Lithic::Models::AuthRules::conditional_operation
+
+          attr_accessor value: Lithic::Models::AuthRules::conditional_value
+
+          def initialize: (
+            attribute: Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          ) -> void
+
+          def to_hash: -> {
+            attribute: Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          }
+
+          type attribute =
+            :TRANSACTION_AMOUNT
+            | :SEC_CODE
+            | :RETURN_REASON_CODE
+            | :ACCOUNT_AGE
+            | :EXTERNAL_BANK_ACCOUNT_AGE
+            | :EXTERNAL_BANK_ACCOUNT_VERIFICATION_METHOD
+            | :EXTERNAL_BANK_ACCOUNT_VERIFICATION_STATE
+            | :EXTERNAL_BANK_ACCOUNT_OWNER_TYPE
+
+          module Attribute
+            extend Lithic::Internal::Type::Enum
+
+            TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+            SEC_CODE: :SEC_CODE
+            RETURN_REASON_CODE: :RETURN_REASON_CODE
+            ACCOUNT_AGE: :ACCOUNT_AGE
+            EXTERNAL_BANK_ACCOUNT_AGE: :EXTERNAL_BANK_ACCOUNT_AGE
+            EXTERNAL_BANK_ACCOUNT_VERIFICATION_METHOD: :EXTERNAL_BANK_ACCOUNT_VERIFICATION_METHOD
+            EXTERNAL_BANK_ACCOUNT_VERIFICATION_STATE: :EXTERNAL_BANK_ACCOUNT_VERIFICATION_STATE
+            EXTERNAL_BANK_ACCOUNT_OWNER_TYPE: :EXTERNAL_BANK_ACCOUNT_OWNER_TYPE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition::attribute]
+          end
+        end
+      end
+    end
+  end
+end
