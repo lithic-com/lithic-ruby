@@ -57,6 +57,7 @@ module Lithic
             | :EXTERNAL_BANK_ACCOUNT_VERIFICATION_METHOD
             | :EXTERNAL_BANK_ACCOUNT_VERIFICATION_STATE
             | :EXTERNAL_BANK_ACCOUNT_OWNER_TYPE
+            | :ACH_EVENT_TYPE
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -69,6 +70,7 @@ module Lithic
             EXTERNAL_BANK_ACCOUNT_VERIFICATION_METHOD: :EXTERNAL_BANK_ACCOUNT_VERIFICATION_METHOD
             EXTERNAL_BANK_ACCOUNT_VERIFICATION_STATE: :EXTERNAL_BANK_ACCOUNT_VERIFICATION_STATE
             EXTERNAL_BANK_ACCOUNT_OWNER_TYPE: :EXTERNAL_BANK_ACCOUNT_OWNER_TYPE
+            ACH_EVENT_TYPE: :ACH_EVENT_TYPE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters::Condition::attribute]
           end
