@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.0 (2026-06-22)
+
+Full Changelog: [v0.16.0...v0.17.0](https://github.com/lithic-com/lithic-ruby/compare/v0.16.0...v0.17.0)
+
+### Features
+
+* **api:** add ach payment update actions/results, card transaction results to auth_rules ([a761a6f](https://github.com/lithic-com/lithic-ruby/commit/a761a6f5fccb557d7fa03d81043b28d685aaec82))
+* **api:** add ACH_EVENT_TYPE to auth rules conditional ACH payment conditions ([7a83081](https://github.com/lithic-com/lithic-ruby/commit/7a83081818121cbf3cfdb51c1285cfdcf297bb4c))
+
 ## 0.16.0 (2026-06-16)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/lithic-com/lithic-ruby/compare/v0.15.0...v0.16.0)
