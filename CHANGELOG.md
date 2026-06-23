@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.18.0 (2026-06-23)
+
+Full Changelog: [v0.17.0...v0.18.0](https://github.com/lithic-com/lithic-ruby/compare/v0.17.0...v0.18.0)
+
+### Features
+
+* **api:** Register dispute intake webhook events ([a087b3b](https://github.com/lithic-com/lithic-ruby/commit/a087b3bddff381d51dc2c6fa89cadae9855ac6a9))
+
+
+### Bug Fixes
+
+* **api:** Sync templated rule features with authorizer external feature set ([2812623](https://github.com/lithic-com/lithic-ruby/commit/2812623bab59b68a8a1de32b149153567fa5d3ea))
+
 ## 0.17.0 (2026-06-22)
 
 Full Changelog: [v0.16.0...v0.17.0](https://github.com/lithic-com/lithic-ruby/compare/v0.16.0...v0.17.0)
