@@ -169,6 +169,16 @@ module Lithic
 
   class CategoryDetails = Lithic::Models::CategoryDetails
 
+  class ClaimCreatedWebhookEvent = Lithic::Models::ClaimCreatedWebhookEvent
+
+  class ClaimDocumentAcceptedWebhookEvent = Lithic::Models::ClaimDocumentAcceptedWebhookEvent
+
+  class ClaimDocumentRejectedWebhookEvent = Lithic::Models::ClaimDocumentRejectedWebhookEvent
+
+  class ClaimDocumentUploadedWebhookEvent = Lithic::Models::ClaimDocumentUploadedWebhookEvent
+
+  class ClaimUpdatedWebhookEvent = Lithic::Models::ClaimUpdatedWebhookEvent
+
   class ClientAPIStatusParams = Lithic::Models::ClientAPIStatusParams
 
   module CreditProducts = Lithic::Models::CreditProducts

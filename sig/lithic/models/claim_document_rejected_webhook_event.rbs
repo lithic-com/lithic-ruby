@@ -1,0 +1,131 @@
+module Lithic
+  module Models
+    type claim_document_rejected_webhook_event =
+      {
+        token: String,
+        created: Time,
+        download_url: String?,
+        download_url_expires_at: Time?,
+        event_type: :"claim_document.rejected",
+        failure_reason: Lithic::Models::ClaimDocumentRejectedWebhookEvent::failure_reason?,
+        name: String,
+        requirement_id: String?,
+        status: Lithic::Models::ClaimDocumentRejectedWebhookEvent::status,
+        updated: Time,
+        upload_constraints: Lithic::ClaimDocumentRejectedWebhookEvent::UploadConstraints?,
+        upload_url: String?,
+        upload_url_expires_at: Time?
+      }
+
+    class ClaimDocumentRejectedWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor created: Time
+
+      attr_accessor download_url: String?
+
+      attr_accessor download_url_expires_at: Time?
+
+      attr_accessor event_type: :"claim_document.rejected"
+
+      attr_accessor failure_reason: Lithic::Models::ClaimDocumentRejectedWebhookEvent::failure_reason?
+
+      attr_accessor name: String
+
+      attr_accessor requirement_id: String?
+
+      attr_accessor status: Lithic::Models::ClaimDocumentRejectedWebhookEvent::status
+
+      attr_accessor updated: Time
+
+      attr_accessor upload_constraints: Lithic::ClaimDocumentRejectedWebhookEvent::UploadConstraints?
+
+      attr_accessor upload_url: String?
+
+      attr_accessor upload_url_expires_at: Time?
+
+      def initialize: (
+        token: String,
+        created: Time,
+        download_url: String?,
+        download_url_expires_at: Time?,
+        failure_reason: Lithic::Models::ClaimDocumentRejectedWebhookEvent::failure_reason?,
+        name: String,
+        requirement_id: String?,
+        status: Lithic::Models::ClaimDocumentRejectedWebhookEvent::status,
+        updated: Time,
+        upload_constraints: Lithic::ClaimDocumentRejectedWebhookEvent::UploadConstraints?,
+        upload_url: String?,
+        upload_url_expires_at: Time?,
+        ?event_type: :"claim_document.rejected"
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        created: Time,
+        download_url: String?,
+        download_url_expires_at: Time?,
+        event_type: :"claim_document.rejected",
+        failure_reason: Lithic::Models::ClaimDocumentRejectedWebhookEvent::failure_reason?,
+        name: String,
+        requirement_id: String?,
+        status: Lithic::Models::ClaimDocumentRejectedWebhookEvent::status,
+        updated: Time,
+        upload_constraints: Lithic::ClaimDocumentRejectedWebhookEvent::UploadConstraints?,
+        upload_url: String?,
+        upload_url_expires_at: Time?
+      }
+
+      type failure_reason =
+        :INVALID_MIME_TYPE
+        | :FILE_TOO_LARGE
+        | :FILE_EMPTY
+        | :CORRUPT_FILE
+        | :OTHER
+
+      module FailureReason
+        extend Lithic::Internal::Type::Enum
+
+        INVALID_MIME_TYPE: :INVALID_MIME_TYPE
+        FILE_TOO_LARGE: :FILE_TOO_LARGE
+        FILE_EMPTY: :FILE_EMPTY
+        CORRUPT_FILE: :CORRUPT_FILE
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::ClaimDocumentRejectedWebhookEvent::failure_reason]
+      end
+
+      type status = :PENDING | :VALIDATING | :ACCEPTED | :REJECTED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        VALIDATING: :VALIDATING
+        ACCEPTED: :ACCEPTED
+        REJECTED: :REJECTED
+
+        def self?.values: -> ::Array[Lithic::Models::ClaimDocumentRejectedWebhookEvent::status]
+      end
+
+      type upload_constraints =
+        { accepted_mime_types: ::Array[String], max_size_bytes: Integer? }
+
+      class UploadConstraints < Lithic::Internal::Type::BaseModel
+        attr_accessor accepted_mime_types: ::Array[String]
+
+        attr_accessor max_size_bytes: Integer?
+
+        def initialize: (
+          accepted_mime_types: ::Array[String],
+          max_size_bytes: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          accepted_mime_types: ::Array[String],
+          max_size_bytes: Integer?
+        }
+      end
+    end
+  end
+end

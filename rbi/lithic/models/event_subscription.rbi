@@ -104,6 +104,15 @@ module Lithic
       # - card.renewed: Occurs when a card is renewed.
       # - card.shipped: Occurs when a card is shipped.
       # - card.updated: Occurs when a card is updated.
+      # - claim_document.accepted: Occurs when a claim document passes validation and is
+      #   accepted.
+      # - claim_document.rejected: Occurs when a claim document fails validation and is
+      #   rejected.
+      # - claim_document.uploaded: Occurs when a claim document is uploaded and begins
+      #   validation.
+      # - claim.created: Occurs when a dispute intake claim is created.
+      # - claim.updated: Occurs when a dispute intake claim is updated, such as a status
+      #   change or a change to its outstanding requirements.
       # - digital_wallet.tokenization_result: Occurs when a tokenization request
       #   succeeded or failed.
       #
@@ -276,6 +285,31 @@ module Lithic
         CARD_UPDATED =
           T.let(
             :"card.updated",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CLAIM_DOCUMENT_ACCEPTED =
+          T.let(
+            :"claim_document.accepted",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CLAIM_DOCUMENT_REJECTED =
+          T.let(
+            :"claim_document.rejected",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CLAIM_DOCUMENT_UPLOADED =
+          T.let(
+            :"claim_document.uploaded",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CLAIM_CREATED =
+          T.let(
+            :"claim.created",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CLAIM_UPDATED =
+          T.let(
+            :"claim.updated",
             Lithic::EventSubscription::EventType::TaggedSymbol
           )
         DIGITAL_WALLET_TOKENIZATION_RESULT =

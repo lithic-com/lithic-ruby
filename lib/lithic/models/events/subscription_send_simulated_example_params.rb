@@ -49,6 +49,11 @@ module Lithic
           CARD_RENEWED = :"card.renewed"
           CARD_SHIPPED = :"card.shipped"
           CARD_UPDATED = :"card.updated"
+          CLAIM_DOCUMENT_ACCEPTED = :"claim_document.accepted"
+          CLAIM_DOCUMENT_REJECTED = :"claim_document.rejected"
+          CLAIM_DOCUMENT_UPLOADED = :"claim_document.uploaded"
+          CLAIM_CREATED = :"claim.created"
+          CLAIM_UPDATED = :"claim.updated"
           DIGITAL_WALLET_TOKENIZATION_RESULT = :"digital_wallet.tokenization_result"
           DIGITAL_WALLET_TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE =
             :"digital_wallet.tokenization_two_factor_authentication_code"
