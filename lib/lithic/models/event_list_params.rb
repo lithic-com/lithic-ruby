@@ -105,6 +105,15 @@ module Lithic
       # - card.renewed: Occurs when a card is renewed.
       # - card.shipped: Occurs when a card is shipped.
       # - card.updated: Occurs when a card is updated.
+      # - claim_document.accepted: Occurs when a claim document passes validation and is
+      #   accepted.
+      # - claim_document.rejected: Occurs when a claim document fails validation and is
+      #   rejected.
+      # - claim_document.uploaded: Occurs when a claim document is uploaded and begins
+      #   validation.
+      # - claim.created: Occurs when a dispute intake claim is created.
+      # - claim.updated: Occurs when a dispute intake claim is updated, such as a status
+      #   change or a change to its outstanding requirements.
       # - digital_wallet.tokenization_result: Occurs when a tokenization request
       #   succeeded or failed.
       #
@@ -199,6 +208,11 @@ module Lithic
         CARD_RENEWED = :"card.renewed"
         CARD_SHIPPED = :"card.shipped"
         CARD_UPDATED = :"card.updated"
+        CLAIM_DOCUMENT_ACCEPTED = :"claim_document.accepted"
+        CLAIM_DOCUMENT_REJECTED = :"claim_document.rejected"
+        CLAIM_DOCUMENT_UPLOADED = :"claim_document.uploaded"
+        CLAIM_CREATED = :"claim.created"
+        CLAIM_UPDATED = :"claim.updated"
         DIGITAL_WALLET_TOKENIZATION_RESULT = :"digital_wallet.tokenization_result"
         DIGITAL_WALLET_TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE =
           :"digital_wallet.tokenization_two_factor_authentication_code"

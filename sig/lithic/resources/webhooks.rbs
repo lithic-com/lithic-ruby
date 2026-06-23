@@ -27,6 +27,11 @@ module Lithic
       | Lithic::CardTransactionUpdatedWebhookEvent
       | Lithic::CardTransactionEnhancedDataCreatedWebhookEvent
       | Lithic::CardTransactionEnhancedDataUpdatedWebhookEvent
+      | Lithic::ClaimCreatedWebhookEvent
+      | Lithic::ClaimUpdatedWebhookEvent
+      | Lithic::ClaimDocumentUploadedWebhookEvent
+      | Lithic::ClaimDocumentAcceptedWebhookEvent
+      | Lithic::ClaimDocumentRejectedWebhookEvent
       | Lithic::DigitalWalletTokenizationApprovalRequestWebhookEvent
       | Lithic::DigitalWalletTokenizationResultWebhookEvent
       | Lithic::DigitalWalletTokenizationTwoFactorAuthenticationCodeWebhookEvent
