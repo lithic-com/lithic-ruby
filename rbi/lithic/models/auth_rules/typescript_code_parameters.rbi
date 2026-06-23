@@ -29,11 +29,15 @@ module Lithic
                 Lithic::AuthRules::RuleFeature::ACHReceiptFeature,
                 Lithic::AuthRules::RuleFeature::CardTransactionFeature,
                 Lithic::AuthRules::RuleFeature::ACHPaymentFeature,
+                Lithic::AuthRules::RuleFeature::ExternalBankAccountFeature,
                 Lithic::AuthRules::RuleFeature::CardFeature,
                 Lithic::AuthRules::RuleFeature::AccountHolderFeature,
                 Lithic::AuthRules::RuleFeature::IPMetadataFeature,
                 Lithic::AuthRules::RuleFeature::SpendVelocityFeature,
-                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
+                Lithic::AuthRules::RuleFeature::PaymentVelocityFeature,
+                Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature,
+                Lithic::AuthRules::RuleFeature::ConsecutiveDeclinesFeature,
+                Lithic::AuthRules::RuleFeature::ACHPaymentHistoryFeature
               )
             ]
           )
@@ -53,11 +57,15 @@ module Lithic
                   Lithic::AuthRules::RuleFeature::ACHReceiptFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::CardTransactionFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::ACHPaymentFeature::OrHash,
+                  Lithic::AuthRules::RuleFeature::ExternalBankAccountFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::CardFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::AccountHolderFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::IPMetadataFeature::OrHash,
                   Lithic::AuthRules::RuleFeature::SpendVelocityFeature::OrHash,
-                  Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::OrHash
+                  Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::OrHash,
+                  Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature::OrHash,
+                  Lithic::AuthRules::RuleFeature::ConsecutiveDeclinesFeature::OrHash,
+                  Lithic::AuthRules::RuleFeature::ACHPaymentHistoryFeature::OrHash
                 )
               ]
           ).returns(T.attached_class)
@@ -85,11 +93,15 @@ module Lithic
                     Lithic::AuthRules::RuleFeature::ACHReceiptFeature,
                     Lithic::AuthRules::RuleFeature::CardTransactionFeature,
                     Lithic::AuthRules::RuleFeature::ACHPaymentFeature,
+                    Lithic::AuthRules::RuleFeature::ExternalBankAccountFeature,
                     Lithic::AuthRules::RuleFeature::CardFeature,
                     Lithic::AuthRules::RuleFeature::AccountHolderFeature,
                     Lithic::AuthRules::RuleFeature::IPMetadataFeature,
                     Lithic::AuthRules::RuleFeature::SpendVelocityFeature,
-                    Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
+                    Lithic::AuthRules::RuleFeature::PaymentVelocityFeature,
+                    Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature,
+                    Lithic::AuthRules::RuleFeature::ConsecutiveDeclinesFeature,
+                    Lithic::AuthRules::RuleFeature::ACHPaymentHistoryFeature
                   )
                 ]
             }
