@@ -173,6 +173,31 @@ module Lithic
               :"card.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          CLAIM_DOCUMENT_ACCEPTED =
+            T.let(
+              :"claim_document.accepted",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CLAIM_DOCUMENT_REJECTED =
+            T.let(
+              :"claim_document.rejected",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CLAIM_DOCUMENT_UPLOADED =
+            T.let(
+              :"claim_document.uploaded",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CLAIM_CREATED =
+            T.let(
+              :"claim.created",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CLAIM_UPDATED =
+            T.let(
+              :"claim.updated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           DIGITAL_WALLET_TOKENIZATION_RESULT =
             T.let(
               :"digital_wallet.tokenization_result",
