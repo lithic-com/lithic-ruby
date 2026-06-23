@@ -8,11 +8,15 @@ module Lithic
         | Lithic::AuthRules::RuleFeature::ACHReceiptFeature
         | Lithic::AuthRules::RuleFeature::CardTransactionFeature
         | Lithic::AuthRules::RuleFeature::ACHPaymentFeature
+        | Lithic::AuthRules::RuleFeature::ExternalBankAccountFeature
         | Lithic::AuthRules::RuleFeature::CardFeature
         | Lithic::AuthRules::RuleFeature::AccountHolderFeature
         | Lithic::AuthRules::RuleFeature::IPMetadataFeature
         | Lithic::AuthRules::RuleFeature::SpendVelocityFeature
+        | Lithic::AuthRules::RuleFeature::PaymentVelocityFeature
         | Lithic::AuthRules::RuleFeature::TransactionHistorySignalsFeature
+        | Lithic::AuthRules::RuleFeature::ConsecutiveDeclinesFeature
+        | Lithic::AuthRules::RuleFeature::ACHPaymentHistoryFeature
 
       module RuleFeature
         extend Lithic::Internal::Type::Union
@@ -100,6 +104,21 @@ module Lithic
           def initialize: (?name: String, ?type: :ACH_PAYMENT) -> void
 
           def to_hash: -> { type: :ACH_PAYMENT, name: String }
+        end
+
+        type external_bank_account_feature =
+          { type: :EXTERNAL_BANK_ACCOUNT, name: String }
+
+        class ExternalBankAccountFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :EXTERNAL_BANK_ACCOUNT
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?name: String, ?type: :EXTERNAL_BANK_ACCOUNT) -> void
+
+          def to_hash: -> { type: :EXTERNAL_BANK_ACCOUNT, name: String }
         end
 
         type card_feature = { type: :CARD, name: String }
@@ -198,6 +217,160 @@ module Lithic
           end
         end
 
+        type payment_velocity_feature =
+          {
+            period: Lithic::Models::AuthRules::velocity_limit_period,
+            scope: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::scope,
+            type: :PAYMENT_VELOCITY,
+            filters: Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::Filters,
+            name: String
+          }
+
+        class PaymentVelocityFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor period: Lithic::Models::AuthRules::velocity_limit_period
+
+          attr_accessor scope: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::scope
+
+          attr_accessor type: :PAYMENT_VELOCITY
+
+          attr_reader filters: Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::Filters?
+
+          def filters=: (
+            Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::Filters
+          ) -> Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::Filters
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            period: Lithic::Models::AuthRules::velocity_limit_period,
+            scope: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::scope,
+            ?filters: Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::Filters,
+            ?name: String,
+            ?type: :PAYMENT_VELOCITY
+          ) -> void
+
+          def to_hash: -> {
+            period: Lithic::Models::AuthRules::velocity_limit_period,
+            scope: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::scope,
+            type: :PAYMENT_VELOCITY,
+            filters: Lithic::AuthRules::RuleFeature::PaymentVelocityFeature::Filters,
+            name: String
+          }
+
+          type scope = :FINANCIAL_ACCOUNT | :GLOBAL
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            FINANCIAL_ACCOUNT: :FINANCIAL_ACCOUNT
+            GLOBAL: :GLOBAL
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::scope]
+          end
+
+          type filters =
+            {
+              exclude_tags: ::Hash[Symbol, String]?,
+              include_payment_types: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_payment_type]?,
+              include_polarities: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_polarity]?,
+              include_statuses: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_status]?,
+              include_tags: ::Hash[Symbol, String]?,
+              result: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result
+            }
+
+          class Filters < Lithic::Internal::Type::BaseModel
+            attr_accessor exclude_tags: ::Hash[Symbol, String]?
+
+            attr_accessor include_payment_types: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_payment_type]?
+
+            attr_accessor include_polarities: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_polarity]?
+
+            attr_accessor include_statuses: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_status]?
+
+            attr_accessor include_tags: ::Hash[Symbol, String]?
+
+            attr_reader result: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result?
+
+            def result=: (
+              Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result
+            ) -> Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result
+
+            def initialize: (
+              ?exclude_tags: ::Hash[Symbol, String]?,
+              ?include_payment_types: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_payment_type]?,
+              ?include_polarities: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_polarity]?,
+              ?include_statuses: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_status]?,
+              ?include_tags: ::Hash[Symbol, String]?,
+              ?result: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result
+            ) -> void
+
+            def to_hash: -> {
+              exclude_tags: ::Hash[Symbol, String]?,
+              include_payment_types: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_payment_type]?,
+              include_polarities: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_polarity]?,
+              include_statuses: ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_status]?,
+              include_tags: ::Hash[Symbol, String]?,
+              result: Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result
+            }
+
+            type include_payment_type = :ORIGINATION | :RECEIPT
+
+            module IncludePaymentType
+              extend Lithic::Internal::Type::Enum
+
+              ORIGINATION: :ORIGINATION
+              RECEIPT: :RECEIPT
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_payment_type]
+            end
+
+            type include_polarity = :CREDIT | :DEBIT
+
+            module IncludePolarity
+              extend Lithic::Internal::Type::Enum
+
+              CREDIT: :CREDIT
+              DEBIT: :DEBIT
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_polarity]
+            end
+
+            type include_status =
+              :PENDING
+              | :SETTLED
+              | :DECLINED
+              | :REVERSED
+              | :CANCELED
+              | :RETURNED
+
+            module IncludeStatus
+              extend Lithic::Internal::Type::Enum
+
+              PENDING: :PENDING
+              SETTLED: :SETTLED
+              DECLINED: :DECLINED
+              REVERSED: :REVERSED
+              CANCELED: :CANCELED
+              RETURNED: :RETURNED
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::include_status]
+            end
+
+            type result = :APPROVED | :DECLINED
+
+            module Result
+              extend Lithic::Internal::Type::Enum
+
+              APPROVED: :APPROVED
+              DECLINED: :DECLINED
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::PaymentVelocityFeature::Filters::result]
+            end
+          end
+        end
+
         type transaction_history_signals_feature =
           {
             scope: Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope,
@@ -236,6 +409,85 @@ module Lithic
             BUSINESS_ACCOUNT: :BUSINESS_ACCOUNT
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::TransactionHistorySignalsFeature::scope]
+          end
+        end
+
+        type consecutive_declines_feature =
+          {
+            scope: Lithic::Models::AuthRules::RuleFeature::ConsecutiveDeclinesFeature::scope,
+            type: :CONSECUTIVE_DECLINES,
+            name: String
+          }
+
+        class ConsecutiveDeclinesFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor scope: Lithic::Models::AuthRules::RuleFeature::ConsecutiveDeclinesFeature::scope
+
+          attr_accessor type: :CONSECUTIVE_DECLINES
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            scope: Lithic::Models::AuthRules::RuleFeature::ConsecutiveDeclinesFeature::scope,
+            ?name: String,
+            ?type: :CONSECUTIVE_DECLINES
+          ) -> void
+
+          def to_hash: -> {
+            scope: Lithic::Models::AuthRules::RuleFeature::ConsecutiveDeclinesFeature::scope,
+            type: :CONSECUTIVE_DECLINES,
+            name: String
+          }
+
+          type scope = :CARD | :ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD: :CARD
+            ACCOUNT: :ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::ConsecutiveDeclinesFeature::scope]
+          end
+        end
+
+        type ach_payment_history_feature =
+          {
+            scope: Lithic::Models::AuthRules::RuleFeature::ACHPaymentHistoryFeature::scope,
+            type: :ACH_PAYMENT_HISTORY,
+            name: String
+          }
+
+        class ACHPaymentHistoryFeature < Lithic::Internal::Type::BaseModel
+          attr_accessor scope: Lithic::Models::AuthRules::RuleFeature::ACHPaymentHistoryFeature::scope
+
+          attr_accessor type: :ACH_PAYMENT_HISTORY
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            scope: Lithic::Models::AuthRules::RuleFeature::ACHPaymentHistoryFeature::scope,
+            ?name: String,
+            ?type: :ACH_PAYMENT_HISTORY
+          ) -> void
+
+          def to_hash: -> {
+            scope: Lithic::Models::AuthRules::RuleFeature::ACHPaymentHistoryFeature::scope,
+            type: :ACH_PAYMENT_HISTORY,
+            name: String
+          }
+
+          type scope = :FINANCIAL_ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            FINANCIAL_ACCOUNT: :FINANCIAL_ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleFeature::ACHPaymentHistoryFeature::scope]
           end
         end
 
