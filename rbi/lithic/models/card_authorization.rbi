@@ -59,12 +59,13 @@ module Lithic
       sig { returns(String) }
       attr_accessor :cardholder_currency
 
-      # The portion of the transaction requested as cash back by the cardholder, and
-      # does not include any acquirer fees. The amount field includes the purchase
-      # amount, the requested cash back amount, and any acquirer fees.
+      # The amount of cash requested by the cardholder, in the cardholder billing
+      # currency's smallest unit. For purchase-with-cashback transactions this is the
+      # cashback portion only; for ATM transactions this is the full amount. This amount
+      # includes all acquirer fees.
       #
-      # If no cash back was requested, the value of this field will be 0, and the field
-      # will always be present.
+      # If no cash was requested, the value of this field will be 0, and the field will
+      # always be present.
       sig { returns(Integer) }
       attr_accessor :cash_amount
 
@@ -328,12 +329,13 @@ module Lithic
         # Deprecated, use `amounts`. 3-character alphabetic ISO 4217 code for cardholder's
         # billing currency.
         cardholder_currency:,
-        # The portion of the transaction requested as cash back by the cardholder, and
-        # does not include any acquirer fees. The amount field includes the purchase
-        # amount, the requested cash back amount, and any acquirer fees.
+        # The amount of cash requested by the cardholder, in the cardholder billing
+        # currency's smallest unit. For purchase-with-cashback transactions this is the
+        # cashback portion only; for ATM transactions this is the full amount. This amount
+        # includes all acquirer fees.
         #
-        # If no cash back was requested, the value of this field will be 0, and the field
-        # will always be present.
+        # If no cash was requested, the value of this field will be 0, and the field will
+        # always be present.
         cash_amount:,
         # Date and time when the transaction first occurred in UTC.
         created:,

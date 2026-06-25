@@ -68,12 +68,13 @@ module Lithic
       required :cardholder_currency, String
 
       # @!attribute cash_amount
-      #   The portion of the transaction requested as cash back by the cardholder, and
-      #   does not include any acquirer fees. The amount field includes the purchase
-      #   amount, the requested cash back amount, and any acquirer fees.
+      #   The amount of cash requested by the cardholder, in the cardholder billing
+      #   currency's smallest unit. For purchase-with-cashback transactions this is the
+      #   cashback portion only; for ATM transactions this is the full amount. This amount
+      #   includes all acquirer fees.
       #
-      #   If no cash back was requested, the value of this field will be 0, and the field
-      #   will always be present.
+      #   If no cash was requested, the value of this field will be 0, and the field will
+      #   always be present.
       #
       #   @return [Integer]
       required :cash_amount, Integer
@@ -263,7 +264,7 @@ module Lithic
       #
       #   @param cardholder_currency [String] Deprecated, use `amounts`. 3-character alphabetic ISO 4217 code for cardholder's
       #
-      #   @param cash_amount [Integer] The portion of the transaction requested as cash back by the cardholder, and doe
+      #   @param cash_amount [Integer] The amount of cash requested by the cardholder, in the cardholder billing curren
       #
       #   @param created [Time] Date and time when the transaction first occurred in UTC.
       #
