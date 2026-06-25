@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.1 (2026-06-25)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/lithic-com/lithic-ruby/compare/v0.18.0...v0.18.1)
+
+### Documentation
+
+* **types:** update cash_amount field description in CardAuthorization ([1385cde](https://github.com/lithic-com/lithic-ruby/commit/1385cde62aca3c83a7525150b535decc016c8ed4))
+
 ## 0.18.0 (2026-06-23)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/lithic-com/lithic-ruby/compare/v0.17.0...v0.18.0)
