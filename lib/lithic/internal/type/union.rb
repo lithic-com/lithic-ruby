@@ -6,28 +6,14 @@ module Lithic
       # @api private
       #
       # @example
-      #   # `account_activity_list_response` is a `Lithic::Models::AccountActivityListResponse`
-      #   case account_activity_list_response
-      #   when Lithic::Models::AccountActivityListResponse::Internal
-      #     puts(account_activity_list_response.token)
-      #   when Lithic::BookTransferResponse
-      #     puts(account_activity_list_response.category)
-      #   when Lithic::Models::AccountActivityListResponse::Card
-      #     # ...
+      #   # `case_transaction` is a `Lithic::TransactionMonitoring::CaseTransaction`
+      #   case case_transaction
+      #   when Lithic::TransactionMonitoring::CaseTransaction::CardCaseTransaction
+      #     puts(case_transaction.token)
+      #   when Lithic::TransactionMonitoring::CaseTransaction::PaymentCaseTransaction
+      #     puts(case_transaction.added_at)
       #   else
-      #     puts(account_activity_list_response)
-      #   end
-      #
-      # @example
-      #   case account_activity_list_response
-      #   in {family: :INTERNAL, token: token, category: category, created: created}
-      #     puts(token)
-      #   in {family: :TRANSFER, token: token, category: category, created: created}
-      #     puts(category)
-      #   in {family: :PAYMENT, token: token, category: category, created: created}
-      #     puts(created)
-      #   else
-      #     puts(account_activity_list_response)
+      #     puts(case_transaction)
       #   end
       module Union
         include Lithic::Internal::Type::Converter
