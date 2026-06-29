@@ -57,7 +57,7 @@ module Lithic
           ?page_size: Integer,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::TransactionMonitoring::CaseTransaction]
+        ) -> Lithic::Internal::CursorPage[Lithic::Models::TransactionMonitoring::case_transaction]
 
         def retrieve_cards: (
           String case_token,

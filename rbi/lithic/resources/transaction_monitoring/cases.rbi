@@ -187,7 +187,7 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(
             Lithic::Internal::CursorPage[
-              Lithic::TransactionMonitoring::CaseTransaction
+              Lithic::TransactionMonitoring::CaseTransaction::Variants
             ]
           )
         end
