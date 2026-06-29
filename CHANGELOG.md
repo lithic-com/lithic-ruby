@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.18.1 (2026-06-29)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/lithic-com/lithic-ruby/compare/v0.18.0...v0.18.1)
+
+### Bug Fixes
+
+* **types:** convert CaseTransaction to union with Card/Payment variants ([0d84634](https://github.com/lithic-com/lithic-ruby/commit/0d84634d5cf4e42f4270832089df3cdbd50deed2))
+
+
+### Chores
+
+* **internal:** bound formatter parallelism to CPU count ([acf4dc5](https://github.com/lithic-com/lithic-ruby/commit/acf4dc52c4d33ea1bce9b0544123caf6c2d764d2))
+
+
+### Documentation
+
+* **types:** update cash_amount field description in CardAuthorization ([1385cde](https://github.com/lithic-com/lithic-ruby/commit/1385cde62aca3c83a7525150b535decc016c8ed4))
+
 ## 0.18.0 (2026-06-23)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/lithic-com/lithic-ruby/compare/v0.17.0...v0.18.0)
