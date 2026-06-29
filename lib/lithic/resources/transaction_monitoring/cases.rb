@@ -178,7 +178,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::TransactionMonitoring::CaseTransaction>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::TransactionMonitoring::CaseTransaction::CardCaseTransaction, Lithic::Models::TransactionMonitoring::CaseTransaction::PaymentCaseTransaction>]
         #
         # @see Lithic::Models::TransactionMonitoring::CaseListTransactionsParams
         def list_transactions(case_token, params = {})

@@ -141,13 +141,10 @@ class Lithic::Test::Resources::TransactionMonitoring::CasesTest < Lithic::Test::
     end
 
     assert_pattern do
-      row => {
-        token: String,
-        account_token: String,
-        added_at: Time,
-        card_token: String,
-        transaction_created_at: Time
-      }
+      case row
+      in Lithic::TransactionMonitoring::CaseTransaction::CardCaseTransaction
+      in Lithic::TransactionMonitoring::CaseTransaction::PaymentCaseTransaction
+      end
     end
   end
 

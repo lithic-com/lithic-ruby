@@ -2,40 +2,99 @@ module Lithic
   module Models
     module TransactionMonitoring
       type case_transaction =
-        {
-          token: String,
-          account_token: String,
-          added_at: Time,
-          card_token: String,
-          transaction_created_at: Time
-        }
+        Lithic::TransactionMonitoring::CaseTransaction::CardCaseTransaction
+        | Lithic::TransactionMonitoring::CaseTransaction::PaymentCaseTransaction
 
-      class CaseTransaction < Lithic::Internal::Type::BaseModel
-        attr_accessor token: String
+      module CaseTransaction
+        extend Lithic::Internal::Type::Union
 
-        attr_accessor account_token: String
+        type card_case_transaction =
+          {
+            token: String,
+            account_token: String,
+            added_at: Time,
+            card_token: String,
+            category: :CARD,
+            transaction_created_at: Time
+          }
 
-        attr_accessor added_at: Time
+        class CardCaseTransaction < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
 
-        attr_accessor card_token: String
+          attr_accessor account_token: String
 
-        attr_accessor transaction_created_at: Time
+          attr_accessor added_at: Time
 
-        def initialize: (
-          token: String,
-          account_token: String,
-          added_at: Time,
-          card_token: String,
-          transaction_created_at: Time
-        ) -> void
+          attr_accessor card_token: String
 
-        def to_hash: -> {
-          token: String,
-          account_token: String,
-          added_at: Time,
-          card_token: String,
-          transaction_created_at: Time
-        }
+          attr_accessor category: :CARD
+
+          attr_accessor transaction_created_at: Time
+
+          def initialize: (
+            token: String,
+            account_token: String,
+            added_at: Time,
+            card_token: String,
+            transaction_created_at: Time,
+            ?category: :CARD
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            account_token: String,
+            added_at: Time,
+            card_token: String,
+            category: :CARD,
+            transaction_created_at: Time
+          }
+        end
+
+        type payment_case_transaction =
+          {
+            token: String,
+            added_at: Time,
+            category: :PAYMENT,
+            financial_account_token: String,
+            transaction_created_at: Time,
+            account_token: String
+          }
+
+        class PaymentCaseTransaction < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor added_at: Time
+
+          attr_accessor category: :PAYMENT
+
+          attr_accessor financial_account_token: String
+
+          attr_accessor transaction_created_at: Time
+
+          attr_reader account_token: String?
+
+          def account_token=: (String) -> String
+
+          def initialize: (
+            token: String,
+            added_at: Time,
+            financial_account_token: String,
+            transaction_created_at: Time,
+            ?account_token: String,
+            ?category: :PAYMENT
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            added_at: Time,
+            category: :PAYMENT,
+            financial_account_token: String,
+            transaction_created_at: Time,
+            account_token: String
+          }
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::TransactionMonitoring::case_transaction]
       end
     end
   end
