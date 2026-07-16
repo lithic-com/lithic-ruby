@@ -71,7 +71,7 @@ module Lithic
         # will be included. UTC time zone.
         begin_: nil,
         business_account_token: nil,
-        # External Payment category to be returned.
+        # The external rail the funds moved on
         category: nil,
         # Date string in RFC 3339 format. Only entries created before the specified time
         # will be included. UTC time zone.

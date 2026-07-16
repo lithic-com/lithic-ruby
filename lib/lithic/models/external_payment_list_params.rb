@@ -20,7 +20,7 @@ module Lithic
       optional :business_account_token, String
 
       # @!attribute category
-      #   External Payment category to be returned.
+      #   The external rail the funds moved on
       #
       #   @return [Symbol, Lithic::Models::ExternalPaymentListParams::Category, nil]
       optional :category, enum: -> { Lithic::ExternalPaymentListParams::Category }
@@ -79,7 +79,7 @@ module Lithic
       #
       #   @param business_account_token [String]
       #
-      #   @param category [Symbol, Lithic::Models::ExternalPaymentListParams::Category] External Payment category to be returned.
+      #   @param category [Symbol, Lithic::Models::ExternalPaymentListParams::Category] The external rail the funds moved on
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -97,7 +97,7 @@ module Lithic
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-      # External Payment category to be returned.
+      # The external rail the funds moved on
       module Category
         extend Lithic::Internal::Type::Enum
 
