@@ -75,7 +75,7 @@ module Lithic
       #
       # @param business_account_token [String]
       #
-      # @param category [Symbol, Lithic::Models::ExternalPaymentListParams::Category] External Payment category to be returned.
+      # @param category [Symbol, Lithic::Models::ExternalPaymentListParams::Category] The external rail the funds moved on
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #

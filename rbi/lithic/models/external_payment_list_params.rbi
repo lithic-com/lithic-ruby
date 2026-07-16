@@ -25,7 +25,7 @@ module Lithic
       sig { params(business_account_token: String).void }
       attr_writer :business_account_token
 
-      # External Payment category to be returned.
+      # The external rail the funds moved on
       sig do
         returns(
           T.nilable(Lithic::ExternalPaymentListParams::Category::OrSymbol)
@@ -121,7 +121,7 @@ module Lithic
         # will be included. UTC time zone.
         begin_: nil,
         business_account_token: nil,
-        # External Payment category to be returned.
+        # The external rail the funds moved on
         category: nil,
         # Date string in RFC 3339 format. Only entries created before the specified time
         # will be included. UTC time zone.
@@ -165,7 +165,7 @@ module Lithic
       def to_hash
       end
 
-      # External Payment category to be returned.
+      # The external rail the funds moved on
       module Category
         extend Lithic::Internal::Type::Enum
 
