@@ -212,6 +212,7 @@ module Lithic
           | :INTEREST
           | :LATE_PAYMENT
           | :BILL_PAYMENT
+          | :PAYMENT_FEE
           | :CASH_BACK
           | :ACCOUNT_TO_ACCOUNT
           | :CARD_TO_CARD
@@ -251,6 +252,7 @@ module Lithic
           INTEREST: :INTEREST
           LATE_PAYMENT: :LATE_PAYMENT
           BILL_PAYMENT: :BILL_PAYMENT
+          PAYMENT_FEE: :PAYMENT_FEE
           CASH_BACK: :CASH_BACK
           ACCOUNT_TO_ACCOUNT: :ACCOUNT_TO_ACCOUNT
           CARD_TO_CARD: :CARD_TO_CARD

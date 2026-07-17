@@ -311,6 +311,11 @@ module Lithic
             :BILL_PAYMENT,
             Lithic::BookTransferCreateParams::Type::TaggedSymbol
           )
+        PAYMENT_FEE =
+          T.let(
+            :PAYMENT_FEE,
+            Lithic::BookTransferCreateParams::Type::TaggedSymbol
+          )
         CASH_BACK =
           T.let(
             :CASH_BACK,
