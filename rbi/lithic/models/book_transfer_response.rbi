@@ -512,6 +512,11 @@ module Lithic
               :BILL_PAYMENT,
               Lithic::BookTransferResponse::Event::Type::TaggedSymbol
             )
+          PAYMENT_FEE =
+            T.let(
+              :PAYMENT_FEE,
+              Lithic::BookTransferResponse::Event::Type::TaggedSymbol
+            )
           CASH_BACK =
             T.let(
               :CASH_BACK,
