@@ -22,7 +22,7 @@ module Lithic
       #   The type of event that occurred. Possible values:
       #
       #   - account_holder_document.updated: Occurs when an account holder's document
-      #     upload status has been updated
+      #     upload status has been updated.
       #   - account_holder.created: Occurs when a new account_holder is created.
       #   - account_holder.updated: Occurs when an account_holder is updated.
       #   - account_holder.verification: Occurs when an asynchronous account_holder's
@@ -86,10 +86,21 @@ module Lithic
       #   This event will be deprecated in the future. We recommend using
       #   `tokenization.updated` instead.
       #
-      #   - dispute_evidence.upload_failed: Occurs when a dispute evidence upload fails.
+      #   - dispute_evidence.upload_failed: Occurs when an evidence upload fails for a
+      #     dispute filed through the Chargebacks API (`/v1/disputes`).
+      #
+      #   This event is not emitted for Managed Disputes.
+      #
       #   - dispute_transaction.created: Occurs when a new dispute transaction is created
-      #   - dispute_transaction.updated: Occurs when a dispute transaction is updated
-      #   - dispute.updated: Occurs when a dispute is updated.
+      #     for a Managed Disputes case.
+      #   - dispute_transaction.updated: Occurs when a dispute transaction for a Managed
+      #     Disputes case is updated.
+      #   - dispute.updated: Occurs when a dispute filed through the Chargebacks API
+      #     (`/v1/disputes`) is created or updated.
+      #
+      #   This event is not emitted for Managed Disputes. Use
+      #   `dispute_transaction.created` and `dispute_transaction.updated` instead.
+      #
       #   - external_bank_account.created: Occurs when an external bank account is
       #     created.
       #   - external_bank_account.updated: Occurs when an external bank account is
@@ -111,7 +122,7 @@ module Lithic
       #   - payment_transaction.updated: Occurs when a payment transaction is updated.
       #   - settlement_report.updated: Occurs when a settlement report is created or
       #     updated.
-      #   - statements.created: Occurs when a statement has been created
+      #   - statements.created: Occurs when a statement has been created.
       #   - three_ds_authentication.challenge: The `three_ds_authentication.challenge`
       #     event. Upon receiving this request, the Card Program should issue its own
       #     challenge to the cardholder. After a cardholder challenge is successfully
@@ -158,7 +169,7 @@ module Lithic
       # The type of event that occurred. Possible values:
       #
       # - account_holder_document.updated: Occurs when an account holder's document
-      #   upload status has been updated
+      #   upload status has been updated.
       # - account_holder.created: Occurs when a new account_holder is created.
       # - account_holder.updated: Occurs when an account_holder is updated.
       # - account_holder.verification: Occurs when an asynchronous account_holder's
@@ -222,10 +233,21 @@ module Lithic
       # This event will be deprecated in the future. We recommend using
       # `tokenization.updated` instead.
       #
-      # - dispute_evidence.upload_failed: Occurs when a dispute evidence upload fails.
+      # - dispute_evidence.upload_failed: Occurs when an evidence upload fails for a
+      #   dispute filed through the Chargebacks API (`/v1/disputes`).
+      #
+      # This event is not emitted for Managed Disputes.
+      #
       # - dispute_transaction.created: Occurs when a new dispute transaction is created
-      # - dispute_transaction.updated: Occurs when a dispute transaction is updated
-      # - dispute.updated: Occurs when a dispute is updated.
+      #   for a Managed Disputes case.
+      # - dispute_transaction.updated: Occurs when a dispute transaction for a Managed
+      #   Disputes case is updated.
+      # - dispute.updated: Occurs when a dispute filed through the Chargebacks API
+      #   (`/v1/disputes`) is created or updated.
+      #
+      # This event is not emitted for Managed Disputes. Use
+      # `dispute_transaction.created` and `dispute_transaction.updated` instead.
+      #
       # - external_bank_account.created: Occurs when an external bank account is
       #   created.
       # - external_bank_account.updated: Occurs when an external bank account is
@@ -247,7 +269,7 @@ module Lithic
       # - payment_transaction.updated: Occurs when a payment transaction is updated.
       # - settlement_report.updated: Occurs when a settlement report is created or
       #   updated.
-      # - statements.created: Occurs when a statement has been created
+      # - statements.created: Occurs when a statement has been created.
       # - three_ds_authentication.challenge: The `three_ds_authentication.challenge`
       #   event. Upon receiving this request, the Card Program should issue its own
       #   challenge to the cardholder. After a cardholder challenge is successfully
