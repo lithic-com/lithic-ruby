@@ -97,6 +97,10 @@ module Lithic
       # This event is not emitted for Managed Disputes. Use
       # `dispute_transaction.created` and `dispute_transaction.updated` instead.
       #
+      # - embed.session_generated: Occurs when a card embed session is successfully
+      #   generated.
+      # - embed.viewed: Occurs when a card detail is successfully revealed through an
+      #   embed.
       # - external_bank_account.created: Occurs when an external bank account is
       #   created.
       # - external_bank_account.updated: Occurs when an external bank account is
@@ -243,6 +247,10 @@ module Lithic
         # This event is not emitted for Managed Disputes. Use
         # `dispute_transaction.created` and `dispute_transaction.updated` instead.
         #
+        # - embed.session_generated: Occurs when a card embed session is successfully
+        #   generated.
+        # - embed.viewed: Occurs when a card detail is successfully revealed through an
+        #   embed.
         # - external_bank_account.created: Occurs when an external bank account is
         #   created.
         # - external_bank_account.updated: Occurs when an external bank account is
@@ -385,6 +393,10 @@ module Lithic
       # This event is not emitted for Managed Disputes. Use
       # `dispute_transaction.created` and `dispute_transaction.updated` instead.
       #
+      # - embed.session_generated: Occurs when a card embed session is successfully
+      #   generated.
+      # - embed.viewed: Occurs when a card detail is successfully revealed through an
+      #   embed.
       # - external_bank_account.created: Occurs when an external bank account is
       #   created.
       # - external_bank_account.updated: Occurs when an external bank account is
@@ -563,6 +575,13 @@ module Lithic
           )
         DISPUTE_UPDATED =
           T.let(:"dispute.updated", Lithic::Event::EventType::TaggedSymbol)
+        EMBED_SESSION_GENERATED =
+          T.let(
+            :"embed.session_generated",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        EMBED_VIEWED =
+          T.let(:"embed.viewed", Lithic::Event::EventType::TaggedSymbol)
         EXTERNAL_BANK_ACCOUNT_CREATED =
           T.let(
             :"external_bank_account.created",

@@ -43,6 +43,8 @@ module Lithic
             Lithic::DigitalWalletTokenizationUpdatedWebhookEvent,
             Lithic::DisputeUpdatedWebhookEvent,
             Lithic::DisputeEvidenceUploadFailedWebhookEvent,
+            Lithic::EmbedSessionGeneratedWebhookEvent,
+            Lithic::EmbedViewedWebhookEvent,
             Lithic::ExternalBankAccountCreatedWebhookEvent,
             Lithic::ExternalBankAccountUpdatedWebhookEvent,
             Lithic::ExternalPaymentCreatedWebhookEvent,

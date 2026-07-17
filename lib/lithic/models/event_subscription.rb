@@ -128,6 +128,10 @@ module Lithic
       # This event is not emitted for Managed Disputes. Use
       # `dispute_transaction.created` and `dispute_transaction.updated` instead.
       #
+      # - embed.session_generated: Occurs when a card embed session is successfully
+      #   generated.
+      # - embed.viewed: Occurs when a card detail is successfully revealed through an
+      #   embed.
       # - external_bank_account.created: Occurs when an external bank account is
       #   created.
       # - external_bank_account.updated: Occurs when an external bank account is
@@ -207,6 +211,8 @@ module Lithic
         DISPUTE_TRANSACTION_CREATED = :"dispute_transaction.created"
         DISPUTE_TRANSACTION_UPDATED = :"dispute_transaction.updated"
         DISPUTE_UPDATED = :"dispute.updated"
+        EMBED_SESSION_GENERATED = :"embed.session_generated"
+        EMBED_VIEWED = :"embed.viewed"
         EXTERNAL_BANK_ACCOUNT_CREATED = :"external_bank_account.created"
         EXTERNAL_BANK_ACCOUNT_UPDATED = :"external_bank_account.updated"
         EXTERNAL_PAYMENT_CREATED = :"external_payment.created"
