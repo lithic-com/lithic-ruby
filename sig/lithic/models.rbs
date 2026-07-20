@@ -241,6 +241,10 @@ module Lithic
 
   class Document = Lithic::Models::Document
 
+  class EmbedSessionGeneratedWebhookEvent = Lithic::Models::EmbedSessionGeneratedWebhookEvent
+
+  class EmbedViewedWebhookEvent = Lithic::Models::EmbedViewedWebhookEvent
+
   class Event = Lithic::Models::Event
 
   class EventListAttemptsParams = Lithic::Models::EventListAttemptsParams

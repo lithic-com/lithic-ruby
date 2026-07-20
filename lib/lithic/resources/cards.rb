@@ -228,6 +228,11 @@ module Lithic
         )
       end
 
+      # @deprecated
+      #
+      # **Deprecated.** Use the modern embedded card flow instead: create a session with
+      # `POST /v1/cards/{card_token}/embed` and render it via `GET /v1/embed`.
+      #
       # Handling full card PANs and CVV codes requires that you comply with the Payment
       # Card Industry Data Security Standards (PCI DSS). Some clients choose to reduce
       # their compliance obligations by leveraging our embedded card UI solution

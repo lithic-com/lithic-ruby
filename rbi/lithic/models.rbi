@@ -278,6 +278,11 @@ module Lithic
 
   Document = Lithic::Models::Document
 
+  EmbedSessionGeneratedWebhookEvent =
+    Lithic::Models::EmbedSessionGeneratedWebhookEvent
+
+  EmbedViewedWebhookEvent = Lithic::Models::EmbedViewedWebhookEvent
+
   Event = Lithic::Models::Event
 
   EventListAttemptsParams = Lithic::Models::EventListAttemptsParams
