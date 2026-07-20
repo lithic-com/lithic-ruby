@@ -238,6 +238,16 @@ module Lithic
               :"dispute.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          EMBED_SESSION_GENERATED =
+            T.let(
+              :"embed.session_generated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          EMBED_VIEWED =
+            T.let(
+              :"embed.viewed",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           EXTERNAL_BANK_ACCOUNT_CREATED =
             T.let(
               :"external_bank_account.created",

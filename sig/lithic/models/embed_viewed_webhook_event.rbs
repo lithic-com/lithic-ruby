@@ -1,0 +1,68 @@
+module Lithic
+  module Models
+    type embed_viewed_webhook_event =
+      {
+        account_token: String,
+        card_token: String,
+        device_details: Lithic::EmbedViewedWebhookEvent::DeviceDetails,
+        embed_type: Lithic::Models::EmbedViewedWebhookEvent::embed_type,
+        event_type: :"embed.viewed",
+        session_id: String
+      }
+
+    class EmbedViewedWebhookEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor account_token: String
+
+      attr_accessor card_token: String
+
+      attr_accessor device_details: Lithic::EmbedViewedWebhookEvent::DeviceDetails
+
+      attr_accessor embed_type: Lithic::Models::EmbedViewedWebhookEvent::embed_type
+
+      attr_accessor event_type: :"embed.viewed"
+
+      attr_accessor session_id: String
+
+      def initialize: (
+        account_token: String,
+        card_token: String,
+        device_details: Lithic::EmbedViewedWebhookEvent::DeviceDetails,
+        embed_type: Lithic::Models::EmbedViewedWebhookEvent::embed_type,
+        session_id: String,
+        ?event_type: :"embed.viewed"
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        card_token: String,
+        device_details: Lithic::EmbedViewedWebhookEvent::DeviceDetails,
+        embed_type: Lithic::Models::EmbedViewedWebhookEvent::embed_type,
+        event_type: :"embed.viewed",
+        session_id: String
+      }
+
+      type device_details = { ip_address: String }
+
+      class DeviceDetails < Lithic::Internal::Type::BaseModel
+        attr_accessor ip_address: String
+
+        def initialize: (ip_address: String) -> void
+
+        def to_hash: -> { ip_address: String }
+      end
+
+      type embed_type = :PAN | :CVV | :EXP_MONTH | :EXP_YEAR
+
+      module EmbedType
+        extend Lithic::Internal::Type::Enum
+
+        PAN: :PAN
+        CVV: :CVV
+        EXP_MONTH: :EXP_MONTH
+        EXP_YEAR: :EXP_YEAR
+
+        def self?.values: -> ::Array[Lithic::Models::EmbedViewedWebhookEvent::embed_type]
+      end
+    end
+  end
+end
