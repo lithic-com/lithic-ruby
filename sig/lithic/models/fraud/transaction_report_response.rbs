@@ -5,10 +5,10 @@ module Lithic
         {
           fraud_status: Lithic::Models::Fraud::TransactionReportResponse::fraud_status,
           transaction_token: String,
-          comment: String,
-          created_at: Time,
-          fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type,
-          updated_at: Time
+          comment: String?,
+          created_at: Time?,
+          fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type?,
+          updated_at: Time?
         }
 
       class TransactionReportResponse < Lithic::Internal::Type::BaseModel
@@ -16,40 +16,30 @@ module Lithic
 
         attr_accessor transaction_token: String
 
-        attr_reader comment: String?
+        attr_accessor comment: String?
 
-        def comment=: (String) -> String
+        attr_accessor created_at: Time?
 
-        attr_reader created_at: Time?
+        attr_accessor fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type?
 
-        def created_at=: (Time) -> Time
-
-        attr_reader fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type?
-
-        def fraud_type=: (
-          Lithic::Models::Fraud::TransactionReportResponse::fraud_type
-        ) -> Lithic::Models::Fraud::TransactionReportResponse::fraud_type
-
-        attr_reader updated_at: Time?
-
-        def updated_at=: (Time) -> Time
+        attr_accessor updated_at: Time?
 
         def initialize: (
           fraud_status: Lithic::Models::Fraud::TransactionReportResponse::fraud_status,
           transaction_token: String,
-          ?comment: String,
-          ?created_at: Time,
-          ?fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type,
-          ?updated_at: Time
+          ?comment: String?,
+          ?created_at: Time?,
+          ?fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type?,
+          ?updated_at: Time?
         ) -> void
 
         def to_hash: -> {
           fraud_status: Lithic::Models::Fraud::TransactionReportResponse::fraud_status,
           transaction_token: String,
-          comment: String,
-          created_at: Time,
-          fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type,
-          updated_at: Time
+          comment: String?,
+          created_at: Time?,
+          fraud_type: Lithic::Models::Fraud::TransactionReportResponse::fraud_type?,
+          updated_at: Time?
         }
 
         type fraud_status =

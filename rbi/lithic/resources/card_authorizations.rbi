@@ -5,7 +5,7 @@ module Lithic
     class CardAuthorizations
       # Card program's response to Authorization Challenge. Programs that have
       # Authorization Challenges configured as Out of Band receive a
-      # [card_authorization.challenge](https://docs.lithic.com/reference/post_card-authorization-challenge)
+      # [card_authorization.challenge](https://docs.lithic.com/reference/cardauthorizationchallengewebhook)
       # webhook when an authorization attempt triggers a challenge. The card program
       # should respond using this endpoint after the cardholder completes the challenge.
       sig do
