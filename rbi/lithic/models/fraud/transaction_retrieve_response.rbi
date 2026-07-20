@@ -40,17 +40,11 @@ module Lithic
 
         # Provides additional context or details about the fraud report.
         sig { returns(T.nilable(String)) }
-        attr_reader :comment
-
-        sig { params(comment: String).void }
-        attr_writer :comment
+        attr_accessor :comment
 
         # Timestamp representing when the fraud report was created.
         sig { returns(T.nilable(Time)) }
-        attr_reader :created_at
-
-        sig { params(created_at: Time).void }
-        attr_writer :created_at
+        attr_accessor :created_at
 
         # Specifies the type or category of fraud that the transaction is suspected or
         # confirmed to involve, string (enum) supporting the following values:
@@ -80,33 +74,24 @@ module Lithic
             )
           )
         end
-        attr_reader :fraud_type
-
-        sig do
-          params(
-            fraud_type:
-              Lithic::Models::Fraud::TransactionRetrieveResponse::FraudType::OrSymbol
-          ).void
-        end
-        attr_writer :fraud_type
+        attr_accessor :fraud_type
 
         # Timestamp representing the last update to the fraud report.
         sig { returns(T.nilable(Time)) }
-        attr_reader :updated_at
-
-        sig { params(updated_at: Time).void }
-        attr_writer :updated_at
+        attr_accessor :updated_at
 
         sig do
           params(
             fraud_status:
               Lithic::Models::Fraud::TransactionRetrieveResponse::FraudStatus::OrSymbol,
             transaction_token: String,
-            comment: String,
-            created_at: Time,
+            comment: T.nilable(String),
+            created_at: T.nilable(Time),
             fraud_type:
-              Lithic::Models::Fraud::TransactionRetrieveResponse::FraudType::OrSymbol,
-            updated_at: Time
+              T.nilable(
+                Lithic::Models::Fraud::TransactionRetrieveResponse::FraudType::OrSymbol
+              ),
+            updated_at: T.nilable(Time)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -165,11 +150,13 @@ module Lithic
               fraud_status:
                 Lithic::Models::Fraud::TransactionRetrieveResponse::FraudStatus::TaggedSymbol,
               transaction_token: String,
-              comment: String,
-              created_at: Time,
+              comment: T.nilable(String),
+              created_at: T.nilable(Time),
               fraud_type:
-                Lithic::Models::Fraud::TransactionRetrieveResponse::FraudType::TaggedSymbol,
-              updated_at: Time
+                T.nilable(
+                  Lithic::Models::Fraud::TransactionRetrieveResponse::FraudType::TaggedSymbol
+                ),
+              updated_at: T.nilable(Time)
             }
           )
         end
