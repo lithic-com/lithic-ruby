@@ -35,13 +35,13 @@ module Lithic
         #   Provides additional context or details about the fraud report.
         #
         #   @return [String, nil]
-        optional :comment, String
+        optional :comment, String, nil?: true
 
         # @!attribute created_at
         #   Timestamp representing when the fraud report was created.
         #
         #   @return [Time, nil]
-        optional :created_at, Time
+        optional :created_at, Time, nil?: true
 
         # @!attribute fraud_type
         #   Specifies the type or category of fraud that the transaction is suspected or
@@ -67,13 +67,13 @@ module Lithic
         #     often through social engineering tactics.
         #
         #   @return [Symbol, Lithic::Models::Fraud::TransactionReportResponse::FraudType, nil]
-        optional :fraud_type, enum: -> { Lithic::Models::Fraud::TransactionReportResponse::FraudType }
+        optional :fraud_type, enum: -> { Lithic::Models::Fraud::TransactionReportResponse::FraudType }, nil?: true
 
         # @!attribute updated_at
         #   Timestamp representing the last update to the fraud report.
         #
         #   @return [Time, nil]
-        optional :updated_at, Time
+        optional :updated_at, Time, nil?: true
 
         # @!method initialize(fraud_status:, transaction_token:, comment: nil, created_at: nil, fraud_type: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
@@ -83,13 +83,13 @@ module Lithic
         #
         #   @param transaction_token [String] The universally unique identifier (UUID) associated with the transaction being r
         #
-        #   @param comment [String] Provides additional context or details about the fraud report.
+        #   @param comment [String, nil] Provides additional context or details about the fraud report.
         #
-        #   @param created_at [Time] Timestamp representing when the fraud report was created.
+        #   @param created_at [Time, nil] Timestamp representing when the fraud report was created.
         #
-        #   @param fraud_type [Symbol, Lithic::Models::Fraud::TransactionReportResponse::FraudType] Specifies the type or category of fraud that the transaction is suspected or con
+        #   @param fraud_type [Symbol, Lithic::Models::Fraud::TransactionReportResponse::FraudType, nil] Specifies the type or category of fraud that the transaction is suspected or con
         #
-        #   @param updated_at [Time] Timestamp representing the last update to the fraud report.
+        #   @param updated_at [Time, nil] Timestamp representing the last update to the fraud report.
 
         # The fraud status of the transaction, string (enum) supporting the following
         # values:
