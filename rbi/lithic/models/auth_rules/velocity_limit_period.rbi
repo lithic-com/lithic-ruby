@@ -28,7 +28,7 @@ module Lithic
             end
 
           # The size of the trailing window to calculate Spend Velocity over in seconds. The
-          # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+          # minimum value is 10 seconds, and the maximum value is 7776000 seconds (90 days).
           sig { returns(Integer) }
           attr_accessor :duration
 
@@ -40,7 +40,7 @@ module Lithic
           end
           def self.new(
             # The size of the trailing window to calculate Spend Velocity over in seconds. The
-            # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+            # minimum value is 10 seconds, and the maximum value is 7776000 seconds (90 days).
             duration:,
             type: :CUSTOM
           )
