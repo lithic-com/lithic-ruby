@@ -216,6 +216,11 @@ module Lithic
             :PROGRAM_FUNDING,
             Lithic::BookTransferListParams::Category::TaggedSymbol
           )
+        PROGRAM_TRANSFER =
+          T.let(
+            :PROGRAM_TRANSFER,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
         TRANSFER =
           T.let(
             :TRANSFER,

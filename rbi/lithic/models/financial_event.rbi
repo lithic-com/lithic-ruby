@@ -447,6 +447,16 @@ module Lithic
             :LITHIC_NETWORK_PAYMENT,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        LITHIC_PROGRAM_TRANSFER =
+          T.let(
+            :LITHIC_PROGRAM_TRANSFER,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        BANK_PROGRAM_TRANSFER =
+          T.let(
+            :BANK_PROGRAM_TRANSFER,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
         ANNUAL = T.let(:ANNUAL, Lithic::FinancialEvent::Type::TaggedSymbol)
         ANNUAL_REVERSAL =
           T.let(:ANNUAL_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)

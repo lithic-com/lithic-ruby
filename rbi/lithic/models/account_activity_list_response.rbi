@@ -296,6 +296,11 @@ module Lithic
               :PROGRAM_FUNDING,
               Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
             )
+          PROGRAM_TRANSFER =
+            T.let(
+              :PROGRAM_TRANSFER,
+              Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
+            )
 
           sig do
             override.returns(
