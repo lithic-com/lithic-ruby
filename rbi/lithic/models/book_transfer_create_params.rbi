@@ -197,6 +197,11 @@ module Lithic
             :PROGRAM_FUNDING,
             Lithic::BookTransferCreateParams::Category::TaggedSymbol
           )
+        PROGRAM_TRANSFER =
+          T.let(
+            :PROGRAM_TRANSFER,
+            Lithic::BookTransferCreateParams::Category::TaggedSymbol
+          )
         TRANSFER =
           T.let(
             :TRANSFER,
@@ -380,6 +385,16 @@ module Lithic
         COLLECTION =
           T.let(
             :COLLECTION,
+            Lithic::BookTransferCreateParams::Type::TaggedSymbol
+          )
+        LITHIC_PROGRAM_TRANSFER =
+          T.let(
+            :LITHIC_PROGRAM_TRANSFER,
+            Lithic::BookTransferCreateParams::Type::TaggedSymbol
+          )
+        BANK_PROGRAM_TRANSFER =
+          T.let(
+            :BANK_PROGRAM_TRANSFER,
             Lithic::BookTransferCreateParams::Type::TaggedSymbol
           )
 

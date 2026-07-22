@@ -277,6 +277,8 @@ module Lithic
         HOLD = T.let(:HOLD, Lithic::Payment::Category::TaggedSymbol)
         PROGRAM_FUNDING =
           T.let(:PROGRAM_FUNDING, Lithic::Payment::Category::TaggedSymbol)
+        PROGRAM_TRANSFER =
+          T.let(:PROGRAM_TRANSFER, Lithic::Payment::Category::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Category::TaggedSymbol])

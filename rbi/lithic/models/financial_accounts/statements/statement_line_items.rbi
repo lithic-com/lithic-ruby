@@ -333,6 +333,11 @@ module Lithic
                   :PROGRAM_FUNDING,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              PROGRAM_TRANSFER =
+                T.let(
+                  :PROGRAM_TRANSFER,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
 
               sig do
                 override.returns(
@@ -760,6 +765,16 @@ module Lithic
               LITHIC_NETWORK_PAYMENT =
                 T.let(
                   :LITHIC_NETWORK_PAYMENT,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              LITHIC_PROGRAM_TRANSFER =
+                T.let(
+                  :LITHIC_PROGRAM_TRANSFER,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              BANK_PROGRAM_TRANSFER =
+                T.let(
+                  :BANK_PROGRAM_TRANSFER,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
               ANNUAL =
