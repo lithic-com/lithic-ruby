@@ -170,6 +170,7 @@ module Lithic
               MANAGEMENT_DISBURSEMENT = :MANAGEMENT_DISBURSEMENT
               HOLD = :HOLD
               PROGRAM_FUNDING = :PROGRAM_FUNDING
+              PROGRAM_TRANSFER = :PROGRAM_TRANSFER
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -260,6 +261,8 @@ module Lithic
               RETURNED_PAYMENT = :RETURNED_PAYMENT
               RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
               LITHIC_NETWORK_PAYMENT = :LITHIC_NETWORK_PAYMENT
+              LITHIC_PROGRAM_TRANSFER = :LITHIC_PROGRAM_TRANSFER
+              BANK_PROGRAM_TRANSFER = :BANK_PROGRAM_TRANSFER
               ANNUAL = :ANNUAL
               ANNUAL_REVERSAL = :ANNUAL_REVERSAL
               QUARTERLY = :QUARTERLY

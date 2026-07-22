@@ -170,6 +170,7 @@ module Lithic
           MANAGEMENT_DISBURSEMENT = :MANAGEMENT_DISBURSEMENT
           HOLD = :HOLD
           PROGRAM_FUNDING = :PROGRAM_FUNDING
+          PROGRAM_TRANSFER = :PROGRAM_TRANSFER
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -109,6 +109,7 @@ module Lithic
         | :INTERNAL
         | :REWARD
         | :PROGRAM_FUNDING
+        | :PROGRAM_TRANSFER
         | :TRANSFER
 
       module Category
@@ -122,6 +123,7 @@ module Lithic
         INTERNAL: :INTERNAL
         REWARD: :REWARD
         PROGRAM_FUNDING: :PROGRAM_FUNDING
+        PROGRAM_TRANSFER: :PROGRAM_TRANSFER
         TRANSFER: :TRANSFER
 
         def self?.values: -> ::Array[Lithic::Models::BookTransferListParams::category]

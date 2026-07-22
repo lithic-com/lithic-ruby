@@ -156,6 +156,7 @@ module Lithic
         INTERNAL = :INTERNAL
         REWARD = :REWARD
         PROGRAM_FUNDING = :PROGRAM_FUNDING
+        PROGRAM_TRANSFER = :PROGRAM_TRANSFER
         TRANSFER = :TRANSFER
 
         # @!method self.values
@@ -301,6 +302,8 @@ module Lithic
           SERVICE = :SERVICE
           TRANSFER = :TRANSFER
           COLLECTION = :COLLECTION
+          LITHIC_PROGRAM_TRANSFER = :LITHIC_PROGRAM_TRANSFER
+          BANK_PROGRAM_TRANSFER = :BANK_PROGRAM_TRANSFER
 
           # @!method self.values
           #   @return [Array<Symbol>]

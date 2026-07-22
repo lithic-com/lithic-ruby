@@ -116,6 +116,7 @@ module Lithic
         INTERNAL = :INTERNAL
         REWARD = :REWARD
         PROGRAM_FUNDING = :PROGRAM_FUNDING
+        PROGRAM_TRANSFER = :PROGRAM_TRANSFER
         TRANSFER = :TRANSFER
 
         # @!method self.values

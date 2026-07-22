@@ -157,6 +157,7 @@ module Lithic
         | :MANAGEMENT_DISBURSEMENT
         | :HOLD
         | :PROGRAM_FUNDING
+        | :PROGRAM_TRANSFER
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -183,6 +184,7 @@ module Lithic
         MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
         HOLD: :HOLD
         PROGRAM_FUNDING: :PROGRAM_FUNDING
+        PROGRAM_TRANSFER: :PROGRAM_TRANSFER
 
         def self?.values: -> ::Array[Lithic::Models::Payment::category]
       end
