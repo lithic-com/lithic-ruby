@@ -840,6 +840,10 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :receipt_routing_number
 
+          # Name of the recipient on ACH receipts. Reflects the originating bank's record
+          sig { returns(T.nilable(String)) }
+          attr_accessor :recipient_name
+
           # Number of retries attempted
           sig { returns(T.nilable(Integer)) }
           attr_accessor :retries
@@ -864,6 +868,7 @@ module Lithic
               company_id: T.nilable(String),
               override_company_name: T.nilable(String),
               receipt_routing_number: T.nilable(String),
+              recipient_name: T.nilable(String),
               retries: T.nilable(Integer),
               return_reason_code: T.nilable(String),
               trace_numbers: T::Array[String]
@@ -883,6 +888,8 @@ module Lithic
             override_company_name: nil,
             # Receipt routing number
             receipt_routing_number: nil,
+            # Name of the recipient on ACH receipts. Reflects the originating bank's record
+            recipient_name: nil,
             # Number of retries attempted
             retries: nil,
             # Return reason code if the transaction was returned
@@ -902,6 +909,7 @@ module Lithic
                 company_id: T.nilable(String),
                 override_company_name: T.nilable(String),
                 receipt_routing_number: T.nilable(String),
+                recipient_name: T.nilable(String),
                 retries: T.nilable(Integer),
                 return_reason_code: T.nilable(String),
                 trace_numbers: T::Array[String]
