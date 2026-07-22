@@ -363,6 +363,7 @@ module Lithic
             company_id: String?,
             override_company_name: String?,
             receipt_routing_number: String?,
+            recipient_name: String?,
             retries: Integer?,
             return_reason_code: String?,
             trace_numbers: ::Array[String]
@@ -381,6 +382,8 @@ module Lithic
 
           attr_accessor receipt_routing_number: String?
 
+          attr_accessor recipient_name: String?
+
           attr_accessor retries: Integer?
 
           attr_accessor return_reason_code: String?
@@ -396,6 +399,7 @@ module Lithic
             ?company_id: String?,
             ?override_company_name: String?,
             ?receipt_routing_number: String?,
+            ?recipient_name: String?,
             ?retries: Integer?,
             ?return_reason_code: String?,
             ?trace_numbers: ::Array[String]
@@ -408,6 +412,7 @@ module Lithic
             company_id: String?,
             override_company_name: String?,
             receipt_routing_number: String?,
+            recipient_name: String?,
             retries: Integer?,
             return_reason_code: String?,
             trace_numbers: ::Array[String]

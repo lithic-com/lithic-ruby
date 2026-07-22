@@ -539,6 +539,12 @@ module Lithic
           #   @return [String, nil]
           optional :receipt_routing_number, String, nil?: true
 
+          # @!attribute recipient_name
+          #   Name of the recipient on ACH receipts. Reflects the originating bank's record
+          #
+          #   @return [String, nil]
+          optional :recipient_name, String, nil?: true
+
           # @!attribute retries
           #   Number of retries attempted
           #
@@ -557,7 +563,7 @@ module Lithic
           #   @return [Array<String>, nil]
           optional :trace_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil, company_id: nil, override_company_name: nil, receipt_routing_number: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
+          # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil, company_id: nil, override_company_name: nil, receipt_routing_number: nil, recipient_name: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes} for more
           #   details.
@@ -573,6 +579,8 @@ module Lithic
           #   @param override_company_name [String, nil] Value to override the configured company name with. Can only be used if allowed
           #
           #   @param receipt_routing_number [String, nil] Receipt routing number
+          #
+          #   @param recipient_name [String, nil] Name of the recipient on ACH receipts. Reflects the originating bank's record
           #
           #   @param retries [Integer, nil] Number of retries attempted
           #
