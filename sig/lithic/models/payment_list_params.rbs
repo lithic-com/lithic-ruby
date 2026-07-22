@@ -121,7 +121,7 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::PaymentListParams::result]
       end
 
-      type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
+      type status = :DECLINED | :PENDING | :RETURNED | :REVERSED | :SETTLED
 
       module Status
         extend Lithic::Internal::Type::Enum
@@ -129,6 +129,7 @@ module Lithic
         DECLINED: :DECLINED
         PENDING: :PENDING
         RETURNED: :RETURNED
+        REVERSED: :REVERSED
         SETTLED: :SETTLED
 
         def self?.values: -> ::Array[Lithic::Models::PaymentListParams::status]

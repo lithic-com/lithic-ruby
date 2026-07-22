@@ -202,6 +202,8 @@ module Lithic
           T.let(:PENDING, Lithic::PaymentListParams::Status::TaggedSymbol)
         RETURNED =
           T.let(:RETURNED, Lithic::PaymentListParams::Status::TaggedSymbol)
+        REVERSED =
+          T.let(:REVERSED, Lithic::PaymentListParams::Status::TaggedSymbol)
         SETTLED =
           T.let(:SETTLED, Lithic::PaymentListParams::Status::TaggedSymbol)
 

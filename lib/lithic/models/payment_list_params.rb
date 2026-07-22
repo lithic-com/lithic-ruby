@@ -124,6 +124,7 @@ module Lithic
         DECLINED = :DECLINED
         PENDING = :PENDING
         RETURNED = :RETURNED
+        REVERSED = :REVERSED
         SETTLED = :SETTLED
 
         # @!method self.values
