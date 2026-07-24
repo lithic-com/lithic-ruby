@@ -25,9 +25,10 @@ module Lithic
         sig { params(balance_date: Time).void }
         attr_writer :balance_date
 
-        # Balance after a given financial event occured. For example, passing the
-        # event_token of a $5 CARD_CLEARING financial event will return a balance
-        # decreased by $5
+        # Balance after a given financial event occured. Note: if an account receives
+        # multiple events around the same time whose financial impacts cancel out, a
+        # balance lookup by one of those event tokens may return 404, since their combined
+        # impact on the account is zero.
         sig { returns(T.nilable(String)) }
         attr_reader :last_transaction_event_token
 
@@ -46,9 +47,10 @@ module Lithic
           financial_account_token:,
           # UTC date of the balance to retrieve. Defaults to latest available balance
           balance_date: nil,
-          # Balance after a given financial event occured. For example, passing the
-          # event_token of a $5 CARD_CLEARING financial event will return a balance
-          # decreased by $5
+          # Balance after a given financial event occured. Note: if an account receives
+          # multiple events around the same time whose financial impacts cancel out, a
+          # balance lookup by one of those event tokens may return 404, since their combined
+          # impact on the account is zero.
           last_transaction_event_token: nil,
           request_options: {}
         )
