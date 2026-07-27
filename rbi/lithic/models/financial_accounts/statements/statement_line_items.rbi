@@ -233,6 +233,11 @@ module Lithic
                   :WIRE,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              STABLECOIN =
+                T.let(
+                  :STABLECOIN,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
               BALANCE_OR_FUNDING =
                 T.let(
                   :BALANCE_OR_FUNDING,
@@ -810,6 +815,21 @@ module Lithic
               ACCOUNT_TO_ACCOUNT =
                 T.let(
                   :ACCOUNT_TO_ACCOUNT,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              STABLECOIN_RECEIVED =
+                T.let(
+                  :STABLECOIN_RECEIVED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              STABLECOIN_REVIEWED =
+                T.let(
+                  :STABLECOIN_REVIEWED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              STABLECOIN_SETTLED =
+                T.let(
+                  :STABLECOIN_SETTLED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
 

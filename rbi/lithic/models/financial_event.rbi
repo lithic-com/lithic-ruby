@@ -469,6 +469,18 @@ module Lithic
           T.let(:MONTHLY_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
         ACCOUNT_TO_ACCOUNT =
           T.let(:ACCOUNT_TO_ACCOUNT, Lithic::FinancialEvent::Type::TaggedSymbol)
+        STABLECOIN_RECEIVED =
+          T.let(
+            :STABLECOIN_RECEIVED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        STABLECOIN_REVIEWED =
+          T.let(
+            :STABLECOIN_REVIEWED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        STABLECOIN_SETTLED =
+          T.let(:STABLECOIN_SETTLED, Lithic::FinancialEvent::Type::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::FinancialEvent::Type::TaggedSymbol])

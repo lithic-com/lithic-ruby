@@ -202,6 +202,7 @@ module Lithic
 
         ACH = :ACH
         WIRE = :WIRE
+        STABLECOIN = :STABLECOIN
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         FEE = :FEE
         REWARD = :REWARD
@@ -322,6 +323,13 @@ module Lithic
         #   - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
         #     Reserve.
         #
+        #   Stablecoin events:
+        #
+        #   - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
+        #     release to available balance.
+        #   - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
+        #   - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+        #
         #   @return [Symbol, Lithic::Models::Payment::Event::Type]
         required :type, enum: -> { Lithic::Payment::Event::Type }
 
@@ -431,6 +439,13 @@ module Lithic
         # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
         #   Reserve.
         #
+        # Stablecoin events:
+        #
+        # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
+        #   release to available balance.
+        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
+        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+        #
         # @see Lithic::Models::Payment::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
@@ -457,6 +472,9 @@ module Lithic
           WIRE_RETURN_OUTBOUND_SENT = :WIRE_RETURN_OUTBOUND_SENT
           WIRE_RETURN_OUTBOUND_SETTLED = :WIRE_RETURN_OUTBOUND_SETTLED
           WIRE_RETURN_OUTBOUND_REJECTED = :WIRE_RETURN_OUTBOUND_REJECTED
+          STABLECOIN_RECEIVED = :STABLECOIN_RECEIVED
+          STABLECOIN_REVIEWED = :STABLECOIN_REVIEWED
+          STABLECOIN_SETTLED = :STABLECOIN_SETTLED
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -240,6 +240,7 @@ module Lithic
 
         ACH = T.let(:ACH, Lithic::Payment::Category::TaggedSymbol)
         WIRE = T.let(:WIRE, Lithic::Payment::Category::TaggedSymbol)
+        STABLECOIN = T.let(:STABLECOIN, Lithic::Payment::Category::TaggedSymbol)
         BALANCE_OR_FUNDING =
           T.let(:BALANCE_OR_FUNDING, Lithic::Payment::Category::TaggedSymbol)
         FEE = T.let(:FEE, Lithic::Payment::Category::TaggedSymbol)
@@ -381,6 +382,13 @@ module Lithic
         #   Reserve and funds returned to sender.
         # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
         #   Reserve.
+        #
+        # Stablecoin events:
+        #
+        # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
+        #   release to available balance.
+        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
+        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
         sig { returns(Lithic::Payment::Event::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -488,6 +496,13 @@ module Lithic
           #   Reserve and funds returned to sender.
           # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
           #   Reserve.
+          #
+          # Stablecoin events:
+          #
+          # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
+          #   release to available balance.
+          # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
+          # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
           type:,
           # More detailed reasons for the event
           detailed_results: nil,
@@ -590,6 +605,13 @@ module Lithic
         #   Reserve and funds returned to sender.
         # - `WIRE_RETURN_OUTBOUND_REJECTED` - Outbound wire return rejected by the Federal
         #   Reserve.
+        #
+        # Stablecoin events:
+        #
+        # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
+        #   release to available balance.
+        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
+        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -705,6 +727,21 @@ module Lithic
           WIRE_RETURN_OUTBOUND_REJECTED =
             T.let(
               :WIRE_RETURN_OUTBOUND_REJECTED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          STABLECOIN_RECEIVED =
+            T.let(
+              :STABLECOIN_RECEIVED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          STABLECOIN_REVIEWED =
+            T.let(
+              :STABLECOIN_REVIEWED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          STABLECOIN_SETTLED =
+            T.let(
+              :STABLECOIN_SETTLED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
 
