@@ -152,6 +152,9 @@ module Lithic
         | :MONTHLY
         | :MONTHLY_REVERSAL
         | :ACCOUNT_TO_ACCOUNT
+        | :STABLECOIN_RECEIVED
+        | :STABLECOIN_REVIEWED
+        | :STABLECOIN_SETTLED
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -246,6 +249,9 @@ module Lithic
         MONTHLY: :MONTHLY
         MONTHLY_REVERSAL: :MONTHLY_REVERSAL
         ACCOUNT_TO_ACCOUNT: :ACCOUNT_TO_ACCOUNT
+        STABLECOIN_RECEIVED: :STABLECOIN_RECEIVED
+        STABLECOIN_REVIEWED: :STABLECOIN_REVIEWED
+        STABLECOIN_SETTLED: :STABLECOIN_SETTLED
 
         def self?.values: -> ::Array[Lithic::Models::FinancialEvent::type_]
       end

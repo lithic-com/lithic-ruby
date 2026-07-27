@@ -137,6 +137,7 @@ module Lithic
       type category =
         :ACH
         | :WIRE
+        | :STABLECOIN
         | :BALANCE_OR_FUNDING
         | :FEE
         | :REWARD
@@ -164,6 +165,7 @@ module Lithic
 
         ACH: :ACH
         WIRE: :WIRE
+        STABLECOIN: :STABLECOIN
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
         FEE: :FEE
         REWARD: :REWARD
@@ -284,6 +286,9 @@ module Lithic
           | :WIRE_RETURN_OUTBOUND_SENT
           | :WIRE_RETURN_OUTBOUND_SETTLED
           | :WIRE_RETURN_OUTBOUND_REJECTED
+          | :STABLECOIN_RECEIVED
+          | :STABLECOIN_REVIEWED
+          | :STABLECOIN_SETTLED
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -310,6 +315,9 @@ module Lithic
           WIRE_RETURN_OUTBOUND_SENT: :WIRE_RETURN_OUTBOUND_SENT
           WIRE_RETURN_OUTBOUND_SETTLED: :WIRE_RETURN_OUTBOUND_SETTLED
           WIRE_RETURN_OUTBOUND_REJECTED: :WIRE_RETURN_OUTBOUND_REJECTED
+          STABLECOIN_RECEIVED: :STABLECOIN_RECEIVED
+          STABLECOIN_REVIEWED: :STABLECOIN_REVIEWED
+          STABLECOIN_SETTLED: :STABLECOIN_SETTLED
 
           def self?.values: -> ::Array[Lithic::Models::Payment::Event::type_]
         end

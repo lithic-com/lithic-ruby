@@ -103,6 +103,7 @@ module Lithic
       type category =
         :ACH
         | :WIRE
+        | :STABLECOIN
         | :BALANCE_OR_FUNDING
         | :FEE
         | :REWARD
@@ -130,6 +131,7 @@ module Lithic
 
         ACH: :ACH
         WIRE: :WIRE
+        STABLECOIN: :STABLECOIN
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
         FEE: :FEE
         REWARD: :REWARD
