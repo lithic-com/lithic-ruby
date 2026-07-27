@@ -150,6 +150,7 @@ module Lithic
 
               ACH = :ACH
               WIRE = :WIRE
+              STABLECOIN = :STABLECOIN
               BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
               FEE = :FEE
               REWARD = :REWARD
@@ -270,6 +271,9 @@ module Lithic
               MONTHLY = :MONTHLY
               MONTHLY_REVERSAL = :MONTHLY_REVERSAL
               ACCOUNT_TO_ACCOUNT = :ACCOUNT_TO_ACCOUNT
+              STABLECOIN_RECEIVED = :STABLECOIN_RECEIVED
+              STABLECOIN_REVIEWED = :STABLECOIN_REVIEWED
+              STABLECOIN_SETTLED = :STABLECOIN_SETTLED
 
               # @!method self.values
               #   @return [Array<Symbol>]

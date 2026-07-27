@@ -196,6 +196,11 @@ module Lithic
               :WIRE,
               Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
             )
+          STABLECOIN =
+            T.let(
+              :STABLECOIN,
+              Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
+            )
           BALANCE_OR_FUNDING =
             T.let(
               :BALANCE_OR_FUNDING,
