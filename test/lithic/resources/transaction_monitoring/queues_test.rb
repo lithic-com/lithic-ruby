@@ -13,6 +13,7 @@ class Lithic::Test::Resources::TransactionMonitoring::QueuesTest < Lithic::Test:
     assert_pattern do
       response => {
         token: String,
+        allowed_resolutions: ^(Lithic::Internal::Type::ArrayOf[String]),
         case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
         created: Time,
         description: String | nil,
@@ -32,6 +33,7 @@ class Lithic::Test::Resources::TransactionMonitoring::QueuesTest < Lithic::Test:
     assert_pattern do
       response => {
         token: String,
+        allowed_resolutions: ^(Lithic::Internal::Type::ArrayOf[String]),
         case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
         created: Time,
         description: String | nil,
@@ -51,6 +53,7 @@ class Lithic::Test::Resources::TransactionMonitoring::QueuesTest < Lithic::Test:
     assert_pattern do
       response => {
         token: String,
+        allowed_resolutions: ^(Lithic::Internal::Type::ArrayOf[String]),
         case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
         created: Time,
         description: String | nil,
@@ -77,6 +80,7 @@ class Lithic::Test::Resources::TransactionMonitoring::QueuesTest < Lithic::Test:
     assert_pattern do
       row => {
         token: String,
+        allowed_resolutions: ^(Lithic::Internal::Type::ArrayOf[String]),
         case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
         created: Time,
         description: String | nil,

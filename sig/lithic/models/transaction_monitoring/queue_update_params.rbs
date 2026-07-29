@@ -2,7 +2,12 @@ module Lithic
   module Models
     module TransactionMonitoring
       type queue_update_params =
-        { queue_token: String, description: String?, name: String }
+        {
+          queue_token: String,
+          allowed_resolutions: ::Array[String]?,
+          description: String?,
+          name: String
+        }
         & Lithic::Internal::Type::request_parameters
 
       class QueueUpdateParams < Lithic::Internal::Type::BaseModel
@@ -10,6 +15,8 @@ module Lithic
         include Lithic::Internal::Type::RequestParameters
 
         attr_accessor queue_token: String
+
+        attr_accessor allowed_resolutions: ::Array[String]?
 
         attr_accessor description: String?
 
@@ -19,6 +26,7 @@ module Lithic
 
         def initialize: (
           queue_token: String,
+          ?allowed_resolutions: ::Array[String]?,
           ?description: String?,
           ?name: String,
           ?request_options: Lithic::request_opts
@@ -26,6 +34,7 @@ module Lithic
 
         def to_hash: -> {
           queue_token: String,
+          allowed_resolutions: ::Array[String]?,
           description: String?,
           name: String,
           request_options: Lithic::RequestOptions

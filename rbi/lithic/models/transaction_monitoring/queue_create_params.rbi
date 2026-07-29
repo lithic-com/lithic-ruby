@@ -19,6 +19,12 @@ module Lithic
         sig { returns(String) }
         attr_accessor :name
 
+        # Resolutions that can be recorded on cases in this queue. Omit or send `null` to
+        # use the default list. Values are free-form labels and must be non-empty and
+        # unique
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_accessor :allowed_resolutions
+
         # Optional description of the queue
         sig { returns(T.nilable(String)) }
         attr_accessor :description
@@ -26,6 +32,7 @@ module Lithic
         sig do
           params(
             name: String,
+            allowed_resolutions: T.nilable(T::Array[String]),
             description: T.nilable(String),
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -33,6 +40,10 @@ module Lithic
         def self.new(
           # Human-readable name of the queue
           name:,
+          # Resolutions that can be recorded on cases in this queue. Omit or send `null` to
+          # use the default list. Values are free-form labels and must be non-empty and
+          # unique
+          allowed_resolutions: nil,
           # Optional description of the queue
           description: nil,
           request_options: {}
@@ -43,6 +54,7 @@ module Lithic
           override.returns(
             {
               name: String,
+              allowed_resolutions: T.nilable(T::Array[String]),
               description: T.nilable(String),
               request_options: Lithic::RequestOptions
             }

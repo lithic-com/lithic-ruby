@@ -7,7 +7,7 @@ module Lithic
           actor_token: String,
           assignee: String?,
           priority: Lithic::Models::TransactionMonitoring::case_priority,
-          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          resolution: String,
           resolution_notes: String,
           sla_deadline: Time?,
           status: Lithic::Models::TransactionMonitoring::case_status,
@@ -34,11 +34,9 @@ module Lithic
           Lithic::Models::TransactionMonitoring::case_priority
         ) -> Lithic::Models::TransactionMonitoring::case_priority
 
-        attr_reader resolution: Lithic::Models::TransactionMonitoring::resolution_outcome?
+        attr_reader resolution: String?
 
-        def resolution=: (
-          Lithic::Models::TransactionMonitoring::resolution_outcome
-        ) -> Lithic::Models::TransactionMonitoring::resolution_outcome
+        def resolution=: (String) -> String
 
         attr_reader resolution_notes: String?
 
@@ -63,7 +61,7 @@ module Lithic
           ?actor_token: String,
           ?assignee: String?,
           ?priority: Lithic::Models::TransactionMonitoring::case_priority,
-          ?resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          ?resolution: String,
           ?resolution_notes: String,
           ?sla_deadline: Time?,
           ?status: Lithic::Models::TransactionMonitoring::case_status,
@@ -77,7 +75,7 @@ module Lithic
           actor_token: String,
           assignee: String?,
           priority: Lithic::Models::TransactionMonitoring::case_priority,
-          resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          resolution: String,
           resolution_notes: String,
           sla_deadline: Time?,
           status: Lithic::Models::TransactionMonitoring::case_status,

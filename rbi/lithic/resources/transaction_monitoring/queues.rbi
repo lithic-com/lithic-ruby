@@ -8,6 +8,7 @@ module Lithic
         sig do
           params(
             name: String,
+            allowed_resolutions: T.nilable(T::Array[String]),
             description: T.nilable(String),
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::TransactionMonitoring::Queue)
@@ -15,6 +16,10 @@ module Lithic
         def create(
           # Human-readable name of the queue
           name:,
+          # Resolutions that can be recorded on cases in this queue. Omit or send `null` to
+          # use the default list. Values are free-form labels and must be non-empty and
+          # unique
+          allowed_resolutions: nil,
           # Optional description of the queue
           description: nil,
           request_options: {}
@@ -39,6 +44,7 @@ module Lithic
         sig do
           params(
             queue_token: String,
+            allowed_resolutions: T.nilable(T::Array[String]),
             description: T.nilable(String),
             name: String,
             request_options: Lithic::RequestOptions::OrHash
@@ -47,6 +53,11 @@ module Lithic
         def update(
           # Globally unique identifier for the queue.
           queue_token,
+          # New list of resolutions that can be recorded on cases in this queue, or `null`
+          # to revert to the default list. Values are free-form labels and must be non-empty
+          # and unique. Changing the list only affects what is selectable going forward; the
+          # `resolution` already stored on a case is preserved as-is
+          allowed_resolutions: nil,
           # New description for the queue, or `null` to clear it
           description: nil,
           # New name for the queue
