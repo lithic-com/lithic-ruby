@@ -4,6 +4,7 @@ module Lithic
       type queue =
         {
           token: String,
+          allowed_resolutions: ::Array[String],
           case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
           created: Time,
           description: String?,
@@ -13,6 +14,8 @@ module Lithic
 
       class Queue < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
+
+        attr_accessor allowed_resolutions: ::Array[String]
 
         attr_accessor case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts
 
@@ -26,6 +29,7 @@ module Lithic
 
         def initialize: (
           token: String,
+          allowed_resolutions: ::Array[String],
           case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
           created: Time,
           description: String?,
@@ -35,6 +39,7 @@ module Lithic
 
         def to_hash: -> {
           token: String,
+          allowed_resolutions: ::Array[String],
           case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
           created: Time,
           description: String?,

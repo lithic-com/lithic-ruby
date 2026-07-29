@@ -53,21 +53,9 @@ module Lithic
         sig { returns(String) }
         attr_accessor :queue_token
 
-        # Outcome recorded when a case is resolved:
-        #
-        # - `CONFIRMED_FRAUD` - The reviewed activity was confirmed to be fraudulent
-        # - `SUSPICIOUS_ACTIVITY` - The activity is suspicious but not confirmed fraud
-        # - `FALSE_POSITIVE` - The activity was legitimate and the alert was a false
-        #   positive
-        # - `NO_ACTION_REQUIRED` - No further action is required
-        # - `ESCALATED_EXTERNAL` - The case was escalated to an external party
-        sig do
-          returns(
-            T.nilable(
-              Lithic::TransactionMonitoring::ResolutionOutcome::TaggedSymbol
-            )
-          )
-        end
+        # Outcome recorded when the case was resolved, from the `allowed_resolutions`
+        # configured on the case's queue
+        sig { returns(T.nilable(String)) }
         attr_accessor :resolution
 
         # Free-form notes describing the resolution
@@ -123,10 +111,7 @@ module Lithic
             pending_transactions: T::Boolean,
             priority: Lithic::TransactionMonitoring::CasePriority::OrSymbol,
             queue_token: String,
-            resolution:
-              T.nilable(
-                Lithic::TransactionMonitoring::ResolutionOutcome::OrSymbol
-              ),
+            resolution: T.nilable(String),
             resolution_notes: T.nilable(String),
             resolved: T.nilable(Time),
             rule_token: T.nilable(String),
@@ -154,14 +139,8 @@ module Lithic
           priority:,
           # Token of the queue the case belongs to
           queue_token:,
-          # Outcome recorded when a case is resolved:
-          #
-          # - `CONFIRMED_FRAUD` - The reviewed activity was confirmed to be fraudulent
-          # - `SUSPICIOUS_ACTIVITY` - The activity is suspicious but not confirmed fraud
-          # - `FALSE_POSITIVE` - The activity was legitimate and the alert was a false
-          #   positive
-          # - `NO_ACTION_REQUIRED` - No further action is required
-          # - `ESCALATED_EXTERNAL` - The case was escalated to an external party
+          # Outcome recorded when the case was resolved, from the `allowed_resolutions`
+          # configured on the case's queue
           resolution:,
           # Free-form notes describing the resolution
           resolution_notes:,
@@ -203,10 +182,7 @@ module Lithic
               priority:
                 Lithic::TransactionMonitoring::CasePriority::TaggedSymbol,
               queue_token: String,
-              resolution:
-                T.nilable(
-                  Lithic::TransactionMonitoring::ResolutionOutcome::TaggedSymbol
-                ),
+              resolution: T.nilable(String),
               resolution_notes: T.nilable(String),
               resolved: T.nilable(Time),
               rule_token: T.nilable(String),

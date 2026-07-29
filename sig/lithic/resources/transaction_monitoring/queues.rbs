@@ -4,6 +4,7 @@ module Lithic
       class Queues
         def create: (
           name: String,
+          ?allowed_resolutions: ::Array[String]?,
           ?description: String?,
           ?request_options: Lithic::request_opts
         ) -> Lithic::TransactionMonitoring::Queue
@@ -15,6 +16,7 @@ module Lithic
 
         def update: (
           String queue_token,
+          ?allowed_resolutions: ::Array[String]?,
           ?description: String?,
           ?name: String,
           ?request_options: Lithic::request_opts

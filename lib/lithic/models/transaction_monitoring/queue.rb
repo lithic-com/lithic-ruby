@@ -11,6 +11,13 @@ module Lithic
         #   @return [String]
         required :token, String
 
+        # @!attribute allowed_resolutions
+        #   Resolutions that can be recorded on cases in this queue. Always the effective
+        #   list: the queue's own values when it defines them, otherwise the default list
+        #
+        #   @return [Array<String>]
+        required :allowed_resolutions, Lithic::Internal::Type::ArrayOf[String]
+
         # @!attribute case_counts
         #   Number of cases in the queue, broken down by status. A status is omitted when
         #   the queue has no cases in that status
@@ -42,13 +49,15 @@ module Lithic
         #   @return [Time]
         required :updated, Time
 
-        # @!method initialize(token:, case_counts:, created:, description:, name:, updated:)
+        # @!method initialize(token:, allowed_resolutions:, case_counts:, created:, description:, name:, updated:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::TransactionMonitoring::Queue} for more details.
         #
         #   A queue that groups transaction monitoring cases for review
         #
         #   @param token [String] Globally unique identifier for the queue
+        #
+        #   @param allowed_resolutions [Array<String>] Resolutions that can be recorded on cases in this queue. Always the effective
         #
         #   @param case_counts [Lithic::Models::TransactionMonitoring::Queue::CaseCounts] Number of cases in the queue, broken down by status. A status is omitted
         #

@@ -46,29 +46,12 @@ module Lithic
         end
         attr_writer :priority
 
-        # Outcome recorded when a case is resolved:
-        #
-        # - `CONFIRMED_FRAUD` - The reviewed activity was confirmed to be fraudulent
-        # - `SUSPICIOUS_ACTIVITY` - The activity is suspicious but not confirmed fraud
-        # - `FALSE_POSITIVE` - The activity was legitimate and the alert was a false
-        #   positive
-        # - `NO_ACTION_REQUIRED` - No further action is required
-        # - `ESCALATED_EXTERNAL` - The case was escalated to an external party
-        sig do
-          returns(
-            T.nilable(
-              Lithic::TransactionMonitoring::ResolutionOutcome::OrSymbol
-            )
-          )
-        end
+        # Resolution to record on the case. Must be one of the `allowed_resolutions`
+        # configured on the case's queue, otherwise the request is rejected with a `400`
+        sig { returns(T.nilable(String)) }
         attr_reader :resolution
 
-        sig do
-          params(
-            resolution:
-              Lithic::TransactionMonitoring::ResolutionOutcome::OrSymbol
-          ).void
-        end
+        sig { params(resolution: String).void }
         attr_writer :resolution
 
         # Notes describing the resolution
@@ -123,8 +106,7 @@ module Lithic
             actor_token: String,
             assignee: T.nilable(String),
             priority: Lithic::TransactionMonitoring::CasePriority::OrSymbol,
-            resolution:
-              Lithic::TransactionMonitoring::ResolutionOutcome::OrSymbol,
+            resolution: String,
             resolution_notes: String,
             sla_deadline: T.nilable(Time),
             status: Lithic::TransactionMonitoring::CaseStatus::OrSymbol,
@@ -143,14 +125,8 @@ module Lithic
           assignee: nil,
           # Priority level of a case, controlling queue ordering and SLA urgency
           priority: nil,
-          # Outcome recorded when a case is resolved:
-          #
-          # - `CONFIRMED_FRAUD` - The reviewed activity was confirmed to be fraudulent
-          # - `SUSPICIOUS_ACTIVITY` - The activity is suspicious but not confirmed fraud
-          # - `FALSE_POSITIVE` - The activity was legitimate and the alert was a false
-          #   positive
-          # - `NO_ACTION_REQUIRED` - No further action is required
-          # - `ESCALATED_EXTERNAL` - The case was escalated to an external party
+          # Resolution to record on the case. Must be one of the `allowed_resolutions`
+          # configured on the case's queue, otherwise the request is rejected with a `400`
           resolution: nil,
           # Notes describing the resolution
           resolution_notes: nil,
@@ -182,8 +158,7 @@ module Lithic
               actor_token: String,
               assignee: T.nilable(String),
               priority: Lithic::TransactionMonitoring::CasePriority::OrSymbol,
-              resolution:
-                Lithic::TransactionMonitoring::ResolutionOutcome::OrSymbol,
+              resolution: String,
               resolution_notes: String,
               sla_deadline: T.nilable(Time),
               status: Lithic::TransactionMonitoring::CaseStatus::OrSymbol,
