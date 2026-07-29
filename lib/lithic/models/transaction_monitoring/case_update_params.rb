@@ -34,17 +34,11 @@ module Lithic
         optional :priority, enum: -> { Lithic::TransactionMonitoring::CasePriority }
 
         # @!attribute resolution
-        #   Outcome recorded when a case is resolved:
+        #   Resolution to record on the case. Must be one of the `allowed_resolutions`
+        #   configured on the case's queue, otherwise the request is rejected with a `400`
         #
-        #   - `CONFIRMED_FRAUD` - The reviewed activity was confirmed to be fraudulent
-        #   - `SUSPICIOUS_ACTIVITY` - The activity is suspicious but not confirmed fraud
-        #   - `FALSE_POSITIVE` - The activity was legitimate and the alert was a false
-        #     positive
-        #   - `NO_ACTION_REQUIRED` - No further action is required
-        #   - `ESCALATED_EXTERNAL` - The case was escalated to an external party
-        #
-        #   @return [Symbol, Lithic::Models::TransactionMonitoring::ResolutionOutcome, nil]
-        optional :resolution, enum: -> { Lithic::TransactionMonitoring::ResolutionOutcome }
+        #   @return [String, nil]
+        optional :resolution, String
 
         # @!attribute resolution_notes
         #   Notes describing the resolution
@@ -97,7 +91,7 @@ module Lithic
         #
         #   @param priority [Symbol, Lithic::Models::TransactionMonitoring::CasePriority] Priority level of a case, controlling queue ordering and SLA urgency
         #
-        #   @param resolution [Symbol, Lithic::Models::TransactionMonitoring::ResolutionOutcome] Outcome recorded when a case is resolved:
+        #   @param resolution [String] Resolution to record on the case. Must be one of the
         #
         #   @param resolution_notes [String] Notes describing the resolution
         #

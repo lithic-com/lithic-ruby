@@ -4,11 +4,16 @@ module Lithic
   module Resources
     class TransactionMonitoring
       class Queues
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::TransactionMonitoring::QueueCreateParams} for more details.
+        #
         # Creates a new queue for grouping transaction monitoring cases.
         #
-        # @overload create(name:, description: nil, request_options: {})
+        # @overload create(name:, allowed_resolutions: nil, description: nil, request_options: {})
         #
         # @param name [String] Human-readable name of the queue
+        #
+        # @param allowed_resolutions [Array<String>, nil] Resolutions that can be recorded on cases in this queue. Omit or send `null` to
         #
         # @param description [String, nil] Optional description of the queue
         #
@@ -48,11 +53,16 @@ module Lithic
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::TransactionMonitoring::QueueUpdateParams} for more details.
+        #
         # Updates a transaction monitoring queue.
         #
-        # @overload update(queue_token, description: nil, name: nil, request_options: {})
+        # @overload update(queue_token, allowed_resolutions: nil, description: nil, name: nil, request_options: {})
         #
         # @param queue_token [String] Globally unique identifier for the queue.
+        #
+        # @param allowed_resolutions [Array<String>, nil] New list of resolutions that can be recorded on cases in this queue, or `null` t
         #
         # @param description [String, nil] New description for the queue, or `null` to clear it
         #

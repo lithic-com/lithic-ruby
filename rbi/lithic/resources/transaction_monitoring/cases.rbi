@@ -33,8 +33,7 @@ module Lithic
             actor_token: String,
             assignee: T.nilable(String),
             priority: Lithic::TransactionMonitoring::CasePriority::OrSymbol,
-            resolution:
-              Lithic::TransactionMonitoring::ResolutionOutcome::OrSymbol,
+            resolution: String,
             resolution_notes: String,
             sla_deadline: T.nilable(Time),
             status: Lithic::TransactionMonitoring::CaseStatus::OrSymbol,
@@ -54,14 +53,8 @@ module Lithic
           assignee: nil,
           # Priority level of a case, controlling queue ordering and SLA urgency
           priority: nil,
-          # Outcome recorded when a case is resolved:
-          #
-          # - `CONFIRMED_FRAUD` - The reviewed activity was confirmed to be fraudulent
-          # - `SUSPICIOUS_ACTIVITY` - The activity is suspicious but not confirmed fraud
-          # - `FALSE_POSITIVE` - The activity was legitimate and the alert was a false
-          #   positive
-          # - `NO_ACTION_REQUIRED` - No further action is required
-          # - `ESCALATED_EXTERNAL` - The case was escalated to an external party
+          # Resolution to record on the case. Must be one of the `allowed_resolutions`
+          # configured on the case's queue, otherwise the request is rejected with a `400`
           resolution: nil,
           # Notes describing the resolution
           resolution_notes: nil,

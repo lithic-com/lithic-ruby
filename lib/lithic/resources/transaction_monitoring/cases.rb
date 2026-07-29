@@ -45,7 +45,7 @@ module Lithic
         #
         # @param priority [Symbol, Lithic::Models::TransactionMonitoring::CasePriority] Priority level of a case, controlling queue ordering and SLA urgency
         #
-        # @param resolution [Symbol, Lithic::Models::TransactionMonitoring::ResolutionOutcome] Outcome recorded when a case is resolved:
+        # @param resolution [String] Resolution to record on the case. Must be one of the
         #
         # @param resolution_notes [String] Notes describing the resolution
         #

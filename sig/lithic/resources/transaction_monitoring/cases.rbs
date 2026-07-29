@@ -16,7 +16,7 @@ module Lithic
           ?actor_token: String,
           ?assignee: String?,
           ?priority: Lithic::Models::TransactionMonitoring::case_priority,
-          ?resolution: Lithic::Models::TransactionMonitoring::resolution_outcome,
+          ?resolution: String,
           ?resolution_notes: String,
           ?sla_deadline: Time?,
           ?status: Lithic::Models::TransactionMonitoring::case_status,

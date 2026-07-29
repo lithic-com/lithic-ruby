@@ -16,6 +16,11 @@ module Lithic
         sig { returns(String) }
         attr_accessor :token
 
+        # Resolutions that can be recorded on cases in this queue. Always the effective
+        # list: the queue's own values when it defines them, otherwise the default list
+        sig { returns(T::Array[String]) }
+        attr_accessor :allowed_resolutions
+
         # Number of cases in the queue, broken down by status. A status is omitted when
         # the queue has no cases in that status
         sig { returns(Lithic::TransactionMonitoring::Queue::CaseCounts) }
@@ -49,6 +54,7 @@ module Lithic
         sig do
           params(
             token: String,
+            allowed_resolutions: T::Array[String],
             case_counts:
               Lithic::TransactionMonitoring::Queue::CaseCounts::OrHash,
             created: Time,
@@ -60,6 +66,9 @@ module Lithic
         def self.new(
           # Globally unique identifier for the queue
           token:,
+          # Resolutions that can be recorded on cases in this queue. Always the effective
+          # list: the queue's own values when it defines them, otherwise the default list
+          allowed_resolutions:,
           # Number of cases in the queue, broken down by status. A status is omitted when
           # the queue has no cases in that status
           case_counts:,
@@ -78,6 +87,7 @@ module Lithic
           override.returns(
             {
               token: String,
+              allowed_resolutions: T::Array[String],
               case_counts: Lithic::TransactionMonitoring::Queue::CaseCounts,
               created: Time,
               description: T.nilable(String),
