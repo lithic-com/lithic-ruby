@@ -273,6 +273,7 @@ module Lithic
             | :TRANSACTION_AMOUNT
             | :SEC_CODE
             | :MEMO
+            | :RECIPIENT_NAME
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -283,6 +284,7 @@ module Lithic
             TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
             SEC_CODE: :SEC_CODE
             MEMO: :MEMO
+            RECIPIENT_NAME: :RECIPIENT_NAME
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition::attribute]
           end
