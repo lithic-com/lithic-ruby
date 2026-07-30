@@ -654,6 +654,7 @@ module Lithic
           #   (Corporate Credit or Debit Entry), WEB (Internet-Initiated/Mobile Entry), TEL
           #   (Telephone-Initiated Entry), and others.
           # - `MEMO`: Optional memo or description field included with the ACH transaction.
+          # - `RECIPIENT_NAME`: The name of the recipient of the ACH transaction.
           sig do
             returns(
               Lithic::AuthRules::ConditionalACHActionParameters::Condition::Attribute::OrSymbol
@@ -693,6 +694,7 @@ module Lithic
             #   (Corporate Credit or Debit Entry), WEB (Internet-Initiated/Mobile Entry), TEL
             #   (Telephone-Initiated Entry), and others.
             # - `MEMO`: Optional memo or description field included with the ACH transaction.
+            # - `RECIPIENT_NAME`: The name of the recipient of the ACH transaction.
             attribute:,
             # The operation to apply to the attribute
             operation:,
@@ -729,6 +731,7 @@ module Lithic
           #   (Corporate Credit or Debit Entry), WEB (Internet-Initiated/Mobile Entry), TEL
           #   (Telephone-Initiated Entry), and others.
           # - `MEMO`: Optional memo or description field included with the ACH transaction.
+          # - `RECIPIENT_NAME`: The name of the recipient of the ACH transaction.
           module Attribute
             extend Lithic::Internal::Type::Enum
 
@@ -769,6 +772,11 @@ module Lithic
             MEMO =
               T.let(
                 :MEMO,
+                Lithic::AuthRules::ConditionalACHActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            RECIPIENT_NAME =
+              T.let(
+                :RECIPIENT_NAME,
                 Lithic::AuthRules::ConditionalACHActionParameters::Condition::Attribute::TaggedSymbol
               )
 
