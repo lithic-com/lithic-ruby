@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.19.0 (2026-07-30)
+
+Full Changelog: [v0.18.1...v0.19.0](https://github.com/lithic-com/lithic-ruby/compare/v0.18.1...v0.19.0)
+
+### Features
+
+* **api:** add disposition_reasons to queues, change resolution to string in cases ([81b7499](https://github.com/lithic-com/lithic-ruby/commit/81b74990960f2f1ee8666118fc6afe8b9ac8f0ca))
+* **api:** add PAYMENT type to book transfers ([979bd5d](https://github.com/lithic-com/lithic-ruby/commit/979bd5d73e39028767418a470e10fc39cfb9686f))
+* **api:** add PROGRAM_TRANSFER category, LITHIC/BANK_PROGRAM_TRANSFER type enum values ([774ebfa](https://github.com/lithic-com/lithic-ruby/commit/774ebfa41c6c7c8d249265ba518f781f59e79237))
+* **api:** add RECIPIENT_NAME attribute to auth rules conditional ACH parameters ([7e2398e](https://github.com/lithic-com/lithic-ruby/commit/7e2398e3c0fe3d08ece0c70249da4b73764541f6))
+* **api:** add recipient_name field to payment ACH method attributes ([9ed474c](https://github.com/lithic-com/lithic-ruby/commit/9ed474c7521804e6cb99902aabea5fa4f5178ca1))
+* **api:** add REVERSED status value to payment list params ([f5f2fdb](https://github.com/lithic-com/lithic-ruby/commit/f5f2fdb6c4d34e9f4ab5ed40fb2516872b419418))
+* **api:** add stablecoin support to payments, account activity, financial events ([92a2b8b](https://github.com/lithic-com/lithic-ruby/commit/92a2b8b3ab8ecfab83ed698164de87c4b23ae31d))
+* **api:** Extend velocity Custom period cap to 90 days ([eeb4a32](https://github.com/lithic-com/lithic-ruby/commit/eeb4a3228542f9d61966dc4c09987b40bdfdde3d))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([69b6ead](https://github.com/lithic-com/lithic-ruby/commit/69b6ead528e48ca397c5b14bcfd5868d6819aaca))
+
+
+### Bug Fixes
+
+* **types:** make optional fields nullable in fraud transaction responses ([796975f](https://github.com/lithic-com/lithic-ruby/commit/796975f199c3f8ad5b1646274d243944398c06e8))
+
+
+### Documentation
+
+* Add card embed documentation ([0543caa](https://github.com/lithic-com/lithic-ruby/commit/0543caa4d27cde3479e6a3536cdd037073940f03))
+* **api:** clarify last_transaction_event_token parameter in financial_accounts balances ([9dd45f0](https://github.com/lithic-com/lithic-ruby/commit/9dd45f05a127d34a45db81c875446e3fd1df5e42))
+* **api:** clarify simulate_clearing supports multiple calls in transactions ([7a7e783](https://github.com/lithic-com/lithic-ruby/commit/7a7e78338a405f4edb463df0de5f64cf157c0334))
+* **api:** expand dispute event descriptions across Event and subscription models ([4db3479](https://github.com/lithic-com/lithic-ruby/commit/4db3479aaf148f8f3ea7e16ea89eb3c275fe963e))
+* **api:** update category parameter description in external_payments ([db7d72a](https://github.com/lithic-com/lithic-ruby/commit/db7d72a41aaee552817197d85b7989d85f6399c3))
+
 ## 0.18.1 (2026-06-29)
 
 Full Changelog: [v0.18.0...v0.18.1](https://github.com/lithic-com/lithic-ruby/compare/v0.18.0...v0.18.1)
