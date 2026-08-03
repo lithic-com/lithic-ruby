@@ -29,6 +29,25 @@ module Lithic
         #   @return [Integer, nil]
         optional :limit_amount, Integer, nil?: true
 
+        # @!attribute limit_cash_amount
+        #   The maximum amount of cash spend velocity allowed in the period in minor units
+        #   (the smallest unit of a currency, e.g. cents for USD). Cash spend covers ATM
+        #   withdrawals, cash disbursements, and purchases with cashback. Transactions
+        #   exceeding this limit will be declined.
+        #
+        #   @return [Integer, nil]
+        optional :limit_cash_amount, Integer, nil?: true
+
+        # @!attribute limit_cash_count
+        #   The number of cash spend velocity impacting transactions may not exceed this
+        #   limit in the period. Transactions exceeding this limit will be declined. A cash
+        #   velocity impacting transaction is an ATM withdrawal, cash disbursement, or
+        #   purchase with cashback that has been authorized, and optionally settled, or a
+        #   force post (a transaction that settled without prior authorization).
+        #
+        #   @return [Integer, nil]
+        optional :limit_cash_count, Integer, nil?: true
+
         # @!attribute limit_count
         #   The number of spend velocity impacting transactions may not exceed this limit in
         #   the period. Transactions exceeding this limit will be declined. A spend velocity
@@ -39,7 +58,7 @@ module Lithic
         #   @return [Integer, nil]
         optional :limit_count, Integer, nil?: true
 
-        # @!method initialize(period:, scope:, filters: nil, limit_amount: nil, limit_count: nil)
+        # @!method initialize(period:, scope:, filters: nil, limit_amount: nil, limit_cash_amount: nil, limit_cash_count: nil, limit_count: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::VelocityLimitParams} for more details.
         #
@@ -50,6 +69,10 @@ module Lithic
         #   @param filters [Lithic::Models::AuthRules::VelocityLimitFilters]
         #
         #   @param limit_amount [Integer, nil] The maximum amount of spend velocity allowed in the period in minor units (the s
+        #
+        #   @param limit_cash_amount [Integer, nil] The maximum amount of cash spend velocity allowed in the period in minor units (
+        #
+        #   @param limit_cash_count [Integer, nil] The number of cash spend velocity impacting transactions may not exceed this lim
         #
         #   @param limit_count [Integer, nil] The number of spend velocity impacting transactions may not exceed this limit in
 
