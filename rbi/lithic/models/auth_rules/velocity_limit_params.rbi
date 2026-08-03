@@ -44,6 +44,21 @@ module Lithic
         sig { returns(T.nilable(Integer)) }
         attr_accessor :limit_amount
 
+        # The maximum amount of cash spend velocity allowed in the period in minor units
+        # (the smallest unit of a currency, e.g. cents for USD). Cash spend covers ATM
+        # withdrawals, cash disbursements, and purchases with cashback. Transactions
+        # exceeding this limit will be declined.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :limit_cash_amount
+
+        # The number of cash spend velocity impacting transactions may not exceed this
+        # limit in the period. Transactions exceeding this limit will be declined. A cash
+        # velocity impacting transaction is an ATM withdrawal, cash disbursement, or
+        # purchase with cashback that has been authorized, and optionally settled, or a
+        # force post (a transaction that settled without prior authorization).
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :limit_cash_count
+
         # The number of spend velocity impacting transactions may not exceed this limit in
         # the period. Transactions exceeding this limit will be declined. A spend velocity
         # impacting transaction is a transaction that has been authorized, and optionally
@@ -65,6 +80,8 @@ module Lithic
             scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             filters: Lithic::AuthRules::VelocityLimitFilters::OrHash,
             limit_amount: T.nilable(Integer),
+            limit_cash_amount: T.nilable(Integer),
+            limit_cash_count: T.nilable(Integer),
             limit_count: T.nilable(Integer)
           ).returns(T.attached_class)
         end
@@ -78,6 +95,17 @@ module Lithic
           # smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
           # limit will be declined.
           limit_amount: nil,
+          # The maximum amount of cash spend velocity allowed in the period in minor units
+          # (the smallest unit of a currency, e.g. cents for USD). Cash spend covers ATM
+          # withdrawals, cash disbursements, and purchases with cashback. Transactions
+          # exceeding this limit will be declined.
+          limit_cash_amount: nil,
+          # The number of cash spend velocity impacting transactions may not exceed this
+          # limit in the period. Transactions exceeding this limit will be declined. A cash
+          # velocity impacting transaction is an ATM withdrawal, cash disbursement, or
+          # purchase with cashback that has been authorized, and optionally settled, or a
+          # force post (a transaction that settled without prior authorization).
+          limit_cash_count: nil,
           # The number of spend velocity impacting transactions may not exceed this limit in
           # the period. Transactions exceeding this limit will be declined. A spend velocity
           # impacting transaction is a transaction that has been authorized, and optionally
@@ -101,6 +129,8 @@ module Lithic
               scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
               filters: Lithic::AuthRules::VelocityLimitFilters,
               limit_amount: T.nilable(Integer),
+              limit_cash_amount: T.nilable(Integer),
+              limit_cash_count: T.nilable(Integer),
               limit_count: T.nilable(Integer)
             }
           )

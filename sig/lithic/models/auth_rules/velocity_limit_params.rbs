@@ -7,6 +7,8 @@ module Lithic
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           filters: Lithic::AuthRules::VelocityLimitFilters,
           limit_amount: Integer?,
+          limit_cash_amount: Integer?,
+          limit_cash_count: Integer?,
           limit_count: Integer?
         }
 
@@ -23,6 +25,10 @@ module Lithic
 
         attr_accessor limit_amount: Integer?
 
+        attr_accessor limit_cash_amount: Integer?
+
+        attr_accessor limit_cash_count: Integer?
+
         attr_accessor limit_count: Integer?
 
         def initialize: (
@@ -30,6 +36,8 @@ module Lithic
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           ?filters: Lithic::AuthRules::VelocityLimitFilters,
           ?limit_amount: Integer?,
+          ?limit_cash_amount: Integer?,
+          ?limit_cash_count: Integer?,
           ?limit_count: Integer?
         ) -> void
 
@@ -38,6 +46,8 @@ module Lithic
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           filters: Lithic::AuthRules::VelocityLimitFilters,
           limit_amount: Integer?,
+          limit_cash_amount: Integer?,
+          limit_cash_count: Integer?,
           limit_count: Integer?
         }
 
