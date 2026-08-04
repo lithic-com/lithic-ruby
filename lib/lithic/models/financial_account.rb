@@ -69,12 +69,22 @@ module Lithic
       #   @return [String, nil]
       optional :account_number, String, nil?: true
 
+      # @!attribute blockchain_addresses
+      #   Provisioned blockchain deposit addresses for this financial account, keyed by
+      #   the blockchain network that each address belongs to
+      #
+      #   @return [Hash{Symbol=>String}, nil]
+      optional :blockchain_addresses, Lithic::Internal::Type::HashOf[String], nil?: true
+
       # @!attribute routing_number
       #
       #   @return [String, nil]
       optional :routing_number, String, nil?: true
 
-      # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, substatus:, type:, updated:, user_defined_status:, account_number: nil, routing_number: nil)
+      # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, substatus:, type:, updated:, user_defined_status:, account_number: nil, blockchain_addresses: nil, routing_number: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::FinancialAccount} for more details.
+      #
       #   @param token [String] Globally unique identifier for the account
       #
       #   @param account_token [String, nil]
@@ -98,6 +108,8 @@ module Lithic
       #   @param user_defined_status [String, nil] User-defined status for the financial account
       #
       #   @param account_number [String, nil]
+      #
+      #   @param blockchain_addresses [Hash{Symbol=>String}, nil] Provisioned blockchain deposit addresses for this financial account, keyed by th
       #
       #   @param routing_number [String, nil]
 

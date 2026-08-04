@@ -24,6 +24,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         user_defined_status: String | nil,
         account_number: String | nil,
+        blockchain_addresses: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         routing_number: String | nil
       }
     end
@@ -50,6 +51,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         user_defined_status: String | nil,
         account_number: String | nil,
+        blockchain_addresses: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         routing_number: String | nil
       }
     end
@@ -76,6 +78,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         user_defined_status: String | nil,
         account_number: String | nil,
+        blockchain_addresses: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         routing_number: String | nil
       }
     end
@@ -109,6 +112,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         user_defined_status: String | nil,
         account_number: String | nil,
+        blockchain_addresses: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         routing_number: String | nil
       }
     end
@@ -152,6 +156,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         user_defined_status: String | nil,
         account_number: String | nil,
+        blockchain_addresses: ^(Lithic::Internal::Type::HashOf[String]) | nil,
         routing_number: String | nil
       }
     end
