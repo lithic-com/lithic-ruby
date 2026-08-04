@@ -59,6 +59,11 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :account_number
 
+      # Provisioned blockchain deposit addresses for this financial account, keyed by
+      # the blockchain network that each address belongs to
+      sig { returns(T.nilable(T::Hash[Symbol, String])) }
+      attr_accessor :blockchain_addresses
+
       sig { returns(T.nilable(String)) }
       attr_accessor :routing_number
 
@@ -77,6 +82,7 @@ module Lithic
           updated: Time,
           user_defined_status: T.nilable(String),
           account_number: T.nilable(String),
+          blockchain_addresses: T.nilable(T::Hash[Symbol, String]),
           routing_number: T.nilable(String)
         ).returns(T.attached_class)
       end
@@ -98,6 +104,9 @@ module Lithic
         # User-defined status for the financial account
         user_defined_status:,
         account_number: nil,
+        # Provisioned blockchain deposit addresses for this financial account, keyed by
+        # the blockchain network that each address belongs to
+        blockchain_addresses: nil,
         routing_number: nil
       )
       end
@@ -119,6 +128,7 @@ module Lithic
             updated: Time,
             user_defined_status: T.nilable(String),
             account_number: T.nilable(String),
+            blockchain_addresses: T.nilable(T::Hash[Symbol, String]),
             routing_number: T.nilable(String)
           }
         )
