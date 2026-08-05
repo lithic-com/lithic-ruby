@@ -167,7 +167,7 @@ module Lithic
         ).returns(Lithic::Tokenization)
       end
       def simulate(
-        # The three digit cvv for the card.
+        # The three or four digit CVV for the card. AMEX cards use four digit CVVs.
         cvv:,
         # The expiration date of the card in 'MM/YY' format.
         expiration_date:,
