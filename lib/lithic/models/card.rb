@@ -5,7 +5,7 @@ module Lithic
     # @see Lithic::Resources::Cards#create
     class Card < Lithic::Models::NonPCICard
       # @!attribute cvv
-      #   Three digit cvv printed on the back of the card.
+      #   Three or four digit CVV printed on the card. Amex cards use four digit CVVs
       #
       #   @return [String, nil]
       optional :cvv, String
@@ -24,7 +24,7 @@ module Lithic
       #
       #   Card details with potentially PCI sensitive information for Enterprise customers
       #
-      #   @param cvv [String] Three digit cvv printed on the back of the card.
+      #   @param cvv [String] Three or four digit CVV printed on the card. Amex cards use four digit CVVs
       #
       #   @param pan [String] Primary Account Number (PAN) (i.e. the card number). Customers must be PCI compl
     end
