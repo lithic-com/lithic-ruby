@@ -387,8 +387,16 @@ module Lithic
         #
         # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
         #   release to available balance.
-        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
-        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+        # - `STABLECOIN_INITIATED` - Stablecoin withdrawal initiated, with the funds
+        #   placed on hold.
+        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in or withdrawal has completed the
+        #   review process.
+        # - `STABLECOIN_SENT` - Stablecoin withdrawal accepted for on-chain submission to
+        #   the destination address, and pending confirmation.
+        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance,
+        #   or stablecoin withdrawal confirmed on-chain.
+        # - `STABLECOIN_REJECTED` - Stablecoin withdrawal failed and the hold placed at
+        #   initiation has been reversed.
         sig { returns(Lithic::Payment::Event::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -412,7 +420,9 @@ module Lithic
 
         # Payment event external ID. For ACH transactions, this is the ACH trace number.
         # For inbound wire transfers, this is the IMAD (Input Message Accountability
-        # Data).
+        # Data). For stablecoin payments, this is the on-chain transaction hash of the
+        # transfer; it is present on events that reflect on-chain activity and null on
+        # internal lifecycle events.
         sig { returns(T.nilable(String)) }
         attr_accessor :external_id
 
@@ -501,14 +511,24 @@ module Lithic
           #
           # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
           #   release to available balance.
-          # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
-          # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+          # - `STABLECOIN_INITIATED` - Stablecoin withdrawal initiated, with the funds
+          #   placed on hold.
+          # - `STABLECOIN_REVIEWED` - Stablecoin pay-in or withdrawal has completed the
+          #   review process.
+          # - `STABLECOIN_SENT` - Stablecoin withdrawal accepted for on-chain submission to
+          #   the destination address, and pending confirmation.
+          # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance,
+          #   or stablecoin withdrawal confirmed on-chain.
+          # - `STABLECOIN_REJECTED` - Stablecoin withdrawal failed and the hold placed at
+          #   initiation has been reversed.
           type:,
           # More detailed reasons for the event
           detailed_results: nil,
           # Payment event external ID. For ACH transactions, this is the ACH trace number.
           # For inbound wire transfers, this is the IMAD (Input Message Accountability
-          # Data).
+          # Data). For stablecoin payments, this is the on-chain transaction hash of the
+          # transfer; it is present on events that reflect on-chain activity and null on
+          # internal lifecycle events.
           external_id: nil
         )
         end
@@ -610,8 +630,16 @@ module Lithic
         #
         # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
         #   release to available balance.
-        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
-        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+        # - `STABLECOIN_INITIATED` - Stablecoin withdrawal initiated, with the funds
+        #   placed on hold.
+        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in or withdrawal has completed the
+        #   review process.
+        # - `STABLECOIN_SENT` - Stablecoin withdrawal accepted for on-chain submission to
+        #   the destination address, and pending confirmation.
+        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance,
+        #   or stablecoin withdrawal confirmed on-chain.
+        # - `STABLECOIN_REJECTED` - Stablecoin withdrawal failed and the hold placed at
+        #   initiation has been reversed.
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -734,14 +762,26 @@ module Lithic
               :STABLECOIN_RECEIVED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
+          STABLECOIN_INITIATED =
+            T.let(
+              :STABLECOIN_INITIATED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
           STABLECOIN_REVIEWED =
             T.let(
               :STABLECOIN_REVIEWED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
+          STABLECOIN_SENT =
+            T.let(:STABLECOIN_SENT, Lithic::Payment::Event::Type::TaggedSymbol)
           STABLECOIN_SETTLED =
             T.let(
               :STABLECOIN_SETTLED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          STABLECOIN_REJECTED =
+            T.let(
+              :STABLECOIN_REJECTED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
 
