@@ -71,7 +71,8 @@ module Lithic
 
       # @!attribute blockchain_addresses
       #   Provisioned blockchain deposit addresses for this financial account, keyed by
-      #   the blockchain network that each address belongs to
+      #   the full name of the blockchain network that each address belongs to (e.g.
+      #   `ETHEREUM`)
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :blockchain_addresses, Lithic::Internal::Type::HashOf[String], nil?: true
