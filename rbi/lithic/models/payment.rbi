@@ -1310,6 +1310,7 @@ module Lithic
             :WIRE_INBOUND_DRAWDOWN_REQUEST,
             Lithic::Payment::Type::TaggedSymbol
           )
+        STABLECOIN = T.let(:STABLECOIN, Lithic::Payment::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Payment::Type::TaggedSymbol]) }
         def self.values
