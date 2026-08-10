@@ -83,6 +83,7 @@ module Lithic
 
             CARD = :CARD
             ACCOUNT = :ACCOUNT
+            PROGRAM = :PROGRAM
 
             # @!method self.values
             #   @return [Array<Symbol>]
