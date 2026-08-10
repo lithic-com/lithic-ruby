@@ -1078,13 +1078,14 @@ module Lithic
                 explanation: String
               }
 
-              type scope = :CARD | :ACCOUNT
+              type scope = :CARD | :ACCOUNT | :PROGRAM
 
               module Scope
                 extend Lithic::Internal::Type::Enum
 
                 CARD: :CARD
                 ACCOUNT: :ACCOUNT
+                PROGRAM: :PROGRAM
 
                 def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::scope]
               end
@@ -1255,12 +1256,13 @@ module Lithic
                 explanation: String
               }
 
-              type scope = :FINANCIAL_ACCOUNT
+              type scope = :FINANCIAL_ACCOUNT | :PROGRAM
 
               module Scope
                 extend Lithic::Internal::Type::Enum
 
                 FINANCIAL_ACCOUNT: :FINANCIAL_ACCOUNT
+                PROGRAM: :PROGRAM
 
                 def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::scope]
               end
