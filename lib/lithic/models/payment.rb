@@ -796,6 +796,7 @@ module Lithic
         WIRE_OUTBOUND_PAYMENT = :WIRE_OUTBOUND_PAYMENT
         WIRE_OUTBOUND_ADMIN = :WIRE_OUTBOUND_ADMIN
         WIRE_INBOUND_DRAWDOWN_REQUEST = :WIRE_INBOUND_DRAWDOWN_REQUEST
+        STABLECOIN = :STABLECOIN
 
         # @!method self.values
         #   @return [Array<Symbol>]
