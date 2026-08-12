@@ -352,7 +352,7 @@ module Lithic
         end
       end
 
-      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY | :WIRE
+      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY | :WIRE | :STABLECOIN
 
       module Method
         extend Lithic::Internal::Type::Enum
@@ -360,6 +360,7 @@ module Lithic
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
         WIRE: :WIRE
+        STABLECOIN: :STABLECOIN
 
         def self?.values: -> ::Array[Lithic::Models::Payment::method_]
       end
@@ -367,6 +368,7 @@ module Lithic
       type method_attributes =
         Lithic::Payment::MethodAttributes::ACHMethodAttributes
         | Lithic::Payment::MethodAttributes::WireMethodAttributes
+        | Lithic::Payment::MethodAttributes::StablecoinMethodAttributes
 
       module MethodAttributes
         extend Lithic::Internal::Type::Union
@@ -505,6 +507,19 @@ module Lithic
 
             def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network]
           end
+        end
+
+        type stablecoin_method_attributes =
+          { chain: String, transaction_hash: String? }
+
+        class StablecoinMethodAttributes < Lithic::Internal::Type::BaseModel
+          attr_accessor chain: String
+
+          attr_accessor transaction_hash: String?
+
+          def initialize: (chain: String, ?transaction_hash: String?) -> void
+
+          def to_hash: -> { chain: String, transaction_hash: String? }
         end
 
         def self?.variants: -> ::Array[Lithic::Models::Payment::method_attributes]

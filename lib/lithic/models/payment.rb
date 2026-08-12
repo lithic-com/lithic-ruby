@@ -61,7 +61,7 @@ module Lithic
       # @!attribute method_attributes
       #   Method-specific attributes
       #
-      #   @return [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes]
+      #   @return [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes, Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes]
       required :method_attributes, union: -> { Lithic::Payment::MethodAttributes }
 
       # @!attribute pending_amount
@@ -164,7 +164,7 @@ module Lithic
       #
       #   @param method_ [Symbol, Lithic::Models::Payment::Method] Transfer method
       #
-      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes] Method-specific attributes
+      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes, Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes] Method-specific attributes
       #
       #   @param pending_amount [Integer] Pending amount in cents
       #
@@ -526,6 +526,7 @@ module Lithic
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
         WIRE = :WIRE
+        STABLECOIN = :STABLECOIN
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -540,6 +541,8 @@ module Lithic
         variant -> { Lithic::Payment::MethodAttributes::ACHMethodAttributes }
 
         variant -> { Lithic::Payment::MethodAttributes::WireMethodAttributes }
+
+        variant -> { Lithic::Payment::MethodAttributes::StablecoinMethodAttributes }
 
         class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
           # @!attribute sec_code
@@ -713,8 +716,32 @@ module Lithic
           end
         end
 
+        class StablecoinMethodAttributes < Lithic::Internal::Type::BaseModel
+          # @!attribute chain
+          #   Blockchain the stablecoin transfer settled on
+          #
+          #   @return [String]
+          required :chain, String
+
+          # @!attribute transaction_hash
+          #   On-chain transaction hash of the transfer. Null until the transfer has settled
+          #   on chain
+          #
+          #   @return [String, nil]
+          optional :transaction_hash, String, nil?: true
+
+          # @!method initialize(chain:, transaction_hash: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes} for more
+          #   details.
+          #
+          #   @param chain [String] Blockchain the stablecoin transfer settled on
+          #
+          #   @param transaction_hash [String, nil] On-chain transaction hash of the transfer. Null until the transfer has settled o
+        end
+
         # @!method self.variants
-        #   @return [Array(Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes)]
+        #   @return [Array(Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes, Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes)]
       end
 
       # @see Lithic::Models::Payment#related_account_tokens
