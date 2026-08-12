@@ -129,7 +129,8 @@ module Lithic
           method_attributes:
             T.any(
               Lithic::Payment::MethodAttributes::ACHMethodAttributes::OrHash,
-              Lithic::Payment::MethodAttributes::WireMethodAttributes::OrHash
+              Lithic::Payment::MethodAttributes::WireMethodAttributes::OrHash,
+              Lithic::Payment::MethodAttributes::StablecoinMethodAttributes::OrHash
             ),
           pending_amount: Integer,
           related_account_tokens:
@@ -861,6 +862,7 @@ module Lithic
         ACH_SAME_DAY =
           T.let(:ACH_SAME_DAY, Lithic::Payment::Method::TaggedSymbol)
         WIRE = T.let(:WIRE, Lithic::Payment::Method::TaggedSymbol)
+        STABLECOIN = T.let(:STABLECOIN, Lithic::Payment::Method::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Method::TaggedSymbol])
@@ -877,7 +879,8 @@ module Lithic
           T.type_alias do
             T.any(
               Lithic::Payment::MethodAttributes::ACHMethodAttributes,
-              Lithic::Payment::MethodAttributes::WireMethodAttributes
+              Lithic::Payment::MethodAttributes::WireMethodAttributes,
+              Lithic::Payment::MethodAttributes::StablecoinMethodAttributes
             )
           end
 
@@ -1171,6 +1174,47 @@ module Lithic
             end
             def self.values
             end
+          end
+        end
+
+        class StablecoinMethodAttributes < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::Payment::MethodAttributes::StablecoinMethodAttributes,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Blockchain the stablecoin transfer settled on
+          sig { returns(String) }
+          attr_accessor :chain
+
+          # On-chain transaction hash of the transfer. Null until the transfer has settled
+          # on chain
+          sig { returns(T.nilable(String)) }
+          attr_accessor :transaction_hash
+
+          sig do
+            params(chain: String, transaction_hash: T.nilable(String)).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Blockchain the stablecoin transfer settled on
+            chain:,
+            # On-chain transaction hash of the transfer. Null until the transfer has settled
+            # on chain
+            transaction_hash: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { chain: String, transaction_hash: T.nilable(String) }
+            )
+          end
+          def to_hash
           end
         end
 
