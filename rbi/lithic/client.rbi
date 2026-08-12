@@ -82,6 +82,9 @@ module Lithic
     sig { returns(Lithic::Resources::ExternalBankAccounts) }
     attr_reader :external_bank_accounts
 
+    sig { returns(Lithic::Resources::BlockchainRecipients) }
+    attr_reader :blockchain_recipients
+
     sig { returns(Lithic::Resources::Payments) }
     attr_reader :payments
 
