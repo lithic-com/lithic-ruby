@@ -1,0 +1,60 @@
+module Lithic
+  module Models
+    type blockchain_recipient_create_params =
+      {
+        account_token: String,
+        address: String,
+        chain: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        address_tag: String,
+        name: String
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class BlockchainRecipientCreateParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor account_token: String
+
+      attr_accessor address: String
+
+      attr_accessor chain: String
+
+      attr_accessor owner: String
+
+      attr_accessor owner_type: Lithic::Models::owner_type
+
+      attr_reader address_tag: String?
+
+      def address_tag=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (
+        account_token: String,
+        address: String,
+        chain: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        ?address_tag: String,
+        ?name: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        address: String,
+        chain: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        address_tag: String,
+        name: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end
