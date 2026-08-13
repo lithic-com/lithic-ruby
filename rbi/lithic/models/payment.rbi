@@ -82,6 +82,10 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :updated
 
+      # Token of the blockchain recipient the payout is sent to
+      sig { returns(T.nilable(String)) }
+      attr_accessor :blockchain_recipient_token
+
       # Currency of the transaction in ISO 4217 format
       sig { returns(T.nilable(String)) }
       attr_reader :currency
@@ -140,6 +144,7 @@ module Lithic
           source: Lithic::Payment::Source::OrSymbol,
           status: Lithic::Payment::Status::OrSymbol,
           updated: Time,
+          blockchain_recipient_token: T.nilable(String),
           currency: String,
           expected_release_date: T.nilable(Date),
           external_bank_account_token: T.nilable(String),
@@ -182,6 +187,8 @@ module Lithic
         status:,
         # ISO 8601 timestamp of when the transaction was last updated
         updated:,
+        # Token of the blockchain recipient the payout is sent to
+        blockchain_recipient_token: nil,
         # Currency of the transaction in ISO 4217 format
         currency: nil,
         # Expected release date for the transaction
@@ -220,6 +227,7 @@ module Lithic
             source: Lithic::Payment::Source::TaggedSymbol,
             status: Lithic::Payment::Status::TaggedSymbol,
             updated: Time,
+            blockchain_recipient_token: T.nilable(String),
             currency: String,
             expected_release_date: T.nilable(Date),
             external_bank_account_token: T.nilable(String),
