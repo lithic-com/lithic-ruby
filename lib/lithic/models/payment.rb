@@ -106,6 +106,12 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
+      # @!attribute blockchain_recipient_token
+      #   Token of the blockchain recipient the payout is sent to
+      #
+      #   @return [String, nil]
+      optional :blockchain_recipient_token, String, nil?: true
+
       # @!attribute currency
       #   Currency of the transaction in ISO 4217 format
       #
@@ -142,7 +148,7 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String, nil?: true
 
-      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, tags: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
+      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, blockchain_recipient_token: nil, currency: nil, expected_release_date: nil, external_bank_account_token: nil, tags: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
       #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
       #   for more details.
       #
@@ -179,6 +185,8 @@ module Lithic
       #   @param status [Symbol, Lithic::Models::Payment::Status] The status of the transaction
       #
       #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
+      #
+      #   @param blockchain_recipient_token [String, nil] Token of the blockchain recipient the payout is sent to
       #
       #   @param currency [String] Currency of the transaction in ISO 4217 format
       #
