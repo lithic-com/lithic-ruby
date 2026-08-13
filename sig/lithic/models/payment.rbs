@@ -19,6 +19,7 @@ module Lithic
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
+        blockchain_recipient_token: String?,
         currency: String,
         expected_release_date: Date?,
         external_bank_account_token: String?,
@@ -62,6 +63,8 @@ module Lithic
 
       attr_accessor updated: Time
 
+      attr_accessor blockchain_recipient_token: String?
+
       attr_reader currency: String?
 
       def currency=: (String) -> String
@@ -99,6 +102,7 @@ module Lithic
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
+        ?blockchain_recipient_token: String?,
         ?currency: String,
         ?expected_release_date: Date?,
         ?external_bank_account_token: String?,
@@ -126,6 +130,7 @@ module Lithic
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
+        blockchain_recipient_token: String?,
         currency: String,
         expected_release_date: Date?,
         external_bank_account_token: String?,
