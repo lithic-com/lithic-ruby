@@ -25,6 +25,13 @@ module Lithic
       #   @return [String, nil]
       optional :card_token, String
 
+      # @!attribute claim_token
+      #   Filter by the token of the claim the dispute was filed under. Returns the
+      #   disputes created from that claim's disputed transaction events.
+      #
+      #   @return [String, nil]
+      optional :claim_token, String
+
       # @!attribute disputed_transaction_token
       #   Filter by the token of the transaction being disputed. Corresponds with
       #   transaction_series.related_transaction_token in the Dispute.
@@ -58,7 +65,7 @@ module Lithic
       #   @return [String, nil]
       optional :starting_after, String
 
-      # @!method initialize(account_token: nil, begin_: nil, card_token: nil, disputed_transaction_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+      # @!method initialize(account_token: nil, begin_: nil, card_token: nil, claim_token: nil, disputed_transaction_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::DisputesV2ListParams} for more details.
       #
@@ -67,6 +74,8 @@ module Lithic
       #   @param begin_ [Time] RFC 3339 timestamp for filtering by created date, inclusive.
       #
       #   @param card_token [String] Filter by card token.
+      #
+      #   @param claim_token [String] Filter by the token of the claim the dispute was filed under. Returns the disput
       #
       #   @param disputed_transaction_token [String] Filter by the token of the transaction being disputed. Corresponds with transact
       #

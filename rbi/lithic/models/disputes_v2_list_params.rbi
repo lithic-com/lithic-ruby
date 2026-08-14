@@ -32,6 +32,14 @@ module Lithic
       sig { params(card_token: String).void }
       attr_writer :card_token
 
+      # Filter by the token of the claim the dispute was filed under. Returns the
+      # disputes created from that claim's disputed transaction events.
+      sig { returns(T.nilable(String)) }
+      attr_reader :claim_token
+
+      sig { params(claim_token: String).void }
+      attr_writer :claim_token
+
       # Filter by the token of the transaction being disputed. Corresponds with
       # transaction_series.related_transaction_token in the Dispute.
       sig { returns(T.nilable(String)) }
@@ -75,6 +83,7 @@ module Lithic
           account_token: String,
           begin_: Time,
           card_token: String,
+          claim_token: String,
           disputed_transaction_token: String,
           end_: Time,
           ending_before: String,
@@ -90,6 +99,9 @@ module Lithic
         begin_: nil,
         # Filter by card token.
         card_token: nil,
+        # Filter by the token of the claim the dispute was filed under. Returns the
+        # disputes created from that claim's disputed transaction events.
+        claim_token: nil,
         # Filter by the token of the transaction being disputed. Corresponds with
         # transaction_series.related_transaction_token in the Dispute.
         disputed_transaction_token: nil,
@@ -113,6 +125,7 @@ module Lithic
             account_token: String,
             begin_: Time,
             card_token: String,
+            claim_token: String,
             disputed_transaction_token: String,
             end_: Time,
             ending_before: String,

@@ -22,6 +22,11 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :case_id
 
+      # Token for the claim this dispute was filed under, in UUID format. Null for
+      # disputes not initiated through the Dispute Intake API.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :claim_token
+
       # When the dispute was created.
       sig { returns(Time) }
       attr_accessor :created
@@ -87,6 +92,7 @@ module Lithic
           account_token: String,
           card_token: String,
           case_id: T.nilable(String),
+          claim_token: T.nilable(String),
           created: Time,
           currency: String,
           disposition: T.nilable(Lithic::DisputeV2::Disposition::OrSymbol),
@@ -109,6 +115,9 @@ module Lithic
         card_token:,
         # Identifier assigned by the network for this dispute.
         case_id:,
+        # Token for the claim this dispute was filed under, in UUID format. Null for
+        # disputes not initiated through the Dispute Intake API.
+        claim_token:,
         # When the dispute was created.
         created:,
         # Three-letter ISO 4217 currency code.
@@ -139,6 +148,7 @@ module Lithic
             account_token: String,
             card_token: String,
             case_id: T.nilable(String),
+            claim_token: T.nilable(String),
             created: Time,
             currency: String,
             disposition:
@@ -720,6 +730,11 @@ module Lithic
               WRITTEN_OFF =
                 T.let(
                   :WRITTEN_OFF,
+                  Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                )
+              WRITE_OFF_REVERSED =
+                T.let(
+                  :WRITE_OFF_REVERSED,
                   Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
                 )
 
