@@ -6,6 +6,7 @@ module Lithic
         account_token: String,
         card_token: String,
         case_id: String?,
+        claim_token: String?,
         created: Time,
         currency: String,
         disposition: Lithic::Models::DisputeV2::disposition?,
@@ -26,6 +27,8 @@ module Lithic
       attr_accessor card_token: String
 
       attr_accessor case_id: String?
+
+      attr_accessor claim_token: String?
 
       attr_accessor created: Time
 
@@ -52,6 +55,7 @@ module Lithic
         account_token: String,
         card_token: String,
         case_id: String?,
+        claim_token: String?,
         created: Time,
         currency: String,
         disposition: Lithic::Models::DisputeV2::disposition?,
@@ -69,6 +73,7 @@ module Lithic
         account_token: String,
         card_token: String,
         case_id: String?,
+        claim_token: String?,
         created: Time,
         currency: String,
         disposition: Lithic::Models::DisputeV2::disposition?,
@@ -310,6 +315,7 @@ module Lithic
               :PROVISIONAL_CREDIT_GRANTED
               | :PROVISIONAL_CREDIT_REVERSED
               | :WRITTEN_OFF
+              | :WRITE_OFF_REVERSED
 
             module Action
               extend Lithic::Internal::Type::Enum
@@ -317,6 +323,7 @@ module Lithic
               PROVISIONAL_CREDIT_GRANTED: :PROVISIONAL_CREDIT_GRANTED
               PROVISIONAL_CREDIT_REVERSED: :PROVISIONAL_CREDIT_REVERSED
               WRITTEN_OFF: :WRITTEN_OFF
+              WRITE_OFF_REVERSED: :WRITE_OFF_REVERSED
 
               def self?.values: -> ::Array[Lithic::Models::DisputeV2::Event::Data::CardholderLiability::action]
             end

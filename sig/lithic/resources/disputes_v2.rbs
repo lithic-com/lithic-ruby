@@ -10,6 +10,7 @@ module Lithic
         ?account_token: String,
         ?begin_: Time,
         ?card_token: String,
+        ?claim_token: String,
         ?disputed_transaction_token: String,
         ?end_: Time,
         ?ending_before: String,

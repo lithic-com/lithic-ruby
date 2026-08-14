@@ -28,6 +28,13 @@ module Lithic
       #   @return [String, nil]
       required :case_id, String, nil?: true
 
+      # @!attribute claim_token
+      #   Token for the claim this dispute was filed under, in UUID format. Null for
+      #   disputes not initiated through the Dispute Intake API.
+      #
+      #   @return [String, nil]
+      required :claim_token, String, nil?: true
+
       # @!attribute created
       #   When the dispute was created.
       #
@@ -88,7 +95,7 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!method initialize(token:, account_token:, card_token:, case_id:, created:, currency:, disposition:, events:, liability_allocation:, merchant:, network:, status:, transaction_series:, updated:)
+      # @!method initialize(token:, account_token:, card_token:, case_id:, claim_token:, created:, currency:, disposition:, events:, liability_allocation:, merchant:, network:, status:, transaction_series:, updated:)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::DisputeV2} for more details.
       #
@@ -101,6 +108,8 @@ module Lithic
       #   @param card_token [String] Token for the card used in the dispute, in UUID format.
       #
       #   @param case_id [String, nil] Identifier assigned by the network for this dispute.
+      #
+      #   @param claim_token [String, nil] Token for the claim this dispute was filed under, in UUID format. Null for dispu
       #
       #   @param created [Time] When the dispute was created.
       #
@@ -401,6 +410,7 @@ module Lithic
               PROVISIONAL_CREDIT_GRANTED = :PROVISIONAL_CREDIT_GRANTED
               PROVISIONAL_CREDIT_REVERSED = :PROVISIONAL_CREDIT_REVERSED
               WRITTEN_OFF = :WRITTEN_OFF
+              WRITE_OFF_REVERSED = :WRITE_OFF_REVERSED
 
               # @!method self.values
               #   @return [Array<Symbol>]
