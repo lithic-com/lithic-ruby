@@ -1363,6 +1363,10 @@ module Lithic
             Lithic::Payment::Type::TaggedSymbol
           )
         STABLECOIN = T.let(:STABLECOIN, Lithic::Payment::Type::TaggedSymbol)
+        STABLECOIN_INBOUND =
+          T.let(:STABLECOIN_INBOUND, Lithic::Payment::Type::TaggedSymbol)
+        STABLECOIN_OUTBOUND =
+          T.let(:STABLECOIN_OUTBOUND, Lithic::Payment::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Payment::Type::TaggedSymbol]) }
         def self.values

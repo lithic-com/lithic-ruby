@@ -599,6 +599,8 @@ module Lithic
         | :WIRE_OUTBOUND_ADMIN
         | :WIRE_INBOUND_DRAWDOWN_REQUEST
         | :STABLECOIN
+        | :STABLECOIN_INBOUND
+        | :STABLECOIN_OUTBOUND
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -613,6 +615,8 @@ module Lithic
         WIRE_OUTBOUND_ADMIN: :WIRE_OUTBOUND_ADMIN
         WIRE_INBOUND_DRAWDOWN_REQUEST: :WIRE_INBOUND_DRAWDOWN_REQUEST
         STABLECOIN: :STABLECOIN
+        STABLECOIN_INBOUND: :STABLECOIN_INBOUND
+        STABLECOIN_OUTBOUND: :STABLECOIN_OUTBOUND
 
         def self?.values: -> ::Array[Lithic::Models::Payment::type_]
       end
