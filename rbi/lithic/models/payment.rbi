@@ -1362,7 +1362,6 @@ module Lithic
             :WIRE_INBOUND_DRAWDOWN_REQUEST,
             Lithic::Payment::Type::TaggedSymbol
           )
-        STABLECOIN = T.let(:STABLECOIN, Lithic::Payment::Type::TaggedSymbol)
         STABLECOIN_INBOUND =
           T.let(:STABLECOIN_INBOUND, Lithic::Payment::Type::TaggedSymbol)
         STABLECOIN_OUTBOUND =
