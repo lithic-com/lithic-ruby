@@ -56,8 +56,8 @@ module Lithic
       # @!attribute events
       #   Chronological list of events that have occurred in the dispute lifecycle
       #
-      #   @return [Array<Lithic::Models::DisputeV2::Event>]
-      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::DisputeV2::Event] }
+      #   @return [Array<Lithic::Models::DisputeV2::Event::Workflow, Lithic::Models::DisputeV2::Event::Financial, Lithic::Models::DisputeV2::Event::CardholderLiability>]
+      required :events, -> { Lithic::Internal::Type::ArrayOf[union: Lithic::DisputeV2::Event] }
 
       # @!attribute liability_allocation
       #   Current breakdown of how liability is allocated for the disputed amount
@@ -117,7 +117,7 @@ module Lithic
       #
       #   @param disposition [Symbol, Lithic::Models::DisputeV2::Disposition, nil] Dispute resolution outcome
       #
-      #   @param events [Array<Lithic::Models::DisputeV2::Event>] Chronological list of events that have occurred in the dispute lifecycle
+      #   @param events [Array<Lithic::Models::DisputeV2::Event::Workflow, Lithic::Models::DisputeV2::Event::Financial, Lithic::Models::DisputeV2::Event::CardholderLiability>] Chronological list of events that have occurred in the dispute lifecycle
       #
       #   @param liability_allocation [Lithic::Models::DisputeV2::LiabilityAllocation] Current breakdown of how liability is allocated for the disputed amount
       #
@@ -147,65 +147,65 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      class Event < Lithic::Internal::Type::BaseModel
-        # @!attribute token
-        #   Unique identifier for the event, in UUID format
-        #
-        #   @return [String]
-        required :token, String
+      # Event that occurred in the dispute lifecycle. The `type` field identifies the
+      # event variant and determines the shape of `data`
+      module Event
+        extend Lithic::Internal::Type::Union
 
-        # @!attribute created
-        #   When the event occurred
-        #
-        #   @return [Time]
-        required :created, Time
+        discriminator :type
 
-        # @!attribute data
-        #   Details specific to the event type
-        #
-        #   @return [Lithic::Models::DisputeV2::Event::Data::Workflow, Lithic::Models::DisputeV2::Event::Data::Financial, Lithic::Models::DisputeV2::Event::Data::CardholderLiability]
-        required :data, union: -> { Lithic::DisputeV2::Event::Data }
+        # Event tracking the dispute's case management workflow
+        variant :WORKFLOW, -> { Lithic::DisputeV2::Event::Workflow }
 
-        # @!attribute type
-        #   Type of event
-        #
-        #   @return [Symbol, Lithic::Models::DisputeV2::Event::Type]
-        required :type, enum: -> { Lithic::DisputeV2::Event::Type }
+        # Event tracking a funds movement between issuer and acquirer
+        variant :FINANCIAL, -> { Lithic::DisputeV2::Event::Financial }
 
-        # @!method initialize(token:, created:, data:, type:)
-        #   Event that occurred in the dispute lifecycle
-        #
-        #   @param token [String] Unique identifier for the event, in UUID format
-        #
-        #   @param created [Time] When the event occurred
-        #
-        #   @param data [Lithic::Models::DisputeV2::Event::Data::Workflow, Lithic::Models::DisputeV2::Event::Data::Financial, Lithic::Models::DisputeV2::Event::Data::CardholderLiability] Details specific to the event type
-        #
-        #   @param type [Symbol, Lithic::Models::DisputeV2::Event::Type] Type of event
+        # Event tracking a change in cardholder liability
+        variant :CARDHOLDER_LIABILITY, -> { Lithic::DisputeV2::Event::CardholderLiability }
 
-        # Details specific to the event type
-        #
-        # @see Lithic::Models::DisputeV2::Event#data
-        module Data
-          extend Lithic::Internal::Type::Union
+        class Workflow < Lithic::Internal::Type::BaseModel
+          # @!attribute token
+          #   Unique identifier for the event, in UUID format
+          #
+          #   @return [String]
+          required :token, String
 
-          discriminator :type
+          # @!attribute created
+          #   When the event occurred
+          #
+          #   @return [Time]
+          required :created, Time
 
-          # Details specific to workflow events
-          variant :WORKFLOW, -> { Lithic::DisputeV2::Event::Data::Workflow }
+          # @!attribute data
+          #   Details specific to workflow events
+          #
+          #   @return [Lithic::Models::DisputeV2::Event::Workflow::Data]
+          required :data, -> { Lithic::DisputeV2::Event::Workflow::Data }
 
-          # Details specific to financial events
-          variant :FINANCIAL, -> { Lithic::DisputeV2::Event::Data::Financial }
+          # @!attribute type
+          #   Type of event. Always `WORKFLOW`
+          #
+          #   @return [Symbol, :WORKFLOW]
+          required :type, const: :WORKFLOW
 
-          # Details specific to cardholder liability events
-          variant :CARDHOLDER_LIABILITY, -> { Lithic::DisputeV2::Event::Data::CardholderLiability }
+          # @!method initialize(token:, created:, data:, type: :WORKFLOW)
+          #   Event tracking the dispute's case management workflow
+          #
+          #   @param token [String] Unique identifier for the event, in UUID format
+          #
+          #   @param created [Time] When the event occurred
+          #
+          #   @param data [Lithic::Models::DisputeV2::Event::Workflow::Data] Details specific to workflow events
+          #
+          #   @param type [Symbol, :WORKFLOW] Type of event. Always `WORKFLOW`
 
-          class Workflow < Lithic::Internal::Type::BaseModel
+          # @see Lithic::Models::DisputeV2::Event::Workflow#data
+          class Data < Lithic::Internal::Type::BaseModel
             # @!attribute action
             #   Action taken in this stage
             #
-            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Data::Workflow::Action]
-            required :action, enum: -> { Lithic::DisputeV2::Event::Data::Workflow::Action }
+            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Workflow::Data::Action]
+            required :action, enum: -> { Lithic::DisputeV2::Event::Workflow::Data::Action }
 
             # @!attribute amount
             #   Amount in minor units
@@ -216,10 +216,10 @@ module Lithic
             # @!attribute disposition
             #   Dispute resolution outcome
             #
-            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Data::Workflow::Disposition, nil]
+            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Workflow::Data::Disposition, nil]
             required :disposition,
                      enum: -> {
-                       Lithic::DisputeV2::Event::Data::Workflow::Disposition
+                       Lithic::DisputeV2::Event::Workflow::Data::Disposition
                      },
                      nil?: true
 
@@ -232,33 +232,25 @@ module Lithic
             # @!attribute stage
             #   Current stage of the dispute workflow
             #
-            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Data::Workflow::Stage]
-            required :stage, enum: -> { Lithic::DisputeV2::Event::Data::Workflow::Stage }
+            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Workflow::Data::Stage]
+            required :stage, enum: -> { Lithic::DisputeV2::Event::Workflow::Data::Stage }
 
-            # @!attribute type
-            #   Event type discriminator
-            #
-            #   @return [Symbol, :WORKFLOW]
-            required :type, const: :WORKFLOW
-
-            # @!method initialize(action:, amount:, disposition:, reason:, stage:, type: :WORKFLOW)
+            # @!method initialize(action:, amount:, disposition:, reason:, stage:)
             #   Details specific to workflow events
             #
-            #   @param action [Symbol, Lithic::Models::DisputeV2::Event::Data::Workflow::Action] Action taken in this stage
+            #   @param action [Symbol, Lithic::Models::DisputeV2::Event::Workflow::Data::Action] Action taken in this stage
             #
             #   @param amount [Integer, nil] Amount in minor units
             #
-            #   @param disposition [Symbol, Lithic::Models::DisputeV2::Event::Data::Workflow::Disposition, nil] Dispute resolution outcome
+            #   @param disposition [Symbol, Lithic::Models::DisputeV2::Event::Workflow::Data::Disposition, nil] Dispute resolution outcome
             #
             #   @param reason [String, nil] Reason for the action
             #
-            #   @param stage [Symbol, Lithic::Models::DisputeV2::Event::Data::Workflow::Stage] Current stage of the dispute workflow
-            #
-            #   @param type [Symbol, :WORKFLOW] Event type discriminator
+            #   @param stage [Symbol, Lithic::Models::DisputeV2::Event::Workflow::Data::Stage] Current stage of the dispute workflow
 
             # Action taken in this stage
             #
-            # @see Lithic::Models::DisputeV2::Event::Data::Workflow#action
+            # @see Lithic::Models::DisputeV2::Event::Workflow::Data#action
             module Action
               extend Lithic::Internal::Type::Enum
 
@@ -272,7 +264,7 @@ module Lithic
 
             # Dispute resolution outcome
             #
-            # @see Lithic::Models::DisputeV2::Event::Data::Workflow#disposition
+            # @see Lithic::Models::DisputeV2::Event::Workflow::Data#disposition
             module Disposition
               extend Lithic::Internal::Type::Enum
 
@@ -288,7 +280,7 @@ module Lithic
 
             # Current stage of the dispute workflow
             #
-            # @see Lithic::Models::DisputeV2::Event::Data::Workflow#stage
+            # @see Lithic::Models::DisputeV2::Event::Workflow::Data#stage
             module Stage
               extend Lithic::Internal::Type::Enum
 
@@ -298,8 +290,46 @@ module Lithic
               #   @return [Array<Symbol>]
             end
           end
+        end
 
-          class Financial < Lithic::Internal::Type::BaseModel
+        class Financial < Lithic::Internal::Type::BaseModel
+          # @!attribute token
+          #   Unique identifier for the event, in UUID format
+          #
+          #   @return [String]
+          required :token, String
+
+          # @!attribute created
+          #   When the event occurred
+          #
+          #   @return [Time]
+          required :created, Time
+
+          # @!attribute data
+          #   Details specific to financial events
+          #
+          #   @return [Lithic::Models::DisputeV2::Event::Financial::Data]
+          required :data, -> { Lithic::DisputeV2::Event::Financial::Data }
+
+          # @!attribute type
+          #   Type of event. Always `FINANCIAL`
+          #
+          #   @return [Symbol, :FINANCIAL]
+          required :type, const: :FINANCIAL
+
+          # @!method initialize(token:, created:, data:, type: :FINANCIAL)
+          #   Event tracking a funds movement between issuer and acquirer
+          #
+          #   @param token [String] Unique identifier for the event, in UUID format
+          #
+          #   @param created [Time] When the event occurred
+          #
+          #   @param data [Lithic::Models::DisputeV2::Event::Financial::Data] Details specific to financial events
+          #
+          #   @param type [Symbol, :FINANCIAL] Type of event. Always `FINANCIAL`
+
+          # @see Lithic::Models::DisputeV2::Event::Financial#data
+          class Data < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount in minor units
             #
@@ -309,35 +339,27 @@ module Lithic
             # @!attribute polarity
             #   Direction of funds flow
             #
-            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Data::Financial::Polarity]
-            required :polarity, enum: -> { Lithic::DisputeV2::Event::Data::Financial::Polarity }
+            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Financial::Data::Polarity]
+            required :polarity, enum: -> { Lithic::DisputeV2::Event::Financial::Data::Polarity }
 
             # @!attribute stage
             #   Stage at which the financial event occurred
             #
-            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Data::Financial::Stage]
-            required :stage, enum: -> { Lithic::DisputeV2::Event::Data::Financial::Stage }
+            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Financial::Data::Stage]
+            required :stage, enum: -> { Lithic::DisputeV2::Event::Financial::Data::Stage }
 
-            # @!attribute type
-            #   Event type discriminator
-            #
-            #   @return [Symbol, :FINANCIAL]
-            required :type, const: :FINANCIAL
-
-            # @!method initialize(amount:, polarity:, stage:, type: :FINANCIAL)
+            # @!method initialize(amount:, polarity:, stage:)
             #   Details specific to financial events
             #
             #   @param amount [Integer] Amount in minor units
             #
-            #   @param polarity [Symbol, Lithic::Models::DisputeV2::Event::Data::Financial::Polarity] Direction of funds flow
+            #   @param polarity [Symbol, Lithic::Models::DisputeV2::Event::Financial::Data::Polarity] Direction of funds flow
             #
-            #   @param stage [Symbol, Lithic::Models::DisputeV2::Event::Data::Financial::Stage] Stage at which the financial event occurred
-            #
-            #   @param type [Symbol, :FINANCIAL] Event type discriminator
+            #   @param stage [Symbol, Lithic::Models::DisputeV2::Event::Financial::Data::Stage] Stage at which the financial event occurred
 
             # Direction of funds flow
             #
-            # @see Lithic::Models::DisputeV2::Event::Data::Financial#polarity
+            # @see Lithic::Models::DisputeV2::Event::Financial::Data#polarity
             module Polarity
               extend Lithic::Internal::Type::Enum
 
@@ -350,7 +372,7 @@ module Lithic
 
             # Stage at which the financial event occurred
             #
-            # @see Lithic::Models::DisputeV2::Event::Data::Financial#stage
+            # @see Lithic::Models::DisputeV2::Event::Financial::Data#stage
             module Stage
               extend Lithic::Internal::Type::Enum
 
@@ -364,13 +386,51 @@ module Lithic
               #   @return [Array<Symbol>]
             end
           end
+        end
 
-          class CardholderLiability < Lithic::Internal::Type::BaseModel
+        class CardholderLiability < Lithic::Internal::Type::BaseModel
+          # @!attribute token
+          #   Unique identifier for the event, in UUID format
+          #
+          #   @return [String]
+          required :token, String
+
+          # @!attribute created
+          #   When the event occurred
+          #
+          #   @return [Time]
+          required :created, Time
+
+          # @!attribute data
+          #   Details specific to cardholder liability events
+          #
+          #   @return [Lithic::Models::DisputeV2::Event::CardholderLiability::Data]
+          required :data, -> { Lithic::DisputeV2::Event::CardholderLiability::Data }
+
+          # @!attribute type
+          #   Type of event. Always `CARDHOLDER_LIABILITY`
+          #
+          #   @return [Symbol, :CARDHOLDER_LIABILITY]
+          required :type, const: :CARDHOLDER_LIABILITY
+
+          # @!method initialize(token:, created:, data:, type: :CARDHOLDER_LIABILITY)
+          #   Event tracking a change in cardholder liability
+          #
+          #   @param token [String] Unique identifier for the event, in UUID format
+          #
+          #   @param created [Time] When the event occurred
+          #
+          #   @param data [Lithic::Models::DisputeV2::Event::CardholderLiability::Data] Details specific to cardholder liability events
+          #
+          #   @param type [Symbol, :CARDHOLDER_LIABILITY] Type of event. Always `CARDHOLDER_LIABILITY`
+
+          # @see Lithic::Models::DisputeV2::Event::CardholderLiability#data
+          class Data < Lithic::Internal::Type::BaseModel
             # @!attribute action
             #   Action taken regarding cardholder liability
             #
-            #   @return [Symbol, Lithic::Models::DisputeV2::Event::Data::CardholderLiability::Action]
-            required :action, enum: -> { Lithic::DisputeV2::Event::Data::CardholderLiability::Action }
+            #   @return [Symbol, Lithic::Models::DisputeV2::Event::CardholderLiability::Data::Action]
+            required :action, enum: -> { Lithic::DisputeV2::Event::CardholderLiability::Data::Action }
 
             # @!attribute amount
             #   Amount in minor units
@@ -381,29 +441,21 @@ module Lithic
             # @!attribute reason
             #   Reason for the action
             #
-            #   @return [String]
-            required :reason, String
+            #   @return [String, nil]
+            required :reason, String, nil?: true
 
-            # @!attribute type
-            #   Event type discriminator
-            #
-            #   @return [Symbol, :CARDHOLDER_LIABILITY]
-            required :type, const: :CARDHOLDER_LIABILITY
-
-            # @!method initialize(action:, amount:, reason:, type: :CARDHOLDER_LIABILITY)
+            # @!method initialize(action:, amount:, reason:)
             #   Details specific to cardholder liability events
             #
-            #   @param action [Symbol, Lithic::Models::DisputeV2::Event::Data::CardholderLiability::Action] Action taken regarding cardholder liability
+            #   @param action [Symbol, Lithic::Models::DisputeV2::Event::CardholderLiability::Data::Action] Action taken regarding cardholder liability
             #
             #   @param amount [Integer] Amount in minor units
             #
-            #   @param reason [String] Reason for the action
-            #
-            #   @param type [Symbol, :CARDHOLDER_LIABILITY] Event type discriminator
+            #   @param reason [String, nil] Reason for the action
 
             # Action taken regarding cardholder liability
             #
-            # @see Lithic::Models::DisputeV2::Event::Data::CardholderLiability#action
+            # @see Lithic::Models::DisputeV2::Event::CardholderLiability::Data#action
             module Action
               extend Lithic::Internal::Type::Enum
 
@@ -416,24 +468,10 @@ module Lithic
               #   @return [Array<Symbol>]
             end
           end
-
-          # @!method self.variants
-          #   @return [Array(Lithic::Models::DisputeV2::Event::Data::Workflow, Lithic::Models::DisputeV2::Event::Data::Financial, Lithic::Models::DisputeV2::Event::Data::CardholderLiability)]
         end
 
-        # Type of event
-        #
-        # @see Lithic::Models::DisputeV2::Event#type
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          WORKFLOW = :WORKFLOW
-          FINANCIAL = :FINANCIAL
-          CARDHOLDER_LIABILITY = :CARDHOLDER_LIABILITY
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        # @!method self.variants
+        #   @return [Array(Lithic::Models::DisputeV2::Event::Workflow, Lithic::Models::DisputeV2::Event::Financial, Lithic::Models::DisputeV2::Event::CardholderLiability)]
       end
 
       # @see Lithic::Models::DisputeV2#liability_allocation
