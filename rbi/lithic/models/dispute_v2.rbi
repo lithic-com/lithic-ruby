@@ -40,7 +40,7 @@ module Lithic
       attr_accessor :disposition
 
       # Chronological list of events that have occurred in the dispute lifecycle
-      sig { returns(T::Array[Lithic::DisputeV2::Event]) }
+      sig { returns(T::Array[Lithic::DisputeV2::Event::Variants]) }
       attr_accessor :events
 
       # Current breakdown of how liability is allocated for the disputed amount
@@ -96,7 +96,14 @@ module Lithic
           created: Time,
           currency: String,
           disposition: T.nilable(Lithic::DisputeV2::Disposition::OrSymbol),
-          events: T::Array[Lithic::DisputeV2::Event::OrHash],
+          events:
+            T::Array[
+              T.any(
+                Lithic::DisputeV2::Event::Workflow::OrHash,
+                Lithic::DisputeV2::Event::Financial::OrHash,
+                Lithic::DisputeV2::Event::CardholderLiability::OrHash
+              )
+            ],
           liability_allocation: Lithic::DisputeV2::LiabilityAllocation::OrHash,
           merchant: Lithic::Merchant::OrHash,
           network: Lithic::DisputeV2::Network::OrSymbol,
@@ -153,7 +160,7 @@ module Lithic
             currency: String,
             disposition:
               T.nilable(Lithic::DisputeV2::Disposition::TaggedSymbol),
-            events: T::Array[Lithic::DisputeV2::Event],
+            events: T::Array[Lithic::DisputeV2::Event::Variants],
             liability_allocation: Lithic::DisputeV2::LiabilityAllocation,
             merchant: Lithic::Merchant,
             network: Lithic::DisputeV2::Network::TaggedSymbol,
@@ -191,85 +198,89 @@ module Lithic
         end
       end
 
-      class Event < Lithic::Internal::Type::BaseModel
-        OrHash =
+      # Event that occurred in the dispute lifecycle. The `type` field identifies the
+      # event variant and determines the shape of `data`
+      module Event
+        extend Lithic::Internal::Type::Union
+
+        Variants =
           T.type_alias do
-            T.any(Lithic::DisputeV2::Event, Lithic::Internal::AnyHash)
+            T.any(
+              Lithic::DisputeV2::Event::Workflow,
+              Lithic::DisputeV2::Event::Financial,
+              Lithic::DisputeV2::Event::CardholderLiability
+            )
           end
 
-        # Unique identifier for the event, in UUID format
-        sig { returns(String) }
-        attr_accessor :token
-
-        # When the event occurred
-        sig { returns(Time) }
-        attr_accessor :created
-
-        # Details specific to the event type
-        sig { returns(Lithic::DisputeV2::Event::Data::Variants) }
-        attr_accessor :data
-
-        # Type of event
-        sig { returns(Lithic::DisputeV2::Event::Type::TaggedSymbol) }
-        attr_accessor :type
-
-        # Event that occurred in the dispute lifecycle
-        sig do
-          params(
-            token: String,
-            created: Time,
-            data:
-              T.any(
-                Lithic::DisputeV2::Event::Data::Workflow::OrHash,
-                Lithic::DisputeV2::Event::Data::Financial::OrHash,
-                Lithic::DisputeV2::Event::Data::CardholderLiability::OrHash
-              ),
-            type: Lithic::DisputeV2::Event::Type::OrSymbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Unique identifier for the event, in UUID format
-          token:,
-          # When the event occurred
-          created:,
-          # Details specific to the event type
-          data:,
-          # Type of event
-          type:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              token: String,
-              created: Time,
-              data: Lithic::DisputeV2::Event::Data::Variants,
-              type: Lithic::DisputeV2::Event::Type::TaggedSymbol
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # Details specific to the event type
-        module Data
-          extend Lithic::Internal::Type::Union
-
-          Variants =
+        class Workflow < Lithic::Internal::Type::BaseModel
+          OrHash =
             T.type_alias do
               T.any(
-                Lithic::DisputeV2::Event::Data::Workflow,
-                Lithic::DisputeV2::Event::Data::Financial,
-                Lithic::DisputeV2::Event::Data::CardholderLiability
+                Lithic::DisputeV2::Event::Workflow,
+                Lithic::Internal::AnyHash
               )
             end
 
-          class Workflow < Lithic::Internal::Type::BaseModel
+          # Unique identifier for the event, in UUID format
+          sig { returns(String) }
+          attr_accessor :token
+
+          # When the event occurred
+          sig { returns(Time) }
+          attr_accessor :created
+
+          # Details specific to workflow events
+          sig { returns(Lithic::DisputeV2::Event::Workflow::Data) }
+          attr_reader :data
+
+          sig do
+            params(data: Lithic::DisputeV2::Event::Workflow::Data::OrHash).void
+          end
+          attr_writer :data
+
+          # Type of event. Always `WORKFLOW`
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # Event tracking the dispute's case management workflow
+          sig do
+            params(
+              token: String,
+              created: Time,
+              data: Lithic::DisputeV2::Event::Workflow::Data::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Unique identifier for the event, in UUID format
+            token:,
+            # When the event occurred
+            created:,
+            # Details specific to workflow events
+            data:,
+            # Type of event. Always `WORKFLOW`
+            type: :WORKFLOW
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                created: Time,
+                data: Lithic::DisputeV2::Event::Workflow::Data,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Data < Lithic::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::DisputeV2::Event::Data::Workflow,
+                  Lithic::DisputeV2::Event::Workflow::Data,
                   Lithic::Internal::AnyHash
                 )
               end
@@ -277,7 +288,7 @@ module Lithic
             # Action taken in this stage
             sig do
               returns(
-                Lithic::DisputeV2::Event::Data::Workflow::Action::TaggedSymbol
+                Lithic::DisputeV2::Event::Workflow::Data::Action::TaggedSymbol
               )
             end
             attr_accessor :action
@@ -290,7 +301,7 @@ module Lithic
             sig do
               returns(
                 T.nilable(
-                  Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                 )
               )
             end
@@ -303,29 +314,23 @@ module Lithic
             # Current stage of the dispute workflow
             sig do
               returns(
-                Lithic::DisputeV2::Event::Data::Workflow::Stage::TaggedSymbol
+                Lithic::DisputeV2::Event::Workflow::Data::Stage::TaggedSymbol
               )
             end
             attr_accessor :stage
-
-            # Event type discriminator
-            sig { returns(Symbol) }
-            attr_accessor :type
 
             # Details specific to workflow events
             sig do
               params(
                 action:
-                  Lithic::DisputeV2::Event::Data::Workflow::Action::OrSymbol,
+                  Lithic::DisputeV2::Event::Workflow::Data::Action::OrSymbol,
                 amount: T.nilable(Integer),
                 disposition:
                   T.nilable(
-                    Lithic::DisputeV2::Event::Data::Workflow::Disposition::OrSymbol
+                    Lithic::DisputeV2::Event::Workflow::Data::Disposition::OrSymbol
                   ),
                 reason: T.nilable(String),
-                stage:
-                  Lithic::DisputeV2::Event::Data::Workflow::Stage::OrSymbol,
-                type: Symbol
+                stage: Lithic::DisputeV2::Event::Workflow::Data::Stage::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -338,9 +343,7 @@ module Lithic
               # Reason for the action
               reason:,
               # Current stage of the dispute workflow
-              stage:,
-              # Event type discriminator
-              type: :WORKFLOW
+              stage:
             )
             end
 
@@ -348,16 +351,15 @@ module Lithic
               override.returns(
                 {
                   action:
-                    Lithic::DisputeV2::Event::Data::Workflow::Action::TaggedSymbol,
+                    Lithic::DisputeV2::Event::Workflow::Data::Action::TaggedSymbol,
                   amount: T.nilable(Integer),
                   disposition:
                     T.nilable(
-                      Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                      Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                     ),
                   reason: T.nilable(String),
                   stage:
-                    Lithic::DisputeV2::Event::Data::Workflow::Stage::TaggedSymbol,
-                  type: Symbol
+                    Lithic::DisputeV2::Event::Workflow::Data::Stage::TaggedSymbol
                 }
               )
             end
@@ -372,7 +374,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::DisputeV2::Event::Data::Workflow::Action
+                    Lithic::DisputeV2::Event::Workflow::Data::Action
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -380,23 +382,23 @@ module Lithic
               OPENED =
                 T.let(
                   :OPENED,
-                  Lithic::DisputeV2::Event::Data::Workflow::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Action::TaggedSymbol
                 )
               CLOSED =
                 T.let(
                   :CLOSED,
-                  Lithic::DisputeV2::Event::Data::Workflow::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Action::TaggedSymbol
                 )
               REOPENED =
                 T.let(
                   :REOPENED,
-                  Lithic::DisputeV2::Event::Data::Workflow::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Action::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::DisputeV2::Event::Data::Workflow::Action::TaggedSymbol
+                    Lithic::DisputeV2::Event::Workflow::Data::Action::TaggedSymbol
                   ]
                 )
               end
@@ -412,7 +414,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::DisputeV2::Event::Data::Workflow::Disposition
+                    Lithic::DisputeV2::Event::Workflow::Data::Disposition
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -420,33 +422,33 @@ module Lithic
               WON =
                 T.let(
                   :WON,
-                  Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                 )
               LOST =
                 T.let(
                   :LOST,
-                  Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                 )
               PARTIALLY_WON =
                 T.let(
                   :PARTIALLY_WON,
-                  Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                 )
               WITHDRAWN =
                 T.let(
                   :WITHDRAWN,
-                  Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                 )
               DENIED =
                 T.let(
                   :DENIED,
-                  Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::DisputeV2::Event::Data::Workflow::Disposition::TaggedSymbol
+                    Lithic::DisputeV2::Event::Workflow::Data::Disposition::TaggedSymbol
                   ]
                 )
               end
@@ -460,20 +462,20 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::DisputeV2::Event::Data::Workflow::Stage)
+                  T.all(Symbol, Lithic::DisputeV2::Event::Workflow::Data::Stage)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               CLAIM =
                 T.let(
                   :CLAIM,
-                  Lithic::DisputeV2::Event::Data::Workflow::Stage::TaggedSymbol
+                  Lithic::DisputeV2::Event::Workflow::Data::Stage::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::DisputeV2::Event::Data::Workflow::Stage::TaggedSymbol
+                    Lithic::DisputeV2::Event::Workflow::Data::Stage::TaggedSymbol
                   ]
                 )
               end
@@ -481,12 +483,77 @@ module Lithic
               end
             end
           end
+        end
 
-          class Financial < Lithic::Internal::Type::BaseModel
+        class Financial < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::DisputeV2::Event::Financial,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Unique identifier for the event, in UUID format
+          sig { returns(String) }
+          attr_accessor :token
+
+          # When the event occurred
+          sig { returns(Time) }
+          attr_accessor :created
+
+          # Details specific to financial events
+          sig { returns(Lithic::DisputeV2::Event::Financial::Data) }
+          attr_reader :data
+
+          sig do
+            params(data: Lithic::DisputeV2::Event::Financial::Data::OrHash).void
+          end
+          attr_writer :data
+
+          # Type of event. Always `FINANCIAL`
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # Event tracking a funds movement between issuer and acquirer
+          sig do
+            params(
+              token: String,
+              created: Time,
+              data: Lithic::DisputeV2::Event::Financial::Data::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Unique identifier for the event, in UUID format
+            token:,
+            # When the event occurred
+            created:,
+            # Details specific to financial events
+            data:,
+            # Type of event. Always `FINANCIAL`
+            type: :FINANCIAL
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                created: Time,
+                data: Lithic::DisputeV2::Event::Financial::Data,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Data < Lithic::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::DisputeV2::Event::Data::Financial,
+                  Lithic::DisputeV2::Event::Financial::Data,
                   Lithic::Internal::AnyHash
                 )
               end
@@ -498,7 +565,7 @@ module Lithic
             # Direction of funds flow
             sig do
               returns(
-                Lithic::DisputeV2::Event::Data::Financial::Polarity::TaggedSymbol
+                Lithic::DisputeV2::Event::Financial::Data::Polarity::TaggedSymbol
               )
             end
             attr_accessor :polarity
@@ -506,24 +573,19 @@ module Lithic
             # Stage at which the financial event occurred
             sig do
               returns(
-                Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
               )
             end
             attr_accessor :stage
-
-            # Event type discriminator
-            sig { returns(Symbol) }
-            attr_accessor :type
 
             # Details specific to financial events
             sig do
               params(
                 amount: Integer,
                 polarity:
-                  Lithic::DisputeV2::Event::Data::Financial::Polarity::OrSymbol,
+                  Lithic::DisputeV2::Event::Financial::Data::Polarity::OrSymbol,
                 stage:
-                  Lithic::DisputeV2::Event::Data::Financial::Stage::OrSymbol,
-                type: Symbol
+                  Lithic::DisputeV2::Event::Financial::Data::Stage::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -532,9 +594,7 @@ module Lithic
               # Direction of funds flow
               polarity:,
               # Stage at which the financial event occurred
-              stage:,
-              # Event type discriminator
-              type: :FINANCIAL
+              stage:
             )
             end
 
@@ -543,10 +603,9 @@ module Lithic
                 {
                   amount: Integer,
                   polarity:
-                    Lithic::DisputeV2::Event::Data::Financial::Polarity::TaggedSymbol,
+                    Lithic::DisputeV2::Event::Financial::Data::Polarity::TaggedSymbol,
                   stage:
-                    Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol,
-                  type: Symbol
+                    Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                 }
               )
             end
@@ -561,7 +620,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::DisputeV2::Event::Data::Financial::Polarity
+                    Lithic::DisputeV2::Event::Financial::Data::Polarity
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -569,18 +628,18 @@ module Lithic
               CREDIT =
                 T.let(
                   :CREDIT,
-                  Lithic::DisputeV2::Event::Data::Financial::Polarity::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Polarity::TaggedSymbol
                 )
               DEBIT =
                 T.let(
                   :DEBIT,
-                  Lithic::DisputeV2::Event::Data::Financial::Polarity::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Polarity::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::DisputeV2::Event::Data::Financial::Polarity::TaggedSymbol
+                    Lithic::DisputeV2::Event::Financial::Data::Polarity::TaggedSymbol
                   ]
                 )
               end
@@ -596,7 +655,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::DisputeV2::Event::Data::Financial::Stage
+                    Lithic::DisputeV2::Event::Financial::Data::Stage
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -604,33 +663,33 @@ module Lithic
               CHARGEBACK =
                 T.let(
                   :CHARGEBACK,
-                  Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                 )
               REPRESENTMENT =
                 T.let(
                   :REPRESENTMENT,
-                  Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                 )
               PREARBITRATION =
                 T.let(
                   :PREARBITRATION,
-                  Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                 )
               ARBITRATION =
                 T.let(
                   :ARBITRATION,
-                  Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                 )
               COLLABORATION =
                 T.let(
                   :COLLABORATION,
-                  Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                  Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::DisputeV2::Event::Data::Financial::Stage::TaggedSymbol
+                    Lithic::DisputeV2::Event::Financial::Data::Stage::TaggedSymbol
                   ]
                 )
               end
@@ -638,12 +697,79 @@ module Lithic
               end
             end
           end
+        end
 
-          class CardholderLiability < Lithic::Internal::Type::BaseModel
+        class CardholderLiability < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::DisputeV2::Event::CardholderLiability,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Unique identifier for the event, in UUID format
+          sig { returns(String) }
+          attr_accessor :token
+
+          # When the event occurred
+          sig { returns(Time) }
+          attr_accessor :created
+
+          # Details specific to cardholder liability events
+          sig { returns(Lithic::DisputeV2::Event::CardholderLiability::Data) }
+          attr_reader :data
+
+          sig do
+            params(
+              data: Lithic::DisputeV2::Event::CardholderLiability::Data::OrHash
+            ).void
+          end
+          attr_writer :data
+
+          # Type of event. Always `CARDHOLDER_LIABILITY`
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # Event tracking a change in cardholder liability
+          sig do
+            params(
+              token: String,
+              created: Time,
+              data: Lithic::DisputeV2::Event::CardholderLiability::Data::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Unique identifier for the event, in UUID format
+            token:,
+            # When the event occurred
+            created:,
+            # Details specific to cardholder liability events
+            data:,
+            # Type of event. Always `CARDHOLDER_LIABILITY`
+            type: :CARDHOLDER_LIABILITY
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                created: Time,
+                data: Lithic::DisputeV2::Event::CardholderLiability::Data,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Data < Lithic::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Lithic::DisputeV2::Event::Data::CardholderLiability,
+                  Lithic::DisputeV2::Event::CardholderLiability::Data,
                   Lithic::Internal::AnyHash
                 )
               end
@@ -651,7 +777,7 @@ module Lithic
             # Action taken regarding cardholder liability
             sig do
               returns(
-                Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol
               )
             end
             attr_accessor :action
@@ -661,21 +787,16 @@ module Lithic
             attr_accessor :amount
 
             # Reason for the action
-            sig { returns(String) }
+            sig { returns(T.nilable(String)) }
             attr_accessor :reason
-
-            # Event type discriminator
-            sig { returns(Symbol) }
-            attr_accessor :type
 
             # Details specific to cardholder liability events
             sig do
               params(
                 action:
-                  Lithic::DisputeV2::Event::Data::CardholderLiability::Action::OrSymbol,
+                  Lithic::DisputeV2::Event::CardholderLiability::Data::Action::OrSymbol,
                 amount: Integer,
-                reason: String,
-                type: Symbol
+                reason: T.nilable(String)
               ).returns(T.attached_class)
             end
             def self.new(
@@ -684,9 +805,7 @@ module Lithic
               # Amount in minor units
               amount:,
               # Reason for the action
-              reason:,
-              # Event type discriminator
-              type: :CARDHOLDER_LIABILITY
+              reason:
             )
             end
 
@@ -694,10 +813,9 @@ module Lithic
               override.returns(
                 {
                   action:
-                    Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol,
+                    Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol,
                   amount: Integer,
-                  reason: String,
-                  type: Symbol
+                  reason: T.nilable(String)
                 }
               )
             end
@@ -712,7 +830,7 @@ module Lithic
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::DisputeV2::Event::Data::CardholderLiability::Action
+                    Lithic::DisputeV2::Event::CardholderLiability::Data::Action
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -720,28 +838,28 @@ module Lithic
               PROVISIONAL_CREDIT_GRANTED =
                 T.let(
                   :PROVISIONAL_CREDIT_GRANTED,
-                  Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol
                 )
               PROVISIONAL_CREDIT_REVERSED =
                 T.let(
                   :PROVISIONAL_CREDIT_REVERSED,
-                  Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol
                 )
               WRITTEN_OFF =
                 T.let(
                   :WRITTEN_OFF,
-                  Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol
                 )
               WRITE_OFF_REVERSED =
                 T.let(
                   :WRITE_OFF_REVERSED,
-                  Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                  Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::DisputeV2::Event::Data::CardholderLiability::Action::TaggedSymbol
+                    Lithic::DisputeV2::Event::CardholderLiability::Data::Action::TaggedSymbol
                   ]
                 )
               end
@@ -749,39 +867,10 @@ module Lithic
               end
             end
           end
-
-          sig do
-            override.returns(T::Array[Lithic::DisputeV2::Event::Data::Variants])
-          end
-          def self.variants
-          end
         end
 
-        # Type of event
-        module Type
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::DisputeV2::Event::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          WORKFLOW =
-            T.let(:WORKFLOW, Lithic::DisputeV2::Event::Type::TaggedSymbol)
-          FINANCIAL =
-            T.let(:FINANCIAL, Lithic::DisputeV2::Event::Type::TaggedSymbol)
-          CARDHOLDER_LIABILITY =
-            T.let(
-              :CARDHOLDER_LIABILITY,
-              Lithic::DisputeV2::Event::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[Lithic::DisputeV2::Event::Type::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
+        sig { override.returns(T::Array[Lithic::DisputeV2::Event::Variants]) }
+        def self.variants
         end
       end
 
