@@ -20,7 +20,7 @@ class Lithic::Test::Resources::BlockchainRecipientsTest < Lithic::Test::Resource
     assert_pattern do
       response => {
         token: String,
-        account_token: String,
+        account_token: String | nil,
         address_tag: String | nil,
         chain: String,
         created: Time,

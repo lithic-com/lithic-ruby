@@ -11,10 +11,11 @@ module Lithic
       required :token, String
 
       # @!attribute account_token
-      #   The financial account the blockchain recipient belongs to
+      #   The financial account the blockchain recipient belongs to, or null when the
+      #   recipient is registered against the program rather than a financial account
       #
-      #   @return [String]
-      required :account_token, String
+      #   @return [String, nil]
+      required :account_token, String, nil?: true
 
       # @!attribute address_tag
       #   An optional tag or memo used by some chains to identify the destination of a
@@ -90,7 +91,7 @@ module Lithic
       #
       #   @param token [String] A globally unique identifier for this blockchain recipient
       #
-      #   @param account_token [String] The financial account the blockchain recipient belongs to
+      #   @param account_token [String, nil] The financial account the blockchain recipient belongs to, or null when the reci
       #
       #   @param address_tag [String, nil] An optional tag or memo used by some chains to identify the destination of a tra
       #
