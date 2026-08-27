@@ -3,7 +3,7 @@ module Lithic
     type blockchain_recipient =
       {
         token: String,
-        account_token: String,
+        account_token: String?,
         address_tag: String?,
         chain: String,
         created: Time,
@@ -20,7 +20,7 @@ module Lithic
     class BlockchainRecipient < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor account_token: String
+      attr_accessor account_token: String?
 
       attr_accessor address_tag: String?
 
@@ -46,7 +46,7 @@ module Lithic
 
       def initialize: (
         token: String,
-        account_token: String,
+        account_token: String?,
         address_tag: String?,
         chain: String,
         created: Time,
@@ -62,7 +62,7 @@ module Lithic
 
       def to_hash: -> {
         token: String,
-        account_token: String,
+        account_token: String?,
         address_tag: String?,
         chain: String,
         created: Time,
