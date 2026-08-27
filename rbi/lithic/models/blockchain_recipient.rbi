@@ -12,8 +12,9 @@ module Lithic
       sig { returns(String) }
       attr_accessor :token
 
-      # The financial account the blockchain recipient belongs to
-      sig { returns(String) }
+      # The financial account the blockchain recipient belongs to, or null when the
+      # recipient is registered against the program rather than a financial account
+      sig { returns(T.nilable(String)) }
       attr_accessor :account_token
 
       # An optional tag or memo used by some chains to identify the destination of a
@@ -67,7 +68,7 @@ module Lithic
       sig do
         params(
           token: String,
-          account_token: String,
+          account_token: T.nilable(String),
           address_tag: T.nilable(String),
           chain: String,
           created: Time,
@@ -85,7 +86,8 @@ module Lithic
       def self.new(
         # A globally unique identifier for this blockchain recipient
         token:,
-        # The financial account the blockchain recipient belongs to
+        # The financial account the blockchain recipient belongs to, or null when the
+        # recipient is registered against the program rather than a financial account
         account_token:,
         # An optional tag or memo used by some chains to identify the destination of a
         # transfer within a shared address
@@ -118,7 +120,7 @@ module Lithic
         override.returns(
           {
             token: String,
-            account_token: String,
+            account_token: T.nilable(String),
             address_tag: T.nilable(String),
             chain: String,
             created: Time,
