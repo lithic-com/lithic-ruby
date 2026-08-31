@@ -489,6 +489,25 @@ module Lithic
       )
       end
 
+      # Reassigns a card to another account. The card must be in an `OPEN` or `PAUSED`
+      # state, and the destination account must be in an `ACTIVE` state.
+      #
+      # Clients must contact their Lithic account manager for access to this endpoint.
+      sig do
+        params(
+          card_token: String,
+          new_account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Card)
+      end
+      def reassign_account(
+        card_token,
+        # Globally unique identifier for the account to associate with the card
+        new_account_token:,
+        request_options: {}
+      )
+      end
+
       # Initiate print and shipment of a duplicate physical card (e.g. card is
       # physically damaged). The PAN, expiry, and CVC2 will remain the same and the
       # original card can continue to be used until the new card is activated. Only

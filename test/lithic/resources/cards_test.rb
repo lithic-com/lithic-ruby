@@ -114,6 +114,18 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     end
   end
 
+  def test_reassign_account_required_params
+    response =
+      @lithic.cards.reassign_account(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        new_account_token: "82d7c408-2bbb-4f63-889a-8a2a2b1601af"
+      )
+
+    assert_pattern do
+      response => Lithic::Card
+    end
+  end
+
   def test_reissue
     response = @lithic.cards.reissue("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

@@ -178,6 +178,8 @@ module Lithic
 
   CardProvisionParams = Lithic::Models::CardProvisionParams
 
+  CardReassignAccountParams = Lithic::Models::CardReassignAccountParams
+
   CardReissuedWebhookEvent = Lithic::Models::CardReissuedWebhookEvent
 
   CardReissueParams = Lithic::Models::CardReissueParams

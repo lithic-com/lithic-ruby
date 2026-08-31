@@ -88,6 +88,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::CardProvisionResponse
 
+      def reassign_account: (
+        String card_token,
+        new_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Card
+
       def reissue: (
         String card_token,
         ?carrier: Lithic::Carrier,
