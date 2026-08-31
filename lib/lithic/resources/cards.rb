@@ -327,6 +327,33 @@ module Lithic
         )
       end
 
+      # Reassigns a card to another account. The card must be in an `OPEN` or `PAUSED`
+      # state, and the destination account must be in an `ACTIVE` state.
+      #
+      # Clients must contact their Lithic account manager for access to this endpoint.
+      #
+      # @overload reassign_account(card_token, new_account_token:, request_options: {})
+      #
+      # @param card_token [String]
+      #
+      # @param new_account_token [String] Globally unique identifier for the account to associate with the card
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardReassignAccountParams
+      def reassign_account(card_token, params)
+        parsed, options = Lithic::CardReassignAccountParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/cards/%1$s/reassign_account", card_token],
+          body: parsed,
+          model: Lithic::Card,
+          options: options
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::CardReissueParams} for more details.
       #
