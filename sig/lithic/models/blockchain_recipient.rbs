@@ -1,0 +1,106 @@
+module Lithic
+  module Models
+    type blockchain_recipient =
+      {
+        token: String,
+        account_token: String,
+        address_tag: String?,
+        chain: String,
+        created: Time,
+        external_id: String?,
+        name: String?,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        program_id: String,
+        state: Lithic::Models::BlockchainRecipient::state,
+        updated: Time,
+        verification_state: Lithic::Models::BlockchainRecipient::verification_state
+      }
+
+    class BlockchainRecipient < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor address_tag: String?
+
+      attr_accessor chain: String
+
+      attr_accessor created: Time
+
+      attr_accessor external_id: String?
+
+      attr_accessor name: String?
+
+      attr_accessor owner: String
+
+      attr_accessor owner_type: Lithic::Models::owner_type
+
+      attr_accessor program_id: String
+
+      attr_accessor state: Lithic::Models::BlockchainRecipient::state
+
+      attr_accessor updated: Time
+
+      attr_accessor verification_state: Lithic::Models::BlockchainRecipient::verification_state
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        address_tag: String?,
+        chain: String,
+        created: Time,
+        external_id: String?,
+        name: String?,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        program_id: String,
+        state: Lithic::Models::BlockchainRecipient::state,
+        updated: Time,
+        verification_state: Lithic::Models::BlockchainRecipient::verification_state
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        account_token: String,
+        address_tag: String?,
+        chain: String,
+        created: Time,
+        external_id: String?,
+        name: String?,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        program_id: String,
+        state: Lithic::Models::BlockchainRecipient::state,
+        updated: Time,
+        verification_state: Lithic::Models::BlockchainRecipient::verification_state
+      }
+
+      type state = :ENABLED | :CLOSED | :PAUSED
+
+      module State
+        extend Lithic::Internal::Type::Enum
+
+        ENABLED: :ENABLED
+        CLOSED: :CLOSED
+        PAUSED: :PAUSED
+
+        def self?.values: -> ::Array[Lithic::Models::BlockchainRecipient::state]
+      end
+
+      type verification_state =
+        :PENDING | :ENABLED | :FAILED_VERIFICATION | :INSUFFICIENT_FUNDS
+
+      module VerificationState
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        ENABLED: :ENABLED
+        FAILED_VERIFICATION: :FAILED_VERIFICATION
+        INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+
+        def self?.values: -> ::Array[Lithic::Models::BlockchainRecipient::verification_state]
+      end
+    end
+  end
+end

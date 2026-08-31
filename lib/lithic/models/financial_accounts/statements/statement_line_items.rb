@@ -272,8 +272,11 @@ module Lithic
               MONTHLY_REVERSAL = :MONTHLY_REVERSAL
               ACCOUNT_TO_ACCOUNT = :ACCOUNT_TO_ACCOUNT
               STABLECOIN_RECEIVED = :STABLECOIN_RECEIVED
+              STABLECOIN_INITIATED = :STABLECOIN_INITIATED
               STABLECOIN_REVIEWED = :STABLECOIN_REVIEWED
+              STABLECOIN_SENT = :STABLECOIN_SENT
               STABLECOIN_SETTLED = :STABLECOIN_SETTLED
+              STABLECOIN_REJECTED = :STABLECOIN_REJECTED
 
               # @!method self.values
               #   @return [Array<Symbol>]

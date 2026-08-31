@@ -181,6 +181,11 @@ module Lithic
                 :FINANCIAL_ACCOUNT,
                 Lithic::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::Scope::TaggedSymbol
               )
+            PROGRAM =
+              T.let(
+                :PROGRAM,
+                Lithic::AuthRules::ACHPaymentUpdateAction::CreateCaseAction::Scope::TaggedSymbol
+              )
 
             sig do
               override.returns(

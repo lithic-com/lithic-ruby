@@ -11,7 +11,7 @@ module Lithic
           T.any(Lithic::TokenizationSimulateParams, Lithic::Internal::AnyHash)
         end
 
-      # The three digit cvv for the card.
+      # The three or four digit CVV for the card. AMEX cards use four digit CVVs.
       sig { returns(String) }
       attr_accessor :cvv
 
@@ -89,7 +89,7 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
-        # The three digit cvv for the card.
+        # The three or four digit CVV for the card. AMEX cards use four digit CVVs.
         cvv:,
         # The expiration date of the card in 'MM/YY' format.
         expiration_date:,

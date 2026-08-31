@@ -2594,6 +2594,11 @@ module Lithic
                     :ACCOUNT,
                     Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
                   )
+                PROGRAM =
+                  T.let(
+                    :PROGRAM,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::CardTransactionUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(
@@ -3001,6 +3006,11 @@ module Lithic
                 FINANCIAL_ACCOUNT =
                   T.let(
                     :FINANCIAL_ACCOUNT,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
+                  )
+                PROGRAM =
+                  T.let(
+                    :PROGRAM,
                     Lithic::Models::AuthRules::V2ListResultsResponse::ACHPaymentUpdateResult::Action::CreateCaseAction::Scope::TaggedSymbol
                   )
 

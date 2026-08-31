@@ -71,6 +71,10 @@ module Lithic
 
   class BalanceUpdatedWebhookEvent = Lithic::Models::BalanceUpdatedWebhookEvent
 
+  class BlockchainRecipient = Lithic::Models::BlockchainRecipient
+
+  class BlockchainRecipientCreateParams = Lithic::Models::BlockchainRecipientCreateParams
+
   class BookTransferCreateParams = Lithic::Models::BookTransferCreateParams
 
   class BookTransferListParams = Lithic::Models::BookTransferListParams

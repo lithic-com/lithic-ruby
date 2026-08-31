@@ -83,6 +83,9 @@ module Lithic
     # @return [Lithic::Resources::ExternalBankAccounts]
     attr_reader :external_bank_accounts
 
+    # @return [Lithic::Resources::BlockchainRecipients]
+    attr_reader :blockchain_recipients
+
     # @return [Lithic::Resources::Payments]
     attr_reader :payments
 
@@ -240,6 +243,7 @@ module Lithic
       @transactions = Lithic::Resources::Transactions.new(client: self)
       @responder_endpoints = Lithic::Resources::ResponderEndpoints.new(client: self)
       @external_bank_accounts = Lithic::Resources::ExternalBankAccounts.new(client: self)
+      @blockchain_recipients = Lithic::Resources::BlockchainRecipients.new(client: self)
       @payments = Lithic::Resources::Payments.new(client: self)
       @three_ds = Lithic::Resources::ThreeDS.new(client: self)
       @reports = Lithic::Resources::Reports.new(client: self)

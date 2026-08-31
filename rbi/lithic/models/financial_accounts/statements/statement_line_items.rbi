@@ -822,14 +822,29 @@ module Lithic
                   :STABLECOIN_RECEIVED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              STABLECOIN_INITIATED =
+                T.let(
+                  :STABLECOIN_INITIATED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               STABLECOIN_REVIEWED =
                 T.let(
                   :STABLECOIN_REVIEWED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              STABLECOIN_SENT =
+                T.let(
+                  :STABLECOIN_SENT,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               STABLECOIN_SETTLED =
                 T.let(
                   :STABLECOIN_SETTLED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              STABLECOIN_REJECTED =
+                T.let(
+                  :STABLECOIN_REJECTED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
 

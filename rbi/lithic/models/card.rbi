@@ -5,7 +5,7 @@ module Lithic
     class Card < Lithic::Models::NonPCICard
       OrHash = T.type_alias { T.any(Lithic::Card, Lithic::Internal::AnyHash) }
 
-      # Three digit cvv printed on the back of the card.
+      # Three or four digit CVV printed on the card. Amex cards use four digit CVVs
       sig { returns(T.nilable(String)) }
       attr_reader :cvv
 
@@ -24,7 +24,7 @@ module Lithic
       # Card details with potentially PCI sensitive information for Enterprise customers
       sig { params(cvv: String, pan: String).returns(T.attached_class) }
       def self.new(
-        # Three digit cvv printed on the back of the card.
+        # Three or four digit CVV printed on the card. Amex cards use four digit CVVs
         cvv: nil,
         # Primary Account Number (PAN) (i.e. the card number). Customers must be PCI
         # compliant to have PAN returned as a field in production. Please contact

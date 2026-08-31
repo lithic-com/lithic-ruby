@@ -61,7 +61,7 @@ module Lithic
       # @!attribute method_attributes
       #   Method-specific attributes
       #
-      #   @return [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes]
+      #   @return [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes, Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes]
       required :method_attributes, union: -> { Lithic::Payment::MethodAttributes }
 
       # @!attribute pending_amount
@@ -106,6 +106,12 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
+      # @!attribute blockchain_recipient_token
+      #   Token of the blockchain recipient the payout is sent to
+      #
+      #   @return [String, nil]
+      optional :blockchain_recipient_token, String, nil?: true
+
       # @!attribute currency
       #   Currency of the transaction in ISO 4217 format
       #
@@ -142,7 +148,7 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String, nil?: true
 
-      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, tags: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
+      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, blockchain_recipient_token: nil, currency: nil, expected_release_date: nil, external_bank_account_token: nil, tags: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
       #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
       #   for more details.
       #
@@ -164,7 +170,7 @@ module Lithic
       #
       #   @param method_ [Symbol, Lithic::Models::Payment::Method] Transfer method
       #
-      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes] Method-specific attributes
+      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes, Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes] Method-specific attributes
       #
       #   @param pending_amount [Integer] Pending amount in cents
       #
@@ -179,6 +185,8 @@ module Lithic
       #   @param status [Symbol, Lithic::Models::Payment::Status] The status of the transaction
       #
       #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
+      #
+      #   @param blockchain_recipient_token [String, nil] Token of the blockchain recipient the payout is sent to
       #
       #   @param currency [String] Currency of the transaction in ISO 4217 format
       #
@@ -327,8 +335,16 @@ module Lithic
         #
         #   - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
         #     release to available balance.
-        #   - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
-        #   - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+        #   - `STABLECOIN_INITIATED` - Stablecoin withdrawal initiated, with the funds
+        #     placed on hold.
+        #   - `STABLECOIN_REVIEWED` - Stablecoin pay-in or withdrawal has completed the
+        #     review process.
+        #   - `STABLECOIN_SENT` - Stablecoin withdrawal accepted for on-chain submission to
+        #     the destination address, and pending confirmation.
+        #   - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance,
+        #     or stablecoin withdrawal confirmed on-chain.
+        #   - `STABLECOIN_REJECTED` - Stablecoin withdrawal failed and the hold placed at
+        #     initiation has been reversed.
         #
         #   @return [Symbol, Lithic::Models::Payment::Event::Type]
         required :type, enum: -> { Lithic::Payment::Event::Type }
@@ -343,7 +359,9 @@ module Lithic
         # @!attribute external_id
         #   Payment event external ID. For ACH transactions, this is the ACH trace number.
         #   For inbound wire transfers, this is the IMAD (Input Message Accountability
-        #   Data).
+        #   Data). For stablecoin payments, this is the on-chain transaction hash of the
+        #   transfer; it is present on events that reflect on-chain activity and null on
+        #   internal lifecycle events.
         #
         #   @return [String, nil]
         optional :external_id, String, nil?: true
@@ -443,8 +461,16 @@ module Lithic
         #
         # - `STABLECOIN_RECEIVED` - Stablecoin pay-in received on-chain and pending
         #   release to available balance.
-        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in has completed the review process.
-        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance.
+        # - `STABLECOIN_INITIATED` - Stablecoin withdrawal initiated, with the funds
+        #   placed on hold.
+        # - `STABLECOIN_REVIEWED` - Stablecoin pay-in or withdrawal has completed the
+        #   review process.
+        # - `STABLECOIN_SENT` - Stablecoin withdrawal accepted for on-chain submission to
+        #   the destination address, and pending confirmation.
+        # - `STABLECOIN_SETTLED` - Stablecoin pay-in funds released to available balance,
+        #   or stablecoin withdrawal confirmed on-chain.
+        # - `STABLECOIN_REJECTED` - Stablecoin withdrawal failed and the hold placed at
+        #   initiation has been reversed.
         #
         # @see Lithic::Models::Payment::Event#type
         module Type
@@ -473,8 +499,11 @@ module Lithic
           WIRE_RETURN_OUTBOUND_SETTLED = :WIRE_RETURN_OUTBOUND_SETTLED
           WIRE_RETURN_OUTBOUND_REJECTED = :WIRE_RETURN_OUTBOUND_REJECTED
           STABLECOIN_RECEIVED = :STABLECOIN_RECEIVED
+          STABLECOIN_INITIATED = :STABLECOIN_INITIATED
           STABLECOIN_REVIEWED = :STABLECOIN_REVIEWED
+          STABLECOIN_SENT = :STABLECOIN_SENT
           STABLECOIN_SETTLED = :STABLECOIN_SETTLED
+          STABLECOIN_REJECTED = :STABLECOIN_REJECTED
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -505,6 +534,7 @@ module Lithic
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
         WIRE = :WIRE
+        STABLECOIN = :STABLECOIN
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -519,6 +549,8 @@ module Lithic
         variant -> { Lithic::Payment::MethodAttributes::ACHMethodAttributes }
 
         variant -> { Lithic::Payment::MethodAttributes::WireMethodAttributes }
+
+        variant -> { Lithic::Payment::MethodAttributes::StablecoinMethodAttributes }
 
         class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
           # @!attribute sec_code
@@ -692,8 +724,32 @@ module Lithic
           end
         end
 
+        class StablecoinMethodAttributes < Lithic::Internal::Type::BaseModel
+          # @!attribute chain
+          #   Blockchain the stablecoin transfer settled on
+          #
+          #   @return [String]
+          required :chain, String
+
+          # @!attribute transaction_hash
+          #   On-chain transaction hash of the transfer. Null until the transfer has settled
+          #   on chain
+          #
+          #   @return [String, nil]
+          optional :transaction_hash, String, nil?: true
+
+          # @!method initialize(chain:, transaction_hash: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes} for more
+          #   details.
+          #
+          #   @param chain [String] Blockchain the stablecoin transfer settled on
+          #
+          #   @param transaction_hash [String, nil] On-chain transaction hash of the transfer. Null until the transfer has settled o
+        end
+
         # @!method self.variants
-        #   @return [Array(Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes)]
+        #   @return [Array(Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes, Lithic::Models::Payment::MethodAttributes::StablecoinMethodAttributes)]
       end
 
       # @see Lithic::Models::Payment#related_account_tokens
@@ -775,6 +831,8 @@ module Lithic
         WIRE_OUTBOUND_PAYMENT = :WIRE_OUTBOUND_PAYMENT
         WIRE_OUTBOUND_ADMIN = :WIRE_OUTBOUND_ADMIN
         WIRE_INBOUND_DRAWDOWN_REQUEST = :WIRE_INBOUND_DRAWDOWN_REQUEST
+        STABLECOIN_INBOUND = :STABLECOIN_INBOUND
+        STABLECOIN_OUTBOUND = :STABLECOIN_OUTBOUND
 
         # @!method self.values
         #   @return [Array<Symbol>]

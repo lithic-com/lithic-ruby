@@ -1,0 +1,18 @@
+module Lithic
+  module Resources
+    class BlockchainRecipients
+      def create: (
+        account_token: String,
+        address: String,
+        chain: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        ?address_tag: String,
+        ?name: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::BlockchainRecipient
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

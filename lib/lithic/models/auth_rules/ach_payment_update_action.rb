@@ -82,6 +82,7 @@ module Lithic
             extend Lithic::Internal::Type::Enum
 
             FINANCIAL_ACCOUNT = :FINANCIAL_ACCOUNT
+            PROGRAM = :PROGRAM
 
             # @!method self.values
             #   @return [Array<Symbol>]

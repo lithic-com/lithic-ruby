@@ -186,6 +186,11 @@ module Lithic
                 :ACCOUNT,
                 Lithic::AuthRules::CardTransactionUpdateAction::CreateCaseAction::Scope::TaggedSymbol
               )
+            PROGRAM =
+              T.let(
+                :PROGRAM,
+                Lithic::AuthRules::CardTransactionUpdateAction::CreateCaseAction::Scope::TaggedSymbol
+              )
 
             sig do
               override.returns(

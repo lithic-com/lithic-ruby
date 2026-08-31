@@ -190,7 +190,7 @@ module Lithic
       #
       # @overload simulate(cvv:, expiration_date:, pan:, tokenization_source:, account_score: nil, device_score: nil, entity: nil, wallet_recommended_decision: nil, request_options: {})
       #
-      # @param cvv [String] The three digit cvv for the card.
+      # @param cvv [String] The three or four digit CVV for the card. AMEX cards use four digit CVVs.
       #
       # @param expiration_date [String] The expiration date of the card in 'MM/YY' format.
       #

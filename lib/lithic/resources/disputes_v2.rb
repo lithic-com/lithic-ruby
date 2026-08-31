@@ -28,13 +28,15 @@ module Lithic
       #
       # Returns a paginated list of disputes.
       #
-      # @overload list(account_token: nil, begin_: nil, card_token: nil, disputed_transaction_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+      # @overload list(account_token: nil, begin_: nil, card_token: nil, claim_token: nil, disputed_transaction_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #
       # @param account_token [String] Filter by account token.
       #
       # @param begin_ [Time] RFC 3339 timestamp for filtering by created date, inclusive.
       #
       # @param card_token [String] Filter by card token.
+      #
+      # @param claim_token [String] Filter by the token of the claim the dispute was filed under. Returns the disput
       #
       # @param disputed_transaction_token [String] Filter by the token of the transaction being disputed. Corresponds with transact
       #

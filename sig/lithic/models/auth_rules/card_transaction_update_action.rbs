@@ -71,13 +71,14 @@ module Lithic
             type: Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::type_
           }
 
-          type scope = :CARD | :ACCOUNT
+          type scope = :CARD | :ACCOUNT | :PROGRAM
 
           module Scope
             extend Lithic::Internal::Type::Enum
 
             CARD: :CARD
             ACCOUNT: :ACCOUNT
+            PROGRAM: :PROGRAM
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::CardTransactionUpdateAction::CreateCaseAction::scope]
           end

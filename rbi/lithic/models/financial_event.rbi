@@ -474,13 +474,25 @@ module Lithic
             :STABLECOIN_RECEIVED,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        STABLECOIN_INITIATED =
+          T.let(
+            :STABLECOIN_INITIATED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
         STABLECOIN_REVIEWED =
           T.let(
             :STABLECOIN_REVIEWED,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        STABLECOIN_SENT =
+          T.let(:STABLECOIN_SENT, Lithic::FinancialEvent::Type::TaggedSymbol)
         STABLECOIN_SETTLED =
           T.let(:STABLECOIN_SETTLED, Lithic::FinancialEvent::Type::TaggedSymbol)
+        STABLECOIN_REJECTED =
+          T.let(
+            :STABLECOIN_REJECTED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(T::Array[Lithic::FinancialEvent::Type::TaggedSymbol])

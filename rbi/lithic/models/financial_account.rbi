@@ -60,7 +60,8 @@ module Lithic
       attr_accessor :account_number
 
       # Provisioned blockchain deposit addresses for this financial account, keyed by
-      # the blockchain network that each address belongs to
+      # the full name of the blockchain network that each address belongs to (e.g.
+      # `ETHEREUM`)
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_accessor :blockchain_addresses
 
@@ -105,7 +106,8 @@ module Lithic
         user_defined_status:,
         account_number: nil,
         # Provisioned blockchain deposit addresses for this financial account, keyed by
-        # the blockchain network that each address belongs to
+        # the full name of the blockchain network that each address belongs to (e.g.
+        # `ETHEREUM`)
         blockchain_addresses: nil,
         routing_number: nil
       )

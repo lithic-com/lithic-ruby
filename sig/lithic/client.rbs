@@ -55,6 +55,8 @@ module Lithic
 
     attr_reader external_bank_accounts: Lithic::Resources::ExternalBankAccounts
 
+    attr_reader blockchain_recipients: Lithic::Resources::BlockchainRecipients
+
     attr_reader payments: Lithic::Resources::Payments
 
     attr_reader three_ds: Lithic::Resources::ThreeDS

@@ -5,6 +5,7 @@ module Lithic
         account_token: String,
         begin_: Time,
         card_token: String,
+        claim_token: String,
         disputed_transaction_token: String,
         end_: Time,
         ending_before: String,
@@ -28,6 +29,10 @@ module Lithic
       attr_reader card_token: String?
 
       def card_token=: (String) -> String
+
+      attr_reader claim_token: String?
+
+      def claim_token=: (String) -> String
 
       attr_reader disputed_transaction_token: String?
 
@@ -53,6 +58,7 @@ module Lithic
         ?account_token: String,
         ?begin_: Time,
         ?card_token: String,
+        ?claim_token: String,
         ?disputed_transaction_token: String,
         ?end_: Time,
         ?ending_before: String,
@@ -65,6 +71,7 @@ module Lithic
         account_token: String,
         begin_: Time,
         card_token: String,
+        claim_token: String,
         disputed_transaction_token: String,
         end_: Time,
         ending_before: String,

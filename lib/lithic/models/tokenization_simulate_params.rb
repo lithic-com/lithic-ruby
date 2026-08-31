@@ -8,7 +8,7 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute cvv
-      #   The three digit cvv for the card.
+      #   The three or four digit CVV for the card. AMEX cards use four digit CVVs.
       #
       #   @return [String]
       required :cvv, String
@@ -63,7 +63,7 @@ module Lithic
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TokenizationSimulateParams} for more details.
       #
-      #   @param cvv [String] The three digit cvv for the card.
+      #   @param cvv [String] The three or four digit CVV for the card. AMEX cards use four digit CVVs.
       #
       #   @param expiration_date [String] The expiration date of the card in 'MM/YY' format.
       #

@@ -92,7 +92,7 @@ module Lithic
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        # @param entity_token [String] Only return cases associated with the provided entity.
+        # @param entity_token [String] Only return cases associated with the provided entity. Accepts a card, account,
         #
         # @param page_size [Integer] Page size (for pagination).
         #

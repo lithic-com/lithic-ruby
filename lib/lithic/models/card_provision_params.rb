@@ -22,17 +22,19 @@ module Lithic
       optional :certificate, String
 
       # @!attribute client_device_id
-      #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
-      #   card is on the Visa network. Stable device identification set by the wallet
-      #   provider.
+      #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY`. Stable
+      #   device identification set by the wallet provider. Required for both wallets
+      #   regardless of network, though the value is only used for cards on the Visa
+      #   network and is ignored on Amex and Mastercard.
       #
       #   @return [String, nil]
       optional :client_device_id, String
 
       # @!attribute client_wallet_account_id
-      #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
-      #   card is on the Visa network. Consumer ID that identifies the wallet account
-      #   holder entity.
+      #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY`. Consumer
+      #   ID that identifies the wallet account holder entity. Required for both wallets
+      #   regardless of network, though the value is only used for cards on the Visa
+      #   network and is ignored on Amex and Mastercard.
       #
       #   @return [String, nil]
       optional :client_wallet_account_id, String
@@ -67,9 +69,9 @@ module Lithic
       #
       #   @param certificate [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
       #
-      #   @param client_device_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the car
+      #   @param client_device_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY`. Stable dev
       #
-      #   @param client_wallet_account_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the car
+      #   @param client_wallet_account_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY`. Consumer I
       #
       #   @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet] Name of digital wallet provider.
       #

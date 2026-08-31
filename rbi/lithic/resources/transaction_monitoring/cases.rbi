@@ -120,7 +120,9 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
-          # Only return cases associated with the provided entity.
+          # Only return cases associated with the provided entity. Accepts a card, account,
+          # or financial account token. Cases with a `PROGRAM` entity have no entity token
+          # and are never returned by this filter.
           entity_token: nil,
           # Page size (for pagination).
           page_size: nil,
