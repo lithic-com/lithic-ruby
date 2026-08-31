@@ -1,0 +1,28 @@
+module Lithic
+  module Models
+    type card_reassign_account_params =
+      { card_token: String, new_account_token: String }
+      & Lithic::Internal::Type::request_parameters
+
+    class CardReassignAccountParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
+
+      attr_accessor new_account_token: String
+
+      def initialize: (
+        card_token: String,
+        new_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        card_token: String,
+        new_account_token: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end
