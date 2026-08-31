@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.20.0 (2026-08-31)
+
+Full Changelog: [v0.19.0...v0.20.0](https://github.com/lithic-com/lithic-ruby/compare/v0.19.0...v0.20.0)
+
+### Features
+
+* **api:** add blockchain_addresses field to FinancialAccount model ([c46e82c](https://github.com/lithic-com/lithic-ruby/commit/c46e82cc5bf4560c31adc1ebd6e991b55a1c3f2d))
+* **api:** add blockchain_recipients resource ([437d522](https://github.com/lithic-com/lithic-ruby/commit/437d5226c1c6b1dfd8faaa70787e8b2ea533f14a))
+* **api:** add claim_token field/param and WRITE_OFF_REVERSED to disputes v2 ([d32fe12](https://github.com/lithic-com/lithic-ruby/commit/d32fe12d9edaa339a12b61333e542f24c67f3c2e))
+* **api:** add limit_cash_amount and limit_cash_count to velocity limit params ([4e4dfb7](https://github.com/lithic-com/lithic-ruby/commit/4e4dfb78069500939027ed67d445d63160cd9e1c))
+* **api:** add PROGRAM scope to auth rules, FINANCIAL_ACCOUNT/PROGRAM to case_entity ([1520693](https://github.com/lithic-com/lithic-ruby/commit/15206930f871b13afd3852083c6bf778a83e6eb9))
+* **api:** add reassign_account method to cards ([2f6bdfa](https://github.com/lithic-com/lithic-ruby/commit/2f6bdfaf9f1c6c9128e765e10b495252ca9711ce))
+* **api:** add STABLECOIN enum value to payment type ([5151e5d](https://github.com/lithic-com/lithic-ruby/commit/5151e5d6276054b59f41d32af07efae6badabcbb))
+* **api:** add stablecoin event types to payment/financial_event/statement_line_items ([2f1fbca](https://github.com/lithic-com/lithic-ruby/commit/2f1fbca332e111e3624d834a774db3f7d979f4a4))
+* **api:** add STABLECOIN method, make method_attributes nullable in Payment ([6ecbe70](https://github.com/lithic-com/lithic-ruby/commit/6ecbe702c2e3d1cd3e5623cecf46e4bc02fb3b41))
+* **api:** add stablecoin payment method type to payments ([80e026a](https://github.com/lithic-com/lithic-ruby/commit/80e026ae4b67579db63140dcaa70c44409b47b83))
+* **api:** add stablecoin_inbound/stablecoin_outbound to payment type enum ([087861b](https://github.com/lithic-com/lithic-ruby/commit/087861b820756e52b92ff69b5d7929109e27ba59))
+* Make blockchain recipient account_token nullable ([ce96330](https://github.com/lithic-com/lithic-ruby/commit/ce96330d08b6f3b9bbc4ee1011dcc7080f839a38))
+* Remove stablecoin transfer type ([41e80f8](https://github.com/lithic-com/lithic-ruby/commit/41e80f87c3b3a3167f97c4657acd71cf28bc3074))
+
+
+### Bug Fixes
+
+* **types:** rename event data variants, remove type discriminator in dispute_v2 ([aeedd0a](https://github.com/lithic-com/lithic-ruby/commit/aeedd0ab75d527323dc8a748af1ea86a95f52ac5))
+
+
+### Chores
+
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([0fbeb86](https://github.com/lithic-com/lithic-ruby/commit/0fbeb86633809668c1bd304a40b2f23860b232be))
+
+
+### Documentation
+
+* **api:** update client_device_id and client_wallet_account_id descriptions in card provision ([e5cd94f](https://github.com/lithic-com/lithic-ruby/commit/e5cd94f58dbafc40ab1f2e25182b4b559d2ed258))
+* **api:** update cvv field documentation in Card and tokenization ([b520213](https://github.com/lithic-com/lithic-ruby/commit/b520213ceec3af853f96b5ca9e8ef32a34169a0a))
+
 ## 0.19.0 (2026-07-30)
 
 Full Changelog: [v0.18.1...v0.19.0](https://github.com/lithic-com/lithic-ruby/compare/v0.18.1...v0.19.0)
