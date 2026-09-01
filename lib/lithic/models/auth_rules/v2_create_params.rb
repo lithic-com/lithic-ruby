@@ -49,6 +49,8 @@ module Lithic
             #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #     ACH_PAYMENT_UPDATE event stream.
+            #   - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #     are read-only; `OTHER` cannot be used when creating a rule.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::Type]
             required :type, enum: -> { Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type }
@@ -143,6 +145,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             #
             # @see Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule#type
             module Type
@@ -153,6 +157,7 @@ module Lithic
               MERCHANT_LOCK = :MERCHANT_LOCK
               CONDITIONAL_ACTION = :CONDITIONAL_ACTION
               TYPESCRIPT_CODE = :TYPESCRIPT_CODE
+              OTHER = :OTHER
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -188,6 +193,8 @@ module Lithic
             #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #     ACH_PAYMENT_UPDATE event stream.
+            #   - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #     are read-only; `OTHER` cannot be used when creating a rule.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::Type]
             required :type, enum: -> { Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type }
@@ -268,6 +275,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             #
             # @see Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule#type
             module Type
@@ -278,6 +287,7 @@ module Lithic
               MERCHANT_LOCK = :MERCHANT_LOCK
               CONDITIONAL_ACTION = :CONDITIONAL_ACTION
               TYPESCRIPT_CODE = :TYPESCRIPT_CODE
+              OTHER = :OTHER
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -313,6 +323,8 @@ module Lithic
             #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #     ACH_PAYMENT_UPDATE event stream.
+            #   - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #     are read-only; `OTHER` cannot be used when creating a rule.
             #
             #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type]
             required :type, enum: -> { Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type }
@@ -417,6 +429,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             #
             # @see Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule#type
             module Type
@@ -427,6 +441,7 @@ module Lithic
               MERCHANT_LOCK = :MERCHANT_LOCK
               CONDITIONAL_ACTION = :CONDITIONAL_ACTION
               TYPESCRIPT_CODE = :TYPESCRIPT_CODE
+              OTHER = :OTHER
 
               # @!method self.values
               #   @return [Array<Symbol>]
