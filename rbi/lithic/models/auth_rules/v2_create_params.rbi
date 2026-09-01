@@ -109,6 +109,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             sig do
               returns(
                 Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::OrSymbol
@@ -187,6 +189,8 @@ module Lithic
               # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
               #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
               #   ACH_PAYMENT_UPDATE event stream.
+              # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+              #   are read-only; `OTHER` cannot be used when creating a rule.
               type:,
               # Account tokens to which the Auth Rule applies.
               account_tokens: nil,
@@ -275,6 +279,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -310,6 +316,11 @@ module Lithic
               TYPESCRIPT_CODE =
                 T.let(
                   :TYPESCRIPT_CODE,
+                  Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::TaggedSymbol
+                )
+              OTHER =
+                T.let(
+                  :OTHER,
                   Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::TaggedSymbol
                 )
 
@@ -373,6 +384,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             sig do
               returns(
                 Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::OrSymbol
@@ -438,6 +451,8 @@ module Lithic
               # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
               #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
               #   ACH_PAYMENT_UPDATE event stream.
+              # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+              #   are read-only; `OTHER` cannot be used when creating a rule.
               type:,
               # The event stream during which the rule will be evaluated.
               event_stream: nil,
@@ -521,6 +536,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -556,6 +573,11 @@ module Lithic
               TYPESCRIPT_CODE =
                 T.let(
                   :TYPESCRIPT_CODE,
+                  Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::TaggedSymbol
+                )
+              OTHER =
+                T.let(
+                  :OTHER,
                   Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::TaggedSymbol
                 )
 
@@ -619,6 +641,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             sig do
               returns(
                 Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type::OrSymbol
@@ -710,6 +734,8 @@ module Lithic
               # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
               #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
               #   ACH_PAYMENT_UPDATE event stream.
+              # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+              #   are read-only; `OTHER` cannot be used when creating a rule.
               type:,
               # The event stream during which the rule will be evaluated.
               event_stream: nil,
@@ -802,6 +828,8 @@ module Lithic
             # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
             #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
             #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
             module Type
               extend Lithic::Internal::Type::Enum
 
@@ -837,6 +865,11 @@ module Lithic
               TYPESCRIPT_CODE =
                 T.let(
                   :TYPESCRIPT_CODE,
+                  Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type::TaggedSymbol
+                )
+              OTHER =
+                T.let(
+                  :OTHER,
                   Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type::TaggedSymbol
                 )
 

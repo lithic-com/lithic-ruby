@@ -103,6 +103,7 @@ module Lithic
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
               | :TYPESCRIPT_CODE
+              | :OTHER
 
             module Type
               extend Lithic::Internal::Type::Enum
@@ -112,6 +113,7 @@ module Lithic
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
               TYPESCRIPT_CODE: :TYPESCRIPT_CODE
+              OTHER: :OTHER
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::type_]
             end
@@ -182,6 +184,7 @@ module Lithic
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
               | :TYPESCRIPT_CODE
+              | :OTHER
 
             module Type
               extend Lithic::Internal::Type::Enum
@@ -191,6 +194,7 @@ module Lithic
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
               TYPESCRIPT_CODE: :TYPESCRIPT_CODE
+              OTHER: :OTHER
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::type_]
             end
@@ -284,6 +288,7 @@ module Lithic
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
               | :TYPESCRIPT_CODE
+              | :OTHER
 
             module Type
               extend Lithic::Internal::Type::Enum
@@ -293,6 +298,7 @@ module Lithic
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
               TYPESCRIPT_CODE: :TYPESCRIPT_CODE
+              OTHER: :OTHER
 
               def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule::type_]
             end
