@@ -86,6 +86,8 @@ module Lithic
         #   - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #     ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
         #     ACH_PAYMENT_UPDATE event stream.
+        #   - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+        #     are read-only; `OTHER` cannot be used when creating a rule.
         #
         #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::Type]
         required :type, enum: -> { Lithic::AuthRules::AuthRule::Type }
@@ -339,6 +341,8 @@ module Lithic
         # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
         #   ACH_PAYMENT_UPDATE event stream.
+        # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+        #   are read-only; `OTHER` cannot be used when creating a rule.
         #
         # @see Lithic::Models::AuthRules::AuthRule#type
         module Type
@@ -349,6 +353,7 @@ module Lithic
           MERCHANT_LOCK = :MERCHANT_LOCK
           CONDITIONAL_ACTION = :CONDITIONAL_ACTION
           TYPESCRIPT_CODE = :TYPESCRIPT_CODE
+          OTHER = :OTHER
 
           # @!method self.values
           #   @return [Array<Symbol>]
