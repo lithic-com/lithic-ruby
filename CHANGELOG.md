@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.21.0 (2026-09-03)
+
+Full Changelog: [v0.20.0...v0.21.0](https://github.com/lithic-com/lithic-ruby/compare/v0.20.0...v0.21.0)
+
+### Features
+
+* **api:** add EXTERNAL_STABLECOIN category and events to payment resources ([518aebb](https://github.com/lithic-com/lithic-ruby/commit/518aebb0cf94cbc0b1ca1ef85a94a71c5bf1983e))
+* **api:** add OTHER enum value to auth_rules type field ([1bb4cc8](https://github.com/lithic-com/lithic-ruby/commit/1bb4cc80ab6e025ebf0d6fcdd88c5b62cbb602a0))
+
 ## 0.20.0 (2026-08-31)
 
 Full Changelog: [v0.19.0...v0.20.0](https://github.com/lithic-com/lithic-ruby/compare/v0.19.0...v0.20.0)
