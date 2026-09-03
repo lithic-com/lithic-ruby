@@ -341,6 +341,31 @@ module Lithic
             :EXTERNAL_RTP_SETTLED,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        EXTERNAL_STABLECOIN_CANCELED =
+          T.let(
+            :EXTERNAL_STABLECOIN_CANCELED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_STABLECOIN_INITIATED =
+          T.let(
+            :EXTERNAL_STABLECOIN_INITIATED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_STABLECOIN_RELEASED =
+          T.let(
+            :EXTERNAL_STABLECOIN_RELEASED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_STABLECOIN_REVERSED =
+          T.let(
+            :EXTERNAL_STABLECOIN_REVERSED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_STABLECOIN_SETTLED =
+          T.let(
+            :EXTERNAL_STABLECOIN_SETTLED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
         EXTERNAL_TRANSFER_CANCELED =
           T.let(
             :EXTERNAL_TRANSFER_CANCELED,

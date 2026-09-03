@@ -207,6 +207,11 @@ module Lithic
           )
         EXTERNAL_RTP =
           T.let(:EXTERNAL_RTP, Lithic::ExternalPayment::Category::TaggedSymbol)
+        EXTERNAL_STABLECOIN =
+          T.let(
+            :EXTERNAL_STABLECOIN,
+            Lithic::ExternalPayment::Category::TaggedSymbol
+          )
         EXTERNAL_TRANSFER =
           T.let(
             :EXTERNAL_TRANSFER,
@@ -520,6 +525,31 @@ module Lithic
           EXTERNAL_RTP_RELEASED =
             T.let(
               :EXTERNAL_RTP_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_STABLECOIN_INITIATED =
+            T.let(
+              :EXTERNAL_STABLECOIN_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_STABLECOIN_CANCELED =
+            T.let(
+              :EXTERNAL_STABLECOIN_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_STABLECOIN_SETTLED =
+            T.let(
+              :EXTERNAL_STABLECOIN_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_STABLECOIN_REVERSED =
+            T.let(
+              :EXTERNAL_STABLECOIN_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_STABLECOIN_RELEASED =
+            T.let(
+              :EXTERNAL_STABLECOIN_RELEASED,
               Lithic::ExternalPayment::Event::Type::TaggedSymbol
             )
 
