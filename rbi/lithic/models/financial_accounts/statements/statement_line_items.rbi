@@ -293,6 +293,11 @@ module Lithic
                   :EXTERNAL_RTP,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              EXTERNAL_STABLECOIN =
+                T.let(
+                  :EXTERNAL_STABLECOIN,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
               EXTERNAL_TRANSFER =
                 T.let(
                   :EXTERNAL_TRANSFER,
@@ -630,6 +635,31 @@ module Lithic
               EXTERNAL_RTP_SETTLED =
                 T.let(
                   :EXTERNAL_RTP_SETTLED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_STABLECOIN_CANCELED =
+                T.let(
+                  :EXTERNAL_STABLECOIN_CANCELED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_STABLECOIN_INITIATED =
+                T.let(
+                  :EXTERNAL_STABLECOIN_INITIATED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_STABLECOIN_RELEASED =
+                T.let(
+                  :EXTERNAL_STABLECOIN_RELEASED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_STABLECOIN_REVERSED =
+                T.let(
+                  :EXTERNAL_STABLECOIN_REVERSED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_STABLECOIN_SETTLED =
+                T.let(
+                  :EXTERNAL_STABLECOIN_SETTLED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
               EXTERNAL_TRANSFER_CANCELED =

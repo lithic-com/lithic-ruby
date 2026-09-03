@@ -85,6 +85,8 @@ module Lithic
         # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
         #   ACH_PAYMENT_UPDATE event stream.
+        # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+        #   are read-only; `OTHER` cannot be used when creating a rule.
         sig { returns(Lithic::AuthRules::AuthRule::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -167,6 +169,8 @@ module Lithic
           # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
           #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
           #   ACH_PAYMENT_UPDATE event stream.
+          # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+          #   are read-only; `OTHER` cannot be used when creating a rule.
           type:,
           # Account tokens to which the Auth Rule does not apply.
           excluded_account_tokens: nil,
@@ -517,6 +521,8 @@ module Lithic
         # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
         #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
         #   ACH_PAYMENT_UPDATE event stream.
+        # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+        #   are read-only; `OTHER` cannot be used when creating a rule.
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -549,6 +555,7 @@ module Lithic
               :TYPESCRIPT_CODE,
               Lithic::AuthRules::AuthRule::Type::TaggedSymbol
             )
+          OTHER = T.let(:OTHER, Lithic::AuthRules::AuthRule::Type::TaggedSymbol)
 
           sig do
             override.returns(
