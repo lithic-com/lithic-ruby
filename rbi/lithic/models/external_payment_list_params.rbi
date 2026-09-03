@@ -200,6 +200,11 @@ module Lithic
             :EXTERNAL_RTP,
             Lithic::ExternalPaymentListParams::Category::TaggedSymbol
           )
+        EXTERNAL_STABLECOIN =
+          T.let(
+            :EXTERNAL_STABLECOIN,
+            Lithic::ExternalPaymentListParams::Category::TaggedSymbol
+          )
         EXTERNAL_TRANSFER =
           T.let(
             :EXTERNAL_TRANSFER,

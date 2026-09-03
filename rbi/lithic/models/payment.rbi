@@ -267,6 +267,8 @@ module Lithic
           T.let(:EXTERNAL_FEDNOW, Lithic::Payment::Category::TaggedSymbol)
         EXTERNAL_RTP =
           T.let(:EXTERNAL_RTP, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_STABLECOIN =
+          T.let(:EXTERNAL_STABLECOIN, Lithic::Payment::Category::TaggedSymbol)
         EXTERNAL_TRANSFER =
           T.let(:EXTERNAL_TRANSFER, Lithic::Payment::Category::TaggedSymbol)
         EXTERNAL_WIRE =
