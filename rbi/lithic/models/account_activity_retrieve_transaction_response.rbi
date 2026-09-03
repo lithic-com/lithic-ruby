@@ -256,6 +256,11 @@ module Lithic
               :EXTERNAL_RTP,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal::Category::TaggedSymbol
             )
+          EXTERNAL_STABLECOIN =
+            T.let(
+              :EXTERNAL_STABLECOIN,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal::Category::TaggedSymbol
+            )
           EXTERNAL_TRANSFER =
             T.let(
               :EXTERNAL_TRANSFER,
