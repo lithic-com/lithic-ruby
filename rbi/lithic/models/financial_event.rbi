@@ -426,6 +426,13 @@ module Lithic
             :FINANCIAL_CREDIT_AUTHORIZATION,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        INSTALLMENT_FEE =
+          T.let(:INSTALLMENT_FEE, Lithic::FinancialEvent::Type::TaggedSymbol)
+        INSTALLMENT_FEE_REVERSAL =
+          T.let(
+            :INSTALLMENT_FEE_REVERSAL,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
         INTEREST = T.let(:INTEREST, Lithic::FinancialEvent::Type::TaggedSymbol)
         INTEREST_REVERSAL =
           T.let(:INTEREST_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
