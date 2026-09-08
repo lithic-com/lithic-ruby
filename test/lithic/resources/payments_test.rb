@@ -100,6 +100,20 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
     end
   end
 
+  def test_create_stablecoin_required_params
+    response =
+      @lithic.payments.create_stablecoin(
+        amount: 1588,
+        blockchain_recipient_token: "1e3fdb71-4b52-4a30-a7a9-52c85e26a1d9",
+        financial_account_token: "35b0c466-a3e3-519a-9549-ead6a6a2277d",
+        type: :PAYMENT
+      )
+
+    assert_pattern do
+      response => Lithic::Models::PaymentCreateStablecoinResponse
+    end
+  end
+
   def test_retry_
     response = @lithic.payments.retry_("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

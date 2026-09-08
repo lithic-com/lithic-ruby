@@ -100,12 +100,13 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type category = :ACH
+      type category = :ACH | :STABLECOIN
 
       module Category
         extend Lithic::Internal::Type::Enum
 
         ACH: :ACH
+        STABLECOIN: :STABLECOIN
 
         def self?.values: -> ::Array[Lithic::Models::PaymentListParams::category]
       end

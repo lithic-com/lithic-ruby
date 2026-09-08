@@ -103,6 +103,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
+        STABLECOIN = :STABLECOIN
 
         # @!method self.values
         #   @return [Array<Symbol>]

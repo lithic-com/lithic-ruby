@@ -35,6 +35,17 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::CursorPage[Lithic::Payment]
 
+      def create_stablecoin: (
+        amount: Integer,
+        blockchain_recipient_token: String,
+        financial_account_token: String,
+        type: Lithic::Models::PaymentCreateStablecoinParams::type_,
+        ?token: String,
+        ?hold: Lithic::PaymentCreateStablecoinParams::Hold,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentCreateStablecoinResponse
+
       def retry_: (
         String payment_token,
         ?request_options: Lithic::request_opts
