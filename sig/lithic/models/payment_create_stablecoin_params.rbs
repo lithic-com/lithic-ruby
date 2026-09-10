@@ -1,0 +1,84 @@
+module Lithic
+  module Models
+    type payment_create_stablecoin_params =
+      {
+        amount: Integer,
+        blockchain_recipient_token: String,
+        financial_account_token: String,
+        type: Lithic::Models::PaymentCreateStablecoinParams::type_,
+        token: String,
+        hold: Lithic::PaymentCreateStablecoinParams::Hold,
+        memo: String
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class PaymentCreateStablecoinParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor blockchain_recipient_token: String
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor type: Lithic::Models::PaymentCreateStablecoinParams::type_
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader hold: Lithic::PaymentCreateStablecoinParams::Hold?
+
+      def hold=: (
+        Lithic::PaymentCreateStablecoinParams::Hold
+      ) -> Lithic::PaymentCreateStablecoinParams::Hold
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        blockchain_recipient_token: String,
+        financial_account_token: String,
+        type: Lithic::Models::PaymentCreateStablecoinParams::type_,
+        ?token: String,
+        ?hold: Lithic::PaymentCreateStablecoinParams::Hold,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        amount: Integer,
+        blockchain_recipient_token: String,
+        financial_account_token: String,
+        type: Lithic::Models::PaymentCreateStablecoinParams::type_,
+        token: String,
+        hold: Lithic::PaymentCreateStablecoinParams::Hold,
+        memo: String,
+        request_options: Lithic::RequestOptions
+      }
+
+      type type_ = :PAYMENT
+
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        PAYMENT: :PAYMENT
+
+        def self?.values: -> ::Array[Lithic::Models::PaymentCreateStablecoinParams::type_]
+      end
+
+      type hold = { token: String }
+
+      class Hold < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        def initialize: (token: String) -> void
+
+        def to_hash: -> { token: String }
+      end
+    end
+  end
+end
