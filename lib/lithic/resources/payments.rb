@@ -6,7 +6,14 @@ module Lithic
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::PaymentCreateParams} for more details.
       #
-      # Initiates a payment between a financial account and an external bank account.
+      # Initiates an ACH payment between a financial account and an external bank
+      # account.
+      #
+      # This endpoint originates on the ACH rail only. To send a stablecoin payout, use
+      # the
+      # [Create stablecoin payment](https://docs.lithic.com/reference/createstablecoinpayment)
+      # endpoint. Payments on every rail are read back through
+      # [List payments](https://docs.lithic.com/reference/searchpayments).
       #
       # @overload create(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, hold: nil, memo: nil, user_defined_id: nil, request_options: {})
       #
@@ -108,6 +115,59 @@ module Lithic
           query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Payment,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::PaymentCreateStablecoinParams} for more details.
+      #
+      # Initiates a stablecoin payout from a financial account to a registered
+      # blockchain recipient.
+      #
+      # The recipient must have been registered with
+      # [Create blockchain recipient](https://docs.lithic.com/reference/createblockchainrecipient)
+      # and have completed address screening — only a recipient in the `ENABLED`
+      # verification state can receive a payout. The destination address and chain come
+      # from the recipient, so they are not supplied here.
+      #
+      # Only payouts are initiated through this endpoint. Stablecoin pay-ins are
+      # credited from on-chain deposits to a financial account's deposit address and are
+      # not created through the API. Funds are placed on hold when the payout is
+      # initiated, and a payout that fails on chain reverses that hold. A payout cannot
+      # be cancelled once it has been submitted on chain.
+      #
+      # This endpoint is only available to stablecoin-enabled programs. Contact your
+      # customer success manager to learn more.
+      #
+      # @overload create_stablecoin(amount:, blockchain_recipient_token:, financial_account_token:, type:, token: nil, hold: nil, memo: nil, request_options: {})
+      #
+      # @param amount [Integer] Payout amount in cents
+      #
+      # @param blockchain_recipient_token [String] Token of the blockchain recipient to send the payout to. The recipient must be i
+      #
+      # @param financial_account_token [String] Token of the financial account the payout is funded from
+      #
+      # @param type [Symbol, Lithic::Models::PaymentCreateStablecoinParams::Type] Direction of the payment. Stablecoin supports payouts only
+      #
+      # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #
+      # @param hold [Lithic::Models::PaymentCreateStablecoinParams::Hold] Optional hold to settle when this payout is initiated
+      #
+      # @param memo [String] Memo recorded on the payout. Defaults to `Stablecoin payout on <chain>` when omi
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::PaymentCreateStablecoinResponse]
+      #
+      # @see Lithic::Models::PaymentCreateStablecoinParams
+      def create_stablecoin(params)
+        parsed, options = Lithic::PaymentCreateStablecoinParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/payments/stablecoin",
+          body: parsed,
+          model: Lithic::Models::PaymentCreateStablecoinResponse,
           options: options
         )
       end
