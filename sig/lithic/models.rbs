@@ -425,6 +425,8 @@ module Lithic
 
   class PaymentCreateParams = Lithic::Models::PaymentCreateParams
 
+  class PaymentCreateStablecoinParams = Lithic::Models::PaymentCreateStablecoinParams
+
   class PaymentListParams = Lithic::Models::PaymentListParams
 
   class PaymentRetrieveParams = Lithic::Models::PaymentRetrieveParams

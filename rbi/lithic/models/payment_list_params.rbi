@@ -158,6 +158,8 @@ module Lithic
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACH = T.let(:ACH, Lithic::PaymentListParams::Category::TaggedSymbol)
+        STABLECOIN =
+          T.let(:STABLECOIN, Lithic::PaymentListParams::Category::TaggedSymbol)
 
         sig do
           override.returns(
