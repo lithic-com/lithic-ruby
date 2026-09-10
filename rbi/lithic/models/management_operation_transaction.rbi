@@ -592,6 +592,16 @@ module Lithic
               :INTEREST_REVERSAL,
               Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
             )
+          INSTALLMENT_FEE =
+            T.let(
+              :INSTALLMENT_FEE,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          INSTALLMENT_FEE_REVERSAL =
+            T.let(
+              :INSTALLMENT_FEE_REVERSAL,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
           LATE_PAYMENT =
             T.let(
               :LATE_PAYMENT,
