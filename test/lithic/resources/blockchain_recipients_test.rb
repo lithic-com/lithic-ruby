@@ -35,4 +35,30 @@ class Lithic::Test::Resources::BlockchainRecipientsTest < Lithic::Test::Resource
       }
     end
   end
+
+  def test_retrieve
+    response = @lithic.blockchain_recipients.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::BlockchainRecipient
+    end
+
+    assert_pattern do
+      response => {
+        token: String,
+        account_token: String | nil,
+        address_tag: String | nil,
+        chain: String,
+        created: Time,
+        external_id: String | nil,
+        name: String | nil,
+        owner: String,
+        owner_type: Lithic::OwnerType,
+        program_id: String,
+        state: Lithic::BlockchainRecipient::State,
+        updated: Time,
+        verification_state: Lithic::BlockchainRecipient::VerificationState
+      }
+    end
+  end
 end

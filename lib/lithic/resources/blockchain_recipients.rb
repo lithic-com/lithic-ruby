@@ -46,6 +46,29 @@ module Lithic
         )
       end
 
+      # Get a blockchain recipient by token
+      #
+      # Use this to poll the `verification_state` after registering an address: a
+      # recipient cannot receive a payout until screening completes and moves it out of
+      # `PENDING`
+      #
+      # @overload retrieve(blockchain_recipient_token, request_options: {})
+      #
+      # @param blockchain_recipient_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::BlockchainRecipient]
+      #
+      # @see Lithic::Models::BlockchainRecipientRetrieveParams
+      def retrieve(blockchain_recipient_token, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/blockchain_recipients/%1$s", blockchain_recipient_token],
+          model: Lithic::BlockchainRecipient,
+          options: params[:request_options]
+        )
+      end
+
       # @api private
       #
       # @param client [Lithic::Client]
