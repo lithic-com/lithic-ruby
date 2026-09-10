@@ -75,6 +75,8 @@ module Lithic
 
   class BlockchainRecipientCreateParams = Lithic::Models::BlockchainRecipientCreateParams
 
+  class BlockchainRecipientRetrieveParams = Lithic::Models::BlockchainRecipientRetrieveParams
+
   class BookTransferCreateParams = Lithic::Models::BookTransferCreateParams
 
   class BookTransferListParams = Lithic::Models::BookTransferListParams

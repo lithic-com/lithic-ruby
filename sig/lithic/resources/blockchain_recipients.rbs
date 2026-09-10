@@ -12,6 +12,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::BlockchainRecipient
 
+      def retrieve: (
+        String blockchain_recipient_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::BlockchainRecipient
+
       def initialize: (client: Lithic::Client) -> void
     end
   end
