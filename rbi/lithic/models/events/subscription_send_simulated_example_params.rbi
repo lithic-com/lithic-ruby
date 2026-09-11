@@ -153,6 +153,11 @@ module Lithic
               :"card.created",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          CARD_PIN_UPDATED =
+            T.let(
+              :"card.pin_updated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           CARD_REISSUED =
             T.let(
               :"card.reissued",

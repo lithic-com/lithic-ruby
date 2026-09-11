@@ -25,6 +25,7 @@ module Lithic
             Lithic::BookTransferTransactionUpdatedWebhookEvent,
             Lithic::CardCreatedWebhookEvent,
             Lithic::CardConvertedWebhookEvent,
+            Lithic::CardPinUpdatedWebhookEvent,
             Lithic::CardRenewedWebhookEvent,
             Lithic::CardReissuedWebhookEvent,
             Lithic::CardShippedWebhookEvent,
