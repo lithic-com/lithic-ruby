@@ -30,6 +30,7 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
         challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata | nil,
         challenge_orchestrated_by: Lithic::ThreeDSAuthentication::ChallengeOrchestratedBy | nil,
         decision_made_by: Lithic::ThreeDSAuthentication::DecisionMadeBy | nil,
+        psd2_context: Lithic::ThreeDSAuthentication::Psd2Context | nil,
         three_ri_request_type: Lithic::ThreeDSAuthentication::ThreeRiRequestType | nil,
         transaction: Lithic::ThreeDSAuthentication::Transaction | nil
       }
