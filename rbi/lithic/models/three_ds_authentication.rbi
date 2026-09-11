@@ -183,6 +183,20 @@ module Lithic
       end
       attr_accessor :decision_made_by
 
+      # PSD2/SCA context for EEA and UK transactions. Present when Lithic determines the
+      # transaction is in scope for PSD2 Strong Customer Authentication. Absent for
+      # out-of-scope transactions.
+      sig { returns(T.nilable(Lithic::ThreeDSAuthentication::Psd2Context)) }
+      attr_reader :psd2_context
+
+      sig do
+        params(
+          psd2_context:
+            T.nilable(Lithic::ThreeDSAuthentication::Psd2Context::OrHash)
+        ).void
+      end
+      attr_writer :psd2_context
+
       # Type of 3DS Requestor Initiated (3RI) request — i.e., a 3DS authentication that
       # takes place at the initiation of the merchant rather than the cardholder. The
       # most common example of this is where a merchant is authenticating before billing
@@ -245,6 +259,8 @@ module Lithic
             ),
           decision_made_by:
             T.nilable(Lithic::ThreeDSAuthentication::DecisionMadeBy::OrSymbol),
+          psd2_context:
+            T.nilable(Lithic::ThreeDSAuthentication::Psd2Context::OrHash),
           three_ri_request_type:
             T.nilable(
               Lithic::ThreeDSAuthentication::ThreeRiRequestType::OrSymbol
@@ -319,6 +335,10 @@ module Lithic
         # authentications for which a decision has not yet been made (e.g. in-flight
         # customer decisioning request).
         decision_made_by: nil,
+        # PSD2/SCA context for EEA and UK transactions. Present when Lithic determines the
+        # transaction is in scope for PSD2 Strong Customer Authentication. Absent for
+        # out-of-scope transactions.
+        psd2_context: nil,
         # Type of 3DS Requestor Initiated (3RI) request — i.e., a 3DS authentication that
         # takes place at the initiation of the merchant rather than the cardholder. The
         # most common example of this is where a merchant is authenticating before billing
@@ -370,6 +390,7 @@ module Lithic
               T.nilable(
                 Lithic::ThreeDSAuthentication::DecisionMadeBy::TaggedSymbol
               ),
+            psd2_context: T.nilable(Lithic::ThreeDSAuthentication::Psd2Context),
             three_ri_request_type:
               T.nilable(
                 Lithic::ThreeDSAuthentication::ThreeRiRequestType::TaggedSymbol
@@ -2168,6 +2189,277 @@ module Lithic
           )
         end
         def self.values
+        end
+      end
+
+      class Psd2Context < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::ThreeDSAuthentication::Psd2Context,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # SCA exemption declared by the acquirer in the 3DS authentication request.
+        #
+        # - `NONE` - No exemption claimed
+        # - `TRANSACTION_RISK_ANALYSIS` - Transaction Risk Analysis (TRA) exemption;
+        #   acquirer asserts low fraud risk
+        # - `LOW_VALUE` - Low-value payment exemption; transaction is below the EUR 30
+        #   threshold
+        # - `RECURRING_PAYMENT` - Recurring payment with a fixed amount to the same payee
+        # - `MERCHANT_INITIATED_TRANSACTION` - Merchant-initiated transaction (MIT);
+        #   cardholder not present
+        # - `TRUSTED_BENEFICIARY` - Trusted beneficiary; merchant is on cardholder's
+        #   whitelist
+        # - `STRONG_CUSTOMER_AUTHENTICATION_DELEGATION` - SCA already performed by a
+        #   delegated third-party authenticator
+        # - `SECURE_CORPORATE_PAYMENT` - Secure corporate payment using a dedicated
+        #   corporate card or process
+        # - `AUTHENTICATION_OUTAGE_EXCEPTION` - Authentication outage exception;
+        #   scheme-level fallback during ACS downtime
+        # - `BUNDLED` - Mastercard only; bundled exemption code where the exact exemption
+        #   type cannot be distinguished
+        sig do
+          returns(
+            T.nilable(
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :acquirer_exemption
+
+        sig do
+          params(
+            acquirer_exemption:
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::OrSymbol
+          ).void
+        end
+        attr_writer :acquirer_exemption
+
+        # Lithic's validation of the acquirer-declared exemption. Absent when no acquirer
+        # exemption was declared.
+        #
+        # - `ACCEPTED` - Lithic signals support the acquirer's claim
+        # - `REJECTED` - Lithic signals contradict the claim, or a required signal is
+        #   missing
+        # - `NOT_VALIDATED` - Exemption was declared but Lithic has no basis to evaluate
+        #   it; treated as `REJECTED` for challenge purposes
+        sig do
+          returns(
+            T.nilable(
+              Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :lithic_exemption_validation
+
+        sig do
+          params(
+            lithic_exemption_validation:
+              Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::OrSymbol
+          ).void
+        end
+        attr_writer :lithic_exemption_validation
+
+        # PSD2/SCA context for EEA and UK transactions. Present when Lithic determines the
+        # transaction is in scope for PSD2 Strong Customer Authentication. Absent for
+        # out-of-scope transactions.
+        sig do
+          params(
+            acquirer_exemption:
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::OrSymbol,
+            lithic_exemption_validation:
+              Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # SCA exemption declared by the acquirer in the 3DS authentication request.
+          #
+          # - `NONE` - No exemption claimed
+          # - `TRANSACTION_RISK_ANALYSIS` - Transaction Risk Analysis (TRA) exemption;
+          #   acquirer asserts low fraud risk
+          # - `LOW_VALUE` - Low-value payment exemption; transaction is below the EUR 30
+          #   threshold
+          # - `RECURRING_PAYMENT` - Recurring payment with a fixed amount to the same payee
+          # - `MERCHANT_INITIATED_TRANSACTION` - Merchant-initiated transaction (MIT);
+          #   cardholder not present
+          # - `TRUSTED_BENEFICIARY` - Trusted beneficiary; merchant is on cardholder's
+          #   whitelist
+          # - `STRONG_CUSTOMER_AUTHENTICATION_DELEGATION` - SCA already performed by a
+          #   delegated third-party authenticator
+          # - `SECURE_CORPORATE_PAYMENT` - Secure corporate payment using a dedicated
+          #   corporate card or process
+          # - `AUTHENTICATION_OUTAGE_EXCEPTION` - Authentication outage exception;
+          #   scheme-level fallback during ACS downtime
+          # - `BUNDLED` - Mastercard only; bundled exemption code where the exact exemption
+          #   type cannot be distinguished
+          acquirer_exemption: nil,
+          # Lithic's validation of the acquirer-declared exemption. Absent when no acquirer
+          # exemption was declared.
+          #
+          # - `ACCEPTED` - Lithic signals support the acquirer's claim
+          # - `REJECTED` - Lithic signals contradict the claim, or a required signal is
+          #   missing
+          # - `NOT_VALIDATED` - Exemption was declared but Lithic has no basis to evaluate
+          #   it; treated as `REJECTED` for challenge purposes
+          lithic_exemption_validation: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              acquirer_exemption:
+                Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol,
+              lithic_exemption_validation:
+                Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # SCA exemption declared by the acquirer in the 3DS authentication request.
+        #
+        # - `NONE` - No exemption claimed
+        # - `TRANSACTION_RISK_ANALYSIS` - Transaction Risk Analysis (TRA) exemption;
+        #   acquirer asserts low fraud risk
+        # - `LOW_VALUE` - Low-value payment exemption; transaction is below the EUR 30
+        #   threshold
+        # - `RECURRING_PAYMENT` - Recurring payment with a fixed amount to the same payee
+        # - `MERCHANT_INITIATED_TRANSACTION` - Merchant-initiated transaction (MIT);
+        #   cardholder not present
+        # - `TRUSTED_BENEFICIARY` - Trusted beneficiary; merchant is on cardholder's
+        #   whitelist
+        # - `STRONG_CUSTOMER_AUTHENTICATION_DELEGATION` - SCA already performed by a
+        #   delegated third-party authenticator
+        # - `SECURE_CORPORATE_PAYMENT` - Secure corporate payment using a dedicated
+        #   corporate card or process
+        # - `AUTHENTICATION_OUTAGE_EXCEPTION` - Authentication outage exception;
+        #   scheme-level fallback during ACS downtime
+        # - `BUNDLED` - Mastercard only; bundled exemption code where the exact exemption
+        #   type cannot be distinguished
+        module AcquirerExemption
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          NONE =
+            T.let(
+              :NONE,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          TRANSACTION_RISK_ANALYSIS =
+            T.let(
+              :TRANSACTION_RISK_ANALYSIS,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          LOW_VALUE =
+            T.let(
+              :LOW_VALUE,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          RECURRING_PAYMENT =
+            T.let(
+              :RECURRING_PAYMENT,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          MERCHANT_INITIATED_TRANSACTION =
+            T.let(
+              :MERCHANT_INITIATED_TRANSACTION,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          TRUSTED_BENEFICIARY =
+            T.let(
+              :TRUSTED_BENEFICIARY,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION =
+            T.let(
+              :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          SECURE_CORPORATE_PAYMENT =
+            T.let(
+              :SECURE_CORPORATE_PAYMENT,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          AUTHENTICATION_OUTAGE_EXCEPTION =
+            T.let(
+              :AUTHENTICATION_OUTAGE_EXCEPTION,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+          BUNDLED =
+            T.let(
+              :BUNDLED,
+              Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::ThreeDSAuthentication::Psd2Context::AcquirerExemption::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Lithic's validation of the acquirer-declared exemption. Absent when no acquirer
+        # exemption was declared.
+        #
+        # - `ACCEPTED` - Lithic signals support the acquirer's claim
+        # - `REJECTED` - Lithic signals contradict the claim, or a required signal is
+        #   missing
+        # - `NOT_VALIDATED` - Exemption was declared but Lithic has no basis to evaluate
+        #   it; treated as `REJECTED` for challenge purposes
+        module LithicExemptionValidation
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ACCEPTED =
+            T.let(
+              :ACCEPTED,
+              Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::TaggedSymbol
+            )
+          REJECTED =
+            T.let(
+              :REJECTED,
+              Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::TaggedSymbol
+            )
+          NOT_VALIDATED =
+            T.let(
+              :NOT_VALIDATED,
+              Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::ThreeDSAuthentication::Psd2Context::LithicExemptionValidation::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
