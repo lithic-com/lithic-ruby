@@ -45,6 +45,7 @@ module Lithic
           CARD_TRANSACTION_UPDATED = :"card_transaction.updated"
           CARD_CONVERTED = :"card.converted"
           CARD_CREATED = :"card.created"
+          CARD_PIN_UPDATED = :"card.pin_updated"
           CARD_REISSUED = :"card.reissued"
           CARD_RENEWED = :"card.renewed"
           CARD_SHIPPED = :"card.shipped"

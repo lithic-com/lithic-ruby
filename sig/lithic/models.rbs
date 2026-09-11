@@ -129,6 +129,8 @@ module Lithic
 
   class CardListParams = Lithic::Models::CardListParams
 
+  class CardPinUpdatedWebhookEvent = Lithic::Models::CardPinUpdatedWebhookEvent
+
   class CardProgram = Lithic::Models::CardProgram
 
   class CardProgramListParams = Lithic::Models::CardProgramListParams
