@@ -153,6 +153,8 @@ module Lithic
 
   CardListParams = Lithic::Models::CardListParams
 
+  CardPinUpdatedWebhookEvent = Lithic::Models::CardPinUpdatedWebhookEvent
+
   CardProgram = Lithic::Models::CardProgram
 
   CardProgramListParams = Lithic::Models::CardProgramListParams
