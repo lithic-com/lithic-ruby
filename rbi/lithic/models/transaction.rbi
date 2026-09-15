@@ -2079,6 +2079,11 @@ module Lithic
               :REVERSAL_UNMATCHED,
               Lithic::Transaction::Event::DetailedResult::TaggedSymbol
             )
+          SCA_REQUIRED =
+            T.let(
+              :SCA_REQUIRED,
+              Lithic::Transaction::Event::DetailedResult::TaggedSymbol
+            )
           SECURITY_VIOLATION =
             T.let(
               :SECURITY_VIOLATION,
@@ -2980,6 +2985,11 @@ module Lithic
             REVERSAL_UNMATCHED =
               T.let(
                 :REVERSAL_UNMATCHED,
+                Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            SCA_REQUIRED =
+              T.let(
+                :SCA_REQUIRED,
                 Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
               )
             SECURITY_VIOLATION =
