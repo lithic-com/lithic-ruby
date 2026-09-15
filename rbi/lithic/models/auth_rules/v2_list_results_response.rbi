@@ -455,6 +455,11 @@ module Lithic
                     :REVERSAL_UNMATCHED,
                     Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
                   )
+                SCA_REQUIRED =
+                  T.let(
+                    :SCA_REQUIRED,
+                    Lithic::Models::AuthRules::V2ListResultsResponse::AuthorizationResult::Action::DeclineActionAuthorization::Code::TaggedSymbol
+                  )
                 SECURITY_VIOLATION =
                   T.let(
                     :SECURITY_VIOLATION,
