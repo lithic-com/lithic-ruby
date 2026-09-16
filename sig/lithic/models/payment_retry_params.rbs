@@ -1,7 +1,11 @@
 module Lithic
   module Models
     type payment_retry_params =
-      { payment_token: String } & Lithic::Internal::Type::request_parameters
+      {
+        payment_token: String,
+        method_: Lithic::Models::PaymentRetryParams::method_
+      }
+      & Lithic::Internal::Type::request_parameters
 
     class PaymentRetryParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
@@ -9,15 +13,34 @@ module Lithic
 
       attr_accessor payment_token: String
 
+      attr_reader method_: Lithic::Models::PaymentRetryParams::method_?
+
+      def method_=: (
+        Lithic::Models::PaymentRetryParams::method_
+      ) -> Lithic::Models::PaymentRetryParams::method_
+
       def initialize: (
         payment_token: String,
+        ?method_: Lithic::Models::PaymentRetryParams::method_,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
         payment_token: String,
+        method_: Lithic::Models::PaymentRetryParams::method_,
         request_options: Lithic::RequestOptions
       }
+
+      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
+
+      module Method
+        extend Lithic::Internal::Type::Enum
+
+        ACH_NEXT_DAY: :ACH_NEXT_DAY
+        ACH_SAME_DAY: :ACH_SAME_DAY
+
+        def self?.values: -> ::Array[Lithic::Models::PaymentRetryParams::method_]
+      end
     end
   end
 end
