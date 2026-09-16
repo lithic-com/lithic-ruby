@@ -416,6 +416,9 @@ module Lithic
             :EXTERNAL_WIRE_SETTLED,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        FEE = T.let(:FEE, Lithic::FinancialEvent::Type::TaggedSymbol)
+        FEE_REVERSAL =
+          T.let(:FEE_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
         FINANCIAL_AUTHORIZATION =
           T.let(
             :FINANCIAL_AUTHORIZATION,
