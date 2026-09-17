@@ -3,6 +3,8 @@ module Lithic
     class FinancialAccounts
       attr_reader balances: Lithic::Resources::FinancialAccounts::Balances
 
+      attr_reader open_to_buy: Lithic::Resources::FinancialAccounts::OpenToBuy
+
       attr_reader financial_transactions: Lithic::Resources::FinancialAccounts::FinancialTransactions
 
       attr_reader credit_configuration: Lithic::Resources::FinancialAccounts::CreditConfiguration
