@@ -6,6 +6,9 @@ module Lithic
       sig { returns(Lithic::Resources::FinancialAccounts::Balances) }
       attr_reader :balances
 
+      sig { returns(Lithic::Resources::FinancialAccounts::OpenToBuy) }
+      attr_reader :open_to_buy
+
       sig do
         returns(Lithic::Resources::FinancialAccounts::FinancialTransactions)
       end

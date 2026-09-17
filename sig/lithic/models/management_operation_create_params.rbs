@@ -142,6 +142,8 @@ module Lithic
         | :QUARTERLY_REVERSAL
         | :MONTHLY
         | :MONTHLY_REVERSAL
+        | :FEE
+        | :FEE_REVERSAL
 
       module EventType
         extend Lithic::Internal::Type::Enum
@@ -173,6 +175,8 @@ module Lithic
         QUARTERLY_REVERSAL: :QUARTERLY_REVERSAL
         MONTHLY: :MONTHLY
         MONTHLY_REVERSAL: :MONTHLY_REVERSAL
+        FEE: :FEE
+        FEE_REVERSAL: :FEE_REVERSAL
 
         def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::event_type]
       end

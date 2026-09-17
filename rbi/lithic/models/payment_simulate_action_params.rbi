@@ -163,6 +163,11 @@ module Lithic
             :ACH_RETURN_SETTLED,
             Lithic::PaymentSimulateActionParams::EventType::TaggedSymbol
           )
+        STABLECOIN_REVIEWED =
+          T.let(
+            :STABLECOIN_REVIEWED,
+            Lithic::PaymentSimulateActionParams::EventType::TaggedSymbol
+          )
 
         sig do
           override.returns(

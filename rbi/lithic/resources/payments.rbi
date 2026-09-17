@@ -152,10 +152,18 @@ module Lithic
       sig do
         params(
           payment_token: String,
+          method_: Lithic::PaymentRetryParams::Method::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Models::PaymentRetryResponse)
       end
-      def retry_(payment_token, request_options: {})
+      def retry_(
+        payment_token,
+        # Settlement speed to retry the payment at. Defaults to the original payment's
+        # method. An `ACH_SAME_DAY` retry is rejected if the payment is for $1,000,000.00
+        # or more, or if it is submitted after the same day ACH cutoff
+        method_: nil,
+        request_options: {}
+      )
       end
 
       # Return an ACH payment with a specified return reason code. Returns must be

@@ -71,6 +71,7 @@ module Lithic
         ACH_RETURN_INITIATED = :ACH_RETURN_INITIATED
         ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
         ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
+        STABLECOIN_REVIEWED = :STABLECOIN_REVIEWED
 
         # @!method self.values
         #   @return [Array<Symbol>]

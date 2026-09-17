@@ -100,6 +100,8 @@ module Lithic
       # - card.converted: Occurs when a card is converted from virtual to physical
       #   cards.
       # - card.created: Occurs when a new card is created.
+      # - card.pin_updated: Occurs when a card's PIN is set, changed, unblocked, or
+      #   blocked due to excessive incorrect PIN attempts.
       # - card.reissued: Occurs when a card is reissued.
       # - card.renewed: Occurs when a card is renewed.
       # - card.shipped: Occurs when a card is shipped.
@@ -280,6 +282,11 @@ module Lithic
         CARD_CREATED =
           T.let(
             :"card.created",
+            Lithic::EventSubscription::EventType::TaggedSymbol
+          )
+        CARD_PIN_UPDATED =
+          T.let(
+            :"card.pin_updated",
             Lithic::EventSubscription::EventType::TaggedSymbol
           )
         CARD_REISSUED =

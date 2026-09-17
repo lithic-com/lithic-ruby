@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type open_to_buy_summary =
+        {
+          security: Integer,
+          settled_funds: Integer?,
+          total_outstanding_spend: Integer
+        }
+
+      class OpenToBuySummary < Lithic::Internal::Type::BaseModel
+        attr_accessor security: Integer
+
+        attr_accessor settled_funds: Integer?
+
+        attr_accessor total_outstanding_spend: Integer
+
+        def initialize: (
+          security: Integer,
+          settled_funds: Integer?,
+          total_outstanding_spend: Integer
+        ) -> void
+
+        def to_hash: -> {
+          security: Integer,
+          settled_funds: Integer?,
+          total_outstanding_spend: Integer
+        }
+      end
+    end
+  end
+end

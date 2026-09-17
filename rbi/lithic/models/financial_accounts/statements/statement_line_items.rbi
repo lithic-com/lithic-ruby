@@ -712,6 +712,16 @@ module Lithic
                   :EXTERNAL_WIRE_SETTLED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              FEE =
+                T.let(
+                  :FEE,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              FEE_REVERSAL =
+                T.let(
+                  :FEE_REVERSAL,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               FINANCIAL_AUTHORIZATION =
                 T.let(
                   :FINANCIAL_AUTHORIZATION,

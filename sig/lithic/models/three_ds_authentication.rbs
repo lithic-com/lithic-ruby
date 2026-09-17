@@ -20,6 +20,7 @@ module Lithic
         challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?,
         challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?,
         decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?,
+        :psd2_context => Lithic::ThreeDSAuthentication::Psd2Context?,
         three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?,
         transaction: Lithic::ThreeDSAuthentication::Transaction?
       }
@@ -61,6 +62,8 @@ module Lithic
 
       attr_accessor decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?
 
+      attr_accessor psd2_context: Lithic::ThreeDSAuthentication::Psd2Context?
+
       attr_accessor three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?
 
       attr_accessor transaction: Lithic::ThreeDSAuthentication::Transaction?
@@ -84,6 +87,7 @@ module Lithic
         ?challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?,
         ?challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?,
         ?decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?,
+        ?psd2_context: Lithic::ThreeDSAuthentication::Psd2Context?,
         ?three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?,
         ?transaction: Lithic::ThreeDSAuthentication::Transaction?
       ) -> void
@@ -107,6 +111,7 @@ module Lithic
         challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?,
         challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?,
         decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?,
+        :psd2_context => Lithic::ThreeDSAuthentication::Psd2Context?,
         three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?,
         transaction: Lithic::ThreeDSAuthentication::Transaction?
       }
@@ -803,6 +808,78 @@ module Lithic
         UNKNOWN: :UNKNOWN
 
         def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::decision_made_by]
+      end
+
+      type psd2_context =
+        {
+          acquirer_exemption: Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption,
+          lithic_exemption_validation: Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation
+        }
+
+      class Psd2Context < Lithic::Internal::Type::BaseModel
+        attr_reader acquirer_exemption: Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption?
+
+        def acquirer_exemption=: (
+          Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption
+        ) -> Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption
+
+        attr_reader lithic_exemption_validation: Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation?
+
+        def lithic_exemption_validation=: (
+          Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation
+        ) -> Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation
+
+        def initialize: (
+          ?acquirer_exemption: Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption,
+          ?lithic_exemption_validation: Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation
+        ) -> void
+
+        def to_hash: -> {
+          acquirer_exemption: Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption,
+          lithic_exemption_validation: Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation
+        }
+
+        type acquirer_exemption =
+          :NONE
+          | :TRANSACTION_RISK_ANALYSIS
+          | :LOW_VALUE
+          | :RECURRING_PAYMENT
+          | :MERCHANT_INITIATED_TRANSACTION
+          | :TRUSTED_BENEFICIARY
+          | :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
+          | :SECURE_CORPORATE_PAYMENT
+          | :AUTHENTICATION_OUTAGE_EXCEPTION
+          | :BUNDLED
+
+        module AcquirerExemption
+          extend Lithic::Internal::Type::Enum
+
+          NONE: :NONE
+          TRANSACTION_RISK_ANALYSIS: :TRANSACTION_RISK_ANALYSIS
+          LOW_VALUE: :LOW_VALUE
+          RECURRING_PAYMENT: :RECURRING_PAYMENT
+          MERCHANT_INITIATED_TRANSACTION: :MERCHANT_INITIATED_TRANSACTION
+          TRUSTED_BENEFICIARY: :TRUSTED_BENEFICIARY
+          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION: :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
+          SECURE_CORPORATE_PAYMENT: :SECURE_CORPORATE_PAYMENT
+          AUTHENTICATION_OUTAGE_EXCEPTION: :AUTHENTICATION_OUTAGE_EXCEPTION
+          BUNDLED: :BUNDLED
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Psd2Context::acquirer_exemption]
+        end
+
+        type lithic_exemption_validation =
+          :ACCEPTED | :REJECTED | :NOT_VALIDATED
+
+        module LithicExemptionValidation
+          extend Lithic::Internal::Type::Enum
+
+          ACCEPTED: :ACCEPTED
+          REJECTED: :REJECTED
+          NOT_VALIDATED: :NOT_VALIDATED
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Psd2Context::lithic_exemption_validation]
+        end
       end
 
       type three_ri_request_type =

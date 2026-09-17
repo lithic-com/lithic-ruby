@@ -6,6 +6,9 @@ module Lithic
       # @return [Lithic::Resources::FinancialAccounts::Balances]
       attr_reader :balances
 
+      # @return [Lithic::Resources::FinancialAccounts::OpenToBuy]
+      attr_reader :open_to_buy
+
       # @return [Lithic::Resources::FinancialAccounts::FinancialTransactions]
       attr_reader :financial_transactions
 
@@ -184,6 +187,7 @@ module Lithic
       def initialize(client:)
         @client = client
         @balances = Lithic::Resources::FinancialAccounts::Balances.new(client: client)
+        @open_to_buy = Lithic::Resources::FinancialAccounts::OpenToBuy.new(client: client)
         @financial_transactions = Lithic::Resources::FinancialAccounts::FinancialTransactions.new(client: client)
         @credit_configuration = Lithic::Resources::FinancialAccounts::CreditConfiguration.new(client: client)
         @statements = Lithic::Resources::FinancialAccounts::Statements.new(client: client)

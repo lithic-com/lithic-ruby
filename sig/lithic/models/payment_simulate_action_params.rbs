@@ -68,6 +68,7 @@ module Lithic
         | :ACH_RETURN_INITIATED
         | :ACH_RETURN_PROCESSED
         | :ACH_RETURN_SETTLED
+        | :STABLECOIN_REVIEWED
 
       module EventType
         extend Lithic::Internal::Type::Enum
@@ -82,6 +83,7 @@ module Lithic
         ACH_RETURN_INITIATED: :ACH_RETURN_INITIATED
         ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
         ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
+        STABLECOIN_REVIEWED: :STABLECOIN_REVIEWED
 
         def self?.values: -> ::Array[Lithic::Models::PaymentSimulateActionParams::event_type]
       end

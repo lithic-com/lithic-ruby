@@ -692,6 +692,16 @@ module Lithic
               :MONTHLY_REVERSAL,
               Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
             )
+          FEE =
+            T.let(
+              :FEE,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          FEE_REVERSAL =
+            T.let(
+              :FEE_REVERSAL,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
 
           sig do
             override.returns(

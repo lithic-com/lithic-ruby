@@ -172,22 +172,30 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::PaymentRetryParams} for more details.
+      #
       # Retry an origination which has been returned.
       #
-      # @overload retry_(payment_token, request_options: {})
+      # @overload retry_(payment_token, method_: nil, request_options: {})
       #
       # @param payment_token [String]
+      #
+      # @param method_ [Symbol, Lithic::Models::PaymentRetryParams::Method] Settlement speed to retry the payment at. Defaults to the original payment's met
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::PaymentRetryResponse]
       #
       # @see Lithic::Models::PaymentRetryParams
       def retry_(payment_token, params = {})
+        parsed, options = Lithic::PaymentRetryParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/payments/%1$s/retry", payment_token],
+          body: parsed,
           model: Lithic::Models::PaymentRetryResponse,
-          options: params[:request_options]
+          options: options
         )
       end
 
