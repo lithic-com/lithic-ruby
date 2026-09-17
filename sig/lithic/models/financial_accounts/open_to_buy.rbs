@@ -1,0 +1,27 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type financial_accounts_open_to_buy =
+        {
+          open_to_buy: Integer,
+          summary: Lithic::FinancialAccounts::OpenToBuySummary
+        }
+
+      class FinancialAccountsOpenToBuy < Lithic::Internal::Type::BaseModel
+        attr_accessor open_to_buy: Integer
+
+        attr_accessor summary: Lithic::FinancialAccounts::OpenToBuySummary
+
+        def initialize: (
+          open_to_buy: Integer,
+          summary: Lithic::FinancialAccounts::OpenToBuySummary
+        ) -> void
+
+        def to_hash: -> {
+          open_to_buy: Integer,
+          summary: Lithic::FinancialAccounts::OpenToBuySummary
+        }
+      end
+    end
+  end
+end
