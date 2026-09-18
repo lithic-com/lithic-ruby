@@ -23,6 +23,9 @@ module Lithic
       sig { returns(Lithic::Resources::FinancialAccounts::LoanTapes) }
       attr_reader :loan_tapes
 
+      sig { returns(Lithic::Resources::FinancialAccounts::InstallmentPlans) }
+      attr_reader :installment_plans
+
       sig do
         returns(Lithic::Resources::FinancialAccounts::LoanTapeConfiguration)
       end
