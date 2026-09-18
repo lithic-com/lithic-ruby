@@ -29,6 +29,7 @@ module Lithic
       # WARNING: This method does not verify the webhook signature. Use only for testing or when
       # signature verification is not required.
       #
+<<<<<<< HEAD
       # @param payload [String] The raw webhook payload as a string
       #
       # @return [Lithic::ParsedWebhookEvent::Variants]
@@ -53,6 +54,12 @@ module Lithic
 
         ::StandardWebhooks::Webhook.new(key).verify(payload, headers)
 
+=======
+      # @param payload [String] The raw webhook payload as a string
+      #
+      # @return [Lithic::ParsedWebhookEvent::Variants]
+      def parse_unsafe(payload)
+>>>>>>> 010307f7868c65899d16e6a90d523d11a7e69331
         parsed = JSON.parse(payload, symbolize_names: true)
         Lithic::Internal::Type::Converter.coerce(Lithic::Models::ParsedWebhookEvent, parsed)
       end
