@@ -29,37 +29,10 @@ module Lithic
       # WARNING: This method does not verify the webhook signature. Use only for testing or when
       # signature verification is not required.
       #
-<<<<<<< HEAD
       # @param payload [String] The raw webhook payload as a string
       #
       # @return [Lithic::ParsedWebhookEvent::Variants]
       def parse_unsafe(payload)
-        parsed = JSON.parse(payload, symbolize_names: true)
-        Lithic::Internal::Type::Converter.coerce(Lithic::Models::ParsedWebhookEvent, parsed)
-      end
-
-      # Parses and verifies a webhook payload using the client's webhook signing key.
-      #
-      # @param payload [String] The raw webhook payload as a string
-      #
-      # @param headers [Hash{String=>String}] The raw HTTP headers that came with the payload
-      #
-      # @param key [String, nil] The webhook signing key
-      #
-      # @return [Lithic::Models::AccountHolderCreatedWebhookEvent, Lithic::Models::ParsedWebhookEvent::KYBPayload, Lithic::Models::ParsedWebhookEvent::KYCPayload, Lithic::Models::ParsedWebhookEvent::LegacyPayload, Lithic::Models::AccountHolderVerificationWebhookEvent, Lithic::Models::AccountHolderDocumentUpdatedWebhookEvent, Lithic::Models::CardAuthorizationApprovalRequestWebhookEvent, Lithic::Models::CardAuthorizationChallengeWebhookEvent, Lithic::Models::CardAuthorizationChallengeResponseWebhookEvent, Lithic::Models::AuthRulesBacktestReportCreatedWebhookEvent, Lithic::Models::BalanceUpdatedWebhookEvent, Lithic::Models::BookTransferTransactionCreatedWebhookEvent, Lithic::Models::BookTransferTransactionUpdatedWebhookEvent, Lithic::Models::CardCreatedWebhookEvent, Lithic::Models::CardConvertedWebhookEvent, Lithic::Models::CardPinUpdatedWebhookEvent, Lithic::Models::CardRenewedWebhookEvent, Lithic::Models::CardReissuedWebhookEvent, Lithic::Models::CardShippedWebhookEvent, Lithic::Models::CardUpdatedWebhookEvent, Lithic::Models::CardTransactionUpdatedWebhookEvent, Lithic::Models::CardTransactionEnhancedDataCreatedWebhookEvent, Lithic::Models::CardTransactionEnhancedDataUpdatedWebhookEvent, Lithic::Models::ClaimCreatedWebhookEvent, Lithic::Models::ClaimUpdatedWebhookEvent, Lithic::Models::ClaimDocumentUploadedWebhookEvent, Lithic::Models::ClaimDocumentAcceptedWebhookEvent, Lithic::Models::ClaimDocumentRejectedWebhookEvent, Lithic::Models::DigitalWalletTokenizationApprovalRequestWebhookEvent, Lithic::Models::DigitalWalletTokenizationResultWebhookEvent, Lithic::Models::DigitalWalletTokenizationTwoFactorAuthenticationCodeWebhookEvent, Lithic::Models::DigitalWalletTokenizationTwoFactorAuthenticationCodeSentWebhookEvent, Lithic::Models::DigitalWalletTokenizationUpdatedWebhookEvent, Lithic::Models::DisputeUpdatedWebhookEvent, Lithic::Models::DisputeEvidenceUploadFailedWebhookEvent, Lithic::Models::EmbedSessionGeneratedWebhookEvent, Lithic::Models::EmbedViewedWebhookEvent, Lithic::Models::ExternalBankAccountCreatedWebhookEvent, Lithic::Models::ExternalBankAccountUpdatedWebhookEvent, Lithic::Models::ExternalPaymentCreatedWebhookEvent, Lithic::Models::ExternalPaymentUpdatedWebhookEvent, Lithic::Models::FinancialAccountCreatedWebhookEvent, Lithic::Models::FinancialAccountUpdatedWebhookEvent, Lithic::Models::FundingEventCreatedWebhookEvent, Lithic::Models::LoanTapeCreatedWebhookEvent, Lithic::Models::LoanTapeUpdatedWebhookEvent, Lithic::Models::ManagementOperationCreatedWebhookEvent, Lithic::Models::ManagementOperationUpdatedWebhookEvent, Lithic::Models::InternalTransactionCreatedWebhookEvent, Lithic::Models::InternalTransactionUpdatedWebhookEvent, Lithic::Models::NetworkTotalCreatedWebhookEvent, Lithic::Models::NetworkTotalUpdatedWebhookEvent, Lithic::Models::PaymentTransactionCreatedWebhookEvent, Lithic::Models::PaymentTransactionUpdatedWebhookEvent, Lithic::Models::SettlementReportUpdatedWebhookEvent, Lithic::Models::StatementsCreatedWebhookEvent, Lithic::Models::ThreeDSAuthenticationCreatedWebhookEvent, Lithic::Models::ThreeDSAuthenticationUpdatedWebhookEvent, Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent, Lithic::Models::TokenizationApprovalRequestWebhookEvent, Lithic::Models::TokenizationResultWebhookEvent, Lithic::Models::TokenizationTwoFactorAuthenticationCodeWebhookEvent, Lithic::Models::TokenizationTwoFactorAuthenticationCodeSentWebhookEvent, Lithic::Models::TokenizationUpdatedWebhookEvent, Lithic::Models::ThreeDSAuthenticationApprovalRequestWebhookEvent, Lithic::Models::DisputeTransactionCreatedWebhookEvent, Lithic::Models::DisputeTransactionUpdatedWebhookEvent]
-      def parsed(payload, headers:, key: @client.webhook_secret)
-        if key.nil?
-          raise ArgumentError.new("Cannot verify a webhook without a key on either the client's webhook_secret or passed in as an argument")
-        end
-
-        ::StandardWebhooks::Webhook.new(key).verify(payload, headers)
-
-=======
-      # @param payload [String] The raw webhook payload as a string
-      #
-      # @return [Lithic::ParsedWebhookEvent::Variants]
-      def parse_unsafe(payload)
->>>>>>> 010307f7868c65899d16e6a90d523d11a7e69331
         parsed = JSON.parse(payload, symbolize_names: true)
         Lithic::Internal::Type::Converter.coerce(Lithic::Models::ParsedWebhookEvent, parsed)
       end
