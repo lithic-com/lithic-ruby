@@ -21,6 +21,9 @@ module Lithic
       # @return [Lithic::Resources::FinancialAccounts::LoanTapes]
       attr_reader :loan_tapes
 
+      # @return [Lithic::Resources::FinancialAccounts::InstallmentPlans]
+      attr_reader :installment_plans
+
       # @return [Lithic::Resources::FinancialAccounts::LoanTapeConfiguration]
       attr_reader :loan_tape_configuration
 
@@ -192,6 +195,7 @@ module Lithic
         @credit_configuration = Lithic::Resources::FinancialAccounts::CreditConfiguration.new(client: client)
         @statements = Lithic::Resources::FinancialAccounts::Statements.new(client: client)
         @loan_tapes = Lithic::Resources::FinancialAccounts::LoanTapes.new(client: client)
+        @installment_plans = Lithic::Resources::FinancialAccounts::InstallmentPlans.new(client: client)
         @loan_tape_configuration =
           Lithic::Resources::FinancialAccounts::LoanTapeConfiguration.new(client: client)
         @interest_tier_schedule = Lithic::Resources::FinancialAccounts::InterestTierSchedule.new(client: client)

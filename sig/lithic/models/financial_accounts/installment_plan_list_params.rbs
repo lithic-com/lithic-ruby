@@ -1,0 +1,69 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type installment_plan_list_params =
+        {
+          financial_account_token: String,
+          ending_before: String,
+          page_size: Integer,
+          starting_after: String,
+          state: Lithic::Models::FinancialAccounts::InstallmentPlanListParams::state?
+        }
+        & Lithic::Internal::Type::request_parameters
+
+      class InstallmentPlanListParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor financial_account_token: String
+
+        attr_reader ending_before: String?
+
+        def ending_before=: (String) -> String
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader starting_after: String?
+
+        def starting_after=: (String) -> String
+
+        attr_accessor state: Lithic::Models::FinancialAccounts::InstallmentPlanListParams::state?
+
+        def initialize: (
+          financial_account_token: String,
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?state: Lithic::Models::FinancialAccounts::InstallmentPlanListParams::state?,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          financial_account_token: String,
+          ending_before: String,
+          page_size: Integer,
+          starting_after: String,
+          state: Lithic::Models::FinancialAccounts::InstallmentPlanListParams::state?,
+          request_options: Lithic::RequestOptions
+        }
+
+        type state =
+          :PENDING | :ACTIVE | :REBUILD_IN_PROGRESS | :FULLY_PAID | :CANCELLED
+
+        module State
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          ACTIVE: :ACTIVE
+          REBUILD_IN_PROGRESS: :REBUILD_IN_PROGRESS
+          FULLY_PAID: :FULLY_PAID
+          CANCELLED: :CANCELLED
+
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::InstallmentPlanListParams::state]
+        end
+      end
+    end
+  end
+end

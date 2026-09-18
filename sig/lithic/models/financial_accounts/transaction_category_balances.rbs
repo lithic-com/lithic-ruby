@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type transaction_category_balances =
+        {
+          balance_transfers: Lithic::FinancialAccounts::CategoryBalances,
+          cash_advances: Lithic::FinancialAccounts::CategoryBalances,
+          purchases: Lithic::FinancialAccounts::CategoryBalances
+        }
+
+      class TransactionCategoryBalances < Lithic::Internal::Type::BaseModel
+        attr_accessor balance_transfers: Lithic::FinancialAccounts::CategoryBalances
+
+        attr_accessor cash_advances: Lithic::FinancialAccounts::CategoryBalances
+
+        attr_accessor purchases: Lithic::FinancialAccounts::CategoryBalances
+
+        def initialize: (
+          balance_transfers: Lithic::FinancialAccounts::CategoryBalances,
+          cash_advances: Lithic::FinancialAccounts::CategoryBalances,
+          purchases: Lithic::FinancialAccounts::CategoryBalances
+        ) -> void
+
+        def to_hash: -> {
+          balance_transfers: Lithic::FinancialAccounts::CategoryBalances,
+          cash_advances: Lithic::FinancialAccounts::CategoryBalances,
+          purchases: Lithic::FinancialAccounts::CategoryBalances
+        }
+      end
+    end
+  end
+end
