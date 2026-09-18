@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.21.0 (2026-09-18)
+
+Full Changelog: [v0.20.0...v0.21.0](https://github.com/lithic-com/lithic-ruby/compare/v0.20.0...v0.21.0)
+
+### Features
+
+* [CARDS-5174] Add reiusse/renew 409 error ([2fc8f3b](https://github.com/lithic-com/lithic-ruby/commit/2fc8f3b93ff2e392d8eda8e343d21e423c214191))
+* [TRE-14464] Update /retry payments endpoint to accept method ([6031d67](https://github.com/lithic-com/lithic-ruby/commit/6031d6794afd8c3a4b121cf2f7368e0ac40867c0))
+* [TRE-14524] Add Open to buy API spec ([bdf043e](https://github.com/lithic-com/lithic-ruby/commit/bdf043e53ac45964c091134b25fb7a3023948397))
+* Add missing blockchain/stablecoin endpoints to the spec ([3e8c0dc](https://github.com/lithic-com/lithic-ruby/commit/3e8c0dcdaa7169ba0a47bea4493e71d778af8853))
+* **api:** add EXTERNAL_STABLECOIN category and events to payment resources ([518aebb](https://github.com/lithic-com/lithic-ruby/commit/518aebb0cf94cbc0b1ca1ef85a94a71c5bf1983e))
+* **api:** add FEE/FEE_REVERSAL to financial_event, statement_line_items, management_operation ([04690f1](https://github.com/lithic-com/lithic-ruby/commit/04690f1542cb3f213da8695507a371c4f0a5aed4))
+* **api:** add OTHER enum value to auth_rules type field ([1bb4cc8](https://github.com/lithic-com/lithic-ruby/commit/1bb4cc80ab6e025ebf0d6fcdd88c5b62cbb602a0))
+* **api:** add psd2_context field to three_ds_authentication ([19e526e](https://github.com/lithic-com/lithic-ruby/commit/19e526e916227881e91ac1dac42e75d86132451e))
+* **api:** add retrieve/list methods to financial_accounts installment_plans ([13b25f3](https://github.com/lithic-com/lithic-ruby/commit/13b25f3cef123eedc918ab5730aacb64114175fe))
+* **api:** add STABLECOIN_REVIEWED event type to payment simulate action ([766c658](https://github.com/lithic-com/lithic-ruby/commit/766c658645a79accfca85707ce6d5c087d93959e))
+* AUTH-3759: Add DECLINE_SCA_REQUIRED and SCA_REQUIRED enum entries ([e784b27](https://github.com/lithic-com/lithic-ruby/commit/e784b275c2690eb0d2ab4a36a3ee9f5af2f79b0b))
+* TRE-14349: add installment plan management operation event types ([bd71bde](https://github.com/lithic-com/lithic-ruby/commit/bd71bde5d20641e236b5b2e95908293bf0ef48e9))
+* TRE-14429: Document the stablecoin payments endpoint ([050c7bd](https://github.com/lithic-com/lithic-ruby/commit/050c7bdd679e3c090c6e1819c0aa3405e3cbfc0c))
+
+
+### Documentation
+
+* Document the card.pin_updated webhook ([b96e92e](https://github.com/lithic-com/lithic-ruby/commit/b96e92e36fa4ae4dab543d1cc639d807f810b967))
+
 ## 0.20.0 (2026-08-31)
 
 Full Changelog: [v0.19.0...v0.20.0](https://github.com/lithic-com/lithic-ruby/compare/v0.19.0...v0.20.0)
