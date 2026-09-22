@@ -223,9 +223,9 @@ module Lithic
             :address1 => String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            :address2 => String
+            :address2 => String,
+            postal_code: String?,
+            state: String?
           }
 
         class Address < Lithic::Internal::Type::BaseModel
@@ -235,30 +235,30 @@ module Lithic
 
           attr_accessor country: String
 
-          attr_accessor postal_code: String
-
-          attr_accessor state: String
-
           attr_reader address2: String?
 
           def address2=: (String) -> String
+
+          attr_accessor postal_code: String?
+
+          attr_accessor state: String?
 
           def initialize: (
             address1: String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            ?address2: String
+            ?address2: String,
+            ?postal_code: String?,
+            ?state: String?
           ) -> void
 
           def to_hash: -> {
             :address1 => String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            :address2 => String
+            :address2 => String,
+            postal_code: String?,
+            state: String?
           }
         end
       end
@@ -325,9 +325,9 @@ module Lithic
             :address1 => String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            :address2 => String
+            :address2 => String,
+            postal_code: String?,
+            state: String?
           }
 
         class Address < Lithic::Internal::Type::BaseModel
@@ -337,30 +337,30 @@ module Lithic
 
           attr_accessor country: String
 
-          attr_accessor postal_code: String
-
-          attr_accessor state: String
-
           attr_reader address2: String?
 
           def address2=: (String) -> String
+
+          attr_accessor postal_code: String?
+
+          attr_accessor state: String?
 
           def initialize: (
             address1: String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            ?address2: String
+            ?address2: String,
+            ?postal_code: String?,
+            ?state: String?
           ) -> void
 
           def to_hash: -> {
             :address1 => String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            :address2 => String
+            :address2 => String,
+            postal_code: String?,
+            state: String?
           }
         end
       end
@@ -438,9 +438,9 @@ module Lithic
             :address1 => String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            :address2 => String
+            :address2 => String,
+            postal_code: String?,
+            state: String?
           }
 
         class Address < Lithic::Internal::Type::BaseModel
@@ -450,30 +450,30 @@ module Lithic
 
           attr_accessor country: String
 
-          attr_accessor postal_code: String
-
-          attr_accessor state: String
-
           attr_reader address2: String?
 
           def address2=: (String) -> String
+
+          attr_accessor postal_code: String?
+
+          attr_accessor state: String?
 
           def initialize: (
             address1: String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            ?address2: String
+            ?address2: String,
+            ?postal_code: String?,
+            ?state: String?
           ) -> void
 
           def to_hash: -> {
             :address1 => String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String,
-            :address2 => String
+            :address2 => String,
+            postal_code: String?,
+            state: String?
           }
         end
       end

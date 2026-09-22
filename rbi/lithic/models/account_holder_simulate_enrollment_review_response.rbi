@@ -445,7 +445,8 @@ module Lithic
           end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+        # and KYC workflows.
         sig do
           returns(
             T.nilable(
@@ -512,7 +513,8 @@ module Lithic
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           address: nil,
           # Individual's date of birth, as an RFC 3339 date.
           dob: nil,
@@ -562,20 +564,11 @@ module Lithic
           sig { returns(String) }
           attr_accessor :city
 
-          # Valid country code. Only USA is currently supported, entered in uppercase ISO
-          # 3166-1 alpha-3 three-character format.
+          # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+          # format. Supported countries depend on the onboarding workflow used for the
+          # account holder.
           sig { returns(String) }
           attr_accessor :country
-
-          # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          # five-digit ZIP or nine-digit ZIP+4.
-          sig { returns(String) }
-          attr_accessor :postal_code
-
-          # Valid state code. Only USA state codes are currently supported, entered in
-          # uppercase ISO 3166-2 two-character format.
-          sig { returns(String) }
-          attr_accessor :state
 
           # Unit or apartment number (if applicable).
           sig { returns(T.nilable(String)) }
@@ -584,16 +577,42 @@ module Lithic
           sig { params(address2: String).void }
           attr_writer :address2
 
+          # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+          # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+          # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+          # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+          # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+          # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+          sig { returns(T.nilable(String)) }
+          attr_accessor :postal_code
+
+          # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+          # code for the country without the country prefix. For example, `CA` for
+          # California. Optional unless the address is in one of the following countries,
+          # where it is required:
+          #
+          # - `USA`
+          # - `CAN`
+          # - `AUS`
+          # - `CHN`
+          # - `KOR`
+          # - `MEX`
+          # - `MYS`
+          # - `NZL`
+          sig { returns(T.nilable(String)) }
+          attr_accessor :state
+
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           sig do
             params(
               address1: String,
               city: String,
               country: String,
-              postal_code: String,
-              state: String,
-              address2: String
+              address2: String,
+              postal_code: T.nilable(String),
+              state: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -601,17 +620,33 @@ module Lithic
             address1:,
             # Name of city.
             city:,
-            # Valid country code. Only USA is currently supported, entered in uppercase ISO
-            # 3166-1 alpha-3 three-character format.
+            # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+            # format. Supported countries depend on the onboarding workflow used for the
+            # account holder.
             country:,
-            # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-            # five-digit ZIP or nine-digit ZIP+4.
-            postal_code:,
-            # Valid state code. Only USA state codes are currently supported, entered in
-            # uppercase ISO 3166-2 two-character format.
-            state:,
             # Unit or apartment number (if applicable).
-            address2: nil
+            address2: nil,
+            # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+            # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+            # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+            # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+            # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+            # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+            postal_code: nil,
+            # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+            # code for the country without the country prefix. For example, `CA` for
+            # California. Optional unless the address is in one of the following countries,
+            # where it is required:
+            #
+            # - `USA`
+            # - `CAN`
+            # - `AUS`
+            # - `CHN`
+            # - `KOR`
+            # - `MEX`
+            # - `MYS`
+            # - `NZL`
+            state: nil
           )
           end
 
@@ -621,9 +656,9 @@ module Lithic
                 address1: String,
                 city: String,
                 country: String,
-                postal_code: String,
-                state: String,
-                address2: String
+                address2: String,
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
               }
             )
           end
@@ -642,7 +677,8 @@ module Lithic
           end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+        # and KYC workflows.
         sig do
           returns(
             T.nilable(
@@ -720,7 +756,8 @@ module Lithic
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           address: nil,
           # Individual's date of birth, as an RFC 3339 date.
           dob: nil,
@@ -770,20 +807,11 @@ module Lithic
           sig { returns(String) }
           attr_accessor :city
 
-          # Valid country code. Only USA is currently supported, entered in uppercase ISO
-          # 3166-1 alpha-3 three-character format.
+          # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+          # format. Supported countries depend on the onboarding workflow used for the
+          # account holder.
           sig { returns(String) }
           attr_accessor :country
-
-          # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          # five-digit ZIP or nine-digit ZIP+4.
-          sig { returns(String) }
-          attr_accessor :postal_code
-
-          # Valid state code. Only USA state codes are currently supported, entered in
-          # uppercase ISO 3166-2 two-character format.
-          sig { returns(String) }
-          attr_accessor :state
 
           # Unit or apartment number (if applicable).
           sig { returns(T.nilable(String)) }
@@ -792,16 +820,42 @@ module Lithic
           sig { params(address2: String).void }
           attr_writer :address2
 
+          # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+          # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+          # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+          # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+          # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+          # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+          sig { returns(T.nilable(String)) }
+          attr_accessor :postal_code
+
+          # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+          # code for the country without the country prefix. For example, `CA` for
+          # California. Optional unless the address is in one of the following countries,
+          # where it is required:
+          #
+          # - `USA`
+          # - `CAN`
+          # - `AUS`
+          # - `CHN`
+          # - `KOR`
+          # - `MEX`
+          # - `MYS`
+          # - `NZL`
+          sig { returns(T.nilable(String)) }
+          attr_accessor :state
+
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           sig do
             params(
               address1: String,
               city: String,
               country: String,
-              postal_code: String,
-              state: String,
-              address2: String
+              address2: String,
+              postal_code: T.nilable(String),
+              state: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -809,17 +863,33 @@ module Lithic
             address1:,
             # Name of city.
             city:,
-            # Valid country code. Only USA is currently supported, entered in uppercase ISO
-            # 3166-1 alpha-3 three-character format.
+            # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+            # format. Supported countries depend on the onboarding workflow used for the
+            # account holder.
             country:,
-            # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-            # five-digit ZIP or nine-digit ZIP+4.
-            postal_code:,
-            # Valid state code. Only USA state codes are currently supported, entered in
-            # uppercase ISO 3166-2 two-character format.
-            state:,
             # Unit or apartment number (if applicable).
-            address2: nil
+            address2: nil,
+            # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+            # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+            # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+            # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+            # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+            # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+            postal_code: nil,
+            # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+            # code for the country without the country prefix. For example, `CA` for
+            # California. Optional unless the address is in one of the following countries,
+            # where it is required:
+            #
+            # - `USA`
+            # - `CAN`
+            # - `AUS`
+            # - `CHN`
+            # - `KOR`
+            # - `MEX`
+            # - `MYS`
+            # - `NZL`
+            state: nil
           )
           end
 
@@ -829,9 +899,9 @@ module Lithic
                 address1: String,
                 city: String,
                 country: String,
-                postal_code: String,
-                state: String,
-                address2: String
+                address2: String,
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
               }
             )
           end
@@ -886,7 +956,8 @@ module Lithic
           end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+        # and KYC workflows.
         sig do
           returns(
             T.nilable(
@@ -955,7 +1026,8 @@ module Lithic
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           address: nil,
           # Individual's date of birth, as an RFC 3339 date.
           dob: nil,
@@ -1005,20 +1077,11 @@ module Lithic
           sig { returns(String) }
           attr_accessor :city
 
-          # Valid country code. Only USA is currently supported, entered in uppercase ISO
-          # 3166-1 alpha-3 three-character format.
+          # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+          # format. Supported countries depend on the onboarding workflow used for the
+          # account holder.
           sig { returns(String) }
           attr_accessor :country
-
-          # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          # five-digit ZIP or nine-digit ZIP+4.
-          sig { returns(String) }
-          attr_accessor :postal_code
-
-          # Valid state code. Only USA state codes are currently supported, entered in
-          # uppercase ISO 3166-2 two-character format.
-          sig { returns(String) }
-          attr_accessor :state
 
           # Unit or apartment number (if applicable).
           sig { returns(T.nilable(String)) }
@@ -1027,16 +1090,42 @@ module Lithic
           sig { params(address2: String).void }
           attr_writer :address2
 
+          # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+          # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+          # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+          # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+          # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+          # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+          sig { returns(T.nilable(String)) }
+          attr_accessor :postal_code
+
+          # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+          # code for the country without the country prefix. For example, `CA` for
+          # California. Optional unless the address is in one of the following countries,
+          # where it is required:
+          #
+          # - `USA`
+          # - `CAN`
+          # - `AUS`
+          # - `CHN`
+          # - `KOR`
+          # - `MEX`
+          # - `MYS`
+          # - `NZL`
+          sig { returns(T.nilable(String)) }
+          attr_accessor :state
+
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           sig do
             params(
               address1: String,
               city: String,
               country: String,
-              postal_code: String,
-              state: String,
-              address2: String
+              address2: String,
+              postal_code: T.nilable(String),
+              state: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1044,17 +1133,33 @@ module Lithic
             address1:,
             # Name of city.
             city:,
-            # Valid country code. Only USA is currently supported, entered in uppercase ISO
-            # 3166-1 alpha-3 three-character format.
+            # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+            # format. Supported countries depend on the onboarding workflow used for the
+            # account holder.
             country:,
-            # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-            # five-digit ZIP or nine-digit ZIP+4.
-            postal_code:,
-            # Valid state code. Only USA state codes are currently supported, entered in
-            # uppercase ISO 3166-2 two-character format.
-            state:,
             # Unit or apartment number (if applicable).
-            address2: nil
+            address2: nil,
+            # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+            # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+            # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+            # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+            # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+            # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+            postal_code: nil,
+            # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+            # code for the country without the country prefix. For example, `CA` for
+            # California. Optional unless the address is in one of the following countries,
+            # where it is required:
+            #
+            # - `USA`
+            # - `CAN`
+            # - `AUS`
+            # - `CHN`
+            # - `KOR`
+            # - `MEX`
+            # - `MYS`
+            # - `NZL`
+            state: nil
           )
           end
 
@@ -1064,9 +1169,9 @@ module Lithic
                 address1: String,
                 city: String,
                 country: String,
-                postal_code: String,
-                state: String,
-                address2: String
+                address2: String,
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
               }
             )
           end

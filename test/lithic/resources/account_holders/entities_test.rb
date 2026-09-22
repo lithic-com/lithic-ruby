@@ -7,13 +7,7 @@ class Lithic::Test::Resources::AccountHolders::EntitiesTest < Lithic::Test::Reso
     response =
       @lithic.account_holders.entities.create(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        address: {
-          address1: "300 Normal Forest Way",
-          city: "Portland",
-          country: "USA",
-          postal_code: "90210",
-          state: "OR"
-        },
+        address: {address1: "300 Normal Forest Way", city: "Portland", country: "USA"},
         dob: "1991-03-08T08:00:00Z",
         email: "tim@left-earth.com",
         first_name: "Timmy",

@@ -406,7 +406,8 @@ module Lithic
             attr_accessor :last_name
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            # and KYC workflows.
             sig { returns(T.nilable(Lithic::Address)) }
             attr_reader :address
 
@@ -464,7 +465,8 @@ module Lithic
               # Individual's last name, as it appears on government-issued identity documents.
               last_name:,
               # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+              # and KYC workflows.
               address: nil,
               # Individual's date of birth, as an RFC 3339 date.
               dob: nil,
@@ -516,7 +518,8 @@ module Lithic
             attr_accessor :last_name
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            # and KYC workflows.
             sig { returns(T.nilable(Lithic::Address)) }
             attr_reader :address
 
@@ -580,7 +583,8 @@ module Lithic
               # Individual's last name, as it appears on government-issued identity documents.
               last_name:,
               # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+              # and KYC workflows.
               address: nil,
               # Individual's date of birth, as an RFC 3339 date.
               dob: nil,

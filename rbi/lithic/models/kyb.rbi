@@ -176,7 +176,8 @@ module Lithic
           end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+        # and KYC workflows.
         sig { returns(Lithic::Address) }
         attr_reader :address
 
@@ -228,7 +229,8 @@ module Lithic
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           address:,
           # Individual's date of birth, as an RFC 3339 date.
           dob:,
@@ -366,7 +368,8 @@ module Lithic
           end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+        # and KYC workflows.
         sig { returns(Lithic::Address) }
         attr_reader :address
 
@@ -425,7 +428,8 @@ module Lithic
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          # and KYC workflows.
           address:,
           # Individual's date of birth, as an RFC 3339 date.
           dob:,

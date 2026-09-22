@@ -9,13 +9,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         body: {
           beneficial_owner_individuals: [
             {
-              address: {
-                address1: "300 Normal Forest Way",
-                city: "Portland",
-                country: "USA",
-                postal_code: "90210",
-                state: "OR"
-              },
+              address: {address1: "300 Normal Forest Way", city: "Portland", country: "USA"},
               dob: "1991-03-08T08:00:00Z",
               email: "tim@left-earth.com",
               first_name: "Timmy",
@@ -24,25 +18,13 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
             }
           ],
           business_entity: {
-            address: {
-              address1: "123 Old Forest Way",
-              city: "Omaha",
-              country: "USA",
-              postal_code: "61022",
-              state: "NE"
-            },
+            address: {address1: "123 Old Forest Way", city: "Omaha", country: "USA"},
             government_id: "12-3456789",
             legal_business_name: "Busy Business, Inc.",
             phone_numbers: ["+15555555555"]
           },
           control_person: {
-            address: {
-              address1: "451 New Forest Way",
-              city: "Springfield",
-              country: "USA",
-              postal_code: "68022",
-              state: "IL"
-            },
+            address: {address1: "451 New Forest Way", city: "Springfield", country: "USA"},
             dob: "1991-03-08T08:00:00Z",
             email: "tom@middle-pluto.com",
             first_name: "Tom",

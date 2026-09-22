@@ -275,7 +275,8 @@ module Lithic
             attr_accessor :entity_token
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            # and KYC workflows.
             sig { returns(T.nilable(Lithic::AddressUpdate)) }
             attr_reader :address
 
@@ -345,7 +346,8 @@ module Lithic
               # Globally unique identifier for an entity.
               entity_token:,
               # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+              # and KYC workflows.
               address: nil,
               # Individual's date of birth, as an RFC 3339 date.
               dob: nil,
@@ -511,7 +513,8 @@ module Lithic
             attr_accessor :entity_token
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            # and KYC workflows.
             sig { returns(T.nilable(Lithic::AddressUpdate)) }
             attr_reader :address
 
@@ -588,7 +591,8 @@ module Lithic
               # Globally unique identifier for an entity.
               entity_token:,
               # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+              # and KYC workflows.
               address: nil,
               # Individual's date of birth, as an RFC 3339 date.
               dob: nil,
@@ -708,7 +712,8 @@ module Lithic
             attr_accessor :entity_token
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            # and KYC workflows.
             sig { returns(T.nilable(Lithic::AddressUpdate)) }
             attr_reader :address
 
@@ -779,7 +784,8 @@ module Lithic
               # Globally unique identifier for an entity.
               entity_token:,
               # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-              # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+              # acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+              # and KYC workflows.
               address: nil,
               # Individual's date of birth, as an RFC 3339 date.
               dob: nil,

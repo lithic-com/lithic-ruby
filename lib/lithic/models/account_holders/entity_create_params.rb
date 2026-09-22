@@ -15,7 +15,8 @@ module Lithic
 
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        #   acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+        #   and KYC workflows.
         #
         #   @return [Lithic::Models::AccountHolders::EntityCreateParams::Address]
         required :address, -> { Lithic::AccountHolders::EntityCreateParams::Address }
@@ -104,25 +105,12 @@ module Lithic
           required :city, String
 
           # @!attribute country
-          #   Valid country code. Only USA is currently supported, entered in uppercase ISO
-          #   3166-1 alpha-3 three-character format.
+          #   Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+          #   format. Supported countries depend on the onboarding workflow used for the
+          #   account holder.
           #
           #   @return [String]
           required :country, String
-
-          # @!attribute postal_code
-          #   Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          #   five-digit ZIP or nine-digit ZIP+4.
-          #
-          #   @return [String]
-          required :postal_code, String
-
-          # @!attribute state
-          #   Valid state code. Only USA state codes are currently supported, entered in
-          #   uppercase ISO 3166-2 two-character format.
-          #
-          #   @return [String]
-          required :state, String
 
           # @!attribute address2
           #   Unit or apartment number (if applicable).
@@ -130,24 +118,54 @@ module Lithic
           #   @return [String, nil]
           optional :address2, String
 
-          # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+          # @!attribute postal_code
+          #   Valid postal code. For USA addresses, enter either a five-digit postal code or a
+          #   nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+          #   countries except the following, which do not use postal codes: ABW, AGO, ARE,
+          #   ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+          #   ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+          #   SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
+          #
+          #   @return [String, nil]
+          optional :postal_code, String, nil?: true
+
+          # @!attribute state
+          #   Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+          #   code for the country without the country prefix. For example, `CA` for
+          #   California. Optional unless the address is in one of the following countries,
+          #   where it is required:
+          #
+          #   - `USA`
+          #   - `CAN`
+          #   - `AUS`
+          #   - `CHN`
+          #   - `KOR`
+          #   - `MEX`
+          #   - `MYS`
+          #   - `NZL`
+          #
+          #   @return [String, nil]
+          optional :state, String, nil?: true
+
+          # @!method initialize(address1:, city:, country:, address2: nil, postal_code: nil, state: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AccountHolders::EntityCreateParams::Address} for more details.
           #
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          #   acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+          #   and KYC workflows.
           #
           #   @param address1 [String] Valid deliverable address (no PO boxes).
           #
           #   @param city [String] Name of city.
           #
-          #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
-          #
-          #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
-          #
-          #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
+          #   @param country [String] Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character form
           #
           #   @param address2 [String] Unit or apartment number (if applicable).
+          #
+          #   @param postal_code [String, nil] Valid postal code. For USA addresses, enter either a five-digit postal code or a
+          #
+          #   @param state [String, nil] Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
         end
       end
     end

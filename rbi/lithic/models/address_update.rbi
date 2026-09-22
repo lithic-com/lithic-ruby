@@ -27,29 +27,39 @@ module Lithic
       sig { params(city: String).void }
       attr_writer :city
 
-      # Valid country code. Only USA is currently supported, entered in uppercase ISO
-      # 3166-1 alpha-3 three-character format.
+      # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+      # format. Supported countries depend on the onboarding workflow used for the
+      # account holder.
       sig { returns(T.nilable(String)) }
       attr_reader :country
 
       sig { params(country: String).void }
       attr_writer :country
 
-      # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-      # five-digit ZIP or nine-digit ZIP+4.
+      # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+      # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+      # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+      # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+      # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+      # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
       sig { returns(T.nilable(String)) }
-      attr_reader :postal_code
+      attr_accessor :postal_code
 
-      sig { params(postal_code: String).void }
-      attr_writer :postal_code
-
-      # Valid state code. Only USA state codes are currently supported, entered in
-      # uppercase ISO 3166-2 two-character format.
+      # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+      # code for the country without the country prefix. For example, `CA` for
+      # California. Optional unless the address is in one of the following countries,
+      # where it is required:
+      #
+      # - `USA`
+      # - `CAN`
+      # - `AUS`
+      # - `CHN`
+      # - `KOR`
+      # - `MEX`
+      # - `MYS`
+      # - `NZL`
       sig { returns(T.nilable(String)) }
-      attr_reader :state
-
-      sig { params(state: String).void }
-      attr_writer :state
+      attr_accessor :state
 
       sig do
         params(
@@ -57,8 +67,8 @@ module Lithic
           address2: String,
           city: String,
           country: String,
-          postal_code: String,
-          state: String
+          postal_code: T.nilable(String),
+          state: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -68,14 +78,30 @@ module Lithic
         address2: nil,
         # Name of city.
         city: nil,
-        # Valid country code. Only USA is currently supported, entered in uppercase ISO
-        # 3166-1 alpha-3 three-character format.
+        # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
+        # format. Supported countries depend on the onboarding workflow used for the
+        # account holder.
         country: nil,
-        # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-        # five-digit ZIP or nine-digit ZIP+4.
+        # Valid postal code. For USA addresses, enter either a five-digit postal code or a
+        # nine-digit postal code (ZIP+4) using the format 12345-1234. Required for all
+        # countries except the following, which do not use postal codes: ABW, AGO, ARE,
+        # ATG, BDI, BEN, BFA, BHS, BLZ, BOL, BWA, CIV, CMR, COD, COG, COK, COM, DJI, DMA,
+        # ERI, FJI, GAB, GMB, GNQ, GRD, GUY, HKG, KIR, MAC, MLI, MRT, NIU, NRU, QAT, RWA,
+        # SLB, SLE, SSD, SUR, SXM, SYC, TGO, TKL, TLS, TON, TUV, UGA, VUT, YEM, ZWE
         postal_code: nil,
-        # Valid state code. Only USA state codes are currently supported, entered in
-        # uppercase ISO 3166-2 two-character format.
+        # Valid state, province, or subdivision code, entered as the uppercase ISO 3166-2
+        # code for the country without the country prefix. For example, `CA` for
+        # California. Optional unless the address is in one of the following countries,
+        # where it is required:
+        #
+        # - `USA`
+        # - `CAN`
+        # - `AUS`
+        # - `CHN`
+        # - `KOR`
+        # - `MEX`
+        # - `MYS`
+        # - `NZL`
         state: nil
       )
       end
@@ -87,8 +113,8 @@ module Lithic
             address2: String,
             city: String,
             country: String,
-            postal_code: String,
-            state: String
+            postal_code: T.nilable(String),
+            state: T.nilable(String)
           }
         )
       end

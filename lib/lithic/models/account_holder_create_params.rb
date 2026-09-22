@@ -202,7 +202,8 @@ module Lithic
 
             # @!attribute address
             #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            #   acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            #   and KYC workflows.
             #
             #   @return [Lithic::Models::Address, nil]
             optional :address, -> { Lithic::Address }
@@ -274,7 +275,8 @@ module Lithic
 
             # @!attribute address
             #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-            #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+            #   acceptable; APO/FPO are acceptable. Only USA addresses are supported for the KYB
+            #   and KYC workflows.
             #
             #   @return [Lithic::Models::Address, nil]
             optional :address, -> { Lithic::Address }
