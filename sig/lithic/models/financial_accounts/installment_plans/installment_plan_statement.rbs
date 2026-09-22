@@ -1,0 +1,191 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      class InstallmentPlanStatement = InstallmentPlans::InstallmentPlanStatement
+
+      module InstallmentPlans
+        type installment_plan_statement =
+          {
+            token: String,
+            fee_amount: Integer,
+            installment_plan_token: String,
+            installment_plan_total: Integer,
+            installments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment],
+            installments_outstanding: Integer,
+            installments_paid: Integer,
+            num_installments: Integer,
+            principal_amount: Integer,
+            source_type: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::source_type,
+            start_date: Date,
+            state: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::state,
+            total_paid: Integer
+          }
+
+        class InstallmentPlanStatement < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor fee_amount: Integer
+
+          attr_accessor installment_plan_token: String
+
+          attr_accessor installment_plan_total: Integer
+
+          attr_accessor installments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment]
+
+          attr_accessor installments_outstanding: Integer
+
+          attr_accessor installments_paid: Integer
+
+          attr_accessor num_installments: Integer
+
+          attr_accessor principal_amount: Integer
+
+          attr_accessor source_type: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::source_type
+
+          attr_accessor start_date: Date
+
+          attr_accessor state: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::state
+
+          attr_accessor total_paid: Integer
+
+          def initialize: (
+            token: String,
+            fee_amount: Integer,
+            installment_plan_token: String,
+            installment_plan_total: Integer,
+            installments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment],
+            installments_outstanding: Integer,
+            installments_paid: Integer,
+            num_installments: Integer,
+            principal_amount: Integer,
+            source_type: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::source_type,
+            start_date: Date,
+            state: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::state,
+            total_paid: Integer
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            fee_amount: Integer,
+            installment_plan_token: String,
+            installment_plan_total: Integer,
+            installments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment],
+            installments_outstanding: Integer,
+            installments_paid: Integer,
+            num_installments: Integer,
+            principal_amount: Integer,
+            source_type: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::source_type,
+            start_date: Date,
+            state: Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::state,
+            total_paid: Integer
+          }
+
+          type installment =
+            {
+              amount_due: Integer,
+              amount_due_details: Lithic::FinancialAccounts::CategoryBalances,
+              amount_outstanding: Integer,
+              amount_outstanding_details: Lithic::FinancialAccounts::CategoryBalances,
+              amount_paid: Integer,
+              amount_paid_details: Lithic::FinancialAccounts::CategoryBalances,
+              date_assessed: Date?,
+              due_date: Date,
+              installment_num: Integer,
+              payment_due_date: Date,
+              payments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment]
+            }
+
+          class Installment < Lithic::Internal::Type::BaseModel
+            attr_accessor amount_due: Integer
+
+            attr_accessor amount_due_details: Lithic::FinancialAccounts::CategoryBalances
+
+            attr_accessor amount_outstanding: Integer
+
+            attr_accessor amount_outstanding_details: Lithic::FinancialAccounts::CategoryBalances
+
+            attr_accessor amount_paid: Integer
+
+            attr_accessor amount_paid_details: Lithic::FinancialAccounts::CategoryBalances
+
+            attr_accessor date_assessed: Date?
+
+            attr_accessor due_date: Date
+
+            attr_accessor installment_num: Integer
+
+            attr_accessor payment_due_date: Date
+
+            attr_accessor payments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment]
+
+            def initialize: (
+              amount_due: Integer,
+              amount_due_details: Lithic::FinancialAccounts::CategoryBalances,
+              amount_outstanding: Integer,
+              amount_outstanding_details: Lithic::FinancialAccounts::CategoryBalances,
+              amount_paid: Integer,
+              amount_paid_details: Lithic::FinancialAccounts::CategoryBalances,
+              date_assessed: Date?,
+              due_date: Date,
+              installment_num: Integer,
+              payment_due_date: Date,
+              payments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment]
+            ) -> void
+
+            def to_hash: -> {
+              amount_due: Integer,
+              amount_due_details: Lithic::FinancialAccounts::CategoryBalances,
+              amount_outstanding: Integer,
+              amount_outstanding_details: Lithic::FinancialAccounts::CategoryBalances,
+              amount_paid: Integer,
+              amount_paid_details: Lithic::FinancialAccounts::CategoryBalances,
+              date_assessed: Date?,
+              due_date: Date,
+              installment_num: Integer,
+              payment_due_date: Date,
+              payments: ::Array[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment]
+            }
+
+            type payment = { amount: Integer, date: Date }
+
+            class Payment < Lithic::Internal::Type::BaseModel
+              attr_accessor amount: Integer
+
+              attr_accessor date: Date
+
+              def initialize: (amount: Integer, date: Date) -> void
+
+              def to_hash: -> { amount: Integer, date: Date }
+            end
+          end
+
+          type source_type = :UNPAID_BALANCE | :TRANSACTION
+
+          module SourceType
+            extend Lithic::Internal::Type::Enum
+
+            UNPAID_BALANCE: :UNPAID_BALANCE
+            TRANSACTION: :TRANSACTION
+
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::source_type]
+          end
+
+          type state =
+            :PENDING | :ACTIVE | :REBUILD_IN_PROGRESS | :FULLY_PAID | :CANCELLED
+
+          module State
+            extend Lithic::Internal::Type::Enum
+
+            PENDING: :PENDING
+            ACTIVE: :ACTIVE
+            REBUILD_IN_PROGRESS: :REBUILD_IN_PROGRESS
+            FULLY_PAID: :FULLY_PAID
+            CANCELLED: :CANCELLED
+
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::state]
+          end
+        end
+      end
+    end
+  end
+end

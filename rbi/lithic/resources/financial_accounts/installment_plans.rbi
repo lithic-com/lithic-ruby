@@ -4,6 +4,13 @@ module Lithic
   module Resources
     class FinancialAccounts
       class InstallmentPlans
+        sig do
+          returns(
+            Lithic::Resources::FinancialAccounts::InstallmentPlans::Statements
+          )
+        end
+        attr_reader :statements
+
         # Get a specific installment plan for a given financial account.
         sig do
           params(

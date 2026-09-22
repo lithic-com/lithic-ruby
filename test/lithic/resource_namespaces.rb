@@ -27,11 +27,17 @@ module Lithic
       end
 
       module FinancialAccounts
+        module InstallmentPlans
+        end
+
         module Statements
         end
       end
 
       module Fraud
+      end
+
+      module InstallmentPlans
       end
 
       module Reports

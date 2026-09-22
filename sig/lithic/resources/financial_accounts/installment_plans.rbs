@@ -2,6 +2,8 @@ module Lithic
   module Resources
     class FinancialAccounts
       class InstallmentPlans
+        attr_reader statements: Lithic::Resources::FinancialAccounts::InstallmentPlans::Statements
+
         def retrieve: (
           String installment_plan_token,
           financial_account_token: String,

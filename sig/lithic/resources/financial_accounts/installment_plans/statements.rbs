@@ -1,0 +1,30 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      class InstallmentPlans
+        class Statements
+          def retrieve: (
+            String statement_token,
+            financial_account_token: String,
+            installment_plan_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement
+
+          def list: (
+            String installment_plan_token,
+            financial_account_token: String,
+            ?begin_: Date,
+            ?end_: Date,
+            ?ending_before: String,
+            ?page_size: Integer,
+            ?starting_after: String,
+            ?state: Lithic::Models::FinancialAccounts::InstallmentPlans::StatementListParams::state?,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::Internal::CursorPage[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement]
+
+          def initialize: (client: Lithic::Client) -> void
+        end
+      end
+    end
+  end
+end

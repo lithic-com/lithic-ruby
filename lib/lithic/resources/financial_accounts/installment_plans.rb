@@ -4,6 +4,9 @@ module Lithic
   module Resources
     class FinancialAccounts
       class InstallmentPlans
+        # @return [Lithic::Resources::FinancialAccounts::InstallmentPlans::Statements]
+        attr_reader :statements
+
         # Get a specific installment plan for a given financial account.
         #
         # @overload retrieve(installment_plan_token, financial_account_token:, request_options: {})
@@ -75,6 +78,7 @@ module Lithic
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client
+          @statements = Lithic::Resources::FinancialAccounts::InstallmentPlans::Statements.new(client: client)
         end
       end
     end
