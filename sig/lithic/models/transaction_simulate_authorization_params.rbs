@@ -5,6 +5,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        billing_currency: String,
         mcc: String,
         merchant_acceptor_city: String,
         merchant_acceptor_country: String,
@@ -14,6 +15,7 @@ module Lithic
         merchant_currency: String,
         partial_approval_capable: bool,
         pin: String,
+        settlement_currency: String,
         status: Lithic::Models::TransactionSimulateAuthorizationParams::status
       }
       & Lithic::Internal::Type::request_parameters
@@ -27,6 +29,10 @@ module Lithic
       attr_accessor descriptor: String
 
       attr_accessor pan: String
+
+      attr_reader billing_currency: String?
+
+      def billing_currency=: (String) -> String
 
       attr_reader mcc: String?
 
@@ -64,6 +70,10 @@ module Lithic
 
       def pin=: (String) -> String
 
+      attr_reader settlement_currency: String?
+
+      def settlement_currency=: (String) -> String
+
       attr_reader status: Lithic::Models::TransactionSimulateAuthorizationParams::status?
 
       def status=: (
@@ -74,6 +84,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        ?billing_currency: String,
         ?mcc: String,
         ?merchant_acceptor_city: String,
         ?merchant_acceptor_country: String,
@@ -83,6 +94,7 @@ module Lithic
         ?merchant_currency: String,
         ?partial_approval_capable: bool,
         ?pin: String,
+        ?settlement_currency: String,
         ?status: Lithic::Models::TransactionSimulateAuthorizationParams::status,
         ?request_options: Lithic::request_opts
       ) -> void
@@ -91,6 +103,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        billing_currency: String,
         mcc: String,
         merchant_acceptor_city: String,
         merchant_acceptor_country: String,
@@ -100,6 +113,7 @@ module Lithic
         merchant_currency: String,
         partial_approval_capable: bool,
         pin: String,
+        settlement_currency: String,
         status: Lithic::Models::TransactionSimulateAuthorizationParams::status,
         request_options: Lithic::RequestOptions
       }

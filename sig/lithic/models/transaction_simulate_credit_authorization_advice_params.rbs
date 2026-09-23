@@ -5,6 +5,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        billing_currency: String,
         mcc: String,
         merchant_acceptor_city: String,
         merchant_acceptor_country: String,
@@ -22,6 +23,10 @@ module Lithic
       attr_accessor descriptor: String
 
       attr_accessor pan: String
+
+      attr_reader billing_currency: String?
+
+      def billing_currency=: (String) -> String
 
       attr_reader mcc: String?
 
@@ -47,6 +52,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        ?billing_currency: String,
         ?mcc: String,
         ?merchant_acceptor_city: String,
         ?merchant_acceptor_country: String,
@@ -59,6 +65,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        billing_currency: String,
         mcc: String,
         merchant_acceptor_city: String,
         merchant_acceptor_country: String,

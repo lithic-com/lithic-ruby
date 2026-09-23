@@ -27,6 +27,14 @@ module Lithic
       #   @return [String]
       required :pan, String
 
+      # @!attribute billing_currency
+      #   3-character alphabetic ISO 4217 currency code for the cardholder billing amount.
+      #   Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+      #   a 422. Defaults to USD
+      #
+      #   @return [String, nil]
+      optional :billing_currency, String
+
       # @!attribute mcc
       #   Merchant category code for the transaction to be simulated. A four-digit number
       #   listed in ISO 18245. Supported merchant category codes can be found
@@ -59,7 +67,7 @@ module Lithic
       #   @return [String, nil]
       optional :merchant_acceptor_state, String
 
-      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_city: nil, merchant_acceptor_country: nil, merchant_acceptor_id: nil, merchant_acceptor_state: nil, request_options: {})
+      # @!method initialize(amount:, descriptor:, pan:, billing_currency: nil, mcc: nil, merchant_acceptor_city: nil, merchant_acceptor_country: nil, merchant_acceptor_id: nil, merchant_acceptor_state: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TransactionSimulateCreditAuthorizationAdviceParams} for more
       #   details.
@@ -69,6 +77,8 @@ module Lithic
       #   @param descriptor [String] Merchant descriptor.
       #
       #   @param pan [String] Sixteen digit card number.
+      #
+      #   @param billing_currency [String] 3-character alphabetic ISO 4217 currency code for the cardholder billing amount.
       #
       #   @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
       #

@@ -38,6 +38,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        ?billing_currency: String,
         ?mcc: String,
         ?merchant_acceptor_city: String,
         ?merchant_acceptor_country: String,
@@ -47,6 +48,7 @@ module Lithic
         ?merchant_currency: String,
         ?partial_approval_capable: bool,
         ?pin: String,
+        ?settlement_currency: String,
         ?status: Lithic::Models::TransactionSimulateAuthorizationParams::status,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::TransactionSimulateAuthorizationResponse
@@ -67,6 +69,7 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        ?billing_currency: String,
         ?mcc: String,
         ?merchant_acceptor_city: String,
         ?merchant_acceptor_country: String,
@@ -79,6 +82,8 @@ module Lithic
         amount: Integer,
         descriptor: String,
         pan: String,
+        ?billing_currency: String,
+        ?settlement_currency: String,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::TransactionSimulateReturnResponse
 

@@ -26,11 +26,31 @@ module Lithic
       sig { returns(String) }
       attr_accessor :pan
 
+      # 3-character alphabetic ISO 4217 currency code for the cardholder billing amount.
+      # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+      # a 422. Defaults to USD
+      sig { returns(T.nilable(String)) }
+      attr_reader :billing_currency
+
+      sig { params(billing_currency: String).void }
+      attr_writer :billing_currency
+
+      # 3-character alphabetic ISO 4217 currency code for the settlement amount.
+      # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+      # a 422. Defaults to the value of billing_currency
+      sig { returns(T.nilable(String)) }
+      attr_reader :settlement_currency
+
+      sig { params(settlement_currency: String).void }
+      attr_writer :settlement_currency
+
       sig do
         params(
           amount: Integer,
           descriptor: String,
           pan: String,
+          billing_currency: String,
+          settlement_currency: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -41,6 +61,14 @@ module Lithic
         descriptor:,
         # Sixteen digit card number.
         pan:,
+        # 3-character alphabetic ISO 4217 currency code for the cardholder billing amount.
+        # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+        # a 422. Defaults to USD
+        billing_currency: nil,
+        # 3-character alphabetic ISO 4217 currency code for the settlement amount.
+        # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+        # a 422. Defaults to the value of billing_currency
+        settlement_currency: nil,
         request_options: {}
       )
       end
@@ -51,6 +79,8 @@ module Lithic
             amount: Integer,
             descriptor: String,
             pan: String,
+            billing_currency: String,
+            settlement_currency: String,
             request_options: Lithic::RequestOptions
           }
         )

@@ -30,6 +30,15 @@ module Lithic
       sig { returns(String) }
       attr_accessor :pan
 
+      # 3-character alphabetic ISO 4217 currency code for the cardholder billing amount.
+      # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+      # a 422. Defaults to USD
+      sig { returns(T.nilable(String)) }
+      attr_reader :billing_currency
+
+      sig { params(billing_currency: String).void }
+      attr_writer :billing_currency
+
       # Merchant category code for the transaction to be simulated. A four-digit number
       # listed in ISO 18245. Supported merchant category codes can be found
       # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
@@ -75,8 +84,10 @@ module Lithic
       sig { params(merchant_amount: Integer).void }
       attr_writer :merchant_amount
 
-      # 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
-      # GBP, EUR and defaults to GBP if another ISO 4217 code is provided
+      # 3-character alphabetic ISO 4217 currency code for the merchant amount. Only used
+      # when merchant_amount is set, and defaults to GBP in that case. Without
+      # merchant_amount, the merchant amount uses the billing currency. Permitted values
+      # are USD, GBP, EUR and CAD, and any other ISO 4217 code returns a 422
       sig { returns(T.nilable(String)) }
       attr_reader :merchant_currency
 
@@ -98,6 +109,17 @@ module Lithic
 
       sig { params(pin: String).void }
       attr_writer :pin
+
+      # 3-character alphabetic ISO 4217 currency code for the settlement amount.
+      # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+      # a 422. Defaults to the value of billing_currency. Only single message
+      # (financial) authorizations carry a settlement amount, and the value is ignored
+      # for dual message authorizations
+      sig { returns(T.nilable(String)) }
+      attr_reader :settlement_currency
+
+      sig { params(settlement_currency: String).void }
+      attr_writer :settlement_currency
 
       # Type of event to simulate.
       #
@@ -137,6 +159,7 @@ module Lithic
           amount: Integer,
           descriptor: String,
           pan: String,
+          billing_currency: String,
           mcc: String,
           merchant_acceptor_city: String,
           merchant_acceptor_country: String,
@@ -146,6 +169,7 @@ module Lithic
           merchant_currency: String,
           partial_approval_capable: T::Boolean,
           pin: String,
+          settlement_currency: String,
           status:
             Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
@@ -162,6 +186,10 @@ module Lithic
         descriptor:,
         # Sixteen digit card number.
         pan:,
+        # 3-character alphabetic ISO 4217 currency code for the cardholder billing amount.
+        # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+        # a 422. Defaults to USD
+        billing_currency: nil,
         # Merchant category code for the transaction to be simulated. A four-digit number
         # listed in ISO 18245. Supported merchant category codes can be found
         # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
@@ -177,8 +205,10 @@ module Lithic
         # Amount of the transaction to be simulated in currency specified in
         # merchant_currency, including any acquirer fees.
         merchant_amount: nil,
-        # 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
-        # GBP, EUR and defaults to GBP if another ISO 4217 code is provided
+        # 3-character alphabetic ISO 4217 currency code for the merchant amount. Only used
+        # when merchant_amount is set, and defaults to GBP in that case. Without
+        # merchant_amount, the merchant amount uses the billing currency. Permitted values
+        # are USD, GBP, EUR and CAD, and any other ISO 4217 code returns a 422
         merchant_currency: nil,
         # Set to true if the terminal is capable of partial approval otherwise false.
         # Partial approval is when part of a transaction is approved and another payment
@@ -186,6 +216,12 @@ module Lithic
         partial_approval_capable: nil,
         # Simulate entering a PIN. If omitted, PIN check will not be performed.
         pin: nil,
+        # 3-character alphabetic ISO 4217 currency code for the settlement amount.
+        # Permitted values are USD, GBP, EUR and CAD, and any other ISO 4217 code returns
+        # a 422. Defaults to the value of billing_currency. Only single message
+        # (financial) authorizations carry a settlement amount, and the value is ignored
+        # for dual message authorizations
+        settlement_currency: nil,
         # Type of event to simulate.
         #
         # - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
@@ -213,6 +249,7 @@ module Lithic
             amount: Integer,
             descriptor: String,
             pan: String,
+            billing_currency: String,
             mcc: String,
             merchant_acceptor_city: String,
             merchant_acceptor_country: String,
@@ -222,6 +259,7 @@ module Lithic
             merchant_currency: String,
             partial_approval_capable: T::Boolean,
             pin: String,
+            settlement_currency: String,
             status:
               Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol,
             request_options: Lithic::RequestOptions
