@@ -54,13 +54,24 @@ module Lithic
           #     fee field in the settlement/cardholder billing currency. This is the amount
           #     the issuer should authorize against unless the issuer is paying the acquirer
           #     fee on behalf of the cardholder. Use an integer value.
-          #   - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
-          #     risk level, with a higher value indicating a higher amount of risk. Use an
-          #     integer value.
+          #   - `RISK_SCORE`: Mastercard, and Visa in some markets: Assessment by the network
+          #     of the authentication risk level, with a higher value indicating a higher
+          #     amount of risk. Use an integer value.
           #   - `MESSAGE_CATEGORY`: The category of the authentication being processed.
           #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          #   - `CARD_STATE`: The current state of the card associated with the
+          #     authentication. Valid values are `CLOSED`, `OPEN`, `PAUSED`,
+          #     `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
+          #   - `CARD_TYPE`: The type of the card associated with the authentication. Valid
+          #     values are `MERCHANT_LOCKED`, `PHYSICAL`, `SINGLE_USE`, `VIRTUAL`.
+          #   - `CARD_PROGRAM_FAMILY`: The program family of the card associated with the
+          #     authentication. Valid values are `CONSUMER`, `COMMERCIAL`.
+          #   - `PIN_STATUS`: The current state of card's PIN. Valid values are `NOT_SET`,
+          #     `OK`, `BLOCKED`.
+          #   - `CARD_AGE`: The age of the card in seconds at the time of the authentication.
+          #     Use an integer value.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::Attribute]
           required :attribute, enum: -> { Lithic::AuthRules::Conditional3DSActionParameters::Condition::Attribute }
@@ -106,13 +117,24 @@ module Lithic
           #   fee field in the settlement/cardholder billing currency. This is the amount
           #   the issuer should authorize against unless the issuer is paying the acquirer
           #   fee on behalf of the cardholder. Use an integer value.
-          # - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
-          #   risk level, with a higher value indicating a higher amount of risk. Use an
-          #   integer value.
+          # - `RISK_SCORE`: Mastercard, and Visa in some markets: Assessment by the network
+          #   of the authentication risk level, with a higher value indicating a higher
+          #   amount of risk. Use an integer value.
           # - `MESSAGE_CATEGORY`: The category of the authentication being processed.
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
+          # - `CARD_STATE`: The current state of the card associated with the
+          #   authentication. Valid values are `CLOSED`, `OPEN`, `PAUSED`,
+          #   `PENDING_ACTIVATION`, `PENDING_FULFILLMENT`.
+          # - `CARD_TYPE`: The type of the card associated with the authentication. Valid
+          #   values are `MERCHANT_LOCKED`, `PHYSICAL`, `SINGLE_USE`, `VIRTUAL`.
+          # - `CARD_PROGRAM_FAMILY`: The program family of the card associated with the
+          #   authentication. Valid values are `CONSUMER`, `COMMERCIAL`.
+          # - `PIN_STATUS`: The current state of card's PIN. Valid values are `NOT_SET`,
+          #   `OK`, `BLOCKED`.
+          # - `CARD_AGE`: The age of the card in seconds at the time of the authentication.
+          #   Use an integer value.
           #
           # @see Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition#attribute
           module Attribute
@@ -127,6 +149,11 @@ module Lithic
             RISK_SCORE = :RISK_SCORE
             MESSAGE_CATEGORY = :MESSAGE_CATEGORY
             ADDRESS_MATCH = :ADDRESS_MATCH
+            CARD_STATE = :CARD_STATE
+            CARD_TYPE = :CARD_TYPE
+            CARD_PROGRAM_FAMILY = :CARD_PROGRAM_FAMILY
+            PIN_STATUS = :PIN_STATUS
+            CARD_AGE = :CARD_AGE
 
             # @!method self.values
             #   @return [Array<Symbol>]

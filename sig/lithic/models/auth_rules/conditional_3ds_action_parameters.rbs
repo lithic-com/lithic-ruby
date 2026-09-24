@@ -69,6 +69,11 @@ module Lithic
             | :RISK_SCORE
             | :MESSAGE_CATEGORY
             | :ADDRESS_MATCH
+            | :CARD_STATE
+            | :CARD_TYPE
+            | :CARD_PROGRAM_FAMILY
+            | :PIN_STATUS
+            | :CARD_AGE
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -82,6 +87,11 @@ module Lithic
             RISK_SCORE: :RISK_SCORE
             MESSAGE_CATEGORY: :MESSAGE_CATEGORY
             ADDRESS_MATCH: :ADDRESS_MATCH
+            CARD_STATE: :CARD_STATE
+            CARD_TYPE: :CARD_TYPE
+            CARD_PROGRAM_FAMILY: :CARD_PROGRAM_FAMILY
+            PIN_STATUS: :PIN_STATUS
+            CARD_AGE: :CARD_AGE
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute]
           end
