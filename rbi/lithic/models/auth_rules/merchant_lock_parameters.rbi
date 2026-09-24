@@ -19,18 +19,28 @@ module Lithic
         end
         attr_accessor :merchants
 
+        # Timestamp of when the merchant lock was created
+        sig { returns(T.nilable(Time)) }
+        attr_reader :locked_at
+
+        sig { params(locked_at: Time).void }
+        attr_writer :locked_at
+
         sig do
           params(
             merchants:
               T::Array[
                 Lithic::AuthRules::MerchantLockParameters::Merchant::OrHash
-              ]
+              ],
+            locked_at: Time
           ).returns(T.attached_class)
         end
         def self.new(
           # A list of merchant locks defining specific merchants or groups of merchants
           # (based on descriptors or IDs) that the lock applies to.
-          merchants:
+          merchants:,
+          # Timestamp of when the merchant lock was created
+          locked_at: nil
         )
         end
 
@@ -38,7 +48,8 @@ module Lithic
           override.returns(
             {
               merchants:
-                T::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+                T::Array[Lithic::AuthRules::MerchantLockParameters::Merchant],
+              locked_at: Time
             }
           )
         end

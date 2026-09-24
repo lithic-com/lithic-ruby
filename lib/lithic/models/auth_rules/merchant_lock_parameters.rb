@@ -12,11 +12,21 @@ module Lithic
         required :merchants,
                  -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::MerchantLockParameters::Merchant] }
 
-        # @!method initialize(merchants:)
+        response_only do
+          # @!attribute locked_at
+          #   Timestamp of when the merchant lock was created
+          #
+          #   @return [Time, nil]
+          optional :locked_at, Time
+        end
+
+        # @!method initialize(merchants:, locked_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::MerchantLockParameters} for more details.
         #
         #   @param merchants [Array<Lithic::Models::AuthRules::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
+        #
+        #   @param locked_at [Time] Timestamp of when the merchant lock was created
 
         class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute comment

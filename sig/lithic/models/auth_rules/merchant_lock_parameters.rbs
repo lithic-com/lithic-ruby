@@ -3,18 +3,25 @@ module Lithic
     module AuthRules
       type merchant_lock_parameters =
         {
-          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant],
+          locked_at: Time
         }
 
       class MerchantLockParameters < Lithic::Internal::Type::BaseModel
         attr_accessor merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
 
+        attr_reader locked_at: Time?
+
+        def locked_at=: (Time) -> Time
+
         def initialize: (
-          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant],
+          ?locked_at: Time
         ) -> void
 
         def to_hash: -> {
-          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant],
+          locked_at: Time
         }
 
         type merchant =
