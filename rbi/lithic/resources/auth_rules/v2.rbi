@@ -115,7 +115,6 @@ module Lithic
             parameters:
               T.nilable(
                 T.any(
-                  Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                   Lithic::AuthRules::VelocityLimitParams::OrHash,
                   Lithic::AuthRules::MerchantLockParameters::OrHash,
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
@@ -218,7 +217,7 @@ module Lithic
         # - VelocityLimit Rules calculates the current Velocity Feature data. This
         #   requires a `card_token` or `account_token` matching what the rule is Scoped
         #   to.
-        # - ConditionalBlock Rules calculates the CARD*TRANSACTION_COUNT*\* attributes on
+        # - ConditionalAction Rules calculates the CARD*TRANSACTION_COUNT*\* attributes on
         #   the rule. This requires a `card_token`
         sig do
           params(

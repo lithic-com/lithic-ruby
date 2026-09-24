@@ -78,7 +78,6 @@ module Lithic
             sig do
               returns(
                 T.any(
-                  Lithic::AuthRules::ConditionalBlockParameters,
                   Lithic::AuthRules::VelocityLimitParams,
                   Lithic::AuthRules::MerchantLockParameters,
                   Lithic::AuthRules::Conditional3DSActionParameters,
@@ -99,8 +98,6 @@ module Lithic
             # several event streams, the effective one is defined by the separate
             # `event_stream` field.
             #
-            # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-            #   AUTHORIZATION event stream.
             # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
             # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
             # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -151,7 +148,6 @@ module Lithic
               params(
                 parameters:
                   T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                     Lithic::AuthRules::VelocityLimitParams::OrHash,
                     Lithic::AuthRules::MerchantLockParameters::OrHash,
                     Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
@@ -179,8 +175,6 @@ module Lithic
               # several event streams, the effective one is defined by the separate
               # `event_stream` field.
               #
-              # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-              #   AUTHORIZATION event stream.
               # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
               # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
               # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -208,7 +202,6 @@ module Lithic
                 {
                   parameters:
                     T.any(
-                      Lithic::AuthRules::ConditionalBlockParameters,
                       Lithic::AuthRules::VelocityLimitParams,
                       Lithic::AuthRules::MerchantLockParameters,
                       Lithic::AuthRules::Conditional3DSActionParameters,
@@ -239,7 +232,6 @@ module Lithic
               Variants =
                 T.type_alias do
                   T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters,
                     Lithic::AuthRules::VelocityLimitParams,
                     Lithic::AuthRules::MerchantLockParameters,
                     Lithic::AuthRules::Conditional3DSActionParameters,
@@ -269,8 +261,6 @@ module Lithic
             # several event streams, the effective one is defined by the separate
             # `event_stream` field.
             #
-            # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-            #   AUTHORIZATION event stream.
             # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
             # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
             # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -293,11 +283,6 @@ module Lithic
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              CONDITIONAL_BLOCK =
-                T.let(
-                  :CONDITIONAL_BLOCK,
-                  Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::TaggedSymbol
-                )
               VELOCITY_LIMIT =
                 T.let(
                   :VELOCITY_LIMIT,
@@ -353,7 +338,6 @@ module Lithic
             sig do
               returns(
                 T.any(
-                  Lithic::AuthRules::ConditionalBlockParameters,
                   Lithic::AuthRules::VelocityLimitParams,
                   Lithic::AuthRules::MerchantLockParameters,
                   Lithic::AuthRules::Conditional3DSActionParameters,
@@ -374,8 +358,6 @@ module Lithic
             # several event streams, the effective one is defined by the separate
             # `event_stream` field.
             #
-            # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-            #   AUTHORIZATION event stream.
             # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
             # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
             # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -413,7 +395,6 @@ module Lithic
                 card_tokens: T::Array[String],
                 parameters:
                   T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                     Lithic::AuthRules::VelocityLimitParams::OrHash,
                     Lithic::AuthRules::MerchantLockParameters::OrHash,
                     Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
@@ -441,8 +422,6 @@ module Lithic
               # several event streams, the effective one is defined by the separate
               # `event_stream` field.
               #
-              # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-              #   AUTHORIZATION event stream.
               # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
               # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
               # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -467,7 +446,6 @@ module Lithic
                   card_tokens: T::Array[String],
                   parameters:
                     T.any(
-                      Lithic::AuthRules::ConditionalBlockParameters,
                       Lithic::AuthRules::VelocityLimitParams,
                       Lithic::AuthRules::MerchantLockParameters,
                       Lithic::AuthRules::Conditional3DSActionParameters,
@@ -496,7 +474,6 @@ module Lithic
               Variants =
                 T.type_alias do
                   T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters,
                     Lithic::AuthRules::VelocityLimitParams,
                     Lithic::AuthRules::MerchantLockParameters,
                     Lithic::AuthRules::Conditional3DSActionParameters,
@@ -526,8 +503,6 @@ module Lithic
             # several event streams, the effective one is defined by the separate
             # `event_stream` field.
             #
-            # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-            #   AUTHORIZATION event stream.
             # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
             # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
             # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -550,11 +525,6 @@ module Lithic
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              CONDITIONAL_BLOCK =
-                T.let(
-                  :CONDITIONAL_BLOCK,
-                  Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::TaggedSymbol
-                )
               VELOCITY_LIMIT =
                 T.let(
                   :VELOCITY_LIMIT,
@@ -606,7 +576,6 @@ module Lithic
             sig do
               returns(
                 T.any(
-                  Lithic::AuthRules::ConditionalBlockParameters,
                   Lithic::AuthRules::VelocityLimitParams,
                   Lithic::AuthRules::MerchantLockParameters,
                   Lithic::AuthRules::Conditional3DSActionParameters,
@@ -631,8 +600,6 @@ module Lithic
             # several event streams, the effective one is defined by the separate
             # `event_stream` field.
             #
-            # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-            #   AUTHORIZATION event stream.
             # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
             # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
             # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -692,7 +659,6 @@ module Lithic
               params(
                 parameters:
                   T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                     Lithic::AuthRules::VelocityLimitParams::OrHash,
                     Lithic::AuthRules::MerchantLockParameters::OrHash,
                     Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
@@ -724,8 +690,6 @@ module Lithic
               # several event streams, the effective one is defined by the separate
               # `event_stream` field.
               #
-              # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-              #   AUTHORIZATION event stream.
               # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
               # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
               # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -755,7 +719,6 @@ module Lithic
                 {
                   parameters:
                     T.any(
-                      Lithic::AuthRules::ConditionalBlockParameters,
                       Lithic::AuthRules::VelocityLimitParams,
                       Lithic::AuthRules::MerchantLockParameters,
                       Lithic::AuthRules::Conditional3DSActionParameters,
@@ -788,7 +751,6 @@ module Lithic
               Variants =
                 T.type_alias do
                   T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters,
                     Lithic::AuthRules::VelocityLimitParams,
                     Lithic::AuthRules::MerchantLockParameters,
                     Lithic::AuthRules::Conditional3DSActionParameters,
@@ -818,8 +780,6 @@ module Lithic
             # several event streams, the effective one is defined by the separate
             # `event_stream` field.
             #
-            # - `CONDITIONAL_BLOCK`: Deprecated. Use `CONDITIONAL_ACTION` instead.
-            #   AUTHORIZATION event stream.
             # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
             # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
             # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
@@ -842,11 +802,6 @@ module Lithic
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              CONDITIONAL_BLOCK =
-                T.let(
-                  :CONDITIONAL_BLOCK,
-                  Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Type::TaggedSymbol
-                )
               VELOCITY_LIMIT =
                 T.let(
                   :VELOCITY_LIMIT,

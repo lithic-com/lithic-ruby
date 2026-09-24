@@ -79,8 +79,7 @@ module Lithic
             }
 
             type parameters =
-              Lithic::AuthRules::ConditionalBlockParameters
-              | Lithic::AuthRules::VelocityLimitParams
+              Lithic::AuthRules::VelocityLimitParams
               | Lithic::AuthRules::MerchantLockParameters
               | Lithic::AuthRules::Conditional3DSActionParameters
               | Lithic::AuthRules::ConditionalAuthorizationActionParameters
@@ -98,8 +97,7 @@ module Lithic
             end
 
             type type_ =
-              :CONDITIONAL_BLOCK
-              | :VELOCITY_LIMIT
+              :VELOCITY_LIMIT
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
               | :TYPESCRIPT_CODE
@@ -108,7 +106,6 @@ module Lithic
             module Type
               extend Lithic::Internal::Type::Enum
 
-              CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
               VELOCITY_LIMIT: :VELOCITY_LIMIT
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
@@ -160,8 +157,7 @@ module Lithic
             }
 
             type parameters =
-              Lithic::AuthRules::ConditionalBlockParameters
-              | Lithic::AuthRules::VelocityLimitParams
+              Lithic::AuthRules::VelocityLimitParams
               | Lithic::AuthRules::MerchantLockParameters
               | Lithic::AuthRules::Conditional3DSActionParameters
               | Lithic::AuthRules::ConditionalAuthorizationActionParameters
@@ -179,8 +175,7 @@ module Lithic
             end
 
             type type_ =
-              :CONDITIONAL_BLOCK
-              | :VELOCITY_LIMIT
+              :VELOCITY_LIMIT
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
               | :TYPESCRIPT_CODE
@@ -189,7 +184,6 @@ module Lithic
             module Type
               extend Lithic::Internal::Type::Enum
 
-              CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
               VELOCITY_LIMIT: :VELOCITY_LIMIT
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION
@@ -264,8 +258,7 @@ module Lithic
             }
 
             type parameters =
-              Lithic::AuthRules::ConditionalBlockParameters
-              | Lithic::AuthRules::VelocityLimitParams
+              Lithic::AuthRules::VelocityLimitParams
               | Lithic::AuthRules::MerchantLockParameters
               | Lithic::AuthRules::Conditional3DSActionParameters
               | Lithic::AuthRules::ConditionalAuthorizationActionParameters
@@ -283,8 +276,7 @@ module Lithic
             end
 
             type type_ =
-              :CONDITIONAL_BLOCK
-              | :VELOCITY_LIMIT
+              :VELOCITY_LIMIT
               | :MERCHANT_LOCK
               | :CONDITIONAL_ACTION
               | :TYPESCRIPT_CODE
@@ -293,7 +285,6 @@ module Lithic
             module Type
               extend Lithic::Internal::Type::Enum
 
-              CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
               VELOCITY_LIMIT: :VELOCITY_LIMIT
               MERCHANT_LOCK: :MERCHANT_LOCK
               CONDITIONAL_ACTION: :CONDITIONAL_ACTION

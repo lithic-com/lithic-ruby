@@ -6,10 +6,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
   def test_create_required_params
     response =
       @lithic.auth_rules.v2.create(
-        body: {
-          parameters: {conditions: [{attribute: :MCC, operation: :IS_ONE_OF, value: "string"}]},
-          type: :CONDITIONAL_BLOCK
-        }
+        body: {parameters: {period: {duration: 10, type: :CUSTOM}, scope: :CARD}, type: :VELOCITY_LIMIT}
       )
 
     assert_pattern do

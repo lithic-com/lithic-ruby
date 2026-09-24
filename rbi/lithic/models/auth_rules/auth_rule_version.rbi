@@ -35,7 +35,6 @@ module Lithic
             created: Time,
             parameters:
               T.any(
-                Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                 Lithic::AuthRules::VelocityLimitParams::OrHash,
                 Lithic::AuthRules::MerchantLockParameters::OrHash,
                 Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
@@ -85,7 +84,6 @@ module Lithic
           Variants =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::ConditionalBlockParameters,
                 Lithic::AuthRules::VelocityLimitParams,
                 Lithic::AuthRules::MerchantLockParameters,
                 Lithic::AuthRules::Conditional3DSActionParameters,

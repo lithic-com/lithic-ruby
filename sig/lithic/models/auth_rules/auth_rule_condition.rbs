@@ -7,7 +7,8 @@ module Lithic
         {
           attribute: Lithic::Models::AuthRules::conditional_attribute,
           operation: Lithic::Models::AuthRules::conditional_operation,
-          value: Lithic::Models::AuthRules::conditional_value
+          value: Lithic::Models::AuthRules::conditional_value,
+          parameters: Lithic::AuthRules::AuthRuleCondition::Parameters
         }
 
       class AuthRuleCondition < Lithic::Internal::Type::BaseModel
@@ -17,17 +18,102 @@ module Lithic
 
         attr_accessor value: Lithic::Models::AuthRules::conditional_value
 
+        attr_reader parameters: Lithic::AuthRules::AuthRuleCondition::Parameters?
+
+        def parameters=: (
+          Lithic::AuthRules::AuthRuleCondition::Parameters
+        ) -> Lithic::AuthRules::AuthRuleCondition::Parameters
+
         def initialize: (
           attribute: Lithic::Models::AuthRules::conditional_attribute,
           operation: Lithic::Models::AuthRules::conditional_operation,
-          value: Lithic::Models::AuthRules::conditional_value
+          value: Lithic::Models::AuthRules::conditional_value,
+          ?parameters: Lithic::AuthRules::AuthRuleCondition::Parameters
         ) -> void
 
         def to_hash: -> {
           attribute: Lithic::Models::AuthRules::conditional_attribute,
           operation: Lithic::Models::AuthRules::conditional_operation,
-          value: Lithic::Models::AuthRules::conditional_value
+          value: Lithic::Models::AuthRules::conditional_value,
+          parameters: Lithic::AuthRules::AuthRuleCondition::Parameters
         }
+
+        type parameters =
+          {
+            interval: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval,
+            scope: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope,
+            unit: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit
+          }
+
+        class Parameters < Lithic::Internal::Type::BaseModel
+          attr_reader interval: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval?
+
+          def interval=: (
+            Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval
+          ) -> Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval
+
+          attr_reader scope: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope?
+
+          def scope=: (
+            Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope
+          ) -> Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope
+
+          attr_reader unit: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit?
+
+          def unit=: (
+            Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit
+          ) -> Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit
+
+          def initialize: (
+            ?interval: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval,
+            ?scope: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope,
+            ?unit: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit
+          ) -> void
+
+          def to_hash: -> {
+            interval: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval,
+            scope: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope,
+            unit: Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit
+          }
+
+          type interval = :LIFETIME | :"7D" | :"30D" | :"90D"
+
+          module Interval
+            extend Lithic::Internal::Type::Enum
+
+            LIFETIME: :LIFETIME
+            INTERVAL_7_D: :"7D"
+            INTERVAL_30_D: :"30D"
+            INTERVAL_90_D: :"90D"
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::Parameters::interval]
+          end
+
+          type scope = :CARD | :ACCOUNT | :BUSINESS_ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD: :CARD
+            ACCOUNT: :ACCOUNT
+            BUSINESS_ACCOUNT: :BUSINESS_ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::Parameters::scope]
+          end
+
+          type unit = :MPH | :KPH | :MILES | :KILOMETERS
+
+          module Unit
+            extend Lithic::Internal::Type::Enum
+
+            MPH: :MPH
+            KPH: :KPH
+            MILES: :MILES
+            KILOMETERS: :KILOMETERS
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::Parameters::unit]
+          end
+        end
       end
     end
   end

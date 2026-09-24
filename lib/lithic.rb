@@ -129,7 +129,6 @@ require_relative "lithic/models/auth_rules/conditional_ach_payment_update_action
 require_relative "lithic/models/auth_rules/conditional_attribute"
 require_relative "lithic/models/auth_rules/conditional_authorization_action_parameters"
 require_relative "lithic/models/auth_rules/conditional_authorization_adjustment_parameters"
-require_relative "lithic/models/auth_rules/conditional_block_parameters"
 require_relative "lithic/models/auth_rules/conditional_card_transaction_update_action_parameters"
 require_relative "lithic/models/auth_rules/conditional_operation"
 require_relative "lithic/models/auth_rules/conditional_tokenization_action_parameters"

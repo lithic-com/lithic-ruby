@@ -144,7 +144,7 @@ module Lithic
         #
         # @param auth_rule_token [String]
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters, nil] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters, nil] Parameters for the Auth Rule
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -256,7 +256,7 @@ module Lithic
         # - VelocityLimit Rules calculates the current Velocity Feature data. This
         #   requires a `card_token` or `account_token` matching what the rule is Scoped
         #   to.
-        # - ConditionalBlock Rules calculates the CARD*TRANSACTION_COUNT*\* attributes on
+        # - ConditionalAction Rules calculates the CARD*TRANSACTION_COUNT*\* attributes on
         #   the rule. This requires a `card_token`
         #
         # @overload retrieve_features(auth_rule_token, account_token: nil, card_token: nil, request_options: {})

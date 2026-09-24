@@ -29,8 +29,7 @@ module Lithic
         }
 
         type parameters =
-          Lithic::AuthRules::ConditionalBlockParameters
-          | Lithic::AuthRules::VelocityLimitParams
+          Lithic::AuthRules::VelocityLimitParams
           | Lithic::AuthRules::MerchantLockParameters
           | Lithic::AuthRules::Conditional3DSActionParameters
           | Lithic::AuthRules::ConditionalAuthorizationActionParameters
