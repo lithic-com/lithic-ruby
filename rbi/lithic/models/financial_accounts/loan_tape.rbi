@@ -120,6 +120,26 @@ module Lithic
         end
         attr_writer :payment_allocation
 
+        # Allocation of payments only, excluding credits
+        sig do
+          returns(
+            T.nilable(
+              Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation
+            )
+          )
+        end
+        attr_reader :payment_only_allocation
+
+        sig do
+          params(
+            payment_only_allocation:
+              T.nilable(
+                Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation::OrHash
+              )
+          ).void
+        end
+        attr_writer :payment_only_allocation
+
         sig { returns(Lithic::StatementTotals) }
         attr_reader :period_totals
 
@@ -188,6 +208,10 @@ module Lithic
               Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance::OrHash,
             payment_allocation:
               Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash,
+            payment_only_allocation:
+              T.nilable(
+                Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation::OrHash
+              ),
             period_totals: Lithic::StatementTotals::OrHash,
             previous_statement_balance:
               Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance::OrHash,
@@ -228,6 +252,8 @@ module Lithic
           interest_details:,
           minimum_payment_balance:,
           payment_allocation:,
+          # Allocation of payments only, excluding credits
+          payment_only_allocation:,
           period_totals:,
           previous_statement_balance:,
           # Balance at the start of the day
@@ -266,6 +292,10 @@ module Lithic
                 Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
               payment_allocation:
                 Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+              payment_only_allocation:
+                T.nilable(
+                  Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation
+                ),
               period_totals: Lithic::StatementTotals,
               previous_statement_balance:
                 Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
@@ -887,6 +917,95 @@ module Lithic
           end
           attr_writer :principal_details
 
+          sig do
+            params(
+              fee_details: T.nilable(Lithic::CategoryDetails::OrHash),
+              fees: Integer,
+              interest: Integer,
+              interest_details: T.nilable(Lithic::CategoryDetails::OrHash),
+              principal: Integer,
+              principal_details: T.nilable(Lithic::CategoryDetails::OrHash)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            fee_details:,
+            # Amount allocated to fees in cents
+            fees:,
+            # Amount allocated to interest in cents
+            interest:,
+            interest_details:,
+            # Amount allocated to principal in cents
+            principal:,
+            principal_details:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                fee_details: T.nilable(Lithic::CategoryDetails),
+                fees: Integer,
+                interest: Integer,
+                interest_details: T.nilable(Lithic::CategoryDetails),
+                principal: Integer,
+                principal_details: T.nilable(Lithic::CategoryDetails)
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class PaymentOnlyAllocation < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T.nilable(Lithic::CategoryDetails)) }
+          attr_reader :fee_details
+
+          sig do
+            params(fee_details: T.nilable(Lithic::CategoryDetails::OrHash)).void
+          end
+          attr_writer :fee_details
+
+          # Amount allocated to fees in cents
+          sig { returns(Integer) }
+          attr_accessor :fees
+
+          # Amount allocated to interest in cents
+          sig { returns(Integer) }
+          attr_accessor :interest
+
+          sig { returns(T.nilable(Lithic::CategoryDetails)) }
+          attr_reader :interest_details
+
+          sig do
+            params(
+              interest_details: T.nilable(Lithic::CategoryDetails::OrHash)
+            ).void
+          end
+          attr_writer :interest_details
+
+          # Amount allocated to principal in cents
+          sig { returns(Integer) }
+          attr_accessor :principal
+
+          sig { returns(T.nilable(Lithic::CategoryDetails)) }
+          attr_reader :principal_details
+
+          sig do
+            params(
+              principal_details: T.nilable(Lithic::CategoryDetails::OrHash)
+            ).void
+          end
+          attr_writer :principal_details
+
+          # Allocation of payments only, excluding credits
           sig do
             params(
               fee_details: T.nilable(Lithic::CategoryDetails::OrHash),

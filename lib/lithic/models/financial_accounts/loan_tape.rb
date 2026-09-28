@@ -93,6 +93,14 @@ module Lithic
         #   @return [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
         required :payment_allocation, -> { Lithic::FinancialAccounts::LoanTape::PaymentAllocation }
 
+        # @!attribute payment_only_allocation
+        #   Allocation of payments only, excluding credits
+        #
+        #   @return [Lithic::Models::FinancialAccounts::LoanTape::PaymentOnlyAllocation, nil]
+        required :payment_only_allocation,
+                 -> { Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation },
+                 nil?: true
+
         # @!attribute period_totals
         #
         #   @return [Lithic::Models::StatementTotals]
@@ -138,7 +146,7 @@ module Lithic
         #   @return [String, nil]
         optional :tier, String, nil?: true
 
-        # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, day_of_period: nil, tier: nil)
+        # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, payment_only_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, day_of_period: nil, tier: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::LoanTape} for more details.
         #
@@ -171,6 +179,8 @@ module Lithic
         #   @param minimum_payment_balance [Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance]
         #
         #   @param payment_allocation [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
+        #
+        #   @param payment_only_allocation [Lithic::Models::FinancialAccounts::LoanTape::PaymentOnlyAllocation, nil] Allocation of payments only, excluding credits
         #
         #   @param period_totals [Lithic::Models::StatementTotals]
         #
@@ -481,6 +491,57 @@ module Lithic
           required :principal_details, -> { Lithic::CategoryDetails }, nil?: true
 
           # @!method initialize(fee_details:, fees:, interest:, interest_details:, principal:, principal_details:)
+          #   @param fee_details [Lithic::Models::CategoryDetails, nil]
+          #
+          #   @param fees [Integer] Amount allocated to fees in cents
+          #
+          #   @param interest [Integer] Amount allocated to interest in cents
+          #
+          #   @param interest_details [Lithic::Models::CategoryDetails, nil]
+          #
+          #   @param principal [Integer] Amount allocated to principal in cents
+          #
+          #   @param principal_details [Lithic::Models::CategoryDetails, nil]
+        end
+
+        # @see Lithic::Models::FinancialAccounts::LoanTape#payment_only_allocation
+        class PaymentOnlyAllocation < Lithic::Internal::Type::BaseModel
+          # @!attribute fee_details
+          #
+          #   @return [Lithic::Models::CategoryDetails, nil]
+          required :fee_details, -> { Lithic::CategoryDetails }, nil?: true
+
+          # @!attribute fees
+          #   Amount allocated to fees in cents
+          #
+          #   @return [Integer]
+          required :fees, Integer
+
+          # @!attribute interest
+          #   Amount allocated to interest in cents
+          #
+          #   @return [Integer]
+          required :interest, Integer
+
+          # @!attribute interest_details
+          #
+          #   @return [Lithic::Models::CategoryDetails, nil]
+          required :interest_details, -> { Lithic::CategoryDetails }, nil?: true
+
+          # @!attribute principal
+          #   Amount allocated to principal in cents
+          #
+          #   @return [Integer]
+          required :principal, Integer
+
+          # @!attribute principal_details
+          #
+          #   @return [Lithic::Models::CategoryDetails, nil]
+          required :principal_details, -> { Lithic::CategoryDetails }, nil?: true
+
+          # @!method initialize(fee_details:, fees:, interest:, interest_details:, principal:, principal_details:)
+          #   Allocation of payments only, excluding credits
+          #
           #   @param fee_details [Lithic::Models::CategoryDetails, nil]
           #
           #   @param fees [Integer] Amount allocated to fees in cents

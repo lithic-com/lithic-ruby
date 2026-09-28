@@ -18,6 +18,7 @@ module Lithic
           interest_details: Lithic::FinancialAccounts::LoanTape::InterestDetails?,
           minimum_payment_balance: Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
           payment_allocation: Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+          payment_only_allocation: Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation?,
           period_totals: Lithic::StatementTotals,
           previous_statement_balance: Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
           starting_balance: Integer,
@@ -59,6 +60,8 @@ module Lithic
 
         attr_accessor payment_allocation: Lithic::FinancialAccounts::LoanTape::PaymentAllocation
 
+        attr_accessor payment_only_allocation: Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation?
+
         attr_accessor period_totals: Lithic::StatementTotals
 
         attr_accessor previous_statement_balance: Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance
@@ -91,6 +94,7 @@ module Lithic
           interest_details: Lithic::FinancialAccounts::LoanTape::InterestDetails?,
           minimum_payment_balance: Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
           payment_allocation: Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+          payment_only_allocation: Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation?,
           period_totals: Lithic::StatementTotals,
           previous_statement_balance: Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
           starting_balance: Integer,
@@ -117,6 +121,7 @@ module Lithic
           interest_details: Lithic::FinancialAccounts::LoanTape::InterestDetails?,
           minimum_payment_balance: Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
           payment_allocation: Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+          payment_only_allocation: Lithic::FinancialAccounts::LoanTape::PaymentOnlyAllocation?,
           period_totals: Lithic::StatementTotals,
           previous_statement_balance: Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
           starting_balance: Integer,
@@ -360,6 +365,48 @@ module Lithic
           }
 
         class PaymentAllocation < Lithic::Internal::Type::BaseModel
+          attr_accessor fee_details: Lithic::CategoryDetails?
+
+          attr_accessor fees: Integer
+
+          attr_accessor interest: Integer
+
+          attr_accessor interest_details: Lithic::CategoryDetails?
+
+          attr_accessor principal: Integer
+
+          attr_accessor principal_details: Lithic::CategoryDetails?
+
+          def initialize: (
+            fee_details: Lithic::CategoryDetails?,
+            fees: Integer,
+            interest: Integer,
+            interest_details: Lithic::CategoryDetails?,
+            principal: Integer,
+            principal_details: Lithic::CategoryDetails?
+          ) -> void
+
+          def to_hash: -> {
+            fee_details: Lithic::CategoryDetails?,
+            fees: Integer,
+            interest: Integer,
+            interest_details: Lithic::CategoryDetails?,
+            principal: Integer,
+            principal_details: Lithic::CategoryDetails?
+          }
+        end
+
+        type payment_only_allocation =
+          {
+            fee_details: Lithic::CategoryDetails?,
+            fees: Integer,
+            interest: Integer,
+            interest_details: Lithic::CategoryDetails?,
+            principal: Integer,
+            principal_details: Lithic::CategoryDetails?
+          }
+
+        class PaymentOnlyAllocation < Lithic::Internal::Type::BaseModel
           attr_accessor fee_details: Lithic::CategoryDetails?
 
           attr_accessor fees: Integer
