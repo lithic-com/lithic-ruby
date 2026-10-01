@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.22.0](https://github.com/lithic-com/lithic-ruby/compare/v0.21.0...v0.22.0) (2026-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** the CONDITIONAL_BLOCK rule type and the ConditionalBlockParameters model are removed. All rules are now CONDITIONAL_ACTION.
+
+### Features
+
+* **api:** accept billing_currency and settlement_currency on transaction simulation endpoints ([428ae58](https://github.com/lithic-com/lithic-ruby/commit/428ae5843e4ad441e828dcb7f73b889f8756d887))
+* **api:** add installment plan statement endpoints to financial accounts ([e94582e](https://github.com/lithic-com/lithic-ruby/commit/e94582ea1ea6e30db808bd62b2952dac9b3fd3ad))
+* **api:** add payment-only allocation breakdown to the loan tape ([625d033](https://github.com/lithic-com/lithic-ruby/commit/625d033aaec889eef435909baa44f3efabc17e50))
+* **api:** expose the full conditional attribute set for authorization rules ([2ab59fc](https://github.com/lithic-com/lithic-ruby/commit/2ab59fc2d2113eba31919f86dd5cbff5e72d09bf))
+* **api:** remove CONDITIONAL_BLOCK from authorization rules ([7a4a3d3](https://github.com/lithic-com/lithic-ruby/commit/7a4a3d3ddf06d7f2139e38bde4c8f68e0f9e827e))
+* **api:** support international addresses and address2 for KYB_DELEGATED and KYC_EXEMPT workflows ([cd0721a](https://github.com/lithic-com/lithic-ruby/commit/cd0721a5e04383773baa69cb06f07d83ec037ef8))
+
 ## 0.21.0 (2026-09-18)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/lithic-com/lithic-ruby/compare/v0.20.0...v0.21.0)
