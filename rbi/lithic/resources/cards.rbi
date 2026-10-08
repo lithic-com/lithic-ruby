@@ -34,6 +34,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::CardCreateParams::State::OrSymbol,
+          tags: T::Hash[Symbol, String],
           idempotency_key: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Card)
@@ -184,6 +185,10 @@ module Lithic
         # - `PAUSED` - Card will decline authorizations, but can be resumed at a later
         #   time.
         state: nil,
+        # Body param: Key-value pairs to tag the card with. A replacement card does not
+        # inherit tags from the card it replaces. A card can have at most 50 tags, with
+        # keys up to 40 characters and values up to 500 characters
+        tags: nil,
         # Header param: Idempotency key for the request
         idempotency_key: nil,
         request_options: {}
@@ -218,6 +223,7 @@ module Lithic
           spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::CardUpdateParams::State::OrSymbol,
           substatus: Lithic::CardUpdateParams::Substatus::OrSymbol,
+          tags: T::Hash[Symbol, T.nilable(String)],
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Card)
       end
@@ -298,6 +304,11 @@ module Lithic
         # - `OTHER` - The reason for the status does not fall into any of the above
         #   categories. A comment should be provided to specify the reason.
         substatus: nil,
+        # Key-value pairs to merge into the card's tags. Supplied keys are added or
+        # overwritten, a key with a `null` value is removed, and omitted keys remain
+        # unchanged. A card can have at most 50 tags, with keys up to 40 characters and
+        # values up to 500 characters
+        tags: nil,
         request_options: {}
       )
       end

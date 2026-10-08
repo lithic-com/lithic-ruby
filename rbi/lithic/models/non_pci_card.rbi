@@ -78,6 +78,12 @@ module Lithic
       sig { returns(Lithic::NonPCICard::State::TaggedSymbol) }
       attr_accessor :state
 
+      # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+      # metadata with a resource for your own purposes. A resource can have at most 50
+      # tags, with keys up to 40 characters and values up to 500 characters
+      sig { returns(T::Hash[Symbol, String]) }
+      attr_accessor :tags
+
       # Card types: _ `VIRTUAL` - Card will authorize at any merchant and can be added
       # to a digital wallet like Apple Pay or Google Pay (if the card program is digital
       # wallet-enabled). _ `PHYSICAL` - Manufactured and sent to the cardholder. We
@@ -215,6 +221,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::NonPCICard::State::OrSymbol,
+          tags: T::Hash[Symbol, String],
           type: Lithic::NonPCICard::Type::OrSymbol,
           auth_rule_tokens: T::Array[String],
           bulk_order_token: T.nilable(String),
@@ -280,6 +287,10 @@ module Lithic
         # In sandbox, the same daily batch fulfillment occurs, but no cards are actually
         # manufactured.
         state:,
+        # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+        # metadata with a resource for your own purposes. A resource can have at most 50
+        # tags, with keys up to 40 characters and values up to 500 characters
+        tags:,
         # Card types: _ `VIRTUAL` - Card will authorize at any merchant and can be added
         # to a digital wallet like Apple Pay or Google Pay (if the card program is digital
         # wallet-enabled). _ `PHYSICAL` - Manufactured and sent to the cardholder. We
@@ -366,6 +377,7 @@ module Lithic
             spend_limit: Integer,
             spend_limit_duration: Lithic::SpendLimitDuration::TaggedSymbol,
             state: Lithic::NonPCICard::State::TaggedSymbol,
+            tags: T::Hash[Symbol, String],
             type: Lithic::NonPCICard::Type::TaggedSymbol,
             auth_rule_tokens: T::Array[String],
             bulk_order_token: T.nilable(String),

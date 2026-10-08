@@ -15,7 +15,7 @@ module Lithic
       # Create a new virtual or physical card. Parameters `shipping_address` and
       # `product_id` only apply to physical cards.
       #
-      # @overload create(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, idempotency_key: nil, request_options: {})
+      # @overload create(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, tags: nil, idempotency_key: nil, request_options: {})
       #
       # @param type [Symbol, Lithic::Models::CardCreateParams::Type] Body param: Card types:
       #
@@ -56,6 +56,8 @@ module Lithic
       # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Body param: Spend limit duration values:
       #
       # @param state [Symbol, Lithic::Models::CardCreateParams::State] Body param: Card state values:
+      #
+      # @param tags [Hash{Symbol=>String}] Body param: Key-value pairs to tag the card with. A replacement card does not in
       #
       # @param idempotency_key [String] Header param: Idempotency key for the request
       #
@@ -105,7 +107,7 @@ module Lithic
       # _Note: setting a card to a `CLOSED` state is a final action that cannot be
       # undone._
       #
-      # @overload update(card_token, comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, request_options: {})
+      # @overload update(card_token, comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, tags: nil, request_options: {})
       #
       # @param card_token [String]
       #
@@ -128,6 +130,8 @@ module Lithic
       # @param state [Symbol, Lithic::Models::CardUpdateParams::State] Card state values:
       #
       # @param substatus [Symbol, Lithic::Models::CardUpdateParams::Substatus] Card state substatus values:
+      #
+      # @param tags [Hash{Symbol=>String, nil}] Key-value pairs to merge into the card's tags. Supplied keys are added or overwr
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

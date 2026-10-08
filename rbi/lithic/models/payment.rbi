@@ -102,7 +102,8 @@ module Lithic
       attr_accessor :external_bank_account_token
 
       # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
-      # metadata with a resource for your own purposes.
+      # metadata with a resource for your own purposes. A resource can have at most 50
+      # tags, with keys up to 40 characters and values up to 500 characters
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :tags
 
@@ -196,7 +197,8 @@ module Lithic
         # External bank account token
         external_bank_account_token: nil,
         # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
-        # metadata with a resource for your own purposes.
+        # metadata with a resource for your own purposes. A resource can have at most 50
+        # tags, with keys up to 40 characters and values up to 500 characters
         tags: nil,
         type: nil,
         # User-defined identifier

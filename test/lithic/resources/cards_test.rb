@@ -53,6 +53,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit: Integer,
         spend_limit_duration: Lithic::SpendLimitDuration,
         state: Lithic::NonPCICard::State,
+        tags: ^(Lithic::Internal::Type::HashOf[String]),
         type: Lithic::NonPCICard::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         bulk_order_token: String | nil,

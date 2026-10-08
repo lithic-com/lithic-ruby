@@ -140,7 +140,8 @@ module Lithic
       attr_accessor :status
 
       # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
-      # metadata with a resource for your own purposes.
+      # metadata with a resource for your own purposes. A resource can have at most 50
+      # tags, with keys up to 40 characters and values up to 500 characters
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :tags
 
@@ -253,7 +254,8 @@ module Lithic
         # Status of the transaction.
         status:,
         # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
-        # metadata with a resource for your own purposes.
+        # metadata with a resource for your own purposes. A resource can have at most 50
+        # tags, with keys up to 40 characters and values up to 500 characters
         tags:,
         token_info:,
         # Date and time when the transaction last updated. UTC time zone.

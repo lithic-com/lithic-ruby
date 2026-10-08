@@ -132,7 +132,8 @@ module Lithic
 
       # @!attribute tags
       #   Key-value pairs for tagging resources. Tags allow you to associate arbitrary
-      #   metadata with a resource for your own purposes.
+      #   metadata with a resource for your own purposes. A resource can have at most 50
+      #   tags, with keys up to 40 characters and values up to 500 characters
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :tags, Lithic::Internal::Type::HashOf[String]

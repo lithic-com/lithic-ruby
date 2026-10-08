@@ -127,7 +127,16 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardUpdateParams::Substatus, nil]
       optional :substatus, enum: -> { Lithic::CardUpdateParams::Substatus }
 
-      # @!method initialize(card_token:, comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, request_options: {})
+      # @!attribute tags
+      #   Key-value pairs to merge into the card's tags. Supplied keys are added or
+      #   overwritten, a key with a `null` value is removed, and omitted keys remain
+      #   unchanged. A card can have at most 50 tags, with keys up to 40 characters and
+      #   values up to 500 characters
+      #
+      #   @return [Hash{Symbol=>String, nil}, nil]
+      optional :tags, Lithic::Internal::Type::HashOf[String, nil?: true]
+
+      # @!method initialize(card_token:, comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, tags: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardUpdateParams} for more details.
       #
@@ -152,6 +161,8 @@ module Lithic
       #   @param state [Symbol, Lithic::Models::CardUpdateParams::State] Card state values:
       #
       #   @param substatus [Symbol, Lithic::Models::CardUpdateParams::Substatus] Card state substatus values:
+      #
+      #   @param tags [Hash{Symbol=>String, nil}] Key-value pairs to merge into the card's tags. Supplied keys are added or overwr
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

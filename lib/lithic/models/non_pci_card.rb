@@ -91,6 +91,14 @@ module Lithic
       #   @return [Symbol, Lithic::Models::NonPCICard::State]
       required :state, enum: -> { Lithic::NonPCICard::State }
 
+      # @!attribute tags
+      #   Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+      #   metadata with a resource for your own purposes. A resource can have at most 50
+      #   tags, with keys up to 40 characters and values up to 500 characters
+      #
+      #   @return [Hash{Symbol=>String}]
+      required :tags, Lithic::Internal::Type::HashOf[String]
+
       # @!attribute type
       #   Card types: _ `VIRTUAL` - Card will authorize at any merchant and can be added
       #   to a digital wallet like Apple Pay or Google Pay (if the card program is digital
@@ -223,7 +231,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::NonPCICard::Substatus, nil]
       optional :substatus, enum: -> { Lithic::NonPCICard::Substatus }, nil?: true
 
-      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, bulk_order_token: nil, cardholder_currency: nil, comment: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, network_program_token: nil, pending_commands: nil, product_id: nil, replacement_for: nil, substatus: nil)
+      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, tags:, type:, auth_rule_tokens: nil, bulk_order_token: nil, cardholder_currency: nil, comment: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, network_program_token: nil, pending_commands: nil, product_id: nil, replacement_for: nil, substatus: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::NonPCICard} for more details.
       #
@@ -249,6 +257,8 @@ module Lithic
       #
       #   @param state [Symbol, Lithic::Models::NonPCICard::State] Card state values: \* `CLOSED` - Card will no longer approve authorizations.
       #   Clos
+      #
+      #   @param tags [Hash{Symbol=>String}] Key-value pairs for tagging resources. Tags allow you to associate arbitrary met
       #
       #   @param type [Symbol, Lithic::Models::NonPCICard::Type] Card types: \* `VIRTUAL` - Card will authorize at any merchant and can be added
       #   t

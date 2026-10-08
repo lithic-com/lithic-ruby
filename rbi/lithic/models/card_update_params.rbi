@@ -145,6 +145,16 @@ module Lithic
       end
       attr_writer :substatus
 
+      # Key-value pairs to merge into the card's tags. Supplied keys are added or
+      # overwritten, a key with a `null` value is removed, and omitted keys remain
+      # unchanged. A card can have at most 50 tags, with keys up to 40 characters and
+      # values up to 500 characters
+      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+      attr_reader :tags
+
+      sig { params(tags: T::Hash[Symbol, T.nilable(String)]).void }
+      attr_writer :tags
+
       sig do
         params(
           card_token: String,
@@ -158,6 +168,7 @@ module Lithic
           spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::CardUpdateParams::State::OrSymbol,
           substatus: Lithic::CardUpdateParams::Substatus::OrSymbol,
+          tags: T::Hash[Symbol, T.nilable(String)],
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -238,6 +249,11 @@ module Lithic
         # - `OTHER` - The reason for the status does not fall into any of the above
         #   categories. A comment should be provided to specify the reason.
         substatus: nil,
+        # Key-value pairs to merge into the card's tags. Supplied keys are added or
+        # overwritten, a key with a `null` value is removed, and omitted keys remain
+        # unchanged. A card can have at most 50 tags, with keys up to 40 characters and
+        # values up to 500 characters
+        tags: nil,
         request_options: {}
       )
       end
@@ -256,6 +272,7 @@ module Lithic
             spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
             state: Lithic::CardUpdateParams::State::OrSymbol,
             substatus: Lithic::CardUpdateParams::Substatus::OrSymbol,
+            tags: T::Hash[Symbol, T.nilable(String)],
             request_options: Lithic::RequestOptions
           }
         )

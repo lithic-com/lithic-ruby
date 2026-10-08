@@ -12,6 +12,7 @@ module Lithic
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::NonPCICard::state,
+        tags: ::Hash[Symbol, String],
         type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
         bulk_order_token: String?,
@@ -49,6 +50,8 @@ module Lithic
       attr_accessor spend_limit_duration: Lithic::Models::spend_limit_duration
 
       attr_accessor state: Lithic::Models::NonPCICard::state
+
+      attr_accessor tags: ::Hash[Symbol, String]
 
       attr_accessor type: Lithic::Models::NonPCICard::type_
 
@@ -107,6 +110,7 @@ module Lithic
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::NonPCICard::state,
+        tags: ::Hash[Symbol, String],
         type: Lithic::Models::NonPCICard::type_,
         ?auth_rule_tokens: ::Array[String],
         ?bulk_order_token: String?,
@@ -135,6 +139,7 @@ module Lithic
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::NonPCICard::state,
+        tags: ::Hash[Symbol, String],
         type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
         bulk_order_token: String?,

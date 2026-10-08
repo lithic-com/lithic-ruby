@@ -12,7 +12,8 @@ module Lithic
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::CardUpdateParams::state,
-        substatus: Lithic::Models::CardUpdateParams::substatus
+        substatus: Lithic::Models::CardUpdateParams::substatus,
+        tags: ::Hash[Symbol, String?]
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -70,6 +71,10 @@ module Lithic
         Lithic::Models::CardUpdateParams::substatus
       ) -> Lithic::Models::CardUpdateParams::substatus
 
+      attr_reader tags: ::Hash[Symbol, String?]?
+
+      def tags=: (::Hash[Symbol, String?]) -> ::Hash[Symbol, String?]
+
       def initialize: (
         card_token: String,
         ?comment: String,
@@ -82,6 +87,7 @@ module Lithic
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardUpdateParams::state,
         ?substatus: Lithic::Models::CardUpdateParams::substatus,
+        ?tags: ::Hash[Symbol, String?],
         ?request_options: Lithic::request_opts
       ) -> void
 
@@ -97,6 +103,7 @@ module Lithic
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::CardUpdateParams::state,
         substatus: Lithic::Models::CardUpdateParams::substatus,
+        tags: ::Hash[Symbol, String?],
         request_options: Lithic::RequestOptions
       }
 

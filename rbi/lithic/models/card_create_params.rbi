@@ -267,6 +267,15 @@ module Lithic
       sig { params(state: Lithic::CardCreateParams::State::OrSymbol).void }
       attr_writer :state
 
+      # Key-value pairs to tag the card with. A replacement card does not inherit tags
+      # from the card it replaces. A card can have at most 50 tags, with keys up to 40
+      # characters and values up to 500 characters
+      sig { returns(T.nilable(T::Hash[Symbol, String])) }
+      attr_reader :tags
+
+      sig { params(tags: T::Hash[Symbol, String]).void }
+      attr_writer :tags
+
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
@@ -296,6 +305,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::CardCreateParams::State::OrSymbol,
+          tags: T::Hash[Symbol, String],
           idempotency_key: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -443,6 +453,10 @@ module Lithic
         # - `PAUSED` - Card will decline authorizations, but can be resumed at a later
         #   time.
         state: nil,
+        # Key-value pairs to tag the card with. A replacement card does not inherit tags
+        # from the card it replaces. A card can have at most 50 tags, with keys up to 40
+        # characters and values up to 500 characters
+        tags: nil,
         idempotency_key: nil,
         request_options: {}
       )
@@ -472,6 +486,7 @@ module Lithic
             spend_limit: Integer,
             spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
             state: Lithic::CardCreateParams::State::OrSymbol,
+            tags: T::Hash[Symbol, String],
             idempotency_key: String,
             request_options: Lithic::RequestOptions
           }
