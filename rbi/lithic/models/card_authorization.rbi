@@ -830,6 +830,12 @@ module Lithic
         sig { returns(Lithic::CardAuthorization::Card::State::TaggedSymbol) }
         attr_accessor :state
 
+        # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+        # metadata with a resource for your own purposes. A resource can have at most 50
+        # tags, with keys up to 40 characters and values up to 500 characters
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :tags
+
         sig { returns(Lithic::CardAuthorization::Card::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -843,6 +849,7 @@ module Lithic
             spend_limit_duration:
               Lithic::CardAuthorization::Card::SpendLimitDuration::OrSymbol,
             state: Lithic::CardAuthorization::Card::State::OrSymbol,
+            tags: T::Hash[Symbol, String],
             type: Lithic::CardAuthorization::Card::Type::OrSymbol
           ).returns(T.attached_class)
         end
@@ -867,6 +874,10 @@ module Lithic
           # after the current calendar date one month prior.
           spend_limit_duration:,
           state:,
+          # Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+          # metadata with a resource for your own purposes. A resource can have at most 50
+          # tags, with keys up to 40 characters and values up to 500 characters
+          tags:,
           type:
         )
         end
@@ -881,6 +892,7 @@ module Lithic
               spend_limit_duration:
                 Lithic::CardAuthorization::Card::SpendLimitDuration::TaggedSymbol,
               state: Lithic::CardAuthorization::Card::State::TaggedSymbol,
+              tags: T::Hash[Symbol, String],
               type: Lithic::CardAuthorization::Card::Type::TaggedSymbol
             }
           )

@@ -339,6 +339,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::CardAuthorization::Card::spend_limit_duration,
           state: Lithic::Models::CardAuthorization::Card::state,
+          tags: ::Hash[Symbol, String],
           type: Lithic::Models::CardAuthorization::Card::type_
         }
 
@@ -355,6 +356,8 @@ module Lithic
 
         attr_accessor state: Lithic::Models::CardAuthorization::Card::state
 
+        attr_accessor tags: ::Hash[Symbol, String]
+
         attr_accessor type: Lithic::Models::CardAuthorization::Card::type_
 
         def initialize: (
@@ -364,6 +367,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::CardAuthorization::Card::spend_limit_duration,
           state: Lithic::Models::CardAuthorization::Card::state,
+          tags: ::Hash[Symbol, String],
           type: Lithic::Models::CardAuthorization::Card::type_
         ) -> void
 
@@ -374,6 +378,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::CardAuthorization::Card::spend_limit_duration,
           state: Lithic::Models::CardAuthorization::Card::state,
+          tags: ::Hash[Symbol, String],
           type: Lithic::Models::CardAuthorization::Card::type_
         }
 

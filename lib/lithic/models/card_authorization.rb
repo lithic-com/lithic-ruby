@@ -532,12 +532,20 @@ module Lithic
         #   @return [Symbol, Lithic::Models::CardAuthorization::Card::State]
         required :state, enum: -> { Lithic::CardAuthorization::Card::State }
 
+        # @!attribute tags
+        #   Key-value pairs for tagging resources. Tags allow you to associate arbitrary
+        #   metadata with a resource for your own purposes. A resource can have at most 50
+        #   tags, with keys up to 40 characters and values up to 500 characters
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :tags, Lithic::Internal::Type::HashOf[String]
+
         # @!attribute type
         #
         #   @return [Symbol, Lithic::Models::CardAuthorization::Card::Type]
         required :type, enum: -> { Lithic::CardAuthorization::Card::Type }
 
-        # @!method initialize(token:, last_four:, memo:, spend_limit:, spend_limit_duration:, state:, type:)
+        # @!method initialize(token:, last_four:, memo:, spend_limit:, spend_limit_duration:, state:, tags:, type:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::CardAuthorization::Card} for more details.
         #
@@ -554,6 +562,8 @@ module Lithic
         #   @param spend_limit_duration [Symbol, Lithic::Models::CardAuthorization::Card::SpendLimitDuration] Note that to support recurring monthly payments, which can occur on different da
         #
         #   @param state [Symbol, Lithic::Models::CardAuthorization::Card::State]
+        #
+        #   @param tags [Hash{Symbol=>String}] Key-value pairs for tagging resources. Tags allow you to associate arbitrary met
         #
         #   @param type [Symbol, Lithic::Models::CardAuthorization::Card::Type]
 
