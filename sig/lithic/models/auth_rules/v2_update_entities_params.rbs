@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_update_entities_params =
+        {
+          auth_rule_token: String,
+          add: Lithic::AuthRules::AuthRuleEntities,
+          remove: Lithic::AuthRules::AuthRuleEntities
+        }
+        & Lithic::Internal::Type::request_parameters
+
+      class V2UpdateEntitiesParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor auth_rule_token: String
+
+        attr_reader add: Lithic::AuthRules::AuthRuleEntities?
+
+        def add=: (
+          Lithic::AuthRules::AuthRuleEntities
+        ) -> Lithic::AuthRules::AuthRuleEntities
+
+        attr_reader remove: Lithic::AuthRules::AuthRuleEntities?
+
+        def remove=: (
+          Lithic::AuthRules::AuthRuleEntities
+        ) -> Lithic::AuthRules::AuthRuleEntities
+
+        def initialize: (
+          auth_rule_token: String,
+          ?add: Lithic::AuthRules::AuthRuleEntities,
+          ?remove: Lithic::AuthRules::AuthRuleEntities,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          auth_rule_token: String,
+          add: Lithic::AuthRules::AuthRuleEntities,
+          remove: Lithic::AuthRules::AuthRuleEntities,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

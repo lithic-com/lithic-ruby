@@ -12,19 +12,32 @@ module Lithic
         required :token, String
 
         # @!attribute account_tokens
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.include` with `ACCOUNT` entities instead.
+        #
         #   Account tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>]
         required :account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute business_account_tokens
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.include` with `BUSINESS_ACCOUNT` entities instead.
+        #
         #   Business Account tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>]
         required :business_account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute card_tokens
-        #   Card tokens to which the Auth Rule applies.
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.include` with `CARD` entities instead.
+        #
+        #   Card tokens to which the Auth Rule applies. Cards the rule applies to through a
+        #   `CARD_TAG` entity are not listed.
         #
         #   @return [Array<String>]
         required :card_tokens, Lithic::Internal::Type::ArrayOf[String]
@@ -38,6 +51,13 @@ module Lithic
         #
         #   @return [Lithic::Models::AuthRules::AuthRule::DraftVersion, nil]
         required :draft_version, -> { Lithic::AuthRules::AuthRule::DraftVersion }, nil?: true
+
+        # @!attribute entities
+        #   The entities the Auth Rule applies to (`include`) and does not apply to
+        #   (`exclude`). An exclusion overrides an inclusion.
+        #
+        #   @return [Lithic::Models::AuthRules::AuthRuleEntitiesResponse]
+        required :entities, -> { Lithic::AuthRules::AuthRuleEntitiesResponse }
 
         # @!attribute event_stream
         #   The event stream during which the rule will be evaluated.
@@ -59,6 +79,10 @@ module Lithic
         required :name, String, nil?: true
 
         # @!attribute program_level
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
+        #
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean]
@@ -91,38 +115,53 @@ module Lithic
         required :type, enum: -> { Lithic::AuthRules::AuthRule::Type }
 
         # @!attribute excluded_account_tokens
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.exclude` with `ACCOUNT` entities instead.
+        #
         #   Account tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute excluded_business_account_tokens
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.exclude` with `BUSINESS_ACCOUNT` entities instead.
+        #
         #   Business account tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_business_account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute excluded_card_tokens
-        #   Card tokens to which the Auth Rule does not apply.
+        #   @deprecated
+        #
+        #   Deprecated: Use `entities.exclude` with `CARD` entities instead.
+        #
+        #   Card tokens to which the Auth Rule does not apply. Cards excluded through a
+        #   `CARD_TAG` entity are not listed.
         #
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, event_stream:, lithic_managed:, name:, program_level:, state:, type:, excluded_account_tokens: nil, excluded_business_account_tokens: nil, excluded_card_tokens: nil)
+        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, entities:, event_stream:, lithic_managed:, name:, program_level:, state:, type:, excluded_account_tokens: nil, excluded_business_account_tokens: nil, excluded_card_tokens: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::AuthRule} for more details.
         #
         #   @param token [String] Auth Rule Token
         #
-        #   @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #   @param account_tokens [Array<String>] Deprecated: Use `entities.include` with `ACCOUNT` entities instead.
         #
-        #   @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
+        #   @param business_account_tokens [Array<String>] Deprecated: Use `entities.include` with `BUSINESS_ACCOUNT` entities instead.
         #
-        #   @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
+        #   @param card_tokens [Array<String>] Deprecated: Use `entities.include` with `CARD` entities instead.
         #
         #   @param current_version [Lithic::Models::AuthRules::AuthRule::CurrentVersion, nil]
         #
         #   @param draft_version [Lithic::Models::AuthRules::AuthRule::DraftVersion, nil]
+        #
+        #   @param entities [Lithic::Models::AuthRules::AuthRuleEntitiesResponse] The entities the Auth Rule applies to (`include`) and does not apply to (`exclud
         #
         #   @param event_stream [Symbol, Lithic::Models::AuthRules::EventStream] The event stream during which the rule will be evaluated.
         #
@@ -130,17 +169,17 @@ module Lithic
         #
         #   @param name [String, nil] Auth Rule Name
         #
-        #   @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
+        #   @param program_level [Boolean] Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
         #
         #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State] The state of the Auth Rule
         #
         #   @param type [Symbol, Lithic::Models::AuthRules::AuthRule::Type] The type of Auth Rule. For certain rule types, this determines the event stream
         #
-        #   @param excluded_account_tokens [Array<String>] Account tokens to which the Auth Rule does not apply.
+        #   @param excluded_account_tokens [Array<String>] Deprecated: Use `entities.exclude` with `ACCOUNT` entities instead.
         #
-        #   @param excluded_business_account_tokens [Array<String>] Business account tokens to which the Auth Rule does not apply.
+        #   @param excluded_business_account_tokens [Array<String>] Deprecated: Use `entities.exclude` with `BUSINESS_ACCOUNT` entities instead.
         #
-        #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
+        #   @param excluded_card_tokens [Array<String>] Deprecated: Use `entities.exclude` with `CARD` entities instead.
 
         # @see Lithic::Models::AuthRules::AuthRule#current_version
         class CurrentVersion < Lithic::Internal::Type::BaseModel

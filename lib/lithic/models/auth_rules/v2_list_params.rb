@@ -55,7 +55,8 @@ module Lithic
         optional :page_size, Integer
 
         # @!attribute scope
-        #   Only return Auth Rules that are bound to the provided scope.
+        #   Only return Auth Rules that are bound to the provided scope. When no token is
+        #   provided, `CARD` also returns Auth Rules that include a `CARD_TAG` entity.
         #
         #   @return [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope, nil]
         optional :scope, enum: -> { Lithic::AuthRules::V2ListParams::Scope }
@@ -85,13 +86,14 @@ module Lithic
         #
         #   @param page_size [Integer] Page size (for pagination).
         #
-        #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Auth Rules that are bound to the provided scope.
+        #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Auth Rules that are bound to the provided scope. When no token is pr
         #
         #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-        # Only return Auth Rules that are bound to the provided scope.
+        # Only return Auth Rules that are bound to the provided scope. When no token is
+        # provided, `CARD` also returns Auth Rules that include a `CARD_TAG` entity.
         module Scope
           extend Lithic::Internal::Type::Enum
 

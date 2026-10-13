@@ -80,6 +80,13 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::AuthRules::V2RetrieveReportResponse
 
+        def update_entities: (
+          String auth_rule_token,
+          ?add: Lithic::AuthRules::AuthRuleEntities,
+          ?remove: Lithic::AuthRules::AuthRuleEntities,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::AuthRules::AuthRule
+
         def initialize: (client: Lithic::Client) -> void
       end
     end

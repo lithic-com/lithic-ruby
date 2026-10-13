@@ -15,9 +15,12 @@ module Lithic
         sig { returns(String) }
         attr_accessor :auth_rule_token
 
+        # Replaces the rule's existing entities with the provided `include` and `exclude`
+        # lists. A missing list is treated as empty, so `include` must always be provided.
         sig do
           returns(
             T.any(
+              Lithic::AuthRules::V2UpdateParams::Body::Rule,
               Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule,
               Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule,
               Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule
@@ -31,6 +34,7 @@ module Lithic
             auth_rule_token: String,
             body:
               T.any(
+                Lithic::AuthRules::V2UpdateParams::Body::Rule::OrHash,
                 Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule::OrHash,
                 Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule::OrHash,
                 Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule::OrHash
@@ -38,7 +42,13 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(auth_rule_token:, body:, request_options: {})
+        def self.new(
+          auth_rule_token:,
+          # Replaces the rule's existing entities with the provided `include` and `exclude`
+          # lists. A missing list is treated as empty, so `include` must always be provided.
+          body:,
+          request_options: {}
+        )
         end
 
         sig do
@@ -47,6 +57,7 @@ module Lithic
               auth_rule_token: String,
               body:
                 T.any(
+                  Lithic::AuthRules::V2UpdateParams::Body::Rule,
                   Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule,
                   Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule,
                   Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule
@@ -58,17 +69,164 @@ module Lithic
         def to_hash
         end
 
+        # Replaces the rule's existing entities with the provided `include` and `exclude`
+        # lists. A missing list is treated as empty, so `include` must always be provided.
         module Body
           extend Lithic::Internal::Type::Union
 
           Variants =
             T.type_alias do
               T.any(
+                Lithic::AuthRules::V2UpdateParams::Body::Rule,
                 Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule,
                 Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule,
                 Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule
               )
             end
+
+          class Rule < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Lithic::AuthRules::V2UpdateParams::Body::Rule,
+                  Lithic::Internal::AnyHash
+                )
+              end
+
+            # The entities an Auth Rule applies to (`include`) and does not apply to
+            # (`exclude`). An exclusion overrides an inclusion, so a card excluded here is
+            # skipped even when the program, its account or one of its tags is included.
+            #
+            # The rule's resulting entities must satisfy these constraints after any write:
+            #
+            # - `include` must contain at least one entity.
+            # - If `PROGRAM` is included, it must be the only included entity.
+            # - `PROGRAM` cannot be excluded.
+            # - An entity cannot appear in both `include` and `exclude`, or twice in the same
+            #   list.
+            # - A rule can have at most 1,000 entities across `include` and `exclude`, not
+            #   counting `PROGRAM`.
+            # - Entity types must be valid for the rule's event stream.
+            # - `CARD`, `ACCOUNT` and `BUSINESS_ACCOUNT` tokens must belong to your program.
+            sig { returns(T.nilable(Lithic::AuthRules::AuthRuleEntities)) }
+            attr_reader :entities
+
+            sig do
+              params(entities: Lithic::AuthRules::AuthRuleEntities::OrHash).void
+            end
+            attr_writer :entities
+
+            # Auth Rule Name
+            sig { returns(T.nilable(String)) }
+            attr_accessor :name
+
+            # The desired state of the Auth Rule.
+            #
+            # Note that only deactivating an Auth Rule through this endpoint is supported at
+            # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
+            # should be used to promote a draft to the currently active version.
+            sig do
+              returns(
+                T.nilable(
+                  Lithic::AuthRules::V2UpdateParams::Body::Rule::State::OrSymbol
+                )
+              )
+            end
+            attr_reader :state
+
+            sig do
+              params(
+                state:
+                  Lithic::AuthRules::V2UpdateParams::Body::Rule::State::OrSymbol
+              ).void
+            end
+            attr_writer :state
+
+            # Replaces the rule's existing entities with the provided `include` and `exclude`
+            # lists. A missing list is treated as empty, so `include` must always be provided.
+            sig do
+              params(
+                entities: Lithic::AuthRules::AuthRuleEntities::OrHash,
+                name: T.nilable(String),
+                state:
+                  Lithic::AuthRules::V2UpdateParams::Body::Rule::State::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The entities an Auth Rule applies to (`include`) and does not apply to
+              # (`exclude`). An exclusion overrides an inclusion, so a card excluded here is
+              # skipped even when the program, its account or one of its tags is included.
+              #
+              # The rule's resulting entities must satisfy these constraints after any write:
+              #
+              # - `include` must contain at least one entity.
+              # - If `PROGRAM` is included, it must be the only included entity.
+              # - `PROGRAM` cannot be excluded.
+              # - An entity cannot appear in both `include` and `exclude`, or twice in the same
+              #   list.
+              # - A rule can have at most 1,000 entities across `include` and `exclude`, not
+              #   counting `PROGRAM`.
+              # - Entity types must be valid for the rule's event stream.
+              # - `CARD`, `ACCOUNT` and `BUSINESS_ACCOUNT` tokens must belong to your program.
+              entities: nil,
+              # Auth Rule Name
+              name: nil,
+              # The desired state of the Auth Rule.
+              #
+              # Note that only deactivating an Auth Rule through this endpoint is supported at
+              # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
+              # should be used to promote a draft to the currently active version.
+              state: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  entities: Lithic::AuthRules::AuthRuleEntities,
+                  name: T.nilable(String),
+                  state:
+                    Lithic::AuthRules::V2UpdateParams::Body::Rule::State::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The desired state of the Auth Rule.
+            #
+            # Note that only deactivating an Auth Rule through this endpoint is supported at
+            # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
+            # should be used to promote a draft to the currently active version.
+            module State
+              extend Lithic::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Lithic::AuthRules::V2UpdateParams::Body::Rule::State
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              INACTIVE =
+                T.let(
+                  :INACTIVE,
+                  Lithic::AuthRules::V2UpdateParams::Body::Rule::State::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Lithic::AuthRules::V2UpdateParams::Body::Rule::State::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
 
           class AccountLevelRule < Lithic::Internal::Type::BaseModel
             OrHash =
@@ -79,6 +237,8 @@ module Lithic
                 )
               end
 
+            # Deprecated: Use `entities.include` with `ACCOUNT` entities instead.
+            #
             # Account tokens to which the Auth Rule applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :account_tokens
@@ -86,6 +246,8 @@ module Lithic
             sig { params(account_tokens: T::Array[String]).void }
             attr_writer :account_tokens
 
+            # Deprecated: Use `entities.include` with `BUSINESS_ACCOUNT` entities instead.
+            #
             # Business Account tokens to which the Auth Rule applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :business_account_tokens
@@ -119,6 +281,7 @@ module Lithic
             end
             attr_writer :state
 
+            # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             sig do
               params(
                 account_tokens: T::Array[String],
@@ -129,8 +292,12 @@ module Lithic
               ).returns(T.attached_class)
             end
             def self.new(
+              # Deprecated: Use `entities.include` with `ACCOUNT` entities instead.
+              #
               # Account tokens to which the Auth Rule applies.
               account_tokens: nil,
+              # Deprecated: Use `entities.include` with `BUSINESS_ACCOUNT` entities instead.
+              #
               # Business Account tokens to which the Auth Rule applies.
               business_account_tokens: nil,
               # Auth Rule Name
@@ -202,7 +369,10 @@ module Lithic
                 )
               end
 
-            # Card tokens to which the Auth Rule applies.
+            # Deprecated: Use `entities.include` with `CARD` entities instead.
+            #
+            # Card tokens to which the Auth Rule applies. Cards the rule applies to through a
+            # `CARD_TAG` entity are not listed.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :card_tokens
 
@@ -235,6 +405,7 @@ module Lithic
             end
             attr_writer :state
 
+            # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             sig do
               params(
                 card_tokens: T::Array[String],
@@ -244,7 +415,10 @@ module Lithic
               ).returns(T.attached_class)
             end
             def self.new(
-              # Card tokens to which the Auth Rule applies.
+              # Deprecated: Use `entities.include` with `CARD` entities instead.
+              #
+              # Card tokens to which the Auth Rule applies. Cards the rule applies to through a
+              # `CARD_TAG` entity are not listed.
               card_tokens: nil,
               # Auth Rule Name
               name: nil,
@@ -314,6 +488,8 @@ module Lithic
                 )
               end
 
+            # Deprecated: Use `entities.exclude` with `ACCOUNT` entities instead.
+            #
             # Account tokens to which the Auth Rule does not apply.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_account_tokens
@@ -321,6 +497,8 @@ module Lithic
             sig { params(excluded_account_tokens: T::Array[String]).void }
             attr_writer :excluded_account_tokens
 
+            # Deprecated: Use `entities.exclude` with `BUSINESS_ACCOUNT` entities instead.
+            #
             # Business account tokens to which the Auth Rule does not apply.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_business_account_tokens
@@ -330,7 +508,10 @@ module Lithic
             end
             attr_writer :excluded_business_account_tokens
 
-            # Card tokens to which the Auth Rule does not apply.
+            # Deprecated: Use `entities.exclude` with `CARD` entities instead.
+            #
+            # Card tokens to which the Auth Rule does not apply. Cards excluded through a
+            # `CARD_TAG` entity are not listed.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_card_tokens
 
@@ -341,6 +522,8 @@ module Lithic
             sig { returns(T.nilable(String)) }
             attr_accessor :name
 
+            # Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
+            #
             # Whether the Auth Rule applies to all authorizations on the card program.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :program_level
@@ -370,6 +553,7 @@ module Lithic
             end
             attr_writer :state
 
+            # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             sig do
               params(
                 excluded_account_tokens: T::Array[String],
@@ -382,14 +566,23 @@ module Lithic
               ).returns(T.attached_class)
             end
             def self.new(
+              # Deprecated: Use `entities.exclude` with `ACCOUNT` entities instead.
+              #
               # Account tokens to which the Auth Rule does not apply.
               excluded_account_tokens: nil,
+              # Deprecated: Use `entities.exclude` with `BUSINESS_ACCOUNT` entities instead.
+              #
               # Business account tokens to which the Auth Rule does not apply.
               excluded_business_account_tokens: nil,
-              # Card tokens to which the Auth Rule does not apply.
+              # Deprecated: Use `entities.exclude` with `CARD` entities instead.
+              #
+              # Card tokens to which the Auth Rule does not apply. Cards excluded through a
+              # `CARD_TAG` entity are not listed.
               excluded_card_tokens: nil,
               # Auth Rule Name
               name: nil,
+              # Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
+              #
               # Whether the Auth Rule applies to all authorizations on the card program.
               program_level: nil,
               # The desired state of the Auth Rule.

@@ -1,0 +1,29 @@
+module Lithic
+  module Models
+    class AuthRuleEntitiesResponse = AuthRules::AuthRuleEntitiesResponse
+
+    module AuthRules
+      type auth_rule_entities_response =
+        {
+          exclude: ::Array[Lithic::Models::AuthRules::auth_rule_entity],
+          include: ::Array[Lithic::Models::AuthRules::auth_rule_entity]
+        }
+
+      class AuthRuleEntitiesResponse < Lithic::Internal::Type::BaseModel
+        attr_accessor exclude: ::Array[Lithic::Models::AuthRules::auth_rule_entity]
+
+        attr_accessor include: ::Array[Lithic::Models::AuthRules::auth_rule_entity]
+
+        def initialize: (
+          exclude: ::Array[Lithic::Models::AuthRules::auth_rule_entity],
+          include: ::Array[Lithic::Models::AuthRules::auth_rule_entity]
+        ) -> void
+
+        def to_hash: -> {
+          exclude: ::Array[Lithic::Models::AuthRules::auth_rule_entity],
+          include: ::Array[Lithic::Models::AuthRules::auth_rule_entity]
+        }
+      end
+    end
+  end
+end

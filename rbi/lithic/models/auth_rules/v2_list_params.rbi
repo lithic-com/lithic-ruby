@@ -73,7 +73,8 @@ module Lithic
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
-        # Only return Auth Rules that are bound to the provided scope.
+        # Only return Auth Rules that are bound to the provided scope. When no token is
+        # provided, `CARD` also returns Auth Rules that include a `CARD_TAG` entity.
         sig do
           returns(T.nilable(Lithic::AuthRules::V2ListParams::Scope::OrSymbol))
         end
@@ -125,7 +126,8 @@ module Lithic
           event_streams: nil,
           # Page size (for pagination).
           page_size: nil,
-          # Only return Auth Rules that are bound to the provided scope.
+          # Only return Auth Rules that are bound to the provided scope. When no token is
+          # provided, `CARD` also returns Auth Rules that include a `CARD_TAG` entity.
           scope: nil,
           # A cursor representing an item's token after which a page of results should
           # begin. Used to retrieve the next page of results after this item.
@@ -153,7 +155,8 @@ module Lithic
         def to_hash
         end
 
-        # Only return Auth Rules that are bound to the provided scope.
+        # Only return Auth Rules that are bound to the provided scope. When no token is
+        # provided, `CARD` also returns Auth Rules that include a `CARD_TAG` entity.
         module Scope
           extend Lithic::Internal::Type::Enum
 

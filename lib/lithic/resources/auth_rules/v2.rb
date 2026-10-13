@@ -11,7 +11,8 @@ module Lithic
         #
         # @overload create(body:, request_options: {})
         #
-        # @param body [Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule, Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule, Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule]
+        # @param body [Lithic::Models::AuthRules::V2CreateParams::Body::Rule, Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule, Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule, Lithic::Models::AuthRules::V2CreateParams::Body::ProgramLevelRule] Deprecated: Use `entities` instead. Cannot be combined with `entities`.
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::AuthRule]
@@ -47,16 +48,21 @@ module Lithic
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::AuthRules::V2UpdateParams} for more details.
+        #
         # Updates a V2 Auth rule's properties
         #
-        # If `account_tokens`, `card_tokens`, `program_level`, `excluded_card_tokens`,
-        # `excluded_account_tokens`, or `excluded_business_account_tokens` is provided,
-        # this will replace existing associations with the provided list of entities.
+        # If `entities` is provided, this will replace the rule's existing entities with
+        # the provided `include` and `exclude` lists. To change entities incrementally,
+        # use `PATCH /v2/auth_rules/{auth_rule_token}/entities` instead.
         #
         # @overload update(auth_rule_token, body:, request_options: {})
         #
         # @param auth_rule_token [String]
-        # @param body [Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule, Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule, Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule]
+        #
+        # @param body [Lithic::Models::AuthRules::V2UpdateParams::Body::Rule, Lithic::Models::AuthRules::V2UpdateParams::Body::AccountLevelRule, Lithic::Models::AuthRules::V2UpdateParams::Body::CardLevelRule, Lithic::Models::AuthRules::V2UpdateParams::Body::ProgramLevelRule] Replaces the rule's existing entities with the provided `include` and `exclude`
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::AuthRule]
@@ -94,7 +100,7 @@ module Lithic
         #
         # @param page_size [Integer] Page size (for pagination).
         #
-        # @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Auth Rules that are bound to the provided scope.
+        # @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Auth Rules that are bound to the provided scope. When no token is pr
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #
@@ -316,6 +322,36 @@ module Lithic
             path: ["v2/auth_rules/%1$s/report", auth_rule_token],
             query: query.transform_keys(begin_: "begin", end_: "end"),
             model: Lithic::Models::AuthRules::V2RetrieveReportResponse,
+            options: options
+          )
+        end
+
+        # Adds entities to and removes entities from a V2 Auth rule's `include` and
+        # `exclude` lists
+        #
+        # To replace all of the rule's entities at once, provide `entities` to
+        # `PATCH /v2/auth_rules/{auth_rule_token}` instead.
+        #
+        # @overload update_entities(auth_rule_token, add: nil, remove: nil, request_options: {})
+        #
+        # @param auth_rule_token [String]
+        #
+        # @param add [Lithic::Models::AuthRules::AuthRuleEntities] Entities to add to the rule's `include` and `exclude` lists
+        #
+        # @param remove [Lithic::Models::AuthRules::AuthRuleEntities] Entities to remove from the rule's `include` and `exclude` lists
+        #
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Lithic::Models::AuthRules::AuthRule]
+        #
+        # @see Lithic::Models::AuthRules::V2UpdateEntitiesParams
+        def update_entities(auth_rule_token, params = {})
+          parsed, options = Lithic::AuthRules::V2UpdateEntitiesParams.dump_request(params)
+          @client.request(
+            method: :patch,
+            path: ["v2/auth_rules/%1$s/entities", auth_rule_token],
+            body: parsed,
+            model: Lithic::AuthRules::AuthRule,
             options: options
           )
         end

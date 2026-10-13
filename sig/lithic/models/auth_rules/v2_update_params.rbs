@@ -29,12 +29,58 @@ module Lithic
         }
 
         type body =
-          Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule
+          Lithic::AuthRules::V2UpdateParams::Body::Rule
+          | Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule
           | Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule
           | Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule
 
         module Body
           extend Lithic::Internal::Type::Union
+
+          type rule =
+            {
+              entities: Lithic::AuthRules::AuthRuleEntities,
+              name: String?,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state
+            }
+
+          class Rule < Lithic::Internal::Type::BaseModel
+            attr_reader entities: Lithic::AuthRules::AuthRuleEntities?
+
+            def entities=: (
+              Lithic::AuthRules::AuthRuleEntities
+            ) -> Lithic::AuthRules::AuthRuleEntities
+
+            attr_accessor name: String?
+
+            attr_reader state: Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state?
+
+            def state=: (
+              Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state
+            ) -> Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state
+
+            def initialize: (
+              ?entities: Lithic::AuthRules::AuthRuleEntities,
+              ?name: String?,
+              ?state: Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state
+            ) -> void
+
+            def to_hash: -> {
+              entities: Lithic::AuthRules::AuthRuleEntities,
+              name: String?,
+              state: Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state
+            }
+
+            type state = :INACTIVE
+
+            module State
+              extend Lithic::Internal::Type::Enum
+
+              INACTIVE: :INACTIVE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::Body::Rule::state]
+            end
+          end
 
           type account_level_rule =
             {

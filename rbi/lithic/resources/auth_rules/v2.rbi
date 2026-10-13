@@ -12,6 +12,7 @@ module Lithic
           params(
             body:
               T.any(
+                Lithic::AuthRules::V2CreateParams::Body::Rule::OrHash,
                 Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::OrHash,
                 Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::OrHash,
                 Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::OrHash
@@ -19,7 +20,11 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::AuthRules::AuthRule)
         end
-        def create(body:, request_options: {})
+        def create(
+          # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
+          body:,
+          request_options: {}
+        )
         end
 
         # Fetches a V2 Auth rule by its token
@@ -34,14 +39,15 @@ module Lithic
 
         # Updates a V2 Auth rule's properties
         #
-        # If `account_tokens`, `card_tokens`, `program_level`, `excluded_card_tokens`,
-        # `excluded_account_tokens`, or `excluded_business_account_tokens` is provided,
-        # this will replace existing associations with the provided list of entities.
+        # If `entities` is provided, this will replace the rule's existing entities with
+        # the provided `include` and `exclude` lists. To change entities incrementally,
+        # use `PATCH /v2/auth_rules/{auth_rule_token}/entities` instead.
         sig do
           params(
             auth_rule_token: String,
             body:
               T.any(
+                Lithic::AuthRules::V2UpdateParams::Body::Rule::OrHash,
                 Lithic::AuthRules::V2UpdateParams::Body::AccountLevelRule::OrHash,
                 Lithic::AuthRules::V2UpdateParams::Body::CardLevelRule::OrHash,
                 Lithic::AuthRules::V2UpdateParams::Body::ProgramLevelRule::OrHash
@@ -49,7 +55,13 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::AuthRules::AuthRule)
         end
-        def update(auth_rule_token, body:, request_options: {})
+        def update(
+          auth_rule_token,
+          # Replaces the rule's existing entities with the provided `include` and `exclude`
+          # lists. A missing list is treated as empty, so `include` must always be provided.
+          body:,
+          request_options: {}
+        )
         end
 
         # Lists V2 Auth rules
@@ -86,7 +98,8 @@ module Lithic
           event_streams: nil,
           # Page size (for pagination).
           page_size: nil,
-          # Only return Auth Rules that are bound to the provided scope.
+          # Only return Auth Rules that are bound to the provided scope. When no token is
+          # provided, `CARD` also returns Auth Rules that include a `CARD_TAG` entity.
           scope: nil,
           # A cursor representing an item's token after which a page of results should
           # begin. Used to retrieve the next page of results after this item.
@@ -262,6 +275,29 @@ module Lithic
           begin_:,
           # End date for the report
           end_:,
+          request_options: {}
+        )
+        end
+
+        # Adds entities to and removes entities from a V2 Auth rule's `include` and
+        # `exclude` lists
+        #
+        # To replace all of the rule's entities at once, provide `entities` to
+        # `PATCH /v2/auth_rules/{auth_rule_token}` instead.
+        sig do
+          params(
+            auth_rule_token: String,
+            add: Lithic::AuthRules::AuthRuleEntities::OrHash,
+            remove: Lithic::AuthRules::AuthRuleEntities::OrHash,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::AuthRules::AuthRule)
+        end
+        def update_entities(
+          auth_rule_token,
+          # Entities to add to the rule's `include` and `exclude` lists
+          add: nil,
+          # Entities to remove from the rule's `include` and `exclude` lists
+          remove: nil,
           request_options: {}
         )
         end

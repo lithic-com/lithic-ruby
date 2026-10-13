@@ -6,14 +6,28 @@ module Lithic
       # @api private
       #
       # @example
-      #   # `case_transaction` is a `Lithic::TransactionMonitoring::CaseTransaction`
-      #   case case_transaction
-      #   when Lithic::TransactionMonitoring::CaseTransaction::CardCaseTransaction
-      #     puts(case_transaction.token)
-      #   when Lithic::TransactionMonitoring::CaseTransaction::PaymentCaseTransaction
-      #     puts(case_transaction.added_at)
+      #   # `auth_rule_entity` is a `Lithic::AuthRules::AuthRuleEntity`
+      #   case auth_rule_entity
+      #   when Lithic::AuthRules::AuthRuleEntity::Program
+      #     puts(auth_rule_entity.type)
+      #   when Lithic::AuthRules::AuthRuleEntity::Card
+      #     puts(auth_rule_entity.token)
+      #   when Lithic::AuthRules::AuthRuleEntity::Account
+      #     puts(auth_rule_entity.token)
       #   else
-      #     puts(case_transaction)
+      #     puts(auth_rule_entity)
+      #   end
+      #
+      # @example
+      #   case auth_rule_entity
+      #   in {type: :PROGRAM}
+      #     # ...
+      #   in {type: :CARD, token: token}
+      #     puts(token)
+      #   in {type: :ACCOUNT, token: token}
+      #     puts(token)
+      #   else
+      #     puts(auth_rule_entity)
       #   end
       module Union
         include Lithic::Internal::Type::Converter

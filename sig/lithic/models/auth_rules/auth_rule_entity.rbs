@@ -1,0 +1,80 @@
+module Lithic
+  module Models
+    module AuthRuleEntity = AuthRules::AuthRuleEntity
+
+    module AuthRules
+      type auth_rule_entity =
+        Lithic::AuthRules::AuthRuleEntity::Program
+        | Lithic::AuthRules::AuthRuleEntity::Card
+        | Lithic::AuthRules::AuthRuleEntity::Account
+        | Lithic::AuthRules::AuthRuleEntity::BusinessAccount
+        | Lithic::AuthRules::AuthRuleEntity::CardTag
+
+      module AuthRuleEntity
+        extend Lithic::Internal::Type::Union
+
+        type program = { type: :PROGRAM }
+
+        class Program < Lithic::Internal::Type::BaseModel
+          attr_accessor type: :PROGRAM
+
+          def initialize: (?type: :PROGRAM) -> void
+
+          def to_hash: -> { type: :PROGRAM }
+        end
+
+        type card = { token: String, type: :CARD }
+
+        class Card < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor type: :CARD
+
+          def initialize: (token: String, ?type: :CARD) -> void
+
+          def to_hash: -> { token: String, type: :CARD }
+        end
+
+        type account = { token: String, type: :ACCOUNT }
+
+        class Account < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor type: :ACCOUNT
+
+          def initialize: (token: String, ?type: :ACCOUNT) -> void
+
+          def to_hash: -> { token: String, type: :ACCOUNT }
+        end
+
+        type business_account = { token: String, type: :BUSINESS_ACCOUNT }
+
+        class BusinessAccount < Lithic::Internal::Type::BaseModel
+          attr_accessor token: String
+
+          attr_accessor type: :BUSINESS_ACCOUNT
+
+          def initialize: (token: String, ?type: :BUSINESS_ACCOUNT) -> void
+
+          def to_hash: -> { token: String, type: :BUSINESS_ACCOUNT }
+        end
+
+        type card_tag = { key: String, type: :CARD_TAG, value: String }
+
+        class CardTag < Lithic::Internal::Type::BaseModel
+          attr_accessor key: String
+
+          attr_accessor type: :CARD_TAG
+
+          attr_accessor value: String
+
+          def initialize: (key: String, value: String, ?type: :CARD_TAG) -> void
+
+          def to_hash: -> { key: String, type: :CARD_TAG, value: String }
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::auth_rule_entity]
+      end
+    end
+  end
+end

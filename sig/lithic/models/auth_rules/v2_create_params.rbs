@@ -22,12 +22,91 @@ module Lithic
         }
 
         type body =
-          Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule
+          Lithic::AuthRules::V2CreateParams::Body::Rule
+          | Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule
           | Lithic::AuthRules::V2CreateParams::Body::CardLevelRule
           | Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule
 
         module Body
           extend Lithic::Internal::Type::Union
+
+          type rule =
+            {
+              entities: Lithic::AuthRules::AuthRuleEntities,
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::type_,
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              name: String?
+            }
+
+          class Rule < Lithic::Internal::Type::BaseModel
+            attr_accessor entities: Lithic::AuthRules::AuthRuleEntities
+
+            attr_accessor parameters: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::parameters
+
+            attr_accessor type: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::type_
+
+            attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
+
+            def event_stream=: (
+              Lithic::Models::AuthRules::event_stream
+            ) -> Lithic::Models::AuthRules::event_stream
+
+            attr_accessor name: String?
+
+            def initialize: (
+              entities: Lithic::AuthRules::AuthRuleEntities,
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::type_,
+              ?event_stream: Lithic::Models::AuthRules::event_stream,
+              ?name: String?
+            ) -> void
+
+            def to_hash: -> {
+              entities: Lithic::AuthRules::AuthRuleEntities,
+              parameters: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::parameters,
+              type: Lithic::Models::AuthRules::V2CreateParams::Body::Rule::type_,
+              event_stream: Lithic::Models::AuthRules::event_stream,
+              name: String?
+            }
+
+            type parameters =
+              Lithic::AuthRules::VelocityLimitParams
+              | Lithic::AuthRules::MerchantLockParameters
+              | Lithic::AuthRules::Conditional3DSActionParameters
+              | Lithic::AuthRules::ConditionalAuthorizationActionParameters
+              | Lithic::AuthRules::ConditionalACHActionParameters
+              | Lithic::AuthRules::ConditionalTokenizationActionParameters
+              | Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters
+              | Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters
+              | Lithic::AuthRules::TypescriptCodeParameters
+              | Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+
+            module Parameters
+              extend Lithic::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::Rule::parameters]
+            end
+
+            type type_ =
+              :VELOCITY_LIMIT
+              | :MERCHANT_LOCK
+              | :CONDITIONAL_ACTION
+              | :TYPESCRIPT_CODE
+              | :OTHER
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              VELOCITY_LIMIT: :VELOCITY_LIMIT
+              MERCHANT_LOCK: :MERCHANT_LOCK
+              CONDITIONAL_ACTION: :CONDITIONAL_ACTION
+              TYPESCRIPT_CODE: :TYPESCRIPT_CODE
+              OTHER: :OTHER
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Body::Rule::type_]
+            end
+          end
 
           type account_level_rule =
             {

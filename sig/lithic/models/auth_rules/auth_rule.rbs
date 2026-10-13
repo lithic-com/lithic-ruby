@@ -11,6 +11,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::AuthRules::AuthRule::CurrentVersion?,
           draft_version: Lithic::AuthRules::AuthRule::DraftVersion?,
+          entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
           event_stream: Lithic::Models::AuthRules::event_stream,
           lithic_managed: bool,
           name: String?,
@@ -34,6 +35,8 @@ module Lithic
         attr_accessor current_version: Lithic::AuthRules::AuthRule::CurrentVersion?
 
         attr_accessor draft_version: Lithic::AuthRules::AuthRule::DraftVersion?
+
+        attr_accessor entities: Lithic::AuthRules::AuthRuleEntitiesResponse
 
         attr_accessor event_stream: Lithic::Models::AuthRules::event_stream
 
@@ -68,6 +71,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::AuthRules::AuthRule::CurrentVersion?,
           draft_version: Lithic::AuthRules::AuthRule::DraftVersion?,
+          entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
           event_stream: Lithic::Models::AuthRules::event_stream,
           lithic_managed: bool,
           name: String?,
@@ -86,6 +90,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::AuthRules::AuthRule::CurrentVersion?,
           draft_version: Lithic::AuthRules::AuthRule::DraftVersion?,
+          entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
           event_stream: Lithic::Models::AuthRules::event_stream,
           lithic_managed: bool,
           name: String?,

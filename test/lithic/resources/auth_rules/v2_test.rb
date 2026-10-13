@@ -6,7 +6,11 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
   def test_create_required_params
     response =
       @lithic.auth_rules.v2.create(
-        body: {parameters: {period: {duration: 10, type: :CUSTOM}, scope: :CARD}, type: :VELOCITY_LIMIT}
+        body: {
+          entities: {},
+          parameters: {period: {duration: 10, type: :CUSTOM}, scope: :CARD},
+          type: :VELOCITY_LIMIT
+        }
       )
 
     assert_pattern do
@@ -21,6 +25,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
         draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
         event_stream: Lithic::AuthRules::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
@@ -49,6 +54,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
         draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
         event_stream: Lithic::AuthRules::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
@@ -77,6 +83,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
         draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
         event_stream: Lithic::AuthRules::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
@@ -112,6 +119,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
         draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
         event_stream: Lithic::AuthRules::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
@@ -148,6 +156,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
         draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
         event_stream: Lithic::AuthRules::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
@@ -216,6 +225,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
         draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
         event_stream: Lithic::AuthRules::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
@@ -262,6 +272,35 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         begin_: Date,
         daily_statistics: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic]),
         end_: Date
+      }
+    end
+  end
+
+  def test_update_entities
+    response = @lithic.auth_rules.v2.update_entities("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::AuthRules::AuthRule
+    end
+
+    assert_pattern do
+      response => {
+        token: String,
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        entities: Lithic::AuthRules::AuthRuleEntitiesResponse,
+        event_stream: Lithic::AuthRules::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
+        name: String | nil,
+        program_level: Lithic::Internal::Type::Boolean,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
+        excluded_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

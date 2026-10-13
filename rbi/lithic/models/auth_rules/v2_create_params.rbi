@@ -12,9 +12,11 @@ module Lithic
             T.any(Lithic::AuthRules::V2CreateParams, Lithic::Internal::AnyHash)
           end
 
+        # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
         sig do
           returns(
             T.any(
+              Lithic::AuthRules::V2CreateParams::Body::Rule,
               Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule,
               Lithic::AuthRules::V2CreateParams::Body::CardLevelRule,
               Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule
@@ -27,6 +29,7 @@ module Lithic
           params(
             body:
               T.any(
+                Lithic::AuthRules::V2CreateParams::Body::Rule::OrHash,
                 Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::OrHash,
                 Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::OrHash,
                 Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::OrHash
@@ -34,7 +37,11 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(body:, request_options: {})
+        def self.new(
+          # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
+          body:,
+          request_options: {}
+        )
         end
 
         sig do
@@ -42,6 +49,7 @@ module Lithic
             {
               body:
                 T.any(
+                  Lithic::AuthRules::V2CreateParams::Body::Rule,
                   Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule,
                   Lithic::AuthRules::V2CreateParams::Body::CardLevelRule,
                   Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule
@@ -53,17 +61,294 @@ module Lithic
         def to_hash
         end
 
+        # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
         module Body
           extend Lithic::Internal::Type::Union
 
           Variants =
             T.type_alias do
               T.any(
+                Lithic::AuthRules::V2CreateParams::Body::Rule,
                 Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule,
                 Lithic::AuthRules::V2CreateParams::Body::CardLevelRule,
                 Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule
               )
             end
+
+          class Rule < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Lithic::AuthRules::V2CreateParams::Body::Rule,
+                  Lithic::Internal::AnyHash
+                )
+              end
+
+            # The entities an Auth Rule applies to (`include`) and does not apply to
+            # (`exclude`). An exclusion overrides an inclusion, so a card excluded here is
+            # skipped even when the program, its account or one of its tags is included.
+            #
+            # The rule's resulting entities must satisfy these constraints after any write:
+            #
+            # - `include` must contain at least one entity.
+            # - If `PROGRAM` is included, it must be the only included entity.
+            # - `PROGRAM` cannot be excluded.
+            # - An entity cannot appear in both `include` and `exclude`, or twice in the same
+            #   list.
+            # - A rule can have at most 1,000 entities across `include` and `exclude`, not
+            #   counting `PROGRAM`.
+            # - Entity types must be valid for the rule's event stream.
+            # - `CARD`, `ACCOUNT` and `BUSINESS_ACCOUNT` tokens must belong to your program.
+            sig { returns(Lithic::AuthRules::AuthRuleEntities) }
+            attr_reader :entities
+
+            sig do
+              params(entities: Lithic::AuthRules::AuthRuleEntities::OrHash).void
+            end
+            attr_writer :entities
+
+            # Parameters for the Auth Rule
+            sig do
+              returns(
+                T.any(
+                  Lithic::AuthRules::VelocityLimitParams,
+                  Lithic::AuthRules::MerchantLockParameters,
+                  Lithic::AuthRules::Conditional3DSActionParameters,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                  Lithic::AuthRules::ConditionalACHActionParameters,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                  Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
+                  Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
+                  Lithic::AuthRules::TypescriptCodeParameters,
+                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                )
+              )
+            end
+            attr_accessor :parameters
+
+            # The type of Auth Rule. For certain rule types, this determines the event stream
+            # during which it will be evaluated. For rules that can be applied to one of
+            # several event streams, the effective one is defined by the separate
+            # `event_stream` field.
+            #
+            # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+            # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+            # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
+            #   ACH_PAYMENT_UPDATE event stream.
+            # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
+            #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
+            sig do
+              returns(
+                Lithic::AuthRules::V2CreateParams::Body::Rule::Type::OrSymbol
+              )
+            end
+            attr_accessor :type
+
+            # The event stream during which the rule will be evaluated.
+            sig { returns(T.nilable(Lithic::AuthRules::EventStream::OrSymbol)) }
+            attr_reader :event_stream
+
+            sig do
+              params(
+                event_stream: Lithic::AuthRules::EventStream::OrSymbol
+              ).void
+            end
+            attr_writer :event_stream
+
+            # Auth Rule Name
+            sig { returns(T.nilable(String)) }
+            attr_accessor :name
+
+            sig do
+              params(
+                entities: Lithic::AuthRules::AuthRuleEntities::OrHash,
+                parameters:
+                  T.any(
+                    Lithic::AuthRules::VelocityLimitParams::OrHash,
+                    Lithic::AuthRules::MerchantLockParameters::OrHash,
+                    Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
+                    Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
+                    Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
+                    Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
+                    Lithic::AuthRules::TypescriptCodeParameters::OrHash,
+                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
+                  ),
+                type:
+                  Lithic::AuthRules::V2CreateParams::Body::Rule::Type::OrSymbol,
+                event_stream: Lithic::AuthRules::EventStream::OrSymbol,
+                name: T.nilable(String)
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The entities an Auth Rule applies to (`include`) and does not apply to
+              # (`exclude`). An exclusion overrides an inclusion, so a card excluded here is
+              # skipped even when the program, its account or one of its tags is included.
+              #
+              # The rule's resulting entities must satisfy these constraints after any write:
+              #
+              # - `include` must contain at least one entity.
+              # - If `PROGRAM` is included, it must be the only included entity.
+              # - `PROGRAM` cannot be excluded.
+              # - An entity cannot appear in both `include` and `exclude`, or twice in the same
+              #   list.
+              # - A rule can have at most 1,000 entities across `include` and `exclude`, not
+              #   counting `PROGRAM`.
+              # - Entity types must be valid for the rule's event stream.
+              # - `CARD`, `ACCOUNT` and `BUSINESS_ACCOUNT` tokens must belong to your program.
+              entities:,
+              # Parameters for the Auth Rule
+              parameters:,
+              # The type of Auth Rule. For certain rule types, this determines the event stream
+              # during which it will be evaluated. For rules that can be applied to one of
+              # several event streams, the effective one is defined by the separate
+              # `event_stream` field.
+              #
+              # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+              # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+              # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+              #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
+              #   ACH_PAYMENT_UPDATE event stream.
+              # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+              #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
+              #   ACH_PAYMENT_UPDATE event stream.
+              # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+              #   are read-only; `OTHER` cannot be used when creating a rule.
+              type:,
+              # The event stream during which the rule will be evaluated.
+              event_stream: nil,
+              # Auth Rule Name
+              name: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  entities: Lithic::AuthRules::AuthRuleEntities,
+                  parameters:
+                    T.any(
+                      Lithic::AuthRules::VelocityLimitParams,
+                      Lithic::AuthRules::MerchantLockParameters,
+                      Lithic::AuthRules::Conditional3DSActionParameters,
+                      Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                      Lithic::AuthRules::ConditionalACHActionParameters,
+                      Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                      Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
+                      Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
+                      Lithic::AuthRules::TypescriptCodeParameters,
+                      Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                    ),
+                  type:
+                    Lithic::AuthRules::V2CreateParams::Body::Rule::Type::OrSymbol,
+                  event_stream: Lithic::AuthRules::EventStream::OrSymbol,
+                  name: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Parameters for the Auth Rule
+            module Parameters
+              extend Lithic::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.any(
+                    Lithic::AuthRules::VelocityLimitParams,
+                    Lithic::AuthRules::MerchantLockParameters,
+                    Lithic::AuthRules::Conditional3DSActionParameters,
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                    Lithic::AuthRules::ConditionalACHActionParameters,
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters,
+                    Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
+                    Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
+                    Lithic::AuthRules::TypescriptCodeParameters,
+                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                  )
+                end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Lithic::AuthRules::V2CreateParams::Body::Rule::Parameters::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
+            end
+
+            # The type of Auth Rule. For certain rule types, this determines the event stream
+            # during which it will be evaluated. For rules that can be applied to one of
+            # several event streams, the effective one is defined by the separate
+            # `event_stream` field.
+            #
+            # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+            # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+            # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
+            #   ACH_PAYMENT_UPDATE event stream.
+            # - `TYPESCRIPT_CODE`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+            #   ACH_CREDIT_RECEIPT, ACH_DEBIT_RECEIPT, CARD_TRANSACTION_UPDATE, or
+            #   ACH_PAYMENT_UPDATE event stream.
+            # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
+            #   are read-only; `OTHER` cannot be used when creating a rule.
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Lithic::AuthRules::V2CreateParams::Body::Rule::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              VELOCITY_LIMIT =
+                T.let(
+                  :VELOCITY_LIMIT,
+                  Lithic::AuthRules::V2CreateParams::Body::Rule::Type::TaggedSymbol
+                )
+              MERCHANT_LOCK =
+                T.let(
+                  :MERCHANT_LOCK,
+                  Lithic::AuthRules::V2CreateParams::Body::Rule::Type::TaggedSymbol
+                )
+              CONDITIONAL_ACTION =
+                T.let(
+                  :CONDITIONAL_ACTION,
+                  Lithic::AuthRules::V2CreateParams::Body::Rule::Type::TaggedSymbol
+                )
+              TYPESCRIPT_CODE =
+                T.let(
+                  :TYPESCRIPT_CODE,
+                  Lithic::AuthRules::V2CreateParams::Body::Rule::Type::TaggedSymbol
+                )
+              OTHER =
+                T.let(
+                  :OTHER,
+                  Lithic::AuthRules::V2CreateParams::Body::Rule::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Lithic::AuthRules::V2CreateParams::Body::Rule::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
 
           class AccountLevelRule < Lithic::Internal::Type::BaseModel
             OrHash =
@@ -115,6 +400,8 @@ module Lithic
             end
             attr_accessor :type
 
+            # Deprecated: Use `entities.include` with `ACCOUNT` entities instead.
+            #
             # Account tokens to which the Auth Rule applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :account_tokens
@@ -122,6 +409,8 @@ module Lithic
             sig { params(account_tokens: T::Array[String]).void }
             attr_writer :account_tokens
 
+            # Deprecated: Use `entities.include` with `BUSINESS_ACCOUNT` entities instead.
+            #
             # Business Account tokens to which the Auth Rule applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :business_account_tokens
@@ -144,6 +433,7 @@ module Lithic
             sig { returns(T.nilable(String)) }
             attr_accessor :name
 
+            # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             sig do
               params(
                 parameters:
@@ -186,8 +476,12 @@ module Lithic
               # - `OTHER`: A rule whose type is not exposed through this API. Rules of this type
               #   are read-only; `OTHER` cannot be used when creating a rule.
               type:,
+              # Deprecated: Use `entities.include` with `ACCOUNT` entities instead.
+              #
               # Account tokens to which the Auth Rule applies.
               account_tokens: nil,
+              # Deprecated: Use `entities.include` with `BUSINESS_ACCOUNT` entities instead.
+              #
               # Business Account tokens to which the Auth Rule applies.
               business_account_tokens: nil,
               # The event stream during which the rule will be evaluated.
@@ -330,7 +624,10 @@ module Lithic
                 )
               end
 
-            # Card tokens to which the Auth Rule applies.
+            # Deprecated: Use `entities.include` with `CARD` entities instead.
+            #
+            # Card tokens to which the Auth Rule applies. Cards the rule applies to through a
+            # `CARD_TAG` entity are not listed.
             sig { returns(T::Array[String]) }
             attr_accessor :card_tokens
 
@@ -390,6 +687,7 @@ module Lithic
             sig { returns(T.nilable(String)) }
             attr_accessor :name
 
+            # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             sig do
               params(
                 card_tokens: T::Array[String],
@@ -413,7 +711,10 @@ module Lithic
               ).returns(T.attached_class)
             end
             def self.new(
-              # Card tokens to which the Auth Rule applies.
+              # Deprecated: Use `entities.include` with `CARD` entities instead.
+              #
+              # Card tokens to which the Auth Rule applies. Cards the rule applies to through a
+              # `CARD_TAG` entity are not listed.
               card_tokens:,
               # Parameters for the Auth Rule
               parameters:,
@@ -591,6 +892,8 @@ module Lithic
             end
             attr_accessor :parameters
 
+            # Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
+            #
             # Whether the Auth Rule applies to all authorizations on the card program.
             sig { returns(T::Boolean) }
             attr_accessor :program_level
@@ -628,6 +931,8 @@ module Lithic
             end
             attr_writer :event_stream
 
+            # Deprecated: Use `entities.exclude` with `ACCOUNT` entities instead.
+            #
             # Account tokens to which the Auth Rule does not apply.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_account_tokens
@@ -635,6 +940,8 @@ module Lithic
             sig { params(excluded_account_tokens: T::Array[String]).void }
             attr_writer :excluded_account_tokens
 
+            # Deprecated: Use `entities.exclude` with `BUSINESS_ACCOUNT` entities instead.
+            #
             # Business account tokens to which the Auth Rule does not apply.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_business_account_tokens
@@ -644,7 +951,10 @@ module Lithic
             end
             attr_writer :excluded_business_account_tokens
 
-            # Card tokens to which the Auth Rule does not apply.
+            # Deprecated: Use `entities.exclude` with `CARD` entities instead.
+            #
+            # Card tokens to which the Auth Rule does not apply. Cards excluded through a
+            # `CARD_TAG` entity are not listed.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :excluded_card_tokens
 
@@ -655,6 +965,7 @@ module Lithic
             sig { returns(T.nilable(String)) }
             attr_accessor :name
 
+            # Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             sig do
               params(
                 parameters:
@@ -683,6 +994,8 @@ module Lithic
             def self.new(
               # Parameters for the Auth Rule
               parameters:,
+              # Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
+              #
               # Whether the Auth Rule applies to all authorizations on the card program.
               program_level:,
               # The type of Auth Rule. For certain rule types, this determines the event stream
@@ -703,11 +1016,18 @@ module Lithic
               type:,
               # The event stream during which the rule will be evaluated.
               event_stream: nil,
+              # Deprecated: Use `entities.exclude` with `ACCOUNT` entities instead.
+              #
               # Account tokens to which the Auth Rule does not apply.
               excluded_account_tokens: nil,
+              # Deprecated: Use `entities.exclude` with `BUSINESS_ACCOUNT` entities instead.
+              #
               # Business account tokens to which the Auth Rule does not apply.
               excluded_business_account_tokens: nil,
-              # Card tokens to which the Auth Rule does not apply.
+              # Deprecated: Use `entities.exclude` with `CARD` entities instead.
+              #
+              # Card tokens to which the Auth Rule does not apply. Cards excluded through a
+              # `CARD_TAG` entity are not listed.
               excluded_card_tokens: nil,
               # Auth Rule Name
               name: nil
