@@ -232,6 +232,7 @@ module Lithic
           | :COLLECTION
           | :LITHIC_PROGRAM_TRANSFER
           | :BANK_PROGRAM_TRANSFER
+          | :INSTANCE_TO_INSTANCE
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -274,6 +275,7 @@ module Lithic
           COLLECTION: :COLLECTION
           LITHIC_PROGRAM_TRANSFER: :LITHIC_PROGRAM_TRANSFER
           BANK_PROGRAM_TRANSFER: :BANK_PROGRAM_TRANSFER
+          INSTANCE_TO_INSTANCE: :INSTANCE_TO_INSTANCE
 
           def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::type_]
         end

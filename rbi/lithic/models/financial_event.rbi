@@ -528,6 +528,11 @@ module Lithic
             :STABLECOIN_REJECTED,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        INSTANCE_TO_INSTANCE =
+          T.let(
+            :INSTANCE_TO_INSTANCE,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(T::Array[Lithic::FinancialEvent::Type::TaggedSymbol])

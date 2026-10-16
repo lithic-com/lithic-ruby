@@ -164,6 +164,7 @@ module Lithic
         COLLECTION = :COLLECTION
         LITHIC_PROGRAM_TRANSFER = :LITHIC_PROGRAM_TRANSFER
         BANK_PROGRAM_TRANSFER = :BANK_PROGRAM_TRANSFER
+        INSTANCE_TO_INSTANCE = :INSTANCE_TO_INSTANCE
 
         # @!method self.values
         #   @return [Array<Symbol>]

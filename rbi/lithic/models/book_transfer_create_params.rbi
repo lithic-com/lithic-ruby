@@ -397,6 +397,11 @@ module Lithic
             :BANK_PROGRAM_TRANSFER,
             Lithic::BookTransferCreateParams::Type::TaggedSymbol
           )
+        INSTANCE_TO_INSTANCE =
+          T.let(
+            :INSTANCE_TO_INSTANCE,
+            Lithic::BookTransferCreateParams::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(

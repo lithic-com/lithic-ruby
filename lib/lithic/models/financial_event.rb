@@ -173,6 +173,7 @@ module Lithic
         STABLECOIN_SENT = :STABLECOIN_SENT
         STABLECOIN_SETTLED = :STABLECOIN_SETTLED
         STABLECOIN_REJECTED = :STABLECOIN_REJECTED
+        INSTANCE_TO_INSTANCE = :INSTANCE_TO_INSTANCE
 
         # @!method self.values
         #   @return [Array<Symbol>]
