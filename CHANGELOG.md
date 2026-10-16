@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.0](https://github.com/lithic-com/lithic-ruby/compare/v0.22.0...v0.23.0) (2026-10-16)
+
+
+### Features
+
+* **api:** add INSTANCE_TO_INSTANCE to book transfer type and financial event type enums ([f42ede6](https://github.com/lithic-com/lithic-ruby/commit/f42ede6cb9d21a8ded2b6059a005a52cf9b4a3d7))
+
 ## [0.22.0](https://github.com/lithic-com/lithic-ruby/compare/v0.21.0...v0.22.0) (2026-10-13)
 
 
