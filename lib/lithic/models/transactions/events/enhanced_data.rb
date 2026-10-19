@@ -89,7 +89,10 @@ module Lithic
 
             class LineItem < Lithic::Internal::Type::BaseModel
               # @!attribute amount
-              #   The price of the item purchased in merchant currency.
+              #   @deprecated
+              #
+              #   Deprecated: Use unit_amount instead. The price of the item purchased in merchant
+              #   currency.
               #
               #   @return [String, nil]
               optional :amount, String, nil?: true
@@ -112,16 +115,37 @@ module Lithic
               #   @return [String, nil]
               optional :quantity, String, nil?: true
 
-              # @!method initialize(amount: nil, description: nil, product_code: nil, quantity: nil)
+              # @!attribute total_amount
+              #   The total cost for the line item in merchant currency, covering all units
+              #   purchased.
+              #
+              #   @return [String, nil]
+              optional :total_amount, String, nil?: true
+
+              # @!attribute unit_amount
+              #   The price per individual unit in merchant currency.
+              #
+              #   @return [String, nil]
+              optional :unit_amount, String, nil?: true
+
+              # @!method initialize(amount: nil, description: nil, product_code: nil, quantity: nil, total_amount: nil, unit_amount: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem} for more
+              #   details.
+              #
               #   An L2/L3 enhanced commercial data line item.
               #
-              #   @param amount [String, nil] The price of the item purchased in merchant currency.
+              #   @param amount [String, nil] Deprecated: Use unit_amount instead. The price of the item purchased in merchant
               #
               #   @param description [String, nil] A human-readable description of the item.
               #
               #   @param product_code [String, nil] An identifier for the item purchased.
               #
               #   @param quantity [String, nil] The quantity of the item purchased.
+              #
+              #   @param total_amount [String, nil] The total cost for the line item in merchant currency, covering all units purcha
+              #
+              #   @param unit_amount [String, nil] The price per individual unit in merchant currency.
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax

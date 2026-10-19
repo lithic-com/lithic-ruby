@@ -174,7 +174,8 @@ module Lithic
                   )
                 end
 
-              # The price of the item purchased in merchant currency.
+              # Deprecated: Use unit_amount instead. The price of the item purchased in merchant
+              # currency.
               sig { returns(T.nilable(String)) }
               attr_accessor :amount
 
@@ -190,24 +191,41 @@ module Lithic
               sig { returns(T.nilable(String)) }
               attr_accessor :quantity
 
+              # The total cost for the line item in merchant currency, covering all units
+              # purchased.
+              sig { returns(T.nilable(String)) }
+              attr_accessor :total_amount
+
+              # The price per individual unit in merchant currency.
+              sig { returns(T.nilable(String)) }
+              attr_accessor :unit_amount
+
               # An L2/L3 enhanced commercial data line item.
               sig do
                 params(
                   amount: T.nilable(String),
                   description: T.nilable(String),
                   product_code: T.nilable(String),
-                  quantity: T.nilable(String)
+                  quantity: T.nilable(String),
+                  total_amount: T.nilable(String),
+                  unit_amount: T.nilable(String)
                 ).returns(T.attached_class)
               end
               def self.new(
-                # The price of the item purchased in merchant currency.
+                # Deprecated: Use unit_amount instead. The price of the item purchased in merchant
+                # currency.
                 amount: nil,
                 # A human-readable description of the item.
                 description: nil,
                 # An identifier for the item purchased.
                 product_code: nil,
                 # The quantity of the item purchased.
-                quantity: nil
+                quantity: nil,
+                # The total cost for the line item in merchant currency, covering all units
+                # purchased.
+                total_amount: nil,
+                # The price per individual unit in merchant currency.
+                unit_amount: nil
               )
               end
 
@@ -217,7 +235,9 @@ module Lithic
                     amount: T.nilable(String),
                     description: T.nilable(String),
                     product_code: T.nilable(String),
-                    quantity: T.nilable(String)
+                    quantity: T.nilable(String),
+                    total_amount: T.nilable(String),
+                    unit_amount: T.nilable(String)
                   }
                 )
               end

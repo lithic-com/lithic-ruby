@@ -79,7 +79,9 @@ module Lithic
                 amount: String?,
                 description: String?,
                 product_code: String?,
-                quantity: String?
+                quantity: String?,
+                total_amount: String?,
+                unit_amount: String?
               }
 
             class LineItem < Lithic::Internal::Type::BaseModel
@@ -91,18 +93,26 @@ module Lithic
 
               attr_accessor quantity: String?
 
+              attr_accessor total_amount: String?
+
+              attr_accessor unit_amount: String?
+
               def initialize: (
                 ?amount: String?,
                 ?description: String?,
                 ?product_code: String?,
-                ?quantity: String?
+                ?quantity: String?,
+                ?total_amount: String?,
+                ?unit_amount: String?
               ) -> void
 
               def to_hash: -> {
                 amount: String?,
                 description: String?,
                 product_code: String?,
-                quantity: String?
+                quantity: String?,
+                total_amount: String?,
+                unit_amount: String?
               }
             end
 
