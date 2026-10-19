@@ -725,11 +725,18 @@ module Lithic
       end
 
       type network =
-        :AMEX | :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+        :ALLPOINT
+        | :AMEX
+        | :INTERLINK
+        | :MAESTRO
+        | :MASTERCARD
+        | :UNKNOWN
+        | :VISA
 
       module Network
         extend Lithic::Internal::Type::Enum
 
+        ALLPOINT: :ALLPOINT
         AMEX: :AMEX
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO

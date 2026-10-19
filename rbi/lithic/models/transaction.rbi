@@ -605,6 +605,7 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::Transaction::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ALLPOINT = T.let(:ALLPOINT, Lithic::Transaction::Network::TaggedSymbol)
         AMEX = T.let(:AMEX, Lithic::Transaction::Network::TaggedSymbol)
         INTERLINK =
           T.let(:INTERLINK, Lithic::Transaction::Network::TaggedSymbol)

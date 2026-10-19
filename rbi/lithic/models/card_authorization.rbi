@@ -1809,6 +1809,8 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::CardAuthorization::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ALLPOINT =
+          T.let(:ALLPOINT, Lithic::CardAuthorization::Network::TaggedSymbol)
         AMEX = T.let(:AMEX, Lithic::CardAuthorization::Network::TaggedSymbol)
         INTERLINK =
           T.let(:INTERLINK, Lithic::CardAuthorization::Network::TaggedSymbol)

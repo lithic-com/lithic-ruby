@@ -434,6 +434,7 @@ module Lithic
       module Network
         extend Lithic::Internal::Type::Enum
 
+        ALLPOINT = :ALLPOINT
         AMEX = :AMEX
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
