@@ -52,6 +52,13 @@ module Lithic
       sig { returns(Lithic::ClaimUpdatedWebhookEvent::Reason::TaggedSymbol) }
       attr_accessor :reason
 
+      # Identifier for the claim as displayed in the Lithic dashboard. Populated
+      # depending on your program's setup, null otherwise. Use it to match claims
+      # received through the API and webhooks to the dashboard. This is not the claim
+      # `token`, which is the identifier to use in API requests
+      sig { returns(T.nilable(String)) }
+      attr_accessor :reference_id
+
       # Current lifecycle status of the claim
       sig { returns(Lithic::ClaimUpdatedWebhookEvent::Status::TaggedSymbol) }
       attr_accessor :status
@@ -80,6 +87,7 @@ module Lithic
               Lithic::ClaimUpdatedWebhookEvent::OutstandingRequirement::OrSymbol
             ],
           reason: Lithic::ClaimUpdatedWebhookEvent::Reason::OrSymbol,
+          reference_id: T.nilable(String),
           status: Lithic::ClaimUpdatedWebhookEvent::Status::OrSymbol,
           submitted: T.nilable(Time),
           updated: Time,
@@ -103,6 +111,11 @@ module Lithic
         outstanding_requirements:,
         # Dispute reason code provided when creating the claim
         reason:,
+        # Identifier for the claim as displayed in the Lithic dashboard. Populated
+        # depending on your program's setup, null otherwise. Use it to match claims
+        # received through the API and webhooks to the dashboard. This is not the claim
+        # `token`, which is the identifier to use in API requests
+        reference_id:,
         # Current lifecycle status of the claim
         status:,
         # When the claim was submitted. Null until the claim reaches `SUBMITTED` status
@@ -130,6 +143,7 @@ module Lithic
                 Lithic::ClaimUpdatedWebhookEvent::OutstandingRequirement::TaggedSymbol
               ],
             reason: Lithic::ClaimUpdatedWebhookEvent::Reason::TaggedSymbol,
+            reference_id: T.nilable(String),
             status: Lithic::ClaimUpdatedWebhookEvent::Status::TaggedSymbol,
             submitted: T.nilable(Time),
             updated: Time

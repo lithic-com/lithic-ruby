@@ -11,6 +11,7 @@ module Lithic
         event_type: :"claim.created",
         outstanding_requirements: ::Array[Lithic::Models::ClaimCreatedWebhookEvent::outstanding_requirement],
         reason: Lithic::Models::ClaimCreatedWebhookEvent::reason,
+        reference_id: String?,
         status: Lithic::Models::ClaimCreatedWebhookEvent::status,
         submitted: Time?,
         updated: Time
@@ -35,6 +36,8 @@ module Lithic
 
       attr_accessor reason: Lithic::Models::ClaimCreatedWebhookEvent::reason
 
+      attr_accessor reference_id: String?
+
       attr_accessor status: Lithic::Models::ClaimCreatedWebhookEvent::status
 
       attr_accessor submitted: Time?
@@ -50,6 +53,7 @@ module Lithic
         disputed_transactions: ::Array[Lithic::ClaimCreatedWebhookEvent::DisputedTransaction],
         outstanding_requirements: ::Array[Lithic::Models::ClaimCreatedWebhookEvent::outstanding_requirement],
         reason: Lithic::Models::ClaimCreatedWebhookEvent::reason,
+        reference_id: String?,
         status: Lithic::Models::ClaimCreatedWebhookEvent::status,
         submitted: Time?,
         updated: Time,
@@ -66,6 +70,7 @@ module Lithic
         event_type: :"claim.created",
         outstanding_requirements: ::Array[Lithic::Models::ClaimCreatedWebhookEvent::outstanding_requirement],
         reason: Lithic::Models::ClaimCreatedWebhookEvent::reason,
+        reference_id: String?,
         status: Lithic::Models::ClaimCreatedWebhookEvent::status,
         submitted: Time?,
         updated: Time

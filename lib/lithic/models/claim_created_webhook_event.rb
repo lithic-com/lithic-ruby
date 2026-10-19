@@ -59,6 +59,15 @@ module Lithic
       #   @return [Symbol, Lithic::Models::ClaimCreatedWebhookEvent::Reason]
       required :reason, enum: -> { Lithic::ClaimCreatedWebhookEvent::Reason }
 
+      # @!attribute reference_id
+      #   Identifier for the claim as displayed in the Lithic dashboard. Populated
+      #   depending on your program's setup, null otherwise. Use it to match claims
+      #   received through the API and webhooks to the dashboard. This is not the claim
+      #   `token`, which is the identifier to use in API requests
+      #
+      #   @return [String, nil]
+      required :reference_id, String, nil?: true
+
       # @!attribute status
       #   Current lifecycle status of the claim
       #
@@ -77,7 +86,10 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!method initialize(token:, account_holder_token:, account_token:, card_tokens:, created:, disputed_transactions:, outstanding_requirements:, reason:, status:, submitted:, updated:, event_type: :"claim.created")
+      # @!method initialize(token:, account_holder_token:, account_token:, card_tokens:, created:, disputed_transactions:, outstanding_requirements:, reason:, reference_id:, status:, submitted:, updated:, event_type: :"claim.created")
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ClaimCreatedWebhookEvent} for more details.
+      #
       #   @param token [String] Unique identifier for the claim, in UUID format
       #
       #   @param account_holder_token [String, nil] Token for the account holder that filed the claim
@@ -93,6 +105,8 @@ module Lithic
       #   @param outstanding_requirements [Array<Symbol, Lithic::Models::ClaimCreatedWebhookEvent::OutstandingRequirement>] Requirements that must be fulfilled before the claim can be submitted
       #
       #   @param reason [Symbol, Lithic::Models::ClaimCreatedWebhookEvent::Reason] Dispute reason code provided when creating the claim
+      #
+      #   @param reference_id [String, nil] Identifier for the claim as displayed in the Lithic dashboard. Populated dependi
       #
       #   @param status [Symbol, Lithic::Models::ClaimCreatedWebhookEvent::Status] Current lifecycle status of the claim
       #
