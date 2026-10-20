@@ -151,6 +151,7 @@ module Lithic
           ACH = :ACH
           WIRE = :WIRE
           STABLECOIN = :STABLECOIN
+          INTRA_BANK = :INTRA_BANK
           BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
           FEE = :FEE
           REWARD = :REWARD

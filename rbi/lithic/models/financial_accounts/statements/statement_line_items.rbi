@@ -238,6 +238,11 @@ module Lithic
                   :STABLECOIN,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              INTRA_BANK =
+                T.let(
+                  :INTRA_BANK,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
               BALANCE_OR_FUNDING =
                 T.let(
                   :BALANCE_OR_FUNDING,
@@ -755,6 +760,21 @@ module Lithic
               INTERNAL_ADJUSTMENT =
                 T.let(
                   :INTERNAL_ADJUSTMENT,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              INTRA_BANK_CANCELED =
+                T.let(
+                  :INTRA_BANK_CANCELED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              INTRA_BANK_INITIATED =
+                T.let(
+                  :INTRA_BANK_INITIATED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              INTRA_BANK_SETTLED =
+                T.let(
+                  :INTRA_BANK_SETTLED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
               LATE_PAYMENT =

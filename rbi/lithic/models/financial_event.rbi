@@ -444,6 +444,18 @@ module Lithic
             :INTERNAL_ADJUSTMENT,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        INTRA_BANK_CANCELED =
+          T.let(
+            :INTRA_BANK_CANCELED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        INTRA_BANK_INITIATED =
+          T.let(
+            :INTRA_BANK_INITIATED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        INTRA_BANK_SETTLED =
+          T.let(:INTRA_BANK_SETTLED, Lithic::FinancialEvent::Type::TaggedSymbol)
         LATE_PAYMENT =
           T.let(:LATE_PAYMENT, Lithic::FinancialEvent::Type::TaggedSymbol)
         LATE_PAYMENT_REVERSAL =

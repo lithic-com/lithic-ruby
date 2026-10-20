@@ -198,6 +198,11 @@ module Lithic
             :STABLECOIN,
             Lithic::AccountActivityListParams::Category::TaggedSymbol
           )
+        INTRA_BANK =
+          T.let(
+            :INTRA_BANK,
+            Lithic::AccountActivityListParams::Category::TaggedSymbol
+          )
         BALANCE_OR_FUNDING =
           T.let(
             :BALANCE_OR_FUNDING,

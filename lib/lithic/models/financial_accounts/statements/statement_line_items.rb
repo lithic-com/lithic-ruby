@@ -151,6 +151,7 @@ module Lithic
               ACH = :ACH
               WIRE = :WIRE
               STABLECOIN = :STABLECOIN
+              INTRA_BANK = :INTRA_BANK
               BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
               FEE = :FEE
               REWARD = :REWARD
@@ -259,6 +260,9 @@ module Lithic
               INTEREST = :INTEREST
               INTEREST_REVERSAL = :INTEREST_REVERSAL
               INTERNAL_ADJUSTMENT = :INTERNAL_ADJUSTMENT
+              INTRA_BANK_CANCELED = :INTRA_BANK_CANCELED
+              INTRA_BANK_INITIATED = :INTRA_BANK_INITIATED
+              INTRA_BANK_SETTLED = :INTRA_BANK_SETTLED
               LATE_PAYMENT = :LATE_PAYMENT
               LATE_PAYMENT_REVERSAL = :LATE_PAYMENT_REVERSAL
               LOSS_WRITE_OFF = :LOSS_WRITE_OFF

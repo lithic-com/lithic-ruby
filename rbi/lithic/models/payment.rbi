@@ -252,6 +252,7 @@ module Lithic
         ACH = T.let(:ACH, Lithic::Payment::Category::TaggedSymbol)
         WIRE = T.let(:WIRE, Lithic::Payment::Category::TaggedSymbol)
         STABLECOIN = T.let(:STABLECOIN, Lithic::Payment::Category::TaggedSymbol)
+        INTRA_BANK = T.let(:INTRA_BANK, Lithic::Payment::Category::TaggedSymbol)
         BALANCE_OR_FUNDING =
           T.let(:BALANCE_OR_FUNDING, Lithic::Payment::Category::TaggedSymbol)
         FEE = T.let(:FEE, Lithic::Payment::Category::TaggedSymbol)

@@ -201,6 +201,11 @@ module Lithic
               :STABLECOIN,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal::Category::TaggedSymbol
             )
+          INTRA_BANK =
+            T.let(
+              :INTRA_BANK,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::Internal::Category::TaggedSymbol
+            )
           BALANCE_OR_FUNDING =
             T.let(
               :BALANCE_OR_FUNDING,
