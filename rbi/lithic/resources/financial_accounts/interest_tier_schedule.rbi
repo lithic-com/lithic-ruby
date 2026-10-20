@@ -10,9 +10,9 @@ module Lithic
             financial_account_token: String,
             credit_product_token: String,
             effective_date: Date,
-            penalty_rates: T.anything,
-            tier_name: String,
-            tier_rates: T.anything,
+            penalty_rates: T.nilable(T.anything),
+            tier_name: T.nilable(String),
+            tier_rates: T.nilable(T.anything),
             request_options: Lithic::RequestOptions::OrHash
           ).returns(
             Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule
@@ -60,9 +60,9 @@ module Lithic
           params(
             effective_date: Date,
             financial_account_token: String,
-            penalty_rates: T.anything,
-            tier_name: String,
-            tier_rates: T.anything,
+            penalty_rates: T.nilable(T.anything),
+            tier_name: T.nilable(String),
+            tier_rates: T.nilable(T.anything),
             request_options: Lithic::RequestOptions::OrHash
           ).returns(
             Lithic::FinancialAccounts::FinancialAccountsInterestTierSchedule

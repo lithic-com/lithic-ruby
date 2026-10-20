@@ -21,20 +21,20 @@ module Lithic
         #   Custom rates per category for penalties
         #
         #   @return [Object, nil]
-        optional :penalty_rates, Lithic::Internal::Type::Unknown
+        optional :penalty_rates, Lithic::Internal::Type::Unknown, nil?: true
 
         # @!attribute tier_name
         #   Name of a tier contained in the credit product. Mutually exclusive with
         #   tier_rates
         #
         #   @return [String, nil]
-        optional :tier_name, String
+        optional :tier_name, String, nil?: true
 
         # @!attribute tier_rates
         #   Custom rates per category. Mutually exclusive with tier_name
         #
         #   @return [Object, nil]
-        optional :tier_rates, Lithic::Internal::Type::Unknown
+        optional :tier_rates, Lithic::Internal::Type::Unknown, nil?: true
 
         # @!method initialize(credit_product_token:, effective_date:, penalty_rates: nil, tier_name: nil, tier_rates: nil)
         #   Some parameter documentations has been truncated, see
@@ -47,11 +47,11 @@ module Lithic
         #
         #   @param effective_date [Date] Date the tier should be effective in YYYY-MM-DD format
         #
-        #   @param penalty_rates [Object] Custom rates per category for penalties
+        #   @param penalty_rates [Object, nil] Custom rates per category for penalties
         #
-        #   @param tier_name [String] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
+        #   @param tier_name [String, nil] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
         #
-        #   @param tier_rates [Object] Custom rates per category. Mutually exclusive with tier_name
+        #   @param tier_rates [Object, nil] Custom rates per category. Mutually exclusive with tier_name
       end
     end
   end

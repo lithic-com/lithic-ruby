@@ -22,34 +22,25 @@ module Lithic
 
         # Custom rates per category for penalties
         sig { returns(T.nilable(T.anything)) }
-        attr_reader :penalty_rates
-
-        sig { params(penalty_rates: T.anything).void }
-        attr_writer :penalty_rates
+        attr_accessor :penalty_rates
 
         # Name of a tier contained in the credit product. Mutually exclusive with
         # tier_rates
         sig { returns(T.nilable(String)) }
-        attr_reader :tier_name
-
-        sig { params(tier_name: String).void }
-        attr_writer :tier_name
+        attr_accessor :tier_name
 
         # Custom rates per category. Mutually exclusive with tier_name
         sig { returns(T.nilable(T.anything)) }
-        attr_reader :tier_rates
-
-        sig { params(tier_rates: T.anything).void }
-        attr_writer :tier_rates
+        attr_accessor :tier_rates
 
         # Entry in the Tier Schedule of an account
         sig do
           params(
             credit_product_token: String,
             effective_date: Date,
-            penalty_rates: T.anything,
-            tier_name: String,
-            tier_rates: T.anything
+            penalty_rates: T.nilable(T.anything),
+            tier_name: T.nilable(String),
+            tier_rates: T.nilable(T.anything)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -72,9 +63,9 @@ module Lithic
             {
               credit_product_token: String,
               effective_date: Date,
-              penalty_rates: T.anything,
-              tier_name: String,
-              tier_rates: T.anything
+              penalty_rates: T.nilable(T.anything),
+              tier_name: T.nilable(String),
+              tier_rates: T.nilable(T.anything)
             }
           )
         end

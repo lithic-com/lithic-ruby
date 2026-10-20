@@ -18,11 +18,11 @@ module Lithic
         #
         # @param effective_date [Date] Date the tier should be effective in YYYY-MM-DD format
         #
-        # @param penalty_rates [Object] Custom rates per category for penalties
+        # @param penalty_rates [Object, nil] Custom rates per category for penalties
         #
-        # @param tier_name [String] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
+        # @param tier_name [String, nil] Name of a tier contained in the credit product. Mutually exclusive with tier_rat
         #
-        # @param tier_rates [Object] Custom rates per category. Mutually exclusive with tier_name
+        # @param tier_rates [Object, nil] Custom rates per category. Mutually exclusive with tier_name
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -83,11 +83,11 @@ module Lithic
         #
         # @param financial_account_token [String] Path param: Globally unique identifier for financial account
         #
-        # @param penalty_rates [Object] Body param: Custom rates per category for penalties
+        # @param penalty_rates [Object, nil] Body param: Custom rates per category for penalties
         #
-        # @param tier_name [String] Body param: Name of a tier contained in the credit product. Mutually exclusive w
+        # @param tier_name [String, nil] Body param: Name of a tier contained in the credit product. Mutually exclusive w
         #
-        # @param tier_rates [Object] Body param: Custom rates per category. Mutually exclusive with tier_name
+        # @param tier_rates [Object, nil] Body param: Custom rates per category. Mutually exclusive with tier_name
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
