@@ -79,6 +79,9 @@ module Lithic
     sig { returns(Lithic::Resources::ResponderEndpoints) }
     attr_reader :responder_endpoints
 
+    sig { returns(Lithic::Resources::IPRanges) }
+    attr_reader :ip_ranges
+
     sig { returns(Lithic::Resources::ExternalBankAccounts) }
     attr_reader :external_bank_accounts
 

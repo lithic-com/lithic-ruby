@@ -80,6 +80,9 @@ module Lithic
     # @return [Lithic::Resources::ResponderEndpoints]
     attr_reader :responder_endpoints
 
+    # @return [Lithic::Resources::IPRanges]
+    attr_reader :ip_ranges
+
     # @return [Lithic::Resources::ExternalBankAccounts]
     attr_reader :external_bank_accounts
 
@@ -242,6 +245,7 @@ module Lithic
       @financial_accounts = Lithic::Resources::FinancialAccounts.new(client: self)
       @transactions = Lithic::Resources::Transactions.new(client: self)
       @responder_endpoints = Lithic::Resources::ResponderEndpoints.new(client: self)
+      @ip_ranges = Lithic::Resources::IPRanges.new(client: self)
       @external_bank_accounts = Lithic::Resources::ExternalBankAccounts.new(client: self)
       @blockchain_recipients = Lithic::Resources::BlockchainRecipients.new(client: self)
       @payments = Lithic::Resources::Payments.new(client: self)

@@ -427,6 +427,8 @@ module Lithic
 
   InternalTransactionUpdatedWebhookEvent = Lithic::Models::InternalTransactionUpdatedWebhookEvent
 
+  IPRangeRetrieveParams = Lithic::Models::IPRangeRetrieveParams
+
   KYB = Lithic::Models::KYB
 
   KYBBusinessEntity = Lithic::Models::KYBBusinessEntity

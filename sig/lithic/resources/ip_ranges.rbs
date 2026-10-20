@@ -1,0 +1,11 @@
+module Lithic
+  module Resources
+    class IPRanges
+      def retrieve: (
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::IPRangeRetrieveResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

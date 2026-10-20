@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    type ip_range_retrieve_response =
+      { responders: ::Array[String], updated: Time }
+
+    class IPRangeRetrieveResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor responders: ::Array[String]
+
+      attr_accessor updated: Time
+
+      def initialize: (responders: ::Array[String], updated: Time) -> void
+
+      def to_hash: -> { responders: ::Array[String], updated: Time }
+    end
+  end
+end

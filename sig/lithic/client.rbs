@@ -53,6 +53,8 @@ module Lithic
 
     attr_reader responder_endpoints: Lithic::Resources::ResponderEndpoints
 
+    attr_reader ip_ranges: Lithic::Resources::IPRanges
+
     attr_reader external_bank_accounts: Lithic::Resources::ExternalBankAccounts
 
     attr_reader blockchain_recipients: Lithic::Resources::BlockchainRecipients
