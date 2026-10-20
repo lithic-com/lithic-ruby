@@ -16,12 +16,6 @@ module Lithic
       #   @return [Time]
       required :created, Time
 
-      # @!attribute status
-      #   Status of a hold transaction
-      #
-      #   @return [Symbol, Lithic::Models::Hold::Status]
-      required :status, enum: -> { Lithic::Hold::Status }
-
       # @!attribute updated
       #   ISO 8601 timestamp of when the transaction was last updated
       #
@@ -66,12 +60,18 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Hold::Result, nil]
       optional :result, enum: -> { Lithic::Hold::Result }
 
+      # @!attribute status
+      #   Status of a hold transaction
+      #
+      #   @return [Symbol, Lithic::Models::Hold::Status, nil]
+      optional :status, enum: -> { Lithic::Hold::Status }
+
       # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String, nil?: true
 
-      # @!method initialize(token:, created:, status:, updated:, currency: nil, events: nil, expiration_datetime: nil, family: nil, financial_account_token: nil, pending_amount: nil, result: nil, user_defined_id: nil)
+      # @!method initialize(token:, created:, updated:, currency: nil, events: nil, expiration_datetime: nil, family: nil, financial_account_token: nil, pending_amount: nil, result: nil, status: nil, user_defined_id: nil)
       #   A hold transaction representing reserved funds on a financial account. Holds
       #   move funds from available to pending balance in anticipation of future payments.
       #   They can be resolved via settlement (linked to payment), manual release, or
@@ -80,8 +80,6 @@ module Lithic
       #   @param token [String] Unique identifier for the transaction
       #
       #   @param created [Time] ISO 8601 timestamp of when the transaction was created
-      #
-      #   @param status [Symbol, Lithic::Models::Hold::Status] Status of a hold transaction
       #
       #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
       #
@@ -99,26 +97,9 @@ module Lithic
       #
       #   @param result [Symbol, Lithic::Models::Hold::Result]
       #
-      #   @param user_defined_id [String, nil]
-
-      # Status of a hold transaction
+      #   @param status [Symbol, Lithic::Models::Hold::Status] Status of a hold transaction
       #
-      # @see Lithic::Models::Hold#status
-      module Status
-        extend Lithic::Internal::Type::Enum
-
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        EXPIRED = :EXPIRED
-        VOIDED = :VOIDED
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        CANCELED = :CANCELED
-        RETURNED = :RETURNED
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+      #   @param user_defined_id [String, nil]
 
       # HOLD - Hold Transaction
       #
@@ -138,6 +119,21 @@ module Lithic
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Status of a hold transaction
+      #
+      # @see Lithic::Models::Hold#status
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING = :PENDING
+        SETTLED = :SETTLED
+        EXPIRED = :EXPIRED
+        VOIDED = :VOIDED
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -232,45 +232,22 @@ module Lithic
         #   @return [Symbol, :CARD]
         required :family, const: :CARD
 
-        # @!attribute status
-        #   The status of the transaction
-        #
-        #   @return [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::Card::Status]
-        required :status, enum: -> { Lithic::Models::AccountActivityRetrieveTransactionResponse::Card::Status }
-
         # @!attribute updated
         #   ISO 8601 timestamp of when the transaction was last updated
         #
         #   @return [Time]
         required :updated, Time
 
-        # @!method initialize(token:, created:, status:, updated:, family: :CARD)
+        # @!method initialize(token:, created:, updated:, family: :CARD)
         #   Card transaction with ledger base properties
         #
         #   @param token [String] Unique identifier for the transaction
         #
         #   @param created [Time] ISO 8601 timestamp of when the transaction was created
         #
-        #   @param status [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::Card::Status] The status of the transaction
-        #
         #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
         #
         #   @param family [Symbol, :CARD] CARD - Card Transaction
-
-        # The status of the transaction
-        module Status
-          extend Lithic::Internal::Type::Enum
-
-          PENDING = :PENDING
-          SETTLED = :SETTLED
-          DECLINED = :DECLINED
-          REVERSED = :REVERSED
-          CANCELED = :CANCELED
-          RETURNED = :RETURNED
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
 
       # @!method self.variants

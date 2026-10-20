@@ -4,7 +4,6 @@ module Lithic
       {
         token: String,
         created: Time,
-        status: Lithic::Models::Hold::status,
         updated: Time,
         currency: String,
         events: ::Array[Lithic::HoldEvent],
@@ -13,6 +12,7 @@ module Lithic
         financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::Hold::result,
+        status: Lithic::Models::Hold::status,
         user_defined_id: String?
       }
 
@@ -20,8 +20,6 @@ module Lithic
       attr_accessor token: String
 
       attr_accessor created: Time
-
-      attr_accessor status: Lithic::Models::Hold::status
 
       attr_accessor updated: Time
 
@@ -55,12 +53,17 @@ module Lithic
         Lithic::Models::Hold::result
       ) -> Lithic::Models::Hold::result
 
+      attr_reader status: Lithic::Models::Hold::status?
+
+      def status=: (
+        Lithic::Models::Hold::status
+      ) -> Lithic::Models::Hold::status
+
       attr_accessor user_defined_id: String?
 
       def initialize: (
         token: String,
         created: Time,
-        status: Lithic::Models::Hold::status,
         updated: Time,
         ?currency: String,
         ?events: ::Array[Lithic::HoldEvent],
@@ -69,13 +72,13 @@ module Lithic
         ?financial_account_token: String,
         ?pending_amount: Integer,
         ?result: Lithic::Models::Hold::result,
+        ?status: Lithic::Models::Hold::status,
         ?user_defined_id: String?
       ) -> void
 
       def to_hash: -> {
         token: String,
         created: Time,
-        status: Lithic::Models::Hold::status,
         updated: Time,
         currency: String,
         events: ::Array[Lithic::HoldEvent],
@@ -84,33 +87,9 @@ module Lithic
         financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::Hold::result,
+        status: Lithic::Models::Hold::status,
         user_defined_id: String?
       }
-
-      type status =
-        :PENDING
-        | :SETTLED
-        | :EXPIRED
-        | :VOIDED
-        | :DECLINED
-        | :REVERSED
-        | :CANCELED
-        | :RETURNED
-
-      module Status
-        extend Lithic::Internal::Type::Enum
-
-        PENDING: :PENDING
-        SETTLED: :SETTLED
-        EXPIRED: :EXPIRED
-        VOIDED: :VOIDED
-        DECLINED: :DECLINED
-        REVERSED: :REVERSED
-        CANCELED: :CANCELED
-        RETURNED: :RETURNED
-
-        def self?.values: -> ::Array[Lithic::Models::Hold::status]
-      end
 
       type family = :HOLD
 
@@ -131,6 +110,19 @@ module Lithic
         DECLINED: :DECLINED
 
         def self?.values: -> ::Array[Lithic::Models::Hold::result]
+      end
+
+      type status = :PENDING | :SETTLED | :EXPIRED | :VOIDED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        EXPIRED: :EXPIRED
+        VOIDED: :VOIDED
+
+        def self?.values: -> ::Array[Lithic::Models::Hold::status]
       end
     end
   end

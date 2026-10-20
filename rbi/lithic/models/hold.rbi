@@ -13,10 +13,6 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # Status of a hold transaction
-      sig { returns(Lithic::Hold::Status::TaggedSymbol) }
-      attr_accessor :status
-
       # ISO 8601 timestamp of when the transaction was last updated
       sig { returns(Time) }
       attr_accessor :updated
@@ -63,6 +59,13 @@ module Lithic
       sig { params(result: Lithic::Hold::Result::OrSymbol).void }
       attr_writer :result
 
+      # Status of a hold transaction
+      sig { returns(T.nilable(Lithic::Hold::Status::TaggedSymbol)) }
+      attr_reader :status
+
+      sig { params(status: Lithic::Hold::Status::OrSymbol).void }
+      attr_writer :status
+
       sig { returns(T.nilable(String)) }
       attr_accessor :user_defined_id
 
@@ -74,7 +77,6 @@ module Lithic
         params(
           token: String,
           created: Time,
-          status: Lithic::Hold::Status::OrSymbol,
           updated: Time,
           currency: String,
           events: T::Array[Lithic::HoldEvent::OrHash],
@@ -83,6 +85,7 @@ module Lithic
           financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::Hold::Result::OrSymbol,
+          status: Lithic::Hold::Status::OrSymbol,
           user_defined_id: T.nilable(String)
         ).returns(T.attached_class)
       end
@@ -91,8 +94,6 @@ module Lithic
         token:,
         # ISO 8601 timestamp of when the transaction was created
         created:,
-        # Status of a hold transaction
-        status:,
         # ISO 8601 timestamp of when the transaction was last updated
         updated:,
         currency: nil,
@@ -105,6 +106,8 @@ module Lithic
         # Current pending amount (0 when resolved)
         pending_amount: nil,
         result: nil,
+        # Status of a hold transaction
+        status: nil,
         user_defined_id: nil
       )
       end
@@ -114,7 +117,6 @@ module Lithic
           {
             token: String,
             created: Time,
-            status: Lithic::Hold::Status::TaggedSymbol,
             updated: Time,
             currency: String,
             events: T::Array[Lithic::HoldEvent],
@@ -123,32 +125,12 @@ module Lithic
             financial_account_token: String,
             pending_amount: Integer,
             result: Lithic::Hold::Result::TaggedSymbol,
+            status: Lithic::Hold::Status::TaggedSymbol,
             user_defined_id: T.nilable(String)
           }
         )
       end
       def to_hash
-      end
-
-      # Status of a hold transaction
-      module Status
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Hold::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        PENDING = T.let(:PENDING, Lithic::Hold::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Hold::Status::TaggedSymbol)
-        EXPIRED = T.let(:EXPIRED, Lithic::Hold::Status::TaggedSymbol)
-        VOIDED = T.let(:VOIDED, Lithic::Hold::Status::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Hold::Status::TaggedSymbol)
-        REVERSED = T.let(:REVERSED, Lithic::Hold::Status::TaggedSymbol)
-        CANCELED = T.let(:CANCELED, Lithic::Hold::Status::TaggedSymbol)
-        RETURNED = T.let(:RETURNED, Lithic::Hold::Status::TaggedSymbol)
-
-        sig { override.returns(T::Array[Lithic::Hold::Status::TaggedSymbol]) }
-        def self.values
-        end
       end
 
       # HOLD - Hold Transaction
@@ -175,6 +157,23 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Hold::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Hold::Result::TaggedSymbol]) }
+        def self.values
+        end
+      end
+
+      # Status of a hold transaction
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Hold::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        PENDING = T.let(:PENDING, Lithic::Hold::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Hold::Status::TaggedSymbol)
+        EXPIRED = T.let(:EXPIRED, Lithic::Hold::Status::TaggedSymbol)
+        VOIDED = T.let(:VOIDED, Lithic::Hold::Status::TaggedSymbol)
+
+        sig { override.returns(T::Array[Lithic::Hold::Status::TaggedSymbol]) }
         def self.values
         end
       end

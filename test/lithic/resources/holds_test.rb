@@ -14,7 +14,6 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
       response => {
         token: String,
         created: Time,
-        status: Lithic::Hold::Status,
         updated: Time,
         currency: String | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::HoldEvent]) | nil,
@@ -23,6 +22,7 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::Hold::Result | nil,
+        status: Lithic::Hold::Status | nil,
         user_defined_id: String | nil
       }
     end
@@ -39,7 +39,6 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
       response => {
         token: String,
         created: Time,
-        status: Lithic::Hold::Status,
         updated: Time,
         currency: String | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::HoldEvent]) | nil,
@@ -48,6 +47,7 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::Hold::Result | nil,
+        status: Lithic::Hold::Status | nil,
         user_defined_id: String | nil
       }
     end
@@ -71,7 +71,6 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
       row => {
         token: String,
         created: Time,
-        status: Lithic::Hold::Status,
         updated: Time,
         currency: String | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::HoldEvent]) | nil,
@@ -80,6 +79,7 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::Hold::Result | nil,
+        status: Lithic::Hold::Status | nil,
         user_defined_id: String | nil
       }
     end
@@ -96,7 +96,6 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
       response => {
         token: String,
         created: Time,
-        status: Lithic::Hold::Status,
         updated: Time,
         currency: String | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::HoldEvent]) | nil,
@@ -105,6 +104,7 @@ class Lithic::Test::Resources::HoldsTest < Lithic::Test::ResourceTest
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::Hold::Result | nil,
+        status: Lithic::Hold::Status | nil,
         user_defined_id: String | nil
       }
     end

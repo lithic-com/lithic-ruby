@@ -440,14 +440,6 @@ module Lithic
         sig { returns(Symbol) }
         attr_accessor :family
 
-        # The status of the transaction
-        sig do
-          returns(
-            Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-          )
-        end
-        attr_accessor :status
-
         # ISO 8601 timestamp of when the transaction was last updated
         sig { returns(Time) }
         attr_accessor :updated
@@ -457,8 +449,6 @@ module Lithic
           params(
             token: String,
             created: Time,
-            status:
-              Lithic::Models::AccountActivityListResponse::Card::Status::OrSymbol,
             updated: Time,
             family: Symbol
           ).returns(T.attached_class)
@@ -468,8 +458,6 @@ module Lithic
           token:,
           # ISO 8601 timestamp of when the transaction was created
           created:,
-          # The status of the transaction
-          status:,
           # ISO 8601 timestamp of when the transaction was last updated
           updated:,
           # CARD - Card Transaction
@@ -479,72 +467,10 @@ module Lithic
 
         sig do
           override.returns(
-            {
-              token: String,
-              created: Time,
-              family: Symbol,
-              status:
-                Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol,
-              updated: Time
-            }
+            { token: String, created: Time, family: Symbol, updated: Time }
           )
         end
         def to_hash
-        end
-
-        # The status of the transaction
-        module Status
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Models::AccountActivityListResponse::Card::Status
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          PENDING =
-            T.let(
-              :PENDING,
-              Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-            )
-          SETTLED =
-            T.let(
-              :SETTLED,
-              Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-            )
-          DECLINED =
-            T.let(
-              :DECLINED,
-              Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-            )
-          REVERSED =
-            T.let(
-              :REVERSED,
-              Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-            )
-          CANCELED =
-            T.let(
-              :CANCELED,
-              Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-            )
-          RETURNED =
-            T.let(
-              :RETURNED,
-              Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Models::AccountActivityListResponse::Card::Status::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
 

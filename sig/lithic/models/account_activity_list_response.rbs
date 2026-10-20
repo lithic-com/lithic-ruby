@@ -177,14 +177,7 @@ module Lithic
         end
       end
 
-      type card =
-        {
-          token: String,
-          created: Time,
-          family: :CARD,
-          status: Lithic::Models::AccountActivityListResponse::Card::status,
-          updated: Time
-        }
+      type card = { token: String, created: Time, family: :CARD, updated: Time }
 
       class Card < Lithic::Models::Transaction
         def token: -> String
@@ -199,12 +192,6 @@ module Lithic
 
         def family=: (:CARD _) -> :CARD
 
-        def status: -> Lithic::Models::AccountActivityListResponse::Card::status
-
-        def status=: (
-          Lithic::Models::AccountActivityListResponse::Card::status _
-        ) -> Lithic::Models::AccountActivityListResponse::Card::status
-
         def updated: -> Time
 
         def updated=: (Time _) -> Time
@@ -212,7 +199,6 @@ module Lithic
         def initialize: (
           token: String,
           created: Time,
-          status: Lithic::Models::AccountActivityListResponse::Card::status,
           updated: Time,
           ?family: :CARD
         ) -> void
@@ -221,25 +207,8 @@ module Lithic
           token: String,
           created: Time,
           family: :CARD,
-          status: Lithic::Models::AccountActivityListResponse::Card::status,
           updated: Time
         }
-
-        type status =
-          :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
-
-        module Status
-          extend Lithic::Internal::Type::Enum
-
-          PENDING: :PENDING
-          SETTLED: :SETTLED
-          DECLINED: :DECLINED
-          REVERSED: :REVERSED
-          CANCELED: :CANCELED
-          RETURNED: :RETURNED
-
-          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Card::status]
-        end
       end
 
       def self?.variants: -> ::Array[Lithic::Models::account_activity_list_response]
