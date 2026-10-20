@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.23.0](https://github.com/lithic-com/lithic-ruby/compare/v0.22.0...v0.23.0) (2026-10-20)
+
+
+### Features
+
+* **api:** add ALLPOINT to card transaction and authorization network enums ([dc34ff5](https://github.com/lithic-com/lithic-ruby/commit/dc34ff5ae508f99a2be5d558a03ee0ce01f4b236))
+* **api:** add financial_entity_id to transfer limits response items ([a3f8e8c](https://github.com/lithic-com/lithic-ruby/commit/a3f8e8cb9f37901f002b5e9cdba316448a6ffba4))
+* **api:** add INSTANCE_TO_INSTANCE to book transfer type and financial event type enums ([f42ede6](https://github.com/lithic-com/lithic-ruby/commit/f42ede6cb9d21a8ded2b6059a005a52cf9b4a3d7))
+* **api:** add intra-bank transaction category and intra_bank financial event types ([ff8d771](https://github.com/lithic-com/lithic-ruby/commit/ff8d771b0437ad74fc4d833d2530eb2d189cbdbf))
+* **api:** add ip_ranges.retrieve to get static IPs for Lithic ASA responder ([db702d5](https://github.com/lithic-com/lithic-ruby/commit/db702d5f5d03970433452019e2579da830105f9c))
+* **api:** add reference_id field to claims for matching with the dashboard ([186b254](https://github.com/lithic-com/lithic-ruby/commit/186b254774bdcaa30dcb18e40a0dbb1ce49a2110))
+* **api:** add unit_amount and total_amount to enhanced commercial data line items, deprecate amount ([e3f5c25](https://github.com/lithic-com/lithic-ruby/commit/e3f5c251fed13893fdc6a17bde583722249c3363))
+
+
+### Bug Fixes
+
+* **api:** correct status enum types on hold and card transaction models ([620c67d](https://github.com/lithic-com/lithic-ruby/commit/620c67d66247dfbf1fa87e0a9c19f4bf44d794ae))
+* **api:** make tier_name, tier_rates, and penalty_rates nullable on account tier schedules ([7284947](https://github.com/lithic-com/lithic-ruby/commit/7284947097f697cfd1ac4234df867453a5a39230))
+
 ## [0.22.0](https://github.com/lithic-com/lithic-ruby/compare/v0.21.0...v0.22.0) (2026-10-13)
 
 
