@@ -70,6 +70,10 @@ module Lithic
         sig { returns(Date) }
         attr_accessor :date
 
+        # Financial entity ID the limits are scoped to
+        sig { returns(String) }
+        attr_accessor :financial_entity_id
+
         # Whether the company is a FBO; based on the company ID prefix
         sig { returns(T::Boolean) }
         attr_accessor :is_fbo
@@ -108,6 +112,7 @@ module Lithic
             daily_limit:
               Lithic::TransferLimitsResponse::Data::DailyLimit::OrHash,
             date: Date,
+            financial_entity_id: String,
             is_fbo: T::Boolean,
             monthly_limit:
               Lithic::TransferLimitsResponse::Data::MonthlyLimit::OrHash,
@@ -122,6 +127,8 @@ module Lithic
           daily_limit:,
           # The date for the limit view (ISO format)
           date:,
+          # Financial entity ID the limits are scoped to
+          financial_entity_id:,
           # Whether the company is a FBO; based on the company ID prefix
           is_fbo:,
           # Monthly limits with progress
@@ -137,6 +144,7 @@ module Lithic
               company_id: String,
               daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
               date: Date,
+              financial_entity_id: String,
               is_fbo: T::Boolean,
               monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
               program_limit_per_transaction:

@@ -22,6 +22,7 @@ class Lithic::Test::Resources::TransferLimitsTest < Lithic::Test::ResourceTest
         company_id: String,
         daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
         date: Date,
+        financial_entity_id: String,
         is_fbo: Lithic::Internal::Type::Boolean,
         monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
         program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction

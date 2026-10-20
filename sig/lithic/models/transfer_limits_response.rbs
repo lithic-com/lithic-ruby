@@ -23,6 +23,7 @@ module Lithic
           company_id: String,
           daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
           date: Date,
+          financial_entity_id: String,
           is_fbo: bool,
           monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
           program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction
@@ -35,6 +36,8 @@ module Lithic
 
         attr_accessor date: Date
 
+        attr_accessor financial_entity_id: String
+
         attr_accessor is_fbo: bool
 
         attr_accessor monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit
@@ -45,6 +48,7 @@ module Lithic
           company_id: String,
           daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
           date: Date,
+          financial_entity_id: String,
           is_fbo: bool,
           monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
           program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction
@@ -54,6 +58,7 @@ module Lithic
           company_id: String,
           daily_limit: Lithic::TransferLimitsResponse::Data::DailyLimit,
           date: Date,
+          financial_entity_id: String,
           is_fbo: bool,
           monthly_limit: Lithic::TransferLimitsResponse::Data::MonthlyLimit,
           program_limit_per_transaction: Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction

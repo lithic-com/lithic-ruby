@@ -39,6 +39,12 @@ module Lithic
         #   @return [Date]
         required :date, Date
 
+        # @!attribute financial_entity_id
+        #   Financial entity ID the limits are scoped to
+        #
+        #   @return [String]
+        required :financial_entity_id, String
+
         # @!attribute is_fbo
         #   Whether the company is a FBO; based on the company ID prefix
         #
@@ -58,12 +64,14 @@ module Lithic
         required :program_limit_per_transaction,
                  -> { Lithic::TransferLimitsResponse::Data::ProgramLimitPerTransaction }
 
-        # @!method initialize(company_id:, daily_limit:, date:, is_fbo:, monthly_limit:, program_limit_per_transaction:)
+        # @!method initialize(company_id:, daily_limit:, date:, financial_entity_id:, is_fbo:, monthly_limit:, program_limit_per_transaction:)
         #   @param company_id [String] Company ID
         #
         #   @param daily_limit [Lithic::Models::TransferLimitsResponse::Data::DailyLimit] Daily limits with progress
         #
         #   @param date [Date] The date for the limit view (ISO format)
+        #
+        #   @param financial_entity_id [String] Financial entity ID the limits are scoped to
         #
         #   @param is_fbo [Boolean] Whether the company is a FBO; based on the company ID prefix
         #
