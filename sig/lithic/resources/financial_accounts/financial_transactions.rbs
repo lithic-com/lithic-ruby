@@ -14,11 +14,12 @@ module Lithic
           ?category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           ?end_: Time,
           ?ending_before: String,
+          ?page_size: Integer,
           ?result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result,
           ?starting_after: String,
           ?status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::SinglePage[Lithic::FinancialTransaction]
+        ) -> Lithic::Internal::CursorPage[Lithic::FinancialTransaction]
 
         def initialize: (client: Lithic::Client) -> void
       end

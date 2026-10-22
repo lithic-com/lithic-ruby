@@ -28,9 +28,15 @@ module Lithic
       #
       # Get all funding events for program
       #
-      # @overload list(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+      # @overload list(begin_: nil, end_: nil, ending_before: nil, network_settlement_date: nil, page_size: nil, starting_after: nil, request_options: {})
+      #
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      #
+      # @param network_settlement_date [Date] Only funding events with a settlement breakout for this network settlement date
       #
       # @param page_size [Integer] Page size (for pagination).
       #
@@ -47,7 +53,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/funding_events",
-          query: query,
+          query: query.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::FundingEvent,
           options: options

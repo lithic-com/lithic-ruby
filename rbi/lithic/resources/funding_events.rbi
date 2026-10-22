@@ -20,16 +20,28 @@ module Lithic
       # Get all funding events for program
       sig do
         params(
+          begin_: Time,
+          end_: Time,
           ending_before: String,
+          network_settlement_date: Date,
           page_size: Integer,
           starting_after: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Internal::CursorPage[Lithic::FundingEvent])
       end
       def list(
+        # Date string in RFC 3339 format. Only entries created after the specified time
+        # will be included. UTC time zone.
+        begin_: nil,
+        # Date string in RFC 3339 format. Only entries created before the specified time
+        # will be included. UTC time zone.
+        end_: nil,
         # A cursor representing an item's token before which a page of results should end.
         # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Only funding events with a settlement breakout for this network settlement date
+        # will be included.
+        network_settlement_date: nil,
         # Page size (for pagination).
         page_size: nil,
         # A cursor representing an item's token after which a page of results should

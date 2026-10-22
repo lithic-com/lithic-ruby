@@ -8,6 +8,7 @@ module Lithic
           category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           end_: Time,
           ending_before: String,
+          page_size: Integer,
           result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result,
           starting_after: String,
           status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status
@@ -38,6 +39,10 @@ module Lithic
 
         def ending_before=: (String) -> String
 
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
         attr_reader result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result?
 
         def result=: (
@@ -60,6 +65,7 @@ module Lithic
           ?category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           ?end_: Time,
           ?ending_before: String,
+          ?page_size: Integer,
           ?result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result,
           ?starting_after: String,
           ?status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status,
@@ -72,6 +78,7 @@ module Lithic
           category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
           end_: Time,
           ending_before: String,
+          page_size: Integer,
           result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result,
           starting_after: String,
           status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status,

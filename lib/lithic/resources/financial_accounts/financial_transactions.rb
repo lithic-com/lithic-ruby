@@ -41,7 +41,7 @@ module Lithic
         #
         # List the financial transactions for a given financial account.
         #
-        # @overload list(financial_account_token, begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+        # @overload list(financial_account_token, begin_: nil, category: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
         #
         # @param financial_account_token [String] Globally unique identifier for financial account.
         #
@@ -53,6 +53,8 @@ module Lithic
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
+        # @param page_size [Integer] Page size (for pagination).
+        #
         # @param result [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
@@ -61,7 +63,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialTransaction>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialTransaction>]
         #
         # @see Lithic::Models::FinancialAccounts::FinancialTransactionListParams
         def list(financial_account_token, params = {})
@@ -71,7 +73,7 @@ module Lithic
             method: :get,
             path: ["v1/financial_accounts/%1$s/financial_transactions", financial_account_token],
             query: query.transform_keys(begin_: "begin", end_: "end"),
-            page: Lithic::Internal::SinglePage,
+            page: Lithic::Internal::CursorPage,
             model: Lithic::FinancialTransaction,
             options: options
           )

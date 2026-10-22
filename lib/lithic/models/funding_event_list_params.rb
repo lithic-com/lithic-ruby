@@ -7,12 +7,33 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute begin_
+      #   Date string in RFC 3339 format. Only entries created after the specified time
+      #   will be included. UTC time zone.
+      #
+      #   @return [Time, nil]
+      optional :begin_, Time
+
+      # @!attribute end_
+      #   Date string in RFC 3339 format. Only entries created before the specified time
+      #   will be included. UTC time zone.
+      #
+      #   @return [Time, nil]
+      optional :end_, Time
+
       # @!attribute ending_before
       #   A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       #
       #   @return [String, nil]
       optional :ending_before, String
+
+      # @!attribute network_settlement_date
+      #   Only funding events with a settlement breakout for this network settlement date
+      #   will be included.
+      #
+      #   @return [Date, nil]
+      optional :network_settlement_date, Date
 
       # @!attribute page_size
       #   Page size (for pagination).
@@ -27,11 +48,17 @@ module Lithic
       #   @return [String, nil]
       optional :starting_after, String
 
-      # @!method initialize(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+      # @!method initialize(begin_: nil, end_: nil, ending_before: nil, network_settlement_date: nil, page_size: nil, starting_after: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::FundingEventListParams} for more details.
       #
+      #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      #
+      #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      #
+      #   @param network_settlement_date [Date] Only funding events with a settlement breakout for this network settlement date
       #
       #   @param page_size [Integer] Page size (for pagination).
       #

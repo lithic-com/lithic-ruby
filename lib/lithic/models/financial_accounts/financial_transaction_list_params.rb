@@ -40,6 +40,12 @@ module Lithic
         #   @return [String, nil]
         optional :ending_before, String
 
+        # @!attribute page_size
+        #   Page size (for pagination).
+        #
+        #   @return [Integer, nil]
+        optional :page_size, Integer
+
         # @!attribute result
         #   Financial Transaction result to be returned.
         #
@@ -59,7 +65,7 @@ module Lithic
         #   @return [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status, nil]
         optional :status, enum: -> { Lithic::FinancialAccounts::FinancialTransactionListParams::Status }
 
-        # @!method initialize(financial_account_token:, begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+        # @!method initialize(financial_account_token:, begin_: nil, category: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::FinancialTransactionListParams} for more
         #   details.
@@ -73,6 +79,8 @@ module Lithic
         #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+        #
+        #   @param page_size [Integer] Page size (for pagination).
         #
         #   @param result [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
         #

@@ -29,13 +29,14 @@ module Lithic
               Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol,
             end_: Time,
             ending_before: String,
+            page_size: Integer,
             result:
               Lithic::Cards::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
             status:
               Lithic::Cards::FinancialTransactionListParams::Status::OrSymbol,
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Internal::SinglePage[Lithic::FinancialTransaction])
+          ).returns(Lithic::Internal::CursorPage[Lithic::FinancialTransaction])
         end
         def list(
           card_token,
@@ -50,6 +51,8 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
+          # Page size (for pagination).
+          page_size: nil,
           # Financial Transaction result to be returned.
           result: nil,
           # A cursor representing an item's token after which a page of results should

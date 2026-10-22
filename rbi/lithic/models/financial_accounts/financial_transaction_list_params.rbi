@@ -60,6 +60,13 @@ module Lithic
         sig { params(ending_before: String).void }
         attr_writer :ending_before
 
+        # Page size (for pagination).
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :page_size
+
+        sig { params(page_size: Integer).void }
+        attr_writer :page_size
+
         # Financial Transaction result to be returned.
         sig do
           returns(
@@ -112,6 +119,7 @@ module Lithic
               Lithic::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol,
             end_: Time,
             ending_before: String,
+            page_size: Integer,
             result:
               Lithic::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
@@ -133,6 +141,8 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
+          # Page size (for pagination).
+          page_size: nil,
           # Financial Transaction result to be returned.
           result: nil,
           # A cursor representing an item's token after which a page of results should
@@ -153,6 +163,7 @@ module Lithic
                 Lithic::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol,
               end_: Time,
               ending_before: String,
+              page_size: Integer,
               result:
                 Lithic::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol,
               starting_after: String,

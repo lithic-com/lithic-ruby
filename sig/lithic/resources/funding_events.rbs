@@ -7,7 +7,10 @@ module Lithic
       ) -> Lithic::FundingEvent
 
       def list: (
+        ?begin_: Time,
+        ?end_: Time,
         ?ending_before: String,
+        ?network_settlement_date: Date,
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
