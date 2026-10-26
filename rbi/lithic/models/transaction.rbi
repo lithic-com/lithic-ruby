@@ -108,10 +108,12 @@ module Lithic
       sig { returns(T.nilable(Integer)) }
       attr_accessor :network_risk_score
 
-      sig { returns(Lithic::Transaction::Pos) }
+      # Point of sale data for the transaction. Null when no point of sale data is
+      # available, such as clearing-only records that never went through authorization
+      sig { returns(T.nilable(Lithic::Transaction::Pos)) }
       attr_reader :pos
 
-      sig { params(pos: Lithic::Transaction::Pos::OrHash).void }
+      sig { params(pos: T.nilable(Lithic::Transaction::Pos::OrHash)).void }
       attr_writer :pos
 
       sig { returns(Lithic::Transaction::Result::TaggedSymbol) }
@@ -183,7 +185,7 @@ module Lithic
           merchant_currency: String,
           network: T.nilable(Lithic::Transaction::Network::OrSymbol),
           network_risk_score: T.nilable(Integer),
-          pos: Lithic::Transaction::Pos::OrHash,
+          pos: T.nilable(Lithic::Transaction::Pos::OrHash),
           result: Lithic::Transaction::Result::OrSymbol,
           service_location:
             T.nilable(Lithic::Transaction::ServiceLocation::OrHash),
@@ -243,6 +245,8 @@ module Lithic
         # score has a range of 0-99, Lithic will normalize the score by multiplying the
         # raw score by 10x.
         network_risk_score:,
+        # Point of sale data for the transaction. Null when no point of sale data is
+        # available, such as clearing-only records that never went through authorization
         pos:,
         result:,
         # Where the cardholder received the service, when different from the card acceptor
@@ -287,7 +291,7 @@ module Lithic
             merchant_currency: String,
             network: T.nilable(Lithic::Transaction::Network::TaggedSymbol),
             network_risk_score: T.nilable(Integer),
-            pos: Lithic::Transaction::Pos,
+            pos: T.nilable(Lithic::Transaction::Pos),
             result: Lithic::Transaction::Result::TaggedSymbol,
             service_location: T.nilable(Lithic::Transaction::ServiceLocation),
             settled_amount: Integer,
@@ -644,6 +648,8 @@ module Lithic
         end
         attr_writer :terminal
 
+        # Point of sale data for the transaction. Null when no point of sale data is
+        # available, such as clearing-only records that never went through authorization
         sig do
           params(
             entry_mode: Lithic::Transaction::Pos::EntryMode::OrHash,

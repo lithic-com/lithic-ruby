@@ -6,8 +6,8 @@ module Lithic
         available_amount: Integer,
         created: Time,
         currency: String,
-        last_transaction_event_token: String,
-        last_transaction_token: String,
+        last_transaction_event_token: String?,
+        last_transaction_token: String?,
         pending_amount: Integer,
         total_amount: Integer,
         type: Lithic::Models::FinancialAccountBalance::type_,
@@ -23,9 +23,9 @@ module Lithic
 
       attr_accessor currency: String
 
-      attr_accessor last_transaction_event_token: String
+      attr_accessor last_transaction_event_token: String?
 
-      attr_accessor last_transaction_token: String
+      attr_accessor last_transaction_token: String?
 
       attr_accessor pending_amount: Integer
 
@@ -40,8 +40,8 @@ module Lithic
         available_amount: Integer,
         created: Time,
         currency: String,
-        last_transaction_event_token: String,
-        last_transaction_token: String,
+        last_transaction_event_token: String?,
+        last_transaction_token: String?,
         pending_amount: Integer,
         total_amount: Integer,
         type: Lithic::Models::FinancialAccountBalance::type_,
@@ -53,8 +53,8 @@ module Lithic
         available_amount: Integer,
         created: Time,
         currency: String,
-        last_transaction_event_token: String,
-        last_transaction_token: String,
+        last_transaction_event_token: String?,
+        last_transaction_token: String?,
         pending_amount: Integer,
         total_amount: Integer,
         type: Lithic::Models::FinancialAccountBalance::type_,

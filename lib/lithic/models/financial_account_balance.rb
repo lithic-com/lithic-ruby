@@ -31,15 +31,15 @@ module Lithic
       #   Globally unique identifier for the last financial transaction event that
       #   impacted this balance.
       #
-      #   @return [String]
-      required :last_transaction_event_token, String
+      #   @return [String, nil]
+      required :last_transaction_event_token, String, nil?: true
 
       # @!attribute last_transaction_token
       #   Globally unique identifier for the last financial transaction that impacted this
       #   balance.
       #
-      #   @return [String]
-      required :last_transaction_token, String
+      #   @return [String, nil]
+      required :last_transaction_token, String, nil?: true
 
       # @!attribute pending_amount
       #   Funds not available for spend due to card authorizations or pending ACH release.
@@ -81,9 +81,9 @@ module Lithic
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code for the local currency of the balance.
       #
-      #   @param last_transaction_event_token [String] Globally unique identifier for the last financial transaction event that impacte
+      #   @param last_transaction_event_token [String, nil] Globally unique identifier for the last financial transaction event that impacte
       #
-      #   @param last_transaction_token [String] Globally unique identifier for the last financial transaction that impacted this
+      #   @param last_transaction_token [String, nil] Globally unique identifier for the last financial transaction that impacted this
       #
       #   @param pending_amount [Integer] Funds not available for spend due to card authorizations or pending ACH release.
       #

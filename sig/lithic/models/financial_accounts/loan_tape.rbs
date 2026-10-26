@@ -257,7 +257,8 @@ module Lithic
             due: Lithic::FinancialAccounts::CategoryBalances,
             next_statement_due: Lithic::FinancialAccounts::CategoryBalances,
             past_due: Lithic::FinancialAccounts::CategoryBalances,
-            past_statements_due: Lithic::FinancialAccounts::CategoryBalances
+            past_statements_due: Lithic::FinancialAccounts::CategoryBalances,
+            installments: Lithic::FinancialAccounts::CategoryBalances?
           }
 
         class Balances < Lithic::Internal::Type::BaseModel
@@ -269,18 +270,22 @@ module Lithic
 
           attr_accessor past_statements_due: Lithic::FinancialAccounts::CategoryBalances
 
+          attr_accessor installments: Lithic::FinancialAccounts::CategoryBalances?
+
           def initialize: (
             due: Lithic::FinancialAccounts::CategoryBalances,
             next_statement_due: Lithic::FinancialAccounts::CategoryBalances,
             past_due: Lithic::FinancialAccounts::CategoryBalances,
-            past_statements_due: Lithic::FinancialAccounts::CategoryBalances
+            past_statements_due: Lithic::FinancialAccounts::CategoryBalances,
+            ?installments: Lithic::FinancialAccounts::CategoryBalances?
           ) -> void
 
           def to_hash: -> {
             due: Lithic::FinancialAccounts::CategoryBalances,
             next_statement_due: Lithic::FinancialAccounts::CategoryBalances,
             past_due: Lithic::FinancialAccounts::CategoryBalances,
-            past_statements_due: Lithic::FinancialAccounts::CategoryBalances
+            past_statements_due: Lithic::FinancialAccounts::CategoryBalances,
+            installments: Lithic::FinancialAccounts::CategoryBalances?
           }
         end
 

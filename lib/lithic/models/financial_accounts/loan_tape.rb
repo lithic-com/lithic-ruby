@@ -366,7 +366,13 @@ module Lithic
           #   @return [Lithic::Models::FinancialAccounts::CategoryBalances]
           required :past_statements_due, -> { Lithic::FinancialAccounts::CategoryBalances }
 
-          # @!method initialize(due:, next_statement_due:, past_due:, past_statements_due:)
+          # @!attribute installments
+          #   Amounts converted into installment plans
+          #
+          #   @return [Lithic::Models::FinancialAccounts::CategoryBalances, nil]
+          optional :installments, -> { Lithic::FinancialAccounts::CategoryBalances }, nil?: true
+
+          # @!method initialize(due:, next_statement_due:, past_due:, past_statements_due:, installments: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::LoanTape::Balances} for more details.
           #
@@ -377,6 +383,8 @@ module Lithic
           #   @param past_due [Lithic::Models::FinancialAccounts::CategoryBalances] Amount not paid off on previous due dates
           #
           #   @param past_statements_due [Lithic::Models::FinancialAccounts::CategoryBalances] Amount due for the past billing cycles.
+          #
+          #   @param installments [Lithic::Models::FinancialAccounts::CategoryBalances, nil] Amounts converted into installment plans
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#interest_details

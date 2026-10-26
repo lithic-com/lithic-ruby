@@ -679,6 +679,20 @@ module Lithic
           end
           attr_writer :past_statements_due
 
+          # Amounts converted into installment plans
+          sig do
+            returns(T.nilable(Lithic::FinancialAccounts::CategoryBalances))
+          end
+          attr_reader :installments
+
+          sig do
+            params(
+              installments:
+                T.nilable(Lithic::FinancialAccounts::CategoryBalances::OrHash)
+            ).void
+          end
+          attr_writer :installments
+
           sig do
             params(
               due: Lithic::FinancialAccounts::CategoryBalances::OrHash,
@@ -686,7 +700,9 @@ module Lithic
                 Lithic::FinancialAccounts::CategoryBalances::OrHash,
               past_due: Lithic::FinancialAccounts::CategoryBalances::OrHash,
               past_statements_due:
-                Lithic::FinancialAccounts::CategoryBalances::OrHash
+                Lithic::FinancialAccounts::CategoryBalances::OrHash,
+              installments:
+                T.nilable(Lithic::FinancialAccounts::CategoryBalances::OrHash)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -700,7 +716,9 @@ module Lithic
             # Amount not paid off on previous due dates
             past_due:,
             # Amount due for the past billing cycles.
-            past_statements_due:
+            past_statements_due:,
+            # Amounts converted into installment plans
+            installments: nil
           )
           end
 
@@ -710,7 +728,10 @@ module Lithic
                 due: Lithic::FinancialAccounts::CategoryBalances,
                 next_statement_due: Lithic::FinancialAccounts::CategoryBalances,
                 past_due: Lithic::FinancialAccounts::CategoryBalances,
-                past_statements_due: Lithic::FinancialAccounts::CategoryBalances
+                past_statements_due:
+                  Lithic::FinancialAccounts::CategoryBalances,
+                installments:
+                  T.nilable(Lithic::FinancialAccounts::CategoryBalances)
               }
             )
           end

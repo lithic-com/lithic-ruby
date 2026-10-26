@@ -140,9 +140,11 @@ module Lithic
       required :network_risk_score, Integer, nil?: true
 
       # @!attribute pos
+      #   Point of sale data for the transaction. Null when no point of sale data is
+      #   available, such as clearing-only records that never went through authorization
       #
-      #   @return [Lithic::Models::Transaction::Pos]
-      required :pos, -> { Lithic::Transaction::Pos }
+      #   @return [Lithic::Models::Transaction::Pos, nil]
+      required :pos, -> { Lithic::Transaction::Pos }, nil?: true
 
       # @!attribute result
       #
@@ -237,7 +239,7 @@ module Lithic
       #
       #   @param network_risk_score [Integer, nil] Network-provided score assessing risk level associated with a given authorizatio
       #
-      #   @param pos [Lithic::Models::Transaction::Pos]
+      #   @param pos [Lithic::Models::Transaction::Pos, nil] Point of sale data for the transaction. Null when no point of sale data is avail
       #
       #   @param result [Symbol, Lithic::Models::Transaction::Result]
       #
@@ -459,6 +461,9 @@ module Lithic
         required :terminal, -> { Lithic::Transaction::Pos::Terminal }
 
         # @!method initialize(entry_mode:, terminal:)
+        #   Point of sale data for the transaction. Null when no point of sale data is
+        #   available, such as clearing-only records that never went through authorization
+        #
         #   @param entry_mode [Lithic::Models::Transaction::Pos::EntryMode]
         #   @param terminal [Lithic::Models::Transaction::Pos::Terminal]
 

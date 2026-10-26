@@ -21,7 +21,7 @@ module Lithic
         merchant_currency: String,
         network: Lithic::Models::Transaction::network?,
         network_risk_score: Integer?,
-        pos: Lithic::Transaction::Pos,
+        pos: Lithic::Transaction::Pos?,
         result: Lithic::Models::Transaction::result,
         service_location: Lithic::Transaction::ServiceLocation?,
         settled_amount: Integer,
@@ -71,7 +71,7 @@ module Lithic
 
       attr_accessor network_risk_score: Integer?
 
-      attr_accessor pos: Lithic::Transaction::Pos
+      attr_accessor pos: Lithic::Transaction::Pos?
 
       attr_accessor result: Lithic::Models::Transaction::result
 
@@ -113,7 +113,7 @@ module Lithic
         merchant_currency: String,
         network: Lithic::Models::Transaction::network?,
         network_risk_score: Integer?,
-        pos: Lithic::Transaction::Pos,
+        pos: Lithic::Transaction::Pos?,
         result: Lithic::Models::Transaction::result,
         service_location: Lithic::Transaction::ServiceLocation?,
         settled_amount: Integer,
@@ -144,7 +144,7 @@ module Lithic
         merchant_currency: String,
         network: Lithic::Models::Transaction::network?,
         network_risk_score: Integer?,
-        pos: Lithic::Transaction::Pos,
+        pos: Lithic::Transaction::Pos?,
         result: Lithic::Models::Transaction::result,
         service_location: Lithic::Transaction::ServiceLocation?,
         settled_amount: Integer,

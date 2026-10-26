@@ -26,12 +26,12 @@ module Lithic
 
       # Globally unique identifier for the last financial transaction event that
       # impacted this balance.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :last_transaction_event_token
 
       # Globally unique identifier for the last financial transaction that impacted this
       # balance.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :last_transaction_token
 
       # Funds not available for spend due to card authorizations or pending ACH release.
@@ -59,8 +59,8 @@ module Lithic
           available_amount: Integer,
           created: Time,
           currency: String,
-          last_transaction_event_token: String,
-          last_transaction_token: String,
+          last_transaction_event_token: T.nilable(String),
+          last_transaction_token: T.nilable(String),
           pending_amount: Integer,
           total_amount: Integer,
           type: Lithic::FinancialAccountBalance::Type::OrSymbol,
@@ -102,8 +102,8 @@ module Lithic
             available_amount: Integer,
             created: Time,
             currency: String,
-            last_transaction_event_token: String,
-            last_transaction_token: String,
+            last_transaction_event_token: T.nilable(String),
+            last_transaction_token: T.nilable(String),
             pending_amount: Integer,
             total_amount: Integer,
             type: Lithic::FinancialAccountBalance::Type::TaggedSymbol,
