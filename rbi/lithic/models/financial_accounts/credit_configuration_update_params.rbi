@@ -41,7 +41,10 @@ module Lithic
         sig { params(credit_limit: Integer).void }
         attr_writer :credit_limit
 
-        # Globally unique identifier for the credit product
+        # Globally unique identifier for the credit product. This can only be set while
+        # the financial account is in the `PENDING` state. Because assigning a credit
+        # product transitions the account to `OPEN`, a credit product can be attached only
+        # once; updating it on an account in any other state returns a `403`
         sig { returns(T.nilable(String)) }
         attr_reader :credit_product_token
 
@@ -77,7 +80,10 @@ module Lithic
           financial_account_token:,
           auto_collection_configuration: nil,
           credit_limit: nil,
-          # Globally unique identifier for the credit product
+          # Globally unique identifier for the credit product. This can only be set while
+          # the financial account is in the `PENDING` state. Because assigning a credit
+          # product transitions the account to `OPEN`, a credit product can be attached only
+          # once; updating it on an account in any other state returns a `403`
           credit_product_token: nil,
           external_bank_account_token: nil,
           # Tier to assign to a financial account

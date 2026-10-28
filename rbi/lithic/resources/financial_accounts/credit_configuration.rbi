@@ -18,7 +18,10 @@ module Lithic
         )
         end
 
-        # Update an account's credit configuration
+        # Update an account's credit configuration. A credit product can only be attached
+        # while the financial account is in the `PENDING` state; once a credit product has
+        # been assigned the account transitions to `OPEN` and `credit_product_token` can
+        # no longer be changed
         sig do
           params(
             financial_account_token: String,
@@ -36,7 +39,10 @@ module Lithic
           financial_account_token,
           auto_collection_configuration: nil,
           credit_limit: nil,
-          # Globally unique identifier for the credit product
+          # Globally unique identifier for the credit product. This can only be set while
+          # the financial account is in the `PENDING` state. Because assigning a credit
+          # product transitions the account to `OPEN`, a credit product can be attached only
+          # once; updating it on an account in any other state returns a `403`
           credit_product_token: nil,
           external_bank_account_token: nil,
           # Tier to assign to a financial account

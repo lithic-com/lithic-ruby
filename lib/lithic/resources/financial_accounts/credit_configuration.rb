@@ -24,7 +24,14 @@ module Lithic
           )
         end
 
-        # Update an account's credit configuration
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams} for more
+        # details.
+        #
+        # Update an account's credit configuration. A credit product can only be attached
+        # while the financial account is in the `PENDING` state; once a credit product has
+        # been assigned the account transitions to `OPEN` and `credit_product_token` can
+        # no longer be changed
         #
         # @overload update(financial_account_token, auto_collection_configuration: nil, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
         #
@@ -34,7 +41,7 @@ module Lithic
         #
         # @param credit_limit [Integer]
         #
-        # @param credit_product_token [String] Globally unique identifier for the credit product
+        # @param credit_product_token [String] Globally unique identifier for the credit product. This can only be set
         #
         # @param external_bank_account_token [String]
         #

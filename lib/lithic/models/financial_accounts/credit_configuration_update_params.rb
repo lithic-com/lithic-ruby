@@ -25,7 +25,10 @@ module Lithic
         optional :credit_limit, Integer
 
         # @!attribute credit_product_token
-        #   Globally unique identifier for the credit product
+        #   Globally unique identifier for the credit product. This can only be set while
+        #   the financial account is in the `PENDING` state. Because assigning a credit
+        #   product transitions the account to `OPEN`, a credit product can be attached only
+        #   once; updating it on an account in any other state returns a `403`
         #
         #   @return [String, nil]
         optional :credit_product_token, String
@@ -42,13 +45,17 @@ module Lithic
         optional :tier, String
 
         # @!method initialize(financial_account_token:, auto_collection_configuration: nil, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams} for more
+        #   details.
+        #
         #   @param financial_account_token [String]
         #
         #   @param auto_collection_configuration [Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration]
         #
         #   @param credit_limit [Integer]
         #
-        #   @param credit_product_token [String] Globally unique identifier for the credit product
+        #   @param credit_product_token [String] Globally unique identifier for the credit product. This can only be set
         #
         #   @param external_bank_account_token [String]
         #
