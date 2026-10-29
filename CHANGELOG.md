@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.1](https://github.com/lithic-com/lithic-ruby/compare/v0.23.0...v0.23.1) (2026-10-29)
+
+
+### Chores
+
+* **ci:** Removing pre-release configuration ([#159](https://github.com/lithic-com/lithic-ruby/issues/159)) ([7a34688](https://github.com/lithic-com/lithic-ruby/commit/7a34688c7814ddf7a349c17e1e2a33c3e4789bfd))
+
 ## [0.23.0](https://github.com/lithic-com/lithic-ruby/compare/v0.22.0...v0.23.0) (2026-10-29)
 
 
