@@ -32,6 +32,11 @@ module Lithic
         sig { returns(String) }
         attr_accessor :financial_account_token
 
+        # Amount credited to this plan after the plan was recalculated. The plan amount is
+        # not changed, and this credit reduces the amount owed
+        sig { returns(Integer) }
+        attr_accessor :installment_plan_adjustment
+
         # Total owed on the plan in cents, the principal amount plus the enrollment fee
         sig { returns(Integer) }
         attr_accessor :installment_plan_total
@@ -120,6 +125,7 @@ module Lithic
             created: Time,
             fee_amount: Integer,
             financial_account_token: String,
+            installment_plan_adjustment: Integer,
             installment_plan_total: Integer,
             installments:
               T::Array[
@@ -153,6 +159,9 @@ module Lithic
           fee_amount:,
           # Globally unique identifier for a financial account
           financial_account_token:,
+          # Amount credited to this plan after the plan was recalculated. The plan amount is
+          # not changed, and this credit reduces the amount owed
+          installment_plan_adjustment:,
           # Total owed on the plan in cents, the principal amount plus the enrollment fee
           installment_plan_total:,
           # Installments that make up the plan, oldest first
@@ -193,6 +202,7 @@ module Lithic
               created: Time,
               fee_amount: Integer,
               financial_account_token: String,
+              installment_plan_adjustment: Integer,
               installment_plan_total: Integer,
               installments:
                 T::Array[
@@ -307,6 +317,13 @@ module Lithic
           end
           attr_accessor :payments
 
+          # Amount from installment_plan_adjustment credited to this installment
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :installment_adjustment
+
+          sig { params(installment_adjustment: Integer).void }
+          attr_writer :installment_adjustment
+
           sig do
             params(
               amount_due: Integer,
@@ -325,7 +342,8 @@ module Lithic
               payments:
                 T::Array[
                   Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment::OrHash
-                ]
+                ],
+              installment_adjustment: Integer
             ).returns(T.attached_class)
           end
           def self.new(
@@ -348,7 +366,9 @@ module Lithic
             # Date the installment must be paid by before it is considered past due
             payment_due_date:,
             # Payments applied to this installment, oldest first
-            payments:
+            payments:,
+            # Amount from installment_plan_adjustment credited to this installment
+            installment_adjustment: nil
           )
           end
 
@@ -371,7 +391,8 @@ module Lithic
                 payments:
                   T::Array[
                     Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment
-                  ]
+                  ],
+                installment_adjustment: Integer
               }
             )
           end
@@ -408,12 +429,21 @@ module Lithic
             sig { returns(Date) }
             attr_accessor :date
 
+            # True when the source of the payment is an adjustment of an underlying account or
+            # transaction
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :is_adjustment
+
+            sig { params(is_adjustment: T::Boolean).void }
+            attr_writer :is_adjustment
+
             sig do
               params(
                 amount: Integer,
                 amount_details:
                   Lithic::FinancialAccounts::TransactionCategoryBalances::OrHash,
-                date: Date
+                date: Date,
+                is_adjustment: T::Boolean
               ).returns(T.attached_class)
             end
             def self.new(
@@ -421,7 +451,10 @@ module Lithic
               amount:,
               amount_details:,
               # Date the payment was applied to the installment
-              date:
+              date:,
+              # True when the source of the payment is an adjustment of an underlying account or
+              # transaction
+              is_adjustment: nil
             )
             end
 
@@ -431,7 +464,8 @@ module Lithic
                   amount: Integer,
                   amount_details:
                     Lithic::FinancialAccounts::TransactionCategoryBalances,
-                  date: Date
+                  date: Date,
+                  is_adjustment: T::Boolean
                 }
               )
             end

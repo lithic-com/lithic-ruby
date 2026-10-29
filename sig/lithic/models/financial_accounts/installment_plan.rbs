@@ -8,6 +8,7 @@ module Lithic
           created: Time,
           fee_amount: Integer,
           financial_account_token: String,
+          installment_plan_adjustment: Integer,
           installment_plan_total: Integer,
           installments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment],
           installments_outstanding: Integer,
@@ -33,6 +34,8 @@ module Lithic
         attr_accessor fee_amount: Integer
 
         attr_accessor financial_account_token: String
+
+        attr_accessor installment_plan_adjustment: Integer
 
         attr_accessor installment_plan_total: Integer
 
@@ -66,6 +69,7 @@ module Lithic
           created: Time,
           fee_amount: Integer,
           financial_account_token: String,
+          installment_plan_adjustment: Integer,
           installment_plan_total: Integer,
           installments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment],
           installments_outstanding: Integer,
@@ -87,6 +91,7 @@ module Lithic
           created: Time,
           fee_amount: Integer,
           financial_account_token: String,
+          installment_plan_adjustment: Integer,
           installment_plan_total: Integer,
           installments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment],
           installments_outstanding: Integer,
@@ -114,7 +119,8 @@ module Lithic
             due_date: Date,
             installment_num: Integer,
             payment_due_date: Date,
-            payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment]
+            payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment],
+            installment_adjustment: Integer
           }
 
         class Installment < Lithic::Internal::Type::BaseModel
@@ -140,6 +146,10 @@ module Lithic
 
           attr_accessor payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment]
 
+          attr_reader installment_adjustment: Integer?
+
+          def installment_adjustment=: (Integer) -> Integer
+
           def initialize: (
             amount_due: Integer,
             amount_due_details: Lithic::FinancialAccounts::TransactionCategoryBalances,
@@ -151,7 +161,8 @@ module Lithic
             due_date: Date,
             installment_num: Integer,
             payment_due_date: Date,
-            payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment]
+            payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment],
+            ?installment_adjustment: Integer
           ) -> void
 
           def to_hash: -> {
@@ -165,14 +176,16 @@ module Lithic
             due_date: Date,
             installment_num: Integer,
             payment_due_date: Date,
-            payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment]
+            payments: ::Array[Lithic::FinancialAccounts::InstallmentPlan::Installment::Payment],
+            installment_adjustment: Integer
           }
 
           type payment =
             {
               amount: Integer,
               amount_details: Lithic::FinancialAccounts::TransactionCategoryBalances,
-              date: Date
+              date: Date,
+              is_adjustment: bool
             }
 
           class Payment < Lithic::Internal::Type::BaseModel
@@ -182,16 +195,22 @@ module Lithic
 
             attr_accessor date: Date
 
+            attr_reader is_adjustment: bool?
+
+            def is_adjustment=: (bool) -> bool
+
             def initialize: (
               amount: Integer,
               amount_details: Lithic::FinancialAccounts::TransactionCategoryBalances,
-              date: Date
+              date: Date,
+              ?is_adjustment: bool
             ) -> void
 
             def to_hash: -> {
               amount: Integer,
               amount_details: Lithic::FinancialAccounts::TransactionCategoryBalances,
-              date: Date
+              date: Date,
+              is_adjustment: bool
             }
           end
         end
