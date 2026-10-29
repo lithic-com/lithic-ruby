@@ -92,6 +92,8 @@ module Lithic
 
         wh = StandardWebhooks::Webhook.new(secret)
         wh.verify(payload, headers)
+
+        JSON.parse(payload, symbolize_names: true)
       end
 
       # @api private
