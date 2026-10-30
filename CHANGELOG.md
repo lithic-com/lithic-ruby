@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.24.0](https://github.com/lithic-com/lithic-ruby/compare/v0.23.1...v0.24.0) (2026-10-30)
+
+
+### Features
+
+* **api:** add source, adjustment, and timestamp fields to installment plan statements ([eb824ef](https://github.com/lithic-com/lithic-ruby/commit/eb824ef41b66ffbe99b101ecaf2dd5205a5a3ac6))
+
+
+### Documentation
+
+* **api:** clarify that begin filters on list endpoints are inclusive (on or after) ([3fd4dc4](https://github.com/lithic-com/lithic-ruby/commit/3fd4dc43f2ee639a301c7a6dcc76690619e33d44))
+
 ## [0.23.1](https://github.com/lithic-com/lithic-ruby/compare/v0.23.0...v0.23.1) (2026-10-29)
 
 
