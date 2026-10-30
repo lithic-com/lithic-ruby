@@ -12,7 +12,7 @@ module Lithic
       #
       # @param account_token [String] Filter by account token
       #
-      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       # @param business_account_token [String] Filter by business account token
       #

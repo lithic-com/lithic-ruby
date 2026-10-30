@@ -178,8 +178,8 @@ module Lithic
         def list_results(
           # Filter by Auth Rule token
           auth_rule_token: nil,
-          # Date string in RFC 3339 format. Only events evaluated after the specified time
-          # will be included. UTC time zone.
+          # Date string in RFC 3339 format. Only events evaluated on or after the specified
+          # time will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only events evaluated before the specified time
           # will be included. UTC time zone.

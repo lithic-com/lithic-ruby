@@ -32,7 +32,7 @@ module Lithic
           #
           # @overload list(begin_: nil, end_: nil, ending_before: nil, institution_id: nil, network: nil, page_size: nil, report_date: nil, report_date_begin: nil, report_date_end: nil, settlement_institution_id: nil, starting_after: nil, request_options: {})
           #
-          # @param begin_ [Time] Datetime in RFC 3339 format. Only entries created after the specified time will
+          # @param begin_ [Time] Datetime in RFC 3339 format. Only entries created on or after the specified time
           #
           # @param end_ [Time] Datetime in RFC 3339 format. Only entries created before the specified time will
           #

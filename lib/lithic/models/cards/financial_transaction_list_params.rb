@@ -14,8 +14,8 @@ module Lithic
         required :card_token, String
 
         # @!attribute begin_
-        #   Date string in RFC 3339 format. Only entries created after the specified time
-        #   will be included. UTC time zone.
+        #   Date string in RFC 3339 format. Only entries created on or after the specified
+        #   time will be included. UTC time zone.
         #
         #   @return [Time, nil]
         optional :begin_, Time
@@ -71,7 +71,7 @@ module Lithic
         #
         #   @param card_token [String]
         #
-        #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+        #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
         #
         #   @param category [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
         #

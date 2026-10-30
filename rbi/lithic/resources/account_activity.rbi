@@ -27,8 +27,8 @@ module Lithic
       def list(
         # Filter by account token
         account_token: nil,
-        # Date string in RFC 3339 format. Only entries created after the specified time
-        # will be included. UTC time zone.
+        # Date string in RFC 3339 format. Only entries created on or after the specified
+        # time will be included. UTC time zone.
         begin_: nil,
         # Filter by business account token
         business_account_token: nil,

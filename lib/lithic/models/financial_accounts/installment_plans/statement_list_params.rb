@@ -22,8 +22,8 @@ module Lithic
           required :installment_plan_token, String
 
           # @!attribute begin_
-          #   Date string in RFC 3339 format. Only entries created after the specified date
-          #   will be included.
+          #   Date string in RFC 3339 format. Only entries created on or after the specified
+          #   date will be included.
           #
           #   @return [Date, nil]
           optional :begin_, Date
@@ -72,7 +72,7 @@ module Lithic
           #
           #   @param installment_plan_token [String] Globally unique identifier for installment plan.
           #
-          #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created after the specified date wi
+          #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created on or after the specified d
           #
           #   @param end_ [Date] Date string in RFC 3339 format. Only entries created before the specified date w
           #

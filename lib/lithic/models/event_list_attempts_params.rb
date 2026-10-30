@@ -13,8 +13,8 @@ module Lithic
       required :event_token, String
 
       # @!attribute begin_
-      #   Date string in RFC 3339 format. Only entries created after the specified time
-      #   will be included. UTC time zone.
+      #   Date string in RFC 3339 format. Only entries created on or after the specified
+      #   time will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :begin_, Time
@@ -57,7 +57,7 @@ module Lithic
       #
       #   @param event_token [String]
       #
-      #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #

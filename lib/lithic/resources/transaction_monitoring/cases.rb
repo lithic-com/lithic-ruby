@@ -84,7 +84,7 @@ module Lithic
         #
         # @param assignee [String] Only return cases assigned to the provided value. Pass an empty string to return
         #
-        # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+        # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
         #
         # @param card_token [String] Only return cases that include transactions on the provided card.
         #

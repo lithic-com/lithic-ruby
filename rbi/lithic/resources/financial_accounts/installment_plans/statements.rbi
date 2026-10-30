@@ -53,8 +53,8 @@ module Lithic
             installment_plan_token,
             # Path param: Globally unique identifier for financial account.
             financial_account_token:,
-            # Query param: Date string in RFC 3339 format. Only entries created after the
-            # specified date will be included.
+            # Query param: Date string in RFC 3339 format. Only entries created on or after
+            # the specified date will be included.
             begin_: nil,
             # Query param: Date string in RFC 3339 format. Only entries created before the
             # specified date will be included.

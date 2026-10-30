@@ -75,7 +75,7 @@ module Lithic
       #
       # @overload list(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
       #
-      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       # @param business_account_token [String]
       #

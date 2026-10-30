@@ -40,7 +40,7 @@ module Lithic
       #
       # @param account_token [String] Filters for transactions associated with a specific account.
       #
-      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       # @param card_token [String] Filters for transactions associated with a specific card.
       #

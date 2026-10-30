@@ -15,8 +15,8 @@ module Lithic
         required :financial_account_token, String
 
         # @!attribute begin_
-        #   Date string in RFC 3339 format. Only entries created after the specified date
-        #   will be included.
+        #   Date string in RFC 3339 format. Only entries created on or after the specified
+        #   date will be included.
         #
         #   @return [Date, nil]
         optional :begin_, Date
@@ -60,7 +60,7 @@ module Lithic
         #
         #   @param financial_account_token [String] Globally unique identifier for financial account.
         #
-        #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created after the specified date wi
+        #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created on or after the specified d
         #
         #   @param end_ [Date] Date string in RFC 3339 format. Only entries created before the specified date w
         #

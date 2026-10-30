@@ -30,8 +30,8 @@ module Lithic
         sig { params(assignee: String).void }
         attr_writer :assignee
 
-        # Date string in RFC 3339 format. Only entries created after the specified time
-        # will be included. UTC time zone.
+        # Date string in RFC 3339 format. Only entries created on or after the specified
+        # time will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
         attr_reader :begin_
 
@@ -161,8 +161,8 @@ module Lithic
           # Only return cases assigned to the provided value. Pass an empty string to return
           # only unassigned cases.
           assignee: nil,
-          # Date string in RFC 3339 format. Only entries created after the specified time
-          # will be included. UTC time zone.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # time will be included. UTC time zone.
           begin_: nil,
           # Only return cases that include transactions on the provided card.
           card_token: nil,

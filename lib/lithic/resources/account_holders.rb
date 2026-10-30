@@ -96,7 +96,7 @@ module Lithic
       #
       # @overload list(begin_: nil, email: nil, end_: nil, ending_before: nil, external_id: nil, first_name: nil, last_name: nil, legal_business_name: nil, limit: nil, phone_number: nil, starting_after: nil, request_options: {})
       #
-      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       # @param email [String] Email address of the account holder. The query must be an exact match, case inse
       #

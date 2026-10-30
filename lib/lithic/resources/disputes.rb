@@ -89,7 +89,7 @@ module Lithic
       #
       # @overload list(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, transaction_tokens: nil, request_options: {})
       #
-      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -203,7 +203,7 @@ module Lithic
       #
       # @param dispute_token [String]
       #
-      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #

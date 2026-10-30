@@ -14,7 +14,7 @@ module Lithic
       optional :account_token, String
 
       # @!attribute begin_
-      #   Filter for tokenizations created after this date.
+      #   Filter for tokenizations created on or after this date.
       #
       #   @return [Date, nil]
       optional :begin_, Date
@@ -64,7 +64,7 @@ module Lithic
       #
       #   @param account_token [String] Filters for tokenizations associated with a specific account.
       #
-      #   @param begin_ [Date] Filter for tokenizations created after this date.
+      #   @param begin_ [Date] Filter for tokenizations created on or after this date.
       #
       #   @param card_token [String] Filters for tokenizations associated with a specific card.
       #

@@ -19,8 +19,8 @@ module Lithic
         sig { returns(String) }
         attr_accessor :financial_account_token
 
-        # Date string in RFC 3339 format. Only entries created after the specified date
-        # will be included.
+        # Date string in RFC 3339 format. Only entries created on or after the specified
+        # date will be included.
         sig { returns(T.nilable(Date)) }
         attr_reader :begin_
 
@@ -80,8 +80,8 @@ module Lithic
         def self.new(
           # Globally unique identifier for financial account.
           financial_account_token:,
-          # Date string in RFC 3339 format. Only entries created after the specified date
-          # will be included.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # date will be included.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified date
           # will be included.

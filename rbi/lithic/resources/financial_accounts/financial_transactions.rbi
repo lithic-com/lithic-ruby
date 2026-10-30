@@ -42,8 +42,8 @@ module Lithic
         def list(
           # Globally unique identifier for financial account.
           financial_account_token,
-          # Date string in RFC 3339 format. Only entries created after the specified time
-          # will be included. UTC time zone.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # time will be included. UTC time zone.
           begin_: nil,
           # Financial Transaction category to be returned.
           category: nil,

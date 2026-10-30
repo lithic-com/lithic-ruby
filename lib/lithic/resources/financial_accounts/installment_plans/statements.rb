@@ -56,7 +56,7 @@ module Lithic
           #
           # @param financial_account_token [String] Path param: Globally unique identifier for financial account.
           #
-          # @param begin_ [Date] Query param: Date string in RFC 3339 format. Only entries created after the spec
+          # @param begin_ [Date] Query param: Date string in RFC 3339 format. Only entries created on or after th
           #
           # @param end_ [Date] Query param: Date string in RFC 3339 format. Only entries created before the spe
           #

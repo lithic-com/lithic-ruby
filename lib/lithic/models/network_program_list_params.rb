@@ -8,8 +8,8 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute begin_
-      #   Date string in RFC 3339 format. Only entries created after the specified time
-      #   will be included. UTC time zone.
+      #   Date string in RFC 3339 format. Only entries created on or after the specified
+      #   time will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :begin_, Time
@@ -31,7 +31,7 @@ module Lithic
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::NetworkProgramListParams} for more details.
       #
-      #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created on or after the specified t
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #

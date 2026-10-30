@@ -18,7 +18,7 @@ module Lithic
       sig { params(account_token: String).void }
       attr_writer :account_token
 
-      # Filter for tokenizations created after this date.
+      # Filter for tokenizations created on or after this date.
       sig { returns(T.nilable(Date)) }
       attr_reader :begin_
 
@@ -98,7 +98,7 @@ module Lithic
       def self.new(
         # Filters for tokenizations associated with a specific account.
         account_token: nil,
-        # Filter for tokenizations created after this date.
+        # Filter for tokenizations created on or after this date.
         begin_: nil,
         # Filters for tokenizations associated with a specific card.
         card_token: nil,

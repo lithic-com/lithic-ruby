@@ -38,8 +38,8 @@ module Lithic
             ).returns(Lithic::Internal::CursorPage[Lithic::NetworkTotal])
           end
           def list(
-            # Datetime in RFC 3339 format. Only entries created after the specified time will
-            # be included. UTC time zone.
+            # Datetime in RFC 3339 format. Only entries created on or after the specified time
+            # will be included. UTC time zone.
             begin_: nil,
             # Datetime in RFC 3339 format. Only entries created before the specified time will
             # be included. UTC time zone.

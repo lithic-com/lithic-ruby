@@ -183,7 +183,7 @@ module Lithic
         #
         # @param auth_rule_token [String] Filter by Auth Rule token
         #
-        # @param begin_ [Time] Date string in RFC 3339 format. Only events evaluated after the specified time w
+        # @param begin_ [Time] Date string in RFC 3339 format. Only events evaluated on or after the specified
         #
         # @param end_ [Time] Date string in RFC 3339 format. Only events evaluated before the specified time
         #

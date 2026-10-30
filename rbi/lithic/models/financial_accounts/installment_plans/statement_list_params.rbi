@@ -24,8 +24,8 @@ module Lithic
           sig { returns(String) }
           attr_accessor :installment_plan_token
 
-          # Date string in RFC 3339 format. Only entries created after the specified date
-          # will be included.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # date will be included.
           sig { returns(T.nilable(Date)) }
           attr_reader :begin_
 
@@ -94,8 +94,8 @@ module Lithic
             financial_account_token:,
             # Globally unique identifier for installment plan.
             installment_plan_token:,
-            # Date string in RFC 3339 format. Only entries created after the specified date
-            # will be included.
+            # Date string in RFC 3339 format. Only entries created on or after the specified
+            # date will be included.
             begin_: nil,
             # Date string in RFC 3339 format. Only entries created before the specified date
             # will be included.

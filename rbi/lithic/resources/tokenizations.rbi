@@ -35,7 +35,7 @@ module Lithic
       def list(
         # Filters for tokenizations associated with a specific account.
         account_token: nil,
-        # Filter for tokenizations created after this date.
+        # Filter for tokenizations created on or after this date.
         begin_: nil,
         # Filters for tokenizations associated with a specific card.
         card_token: nil,

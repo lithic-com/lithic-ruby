@@ -118,8 +118,8 @@ module Lithic
         end
         def list_attempts(
           event_subscription_token,
-          # Date string in RFC 3339 format. Only entries created after the specified time
-          # will be included. UTC time zone.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # time will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified time
           # will be included. UTC time zone.
@@ -148,8 +148,8 @@ module Lithic
         end
         def recover(
           event_subscription_token,
-          # Date string in RFC 3339 format. Only entries created after the specified time
-          # will be included. UTC time zone.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # time will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified time
           # will be included. UTC time zone.
@@ -158,10 +158,10 @@ module Lithic
         )
         end
 
-        # Replays messages to the endpoint. Only messages that were created after `begin`
-        # will be sent. Messages that were previously sent to the endpoint are not resent.
-        # Message will be retried if endpoint responds with a non-2xx status code. See
-        # [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
+        # Replays messages to the endpoint. Only messages that were created on or after
+        # `begin` will be sent. Messages that were previously sent to the endpoint are not
+        # resent. Message will be retried if endpoint responds with a non-2xx status code.
+        # See [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
         # details.
         sig do
           params(
@@ -173,8 +173,8 @@ module Lithic
         end
         def replay_missing(
           event_subscription_token,
-          # Date string in RFC 3339 format. Only entries created after the specified time
-          # will be included. UTC time zone.
+          # Date string in RFC 3339 format. Only entries created on or after the specified
+          # time will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified time
           # will be included. UTC time zone.
