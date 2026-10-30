@@ -18,7 +18,10 @@ class Lithic::Test::Resources::FinancialAccounts::InstallmentPlans::StatementsTe
     assert_pattern do
       response => {
         token: String,
+        closed_at: Date | nil,
+        created: Time,
         fee_amount: Integer,
+        installment_plan_adjustment: Integer,
         installment_plan_token: String,
         installment_plan_total: Integer,
         installments: ^(Lithic::Internal::Type::ArrayOf[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment]),
@@ -26,10 +29,13 @@ class Lithic::Test::Resources::FinancialAccounts::InstallmentPlans::StatementsTe
         installments_paid: Integer,
         num_installments: Integer,
         principal_amount: Integer,
+        source_amounts: Lithic::FinancialAccounts::TransactionCategoryBalances | nil,
+        source_id: String,
         source_type: Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::SourceType,
         start_date: Date,
         state: Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::State,
-        total_paid: Integer
+        total_paid: Integer,
+        updated: Time
       }
     end
   end
@@ -55,7 +61,10 @@ class Lithic::Test::Resources::FinancialAccounts::InstallmentPlans::StatementsTe
     assert_pattern do
       row => {
         token: String,
+        closed_at: Date | nil,
+        created: Time,
         fee_amount: Integer,
+        installment_plan_adjustment: Integer,
         installment_plan_token: String,
         installment_plan_total: Integer,
         installments: ^(Lithic::Internal::Type::ArrayOf[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment]),
@@ -63,10 +72,13 @@ class Lithic::Test::Resources::FinancialAccounts::InstallmentPlans::StatementsTe
         installments_paid: Integer,
         num_installments: Integer,
         principal_amount: Integer,
+        source_amounts: Lithic::FinancialAccounts::TransactionCategoryBalances | nil,
+        source_id: String,
         source_type: Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::SourceType,
         start_date: Date,
         state: Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::State,
-        total_paid: Integer
+        total_paid: Integer,
+        updated: Time
       }
     end
   end

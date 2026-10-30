@@ -15,11 +15,32 @@ module Lithic
           #   @return [String]
           required :token, String
 
+          # @!attribute closed_at
+          #   Date the plan was paid off or cancelled, or null if it was still open as of this
+          #   statement
+          #
+          #   @return [Date, nil]
+          required :closed_at, Date, nil?: true
+
+          # @!attribute created
+          #   Timestamp of when the installment plan was created
+          #
+          #   @return [Time]
+          required :created, Time
+
           # @!attribute fee_amount
           #   Enrollment fee charged when the plan was created in cents
           #
           #   @return [Integer]
           required :fee_amount, Integer
+
+          # @!attribute installment_plan_adjustment
+          #   Amount credited to this plan after the plan was recalculated, as of this
+          #   statement. The plan amount is not changed, and this credit reduces the amount
+          #   owed
+          #
+          #   @return [Integer]
+          required :installment_plan_adjustment, Integer
 
           # @!attribute installment_plan_token
           #   Globally unique identifier for the installment plan this snapshot is of
@@ -64,6 +85,20 @@ module Lithic
           #   @return [Integer]
           required :principal_amount, Integer
 
+          # @!attribute source_amounts
+          #   Balance the plan was opened on, broken out by category, or null if it was not
+          #   recorded
+          #
+          #   @return [Lithic::Models::FinancialAccounts::TransactionCategoryBalances, nil]
+          required :source_amounts, -> { Lithic::FinancialAccounts::TransactionCategoryBalances }, nil?: true
+
+          # @!attribute source_id
+          #   Identifier of the record the plan was opened from, such as the closing statement
+          #   for an unpaid balance
+          #
+          #   @return [String]
+          required :source_id, String
+
           # @!attribute source_type
           #
           #   @return [Symbol, Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::SourceType]
@@ -90,7 +125,13 @@ module Lithic
           #   @return [Integer]
           required :total_paid, Integer
 
-          # @!method initialize(token:, fee_amount:, installment_plan_token:, installment_plan_total:, installments:, installments_outstanding:, installments_paid:, num_installments:, principal_amount:, source_type:, start_date:, state:, total_paid:)
+          # @!attribute updated
+          #   Timestamp of when the installment plan was last updated as of this statement
+          #
+          #   @return [Time]
+          required :updated, Time
+
+          # @!method initialize(token:, closed_at:, created:, fee_amount:, installment_plan_adjustment:, installment_plan_token:, installment_plan_total:, installments:, installments_outstanding:, installments_paid:, num_installments:, principal_amount:, source_amounts:, source_id:, source_type:, start_date:, state:, total_paid:, updated:)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement}
           #   for more details.
@@ -101,7 +142,13 @@ module Lithic
           #
           #   @param token [String] Globally unique identifier for this snapshot, which is the token of the statemen
           #
+          #   @param closed_at [Date, nil] Date the plan was paid off or cancelled, or null if it was still open as of this
+          #
+          #   @param created [Time] Timestamp of when the installment plan was created
+          #
           #   @param fee_amount [Integer] Enrollment fee charged when the plan was created in cents
+          #
+          #   @param installment_plan_adjustment [Integer] Amount credited to this plan after the plan was recalculated, as of this stateme
           #
           #   @param installment_plan_token [String] Globally unique identifier for the installment plan this snapshot is of
           #
@@ -117,6 +164,10 @@ module Lithic
           #
           #   @param principal_amount [Integer] Balance the plan was opened on in cents, excluding the enrollment fee
           #
+          #   @param source_amounts [Lithic::Models::FinancialAccounts::TransactionCategoryBalances, nil] Balance the plan was opened on, broken out by category, or null if it was not re
+          #
+          #   @param source_id [String] Identifier of the record the plan was opened from, such as the closing statement
+          #
           #   @param source_type [Symbol, Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::SourceType]
           #
           #   @param start_date [Date] Date the plan was created
@@ -124,6 +175,8 @@ module Lithic
           #   @param state [Symbol, Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::State] State of the installment plan. A plan is REBUILD_IN_PROGRESS while its loan tape
           #
           #   @param total_paid [Integer] Amount paid towards the plan as of this statement in cents
+          #
+          #   @param updated [Time] Timestamp of when the installment plan was last updated as of this statement
 
           class Installment < Lithic::Internal::Type::BaseModel
             # @!attribute amount_due
@@ -134,8 +187,8 @@ module Lithic
 
             # @!attribute amount_due_details
             #
-            #   @return [Lithic::Models::FinancialAccounts::CategoryBalances]
-            required :amount_due_details, -> { Lithic::FinancialAccounts::CategoryBalances }
+            #   @return [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
+            required :amount_due_details, -> { Lithic::FinancialAccounts::TransactionCategoryBalances }
 
             # @!attribute amount_outstanding
             #   Amount still owed on the installment in cents
@@ -145,8 +198,8 @@ module Lithic
 
             # @!attribute amount_outstanding_details
             #
-            #   @return [Lithic::Models::FinancialAccounts::CategoryBalances]
-            required :amount_outstanding_details, -> { Lithic::FinancialAccounts::CategoryBalances }
+            #   @return [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
+            required :amount_outstanding_details, -> { Lithic::FinancialAccounts::TransactionCategoryBalances }
 
             # @!attribute amount_paid
             #   Amount paid towards the installment in cents
@@ -156,8 +209,8 @@ module Lithic
 
             # @!attribute amount_paid_details
             #
-            #   @return [Lithic::Models::FinancialAccounts::CategoryBalances]
-            required :amount_paid_details, -> { Lithic::FinancialAccounts::CategoryBalances }
+            #   @return [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
+            required :amount_paid_details, -> { Lithic::FinancialAccounts::TransactionCategoryBalances }
 
             # @!attribute date_assessed
             #   Date the installment was actually assessed onto the account, or null if it had
@@ -191,26 +244,31 @@ module Lithic
             required :payments,
                      -> { Lithic::Internal::Type::ArrayOf[Lithic::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment] }
 
-            # @!method initialize(amount_due:, amount_due_details:, amount_outstanding:, amount_outstanding_details:, amount_paid:, amount_paid_details:, date_assessed:, due_date:, installment_num:, payment_due_date:, payments:)
+            # @!attribute installment_adjustment
+            #   Amount from installment_plan_adjustment credited to this installment as of this
+            #   statement
+            #
+            #   @return [Integer, nil]
+            optional :installment_adjustment, Integer
+
+            # @!method initialize(amount_due:, amount_due_details:, amount_outstanding:, amount_outstanding_details:, amount_paid:, amount_paid_details:, date_assessed:, due_date:, installment_num:, payment_due_date:, payments:, installment_adjustment: nil)
             #   Some parameter documentations has been truncated, see
             #   {Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment}
             #   for more details.
             #
-            #   One installment of a plan as of the statement. Amounts are totalled across
-            #   transaction categories rather than broken out by them, which the installment
-            #   plan endpoint does
+            #   One installment of a plan as of the statement
             #
             #   @param amount_due [Integer] Amount the installment was opened for in cents
             #
-            #   @param amount_due_details [Lithic::Models::FinancialAccounts::CategoryBalances]
+            #   @param amount_due_details [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
             #
             #   @param amount_outstanding [Integer] Amount still owed on the installment in cents
             #
-            #   @param amount_outstanding_details [Lithic::Models::FinancialAccounts::CategoryBalances]
+            #   @param amount_outstanding_details [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
             #
             #   @param amount_paid [Integer] Amount paid towards the installment in cents
             #
-            #   @param amount_paid_details [Lithic::Models::FinancialAccounts::CategoryBalances]
+            #   @param amount_paid_details [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
             #
             #   @param date_assessed [Date, nil] Date the installment was actually assessed onto the account, or null if it had n
             #
@@ -221,6 +279,8 @@ module Lithic
             #   @param payment_due_date [Date] Date the installment must be paid by before it is considered past due
             #
             #   @param payments [Array<Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment>] Payments applied to this installment, oldest first
+            #
+            #   @param installment_adjustment [Integer] Amount from installment_plan_adjustment credited to this installment as of this
 
             class Payment < Lithic::Internal::Type::BaseModel
               # @!attribute amount
@@ -229,16 +289,36 @@ module Lithic
               #   @return [Integer]
               required :amount, Integer
 
+              # @!attribute amount_details
+              #
+              #   @return [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
+              required :amount_details, -> { Lithic::FinancialAccounts::TransactionCategoryBalances }
+
               # @!attribute date
               #   Date the payment was applied to the installment
               #
               #   @return [Date]
               required :date, Date
 
-              # @!method initialize(amount:, date:)
+              # @!attribute is_adjustment
+              #   True when the source of the payment is an adjustment of an underlying account or
+              #   transaction
+              #
+              #   @return [Boolean, nil]
+              optional :is_adjustment, Lithic::Internal::Type::Boolean
+
+              # @!method initialize(amount:, amount_details:, date:, is_adjustment: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Lithic::Models::FinancialAccounts::InstallmentPlans::InstallmentPlanStatement::Installment::Payment}
+              #   for more details.
+              #
               #   @param amount [Integer] Amount applied to the installment in cents
               #
+              #   @param amount_details [Lithic::Models::FinancialAccounts::TransactionCategoryBalances]
+              #
               #   @param date [Date] Date the payment was applied to the installment
+              #
+              #   @param is_adjustment [Boolean] True when the source of the payment is an adjustment of an underlying account or
             end
           end
 
