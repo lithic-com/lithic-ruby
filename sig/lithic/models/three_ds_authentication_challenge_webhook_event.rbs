@@ -4,6 +4,7 @@ module Lithic
       {
         authentication_object: Lithic::ThreeDSAuthentication,
         challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+        created: Time,
         event_type: :"three_ds_authentication.challenge"
       }
 
@@ -12,17 +13,21 @@ module Lithic
 
       attr_accessor challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge
 
+      attr_accessor created: Time
+
       attr_accessor event_type: :"three_ds_authentication.challenge"
 
       def initialize: (
         authentication_object: Lithic::ThreeDSAuthentication,
         challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+        created: Time,
         ?event_type: :"three_ds_authentication.challenge"
       ) -> void
 
       def to_hash: -> {
         authentication_object: Lithic::ThreeDSAuthentication,
         challenge: Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+        created: Time,
         event_type: :"three_ds_authentication.challenge"
       }
 

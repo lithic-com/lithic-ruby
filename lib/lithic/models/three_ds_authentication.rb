@@ -88,6 +88,15 @@ module Lithic
       required :three_ds_requestor_challenge_indicator,
                enum: -> { Lithic::ThreeDSAuthentication::ThreeDSRequestorChallengeIndicator }
 
+      # @!attribute updated
+      #   Date and time when the authentication was last updated in Lithic's system. Equal
+      #   to `created` until the authentication is updated (e.g. a challenge is
+      #   completed). Permitted values: Date string in the ISO 8601 format
+      #   yyyy-MM-dd'T'hh:mm:ssZ.
+      #
+      #   @return [Time]
+      required :updated, Time
+
       # @!attribute additional_data
       #   Object containing additional data about the 3DS request that is beyond the EMV
       #   3DS standard spec (e.g., specific fields that only certain card networks send
@@ -172,7 +181,7 @@ module Lithic
       #   @return [Lithic::Models::ThreeDSAuthentication::Transaction, nil]
       optional :transaction, -> { Lithic::ThreeDSAuthentication::Transaction }, nil?: true
 
-      # @!method initialize(token:, account_type:, authentication_result:, card_expiry_check:, card_token:, cardholder:, channel:, created:, merchant:, message_category:, three_ds_requestor_challenge_indicator:, additional_data: nil, app: nil, authentication_request_type: nil, browser: nil, challenge_metadata: nil, challenge_orchestrated_by: nil, decision_made_by: nil, psd2_context: nil, three_ri_request_type: nil, transaction: nil)
+      # @!method initialize(token:, account_type:, authentication_result:, card_expiry_check:, card_token:, cardholder:, channel:, created:, merchant:, message_category:, three_ds_requestor_challenge_indicator:, updated:, additional_data: nil, app: nil, authentication_request_type: nil, browser: nil, challenge_metadata: nil, challenge_orchestrated_by: nil, decision_made_by: nil, psd2_context: nil, three_ri_request_type: nil, transaction: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::ThreeDSAuthentication} for more details.
       #
@@ -199,6 +208,8 @@ module Lithic
       #   @param message_category [Symbol, Lithic::Models::ThreeDSAuthentication::MessageCategory] Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For NON_PAYMENT_AUT
       #
       #   @param three_ds_requestor_challenge_indicator [Symbol, Lithic::Models::ThreeDSAuthentication::ThreeDSRequestorChallengeIndicator] Indicates whether a challenge is requested for this transaction
+      #
+      #   @param updated [Time] Date and time when the authentication was last updated in Lithic's system. Equal
       #
       #   @param additional_data [Lithic::Models::ThreeDSAuthentication::AdditionalData, nil] Object containing additional data about the 3DS request that is beyond the EMV 3
       #

@@ -23,6 +23,7 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
         merchant: Lithic::ThreeDSAuthentication::Merchant,
         message_category: Lithic::ThreeDSAuthentication::MessageCategory,
         three_ds_requestor_challenge_indicator: Lithic::ThreeDSAuthentication::ThreeDSRequestorChallengeIndicator,
+        updated: Time,
         additional_data: Lithic::ThreeDSAuthentication::AdditionalData | nil,
         app: Lithic::ThreeDSAuthentication::App | nil,
         authentication_request_type: Lithic::ThreeDSAuthentication::AuthenticationRequestType | nil,

@@ -15,15 +15,27 @@ module Lithic
       #   @return [Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge]
       required :challenge, -> { Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge }
 
+      # @!attribute created
+      #   Date and time when the challenge event was emitted. Permitted values: Date
+      #   string in the ISO 8601 format yyyy-MM-dd'T'hh:mm:ssZ.
+      #
+      #   @return [Time]
+      required :created, Time
+
       # @!attribute event_type
       #
       #   @return [Symbol, :"three_ds_authentication.challenge"]
       required :event_type, const: :"three_ds_authentication.challenge"
 
-      # @!method initialize(authentication_object:, challenge:, event_type: :"three_ds_authentication.challenge")
+      # @!method initialize(authentication_object:, challenge:, created:, event_type: :"three_ds_authentication.challenge")
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent} for more details.
+      #
       #   @param authentication_object [Lithic::Models::ThreeDSAuthentication] Represents a 3DS authentication
       #
       #   @param challenge [Lithic::Models::ThreeDSAuthenticationChallengeWebhookEvent::Challenge] Represents a challenge object for 3DS authentication
+      #
+      #   @param created [Time] Date and time when the challenge event was emitted. Permitted values: Date strin
       #
       #   @param event_type [Symbol, :"three_ds_authentication.challenge"]
 

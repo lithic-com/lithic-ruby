@@ -13,6 +13,7 @@ module Lithic
         merchant: Lithic::ThreeDSAuthentication::Merchant,
         message_category: Lithic::Models::ThreeDSAuthentication::message_category,
         three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator,
+        updated: Time,
         additional_data: Lithic::ThreeDSAuthentication::AdditionalData?,
         app: Lithic::ThreeDSAuthentication::App?,
         authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?,
@@ -48,6 +49,8 @@ module Lithic
 
       attr_accessor three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator
 
+      attr_accessor updated: Time
+
       attr_accessor additional_data: Lithic::ThreeDSAuthentication::AdditionalData?
 
       attr_accessor app: Lithic::ThreeDSAuthentication::App?
@@ -80,6 +83,7 @@ module Lithic
         merchant: Lithic::ThreeDSAuthentication::Merchant,
         message_category: Lithic::Models::ThreeDSAuthentication::message_category,
         three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator,
+        updated: Time,
         ?additional_data: Lithic::ThreeDSAuthentication::AdditionalData?,
         ?app: Lithic::ThreeDSAuthentication::App?,
         ?authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?,
@@ -104,6 +108,7 @@ module Lithic
         merchant: Lithic::ThreeDSAuthentication::Merchant,
         message_category: Lithic::Models::ThreeDSAuthentication::message_category,
         three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator,
+        updated: Time,
         additional_data: Lithic::ThreeDSAuthentication::AdditionalData?,
         app: Lithic::ThreeDSAuthentication::App?,
         authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?,

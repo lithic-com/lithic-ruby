@@ -31,6 +31,7 @@ class Lithic::Test::Resources::AuthRules::V2::BacktestsTest < Lithic::Test::Reso
     assert_pattern do
       response => {
         backtest_token: String,
+        created: Time,
         results: Lithic::AuthRules::V2::BacktestResults::Results,
         simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
       }

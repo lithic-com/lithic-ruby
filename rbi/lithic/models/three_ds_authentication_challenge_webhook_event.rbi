@@ -36,6 +36,11 @@ module Lithic
       end
       attr_writer :challenge
 
+      # Date and time when the challenge event was emitted. Permitted values: Date
+      # string in the ISO 8601 format yyyy-MM-dd'T'hh:mm:ssZ.
+      sig { returns(Time) }
+      attr_accessor :created
+
       sig { returns(Symbol) }
       attr_accessor :event_type
 
@@ -44,6 +49,7 @@ module Lithic
           authentication_object: Lithic::ThreeDSAuthentication::OrHash,
           challenge:
             Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge::OrHash,
+          created: Time,
           event_type: Symbol
         ).returns(T.attached_class)
       end
@@ -52,6 +58,9 @@ module Lithic
         authentication_object:,
         # Represents a challenge object for 3DS authentication
         challenge:,
+        # Date and time when the challenge event was emitted. Permitted values: Date
+        # string in the ISO 8601 format yyyy-MM-dd'T'hh:mm:ssZ.
+        created:,
         event_type: :"three_ds_authentication.challenge"
       )
       end
@@ -62,6 +71,7 @@ module Lithic
             authentication_object: Lithic::ThreeDSAuthentication,
             challenge:
               Lithic::ThreeDSAuthenticationChallengeWebhookEvent::Challenge,
+            created: Time,
             event_type: Symbol
           }
         )

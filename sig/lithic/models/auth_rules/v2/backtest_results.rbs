@@ -5,6 +5,7 @@ module Lithic
         type backtest_results =
           {
             backtest_token: String,
+            created: Time,
             results: Lithic::AuthRules::V2::BacktestResults::Results,
             simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
           }
@@ -12,18 +13,22 @@ module Lithic
         class BacktestResults < Lithic::Internal::Type::BaseModel
           attr_accessor backtest_token: String
 
+          attr_accessor created: Time
+
           attr_accessor results: Lithic::AuthRules::V2::BacktestResults::Results
 
           attr_accessor simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
 
           def initialize: (
             backtest_token: String,
+            created: Time,
             results: Lithic::AuthRules::V2::BacktestResults::Results,
             simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
           ) -> void
 
           def to_hash: -> {
             backtest_token: String,
+            created: Time,
             results: Lithic::AuthRules::V2::BacktestResults::Results,
             simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
           }

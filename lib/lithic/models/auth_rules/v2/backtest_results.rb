@@ -12,6 +12,12 @@ module Lithic
           #   @return [String]
           required :backtest_token, String
 
+          # @!attribute created
+          #   Date and time when the backtest was requested
+          #
+          #   @return [Time]
+          required :created, Time
+
           # @!attribute results
           #
           #   @return [Lithic::Models::AuthRules::V2::BacktestResults::Results]
@@ -22,8 +28,10 @@ module Lithic
           #   @return [Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters]
           required :simulation_parameters, -> { Lithic::AuthRules::V2::BacktestResults::SimulationParameters }
 
-          # @!method initialize(backtest_token:, results:, simulation_parameters:)
+          # @!method initialize(backtest_token:, created:, results:, simulation_parameters:)
           #   @param backtest_token [String] Auth Rule Backtest Token
+          #
+          #   @param created [Time] Date and time when the backtest was requested
           #
           #   @param results [Lithic::Models::AuthRules::V2::BacktestResults::Results]
           #

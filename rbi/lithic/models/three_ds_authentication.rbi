@@ -98,6 +98,13 @@ module Lithic
       end
       attr_accessor :three_ds_requestor_challenge_indicator
 
+      # Date and time when the authentication was last updated in Lithic's system. Equal
+      # to `created` until the authentication is updated (e.g. a challenge is
+      # completed). Permitted values: Date string in the ISO 8601 format
+      # yyyy-MM-dd'T'hh:mm:ssZ.
+      sig { returns(Time) }
+      attr_accessor :updated
+
       # Object containing additional data about the 3DS request that is beyond the EMV
       # 3DS standard spec (e.g., specific fields that only certain card networks send
       # but are not required across all 3DS requests).
@@ -243,6 +250,7 @@ module Lithic
             Lithic::ThreeDSAuthentication::MessageCategory::OrSymbol,
           three_ds_requestor_challenge_indicator:
             Lithic::ThreeDSAuthentication::ThreeDSRequestorChallengeIndicator::OrSymbol,
+          updated: Time,
           additional_data:
             T.nilable(Lithic::ThreeDSAuthentication::AdditionalData::OrHash),
           app: T.nilable(Lithic::ThreeDSAuthentication::App::OrHash),
@@ -310,6 +318,11 @@ module Lithic
         # - `DATA_SHARE_ONLY` - No Challenge requested (Data Share Only)
         # - `OTHER` - Other indicators not captured by above. These are rarely used
         three_ds_requestor_challenge_indicator:,
+        # Date and time when the authentication was last updated in Lithic's system. Equal
+        # to `created` until the authentication is updated (e.g. a challenge is
+        # completed). Permitted values: Date string in the ISO 8601 format
+        # yyyy-MM-dd'T'hh:mm:ssZ.
+        updated:,
         # Object containing additional data about the 3DS request that is beyond the EMV
         # 3DS standard spec (e.g., specific fields that only certain card networks send
         # but are not required across all 3DS requests).
@@ -372,6 +385,7 @@ module Lithic
               Lithic::ThreeDSAuthentication::MessageCategory::TaggedSymbol,
             three_ds_requestor_challenge_indicator:
               Lithic::ThreeDSAuthentication::ThreeDSRequestorChallengeIndicator::TaggedSymbol,
+            updated: Time,
             additional_data:
               T.nilable(Lithic::ThreeDSAuthentication::AdditionalData),
             app: T.nilable(Lithic::ThreeDSAuthentication::App),

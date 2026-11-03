@@ -17,6 +17,10 @@ module Lithic
           sig { returns(String) }
           attr_accessor :backtest_token
 
+          # Date and time when the backtest was requested
+          sig { returns(Time) }
+          attr_accessor :created
+
           sig { returns(Lithic::AuthRules::V2::BacktestResults::Results) }
           attr_reader :results
 
@@ -45,6 +49,7 @@ module Lithic
           sig do
             params(
               backtest_token: String,
+              created: Time,
               results: Lithic::AuthRules::V2::BacktestResults::Results::OrHash,
               simulation_parameters:
                 Lithic::AuthRules::V2::BacktestResults::SimulationParameters::OrHash
@@ -53,6 +58,8 @@ module Lithic
           def self.new(
             # Auth Rule Backtest Token
             backtest_token:,
+            # Date and time when the backtest was requested
+            created:,
             results:,
             simulation_parameters:
           )
@@ -62,6 +69,7 @@ module Lithic
             override.returns(
               {
                 backtest_token: String,
+                created: Time,
                 results: Lithic::AuthRules::V2::BacktestResults::Results,
                 simulation_parameters:
                   Lithic::AuthRules::V2::BacktestResults::SimulationParameters
