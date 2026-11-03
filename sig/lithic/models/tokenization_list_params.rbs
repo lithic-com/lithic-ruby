@@ -75,13 +75,15 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :ALL
+      type tokenization_channel =
+        :DIGITAL_WALLET | :MERCHANT | :AGENT_PAY | :ALL
 
       module TokenizationChannel
         extend Lithic::Internal::Type::Enum
 
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
+        AGENT_PAY: :AGENT_PAY
         ALL: :ALL
 
         def self?.values: -> ::Array[Lithic::Models::TokenizationListParams::tokenization_channel]

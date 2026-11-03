@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    type tokenization_create_params =
+      {
+        card_token: String,
+        agent_token: String,
+        type: Lithic::Models::TokenizationCreateParams::type_
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class TokenizationCreateParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor card_token: String
+
+      attr_accessor agent_token: String
+
+      attr_accessor type: Lithic::Models::TokenizationCreateParams::type_
+
+      def initialize: (
+        card_token: String,
+        agent_token: String,
+        type: Lithic::Models::TokenizationCreateParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        card_token: String,
+        agent_token: String,
+        type: Lithic::Models::TokenizationCreateParams::type_,
+        request_options: Lithic::RequestOptions
+      }
+
+      type type_ = :AGENT
+
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        AGENT: :AGENT
+
+        def self?.values: -> ::Array[Lithic::Models::TokenizationCreateParams::type_]
+      end
+    end
+  end
+end

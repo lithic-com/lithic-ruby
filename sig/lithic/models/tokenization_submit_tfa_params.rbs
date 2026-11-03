@@ -1,0 +1,28 @@
+module Lithic
+  module Models
+    type tokenization_submit_tfa_params =
+      { tokenization_token: String, value: String }
+      & Lithic::Internal::Type::request_parameters
+
+    class TokenizationSubmitTfaParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor tokenization_token: String
+
+      attr_accessor value: String
+
+      def initialize: (
+        tokenization_token: String,
+        value: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        tokenization_token: String,
+        value: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

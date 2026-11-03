@@ -1,0 +1,42 @@
+module Lithic
+  module Models
+    type tokenization_select_tfa_method_params =
+      {
+        tokenization_token: String,
+        method_: Lithic::Models::TokenizationSelectTfaMethodParams::method_
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class TokenizationSelectTfaMethodParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor tokenization_token: String
+
+      attr_accessor method_: Lithic::Models::TokenizationSelectTfaMethodParams::method_
+
+      def initialize: (
+        tokenization_token: String,
+        method_: Lithic::Models::TokenizationSelectTfaMethodParams::method_,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        tokenization_token: String,
+        method_: Lithic::Models::TokenizationSelectTfaMethodParams::method_,
+        request_options: Lithic::RequestOptions
+      }
+
+      type method_ = :SMS | :EMAIL
+
+      module Method
+        extend Lithic::Internal::Type::Enum
+
+        SMS: :SMS
+        EMAIL: :EMAIL
+
+        def self?.values: -> ::Array[Lithic::Models::TokenizationSelectTfaMethodParams::method_]
+      end
+    end
+  end
+end

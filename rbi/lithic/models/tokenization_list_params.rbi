@@ -159,6 +159,11 @@ module Lithic
             :MERCHANT,
             Lithic::TokenizationListParams::TokenizationChannel::TaggedSymbol
           )
+        AGENT_PAY =
+          T.let(
+            :AGENT_PAY,
+            Lithic::TokenizationListParams::TokenizationChannel::TaggedSymbol
+          )
         ALL =
           T.let(
             :ALL,

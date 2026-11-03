@@ -15,7 +15,8 @@ module Lithic
         device_id: String?,
         digital_card_art_token: String?,
         events: ::Array[Lithic::Tokenization::Event],
-        payment_account_reference_id: String?
+        payment_account_reference_id: String?,
+        tfa_methods: ::Array[Lithic::Tokenization::TfaMethod]
       }
 
     class Tokenization < Lithic::Internal::Type::BaseModel
@@ -51,6 +52,12 @@ module Lithic
 
       attr_accessor payment_account_reference_id: String?
 
+      attr_reader tfa_methods: ::Array[Lithic::Tokenization::TfaMethod]?
+
+      def tfa_methods=: (
+        ::Array[Lithic::Tokenization::TfaMethod]
+      ) -> ::Array[Lithic::Tokenization::TfaMethod]
+
       def initialize: (
         token: String,
         account_token: String,
@@ -65,7 +72,8 @@ module Lithic
         ?device_id: String?,
         ?digital_card_art_token: String?,
         ?events: ::Array[Lithic::Tokenization::Event],
-        ?payment_account_reference_id: String?
+        ?payment_account_reference_id: String?,
+        ?tfa_methods: ::Array[Lithic::Tokenization::TfaMethod]
       ) -> void
 
       def to_hash: -> {
@@ -82,7 +90,8 @@ module Lithic
         device_id: String?,
         digital_card_art_token: String?,
         events: ::Array[Lithic::Tokenization::Event],
-        payment_account_reference_id: String?
+        payment_account_reference_id: String?,
+        tfa_methods: ::Array[Lithic::Tokenization::TfaMethod]
       }
 
       type status =
@@ -142,13 +151,14 @@ module Lithic
         VISA_CHECKOUT: :VISA_CHECKOUT
       end
 
-      type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
+      type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :AGENT_PAY
 
       module TokenizationChannel
         extend Lithic::Internal::Type::Enum
 
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
+        AGENT_PAY: :AGENT_PAY
 
         def self?.values: -> ::Array[Lithic::Models::Tokenization::tokenization_channel]
       end
@@ -273,6 +283,39 @@ module Lithic
           TOKENIZATION_UPDATED: :TOKENIZATION_UPDATED
 
           def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::type_]
+        end
+      end
+
+      type tfa_method =
+        {
+          destination: String,
+          method_: Lithic::Models::Tokenization::TfaMethod::method_
+        }
+
+      class TfaMethod < Lithic::Internal::Type::BaseModel
+        attr_accessor destination: String
+
+        attr_accessor method_: Lithic::Models::Tokenization::TfaMethod::method_
+
+        def initialize: (
+          destination: String,
+          method_: Lithic::Models::Tokenization::TfaMethod::method_
+        ) -> void
+
+        def to_hash: -> {
+          destination: String,
+          method_: Lithic::Models::Tokenization::TfaMethod::method_
+        }
+
+        type method_ = :SMS | :EMAIL
+
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          SMS: :SMS
+          EMAIL: :EMAIL
+
+          def self?.values: -> ::Array[Lithic::Models::Tokenization::TfaMethod::method_]
         end
       end
     end

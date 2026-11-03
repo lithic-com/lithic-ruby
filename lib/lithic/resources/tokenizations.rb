@@ -3,6 +3,44 @@
 module Lithic
   module Resources
     class Tokenizations
+      # > 🚧 Beta API
+      # >
+      # > This endpoint is in beta and subject to change.
+      #
+      # Create a tokenization for an OPEN card. Contact your Lithic representative to
+      # configure tokenization for your program and card network.
+      #
+      # If the status is PENDING_2FA, select an available tfa_methods entry and submit
+      # the cardholder's authentication code. An ACTIVE tokenization can then be used to
+      # create payment credentials.
+      #
+      # Additional attempts to create the same tokenizations on a card will result in a
+      # 409 Conflict.
+      #
+      # @overload create(card_token, agent_token:, type:, request_options: {})
+      #
+      # @param card_token [String] Card token
+      #
+      # @param agent_token [String] Globally unique identifier for the active agent configured for your program
+      #
+      # @param type [Symbol, Lithic::Models::TokenizationCreateParams::Type] Type of tokenization to create
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::Tokenization]
+      #
+      # @see Lithic::Models::TokenizationCreateParams
+      def create(card_token, params)
+        parsed, options = Lithic::TokenizationCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/cards/%1$s/tokenizations", card_token],
+          body: parsed,
+          model: Lithic::Tokenization,
+          options: options
+        )
+      end
+
       # Get tokenization
       #
       # @overload retrieve(tokenization_token, request_options: {})
@@ -88,6 +126,41 @@ module Lithic
           path: ["v1/tokenizations/%1$s/activate", tokenization_token],
           model: NilClass,
           options: params[:request_options]
+        )
+      end
+
+      # > 🚧 Beta API
+      # >
+      # > This endpoint is in beta and subject to change.
+      #
+      # Create payment credentials and a purchase mandate for an ACTIVE tokenization.
+      #
+      # The credential value, expiration date, and CVV are only available in this
+      # response and cannot be retrieved later.
+      #
+      # @overload create_payment_credentials(tokenization_token, device:, mandate:, type:, request_options: {})
+      #
+      # @param tokenization_token [String] Tokenization token
+      #
+      # @param device [Lithic::Models::TokenizationCreatePaymentCredentialsParams::Device] Device used for the purchase
+      #
+      # @param mandate [Lithic::Models::TokenizationCreatePaymentCredentialsParams::Mandate]
+      #
+      # @param type [Symbol, Lithic::Models::TokenizationCreatePaymentCredentialsParams::Type] Type of purchase for which payment credentials are requested
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::TokenizationCreatePaymentCredentialsResponse]
+      #
+      # @see Lithic::Models::TokenizationCreatePaymentCredentialsParams
+      def create_payment_credentials(tokenization_token, params)
+        parsed, options = Lithic::TokenizationCreatePaymentCredentialsParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/tokenizations/%1$s/payment_credentials", tokenization_token],
+          body: parsed,
+          model: Lithic::Models::TokenizationCreatePaymentCredentialsResponse,
+          options: options
         )
       end
 
@@ -182,6 +255,40 @@ module Lithic
         )
       end
 
+      # > 🚧 Beta API
+      # >
+      # > This endpoint is in beta and subject to change.
+      #
+      # Select an available SMS or EMAIL authentication method for a tokenization with
+      # status PENDING_2FA. Use a method returned in the tokenization's list of
+      # tfa_methods. The card network initiates delivery of the authentication code to
+      # the corresponding destination.
+      #
+      # A successful response confirms method selection, not tokenization activation.
+      # Submit the code using submit_tfa after the cardholder receives it.
+      #
+      # @overload select_tfa_method(tokenization_token, method_:, request_options: {})
+      #
+      # @param tokenization_token [String] Tokenization token
+      #
+      # @param method_ [Symbol, Lithic::Models::TokenizationSelectTfaMethodParams::Method] An available method from the tokenization's list of tfa_methods
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::TokenizationSelectTfaMethodResponse]
+      #
+      # @see Lithic::Models::TokenizationSelectTfaMethodParams
+      def select_tfa_method(tokenization_token, params)
+        parsed, options = Lithic::TokenizationSelectTfaMethodParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/tokenizations/%1$s/select_tfa_method", tokenization_token],
+          body: parsed,
+          model: Lithic::Models::TokenizationSelectTfaMethodResponse,
+          options: options
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::TokenizationSimulateParams} for more details.
       #
@@ -218,6 +325,43 @@ module Lithic
           path: "v1/simulate/tokenizations",
           body: parsed,
           model: Lithic::Tokenization,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TokenizationSubmitTfaParams} for more details.
+      #
+      # > 🚧 Beta API
+      # >
+      # > This endpoint is in beta and subject to change.
+      #
+      # Submit the cardholder's one-time authentication code for a tokenization with
+      # status PENDING_2FA. A successful select_tfa_method request must precede
+      # submission. Send the code as a string to preserve leading zeros.
+      #
+      # A successful response means that the network accepted the authentication code.
+      # The activation of a tokenization will occur asynchronously initiated by the card
+      # network.
+      #
+      # @overload submit_tfa(tokenization_token, value:, request_options: {})
+      #
+      # @param tokenization_token [String] Tokenization token
+      #
+      # @param value [String] One-time authentication code received by the cardholder, including any leading z
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::TokenizationSubmitTfaResponse]
+      #
+      # @see Lithic::Models::TokenizationSubmitTfaParams
+      def submit_tfa(tokenization_token, params)
+        parsed, options = Lithic::TokenizationSubmitTfaParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/tokenizations/%1$s/submit_tfa", tokenization_token],
+          body: parsed,
+          model: Lithic::Models::TokenizationSubmitTfaResponse,
           options: options
         )
       end

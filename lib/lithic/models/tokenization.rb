@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    # @see Lithic::Resources::Tokenizations#retrieve
+    # @see Lithic::Resources::Tokenizations#create
     class Tokenization < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for a Tokenization
@@ -93,7 +93,15 @@ module Lithic
       #   @return [String, nil]
       optional :payment_account_reference_id, String, nil?: true
 
-      # @!method initialize(token:, account_token:, card_token:, created_at:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, device_id: nil, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil)
+      # @!attribute tfa_methods
+      #   Available authentication methods for an agent tokenization pending two-factor
+      #   authentication. Empty when no methods are available or authentication is no
+      #   longer pending
+      #
+      #   @return [Array<Lithic::Models::Tokenization::TfaMethod>, nil]
+      optional :tfa_methods, -> { Lithic::Internal::Type::ArrayOf[Lithic::Tokenization::TfaMethod] }
+
+      # @!method initialize(token:, account_token:, card_token:, created_at:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, device_id: nil, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil, tfa_methods: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::Tokenization} for more details.
       #
@@ -124,6 +132,8 @@ module Lithic
       #   @param events [Array<Lithic::Models::Tokenization::Event>] A list of events related to the tokenization.
       #
       #   @param payment_account_reference_id [String, nil] The network's unique reference for the card that is tokenized.
+      #
+      #   @param tfa_methods [Array<Lithic::Models::Tokenization::TfaMethod>] Available authentication methods for an agent tokenization pending two-factor au
 
       # The status of the tokenization request
       #
@@ -211,6 +221,7 @@ module Lithic
 
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT
+        AGENT_PAY = :AGENT_PAY
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -310,6 +321,38 @@ module Lithic
           TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING
           TOKENIZATION_ELIGIBILITY_CHECK = :TOKENIZATION_ELIGIBILITY_CHECK
           TOKENIZATION_UPDATED = :TOKENIZATION_UPDATED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
+      class TfaMethod < Lithic::Internal::Type::BaseModel
+        # @!attribute destination
+        #   Destination for the authentication code, as provided by the card network
+        #
+        #   @return [String]
+        required :destination, String
+
+        # @!attribute method_
+        #   Method used to deliver the one-time authentication code
+        #
+        #   @return [Symbol, Lithic::Models::Tokenization::TfaMethod::Method]
+        required :method_, enum: -> { Lithic::Tokenization::TfaMethod::Method }, api_name: :method
+
+        # @!method initialize(destination:, method_:)
+        #   @param destination [String] Destination for the authentication code, as provided by the card network
+        #
+        #   @param method_ [Symbol, Lithic::Models::Tokenization::TfaMethod::Method] Method used to deliver the one-time authentication code
+
+        # Method used to deliver the one-time authentication code
+        #
+        # @see Lithic::Models::Tokenization::TfaMethod#method_
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          SMS = :SMS
+          EMAIL = :EMAIL
 
           # @!method self.values
           #   @return [Array<Symbol>]

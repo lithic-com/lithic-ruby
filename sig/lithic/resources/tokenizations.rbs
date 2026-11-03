@@ -1,6 +1,13 @@
 module Lithic
   module Resources
     class Tokenizations
+      def create: (
+        String card_token,
+        agent_token: String,
+        type: Lithic::Models::TokenizationCreateParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Tokenization
+
       def retrieve: (
         String tokenization_token,
         ?request_options: Lithic::request_opts
@@ -23,6 +30,14 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> nil
 
+      def create_payment_credentials: (
+        String tokenization_token,
+        device: Lithic::TokenizationCreatePaymentCredentialsParams::Device,
+        mandate: Lithic::TokenizationCreatePaymentCredentialsParams::Mandate,
+        type: Lithic::Models::TokenizationCreatePaymentCredentialsParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TokenizationCreatePaymentCredentialsResponse
+
       def deactivate: (
         String tokenization_token,
         ?request_options: Lithic::request_opts
@@ -39,6 +54,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> nil
 
+      def select_tfa_method: (
+        String tokenization_token,
+        method_: Lithic::Models::TokenizationSelectTfaMethodParams::method_,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TokenizationSelectTfaMethodResponse
+
       def simulate: (
         cvv: String,
         expiration_date: String,
@@ -50,6 +71,12 @@ module Lithic
         ?wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Tokenization
+
+      def submit_tfa: (
+        String tokenization_token,
+        value: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TokenizationSubmitTfaResponse
 
       def unpause: (
         String tokenization_token,

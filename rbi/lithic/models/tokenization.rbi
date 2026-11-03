@@ -70,6 +70,19 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :payment_account_reference_id
 
+      # Available authentication methods for an agent tokenization pending two-factor
+      # authentication. Empty when no methods are available or authentication is no
+      # longer pending
+      sig { returns(T.nilable(T::Array[Lithic::Tokenization::TfaMethod])) }
+      attr_reader :tfa_methods
+
+      sig do
+        params(
+          tfa_methods: T::Array[Lithic::Tokenization::TfaMethod::OrHash]
+        ).void
+      end
+      attr_writer :tfa_methods
+
       sig do
         params(
           token: String,
@@ -87,7 +100,8 @@ module Lithic
           device_id: T.nilable(String),
           digital_card_art_token: T.nilable(String),
           events: T::Array[Lithic::Tokenization::Event::OrHash],
-          payment_account_reference_id: T.nilable(String)
+          payment_account_reference_id: T.nilable(String),
+          tfa_methods: T::Array[Lithic::Tokenization::TfaMethod::OrHash]
         ).returns(T.attached_class)
       end
       def self.new(
@@ -123,7 +137,11 @@ module Lithic
         # A list of events related to the tokenization.
         events: nil,
         # The network's unique reference for the card that is tokenized.
-        payment_account_reference_id: nil
+        payment_account_reference_id: nil,
+        # Available authentication methods for an agent tokenization pending two-factor
+        # authentication. Empty when no methods are available or authentication is no
+        # longer pending
+        tfa_methods: nil
       )
       end
 
@@ -145,7 +163,8 @@ module Lithic
             device_id: T.nilable(String),
             digital_card_art_token: T.nilable(String),
             events: T::Array[Lithic::Tokenization::Event],
-            payment_account_reference_id: T.nilable(String)
+            payment_account_reference_id: T.nilable(String),
+            tfa_methods: T::Array[Lithic::Tokenization::TfaMethod]
           }
         )
       end
@@ -286,6 +305,11 @@ module Lithic
         MERCHANT =
           T.let(
             :MERCHANT,
+            Lithic::Tokenization::TokenizationChannel::TaggedSymbol
+          )
+        AGENT_PAY =
+          T.let(
+            :AGENT_PAY,
             Lithic::Tokenization::TokenizationChannel::TaggedSymbol
           )
 
@@ -539,6 +563,70 @@ module Lithic
           sig do
             override.returns(
               T::Array[Lithic::Tokenization::Event::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
+      class TfaMethod < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Tokenization::TfaMethod, Lithic::Internal::AnyHash)
+          end
+
+        # Destination for the authentication code, as provided by the card network
+        sig { returns(String) }
+        attr_accessor :destination
+
+        # Method used to deliver the one-time authentication code
+        sig { returns(Lithic::Tokenization::TfaMethod::Method::TaggedSymbol) }
+        attr_accessor :method_
+
+        sig do
+          params(
+            destination: String,
+            method_: Lithic::Tokenization::TfaMethod::Method::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Destination for the authentication code, as provided by the card network
+          destination:,
+          # Method used to deliver the one-time authentication code
+          method_:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              destination: String,
+              method_: Lithic::Tokenization::TfaMethod::Method::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # Method used to deliver the one-time authentication code
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::Tokenization::TfaMethod::Method)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SMS =
+            T.let(:SMS, Lithic::Tokenization::TfaMethod::Method::TaggedSymbol)
+          EMAIL =
+            T.let(:EMAIL, Lithic::Tokenization::TfaMethod::Method::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Lithic::Tokenization::TfaMethod::Method::TaggedSymbol]
             )
           end
           def self.values

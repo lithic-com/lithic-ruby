@@ -87,6 +87,7 @@ module Lithic
 
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT
+        AGENT_PAY = :AGENT_PAY
         ALL = :ALL
 
         # @!method self.values
