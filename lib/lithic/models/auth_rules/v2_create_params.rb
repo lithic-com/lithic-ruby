@@ -58,7 +58,7 @@ module Lithic
             # @!attribute parameters
             #   Parameters for the Auth Rule
             #
-            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters]
+            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters]
             required :parameters, union: -> { Lithic::AuthRules::V2CreateParams::Body::Rule::Parameters }
 
             # @!attribute type
@@ -99,7 +99,7 @@ module Lithic
             #
             #   @param entities [Lithic::Models::AuthRules::AuthRuleEntities] The entities an Auth Rule applies to (`include`) and does not apply to (`exclude
             #
-            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters] Parameters for the Auth Rule
+            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
             #
             #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::Rule::Type] The type of Auth Rule. For certain rule types, this determines the event stream
             #
@@ -132,10 +132,8 @@ module Lithic
               # Parameters for defining a TypeScript code rule
               variant -> { Lithic::AuthRules::TypescriptCodeParameters }
 
-              variant -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters }
-
               # @!method self.variants
-              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters)]
+              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters)]
             end
 
             # The type of Auth Rule. For certain rule types, this determines the event stream
@@ -174,7 +172,7 @@ module Lithic
             # @!attribute parameters
             #   Parameters for the Auth Rule
             #
-            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters]
+            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters]
             required :parameters, union: -> { Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Parameters }
 
             # @!attribute type
@@ -236,7 +234,7 @@ module Lithic
             #
             #   Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             #
-            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters] Parameters for the Auth Rule
+            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
             #
             #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::AccountLevelRule::Type] The type of Auth Rule. For certain rule types, this determines the event stream
             #
@@ -273,10 +271,8 @@ module Lithic
               # Parameters for defining a TypeScript code rule
               variant -> { Lithic::AuthRules::TypescriptCodeParameters }
 
-              variant -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters }
-
               # @!method self.variants
-              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters)]
+              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters)]
             end
 
             # The type of Auth Rule. For certain rule types, this determines the event stream
@@ -326,7 +322,7 @@ module Lithic
             # @!attribute parameters
             #   Parameters for the Auth Rule
             #
-            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters]
+            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters]
             required :parameters, union: -> { Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Parameters }
 
             # @!attribute type
@@ -370,7 +366,7 @@ module Lithic
             #
             #   @param card_tokens [Array<String>] Deprecated: Use `entities.include` with `CARD` entities instead.
             #
-            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters] Parameters for the Auth Rule
+            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
             #
             #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Body::CardLevelRule::Type] The type of Auth Rule. For certain rule types, this determines the event stream
             #
@@ -403,10 +399,8 @@ module Lithic
               # Parameters for defining a TypeScript code rule
               variant -> { Lithic::AuthRules::TypescriptCodeParameters }
 
-              variant -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters }
-
               # @!method self.variants
-              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters)]
+              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters)]
             end
 
             # The type of Auth Rule. For certain rule types, this determines the event stream
@@ -445,7 +439,7 @@ module Lithic
             # @!attribute parameters
             #   Parameters for the Auth Rule
             #
-            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters]
+            #   @return [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters]
             required :parameters, union: -> { Lithic::AuthRules::V2CreateParams::Body::ProgramLevelRule::Parameters }
 
             # @!attribute program_level
@@ -528,7 +522,7 @@ module Lithic
             #
             #   Deprecated: Use `entities` instead. Cannot be combined with `entities`.
             #
-            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters] Parameters for the Auth Rule
+            #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
             #
             #   @param program_level [Boolean] Deprecated: Use `entities.include` with a `PROGRAM` entity instead.
             #
@@ -569,10 +563,8 @@ module Lithic
               # Parameters for defining a TypeScript code rule
               variant -> { Lithic::AuthRules::TypescriptCodeParameters }
 
-              variant -> { Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters }
-
               # @!method self.variants
-              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters, Lithic::Models::AuthRules::ConditionalAuthorizationAdjustmentParameters)]
+              #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters)]
             end
 
             # The type of Auth Rule. For certain rule types, this determines the event stream

@@ -22,15 +22,74 @@ module Lithic
           conditions: ::Array[Lithic::AuthRules::AuthRuleCondition]
         }
 
-        type action = :DECLINE | :CHALLENGE
+        type action =
+          Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::authorization_action
+          | Lithic::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction
 
         module Action
-          extend Lithic::Internal::Type::Enum
+          extend Lithic::Internal::Type::Union
 
-          DECLINE: :DECLINE
-          CHALLENGE: :CHALLENGE
+          type authorization_action = :DECLINE | :CHALLENGE
 
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::action]
+          module AuthorizationAction
+            extend Lithic::Internal::Type::Enum
+
+            DECLINE: :DECLINE
+            CHALLENGE: :CHALLENGE
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::authorization_action]
+          end
+
+          type hold_adjustment_action =
+            {
+              mode: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::mode,
+              type: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::type_,
+              value: Integer
+            }
+
+          class HoldAdjustmentAction < Lithic::Internal::Type::BaseModel
+            attr_accessor mode: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::mode
+
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::type_
+
+            attr_accessor value: Integer
+
+            def initialize: (
+              mode: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::mode,
+              type: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::type_,
+              value: Integer
+            ) -> void
+
+            def to_hash: -> {
+              mode: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::mode,
+              type: Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::type_,
+              value: Integer
+            }
+
+            type mode = :REPLACE_WITH_AMOUNT | :ADD_PERCENTAGE | :ADD_AMOUNT
+
+            module Mode
+              extend Lithic::Internal::Type::Enum
+
+              REPLACE_WITH_AMOUNT: :REPLACE_WITH_AMOUNT
+              ADD_PERCENTAGE: :ADD_PERCENTAGE
+              ADD_AMOUNT: :ADD_AMOUNT
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::mode]
+            end
+
+            type type_ = :HOLD_ADJUSTMENT
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              HOLD_ADJUSTMENT: :HOLD_ADJUSTMENT
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::Action::HoldAdjustmentAction::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters::action]
         end
       end
     end

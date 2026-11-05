@@ -119,8 +119,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalTokenizationActionParameters,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                   Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                  Lithic::AuthRules::TypescriptCodeParameters,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                  Lithic::AuthRules::TypescriptCodeParameters
                 )
               )
             end
@@ -176,8 +175,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
-                    Lithic::AuthRules::TypescriptCodeParameters::OrHash,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
+                    Lithic::AuthRules::TypescriptCodeParameters::OrHash
                   ),
                 type:
                   Lithic::AuthRules::V2CreateParams::Body::Rule::Type::OrSymbol,
@@ -241,8 +239,7 @@ module Lithic
                       Lithic::AuthRules::ConditionalTokenizationActionParameters,
                       Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                       Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                      Lithic::AuthRules::TypescriptCodeParameters,
-                      Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                      Lithic::AuthRules::TypescriptCodeParameters
                     ),
                   type:
                     Lithic::AuthRules::V2CreateParams::Body::Rule::Type::OrSymbol,
@@ -269,8 +266,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                    Lithic::AuthRules::TypescriptCodeParameters,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                    Lithic::AuthRules::TypescriptCodeParameters
                   )
                 end
 
@@ -371,8 +367,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalTokenizationActionParameters,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                   Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                  Lithic::AuthRules::TypescriptCodeParameters,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                  Lithic::AuthRules::TypescriptCodeParameters
                 )
               )
             end
@@ -446,8 +441,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
-                    Lithic::AuthRules::TypescriptCodeParameters::OrHash,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
+                    Lithic::AuthRules::TypescriptCodeParameters::OrHash
                   ),
                 type:
                   Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::OrSymbol,
@@ -504,8 +498,7 @@ module Lithic
                       Lithic::AuthRules::ConditionalTokenizationActionParameters,
                       Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                       Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                      Lithic::AuthRules::TypescriptCodeParameters,
-                      Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                      Lithic::AuthRules::TypescriptCodeParameters
                     ),
                   type:
                     Lithic::AuthRules::V2CreateParams::Body::AccountLevelRule::Type::OrSymbol,
@@ -534,8 +527,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                    Lithic::AuthRules::TypescriptCodeParameters,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                    Lithic::AuthRules::TypescriptCodeParameters
                   )
                 end
 
@@ -643,8 +635,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalTokenizationActionParameters,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                   Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                  Lithic::AuthRules::TypescriptCodeParameters,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                  Lithic::AuthRules::TypescriptCodeParameters
                 )
               )
             end
@@ -701,8 +692,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
-                    Lithic::AuthRules::TypescriptCodeParameters::OrHash,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
+                    Lithic::AuthRules::TypescriptCodeParameters::OrHash
                   ),
                 type:
                   Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::OrSymbol,
@@ -755,8 +745,7 @@ module Lithic
                       Lithic::AuthRules::ConditionalTokenizationActionParameters,
                       Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                       Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                      Lithic::AuthRules::TypescriptCodeParameters,
-                      Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                      Lithic::AuthRules::TypescriptCodeParameters
                     ),
                   type:
                     Lithic::AuthRules::V2CreateParams::Body::CardLevelRule::Type::OrSymbol,
@@ -783,8 +772,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                    Lithic::AuthRules::TypescriptCodeParameters,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                    Lithic::AuthRules::TypescriptCodeParameters
                   )
                 end
 
@@ -885,8 +873,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalTokenizationActionParameters,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                   Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                  Lithic::AuthRules::TypescriptCodeParameters,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                  Lithic::AuthRules::TypescriptCodeParameters
                 )
               )
             end
@@ -978,8 +965,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
-                    Lithic::AuthRules::TypescriptCodeParameters::OrHash,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
+                    Lithic::AuthRules::TypescriptCodeParameters::OrHash
                   ),
                 program_level: T::Boolean,
                 type:
@@ -1047,8 +1033,7 @@ module Lithic
                       Lithic::AuthRules::ConditionalTokenizationActionParameters,
                       Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                       Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                      Lithic::AuthRules::TypescriptCodeParameters,
-                      Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                      Lithic::AuthRules::TypescriptCodeParameters
                     ),
                   program_level: T::Boolean,
                   type:
@@ -1079,8 +1064,7 @@ module Lithic
                     Lithic::AuthRules::ConditionalTokenizationActionParameters,
                     Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters,
                     Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters,
-                    Lithic::AuthRules::TypescriptCodeParameters,
-                    Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters
+                    Lithic::AuthRules::TypescriptCodeParameters
                   )
                 end
 

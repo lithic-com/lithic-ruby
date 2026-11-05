@@ -136,8 +136,7 @@ module Lithic
                   Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalCardTransactionUpdateActionParameters::OrHash,
                   Lithic::AuthRules::ConditionalACHPaymentUpdateActionParameters::OrHash,
-                  Lithic::AuthRules::TypescriptCodeParameters::OrHash,
-                  Lithic::AuthRules::ConditionalAuthorizationAdjustmentParameters::OrHash
+                  Lithic::AuthRules::TypescriptCodeParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash
