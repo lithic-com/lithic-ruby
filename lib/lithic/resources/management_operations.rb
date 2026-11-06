@@ -18,11 +18,11 @@ module Lithic
       #
       # @param effective_date [Date]
       #
-      # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType] Type of management operation to create. To reverse an existing management operat
       #
       # @param financial_account_token [String]
       #
-      # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      # @param token [String] Client-provided token that will serve as an idempotency token. This token will b
       #
       # @param memo [String]
       #

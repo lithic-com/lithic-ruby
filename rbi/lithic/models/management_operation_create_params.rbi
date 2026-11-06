@@ -30,6 +30,8 @@ module Lithic
       sig { returns(Date) }
       attr_accessor :effective_date
 
+      # Type of management operation to create. To reverse an existing management
+      # operation, use the reverse management operation endpoint
       sig do
         returns(Lithic::ManagementOperationCreateParams::EventType::OrSymbol)
       end
@@ -38,7 +40,7 @@ module Lithic
       sig { returns(String) }
       attr_accessor :financial_account_token
 
-      # Customer-provided token that will serve as an idempotency token. This token will
+      # Client-provided token that will serve as an idempotency token. This token will
       # become the transaction token.
       sig { returns(T.nilable(String)) }
       attr_reader :token
@@ -106,9 +108,11 @@ module Lithic
         category:,
         direction:,
         effective_date:,
+        # Type of management operation to create. To reverse an existing management
+        # operation, use the reverse management operation endpoint
         event_type:,
         financial_account_token:,
-        # Customer-provided token that will serve as an idempotency token. This token will
+        # Client-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token: nil,
         memo: nil,
@@ -222,6 +226,8 @@ module Lithic
         end
       end
 
+      # Type of management operation to create. To reverse an existing management
+      # operation, use the reverse management operation endpoint
       module EventType
         extend Lithic::Internal::Type::Enum
 
@@ -231,19 +237,9 @@ module Lithic
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        LOSS_WRITE_OFF =
-          T.let(
-            :LOSS_WRITE_OFF,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         CASH_BACK =
           T.let(
             :CASH_BACK,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        CASH_BACK_REVERSAL =
-          T.let(
-            :CASH_BACK_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         CURRENCY_CONVERSION =
@@ -251,29 +247,9 @@ module Lithic
             :CURRENCY_CONVERSION,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        CURRENCY_CONVERSION_REVERSAL =
-          T.let(
-            :CURRENCY_CONVERSION_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        INTEREST =
-          T.let(
-            :INTEREST,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        INTEREST_REVERSAL =
-          T.let(
-            :INTEREST_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         INSTALLMENT_FEE =
           T.let(
             :INSTALLMENT_FEE,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        INSTALLMENT_FEE_REVERSAL =
-          T.let(
-            :INSTALLMENT_FEE_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         LATE_PAYMENT =
@@ -281,19 +257,9 @@ module Lithic
             :LATE_PAYMENT,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        LATE_PAYMENT_REVERSAL =
-          T.let(
-            :LATE_PAYMENT_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         BILLING_ERROR =
           T.let(
             :BILLING_ERROR,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        BILLING_ERROR_REVERSAL =
-          T.let(
-            :BILLING_ERROR_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         PROVISIONAL_CREDIT =
@@ -301,19 +267,9 @@ module Lithic
             :PROVISIONAL_CREDIT,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        PROVISIONAL_CREDIT_REVERSAL =
-          T.let(
-            :PROVISIONAL_CREDIT_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         RETURNED_PAYMENT =
           T.let(
             :RETURNED_PAYMENT,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        RETURNED_PAYMENT_REVERSAL =
-          T.let(
-            :RETURNED_PAYMENT_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         DISPUTE_WON =
@@ -321,19 +277,9 @@ module Lithic
             :DISPUTE_WON,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        DISPUTE_WON_REVERSAL =
-          T.let(
-            :DISPUTE_WON_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         DISBURSE =
           T.let(
             :DISBURSE,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        DISBURSE_REVERSAL =
-          T.let(
-            :DISBURSE_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         ANNUAL =
@@ -341,19 +287,9 @@ module Lithic
             :ANNUAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        ANNUAL_REVERSAL =
-          T.let(
-            :ANNUAL_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         QUARTERLY =
           T.let(
             :QUARTERLY,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        QUARTERLY_REVERSAL =
-          T.let(
-            :QUARTERLY_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         MONTHLY =
@@ -361,19 +297,9 @@ module Lithic
             :MONTHLY,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        MONTHLY_REVERSAL =
-          T.let(
-            :MONTHLY_REVERSAL,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
         FEE =
           T.let(
             :FEE,
-            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
-          )
-        FEE_REVERSAL =
-          T.let(
-            :FEE_REVERSAL,
             Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
 

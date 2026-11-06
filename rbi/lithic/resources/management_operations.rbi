@@ -28,9 +28,11 @@ module Lithic
         category:,
         direction:,
         effective_date:,
+        # Type of management operation to create. To reverse an existing management
+        # operation, use the reverse management operation endpoint
         event_type:,
         financial_account_token:,
-        # Customer-provided token that will serve as an idempotency token. This token will
+        # Client-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token: nil,
         memo: nil,

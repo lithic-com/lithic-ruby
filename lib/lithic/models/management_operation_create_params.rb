@@ -28,6 +28,8 @@ module Lithic
       required :effective_date, Date
 
       # @!attribute event_type
+      #   Type of management operation to create. To reverse an existing management
+      #   operation, use the reverse management operation endpoint
       #
       #   @return [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
       required :event_type, enum: -> { Lithic::ManagementOperationCreateParams::EventType }
@@ -38,7 +40,7 @@ module Lithic
       required :financial_account_token, String
 
       # @!attribute token
-      #   Customer-provided token that will serve as an idempotency token. This token will
+      #   Client-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       #
       #   @return [String, nil]
@@ -77,11 +79,11 @@ module Lithic
       #
       #   @param effective_date [Date]
       #
-      #   @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      #   @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType] Type of management operation to create. To reverse an existing management operat
       #
       #   @param financial_account_token [String]
       #
-      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #   @param token [String] Client-provided token that will serve as an idempotency token. This token will b
       #
       #   @param memo [String]
       #
@@ -116,38 +118,24 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
+      # Type of management operation to create. To reverse an existing management
+      # operation, use the reverse management operation endpoint
       module EventType
         extend Lithic::Internal::Type::Enum
 
-        LOSS_WRITE_OFF = :LOSS_WRITE_OFF
         CASH_BACK = :CASH_BACK
-        CASH_BACK_REVERSAL = :CASH_BACK_REVERSAL
         CURRENCY_CONVERSION = :CURRENCY_CONVERSION
-        CURRENCY_CONVERSION_REVERSAL = :CURRENCY_CONVERSION_REVERSAL
-        INTEREST = :INTEREST
-        INTEREST_REVERSAL = :INTEREST_REVERSAL
         INSTALLMENT_FEE = :INSTALLMENT_FEE
-        INSTALLMENT_FEE_REVERSAL = :INSTALLMENT_FEE_REVERSAL
         LATE_PAYMENT = :LATE_PAYMENT
-        LATE_PAYMENT_REVERSAL = :LATE_PAYMENT_REVERSAL
         BILLING_ERROR = :BILLING_ERROR
-        BILLING_ERROR_REVERSAL = :BILLING_ERROR_REVERSAL
         PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT
-        PROVISIONAL_CREDIT_REVERSAL = :PROVISIONAL_CREDIT_REVERSAL
         RETURNED_PAYMENT = :RETURNED_PAYMENT
-        RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
         DISPUTE_WON = :DISPUTE_WON
-        DISPUTE_WON_REVERSAL = :DISPUTE_WON_REVERSAL
         DISBURSE = :DISBURSE
-        DISBURSE_REVERSAL = :DISBURSE_REVERSAL
         ANNUAL = :ANNUAL
-        ANNUAL_REVERSAL = :ANNUAL_REVERSAL
         QUARTERLY = :QUARTERLY
-        QUARTERLY_REVERSAL = :QUARTERLY_REVERSAL
         MONTHLY = :MONTHLY
-        MONTHLY_REVERSAL = :MONTHLY_REVERSAL
         FEE = :FEE
-        FEE_REVERSAL = :FEE_REVERSAL
 
         # @!method self.values
         #   @return [Array<Symbol>]
