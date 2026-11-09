@@ -3,38 +3,6 @@
 module Lithic
   module Resources
     class Tokenizations
-      # > 🚧 Beta API
-      # >
-      # > This endpoint is in beta and subject to change.
-      #
-      # Create a tokenization for an OPEN card. Contact your Lithic representative to
-      # configure tokenization for your program and card network.
-      #
-      # If the status is PENDING_2FA, select an available tfa_methods entry and submit
-      # the cardholder's authentication code. An ACTIVE tokenization can then be used to
-      # create payment credentials.
-      #
-      # Additional attempts to create the same tokenizations on a card will result in a
-      # 409 Conflict.
-      sig do
-        params(
-          card_token: String,
-          agent_token: String,
-          type: Lithic::TokenizationCreateParams::Type::OrSymbol,
-          request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Tokenization)
-      end
-      def create(
-        # Card token
-        card_token,
-        # Globally unique identifier for the active agent configured for your program
-        agent_token:,
-        # Type of tokenization to create
-        type:,
-        request_options: {}
-      )
-      end
-
       # Get tokenization
       sig do
         params(
@@ -105,38 +73,6 @@ module Lithic
       def activate(
         # Tokenization token
         tokenization_token,
-        request_options: {}
-      )
-      end
-
-      # > 🚧 Beta API
-      # >
-      # > This endpoint is in beta and subject to change.
-      #
-      # Create payment credentials and a purchase mandate for an ACTIVE tokenization.
-      #
-      # The credential value, expiration date, and CVV are only available in this
-      # response and cannot be retrieved later.
-      sig do
-        params(
-          tokenization_token: String,
-          device:
-            Lithic::TokenizationCreatePaymentCredentialsParams::Device::OrHash,
-          mandate:
-            Lithic::TokenizationCreatePaymentCredentialsParams::Mandate::OrHash,
-          type:
-            Lithic::TokenizationCreatePaymentCredentialsParams::Type::OrSymbol,
-          request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::TokenizationCreatePaymentCredentialsResponse)
-      end
-      def create_payment_credentials(
-        # Tokenization token
-        tokenization_token,
-        # Device used for the purchase
-        device:,
-        mandate:,
-        # Type of purchase for which payment credentials are requested
-        type:,
         request_options: {}
       )
       end
@@ -213,33 +149,6 @@ module Lithic
       )
       end
 
-      # > 🚧 Beta API
-      # >
-      # > This endpoint is in beta and subject to change.
-      #
-      # Select an available SMS or EMAIL authentication method for a tokenization with
-      # status PENDING_2FA. Use a method returned in the tokenization's list of
-      # tfa_methods. The card network initiates delivery of the authentication code to
-      # the corresponding destination.
-      #
-      # A successful response confirms method selection, not tokenization activation.
-      # Submit the code using submit_tfa after the cardholder receives it.
-      sig do
-        params(
-          tokenization_token: String,
-          method_: Lithic::TokenizationSelectTfaMethodParams::Method::OrSymbol,
-          request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::TokenizationSelectTfaMethodResponse)
-      end
-      def select_tfa_method(
-        # Tokenization token
-        tokenization_token,
-        # An available method from the tokenization's list of tfa_methods
-        method_:,
-        request_options: {}
-      )
-      end
-
       # This endpoint is used to simulate a card's tokenization in the Digital Wallet
       # and merchant tokenization ecosystem.
       sig do
@@ -277,34 +186,6 @@ module Lithic
         entity: nil,
         # The decision that the Digital Wallet's recommend
         wallet_recommended_decision: nil,
-        request_options: {}
-      )
-      end
-
-      # > 🚧 Beta API
-      # >
-      # > This endpoint is in beta and subject to change.
-      #
-      # Submit the cardholder's one-time authentication code for a tokenization with
-      # status PENDING_2FA. A successful select_tfa_method request must precede
-      # submission. Send the code as a string to preserve leading zeros.
-      #
-      # A successful response means that the network accepted the authentication code.
-      # The activation of a tokenization will occur asynchronously initiated by the card
-      # network.
-      sig do
-        params(
-          tokenization_token: String,
-          value: String,
-          request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::TokenizationSubmitTfaResponse)
-      end
-      def submit_tfa(
-        # Tokenization token
-        tokenization_token,
-        # One-time authentication code received by the cardholder, including any leading
-        # zeros
-        value:,
         request_options: {}
       )
       end

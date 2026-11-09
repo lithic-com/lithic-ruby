@@ -505,10 +505,6 @@ module Lithic
 
   class TokenizationApprovalRequestWebhookEvent = Lithic::Models::TokenizationApprovalRequestWebhookEvent
 
-  class TokenizationCreateParams = Lithic::Models::TokenizationCreateParams
-
-  class TokenizationCreatePaymentCredentialsParams = Lithic::Models::TokenizationCreatePaymentCredentialsParams
-
   class TokenizationDeactivateParams = Lithic::Models::TokenizationDeactivateParams
 
   class TokenizationDecisioningRetrieveSecretParams = Lithic::Models::TokenizationDecisioningRetrieveSecretParams
@@ -531,11 +527,7 @@ module Lithic
 
   class TokenizationSecret = Lithic::Models::TokenizationSecret
 
-  class TokenizationSelectTfaMethodParams = Lithic::Models::TokenizationSelectTfaMethodParams
-
   class TokenizationSimulateParams = Lithic::Models::TokenizationSimulateParams
-
-  class TokenizationSubmitTfaParams = Lithic::Models::TokenizationSubmitTfaParams
 
   module TokenizationTfaReason = Lithic::Models::TokenizationTfaReason
 
