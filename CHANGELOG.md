@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.24.0](https://github.com/lithic-com/lithic-ruby/compare/v0.23.1...v0.24.0) (2026-11-09)
+
+
+### Features
+
+* **api:** add source, adjustment, and timestamp fields to installment plan statements ([eb824ef](https://github.com/lithic-com/lithic-ruby/commit/eb824ef41b66ffbe99b101ecaf2dd5205a5a3ac6))
+* **api:** add tokenization create, 2fa, and payment credentials endpoints to tokenizations ([be76925](https://github.com/lithic-com/lithic-ruby/commit/be76925237829d0a74a6501d365c1bead6b0d896))
+* **api:** add updated to 3DS authentications and created to backtests and challenge events ([f859f55](https://github.com/lithic-com/lithic-ruby/commit/f859f55f5cb997ceb5ab7f0292089e994e695987))
+* **api:** support hold adjustment actions in conditional authorization auth rule parameters ([37f969f](https://github.com/lithic-com/lithic-ruby/commit/37f969f2f87aa96163dd1ec966d2fc7e342dea1f))
+
+
+### Bug Fixes
+
+* **api:** correct event_type on create management operation to creatable, non-reversal types ([278a18b](https://github.com/lithic-com/lithic-ruby/commit/278a18b1d0e155d44a7c942163c3a4947a5e6a49))
+* **api:** remove incorrect defaults for daily and monthly spend limits on account update ([5cc463a](https://github.com/lithic-com/lithic-ruby/commit/5cc463a0bc8805431399c9f322607910c113ade7))
+
+
+### Documentation
+
+* **api:** clarify that begin filters on list endpoints are inclusive (on or after) ([3fd4dc4](https://github.com/lithic-com/lithic-ruby/commit/3fd4dc43f2ee639a301c7a6dcc76690619e33d44))
+* **api:** note naics_code is required for KYB_BASIC account holder enrollment ([526576f](https://github.com/lithic-com/lithic-ruby/commit/526576fef82e1227fea1e756739f17cb824169e2))
+
 ## [0.23.1](https://github.com/lithic-com/lithic-ruby/compare/v0.23.0...v0.23.1) (2026-10-29)
 
 
