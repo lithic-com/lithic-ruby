@@ -72,6 +72,8 @@ module Lithic
 
       # 6-digit North American Industry Classification System (NAICS) code for the
       # business.
+      #
+      # This parameter is required if workflow type is `KYB_BASIC`
       sig { returns(T.nilable(String)) }
       attr_reader :naics_code
 
@@ -140,6 +142,8 @@ module Lithic
         kyb_passed_timestamp: nil,
         # 6-digit North American Industry Classification System (NAICS) code for the
         # business.
+        #
+        # This parameter is required if workflow type is `KYB_BASIC`
         naics_code: nil,
         # Company website URL.
         website_url: nil

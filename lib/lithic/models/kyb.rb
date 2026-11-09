@@ -77,6 +77,8 @@ module Lithic
       #   6-digit North American Industry Classification System (NAICS) code for the
       #   business.
       #
+      #   This parameter is required if workflow type is `KYB_BASIC`
+      #
       #   @return [String, nil]
       optional :naics_code, String
 
