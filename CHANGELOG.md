@@ -6,7 +6,7 @@
 ### Features
 
 * **api:** add source, adjustment, and timestamp fields to installment plan statements ([eb824ef](https://github.com/lithic-com/lithic-ruby/commit/eb824ef41b66ffbe99b101ecaf2dd5205a5a3ac6))
-* **api:** add tokenization create, 2fa, and payment credentials endpoints to tokenizations ([be76925](https://github.com/lithic-com/lithic-ruby/commit/be76925237829d0a74a6501d365c1bead6b0d896))
+* **api:** add AGENT_PAY tokenization channel and tfa_methods to tokenizations ([be76925](https://github.com/lithic-com/lithic-ruby/commit/be76925237829d0a74a6501d365c1bead6b0d896))
 * **api:** add updated to 3DS authentications and created to backtests and challenge events ([f859f55](https://github.com/lithic-com/lithic-ruby/commit/f859f55f5cb997ceb5ab7f0292089e994e695987))
 * **api:** support hold adjustment actions in conditional authorization auth rule parameters ([37f969f](https://github.com/lithic-com/lithic-ruby/commit/37f969f2f87aa96163dd1ec966d2fc7e342dea1f))
 
