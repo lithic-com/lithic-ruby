@@ -35,8 +35,8 @@ module Lithic
       sig { returns(T::Boolean) }
       attr_accessor :is_complete
 
-      # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
-      # or INTERLINK.
+      # Card network where the transaction took place. ALLPOINT, AMEX, VISA, MASTERCARD,
+      # MAESTRO, or INTERLINK.
       sig { returns(Lithic::NetworkTotal::Network::TaggedSymbol) }
       attr_accessor :network
 
@@ -96,8 +96,8 @@ module Lithic
         # Indicates that all settlement records related to this Network Total are
         # available in the details endpoint.
         is_complete:,
-        # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
-        # or INTERLINK.
+        # Card network where the transaction took place. ALLPOINT, AMEX, VISA, MASTERCARD,
+        # MAESTRO, or INTERLINK.
         network:,
         # Date that the network total record applies to. YYYY-MM-DD format.
         report_date:,
@@ -196,8 +196,8 @@ module Lithic
         end
       end
 
-      # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
-      # or INTERLINK.
+      # Card network where the transaction took place. ALLPOINT, AMEX, VISA, MASTERCARD,
+      # MAESTRO, or INTERLINK.
       module Network
         extend Lithic::Internal::Type::Enum
 
@@ -205,6 +205,7 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::NetworkTotal::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ALLPOINT = T.let(:ALLPOINT, Lithic::NetworkTotal::Network::TaggedSymbol)
         AMEX = T.let(:AMEX, Lithic::NetworkTotal::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::NetworkTotal::Network::TaggedSymbol)
         MASTERCARD =

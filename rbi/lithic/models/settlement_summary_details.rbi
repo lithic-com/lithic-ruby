@@ -137,6 +137,11 @@ module Lithic
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ALLPOINT =
+          T.let(
+            :ALLPOINT,
+            Lithic::SettlementSummaryDetails::Network::TaggedSymbol
+          )
         AMEX =
           T.let(:AMEX, Lithic::SettlementSummaryDetails::Network::TaggedSymbol)
         INTERLINK =

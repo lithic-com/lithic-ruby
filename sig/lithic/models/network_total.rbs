@@ -107,11 +107,13 @@ module Lithic
         }
       end
 
-      type network = :AMEX | :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
+      type network =
+        :ALLPOINT | :AMEX | :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
 
       module Network
         extend Lithic::Internal::Type::Enum
 
+        ALLPOINT: :ALLPOINT
         AMEX: :AMEX
         VISA: :VISA
         MASTERCARD: :MASTERCARD

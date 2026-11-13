@@ -112,6 +112,7 @@ module Lithic
           module Network
             extend Lithic::Internal::Type::Enum
 
+            ALLPOINT = :ALLPOINT
             AMEX = :AMEX
             VISA = :VISA
             MASTERCARD = :MASTERCARD

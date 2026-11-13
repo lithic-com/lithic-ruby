@@ -42,8 +42,8 @@ module Lithic
       required :is_complete, Lithic::Internal::Type::Boolean
 
       # @!attribute network
-      #   Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
-      #   or INTERLINK.
+      #   Card network where the transaction took place. ALLPOINT, AMEX, VISA, MASTERCARD,
+      #   MAESTRO, or INTERLINK.
       #
       #   @return [Symbol, Lithic::Models::NetworkTotal::Network]
       required :network, enum: -> { Lithic::NetworkTotal::Network }
@@ -96,7 +96,7 @@ module Lithic
       #
       #   @param is_complete [Boolean] Indicates that all settlement records related to this Network Total are availabl
       #
-      #   @param network [Symbol, Lithic::Models::NetworkTotal::Network] Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
+      #   @param network [Symbol, Lithic::Models::NetworkTotal::Network] Card network where the transaction took place. ALLPOINT, AMEX, VISA, MASTERCARD,
       #
       #   @param report_date [Date] Date that the network total record applies to. YYYY-MM-DD format.
       #
@@ -148,13 +148,14 @@ module Lithic
         #   @param visa_charges [Integer] Charges specific to Visa/Interlink, in currency's smallest unit.
       end
 
-      # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
-      # or INTERLINK.
+      # Card network where the transaction took place. ALLPOINT, AMEX, VISA, MASTERCARD,
+      # MAESTRO, or INTERLINK.
       #
       # @see Lithic::Models::NetworkTotal#network
       module Network
         extend Lithic::Internal::Type::Enum
 
+        ALLPOINT = :ALLPOINT
         AMEX = :AMEX
         VISA = :VISA
         MASTERCARD = :MASTERCARD
