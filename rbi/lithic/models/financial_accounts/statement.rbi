@@ -590,10 +590,11 @@ module Lithic
               )
             end
 
-          # Payment due at the end of the billing period in cents. Negative amount indicates
-          # something is owed. If the amount owed is positive there was a net credit. If
-          # auto-collections are enabled this is the amount that will be requested on the
-          # payment due date
+          # Payment due at the end of the billing period in cents, excluding any past due
+          # amount. A positive amount indicates something is owed. A negative amount
+          # indicates a net credit. The minimum payment for the statement is the sum of
+          # `amount` and `past_due`. If auto-collections are enabled, this sum is the amount
+          # that will be requested on the payment due date
           sig { returns(Integer) }
           attr_accessor :amount
 
@@ -605,10 +606,11 @@ module Lithic
             params(amount: Integer, past_due: Integer).returns(T.attached_class)
           end
           def self.new(
-            # Payment due at the end of the billing period in cents. Negative amount indicates
-            # something is owed. If the amount owed is positive there was a net credit. If
-            # auto-collections are enabled this is the amount that will be requested on the
-            # payment due date
+            # Payment due at the end of the billing period in cents, excluding any past due
+            # amount. A positive amount indicates something is owed. A negative amount
+            # indicates a net credit. The minimum payment for the statement is the sum of
+            # `amount` and `past_due`. If auto-collections are enabled, this sum is the amount
+            # that will be requested on the payment due date
             amount:,
             # Amount past due for statement in cents
             past_due:

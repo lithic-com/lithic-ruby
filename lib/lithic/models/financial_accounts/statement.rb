@@ -329,10 +329,11 @@ module Lithic
         # @see Lithic::Models::FinancialAccounts::Statement#amount_due
         class AmountDue < Lithic::Internal::Type::BaseModel
           # @!attribute amount
-          #   Payment due at the end of the billing period in cents. Negative amount indicates
-          #   something is owed. If the amount owed is positive there was a net credit. If
-          #   auto-collections are enabled this is the amount that will be requested on the
-          #   payment due date
+          #   Payment due at the end of the billing period in cents, excluding any past due
+          #   amount. A positive amount indicates something is owed. A negative amount
+          #   indicates a net credit. The minimum payment for the statement is the sum of
+          #   `amount` and `past_due`. If auto-collections are enabled, this sum is the amount
+          #   that will be requested on the payment due date
           #
           #   @return [Integer]
           required :amount, Integer
@@ -347,7 +348,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::Statement::AmountDue} for more details.
           #
-          #   @param amount [Integer] Payment due at the end of the billing period in cents. Negative amount indicates
+          #   @param amount [Integer] Payment due at the end of the billing period in cents, excluding any past due am
           #
           #   @param past_due [Integer] Amount past due for statement in cents
         end
