@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.25.0](https://github.com/lithic-com/lithic-ruby/compare/v0.24.0...v0.25.0) (2026-11-20)
+
+
+### Features
+
+* **api:** add ALLPOINT to network enums on settlement report and detail endpoints ([57acec4](https://github.com/lithic-com/lithic-ruby/commit/57acec47fdc9c5a7bdd140dda6118d9f43741864))
+* **api:** Fix statement amount_due.amount description ([ed6056e](https://github.com/lithic-com/lithic-ruby/commit/ed6056eb703d64f91b1220c1c95072adfdb2b1a5))
+
 ## [0.24.0](https://github.com/lithic-com/lithic-ruby/compare/v0.23.1...v0.24.0) (2026-11-09)
 
 
