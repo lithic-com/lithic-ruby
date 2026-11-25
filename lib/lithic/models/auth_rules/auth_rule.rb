@@ -239,8 +239,9 @@ module Lithic
         # @see Lithic::Models::AuthRules::AuthRule#draft_version
         class DraftVersion < Lithic::Internal::Type::BaseModel
           # @!attribute error
-          #   An error message if the draft version failed compilation. Populated when `state`
-          #   is `ERROR`, `null` otherwise.
+          #   An error message if the draft version failed compilation or its dry run. When a
+          #   scenario fails, the message names it. Populated when `state` is `ERROR`, `null`
+          #   otherwise.
           #
           #   @return [String, nil]
           required :error, String, nil?: true
@@ -254,14 +255,17 @@ module Lithic
           # @!attribute state
           #   The state of the draft version. Most rules are created synchronously and the
           #   state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
-          #   asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
-          #   success or `ERROR` on failure.
+          #   and dry run asynchronously — the state starts as `PENDING` and transitions to
+          #   `SHADOWING` on success or `ERROR` on failure.
           #
-          #   - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+          #   - `PENDING`: Compilation and the dry run of the rule are in progress (TypeScript
+          #     rules only).
           #   - `SHADOWING`: The draft version is ready and evaluating in shadow mode
           #     alongside the current active version. It can be promoted to the active
           #     version.
-          #   - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+          #   - `ERROR`: Compilation of the rule failed, or the compiled rule failed its dry
+          #     run against sample events. A draft in this state cannot be promoted. Check the
+          #     `error` field for details.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::DraftVersion::State]
           required :state, enum: -> { Lithic::AuthRules::AuthRule::DraftVersion::State }
@@ -279,7 +283,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::AuthRule::DraftVersion} for more details.
           #
-          #   @param error [String, nil] An error message if the draft version failed compilation. Populated when `state`
+          #   @param error [String, nil] An error message if the draft version failed compilation or its dry run. When a
           #
           #   @param parameters [Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters, Lithic::Models::AuthRules::ConditionalCardTransactionUpdateActionParameters, Lithic::Models::AuthRules::ConditionalACHPaymentUpdateActionParameters, Lithic::Models::AuthRules::TypescriptCodeParameters] Parameters for the Auth Rule
           #
@@ -318,14 +322,17 @@ module Lithic
 
           # The state of the draft version. Most rules are created synchronously and the
           # state is immediately `SHADOWING`. Rules backed by TypeScript code are compiled
-          # asynchronously — the state starts as `PENDING` and transitions to `SHADOWING` on
-          # success or `ERROR` on failure.
+          # and dry run asynchronously — the state starts as `PENDING` and transitions to
+          # `SHADOWING` on success or `ERROR` on failure.
           #
-          # - `PENDING`: Compilation of the rule is in progress (TypeScript rules only).
+          # - `PENDING`: Compilation and the dry run of the rule are in progress (TypeScript
+          #   rules only).
           # - `SHADOWING`: The draft version is ready and evaluating in shadow mode
           #   alongside the current active version. It can be promoted to the active
           #   version.
-          # - `ERROR`: Compilation of the rule failed. Check the `error` field for details.
+          # - `ERROR`: Compilation of the rule failed, or the compiled rule failed its dry
+          #   run against sample events. A draft in this state cannot be promoted. Check the
+          #   `error` field for details.
           #
           # @see Lithic::Models::AuthRules::AuthRule::DraftVersion#state
           module State
