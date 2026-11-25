@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.25.0](https://github.com/lithic-com/lithic-ruby/compare/v0.24.0...v0.25.0) (2026-11-25)
+
+
+### Features
+
+* **api:** add ALLPOINT to network enums on settlement report and detail endpoints ([57acec4](https://github.com/lithic-com/lithic-ruby/commit/57acec47fdc9c5a7bdd140dda6118d9f43741864))
+* **api:** Document UTC end-of-month card expiry cutoff ([af8a1aa](https://github.com/lithic-com/lithic-ruby/commit/af8a1aa5969ad1c5ec159b329b53830e5bed89e5))
+* **api:** Fix statement amount_due.amount description ([ed6056e](https://github.com/lithic-com/lithic-ruby/commit/ed6056eb703d64f91b1220c1c95072adfdb2b1a5))
+
+
+### Documentation
+
+* **api:** clarify auth rule draft version state and error cover dry run of typescript rules ([d3affb3](https://github.com/lithic-com/lithic-ruby/commit/d3affb3b7ce8754841cae5423cd7de8893e862b0))
+* **api:** clarify when dispute claims can be submitted in outstanding_requirements description ([32f1ae5](https://github.com/lithic-com/lithic-ruby/commit/32f1ae56ba6e90811e5aae7a37e2370228212a2c))
+
 ## [0.24.0](https://github.com/lithic-com/lithic-ruby/compare/v0.23.1...v0.24.0) (2026-11-09)
 
 
