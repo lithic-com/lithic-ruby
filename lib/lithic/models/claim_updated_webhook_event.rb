@@ -47,7 +47,9 @@ module Lithic
       required :event_type, const: :"claim.updated"
 
       # @!attribute outstanding_requirements
-      #   Requirements that must be fulfilled before the claim can be submitted
+      #   What the client still needs to provide for the claim. The claim can be submitted
+      #   once `QUESTIONNAIRE` is no longer in the array. `DOCUMENTS` stays in the array,
+      #   before and after submission, while any required document is still outstanding
       #
       #   @return [Array<Symbol, Lithic::Models::ClaimUpdatedWebhookEvent::OutstandingRequirement>]
       required :outstanding_requirements,
@@ -102,7 +104,7 @@ module Lithic
       #
       #   @param disputed_transactions [Array<Lithic::Models::ClaimUpdatedWebhookEvent::DisputedTransaction>] Transactions included in this claim
       #
-      #   @param outstanding_requirements [Array<Symbol, Lithic::Models::ClaimUpdatedWebhookEvent::OutstandingRequirement>] Requirements that must be fulfilled before the claim can be submitted
+      #   @param outstanding_requirements [Array<Symbol, Lithic::Models::ClaimUpdatedWebhookEvent::OutstandingRequirement>] What the client still needs to provide for the claim. The claim can be submitted
       #
       #   @param reason [Symbol, Lithic::Models::ClaimUpdatedWebhookEvent::Reason] Dispute reason code provided when creating the claim
       #

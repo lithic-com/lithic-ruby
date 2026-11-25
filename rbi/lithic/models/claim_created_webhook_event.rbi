@@ -38,7 +38,9 @@ module Lithic
       sig { returns(Symbol) }
       attr_accessor :event_type
 
-      # Requirements that must be fulfilled before the claim can be submitted
+      # What the client still needs to provide for the claim. The claim can be submitted
+      # once `QUESTIONNAIRE` is no longer in the array. `DOCUMENTS` stays in the array,
+      # before and after submission, while any required document is still outstanding
       sig do
         returns(
           T::Array[
@@ -107,7 +109,9 @@ module Lithic
         created:,
         # Transactions included in this claim
         disputed_transactions:,
-        # Requirements that must be fulfilled before the claim can be submitted
+        # What the client still needs to provide for the claim. The claim can be submitted
+        # once `QUESTIONNAIRE` is no longer in the array. `DOCUMENTS` stays in the array,
+        # before and after submission, while any required document is still outstanding
         outstanding_requirements:,
         # Dispute reason code provided when creating the claim
         reason:,
