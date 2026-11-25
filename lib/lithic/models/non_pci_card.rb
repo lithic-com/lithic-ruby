@@ -152,7 +152,9 @@ module Lithic
       optional :digital_card_art_token, String, nil?: true
 
       # @!attribute exp_month
-      #   Two digit (MM) expiry month.
+      #   Two digit (MM) expiry month. Cards expire at the end of this month in UTC. A
+      #   card with expiry month 01 can be used through 23:59:59 UTC on January 31 and is
+      #   declined from 00:00:00 UTC on February 1.
       #
       #   @return [String, nil]
       optional :exp_month, String
@@ -273,7 +275,7 @@ module Lithic
       #
       #   @param digital_card_art_token [String, nil] Specifies the digital card art to be displayed in the user's digital wallet afte
       #
-      #   @param exp_month [String] Two digit (MM) expiry month.
+      #   @param exp_month [String] Two digit (MM) expiry month. Cards expire at the end of this month in UTC. A car
       #
       #   @param exp_year [String] Four digit (yyyy) expiry year.
       #

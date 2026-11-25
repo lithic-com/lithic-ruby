@@ -131,7 +131,9 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :digital_card_art_token
 
-      # Two digit (MM) expiry month.
+      # Two digit (MM) expiry month. Cards expire at the end of this month in UTC. A
+      # card with expiry month 01 can be used through 23:59:59 UTC on January 31 and is
+      # declined from 00:00:00 UTC on February 1.
       sig { returns(T.nilable(String)) }
       attr_reader :exp_month
 
@@ -317,7 +319,9 @@ module Lithic
         # after tokenization. This artwork must be approved by Mastercard and configured
         # by Lithic to use.
         digital_card_art_token: nil,
-        # Two digit (MM) expiry month.
+        # Two digit (MM) expiry month. Cards expire at the end of this month in UTC. A
+        # card with expiry month 01 can be used through 23:59:59 UTC on January 31 and is
+        # declined from 00:00:00 UTC on February 1.
         exp_month: nil,
         # Four digit (yyyy) expiry year.
         exp_year: nil,
